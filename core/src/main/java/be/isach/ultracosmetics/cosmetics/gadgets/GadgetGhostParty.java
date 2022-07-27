@@ -21,8 +21,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.Set;
-
 /**
  * Represents an instance of a ghost party gadget summoned by a player.
  *
@@ -34,7 +32,6 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhkMjE4MzY0MDIxOGFiMzMwYWM1NmQyYWFiN2UyOWE5NzkwYTU0NWY2OTE2MTllMzg1NzhlYTRhNjlhZTBiNiJ9fX0", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(Material.LEATHER_CHESTPLATE, 255, 255, 255);
     private EntitySpawner<Bat> bats;
-    private Set<ArmorStand> ghosts;
 
     public GadgetGhostParty(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
         super(owner, GadgetType.valueOf("ghostparty"), ultraCosmetics);
@@ -68,15 +65,15 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     }
 
     private void killBats() {
-        bats.removeEntities();
-        for (ArmorStand ghost : ghosts) {
-            ghost.remove();
+        for (Bat bat : bats.getEntities()) {
+            bat.getPassengers().forEach(e -> e.remove());
         }
-        ghosts.clear();
+        bats.removeEntities();
     }
 
     @Override
     public void onUpdate() {
+        if (bats == null) return;
         for (Bat bat : bats.getEntities()) {
             Particles.CLOUD.display(0.05f, 0.05f, 0.05f, bat.getLocation().add(0, 1.5, 0), 1);
         }

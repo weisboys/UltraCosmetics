@@ -9,7 +9,6 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.TextUtil;
 
@@ -44,7 +43,9 @@ import com.cryptomorin.xseries.messages.ActionBar;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Represents an instance of a Gadget summoned by a player.
@@ -225,17 +226,19 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     }
 
     public void spawnRandomFirework(Location location, Color main, Color fade) {
-        EntitySpawner<Firework> fireworks = new EntitySpawner<>(EntityType.FIREWORK, location, 4, f -> {
+        // EntitySpawner doesn't work well here, so just spawning manually
+        Set<Firework> fireworks = new HashSet<>();
+        for (int i = 0; i < 4; i++) {
+            Firework f = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
             FireworkMeta fm = f.getFireworkMeta();
             fm.addEffect(getRandomFireworkEffect(main, fade));
             fm.setDisplayName("uc_firework");
             f.setFireworkMeta(fm);
-        }, getUltraCosmetics());
+        }
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-            for (Firework f : fireworks.getEntities()) {
+            for (Firework f : fireworks) {
                 f.detonate();
             }
-            fireworks.removeEntities();
         }, 2);
     }
 

@@ -64,7 +64,7 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
     @SuppressWarnings("deprecation")
     @Override
     public void onUpdate() {
-        if (bats.isEmpty()) return;
+        if (bats == null || bats.isEmpty()) return;
 
         if (!active) {
             clean();

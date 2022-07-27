@@ -8,7 +8,7 @@ public enum ServerVersion {
     v1_8_R3("1.8.8", null),
     v1_12_R1("1.12.2", null),
     v1_18_R2("1.18.2", "eaeedbff51b16ead3170906872fda334"),
-    v1_19_R1("1.19", "7b9de0da1357e5b251eddde9aa762916");
+    v1_19_R1("1.19.1", "4cc0cc97cac491651bff3af8b124a214");
 
     private String name;
     // mappingsVersion is a random string that is changed whenever NMS changes

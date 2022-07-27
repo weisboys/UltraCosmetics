@@ -20,6 +20,7 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
     private final boolean spread;
     private int remaining;
     private Set<T> entities = new HashSet<>();
+    private boolean scheduled = false;
 
     public EntitySpawner(EntityType type, Location loc, int amount, boolean spread, Consumer<T> func, UltraCosmetics ultraCosmetics) {
         this.type = type;
@@ -27,11 +28,12 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
         this.remaining = amount;
         this.spread = spread;
         this.func = func;
-        if (limit < 1) {
+        if (limit < 1 || amount <= limit) {
             run();
             return;
         }
         this.runTaskTimer(ultraCosmetics, 0, 1);
+        scheduled = true;
     }
 
     public EntitySpawner(EntityType type, Location loc, int amount, Consumer<T> func, UltraCosmetics ultraCosmetics) {
@@ -46,13 +48,14 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
     @SuppressWarnings("unchecked")
     @Override
     public void run() {
-        for (int i = 0; i < limit; i++) {
+        for (int i = 0; i < limit || limit == 0; i++) {
             if (remaining < 1) {
-                if (limit > 0) {
+                if (scheduled) {
                     cancel();
                 }
                 return;
             }
+            // TODO: make this dynamic? Currently used for parachute gadget
             Location spawnLoc = loc.clone();
             if (spread) {
                 spawnLoc.add(remaining % 5 - 2, 0, remaining / 4 - 2);

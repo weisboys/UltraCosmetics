@@ -41,12 +41,12 @@ public class GadgetParachute extends Gadget implements Updatable {
     public void onRightClick() {
         Location loc = getPlayer().getLocation();
 
-        getPlayer().teleport(loc.clone().add(0, 35, 0));
+        getPlayer().teleport(loc.add(0, 35, 0));
         getPlayer().setVelocity(new Vector(0, 0, 0));
 
         getOwner().setCanBeHitByOtherGadgets(false);
 
-        chickens = new EntitySpawner<>(EntityType.CHICKEN, loc, 20, true, c -> c.setLeashHolder(getPlayer()), getUltraCosmetics());
+        chickens = new EntitySpawner<>(EntityType.CHICKEN, loc.add(0, 3, 0), 20, true, c -> c.setLeashHolder(getPlayer()), getUltraCosmetics());
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> active = true, 5);
     }
 
