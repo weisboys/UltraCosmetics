@@ -1,13 +1,10 @@
 ![logo](https://puu.sh/E6GuW/414e92c886.png)
 
 [discord-invite]: https://discord.gg/PgSXZT37JV
-[travis-link]: https://travis-ci.org/iSach/UltraCosmetics
-[jenkins-link]: https://ci.isach.be/job/UltraCosmetics/lastSuccessfulBuild/
-[wiki-link]: https://github.com/iSach/UltraCosmetics/wiki
+[wiki-link]: https://github.com/datatags/UltraCosmetics/wiki
 [spigotmc-link]: https://www.spigotmc.org/resources/10905/
 
-[![TravisCI Build Status](https://travis-ci.org/iSach/UltraCosmetics.svg?branch=master)][travis-link]
-[![GitHub last commit](https://img.shields.io/github/last-commit/iSach/UltraCosmetics.svg)](https://github.com/iSach/UltraCosmetics/commits/master)
+[![GitHub last commit](https://img.shields.io/github/last-commit/datatags/UltraCosmetics.svg)](https://github.com/datatags/UltraCosmetics/commits/master)
 [![version](https://img.shields.io/spiget/version/10905?label=version)](https://www.spigotmc.org/resources/10905/)
 [![Language grade: Java](https://img.shields.io/lgtm/grade/java/g/iSach/UltraCosmetics.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/iSach/UltraCosmetics/context:java)
 [![discord](https://discordapp.com/api/guilds/185055040036143104/widget.png)][discord-invite]
@@ -15,7 +12,7 @@
 [![wiki](https://img.shields.io/badge/go%20to-wiki-blue.svg)][wiki-link]
 
 ## Welcome to the UltraCosmetics GitHub repository!
-UltraCosmetics is a Spigot plugin compatible with versions 1.8.8, 1.12.2 and 1.18.2+, that adds cosmetics to your server!
+UltraCosmetics is a Spigot plugin compatible with versions 1.8.8, 1.12.2 and 1.19.1+, that adds cosmetics to your server!
 
 In order for everyone to have the best experience possible, we have a few guidelines that everyone must follow.    
 - For all things on GitHub, please make sure you follow the [code of conduct](CODE_OF_CONDUCT.md).
