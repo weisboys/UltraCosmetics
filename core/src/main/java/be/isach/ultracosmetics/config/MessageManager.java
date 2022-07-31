@@ -169,7 +169,7 @@ public class MessageManager {
         addMessage("Gadgets.ThorHammer.name", "&f&lThor's Hammer");
         addMessage("Gadgets.SmashDown.name", "&c&lSmashDown");
         addMessage("Gadgets.ExplosiveSheep.name", "&4&lExplosive Sheep");
-        addMessage("Gadgets.ExplosiveSheep.Already-Active", "&c&lThere is already a an explosive sheep active!");
+        addMessage("Gadgets.ExplosiveSheep.Already-Active", "&c&lThere is already an explosive sheep active!");
         addMessage("Gadgets.AntiGravity.name", "&d&lAnti Gravity");
         addMessage("Gadgets.Tsunami.name", "&9&lTsunami");
         addMessage("Gadgets.Rocket.name", "&4&lRocket");
