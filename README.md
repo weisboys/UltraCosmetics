@@ -10,6 +10,7 @@
 [![discord](https://discordapp.com/api/guilds/185055040036143104/widget.png)][discord-invite]
 [![view on SpigotMC](https://img.shields.io/badge/view%20on-spigotmc-orange.svg)][spigotmc-link]
 [![wiki](https://img.shields.io/badge/go%20to-wiki-blue.svg)][wiki-link]
+[![Crowdin](https://badges.crowdin.net/ultracosmetics/localized.svg)](https://crowdin.com/project/ultracosmetics)
 
 ## Welcome to the UltraCosmetics GitHub repository!
 UltraCosmetics is a Spigot plugin compatible with versions 1.8.8, 1.12.2 and 1.18.2+, that adds cosmetics to your server!
