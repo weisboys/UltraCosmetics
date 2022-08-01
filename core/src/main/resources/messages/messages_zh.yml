@@ -1,0 +1,1024 @@
+Prefix: '&l&o装饰品 >&r'
+No-Permission: '%prefix% &c&l你没有权限！'
+Cosmetic-Disabled: '%prefix% &c&l这个装饰品已被禁用！'
+Invalid-Gadget: '%prefix% &c&l无效的小工具！'
+Invalid-Pet: '%prefix% &c&l无效宠物！'
+Invalid-Mount: '%prefix% &c&l无效的载具！'
+Invalid-Effect: '%prefix% &c&l无效的效果！'
+Invalid-Morph: '%prefix% &c&l无效伪装！'
+Invalid-Hat: '%prefix% &c&l无效头饰！'
+Invalid-Suit: '%prefix% &c&l无效衣装！'
+Invalid-Emote: '%prefix% &c&l无效表情！'
+Invalid-Menu: '%prefix% &c&l无效菜单！'
+Ammo: '&7你的可使用次数: &e%ammo%'
+Purchase: '&a&l购买'
+Cancel: '&c&l取消'
+Buy-Ammo-Description: '&e&l购买 %amount% %gadgetname% 次使用次数 &e&l需要花费 $%price%'
+Buy-Cosmetic-Description: '&e&l购买 %gadgetname% &e&l需花费 $%price%'
+Right-Click-Buy-Ammo: '&7右键即可购买使用次数'
+Right-Click-Purchase: '&e右键即可花费 $%price% 来购买'
+Not-Enough-Money: '%prefix% &c&l你没有足够的金钱！'
+Successful-Purchase: '%prefix% &a&l购买成功！'
+Buy-Treasure-Key: '&l购买一把宝藏钥匙'
+Treasure-Keys: '&7&l宝藏钥匙'
+Treasure-Chests: '&6&l宝藏箱'
+Dont-Have-Key: '&4&l你需要一把钥匙！'
+Click-Open-Chest: '&a点击以打开一个箱子'
+Click-Buy-Key: '&a点击以购买一把钥匙'
+Left-Click-Open-Chest: '&a左键点击以打开一个箱子'
+Right-Click-Simple: '&a右键即可获得装饰品'
+Your-Keys: '&7&o你的钥匙数: &f&l%keys%'
+Buy-Treasure-Key-ItemName: '&e&l1把 &7&l宝藏钥匙 &e&l需要花费 $%price%'
+You-Won-Treasure-Chests: '%prefix% &f&l你赢得了: %name%!'
+Treasure-Chest-Occupied: '%prefix% &c&l所有宝藏点都已被占用，请稍等并重试。'
+Clear:
+  Cosmetics: '&c&l清除所有装饰品'
+  Gadgets: '&c&l清除当前使用的小道具'
+  Pets: '&c&l清除当前宠物'
+  Mounts: '&c&l清除当前载具'
+  Particle-Effects: '&c&l清除当前效果'
+  Morphs: '&c&l清除当前伪装'
+  Hats: '&c&l清除当前头饰'
+  Suits: '&c&l清除当前衣装'
+  Emotes: '&c&l清除当前表情'
+Menu:
+  Purchase-Rename:
+    Button:
+      Showcase: '&c&l重命名宠物到 &f&l%name% &c&l需要花费 &e&l$%price%'
+    Title: '&l重命名宠物'
+  Rename-Pet:
+    Button:
+      Name: '&c&l点击以重命名: %petname%'
+    Placeholder: 宠物名
+    Title: 重命名宠物
+  Main:
+    Title: '&l主菜单'
+    Button:
+      Name: '&c&l主菜单'
+  Pets:
+    Title: '&l宠物'
+    Button:
+      Name: '&a&l宠物'
+      Tooltip-Equip: '&b&l生成'
+      Tooltip-Unequip: '&c&l取消生成'
+  Gadgets:
+    Title: '&l小道具'
+    Button:
+      Name: '&9&l小道具'
+      Tooltip-Equip: '&b&l激活'
+      Tooltip-Unequip: '&c&l取消激活'
+  Mounts:
+    Title: '&l载具'
+    Button:
+      Name: '&6&l载具'
+      Tooltip-Equip: '&b&l生成'
+      Tooltip-Unequip: '&c&l取消生成'
+  Morphs:
+    Title: '&l伪装'
+    Button:
+      Name: '&2&l伪装'
+      Tooltip-Equip: '&b&l伪装成'
+      Tooltip-Unequip: '&c&l取消伪装 从'
+  Hats:
+    Title: '&l头饰'
+    Button:
+      Name: '&b&l头饰'
+      Tooltip-Equip: '&b&l装备'
+      Tooltip-Unequip: '&c&l取消装备'
+  Particle-Effects:
+    Title: '&l粒子效果'
+    Button:
+      Name: '&b&l粒子效果'
+      Tooltip-Equip: '&b&l召唤'
+      Tooltip-Unequip: '&c&l取消召唤'
+  Suits:
+    Title: '&l衣装'
+    Button:
+      Name: '&c&l衣装'
+      Tooltip-Equip: '&b&l装备'
+      Tooltip-Unequip: '&c&l取消装备'
+  Emotes:
+    Title: '&l表情'
+    Button:
+      Name: '&e&l表情'
+      Tooltip-Equip: '&b&l装备'
+      Tooltip-Unequip: '&c&l取消装备'
+  Buy-Ammo:
+    Title: '&l购买使用次数'
+  Misc:
+    Button:
+      Previous-Page: '&c&l上一页'
+      Next-Page: '&a&l下一页'
+Chest-Location:
+  Not-Enough-Space: '%prefix% &c&l这里没有足够的空间来召唤宝藏箱！'
+  Too-Close: '%prefix% &c&l你离另一个宝藏箱太近了！'
+  Region-Disabled: '%prefix% &c&l你不能在这里打开一个宝藏箱！'
+  Invalid: '%prefix% &c&l这不是一个可用地点'
+  In-Air: '%prefix% &c&l该地点不在地面上！'
+  In-Ground: '%prefix% &c&l该地点在地下！'
+  Suggestion: '%prefix% &a你指的是 %location%?'
+Active-Pet-Needed: '&c&l你需要召唤一只宠物才能重命名它'
+Treasure-Chests-Loot:
+  Ammo: '%ammo% %name% 使用次数'
+  Pet: '%pet% 宠物'
+  Mount: '%mount% 载具'
+  Effect: '%effect% 效果'
+  Morph: '%morph% 伪装'
+  Hat: '%hat% 头饰'
+  Money: '&e&l%money%$'
+  Gadget: '%gadget% 小道具'
+  Suit: '%suit%'
+  Emote: '%emote% 表情'
+  Nothing: '&c&l空'
+Disable-Gadgets: '&c&l关闭小道具'
+Disable-Gadgets-Lore: '&c禁用小工具及它们的效果对您的影响'
+Enable-Gadgets: '&a&l启用小道具'
+Enable-Gadgets-Lore: '&c启用小工具及它们的效果对您的影响'
+Disable-Third-Person-View: '&c&l禁用伪装的第三人视图'
+Enable-Third-Person-View: '&a&l启用伪装的第三人视图'
+Disable-Filter-By-Owned: '&c&l改为向所有人展示'
+Enable-Filter-By-Owned: '&c&l将筛选器改为已拥有的'
+Disable-Treasure-Notification: '&c&l宝藏通知关闭'
+Enable-Treasure-Notification: '&c&l宝藏通知开启'
+Gadgets-Enabled-Needed: '%prefix% &c&l你需要启用小道具！'
+Gadgets:
+  Equip: '%prefix% &9你装配了 %gadgetname%'
+  Unequip: '%prefix% &9你去下了 %gadgetname%'
+  Countdown-Message: '%prefix% &c&l你不能在 &c&l%time%&c&l 秒内使用 %gadgetname%！'
+  PaintballGun:
+    name: '&b&l颜料彩弹枪'
+    Description: '&7&obiu biu biu!!!'
+  BatBlaster:
+    name: '&7&l蝙蝠冲击波'
+    Description: |-
+      &7&oLaunch waves of bats
+      &7&oat people you don't like!
+  MelonThrower:
+    name: '&a&l西瓜投手'
+    Wait-For-Finish: '%prefix% &c&l先等你之前发射的西瓜爆炸吧！'
+    Description: '&7&o奇怪的乐趣！'
+  EtherealPearl:
+    name: '&5&l空灵珍珠'
+    Description: |-
+      &7&o坐在你专属的空灵珍珠上
+      &7&o遨游天际！
+  FleshHook:
+    name: '&7&l肉钩'
+    Description: |-
+      &7&oMake new friends by throwing a hook
+      &7&oat them and pulling them
+      &7&oto you!
+  DiscoBall:
+    name: '&d&l迪斯科灯球'
+    Already-Active: '&c&l已经有一个在使用中的迪斯科灯球了！'
+    Not-Space-Above: '&c&l你的头上没有足够的空间！'
+    Description: '&7&oJust dance!'
+  ColorBomb:
+    name: '&d&l颜料炸弹'
+    Description: '&7&o一个多彩的炸弹！'
+  Chickenator:
+    name: '&f&l鸡爪'
+    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
+  PortalGun:
+    name: '&c&l传送门 &9&l枪'
+    No-Block-Range: '%prefix% &c&l所指的方向内没有方块！'
+    Different-Worlds: '%prefix% &c&l传送没都必须在同一个世界内！'
+    Description: '&7&o蛋糕就是个谎言！'
+  BlizzardBlaster:
+    name: '&b&l暴风雪冲击波'
+    Description: '&7&oLet it snow!'
+  ThorHammer:
+    name: '&f&l雷神之锤'
+    Description: '&7&oGet the real Mjölnir!'
+  SmashDown:
+    name: '&c&l向下砸'
+    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
+  ExplosiveSheep:
+    name: '&4&l会爆炸的羊'
+    Already-Active: '&c&lThere is already an explosive sheep active!'
+    Description: |-
+      &7&o你确定它该像那样
+      &7&o闪烁吗?
+  AntiGravity:
+    name: '&d&l反重力'
+    Description: |-
+      &7&o不喜欢重力？
+      &7&o那这就是为你量身定制的！
+  Tsunami:
+    name: '&9&l海啸'
+    Description: |-
+      &7&oTSUNAMI!
+      &7&oRun for your life!
+  Rocket:
+    name: '&4&l火箭'
+    Not-Enough-Space: '%prefix% &c&l你头上的空间不足！'
+    Not-On-Ground: '%prefix% &c&l你必须站在地上！'
+    Takeoff: '&4&l起飞!!'
+    LaunchAborted: '&c&l发射取消!'
+    Description: '&7&oHouston, we have a problem...'
+  BlackHole:
+    name: '&1&l黑洞'
+    Description: '&7&oYou should not get caught by it!'
+  TNT:
+    name: '&4&lT&f&lN&4&lT'
+    Description: |-
+      &7&o把一些人炸起来!
+      &7&o嘣!
+  FunGun:
+    name: '&6&l趣枪'
+    Description: '&7&o哇！这把枪好好玩！'
+  Parachute:
+    name: '&f&l降落伞'
+    Description: '&7&oGERONIMOOO!'
+  QuakeGun:
+    name: '&5&l地震 &d&l枪'
+    Description: |-
+      &7&o获得一把真正的轨道枪
+      &7&o并打击玩家和生物！
+  GhostParty:
+    name: '&f&l鬼魂派对'
+    Description: |-
+      &7&oWho you gonna call?
+      &7&oGHOST BUSTERS!
+  Firework:
+    name: '&c&l烟花'
+    Description: |-
+      &7&o想庆祝?
+      &7&o放朵烟花吧!
+  ChristmasTree:
+    name: '&2&l圣诞树'
+    Click-On-Block: '%prefix% &c&l请对准方块点击！'
+    Description: |-
+      &7&o这里有一颗
+      &7&o圣诞树给你!
+  FreezeCannon:
+    name: '&b&l冷冻炮'
+    Description: '&7&o把地板变成溜冰场！'
+  Snowball:
+    name: '&f&l雪球'
+    Description: |-
+      &7&o通过向他人扔雪球来
+      &7&o过节!
+  PartyPopper:
+    name: '&e&l礼花'
+    Description: |-
+      &7&oCelebrate by blasting confetti into
+      &7&othe air!
+  Trampoline:
+    name: '&9&l蹦床'
+    Description: |-
+      &7&oConstructs a trampoline
+      &7&othat sends you and your
+      &7&ofriends into the air!
+  Gadget-Ready-ActionBar: '%gadgetname% &f&l以就绪！'
+  Lore: '&9小道具'
+Mounts:
+  DruggedHorse:
+    menu-name: '&2&l嗑药的马'
+    entity-displayname: '&l%playername%的嗑药马'
+    Description: '&7&o这太过分了！'
+  InfernalHorror:
+    menu-name: '&4&l地狱恐惧'
+    entity-displayname: '&l%playername%的地狱恐惧'
+    Description: '&7&o这个载具直接来自... 地狱!'
+  GlacialSteed:
+    menu-name: '&b&l冰川骏马'
+    entity-displayname: '&l%playername%的冰川骏马'
+    Description: '&7&o这个载具来自北极'
+  WalkingDead:
+    menu-name: '&2&l行走死亡'
+    entity-displayname: '&l%playername%的行走死亡'
+    Description: '&7&o呜...'
+  MountOfFire:
+    menu-name: '&c&l火之坐骑'
+    entity-displayname: '&l%playername%的火之载具'
+    Description: '&7&o冥王的坐骑！'
+  MountOfWater:
+    menu-name: '&9&l水之坐骑'
+    entity-displayname: '&l%playername%的水之坐骑'
+    Description: '&7&o波塞冬坐骑！'
+  EcologistHorse:
+    menu-name: '&a&l生态马'
+    entity-displayname: '&l%playername%的生态马'
+    Description: '&7&oBecome an ecologist!'
+  NyanSheep:
+    menu-name: '&4&l咩咩&6&l羊'
+    entity-displayname: '&l%playername%的咩咩羊'
+    Description: |-
+      &4&l咩 &6&l咩 &e&l咩
+      &a&l咩 &3&l咩 &9&l咩
+  Snake:
+    menu-name: '&6&l蛇'
+    entity-displayname: '&l%playername%的蛇'
+    Description: '&7&o小心！它可能会咬人...'
+  Dragon:
+    menu-name: '&5&l龙'
+    entity-displayname: '&l%playername%的龙'
+    Description: '&7&o成为一个龙骑士！'
+  SkySquid:
+    menu-name: '&9&l飞天鱿鱼'
+    entity-displayname: '&l%playername%的飞天鱿鱼'
+  HypeCart:
+    menu-name: '&7&l超级车'
+    entity-displayname: '&l%playername%的超级车'
+    Description: |-
+      &7&o想开F1赛车？
+      &7&o现在你可以了！
+  Slime:
+    menu-name: '&a&l史莱姆'
+    entity-displayname: '&l%playername%的史莱姆'
+    Description: '&7&o啪嗒！啪嗒！'
+  Spider:
+    menu-name: '&8&l蜘蛛'
+    entity-displayname: '&l%playername%的蜘蛛'
+    Description: '&7&o你就是蜘蛛骑士！'
+  Rudolph:
+    menu-name: '&f&l鲁道&4&l夫'
+    entity-displayname: '&l%playername%的鲁道夫'
+    Description: |-
+      &7&o什么是没有驯鹿鲁道夫
+      &7&o的圣诞节?
+  MoltenSnake:
+    menu-name: '&c&l熔蛇'
+    entity-displayname: '&l%playername%的熔蛇'
+    Description: |-
+      &7&o在地球的深处，
+      &7&o存在着一种神话般的熔蛇
+      &7&o它将永远为你服务
+  FlyingShip:
+    menu-name: '&a&l飞船'
+    entity-displayname: '&l%playername%的飞船'
+  Equip: '%prefix% &9你召唤了 %mountname%'
+  Unequip: '%prefix% &9你收回了 %mountname%'
+  Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
+  Not-Enough-Room: '%prefix% &c&l这里的空间不足以召唤一个坐骑'
+Particle-Effects:
+  Equip: '%prefix% &9你召唤了 %effectname%'
+  Unequip: '%prefix% &9你取消召唤了 %effectname%'
+  RainCloud:
+    name: '&9&l雨云'
+    Description: |-
+      &7&o天气预报告诉我
+      &7&o他在下雨.
+  SnowCloud:
+    name: '&f&l雪云'
+    Description: |-
+      &7&o天气预报告诉我
+      &7&o他在下雪.
+  BloodHelix:
+    name: '&4&l血色螺旋体'
+    Description: |-
+      &7&o古老的传说说这种魔法
+      &7&o赋予其使用者的血液以力量。
+      &7&o赋予他们神的力量。
+  FrostLord:
+    name: '&b&l冰霜领主'
+    Description: '&7&o我是全能的 冰霜领主!'
+  FlameRings:
+    name: '&c&火焰环'
+    Description: '&7&o小心！它们很烫！'
+  GreenSparks:
+    name: '&a&l绿色火花'
+    Description: '&7&o小小的、绿色的火花!'
+  InLove:
+    name: '&c&l坠入爱河'
+    Description: '&7&o天哪我坠入爱河了！'
+  FrozenWalk:
+    name: '&b&l冰霜行者'
+    Description: '&7&o我的脚好冷！'
+  Enchanted:
+    name: '&7&l附魔'
+    Description: '&7&o成为一个万能的附魔者！'
+  Music:
+    name: '&9&l音乐'
+    Description: '&7&o很多音乐！'
+  Inferno:
+    name: '&4&l地狱'
+    Description: '&7&o圣诞老人他自己创造了这个效果！'
+  AngelWings:
+    name: '&f&l天使之翼'
+    Description: '&7&o成为一个天使吧！'
+  SuperHero:
+    name: '&4&l超级英雄'
+    Description: '&7&o成为一个超人吧！'
+  SantaHat:
+    name: '&4&l圣诞老人 &f&l的帽子'
+    Description: '&7&o成为一个圣诞老人！'
+  CrushedCandyCane:
+    name: '&4&l粉碎的 &f&l糖果 &4&l棍'
+    Description: |-
+      &7&o没有太多的
+      &7&o圣诞糖果。不要听信
+      &7&o你的牙医.
+  EnderAura:
+    name: '&d&l末影光环'
+    Description: |-
+      &7&o这些神秘的粒子附着在
+      &7&o最富传奇色彩的玩家身上!
+  FlameFairy:
+    name: '&6&l火焰精灵'
+    Description: '&7&o嘿！！'
+  MagicalRods:
+    name: '&8&l魔杖'
+    Description: '&7&o也许这些魔杖能保护你！'
+  FireWaves:
+    name: '&e&l火浪'
+    Description: '&7&o有人说这些火浪起到了保护作用...'
+Pets:
+  Piggy:
+    menu-name: '&d&l猪仔'
+    entity-displayname: '&l%playername%的猪仔'
+    Description: '&7&o哼！哼！'
+  Sheep:
+    menu-name: '&f&l羊'
+    entity-displayname: '&l%playername%的羊'
+    Description: '&7&o咩，咩'
+  EasterBunny:
+    menu-name: '&6&l复活节兔'
+    entity-displayname: '&l%playername%的复活节兔'
+    Description: '&7&o到复活节了吗'
+  Cow:
+    menu-name: '&c&l牛'
+    entity-displayname: '&l%playername%的牛'
+    Description: '&7&o哞!'
+  Kitty:
+    menu-name: '&9&lKitty猫'
+    entity-displayname: '&l%playername%的Kitty猫'
+    Description: '&7&o喵~'
+  Dog:
+    menu-name: '&7&l狗'
+    entity-displayname: '&l%playername%的狗'
+    Description: '&7&o汪！'
+  Chick:
+    menu-name: '&e&l鸡'
+    entity-displayname: '&l%playername%的鸡'
+    Description: '&7&o咯咯哒！'
+  Wither:
+    menu-name: '&8&l凋零'
+    entity-displayname: '&l%playername%的凋零'
+    Description: '&7&o为我小心......'
+  Pumpling:
+    menu-name: '&6&l小南瓜'
+    entity-displayname: '&l%playername%的小南瓜'
+    Description: '&7&o只是一个漂浮的小南瓜'
+  ChristmasElf:
+    menu-name: '&a&l圣诞精灵'
+    entity-displayname: '&l%playername%的圣诞精灵'
+    Description: '&7&o我可以给你做礼物！'
+  Mooshroom:
+    menu-name: '&4&l哞菇'
+    entity-displayname: '&l%playername%的哞菇'
+    Description: '&7&o哞!'
+  IronGolem:
+    menu-name: '&7&l铁傀儡'
+    entity-displayname: '&l%playername%的铁傀儡'
+    Description: '&7&o我喜欢花'
+  Snowman:
+    menu-name: '&f&l雪人'
+    entity-displayname: '&l%playername%的雪人'
+    Description: '&7&obiu biu biu'
+  Villager:
+    menu-name: '&a&l村民'
+    entity-displayname: '&l%playername%的村民'
+    Description: '&7&o哼哼哼哼哼哼'
+  Bat:
+    menu-name: '&8&l蝙蝠'
+    entity-displayname: '&l%playername%的蝙蝠'
+    Description: '&7&o我喜欢黑暗的地方'
+  PolarBear:
+    menu-name: '&b&l北极熊'
+    entity-displayname: '&l%playername%的北极熊'
+    Description: '&7&oI prefer cold areas'
+  Llama:
+    menu-name: '&7&l羊驼'
+    entity-displayname: '&l%playername%的羊驼'
+    Description: '&7&oNeed me to carry anything?'
+  Parrot:
+    menu-name: '&a&l鹦鹉'
+    entity-displayname: '&l%playername%的鹦鹉'
+    Description: '&7&oPolly want a cracker?'
+  Vex:
+    menu-name: '&7&l恼鬼'
+    entity-displayname: '&l%playername%的恼鬼'
+  Panda:
+    menu-name: '&a&l熊猫'
+    entity-displayname: '&l%playername%的熊猫'
+    Description: '&7&oLikes Bamboo!'
+  Fox:
+    menu-name: '&d&l狐狸'
+    entity-displayname: '&l%playername%的狐狸'
+    Description: '&7&oWhat does the fox say?'
+  Axolotl:
+    menu-name: '&5&l美西螈'
+    entity-displayname: '&l%playername%的美西螈'
+    Description: '&7&oSooo Cute!'
+  Piglin:
+    menu-name: '&6&l黄金商人'
+    entity-displayname: '&l%playername%的黄金商人'
+    Description: '&7&oDeals with Gold!'
+  Slime:
+    menu-name: '&a&l史莱姆'
+    entity-displayname: '&l%playername%的史莱姆'
+  Bee:
+    menu-name: '&e&l蜜蜂'
+    entity-displayname: '&l%playername%的蜜蜂'
+    Description: '&7&o*bzzzz* *bzzzz*'
+  Goat:
+    menu-name: '&f&l山羊'
+    entity-displayname: '&l%playername%的山羊'
+    Description: '&7&oBAAAA!'
+  Silverfish:
+    menu-name: '&7&l蠹虫'
+    entity-displayname: '&l%playername%的蠹虫'
+    Description: '&7&o潜伏在墙中...'
+  Horse:
+    menu-name: '&a&l马'
+    entity-displayname: '&l%playername%的马'
+    Description: '&7&o*咴*'
+  Blaze:
+    menu-name: '&c&l烈焰'
+    entity-displayname: '&l%playername%的烈焰'
+    Description: '&7&o会飞且很烫！'
+  Creeper:
+    menu-name: '&a&l苦力怕'
+    entity-displayname: '&l%playername%的苦力怕'
+    Description: '&7&o喜欢炸掉你最爱的东西...'
+  Enderman:
+    menu-name: '&5&l末影人'
+    entity-displayname: '&l%playername%的末影人'
+    Description: '&7&o别看着它，不然他会追杀你！'
+  Skeleton:
+    menu-name: '&f&l骷髅'
+    entity-displayname: '&l%playername%的骷髅'
+    Description: '&7&o小心，它会尝试向你射箭！'
+  Zombie:
+    menu-name: '&2&l僵尸'
+    entity-displayname: '&l%playername%的僵尸'
+    Description: '&7&o快！把你的村民藏起来！'
+  Frog:
+    menu-name: '&2&l青蛙'
+    entity-displayname: '&l%playername%的青蛙'
+    Description: '&7&oDoesn''t like Fireflies!'
+  Warden:
+    menu-name: '&3&l坚守者'
+    entity-displayname: '&l%playername%的坚守者'
+    Description: '&7&oThe scariest Mob in Minecraft!'
+  Allay:
+    menu-name: '&a&l轻灵'
+    entity-displayname: '&l%playername%的轻灵'
+    Description: '&7&oA new Friend!'
+  Equip: '%prefix% &9你召唤了 %petname%'
+  Unequip: '%prefix% &9你收回了 %petname%'
+Morphs:
+  Blaze:
+    name: '&6&l烈焰'
+    skill: '&e蹲下&7 即可 &a起飞'
+  Chicken:
+    name: '&f&l鸡'
+    skill: '&e蹲下&7 即可： &a铺腿'
+  Slime:
+    name: '&a&l史莱姆'
+    skill: '&e蹲下&7 即可: &a蹦蹦跳跳'
+  Pig:
+    name: '&d&l猪'
+    skill: '&e碰撞&7 即可: &a弹起玩家'
+  Enderman:
+    name: '&5&l末影人'
+    skill: '&e二段跳&7 即可:&a传送'
+  Bat:
+    name: '&8&l蝙蝠'
+    skill: '&e二段跳&7 即可:&a扇动翅膀'
+  Creeper:
+    name: '&a&l苦力怕'
+    skill: '&e蹲下&7 即可: &a引爆'
+    charging: '&a&l充能中: %chargelevel%/100'
+    release-to-explode: '&f&l释放即爆炸！'
+  Snowman:
+    name: '&f&l雪人'
+    skill: '&e左键点击&7 即可 &a发射雪球'
+  Equip: '%prefix% &9你伪装成了 %morphname%'
+  Unequip: '%prefix% &9你取消了伪装从 %morphname%'
+  WitherSkeleton:
+    name: '&8&l凋零骷髅'
+    skill: '&e潜行&7 即可发射: &a骨头炸弹'
+  ElderGuardian:
+    name: '&8&l远古守卫者'
+    skill: '&e左键点击&7 发射: &a激光'
+  Cow:
+    name: '&8&l牛'
+    skill: '&e左键点击&7 即可: &a哞~'
+  Sheep:
+    name: '&f&l羊'
+    skill: '&e左键点击&7 即可: &a改变颜色'
+  Mooshroom:
+    name: '&c&l哞菇'
+    skill: '&e蹲下&7 即可: &a扔出一碗汤'
+  Villager:
+    name: '&a&l村民'
+    skill: '&e左键点击&7 即可: &a扔出绿宝石'
+  Witch:
+    name: '&5&l女巫'
+    skill: '&e左键点击&7 即可: &a扔出药水'
+  PolarBear:
+    name: '&f&l北极熊'
+    skill: '&e左键点击&7 即可召唤: &a召唤暴风雪'
+  Llama:
+    name: '&3&l羊驼'
+    skill: '&e左键点击&7 即可: &a吐口水'
+  Parrot:
+    name: '&a&l鹦鹉'
+    skill: '&e二段跳&7 即可:&a扇动翅膀'
+Hats:
+  Equip: '%prefix% &9你装备了 %hatname% &9头饰!'
+  Unequip: '%prefix% &9你取下了 %hatname% &9头饰！'
+  Astronaut:
+    Name: '&7&l宇航员'
+    Description: '&7&o休斯顿，我们遇到了个问题'
+  Scared:
+    Name: '&4&l惊吓'
+    Description: '&7&o天呐，那个吓到我了！'
+  Angel:
+    Name: '&f&l天使'
+    Description: '&7&o当你从天堂掉下来时受伤了吗？'
+  Embarassed:
+    Name: '&7&l尴尬'
+    Description: '&7&o我对此有点尴尬。'
+  Kissy:
+    Name: '&c&l亲亲'
+    Description: '&7&o想要一个亲亲吗？'
+  Sad:
+    Name: '&9&l悲伤'
+    Description: '&7&o我很伤心。'
+  Cool:
+    Name: '&6&l酷'
+    Description: '&7&o我是一个很酷的家伙。'
+  Surprised:
+    Name: '&4&l惊喜'
+    Description: '&7&o哇，没想到啊！'
+  Dead:
+    Name: '&8&l死'
+    Description: '&7&o需要补给'
+  Crying:
+    Name: '&9&l哭'
+    Description: '&7&o我每时每刻都在哭'
+  BigSmile:
+    Name: '&6&l大笑'
+    Description: '&7&o因为我真的很开心！'
+  Wink:
+    Name: '&e&l眨眼'
+    Description: '&7&o你知道我的意思 ;)'
+  Derp:
+    Name: '&3&l得瑟'
+    Description: '&7&o得瑟得瑟到处得瑟'
+  Smile:
+    Name: '&e&l微笑'
+    Description: '&7&o因为我开心'
+  Iron:
+    Name: '&7&l铁'
+    Description: '&7&o跟铁一样坚硬！'
+  Gold:
+    Name: '&e&l金'
+    Description: '&7&o我的宝贝！'
+  Diamond:
+    Name: '&b&l钻石'
+    Description: '&7&o这真的很结实！'
+  CommandBlock:
+    Name: '&7&l命令方块'
+    Description: '&7&o用它来统治世界吧！'
+  Music:
+    Name: '&9&l音乐'
+    Description: '&7&o你真是个音乐家'
+  Squid:
+    Name: '&3&l鱿鱼'
+    Description: '&7&o噗，噗！'
+  Chicken:
+    Name: '&f&l鸡'
+    Description: '&7&o咯咯咯哒！'
+  Blaze:
+    Name: '&6&l火焰'
+    Description: '&7&o小心火焰！'
+  Piston:
+    Name: '&7&l活塞'
+    Description: '&7&o你有红石吗？'
+  Sheep:
+    Name: '&f&l羊'
+    Description: '&7&o咩，咩'
+  Pig:
+    Name: '&d&l猪'
+    Description: '&7&o哼！哼！'
+  Golem:
+    Name: '&7&l傀儡'
+    Description: '&7&o我是你的保安。'
+  Enderman:
+    Name: '&5&l末影人'
+    Description: '&7&o我在这，现在我又在这！'
+  Mario:
+    Name: '&4&l马里奥'
+    Description: '&7&o是——我！马里奥！'
+  Luigi:
+    Name: '&2&l路吉'
+    Description: '&7&o路吉时间到！'
+  Batman:
+    Name: '&8&l蝙蝠侠'
+    Description: '&7&o我是蝙蝠侠！'
+  Chest:
+    Name: '&6&l箱子'
+    Description: '&7&o打开，和关上'
+  Skull:
+    Name: '&f&l头颅'
+    Description: '&7&o谁现在没头了？'
+  JackOLantern:
+    Name: '&6&l杰克-O''-灯笼'
+    Description: '&7&o一个小小的南瓜'
+  Ghost:
+    Name: '&f&l鬼魂'
+    Description: '&7&o对你来说太吓人了'
+  ScaryClown:
+    Name: '&4&l可怕的小丑'
+    Description: '&7&o希望你不会害怕小丑'
+  Santa:
+    Name: '&4&l圣诞老人'
+    Description: '&7&o吼吼吼！圣诞快乐！'
+  Snowman:
+    Name: '&f&l雪人'
+    Description: '&7&o我没有头骨... 或骨头'
+  Present:
+    Name: '&c&l礼物'
+    Description: '&7&o来自圣诞老人，给你！'
+  Elf:
+    Name: '&a&l精灵'
+    Description: '&7&o我为圣诞老人工作！'
+  Bedrock:
+    Name: '&8&l基岩'
+    Description: '&7&o无法破坏！'
+  RedCrewmate:
+    Name: '&4&l红船员'
+    Description: '&7&o红衣可疑！'
+  BlueCrewmate:
+    Name: '&1&l蓝船员'
+    Description: '&7&o蓝衣可疑！'
+  GreenCrewmate:
+    Name: '&2&l绿船员'
+    Description: '&7&o绿衣可疑！'
+  CyanCrewmate:
+    Name: '&b&l青船员'
+    Description: '&7&o青衣可疑！'
+  LimeCrewmate:
+    Name: '&a&l浅绿色'
+    Description: '&7&o浅绿可疑！'
+  YellowCrewmate:
+    Name: '&e&l黄船员'
+    Description: '&7&o黄衣可疑！'
+  OrangeCrewmate:
+    Name: '&6&l橙船员'
+    Description: '&7&o橙衣可疑!'
+  PurpleCrewmate:
+    Name: '&5&l紫船员'
+    Description: '&7&o紫衣可疑！'
+  BlackCrewmate:
+    Name: '&0&l黑船员'
+    Description: '&7&o黑衣可疑！'
+  WhiteCrewmate:
+    Name: '&f&l白船员'
+    Description: '&7&o白衣可疑！'
+  PinkCrewmate:
+    Name: '&d&l粉船员'
+    Description: '&7&o粉衣可疑！'
+  BrownCrewmate:
+    Name: '&8&l棕船员'
+    Description: '&7&o棕衣可疑！'
+  Bread:
+    Name: '&f&l面包'
+    Description: '&7&o现烤'
+  Cheese:
+    Name: '&e&l奶酪'
+    Description: '&7&o说茄子（Cheese）！'
+  Pancakes:
+    Name: '&f&l煎饼'
+    Description: '&7&o有糖浆更好！'
+  Cake:
+    Name: '&c&l蛋糕'
+    Description: '&7&o嗯，蛋糕。'
+  Cookie:
+    Name: '&6&l曲奇'
+    Description: '&7&o里面有巧克力碎！'
+  CandyCane:
+    Name: '&c&l糖果 &f&l手杖'
+    Description: '&7&o对牙有点不友好'
+  Chocolate:
+    Name: '&a&l巧克力'
+    Description: '&7&o别把这个拿来喂狗！'
+  WhiteChocolate:
+    Name: '&f&l白巧克力'
+    Description: '&7&o多了点丝滑'
+  Apple:
+    Name: '&4&l苹果'
+    Description: '&7&o不是苹果公司'
+  Melon:
+    Name: '&a&l西瓜'
+    Description: '&7&o别把这个往你头上砸'
+  CarvedPumpkin:
+    Name: '&6&l雕刻南瓜'
+    Description: '&7&o谁关掉了这个？'
+  Strawberry:
+    Name: '&c&l草莓'
+    Description: '&7&o他们长在树上吗？'
+  Coconut:
+    Name: '&f&l椰子'
+    Description: '&7&o乐园'
+  Taco:
+    Name: '&e&l塔可'
+    Description: '&7&o我们去整点塔可！'
+  Bacon:
+    Name: '&f&l培根'
+    Description: '&7&o所有东西跟培根一起都会变得更好。'
+  Fries:
+    Name: '&6&l薯条'
+    Description: '&7&o汉堡最好的朋友'
+  Hamburger:
+    Name: '&6&l汉堡'
+    Description: '&7&o经典的快餐！'
+  Popcorn:
+    Name: '&6&l爆米花'
+    Description: '&7&o经典的电影零食！'
+  WhiteDonut:
+    Name: '&f&l白色甜甜圈'
+    Description: '&7&o像个甜甜圈，但是是白色的！'
+  PinkDonut:
+    Name: '&d&l粉色甜甜圈'
+    Description: '&7&o家人的最爱'
+  ChocolateDonut:
+    Name: '&a&l巧克力甜甜圈'
+    Description: '&7&o一个更好的甜甜圈！'
+  Pie:
+    Name: '&4&l派'
+    Description: '&7&o我喜欢派'
+  A:
+    Name: '&6&lA'
+    Description: '&7&o字母表中的第一个字母！'
+  B:
+    Name: '&4&lB'
+    Description: '&7&o字母表中的第二个字母！'
+  C:
+    Name: '&2&lC'
+    Description: '&7&o字母表中的第三个字母！'
+  D:
+    Name: '&b&lD'
+    Description: '&7&o字母表中的第四个字母！'
+  E:
+    Name: '&e&lE'
+    Description: '&7&o字母表中的第五个字母！'
+  F:
+    Name: '&5&lF'
+    Description: '&7&o字母表中的第六个字母！'
+  G:
+    Name: '&d&lG'
+    Description: '&7&o字母表中的第七个字母！'
+  H:
+    Name: '&a&lH'
+    Description: '&7&o字母表中的第八个字母！'
+  I:
+    Name: '&6&lI'
+    Description: '&7&o字母表中的第九个字母！'
+  J:
+    Name: '&4&lJ'
+    Description: '&7&o字母表中的第十个字母！'
+  K:
+    Name: '&2&lK'
+    Description: '&7&o字母表中的第十一个字母！'
+  L:
+    Name: '&b&lL'
+    Description: '&7&o字母表中的第十二个字母！'
+  M:
+    Name: '&e&lM'
+    Description: '&7&o字母表中的第十三个字母！'
+  N:
+    Name: '&5&lN'
+    Description: '&7&o字母表中的第十四个字母！'
+  O:
+    Name: '&d&lO'
+    Description: '&7&o字母表中的第十五个字母！'
+  P:
+    Name: '&a&lP'
+    Description: '&7&o字母表中的第十六个字母！'
+  Q:
+    Name: '&6&lQ'
+    Description: '&7&o字母表中的第十七个字母！'
+  R:
+    Name: '&4&lR'
+    Description: '&7&o字母表中的第十八个字母！'
+  S:
+    Name: '&2&lS'
+    Description: '&7&o字母表中的第十九个字母！'
+  T:
+    Name: '&b&lT'
+    Description: '&7&o字母表中的第二十个字母！'
+  U:
+    Name: '&e&lU'
+    Description: '&7&o字母表中的第二十一个字母！'
+  V:
+    Name: '&5&lV'
+    Description: '&7&o字母表中的第二十二个字母！'
+  W:
+    Name: '&d&lW'
+    Description: '&7&o字母表中的第二十三个字母！'
+  X:
+    Name: '&a&lX'
+    Description: '&7&o字母表中的第二十四个字母！'
+  Y:
+    Name: '&6&lY'
+    Description: '&7&o字母表中的第二十五个字母！'
+  Z:
+    Name: '&4&lZ'
+    Description: '&7&o字母表中的第二十六个字母！'
+  Must-Remove-Hat: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
+Suits:
+  Rave:
+    whole-equip: '&f&l全 &b&l套&a&l狂&e&l欢&6&l服 &f&l衣装'
+    helmet-name: '&b&l狂&a&l欢&e&l节 &f&l头盔'
+    chestplate-name: '&b&l狂&a&l欢&e&l节 &f&l衣服'
+    leggings-name: '&b&l狂&a&l欢&e&l节 &f&l裤子'
+    boots-name: '&b&l狂&a&l欢&e&l节 &f&l靴子'
+    Description: '&7&这惊人的颜色！'
+  Astronaut:
+    whole-equip: '&f&l全套 &f&l宇航员 &f&l制服'
+    helmet-name: '&f&l宇航员 &f&l头盔'
+    chestplate-name: '&f&l宇航员 &f&l衣服'
+    leggings-name: '&f&l宇航员 &f&l裤子'
+    boots-name: '&f&l宇航员 &f&l靴子'
+    Description: '&7&o休斯顿？'
+  Diamond:
+    whole-equip: '&f&l全套 &b&l钻石 &f&l衣装'
+    helmet-name: '&b&l钻石 &f&l头盔'
+    chestplate-name: '&b&l钻石 &f&l衣服'
+    leggings-name: '&b&l钻石 &f&l裤子'
+    boots-name: '&b&l钻石 &f&l靴子'
+    Description: |-
+      &7&o穿着这套惊人的衣服
+      &7&o展示你的挖掘技能!
+  Santa:
+    whole-equip: '&f&l全套 &4&l圣诞老人 &f&l衣装'
+    helmet-name: '&4&l圣诞老人 &f&l帽子'
+    chestplate-name: '&4&l圣诞老人 &f&l衣服'
+    leggings-name: '&4&l圣诞老人 &f&l裤子'
+    boots-name: '&4&l圣诞老人 &f&l靴子'
+    Description: '&7&o成为圣诞老人并送出礼物！'
+  Frozen:
+    whole-equip: '&f&l全套 &b&l冰霜 &f&l衣装'
+    helmet-name: '&b&l冰霜 &f&l头盔'
+    chestplate-name: '&b&l冰霜 &f&l衣服'
+    leggings-name: '&b&l冰霜 &f&l裤子'
+    boots-name: '&b&l冰霜 &f&l靴子'
+    Description: |-
+      &7&o这套衣服属于
+      &7&o冰霜之地的主人!
+  Equip: '%prefix% &9你穿上了 %suitname%!'
+  Unequip: '%prefix% &9你脱下了 %suitname%!'
+  Suit-Part-Lore: '&9衣装部分'
+  Whole-Equip-Lore: '&7&o穿上全套衣服'
+  Must-Remove:
+    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
+    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
+    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
+    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
+Emotes:
+  Equip: '%prefix% &9你使用了 %emotename%'
+  Unequip: '%prefix% &9你卸下了 %emotename%'
+  Cry:
+    Name: '&9&l哭'
+    Description: '&7&o你真的很伤心吗? :('
+  Angry:
+    Name: '&c&l生气'
+    Description: '&7&o向其他玩家展示你的愤怒'
+  Happy:
+    Name: '&e&l开心'
+    Description: '&7&o别发愁，开心点！'
+  Cheeky:
+    Name: '&6&l厚脸皮'
+    Description: '&7&o你喜欢厚脸皮？那这个表情是你的！'
+  Love:
+    Name: '&4&l爱'
+    Description: '&7&o你有一双漂亮的眼睛，你知道吗？'
+  DealWithIt:
+    Name: '&7&l处理一下'
+    Description: '&7&o你想炫耀吗？那这个表情就是问你准备的！'
+  Cool:
+    Name: '&9&l酷'
+    Description: '&7&o保持酷，兄弟！'
+  Surprised:
+    Name: '&6&l惊喜的'
+    Description: '&7&o噢天呐!!!'
+  Wink:
+    Name: '&a&l眨眼'
+    Description: '&7&o快乐吗？让别人知道你只是在开玩笑'
+  Must-Remove-Helmet: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
+Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
+Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
+Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
+Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
+Not-Allowed-From-Console: '&c&l这不能从控制台执行！'
+World-Disabled: '%prefix% &c&l装饰品在这个世界已被禁用！'
+Region-Disabled: '%prefix% &c&l装饰品在这个区域已被禁用！'
+Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域已被禁用！'
+Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
+Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'

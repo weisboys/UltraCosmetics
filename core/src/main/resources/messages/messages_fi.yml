@@ -1,0 +1,1024 @@
+Prefix: '&l&oKosmetiikka >&r'
+No-Permission: '%prefix% &c&lSinulla ei ole oikeutta tuohon!'
+Cosmetic-Disabled: '%prefix% &c&lTämä kosmetiikka ei ole käytössä!'
+Invalid-Gadget: '%prefix% &c&lVirheellinen Lelu!'
+Invalid-Pet: '%prefix% &c&lVirheellinen Lemmikki!'
+Invalid-Mount: '%prefix% &c&lVirheellinen Ratsu!'
+Invalid-Effect: '%prefix% &c&lVirheellinen partikkeli!'
+Invalid-Morph: '%prefix% &c&lInvalid Olento!'
+Invalid-Hat: '%prefix% &c&lVirheellinen Hattu!'
+Invalid-Suit: '%prefix% &c&lVirheellinen Asuste!'
+Invalid-Emote: '%prefix% &c&lVirheellinen Liike!'
+Invalid-Menu: '%prefix% &c&lVirheellinen Valikko!'
+Ammo: '&7Sinun ammukset: &e%ammo%'
+Purchase: '&a&lOSTA'
+Cancel: '&c&lPERUUTA'
+Buy-Ammo-Description: '&e&lOsta %amount% %gadgetname% ammuksia &e&lhintaan %price%$'
+Buy-Cosmetic-Description: '&e&Osta %gadgetname%&e&hintaan $%price%'
+Right-Click-Buy-Ammo: '&7Oikea Clikkaa ostaaksesi ammuksia'
+Right-Click-Purchase: '&eOikea clikkaa ostaaksesi hintaan $%price%'
+Not-Enough-Money: '%prefix% &c&lSinulla ei ole tarpeeksi rahaa!'
+Successful-Purchase: '%prefix% &a&lOsto onnistui!'
+Buy-Treasure-Key: '&lOsta Kosmeettinen Avain'
+Treasure-Keys: '&7&lKosmeettinen Avain'
+Treasure-Chests: '&6&lKosmeettinen Arkku'
+Dont-Have-Key: '&4&lTarvitset avaimen!'
+Click-Open-Chest: '&aPaina avataksesi kosmetiikka arkku'
+Click-Buy-Key: '&aPaina ostaaksesi avaimen'
+Left-Click-Open-Chest: '&aVasen clikkaa avataksesi arkku'
+Right-Click-Simple: '&aRight-click to just get cosmetics'
+Your-Keys: '&7&oSinulla on: &f&l%keys% avainta'
+Buy-Treasure-Key-ItemName: '&e&l1 &7&lKosmetiikka avain &e&lmaksaa %price%$'
+You-Won-Treasure-Chests: '%prefix% &f&lVoitit: %name%!'
+Treasure-Chest-Occupied: '%prefix% &c&lAll treasure locations are full, please wait and try again'
+Clear:
+  Cosmetics: '&c&lPoista kosmetiikka'
+  Gadgets: '&c&lPoista käytössä oleva lelu'
+  Pets: '&c&lPoista käytössä oleva lemmikki'
+  Mounts: '&c&lPoista käytössä oleva ratsu'
+  Particle-Effects: '&c&lPoista käytössä oleva lumous'
+  Morphs: '&c&lPoista käytössä oleva morph'
+  Hats: '&c&lPoista käytössä oleva hattu'
+  Suits: '&c&lPoista käytössä oleva vaate'
+  Emotes: '&c&lPoista käytössä oleva liike'
+Menu:
+  Purchase-Rename:
+    Button:
+      Showcase: '&c&lNimeä lemmikkisi &f&l%name% &c&lhintaan &e&l%price%$'
+    Title: '&lNimeä uudelleen lemmikki'
+  Rename-Pet:
+    Button:
+      Name: '&c&lClickkaa nimetäksesi uudelleen: %petname%'
+    Placeholder: Lemmikin Nimi
+    Title: Uudelleennimeä lemmikki
+  Main:
+    Title: '&lKosmetiikat'
+    Button:
+      Name: '&c&lValikko'
+  Pets:
+    Title: '&lLemmikit'
+    Button:
+      Name: '&a&lLemmikit'
+      Tooltip-Equip: '&b&lKäyttöön'
+      Tooltip-Unequip: '&c&lPois käytöstä'
+  Gadgets:
+    Title: '&lLelut'
+    Button:
+      Name: '&9&lLelut'
+      Tooltip-Equip: '&b&lAktivoi'
+      Tooltip-Unequip: '&c&lOta pois käytöstä'
+  Mounts:
+    Title: '&lMounts'
+    Button:
+      Name: '&6&lRatsut'
+      Tooltip-Equip: '&b&lKäyttöön'
+      Tooltip-Unequip: '&c&lPois käytöstä'
+  Morphs:
+    Title: '&lMorphs'
+    Button:
+      Name: '&2&lOlennot'
+      Tooltip-Equip: '&b&lMorph into'
+      Tooltip-Unequip: '&c&lUnmorph from'
+  Hats:
+    Title: '&lHatut'
+    Button:
+      Name: '&b&lHatut'
+      Tooltip-Equip: '&b&lOta käyttöön'
+      Tooltip-Unequip: '&c&lPoista käytöstä'
+  Particle-Effects:
+    Title: '&lPartikkelit'
+    Button:
+      Name: '&b&lPartikkelit'
+      Tooltip-Equip: '&b&Ota käyttöön'
+      Tooltip-Unequip: '&c&Pois käytöstä'
+  Suits:
+    Title: '&lVaatteet'
+    Button:
+      Name: '&c&lVaatteet'
+      Tooltip-Equip: '&b&lOta käyttöön'
+      Tooltip-Unequip: '&c&lPoista käytöstä'
+  Emotes:
+    Title: '&lLiikkeet'
+    Button:
+      Name: '&e&lLiikkeet'
+      Tooltip-Equip: '&b&lOta käyttöön'
+      Tooltip-Unequip: '&c&lPoista käytöstä'
+  Buy-Ammo:
+    Title: '&lOsta ammuksia'
+  Misc:
+    Button:
+      Previous-Page: '&c&lEdellinen sivu'
+      Next-Page: '&a&lSeuraava sivu'
+Chest-Location:
+  Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
+  Too-Close: '%prefix% &c&lYou are too close to another treasure chest!'
+  Region-Disabled: '%prefix%&c&Et voi avata arkkua tässä!'
+  Invalid: '%prefix% &c&lThat''s not a valid location.'
+  In-Air: '%prefix% &c&lThat location is not on the ground!'
+  In-Ground: '%prefix% &c&lThat location is in the ground!'
+  Suggestion: '%prefix% &aMaybe you meant %location%?'
+Active-Pet-Needed: '&c&lSinun pitää spawnata lemmikki, jotta voit uudelleen nimetä niitä'
+Treasure-Chests-Loot:
+  Ammo: '%ammo% %name% luoti'
+  Pet: '%pet% lemmikki'
+  Mount: '%mount% mount'
+  Effect: '%effect% lumous'
+  Morph: '%morph% ratsu'
+  Hat: '%hat% hattu'
+  Money: '&e&l%money%$'
+  Gadget: '%gadget% lelu'
+  Suit: '%suit% vaate'
+  Emote: '%emote% liike'
+  Nothing: '&c&ltyhjä'
+Disable-Gadgets: '&c&lPoista lelut käytöstä'
+Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
+Enable-Gadgets: '&a&lAktivoi lelut'
+Enable-Gadgets-Lore: '&aEnables use of gadgets and effects of them on you'
+Disable-Third-Person-View: '&c&lDisable Morphs Third Person View'
+Enable-Third-Person-View: '&a&lEnable Morphs Third Person View'
+Disable-Filter-By-Owned: '&c&lChange to Show All'
+Enable-Filter-By-Owned: '&c&lChange to Filter By Owned'
+Disable-Treasure-Notification: '&c&lTreasure notifications disabled'
+Enable-Treasure-Notification: '&c&lKosmetiikka arkku ilmoitukset käytössä'
+Gadgets-Enabled-Needed: '%prefix% &c&lSinun pitää ottaa lelut käyttöön!'
+Gadgets:
+  Equip: '%prefix% &9Otit käyttöön %gadgetname%'
+  Unequip: '%prefix% &9Otit pois käytöstä %gadgetname%'
+  Countdown-Message: '%prefix% &c&lEt voi käyttää %gadgetname% &c&l %time%sekunttiin!'
+  PaintballGun:
+    name: '&b&lVäri ase'
+    Description: '&7&oPEW PEW PEW PEW!!!'
+  BatBlaster:
+    name: '&7&lLepakko Tykki'
+    Description: |-
+      &7&oLaunch waves of bats
+      &7&oat people you don't like!
+  MelonThrower:
+    name: '&a&lMelooni Tykki'
+    Wait-For-Finish: '%prefix% &c&lOdota että melooni räjähtää!'
+    Description: '&7&oDeliciously fun!'
+  EtherealPearl:
+    name: '&5&lEthereal Pearl'
+    Description: |-
+      &7&oTake a ride through the skies
+      &7&oon your very own Ethereal Pearl!
+  FleshHook:
+    name: '&7&lFlesh Hook'
+    Description: |-
+      &7&oMake new friends by throwing a hook
+      &7&oat them and pulling them
+      &7&oto you!
+  DiscoBall:
+    name: '&d&lDisco Pallo'
+    Already-Active: '&c&lThere is already a disco ball active!'
+    Not-Space-Above: '&c&lThere is not enough space above you!'
+    Description: '&7&oJust dance!'
+  ColorBomb:
+    name: '&d&lVäri Pommi'
+    Description: '&7&oA colorful bomb!'
+  Chickenator:
+    name: '&f&lKanatykki'
+    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
+  PortalGun:
+    name: '&c&lPortaali &9&lAse'
+    No-Block-Range: '%prefix% &c&lNo BLOCKS in range!'
+    Different-Worlds: '%prefix% &c&lPortals must be in the same world!'
+    Description: '&7&oThe cake is a lie!'
+  BlizzardBlaster:
+    name: '&b&lBlizzard Blaster'
+    Description: '&7&oLet it snow!'
+  ThorHammer:
+    name: '&f&lThorin Vasara'
+    Description: '&7&oGet the real Mjölnir!'
+  SmashDown:
+    name: '&c&lSmashDown'
+    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
+  ExplosiveSheep:
+    name: '&4&lRäjähtävä lammas'
+    Already-Active: '&c&lThere is already an explosive sheep active!'
+    Description: |-
+      &7&oAre you sure it's supposed
+      &7&oto flicker like that?
+  AntiGravity:
+    name: '&d&lEi painovoimaa'
+    Description: |-
+      &7&oYou don't like gravity?
+      &7&oThen, this gadget is made for you!
+  Tsunami:
+    name: '&9&lTsunami'
+    Description: |-
+      &7&oTSUNAMI!
+      &7&oRun for your life!
+  Rocket:
+    name: '&4&lRaketti'
+    Not-Enough-Space: '%prefix% &c&lNot enough space around and above you!'
+    Not-On-Ground: '%prefix% &c&lSinun pitää olla maassa!'
+    Takeoff: '&4&lTAKEOFF!!'
+    LaunchAborted: '&c&lLaunch aborted!'
+    Description: '&7&oHouston, we have a problem...'
+  BlackHole:
+    name: '&1&lMustaaukko'
+    Description: '&7&oYou should not get caught by it!'
+  TNT:
+    name: '&4&lT&f&lN&4&lT'
+    Description: |-
+      &7&oBlow some people up!
+      &7&oKABOOM!
+  FunGun:
+    name: '&6&lFun Gun'
+    Description: '&7&oWoow! So much fun in a gun!'
+  Parachute:
+    name: '&f&lParachute'
+    Description: '&7&oGERONIMOOO!'
+  QuakeGun:
+    name: '&5&lQuake &d&lGun'
+    Description: |-
+      &7&oGet a real Rail Gun
+      &7&oand strike players and mobs!
+  GhostParty:
+    name: '&f&lAave Juhla'
+    Description: |-
+      &7&oWho you gonna call?
+      &7&oGHOST BUSTERS!
+  Firework:
+    name: '&c&lIlotulite'
+    Description: |-
+      &7&oNeed to celebrate?
+      &7&oUse fireworks!
+  ChristmasTree:
+    name: '&2&lJoulukuusi'
+    Click-On-Block: '%prefix% &c&lPlease click on a block!'
+    Description: |-
+      &7&oHere is a Christmas
+      &7&oTree for you!
+  FreezeCannon:
+    name: '&b&lJäätykki'
+    Description: '&7&oTransform the floor into a rink!'
+  Snowball:
+    name: '&f&lLumipallo'
+    Description: |-
+      &7&oJoin in on the festive fun by
+      &7&othrowing snow at people!
+  PartyPopper:
+    name: '&e&lParty Popper'
+    Description: |-
+      &7&oCelebrate by blasting confetti into
+      &7&othe air!
+  Trampoline:
+    name: '&9&lTrampoliini'
+    Description: |-
+      &7&oConstructs a trampoline
+      &7&othat sends you and your
+      &7&ofriends into the air!
+  Gadget-Ready-ActionBar: '%gadgetname% &f&lis ready!'
+  Lore: '&9Lelut'
+Mounts:
+  DruggedHorse:
+    menu-name: '&2&lHullu Hevonen'
+    entity-displayname: '&l%playername%''s drugged horse'
+    Description: '&7&oThat is just too much!'
+  InfernalHorror:
+    menu-name: '&4&lInfernal Horror'
+    entity-displayname: '&l%playername%''s infernal horror'
+    Description: '&7&oThis mount comes directly from... hell!'
+  GlacialSteed:
+    menu-name: '&b&lGlacial Steed'
+    entity-displayname: '&l%playername%''s glacial steed'
+    Description: '&7&oThis mount comes from North Pole!'
+  WalkingDead:
+    menu-name: '&2&lWalking Dead'
+    entity-displayname: '&l%playername%''s walking dead'
+    Description: '&7&oGraaaaw...'
+  MountOfFire:
+    menu-name: '&c&lTuli Hevonen'
+    entity-displayname: '&l%playername%''s mount of fire'
+    Description: '&7&oThe mount of Hades!'
+  MountOfWater:
+    menu-name: '&9&lVesi Hevonen'
+    entity-displayname: '&l%playername%''s mount of water'
+    Description: '&7&oThe mount of Poseidon!'
+  EcologistHorse:
+    menu-name: '&a&lEcologist Horse'
+    entity-displayname: '&l%playername%''s ecologist horse'
+    Description: '&7&oBecome an ecologist!'
+  NyanSheep:
+    menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
+    entity-displayname: '&l%playername%''s nyan sheep'
+    Description: |-
+      &4&lNyan &6&lnyan &e&lnyan
+      &a&lnyan &3&lnyan &9&lnyan
+  Snake:
+    menu-name: '&6&lKäärme'
+    entity-displayname: '&l%playername%''s snake'
+    Description: '&7&oWatch out! It may bite..'
+  Dragon:
+    menu-name: '&5&lLohikäärme'
+    entity-displayname: '&l%playername%''s dragon'
+    Description: '&7&oBecome a dragon rider!'
+  SkySquid:
+    menu-name: '&9&lLentävä mustekala'
+    entity-displayname: '&l%playername%''s sky squid'
+  HypeCart:
+    menu-name: '&7&lHyper Kärry'
+    entity-displayname: '&l%playername%''s hypecart'
+    Description: |-
+      &7&oEver wanted to drive a F1?
+      &7&oNow you can!
+  Slime:
+    menu-name: '&a&lLima'
+    entity-displayname: '&l%playername%''s slime'
+    Description: '&7&oSplat! Splat!'
+  Spider:
+    menu-name: '&8&lHämähäkki'
+    entity-displayname: '&l%playername%''s spider'
+    Description: '&7&oYOU are the spider jockey!'
+  Rudolph:
+    menu-name: '&f&lPor&4&lo'
+    entity-displayname: '&l%playername%''s rudolph'
+    Description: |-
+      &7&oWhat would be Christmas
+      &7&owithout Rudolph the Reindeer?
+  MoltenSnake:
+    menu-name: '&c&lMolten Snake'
+    entity-displayname: '&l%playername%''s Molten Snake'
+    Description: |-
+      &7&oDeep under the Earth's surface, there
+      &7&oexists a mythical species of Molten
+      &7&oSnakes. This one will serve you eternally.
+  FlyingShip:
+    menu-name: '&a&lFlying Ship'
+    entity-displayname: '&l%playername%''s Flying Ship'
+  Equip: '%prefix% &9You spawned %mountname%'
+  Unequip: '%prefix% &9You despawned %mountname%'
+  Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
+  Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
+Particle-Effects:
+  Equip: '%prefix% &9Otit käyttöön %effectname%'
+  Unequip: '%prefix% &9Otit pois käytöstä %effectname%'
+  RainCloud:
+    name: '&9&lSadepilvi'
+    Description: |-
+      &7&oThe weather forecast
+      &7&ois telling me it's raining.
+  SnowCloud:
+    name: '&f&lLumisade'
+    Description: |-
+      &7&oThe weather forecast
+      &7&ois telling me it's snowing.
+  BloodHelix:
+    name: '&4&lBlood Helix'
+    Description: |-
+      &7&oAncient legend says this magic
+      &7&oempowers the blood of its user,
+      &7&ogiving them godly powers..
+  FrostLord:
+    name: '&b&lFrost Lord'
+    Description: '&7&oI am The Almighty Frostlord!'
+  FlameRings:
+    name: '&c&lFlame Rings'
+    Description: '&7&oWatch out! They are hot!'
+  GreenSparks:
+    name: '&a&lGreen Sparks'
+    Description: '&7&oLittle and green sparkly sparks!'
+  InLove:
+    name: '&c&lRakastunut'
+    Description: '&7&oOMG wow I''m in love!'
+  FrozenWalk:
+    name: '&b&lJääKävely'
+    Description: '&7&oMy feet are so cold!'
+  Enchanted:
+    name: '&7&lLumottu'
+    Description: '&7&oBecome an almighty enchanter!'
+  Music:
+    name: '&9&lMusiikki'
+    Description: '&7&oMuch music!'
+  Inferno:
+    name: '&4&lInferno'
+    Description: '&7&oEffect created by Satan himself!'
+  AngelWings:
+    name: '&f&lEnkelin siivet'
+    Description: '&7&oBecome an angel!'
+  SuperHero:
+    name: '&4&lSuper Sankari'
+    Description: '&7&oBecome Superman!'
+  SantaHat:
+    name: '&4&lJoulupukin &f&lHattu'
+    Description: '&7&oBecome Santa!'
+  CrushedCandyCane:
+    name: '&4&lCrushed &f&lCandy &4&lCane'
+    Description: |-
+      &7&oThere's no such thing as too much
+      &7&oChristmas Candy. Do not listen
+      &7&oto your dentist.
+  EnderAura:
+    name: '&d&lEnder Aura'
+    Description: |-
+      &7&oThese mystic particle attach to
+      &7&oonly the most legendary of players!
+  FlameFairy:
+    name: '&6&lFlame Fairy'
+    Description: '&7&oHEY!!'
+  MagicalRods:
+    name: '&8&lMagical Rods'
+    Description: '&7&oMay these magical rods protect you!'
+  FireWaves:
+    name: '&e&lFire Waves'
+    Description: '&7&oSome say theses waves of fire acts as a shield...'
+Pets:
+  Piggy:
+    menu-name: '&d&lPiggy'
+    entity-displayname: '&l%playername%''s piggy'
+    Description: '&7&oOink! Oink!'
+  Sheep:
+    menu-name: '&f&lLammas'
+    entity-displayname: '&l%playername%''s sheep'
+    Description: '&7&oBaaaa, baa'
+  EasterBunny:
+    menu-name: '&6&lEaster Bunny'
+    entity-displayname: '&l%playername%''s easter bunny'
+    Description: '&7&oIs it Easter yet?'
+  Cow:
+    menu-name: '&c&lLehmä'
+    entity-displayname: '&l%playername%''s cow'
+    Description: '&7&oMoooo!'
+  Kitty:
+    menu-name: '&9&lKissa'
+    entity-displayname: '&l%playername%''s kitty'
+    Description: '&7&oMeoooow'
+  Dog:
+    menu-name: '&7&lKoira'
+    entity-displayname: '&l%playername%''s dog'
+    Description: '&7&oWoof!'
+  Chick:
+    menu-name: '&e&lChick'
+    entity-displayname: '&l%playername%''s chick'
+    Description: '&7&oBwaaaaaaak!!'
+  Wither:
+    menu-name: '&8&lWitheri'
+    entity-displayname: '&l%playername%''s wither'
+    Description: '&7&oWatch out for me..'
+  Pumpling:
+    menu-name: '&6&lPumpling'
+    entity-displayname: '&l%playername%''s pumpling'
+    Description: '&7&oJust a little floating pumpkin'
+  ChristmasElf:
+    menu-name: '&a&lChristmas Elf'
+    entity-displayname: '&l%playername%''s Christmas elf'
+    Description: '&7&oI can make presents for you!'
+  Mooshroom:
+    menu-name: '&4&lMooshroom'
+    entity-displayname: '&l%playername%''s Mooshroom'
+    Description: '&7&oMoooo!'
+  IronGolem:
+    menu-name: '&7&lRautajätti'
+    entity-displayname: '&l%playername%''s IronGolem'
+    Description: '&7&oI like flowers'
+  Snowman:
+    menu-name: '&f&lLumiukko'
+    entity-displayname: '&l%playername%''s Snowman'
+    Description: '&7&oPew pew pew'
+  Villager:
+    menu-name: '&a&lVillageri'
+    entity-displayname: '&l%playername%''s Villager'
+    Description: '&7&oHmmmmmmmmm'
+  Bat:
+    menu-name: '&8&lLepakko'
+    entity-displayname: '&l%playername%''s Bat'
+    Description: '&7&oI prefer dark areas'
+  PolarBear:
+    menu-name: '&b&lJääkarhu'
+    entity-displayname: '&l%playername%''s PolarBear'
+    Description: '&7&oI prefer cold areas'
+  Llama:
+    menu-name: '&7&lLaama'
+    entity-displayname: '&l%playername%''s Llama'
+    Description: '&7&oNeed me to carry anything?'
+  Parrot:
+    menu-name: '&a&lPapukaijja'
+    entity-displayname: '&l%playername%''s Parrot'
+    Description: '&7&oPolly want a cracker?'
+  Vex:
+    menu-name: '&7&lVex'
+    entity-displayname: '&l%playername%''s Vex'
+  Panda:
+    menu-name: '&a&lPanda'
+    entity-displayname: '&l%playername%''s Panda'
+    Description: '&7&oLikes Bamboo!'
+  Fox:
+    menu-name: '&d&lFox'
+    entity-displayname: '&l%playername%''s Fox'
+    Description: '&7&oWhat does the fox say?'
+  Axolotl:
+    menu-name: '&5&lAxolotl'
+    entity-displayname: '&l%playername%''s Axolotl'
+    Description: '&7&oSooo Cute!'
+  Piglin:
+    menu-name: '&6&lGold Dealer'
+    entity-displayname: '&l%playername%''s Gold Dealer'
+    Description: '&7&oDeals with Gold!'
+  Slime:
+    menu-name: '&a&lSlime'
+    entity-displayname: '&l%playername%''s Slime'
+  Bee:
+    menu-name: '&e&lBee'
+    entity-displayname: '&l%playername%''s Bee'
+    Description: '&7&o*bzzzz* *bzzzz*'
+  Goat:
+    menu-name: '&f&lGoat'
+    entity-displayname: '&l%playername%''s Goat'
+    Description: '&7&oBAAAA!'
+  Silverfish:
+    menu-name: '&7&lSilverfish'
+    entity-displayname: '&l%playername%''s Silverfish'
+    Description: '&7&oLurking in the walls...'
+  Horse:
+    menu-name: '&a&lHorse'
+    entity-displayname: '&l%playername%''s Horse'
+    Description: '&7&o*fhrrrrhh*'
+  Blaze:
+    menu-name: '&c&lBlaze'
+    entity-displayname: '&l%playername%''s Blaze'
+    Description: '&7&oFlying and hot!'
+  Creeper:
+    menu-name: '&a&lCreeper'
+    entity-displayname: '&l%playername%''s Creeper'
+    Description: '&7&oLikes blowing up your favorite Stuff...'
+  Enderman:
+    menu-name: '&5&lEnderman'
+    entity-displayname: '&l%playername%''s Enderman'
+    Description: '&7&oDont look at it or it will hunt you!'
+  Skeleton:
+    menu-name: '&f&lSkeleton'
+    entity-displayname: '&l%playername%''s Skeleton'
+    Description: '&7&oWatch out, it will try to shoot you!'
+  Zombie:
+    menu-name: '&2&lZombie'
+    entity-displayname: '&l%playername%''s Zombie'
+    Description: '&7&oQuick! Hide your Villagers!'
+  Frog:
+    menu-name: '&2&lFrog'
+    entity-displayname: '&l%playername%''s Frog'
+    Description: '&7&oDoesn''t like Fireflies!'
+  Warden:
+    menu-name: '&3&lWarden'
+    entity-displayname: '&l%playername%''s Warden'
+    Description: '&7&oThe scariest Mob in Minecraft!'
+  Allay:
+    menu-name: '&a&lAllay'
+    entity-displayname: '&l%playername%''s Allay'
+    Description: '&7&oA new Friend!'
+  Equip: '%prefix% &9You spawned %petname%'
+  Unequip: '%prefix% &9You despawned %petname%'
+Morphs:
+  Blaze:
+    name: '&6&lRoihu'
+    skill: '&eCrouch&7 to: &aFly'
+  Chicken:
+    name: '&f&lKana'
+    skill: '&eCrouch&7 to: &aLay eggs'
+  Slime:
+    name: '&a&lLima'
+    skill: '&eCrouch&7 to: &aBounce'
+  Pig:
+    name: '&d&lPossu'
+    skill: '&eCollide&7 to: &aBounce Players'
+  Enderman:
+    name: '&5&lEnderman'
+    skill: '&eDouble Jump&7 to: &aTeleport'
+  Bat:
+    name: '&8&lLepakko'
+    skill: '&eDouble Jump&7 to: &aFlap'
+  Creeper:
+    name: '&a&lLurkki'
+    skill: '&eCrouch&7 to: &aDetonate'
+    charging: '&a&lCharging: %chargelevel%/100'
+    release-to-explode: '&f&lRelease to explode!'
+  Snowman:
+    name: '&f&lLumiukko'
+    skill: '&eLeft Click&7 to: &aThrow Snowball'
+  Equip: '%prefix% &9You morphed into %morphname%'
+  Unequip: '%prefix% &9You unmorphed from %morphname%'
+  WitherSkeleton:
+    name: '&8&lWither Skeleton'
+    skill: '&eSneak&7 to: &aBone Bomb'
+  ElderGuardian:
+    name: '&8&lElder Guardian'
+    skill: '&eLeft-Click&7 to: &aLaser'
+  Cow:
+    name: '&8&lLehmä'
+    skill: '&eLeft-Click&7 to: &aMoo'
+  Sheep:
+    name: '&f&lLammas'
+    skill: '&eLeft-Click&7 to: &aChange Colors'
+  Mooshroom:
+    name: '&c&lMooshroom'
+    skill: '&eCrouch&7 to: &aSoup Throw'
+  Villager:
+    name: '&a&lVillageri'
+    skill: '&eLeft-Click&7 to: &aEmerald Throw'
+  Witch:
+    name: '&5&lNoita'
+    skill: '&eLeft-Click&7 to: &aPotion Throw'
+  PolarBear:
+    name: '&f&lJääkarhu'
+    skill: '&eLeft-Click&7 to: &aBlizzard'
+  Llama:
+    name: '&3&lLaama'
+    skill: '&eLeft-Click&7 to: &aSpit'
+  Parrot:
+    name: '&a&lPapukaijja'
+    skill: '&eDouble Jump&7 to: &aFlap'
+Hats:
+  Equip: '%prefix% &9Otit käyttöön %hatname% &9hatun!'
+  Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
+  Astronaut:
+    Name: '&7&lAstronaut'
+    Description: '&7&oHouston, we have got a problem.'
+  Scared:
+    Name: '&4&lPelästynyt'
+    Description: '&7&oOh god, that scared me!'
+  Angel:
+    Name: '&f&lEnkeli'
+    Description: '&7&oDid it hurt when you fell from heaven?'
+  Embarassed:
+    Name: '&7&lEmbarassed'
+    Description: '&7&oI''m kinda embarassed by that.'
+  Kissy:
+    Name: '&c&lKissy'
+    Description: '&7&oWanna kiss?'
+  Sad:
+    Name: '&9&lSurullinen'
+    Description: '&7&oI''m so sad.'
+  Cool:
+    Name: '&6&lKomea'
+    Description: '&7&oI''m such a cool guy.'
+  Surprised:
+    Name: '&4&lYllättynyt'
+    Description: '&7&oWow, did not expect that!'
+  Dead:
+    Name: '&8&lKuollut'
+    Description: '&7&oGot rekt'
+  Crying:
+    Name: '&9&lItkeä'
+    Description: '&7&oI cry everytime'
+  BigSmile:
+    Name: '&6&lBigSmile'
+    Description: '&7&oBecause I''m really happy!'
+  Wink:
+    Name: '&e&lWink'
+    Description: '&7&oYou know what I mean ;)'
+  Derp:
+    Name: '&3&lDerp'
+    Description: '&7&oDerp Derp Derping all around'
+  Smile:
+    Name: '&e&lHymyillä'
+    Description: '&7&oBecause I''m happy'
+  Iron:
+    Name: '&7&lRauta'
+    Description: '&7&oAs hard as iron!'
+  Gold:
+    Name: '&e&lKulta'
+    Description: '&7&oMy precious!'
+  Diamond:
+    Name: '&b&lTimantti'
+    Description: '&7&oThis is really strong!'
+  CommandBlock:
+    Name: '&7&lKomento Kuutio'
+    Description: '&7&oControl the world with it!'
+  Music:
+    Name: '&9&lMusiikki'
+    Description: '&7&oYou are so musical.'
+  Squid:
+    Name: '&3&lMustekala'
+    Description: '&7&oBloop Bloop!'
+  Chicken:
+    Name: '&f&lKana'
+    Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
+  Blaze:
+    Name: '&6&lRoihu'
+    Description: '&7&oWatch out for the fire!'
+  Piston:
+    Name: '&7&lPistoni'
+    Description: '&7&oHave you got the redstone?'
+  Sheep:
+    Name: '&f&lLammas'
+    Description: '&7&oBaaaa, baa'
+  Pig:
+    Name: '&d&lPossu'
+    Description: '&7&oOink Oink!'
+  Golem:
+    Name: '&7&lJätti'
+    Description: '&7&oI''m your guard.'
+  Enderman:
+    Name: '&5&lEnderman'
+    Description: '&7&oNow I''m here, now I''m there!'
+  Mario:
+    Name: '&4&lMario'
+    Description: '&7&oIt''s-a me! Mario!'
+  Luigi:
+    Name: '&2&lLuigi'
+    Description: '&7&oLuigi time!'
+  Batman:
+    Name: '&8&lBatman'
+    Description: '&7&oI''m Batman!'
+  Chest:
+    Name: '&6&lArkku'
+    Description: '&7&oOpen, and close'
+  Skull:
+    Name: '&f&lSkull'
+    Description: '&7&oWho is headless now?'
+  JackOLantern:
+    Name: '&6&lJack-O''-Lantern'
+    Description: '&7&oA little pumpkin'
+  Ghost:
+    Name: '&f&lHaamu'
+    Description: '&7&o2spooky4u'
+  ScaryClown:
+    Name: '&4&lScary Clown'
+    Description: '&7&oHope you are not scared of clowns.'
+  Santa:
+    Name: '&4&lJoulupukki'
+    Description: '&7&oHo ho ho! Merry Christmas!'
+  Snowman:
+    Name: '&f&lLumiukko'
+    Description: '&7&oI don''t have a skull.. or bones'
+  Present:
+    Name: '&c&lLahja'
+    Description: '&7&oFrom Santa, to you!'
+  Elf:
+    Name: '&a&lElf'
+    Description: '&7&oI work for Santa!'
+  Bedrock:
+    Name: '&8&lBedrock'
+    Description: '&7&oUnbreakable!'
+  RedCrewmate:
+    Name: '&4&lRed Crewmate'
+    Description: '&7&oRed sus!'
+  BlueCrewmate:
+    Name: '&1&lBlue Crewmate'
+    Description: '&7&oBlue sus!'
+  GreenCrewmate:
+    Name: '&2&lGreen Crewmate'
+    Description: '&7&oGreen sus!'
+  CyanCrewmate:
+    Name: '&b&lCyan Crewmate'
+    Description: '&7&oCyan sus!'
+  LimeCrewmate:
+    Name: '&a&lLime Crewmate'
+    Description: '&7&oLime sus!'
+  YellowCrewmate:
+    Name: '&e&lYellow Crewmate'
+    Description: '&7&oYellow sus!'
+  OrangeCrewmate:
+    Name: '&6&lOrange Crewmate'
+    Description: '&7&oOrange sus!'
+  PurpleCrewmate:
+    Name: '&5&lPurple Crewmate'
+    Description: '&7&oPurple sus!'
+  BlackCrewmate:
+    Name: '&0&lBlack Crewmate'
+    Description: '&7&oBlack sus!'
+  WhiteCrewmate:
+    Name: '&f&lWhite Crewmate'
+    Description: '&7&oWhite sus!'
+  PinkCrewmate:
+    Name: '&d&lPink Crewmate'
+    Description: '&7&oPink sus!'
+  BrownCrewmate:
+    Name: '&8&lBrown Crewmate'
+    Description: '&7&oBrown sus!'
+  Bread:
+    Name: '&f&lLeipä'
+    Description: '&7&oFreshly baked'
+  Cheese:
+    Name: '&e&lJuusto'
+    Description: '&7&oSay cheese!'
+  Pancakes:
+    Name: '&f&lPancakes'
+    Description: '&7&oBetter with syrup!'
+  Cake:
+    Name: '&c&lKakku'
+    Description: '&7&oMmmm, cake.'
+  Cookie:
+    Name: '&6&lKeksi'
+    Description: '&7&oChocolate chips included!'
+  CandyCane:
+    Name: '&c&lKarkki &f&lKeppi'
+    Description: '&7&oA bit of tooth-breaking'
+  Chocolate:
+    Name: '&a&lSuklaa'
+    Description: '&7&oDon''t feed your dog with this!'
+  WhiteChocolate:
+    Name: '&f&lWhite Chocolate'
+    Description: '&7&oA bit more creamy'
+  Apple:
+    Name: '&4&lOmena'
+    Description: '&7&oNot the company'
+  Melon:
+    Name: '&a&lMelon'
+    Description: '&7&oDon''t smash it with your head'
+  CarvedPumpkin:
+    Name: '&6&lCarved Pumpkin'
+    Description: '&7&oWho turned this thing off?'
+  Strawberry:
+    Name: '&c&lStrawberry'
+    Description: '&7&oDo these grow on trees?'
+  Coconut:
+    Name: '&f&lCoconut'
+    Description: '&7&oParadise'
+  Taco:
+    Name: '&e&lTaco'
+    Description: '&7&oLet''s go for some tacos!'
+  Bacon:
+    Name: '&f&lPekoni'
+    Description: '&7&oEverything''s better with bacon.'
+  Fries:
+    Name: '&6&lFries'
+    Description: '&7&oHamburger''s best friend'
+  Hamburger:
+    Name: '&6&lHampurilainen'
+    Description: '&7&oThe classic fastfood!'
+  Popcorn:
+    Name: '&6&lPopcorni'
+    Description: '&7&oThe classic movie snack!'
+  WhiteDonut:
+    Name: '&f&lWhite Donut'
+    Description: '&7&oLike a donut, but in white!'
+  PinkDonut:
+    Name: '&d&lPink Donut'
+    Description: '&7&oHomer''s favorites'
+  ChocolateDonut:
+    Name: '&a&lChocolate Donut'
+    Description: '&7&oA better donut!'
+  Pie:
+    Name: '&4&lPiirakka'
+    Description: '&7&oI like pie'
+  A:
+    Name: '&6&lA'
+    Description: '&7&oThe first letter in the alphabet!'
+  B:
+    Name: '&4&lB'
+    Description: '&7&oThe second letter in the alphabet!'
+  C:
+    Name: '&2&lC'
+    Description: '&7&oThe third letter in the alphabet!'
+  D:
+    Name: '&b&lD'
+    Description: '&7&oThe fourth letter in the alphabet!'
+  E:
+    Name: '&e&lE'
+    Description: '&7&oThe fifth letter in the alphabet!'
+  F:
+    Name: '&5&lF'
+    Description: '&7&oThe sixth letter in the alphabet!'
+  G:
+    Name: '&d&lG'
+    Description: '&7&oThe seventh letter in the alphabet!'
+  H:
+    Name: '&a&lH'
+    Description: '&7&oThe eighth letter in the alphabet!'
+  I:
+    Name: '&6&lI'
+    Description: '&7&oThe ninth letter in the alphabet!'
+  J:
+    Name: '&4&lJ'
+    Description: '&7&oThe tenth letter in the alphabet!'
+  K:
+    Name: '&2&lK'
+    Description: '&7&oThe eleventh letter in the alphabet!'
+  L:
+    Name: '&b&lL'
+    Description: '&7&oThe twelfth letter in the alphabet!'
+  M:
+    Name: '&e&lM'
+    Description: '&7&oThe thirteenth letter in the alphabet!'
+  N:
+    Name: '&5&lN'
+    Description: '&7&oThe fourteenth letter in the alphabet!'
+  O:
+    Name: '&d&lO'
+    Description: '&7&oThe fifteenth letter in the alphabet!'
+  P:
+    Name: '&a&lP'
+    Description: '&7&oThe sixteenth letter in the alphabet!'
+  Q:
+    Name: '&6&lQ'
+    Description: '&7&oThe seventeenth letter in the alphabet!'
+  R:
+    Name: '&4&lR'
+    Description: '&7&oThe eighteenth letter in the alphabet!'
+  S:
+    Name: '&2&lS'
+    Description: '&7&oThe nineteenth letter in the alphabet!'
+  T:
+    Name: '&b&lT'
+    Description: '&7&oThe twentieth letter in the alphabet!'
+  U:
+    Name: '&e&lU'
+    Description: '&7&oThe twenty-first letter in the alphabet!'
+  V:
+    Name: '&5&lV'
+    Description: '&7&oThe twenty-second letter in the alphabet!'
+  W:
+    Name: '&d&lW'
+    Description: '&7&oThe twenty-third letter in the alphabet!'
+  X:
+    Name: '&a&lX'
+    Description: '&7&oThe twenty-fourth letter in the alphabet!'
+  Y:
+    Name: '&6&lY'
+    Description: '&7&oThe twenty-fifth letter in the alphabet!'
+  Z:
+    Name: '&4&lZ'
+    Description: '&7&oThe twenty-sixth letter in the alphabet!'
+  Must-Remove-Hat: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi hattua!'
+Suits:
+  Rave:
+    whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lVaatetus'
+    helmet-name: '&b&lR&a&la&e&lv&6&le &f&lKypärä'
+    chestplate-name: '&b&lR&a&la&e&lv&6&le &f&lPanssari'
+    leggings-name: '&b&lR&a&la&e&lv&6&le &f&lHousut'
+    boots-name: '&b&lR&a&la&e&lv&6&le &f&lKengät'
+    Description: '&7&oSuch amazing colors!'
+  Astronaut:
+    whole-equip: '&f&lwhole &f&lAstronaut &f&lsuit'
+    helmet-name: '&f&lAstronaut &f&lHelmet'
+    chestplate-name: '&f&lAstronaut &f&lChestplate'
+    leggings-name: '&f&lAstronaut &f&lLeggings'
+    boots-name: '&f&lAstronaut &f&lBoots'
+    Description: '&7&oHouston?'
+  Diamond:
+    whole-equip: '&f&lwhole &b&lDiamond &f&lsuit'
+    helmet-name: '&b&lDiamond &f&lHelmet'
+    chestplate-name: '&b&lDiamond &f&lChestplate'
+    leggings-name: '&b&lDiamond &f&lLeggings'
+    boots-name: '&b&lDiamond &f&lBoots'
+    Description: |-
+      &7&oShow your Mining skills
+      &7&owith this amazing outfit!
+  Santa:
+    whole-equip: '&f&lwhole &4&lSanta &f&lsuit'
+    helmet-name: '&4&lSanta &f&lHelmet'
+    chestplate-name: '&4&lSanta &f&lChestplate'
+    leggings-name: '&4&lSanta &f&lLeggings'
+    boots-name: '&4&lSanta &f&lBoots'
+    Description: '&7&oBecome Santa and deliver presents!'
+  Frozen:
+    whole-equip: '&f&lwhole &b&lFrozen &f&lsuit'
+    helmet-name: '&b&lFrozen &f&lHelmet'
+    chestplate-name: '&b&lFrozen &f&lChestplate'
+    leggings-name: '&b&lFrozen &f&lLeggings'
+    boots-name: '&b&lFrozen &f&lBoots'
+    Description: |-
+      &7&oThis suit belongs to the
+      &7&oLord of the Frozen Lands!
+  Equip: '%prefix% &9You equipped %suitname%!'
+  Unequip: '%prefix% &9You unequipped %suitname%!'
+  Suit-Part-Lore: '&9Suits Part'
+  Whole-Equip-Lore: '&7&oEquip the whole suit!'
+  Must-Remove:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+Emotes:
+  Equip: '%prefix% &9You equipped %emotename%'
+  Unequip: '%prefix% &9You unequipped %emotename%'
+  Cry:
+    Name: '&9&lItkevä'
+    Description: '&7&oAre you really sad? :('
+  Angry:
+    Name: '&c&lVihainen'
+    Description: '&7&oShow your rage to the other players!'
+  Happy:
+    Name: '&e&lIloinen'
+    Description: '&7&oDon''t worry, be happy!'
+  Cheeky:
+    Name: '&6&lCheeky'
+    Description: '&7&oYou like being cheeky? Well, this emote is for you!'
+  Love:
+    Name: '&4&lRakastunut'
+    Description: '&7&oYou have beautiful eyes, do you know that?'
+  DealWithIt:
+    Name: '&7&lDeal With it'
+    Description: '&7&oDo you feel like showing off? This emote is for you!'
+  Cool:
+    Name: '&9&lCooli'
+    Description: '&7&oKeep cool man!'
+  Surprised:
+    Name: '&6&lYllättynyt'
+    Description: '&7&oOH LORD!!!'
+  Wink:
+    Name: '&a&lWink'
+    Description: '&7&oHaving fun? Let someone know you are in on the joke'
+  Must-Remove-Helmet: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
+Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
+Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
+Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
+Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
+Not-Allowed-From-Console: '&c&lTätä komentoa ei voi suorittaa konsolista!'
+World-Disabled: '%prefix% &c&lKosmetiikka ei ole käytössä tässä maailmassa!'
+Region-Disabled: '%prefix% &c&lKosmetiikat eivät ole käytössä täällä!'
+Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
+Disabled-Command-Message: '%prefix% &c&lEt voi käyttää tuota komentoa kun käytät kosmetiikkaa!'
+Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
