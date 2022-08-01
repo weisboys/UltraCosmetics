@@ -1,3 +1,4 @@
+commit_message: "[ci skip]"
 files:
   - source: /core/src/main/resources/messages/messages_en.yml
     translation: /core/src/main/resources/messages/messages_%two_letters_code%.yml

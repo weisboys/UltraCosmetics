@@ -49,14 +49,21 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.Reader;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import me.libraryaddict.disguise.DisguiseConfig;
 
@@ -201,6 +208,28 @@ public class UltraCosmetics extends JavaPlugin {
             getSmartLogger().write(LogLevel.ERROR, "Plugin load has failed, please check earlier in the log for details.");
             return;
         }
+
+        UltraCosmeticsData.get().initConfigFields();
+
+        String langFileName = "messages_" + UltraCosmeticsData.get().getLanguage() + ".yml";
+        File langFile = new File(getDataFolder(), langFileName);
+        if (!langFile.exists()) {
+            try {
+                // Copied from JavaPlugin#saveResource
+                InputStream in = getResource("messages/" + langFileName);
+                OutputStream out = new FileOutputStream(langFile);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
+                }
+                out.close();
+                in.close();
+            } catch (IOException e) {
+                getSmartLogger().write(LogLevel.ERROR, "Failed to copy " + langFileName);
+            }
+        }
+
         // Create UltraPlayer Manager.
         this.playerManager = new UltraPlayerManager(this);
 
@@ -233,8 +262,6 @@ public class UltraCosmetics extends JavaPlugin {
 
         // Register the command pt. 2
         commandManager.registerCommands(this);
-
-        UltraCosmeticsData.get().initConfigFields();
 
         // Set up Cosmetics config.
         new CosmeticManager(this).setupCosmeticsConfigs();
@@ -589,6 +616,27 @@ public class UltraCosmetics extends JavaPlugin {
         config.addDefault("Prevent-Cosmetics-In-Vanish", false, "Whether UltraCosmetics should prevent vanished players from using cosmetics.", "Works with any vanish plugin that uses 'vanished' metdata.");
         config.addDefault("Max-Entity-Spawns-Per-Tick", 10, "Limits the number of entities that can be spawned by a single gadget per tick (default 10.)", "Set to 0 to spawn all entities instantly.");
 
+        String pathPrefix = "messages/messages_";
+        List<String> supportedLanguages = new ArrayList<>();
+        try {
+            URL jar = getFile().toURI().toURL();
+            ZipInputStream zip = new ZipInputStream(jar.openStream());
+            while (true) {
+                ZipEntry e = zip.getNextEntry();
+                if (e == null) break;
+                String path = e.getName();
+                if (path.startsWith(pathPrefix)) {
+                    // Start string at end of prefix, end string two characters later
+                    supportedLanguages.add(path.substring(pathPrefix.length(), pathPrefix.length() + 2));
+                }
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        config.set("Supported-Languages", supportedLanguages, "Languagues supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
+        config.addDefault("Language", "en", "The language to use. Can be set to any language listed above.");
+
         upgradeIdsToMaterials();
 
         try {
@@ -629,6 +677,13 @@ public class UltraCosmetics extends JavaPlugin {
      */
     public File getConfigFile() {
         return file;
+    }
+
+    /**
+     * Increase visibility of getTextResource for MessageManager
+     */
+    public Reader getFileReader(String path) {
+        return getTextResource(path);
     }
 
     /**

@@ -67,6 +67,11 @@ public class UltraCosmeticsData {
     private boolean placeHolderColor;
 
     /**
+     * Language set in config.yml
+     */
+    private String language;
+
+    /**
      * Server NMS version.
      */
     private ServerVersion serverVersion;
@@ -133,10 +138,11 @@ public class UltraCosmeticsData {
 
     /**
      * Checks to make sure UC is OK to run on this MC version
+     *
      * @return the reason the check failed, or null if it succeeded.
      */
     String checkServerVersion() {
-        String versionString = Bukkit.getServer().getClass().getPackage().getName(); 
+        String versionString = Bukkit.getServer().getClass().getPackage().getName();
         String mcVersion;
         try {
             mcVersion = versionString.split("\\.")[3];
@@ -178,7 +184,8 @@ public class UltraCosmeticsData {
         try {
             Method mappingsVersionMethod = magicNumbersClass.getDeclaredMethod("getMappingsVersion");
             currentMappingsVersion = (String) mappingsVersionMethod.invoke(magicNumbers);
-        } catch (ReflectiveOperationException ignored) {}
+        } catch (ReflectiveOperationException ignored) {
+        }
         if (currentMappingsVersion == null) {
             return version.getMappingsVersion() == null;
         }
@@ -194,6 +201,7 @@ public class UltraCosmeticsData {
         this.customBackMenuCommand = ultraCosmetics.getConfig().getString("Categories.Back-To-Main-Menu-Custom-Command.Command").replace("/", "");
         this.closeAfterSelect = ultraCosmetics.getConfig().getBoolean("Categories.Close-GUI-After-Select");
         this.cosmeticsProfilesEnabled = ultraCosmetics.getConfig().getBoolean("Auto-Equip-Cosmetics");
+        this.language = SettingsManager.getConfig().getString("Language");
     }
 
     public boolean isAmmoEnabled() {
@@ -230,6 +238,10 @@ public class UltraCosmeticsData {
 
     public String getCustomBackMenuCommand() {
         return customBackMenuCommand;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 
     public VersionManager getVersionManager() {
