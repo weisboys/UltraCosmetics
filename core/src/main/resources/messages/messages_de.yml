@@ -404,8 +404,8 @@ Particle-Effects:
     name: '&4&lSuperheld'
     Description: '&7&oWerde zu Superman!'
   SantaHat:
-    name: '&4&lSanta &f&lHat'
-    Description: '&7&oBecome Santa!'
+    name: '&4&lWeihnachtsmann&f&lmütze'
+    Description: '&7&oWerde zum Weihnachtsmann!'
   CrushedCandyCane:
     name: '&4&lCrushed &f&lCandy &4&lCane'
     Description: |-
@@ -749,7 +749,7 @@ Hats:
     Description: '&7&oVom Weihnachtsmann, für dich!'
   Elf:
     Name: '&a&lElf'
-    Description: '&7&oIch arbeite für Santa!'
+    Description: '&7&oIch arbeite für den Weihnachtsmann!'
   Bedrock:
     Name: '&8&lBedrock'
     Description: '&7&oUnbreakable!'
@@ -959,12 +959,12 @@ Suits:
       &7&oShow your Mining skills
       &7&owith this amazing outfit!
   Santa:
-    whole-equip: '&f&lwhole &4&lSanta &f&lsuit'
-    helmet-name: '&4&lSanta &f&lHelmet'
-    chestplate-name: '&4&lSanta &f&lChestplate'
-    leggings-name: '&4&lSanta &f&lLeggings'
-    boots-name: '&4&lSanta &f&lBoots'
-    Description: '&7&oBecome Santa and deliver presents!'
+    whole-equip: '&f&lKomplettes &4&lWeihnachtsmann&f&l-Kostüm'
+    helmet-name: '&f&lMütze des &4&lWeihnachtsmanns'
+    chestplate-name: '&f&lMantel des &4&lWeihnachtsmanns'
+    leggings-name: '&f&lHose des &4&lWeihnachtsmanns'
+    boots-name: '&f&lStiefel des &4&lWeihnachtsmanns'
+    Description: '&7&oWerde zum Weihnachtsmann und liefere Geschenke!'
   Frozen:
     whole-equip: '&f&lwhole &b&lFrozen &f&lsuit'
     helmet-name: '&b&lFrozen &f&lHelmet'
