@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.util;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.gadgets.GadgetRocket;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.VersionManager;
 
 import java.util.ArrayList;

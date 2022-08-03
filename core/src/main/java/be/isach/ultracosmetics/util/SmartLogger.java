@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.log;
+package be.isach.ultracosmetics.util;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

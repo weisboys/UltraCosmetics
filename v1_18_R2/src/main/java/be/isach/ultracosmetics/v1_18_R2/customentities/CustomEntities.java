@@ -1,7 +1,7 @@
 package be.isach.ultracosmetics.v1_18_R2.customentities;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.v1_18_R2.EntityBase;
 import be.isach.ultracosmetics.v1_18_R2.ObfuscatedFields;
 import be.isach.ultracosmetics.v1_18_R2.nms.EntityWrapper;

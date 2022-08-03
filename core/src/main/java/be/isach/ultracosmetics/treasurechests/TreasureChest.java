@@ -4,11 +4,11 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

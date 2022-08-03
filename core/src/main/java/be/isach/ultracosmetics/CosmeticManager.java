@@ -4,14 +4,23 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
-import be.isach.ultracosmetics.cosmetics.type.*;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.cosmetics.type.EmoteType;
+import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.cosmetics.type.HatType;
+import be.isach.ultracosmetics.cosmetics.type.MorphType;
+import be.isach.ultracosmetics.cosmetics.type.MountType;
+import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
+import be.isach.ultracosmetics.cosmetics.type.PetType;
+import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
+import be.isach.ultracosmetics.cosmetics.type.SuitType;
+
+import org.bukkit.entity.LivingEntity;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.bukkit.entity.LivingEntity;
 
 /**
  * Cosmetic manager.
@@ -101,6 +110,11 @@ public class CosmeticManager {
         }
         setupCategory(config, PetType.values());
         config.addDefault("Pets.Axolotl.Fast", false, "https://imgur.com/a/EKWwQ6w");
+        config.addDefault("Pets.Wither.Bossbar", "in range",
+                "Sets who the bossbar is visible for. (Has no effect on 1.8)",
+                "'in range': vanilla behavior, visible to all players in range.",
+                "'owner': only visible to pet owner",
+                "'none': not visible to any players");
         setupCategory(config, HatType.values());
         setupCategory(config, EmoteType.values());
         setupCategory(config, ParticleEffectType.values());
@@ -140,7 +154,7 @@ public class CosmeticManager {
     private void setupCosmetic(CustomConfiguration config, CosmeticType<?> type) {
         setupCosmetic(config, type.getConfigPath());
         if (PlayerAffectingCosmetic.class.isAssignableFrom(type.getClazz())) {
-            config.addDefault("Gadgets." + type.getConfigName() + ".Affect-Players", true, "Should it affect players? (Velocity, etc.)");
+            config.addDefault(type.getCategory().getConfigPath() + "." + type.getConfigName() + ".Affect-Players", true, "Should it affect players? (Velocity, etc.)");
         }
     }
 

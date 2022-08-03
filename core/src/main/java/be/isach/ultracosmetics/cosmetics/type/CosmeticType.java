@@ -6,8 +6,8 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import com.cryptomorin.xseries.XMaterial;
 

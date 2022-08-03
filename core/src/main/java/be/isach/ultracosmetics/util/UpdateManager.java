@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.util;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.Version;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;

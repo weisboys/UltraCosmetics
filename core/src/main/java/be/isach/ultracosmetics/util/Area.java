@@ -9,7 +9,6 @@ import java.util.function.Function;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.log.SmartLogger;
 
 public class Area {
     private static final boolean DEBUG = SettingsManager.getConfig().getBoolean("Area-Debug");

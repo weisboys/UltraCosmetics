@@ -4,8 +4,8 @@ import org.bukkit.Bukkit;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.mounts.Mount;
-import be.isach.ultracosmetics.log.SmartLogger;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.SmartLogger;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.v1_18_R2.customentities.CustomEntities;
 import be.isach.ultracosmetics.v1_18_R2.mount.MountSlime;
 import be.isach.ultracosmetics.v1_18_R2.mount.MountSpider;

@@ -13,8 +13,6 @@ import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
-import be.isach.ultracosmetics.log.SmartLogger;
-import be.isach.ultracosmetics.log.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.permissions.LuckPermsHook;
@@ -31,7 +29,9 @@ import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.UpdateManager;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.AFlagManager;
 
