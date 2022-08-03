@@ -350,8 +350,8 @@ Mounts:
   FlyingShip:
     menu-name: '&a&lFliegendes Schiff'
     entity-displayname: '&l%playername%''s Fliegendes Schiff'
-  Equip: '%prefix% &9You spawned %mountname%'
-  Unequip: '%prefix% &9You despawned %mountname%'
+  Equip: '%prefix% &9Du hast %mountname% ausgerüstet'
+  Unequip: '%prefix% &9Du hast %mountname% entfernt'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
   Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
 Particle-Effects:
@@ -505,7 +505,7 @@ Pets:
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&l%playername%''s Panda'
-    Description: '&7&oLikes Bamboo!'
+    Description: '&7&oMag Bambus!'
   Fox:
     menu-name: '&d&lFuchs'
     entity-displayname: '&l%playername%''s Fuchs'
@@ -513,7 +513,7 @@ Pets:
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&l%playername%''s Axolotl'
-    Description: '&7&oSooo Cute!'
+    Description: '&7&oSooo niedlich!'
   Piglin:
     menu-name: '&6&lGold Dealer'
     entity-displayname: '&l%playername%''s Gold Dealer'
@@ -562,15 +562,15 @@ Pets:
     entity-displayname: '&l%playername%''s Frosch'
     Description: '&7&oDoesn''t like Fireflies!'
   Warden:
-    menu-name: '&3&lWarden'
-    entity-displayname: '&l%playername%''s Warden'
-    Description: '&7&oThe scariest Mob in Minecraft!'
+    menu-name: '&3&lWärter'
+    entity-displayname: '&l%playername%''s Wärter'
+    Description: '&7&oDie gruseligste Kreatur in Minecraft!'
   Allay:
-    menu-name: '&a&lAllay'
-    entity-displayname: '&l%playername%''s Allay'
-    Description: '&7&oA new Friend!'
-  Equip: '%prefix% &9You spawned %petname%'
-  Unequip: '%prefix% &9You despawned %petname%'
+    menu-name: '&a&lHilfsgeist'
+    entity-displayname: '&l%playername%''s Hilfsgeist'
+    Description: '&7&oEin neuer Freund!'
+  Equip: '%prefix% &9Du hast %petname% ausgerüstet'
+  Unequip: '%prefix% &9Du hast %petname% entfernt'
 Morphs:
   Blaze:
     name: '&6&lLohe'
@@ -594,42 +594,42 @@ Morphs:
     name: '&a&lCreeper'
     skill: '&eCrouch&7 to: &aDetonate'
     charging: '&a&lCharging: %chargelevel%/100'
-    release-to-explode: '&f&lRelease to explode!'
+    release-to-explode: '&f&lLoslassen zum explodieren!'
   Snowman:
     name: '&f&lSchneemann'
     skill: '&eLeft Click&7 to: &aThrow Snowball'
   Equip: '%prefix% &9You morphed into %morphname%'
   Unequip: '%prefix% &9You unmorphed from %morphname%'
   WitherSkeleton:
-    name: '&8&lWither Skeleton'
+    name: '&8&lWitherskelett'
     skill: '&eSneak&7 to: &aBone Bomb'
   ElderGuardian:
-    name: '&8&lElder Guardian'
-    skill: '&eLeft-Click&7 to: &aLaser'
+    name: '&8&lGroßer Wächter'
+    skill: '&eLinksklick&7: &aLaser'
   Cow:
     name: '&8&lKuh'
-    skill: '&eLeft-Click&7 to: &aMoo'
+    skill: '&eLinksklick&7: &aMuuuh'
   Sheep:
     name: '&f&lSchaf'
-    skill: '&eLeft-Click&7 to: &aChange Colors'
+    skill: '&eLinksklick&7: &aFarbe ändern'
   Mooshroom:
     name: '&c&lMooshroom'
-    skill: '&eCrouch&7 to: &aSoup Throw'
+    skill: '&eSchleichen&7: &aSuppe werfen'
   Villager:
     name: '&a&lDorfbewohner'
-    skill: '&eLeft-Click&7 to: &aEmerald Throw'
+    skill: '&eLinksklick&7: &aSmaragd werfen'
   Witch:
     name: '&5&lHexe'
-    skill: '&eLeft-Click&7 to: &aPotion Throw'
+    skill: '&eLinksklick&7: &aTrank werfen'
   PolarBear:
     name: '&f&lEisbär'
-    skill: '&eLeft-Click&7 to: &aBlizzard'
+    skill: '&eLinksklick&7: &aBlizzard'
   Llama:
     name: '&3&lLama'
-    skill: '&eLeft-Click&7 to: &aSpit'
+    skill: '&eLinksklick&7: &aSpucken'
   Parrot:
     name: '&a&lPapagei'
-    skill: '&eDouble Jump&7 to: &aFlap'
+    skill: '&eDoppelsprung&7: &aFliegen'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
@@ -637,20 +637,20 @@ Hats:
     Name: '&7&lAstronaut'
     Description: '&7&oHouston, wir haben ein Problem.'
   Scared:
-    Name: '&4&lScared'
-    Description: '&7&oOh god, that scared me!'
+    Name: '&4&lÄngstlich'
+    Description: '&7&oOh Gott, das hat mich erschreckt!'
   Angel:
-    Name: '&f&lAngel'
-    Description: '&7&oDid it hurt when you fell from heaven?'
+    Name: '&f&lEngel'
+    Description: '&7&oTat es weh, als du vom Himmel fielst?'
   Embarassed:
-    Name: '&7&lEmbarassed'
-    Description: '&7&oI''m kinda embarassed by that.'
+    Name: '&7&lBeschämt'
+    Description: '&7&oDas ist mir irgendwie peinlich.'
   Kissy:
-    Name: '&c&lKissy'
+    Name: '&c&lKüssen'
     Description: '&7&oWanna kiss?'
   Sad:
-    Name: '&9&lSad'
-    Description: '&7&oI''m so sad.'
+    Name: '&9&lTraurig'
+    Description: '&7&oIch bin so traurig.'
   Cool:
     Name: '&6&lCool'
     Description: '&7&oIch bin so ein cooler Typ.'
@@ -734,19 +734,19 @@ Hats:
     Description: '&7&oA little pumpkin'
   Ghost:
     Name: '&f&lGeist'
-    Description: '&7&o2spooky4u'
+    Description: '&7&oZu gruselig für dich'
   ScaryClown:
-    Name: '&4&lScary Clown'
-    Description: '&7&oHope you are not scared of clowns.'
+    Name: '&4&lGruseliger Clown'
+    Description: '&7&oIch hoffe du hast keine Angst vor Clowns.'
   Santa:
-    Name: '&4&lSanta'
-    Description: '&7&oHo ho ho! Merry Christmas!'
+    Name: '&4&lWeihnachtsmann'
+    Description: '&7&oHo ho ho! Frohe Weihnachten!'
   Snowman:
     Name: '&f&lSchneemann'
     Description: '&7&oI don''t have a skull.. or bones'
   Present:
     Name: '&c&lGeschenk'
-    Description: '&7&oFrom Santa, to you!'
+    Description: '&7&oVom Weihnachtsmann, für dich!'
   Elf:
     Name: '&a&lElf'
     Description: '&7&oIch arbeite für Santa!'
@@ -790,13 +790,13 @@ Hats:
     Name: '&8&lBrauner Crewmate'
     Description: '&7&oBraun ist sus!'
   Bread:
-    Name: '&f&lBread'
-    Description: '&7&oFreshly baked'
+    Name: '&f&lBrot'
+    Description: '&7&oFrisch gebacken'
   Cheese:
-    Name: '&e&lCheese'
-    Description: '&7&oSay cheese!'
+    Name: '&e&lKäse'
+    Description: '&7&oSag "cheese"!'
   Pancakes:
-    Name: '&f&lPancakes'
+    Name: '&f&lPfannkuchen'
     Description: '&7&oBetter with syrup!'
   Cake:
     Name: '&c&lKuchen'
@@ -806,52 +806,52 @@ Hats:
     Description: '&7&oMit Schokostückchen!'
   CandyCane:
     Name: '&c&lZucker&f&lstange'
-    Description: '&7&oA bit of tooth-breaking'
+    Description: '&7&oEin bisschen die Zähne kaputt machen'
   Chocolate:
-    Name: '&a&lChocolate'
-    Description: '&7&oDon''t feed your dog with this!'
+    Name: '&a&lSchokolade'
+    Description: '&7&oFütter deinen Hund nicht damit!'
   WhiteChocolate:
-    Name: '&f&lWhite Chocolate'
-    Description: '&7&oA bit more creamy'
+    Name: '&f&lWeiße Schokolade'
+    Description: '&7&oEin bisschen cremiger'
   Apple:
-    Name: '&4&lApple'
-    Description: '&7&oNot the company'
+    Name: '&4&lApfel'
+    Description: '&7&oEin Apfel am Tag hält gesund'
   Melon:
-    Name: '&a&lMelon'
-    Description: '&7&oDon''t smash it with your head'
+    Name: '&a&lMelone'
+    Description: '&7&oNicht mit dem Kopf zerschmettern'
   CarvedPumpkin:
-    Name: '&6&lCarved Pumpkin'
-    Description: '&7&oWho turned this thing off?'
+    Name: '&6&lGeschnitzter Kürbis'
+    Description: '&7&oWer hat das Ding ausgeschaltet?'
   Strawberry:
-    Name: '&c&lStrawberry'
-    Description: '&7&oDo these grow on trees?'
+    Name: '&c&lErdbeere'
+    Description: '&7&oWachsen die auf Bäumen?'
   Coconut:
-    Name: '&f&lCoconut'
-    Description: '&7&oParadise'
+    Name: '&f&lKokosnuss'
+    Description: '&7&oParadies'
   Taco:
     Name: '&e&lTaco'
-    Description: '&7&oLet''s go for some tacos!'
+    Description: '&7&oLass uns ein paar Tacos essen!'
   Bacon:
-    Name: '&f&lBacon'
-    Description: '&7&oEverything''s better with bacon.'
+    Name: '&f&lSpeck'
+    Description: '&7&oAlles ist besser mit Speck.'
   Fries:
-    Name: '&6&lFries'
-    Description: '&7&oHamburger''s best friend'
+    Name: '&6&lPommes'
+    Description: '&7&oBester Freund des Hamburgers'
   Hamburger:
     Name: '&6&lHamburger'
-    Description: '&7&oThe classic fastfood!'
+    Description: '&7&oDas klassische Fastfood!'
   Popcorn:
     Name: '&6&lPopcorn'
-    Description: '&7&oThe classic movie snack!'
+    Description: '&7&oDer klassische Filmsnack!'
   WhiteDonut:
-    Name: '&f&lWhite Donut'
-    Description: '&7&oLike a donut, but in white!'
+    Name: '&f&lWeißer Donut'
+    Description: '&7&oWie ein Donut, aber in weiß!'
   PinkDonut:
-    Name: '&d&lPink Donut'
-    Description: '&7&oHomer''s favorites'
+    Name: '&d&lRosa Donut'
+    Description: '&7&oHomer''s Favoriten'
   ChocolateDonut:
-    Name: '&a&lChocolate Donut'
-    Description: '&7&oA better donut!'
+    Name: '&a&lSchoko-Donut'
+    Description: '&7&oEin besserer Donut!'
   Pie:
     Name: '&4&lTorte'
     Description: '&7&oIch mag Torten'
