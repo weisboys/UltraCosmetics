@@ -179,7 +179,7 @@ Gadgets:
     name: '&f&lChickenator'
     Description: '&7&o1.Dispara! 2.Boom! 3.KFC!'
   PortalGun:
-    name: '&c&lPortal &9&lGun'
+    name: '&c&lPortal &9&lArco'
     No-Block-Range: '%prefix% &c&lNo hay BLOQUES en rango!'
     Different-Worlds: '%prefix% &c&lLos portales tienen que estar en el mismo mundo!'
     Description: '&7&oThe cake is a lie!'
