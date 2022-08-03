@@ -151,8 +151,8 @@ Gadgets:
   BatBlaster:
     name: '&7&l蝙蝠冲击波'
     Description: |-
-      &7&oLaunch waves of bats
-      &7&oat people you don't like!
+      &7&o发射一波又一波的蝙蝠
+      &7&o对付你不喜欢的人!
   MelonThrower:
     name: '&a&l西瓜投手'
     Wait-For-Finish: '%prefix% &c&l先等你之前发射的西瓜爆炸吧！'
@@ -165,20 +165,20 @@ Gadgets:
   FleshHook:
     name: '&7&l肉钩'
     Description: |-
-      &7&oMake new friends by throwing a hook
-      &7&oat them and pulling them
-      &7&oto you!
+      &7&o通过向他们投掷钩子
+      &7&o把他们拉到你身边
+      &7&o来结交新的朋友!
   DiscoBall:
     name: '&d&l迪斯科灯球'
     Already-Active: '&c&l已经有一个在使用中的迪斯科灯球了！'
     Not-Space-Above: '&c&l你的头上没有足够的空间！'
-    Description: '&7&oJust dance!'
+    Description: '&7&o舞蹈吧！'
   ColorBomb:
     name: '&d&l颜料炸弹'
     Description: '&7&o一个多彩的炸弹！'
   Chickenator:
     name: '&f&l鸡爪'
-    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
+    Description: '&7&o1.发射! 2.嘣! 3.肯德基!'
   PortalGun:
     name: '&c&l传送门 &9&l枪'
     No-Block-Range: '%prefix% &c&l所指的方向内没有方块！'
@@ -186,16 +186,16 @@ Gadgets:
     Description: '&7&o蛋糕就是个谎言！'
   BlizzardBlaster:
     name: '&b&l暴风雪冲击波'
-    Description: '&7&oLet it snow!'
+    Description: '&7&o让其下雪吧!'
   ThorHammer:
     name: '&f&l雷神之锤'
-    Description: '&7&oGet the real Mjölnir!'
+    Description: '&7&o获得真正的喵喵锤!'
   SmashDown:
     name: '&c&l向下砸'
-    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
+    Description: '&7&o他的名字是......约翰-塞纳（John Cena）！'
   ExplosiveSheep:
     name: '&4&l会爆炸的羊'
-    Already-Active: '&c&lThere is already an explosive sheep active!'
+    Already-Active: '&c&l已经召唤过一只爆炸羊了！'
     Description: |-
       &7&o你确定它该像那样
       &7&o闪烁吗?
@@ -207,18 +207,18 @@ Gadgets:
   Tsunami:
     name: '&9&l海啸'
     Description: |-
-      &7&oTSUNAMI!
-      &7&oRun for your life!
+      &7&o海啸!
+      &7&o逃命啊!
   Rocket:
     name: '&4&l火箭'
     Not-Enough-Space: '%prefix% &c&l你头上的空间不足！'
     Not-On-Ground: '%prefix% &c&l你必须站在地上！'
     Takeoff: '&4&l起飞!!'
     LaunchAborted: '&c&l发射取消!'
-    Description: '&7&oHouston, we have a problem...'
+    Description: '&7&o休斯顿，我们遇到了一个问题...'
   BlackHole:
     name: '&1&l黑洞'
-    Description: '&7&oYou should not get caught by it!'
+    Description: '&7&o你不该被它抓住!'
   TNT:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
@@ -229,7 +229,7 @@ Gadgets:
     Description: '&7&o哇！这把枪好好玩！'
   Parachute:
     name: '&f&l降落伞'
-    Description: '&7&oGERONIMOOO!'
+    Description: '&7&o杰罗尼姆噢！'
   QuakeGun:
     name: '&5&l地震 &d&l枪'
     Description: |-
@@ -238,8 +238,8 @@ Gadgets:
   GhostParty:
     name: '&f&l鬼魂派对'
     Description: |-
-      &7&oWho you gonna call?
-      &7&oGHOST BUSTERS!
+      &7&o你要叫谁？
+      &7&o幽灵破坏者！
   Firework:
     name: '&c&l烟花'
     Description: |-
@@ -262,14 +262,14 @@ Gadgets:
   PartyPopper:
     name: '&e&l礼花'
     Description: |-
-      &7&oCelebrate by blasting confetti into
-      &7&othe air!
+      &7&o通过向空中喷洒五彩纸屑
+      &7&o来庆祝!
   Trampoline:
     name: '&9&l蹦床'
     Description: |-
-      &7&oConstructs a trampoline
-      &7&othat sends you and your
-      &7&ofriends into the air!
+      &7&o建造一个蹦床，
+      &7&o并用它将你和你的朋友
+      &7&o送入空中！
   Gadget-Ready-ActionBar: '%gadgetname% &f&l以就绪！'
   Lore: '&9小道具'
 Mounts:
@@ -300,7 +300,7 @@ Mounts:
   EcologistHorse:
     menu-name: '&a&l生态马'
     entity-displayname: '&l%playername%的生态马'
-    Description: '&7&oBecome an ecologist!'
+    Description: '&7&o成为一名生态学家！'
   NyanSheep:
     menu-name: '&4&l咩咩&6&l羊'
     entity-displayname: '&l%playername%的咩咩羊'
@@ -488,45 +488,45 @@ Pets:
   PolarBear:
     menu-name: '&b&l北极熊'
     entity-displayname: '&l%playername%的北极熊'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&o我更倾向于冷的地方'
   Llama:
     menu-name: '&7&l羊驼'
     entity-displayname: '&l%playername%的羊驼'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&o需要我带些什么吗？'
   Parrot:
     menu-name: '&a&l鹦鹉'
     entity-displayname: '&l%playername%的鹦鹉'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly想要饼干吗？'
   Vex:
     menu-name: '&7&l恼鬼'
     entity-displayname: '&l%playername%的恼鬼'
   Panda:
     menu-name: '&a&l熊猫'
     entity-displayname: '&l%playername%的熊猫'
-    Description: '&7&oLikes Bamboo!'
+    Description: '&7&o喜欢竹子！'
   Fox:
     menu-name: '&d&l狐狸'
     entity-displayname: '&l%playername%的狐狸'
-    Description: '&7&oWhat does the fox say?'
+    Description: '&7&o狐狸说什么了？'
   Axolotl:
     menu-name: '&5&l美西螈'
     entity-displayname: '&l%playername%的美西螈'
-    Description: '&7&oSooo Cute!'
+    Description: '&7&o好可爱！'
   Piglin:
     menu-name: '&6&l黄金商人'
     entity-displayname: '&l%playername%的黄金商人'
-    Description: '&7&oDeals with Gold!'
+    Description: '&7&o与黄金交易！'
   Slime:
     menu-name: '&a&l史莱姆'
     entity-displayname: '&l%playername%的史莱姆'
   Bee:
     menu-name: '&e&l蜜蜂'
     entity-displayname: '&l%playername%的蜜蜂'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '&7&o*嗞* *嗞*'
   Goat:
     menu-name: '&f&l山羊'
     entity-displayname: '&l%playername%的山羊'
-    Description: '&7&oBAAAA!'
+    Description: '&7&o叭！'
   Silverfish:
     menu-name: '&7&l蠹虫'
     entity-displayname: '&l%playername%的蠹虫'
@@ -558,15 +558,15 @@ Pets:
   Frog:
     menu-name: '&2&l青蛙'
     entity-displayname: '&l%playername%的青蛙'
-    Description: '&7&oDoesn''t like Fireflies!'
+    Description: '&7&o不喜欢萤火虫'
   Warden:
     menu-name: '&3&l坚守者'
     entity-displayname: '&l%playername%的坚守者'
-    Description: '&7&oThe scariest Mob in Minecraft!'
+    Description: '&7&oMinecraft中最恐怖的怪物！'
   Allay:
     menu-name: '&a&l轻灵'
     entity-displayname: '&l%playername%的轻灵'
-    Description: '&7&oA new Friend!'
+    Description: '&7&o一个新的朋友！'
   Equip: '%prefix% &9你召唤了 %petname%'
   Unequip: '%prefix% &9你收回了 %petname%'
 Morphs:
@@ -1012,10 +1012,10 @@ Emotes:
     Name: '&a&l眨眼'
     Description: '&7&o快乐吗？让别人知道你只是在开玩笑'
   Must-Remove-Helmet: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
+Enabled-SelfMorphView: '%prefix% &9你启用了第一人称伪装视角'
+Disabled-SelfMorphView: '%prefix% &9你禁用了第一人称伪装视角'
+Enabled-Gadgets: '%prefix% &9您启用了小工具！'
+Disabled-Gadgets: '%prefix% &9你禁用了小道具！'
 Not-Allowed-From-Console: '&c&l这不能从控制台执行！'
 World-Disabled: '%prefix% &c&l装饰品在这个世界已被禁用！'
 Region-Disabled: '%prefix% &c&l装饰品在这个区域已被禁用！'

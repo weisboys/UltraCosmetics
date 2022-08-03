@@ -149,10 +149,10 @@ Gadgets:
     name: '&b&lPistola de Paintball'
     Description: '&7&oPEW PEW PEW PEW!!!'
   BatBlaster:
-    name: '&7&lBat Blaster'
+    name: '&7&lLanza Murcielagos'
     Description: |-
-      &7&oLaunch waves of bats
-      &7&oat people you don't like!
+      &7&oLanza olas de murcielagos
+      &7&oa gente que no te agrada!
   MelonThrower:
     name: '&a&lLanzaMelones'
     Wait-For-Finish: '%prefix% &c&lEspera que tu anterior melon explote!'
@@ -163,39 +163,38 @@ Gadgets:
       &7&oVuela los cielos
       &7&ocon tu propia Perla Etherea!
   FleshHook:
-    name: '&7&lFlesh Hook'
+    name: '&7&lGancho'
     Description: |-
-      &7&oMake new friends by throwing a hook
-      &7&oat them and pulling them
-      &7&oto you!
+      &7&oHaz nuevos amigos tirandoles un gancho
+      &7&oy trayendolos hacia ti!
   DiscoBall:
     name: '&d&lBola Disco'
     Already-Active: '&c&lYa hay una bola de disco activa!'
     Not-Space-Above: '&c&lNo hay suficiente espacio arriba tuyo!'
-    Description: '&7&oJust dance!'
+    Description: '&7&oSolo... A bailar!'
   ColorBomb:
     name: '&d&lBomba de Colores'
     Description: '&7&oUna bomba de colores!'
   Chickenator:
     name: '&f&lChickenator'
-    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
+    Description: '&7&o1.Dispara! 2.Boom! 3.KFC!'
   PortalGun:
-    name: '&c&lPortal &9&lGun'
+    name: '&c&lPortal &9&lArco'
     No-Block-Range: '%prefix% &c&lNo hay BLOQUES en rango!'
     Different-Worlds: '%prefix% &c&lLos portales tienen que estar en el mismo mundo!'
     Description: '&7&oThe cake is a lie!'
   BlizzardBlaster:
     name: '&b&lBlizzard Blaster'
-    Description: '&7&oLet it snow!'
+    Description: '&7&o¡Deja que nieve!'
   ThorHammer:
     name: '&f&lMartillo de Thor'
-    Description: '&7&oGet the real Mjölnir!'
+    Description: '&7&oObten el Mjölnir!'
   SmashDown:
     name: '&c&lSmashDown'
-    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
+    Description: '&7&oY SU NOMBRE ES...JOHN CENA!'
   ExplosiveSheep:
     name: '&4&lOveja Explosiva'
-    Already-Active: '&c&lThere is already an explosive sheep active!'
+    Already-Active: '&c&lYa hay una oveja explosiva activa!'
     Description: |-
       &7&oEstas seguro que tiene que
       &7&otitilar de esa manera?
@@ -208,17 +207,17 @@ Gadgets:
     name: '&9&lTsunami'
     Description: |-
       &7&oTSUNAMI!
-      &7&oRun for your life!
+      &7&oCorre por tu vida!
   Rocket:
     name: '&4&lCohete'
     Not-Enough-Space: '%prefix% &c&lNo hay suficiente espacio arriba y alrededor tuyo!'
     Not-On-Ground: '%prefix% &c&lTienes que estar en el suelo!'
     Takeoff: '&4&lLANZANDO!!'
     LaunchAborted: '&c&lLanzamiento abortado!'
-    Description: '&7&oHouston, we have a problem...'
+    Description: '&7&oHouston, tenemos un problema...'
   BlackHole:
     name: '&1&lAgujero Negro'
-    Description: '&7&oYou should not get caught by it!'
+    Description: '&7&oMejor que no te dejes capturar por el!'
   TNT:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
@@ -238,8 +237,8 @@ Gadgets:
   GhostParty:
     name: '&f&lFiesta Fantasmal'
     Description: |-
-      &7&oWho you gonna call?
-      &7&oGHOST BUSTERS!
+      &7&oA quien vas a llamar?
+      &f&lGHOST &4&lBUSTERS!
   Firework:
     name: '&c&lFuegos artificiales'
     Description: |-
@@ -562,11 +561,11 @@ Pets:
   Warden:
     menu-name: '&3&lWarden'
     entity-displayname: '&lWarden de %playername%'
-    Description: '&7&oThe scariest Mob in Minecraft!'
+    Description: '&7&o¡El mob mas aterrador de Minecraft!'
   Allay:
     menu-name: '&a&lAllay'
     entity-displayname: '&lAllay de %playername%'
-    Description: '&7&oA new Friend!'
+    Description: '&7&oUn nuevo amigo!'
   Equip: '%prefix% &9Spawneaste %petname%'
   Unequip: '%prefix% &9Despawneaste %petname%'
 Morphs:
@@ -1014,8 +1013,8 @@ Emotes:
   Must-Remove-Helmet: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
+Enabled-Gadgets: '%prefix% &9Activaste los gadgets!'
+Disabled-Gadgets: '%prefix% &9Desactivaste los gadgets!'
 Not-Allowed-From-Console: '&c&lEsto no puede ser ejecutado desde la consola!'
 World-Disabled: '%prefix% &c&lCosmetics esta desactivado en este mundo!'
 Region-Disabled: '%prefix% &c&lCosmetics esta desactivado en este area!'
