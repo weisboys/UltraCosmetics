@@ -486,22 +486,22 @@ Pets:
   Bat:
     menu-name: '&8&lFledermaus'
     entity-displayname: '&l%playername%''s Fledermaus'
-    Description: '&7&oI prefer dark areas'
+    Description: '&7&oIch bevorzuge dunkle Höhlen'
   PolarBear:
     menu-name: '&b&lEisbär'
     entity-displayname: '&l%playername%''s Eisbär'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&oIch bevorzuge kalte Regionen'
   Llama:
     menu-name: '&7&lLama'
     entity-displayname: '&l%playername%''s Lama'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oSoll ich etwas tragen?'
   Parrot:
     menu-name: '&a&lPapagei'
     entity-displayname: '&l%playername%''s Papagei'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly will einen Keks?'
   Vex:
-    menu-name: '&7&lVex'
-    entity-displayname: '&l%playername%''s Vex'
+    menu-name: '&7&lPlagegeist'
+    entity-displayname: '&l%playername%''s Plagegeist'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&l%playername%''s Panda'
@@ -509,7 +509,7 @@ Pets:
   Fox:
     menu-name: '&d&lFuchs'
     entity-displayname: '&l%playername%''s Fuchs'
-    Description: '&7&oWhat does the fox say?'
+    Description: '&7&oWas sagt der Fuchs?'
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&l%playername%''s Axolotl'
@@ -556,11 +556,11 @@ Pets:
   Zombie:
     menu-name: '&2&lZombie'
     entity-displayname: '&l%playername%''s Zombie'
-    Description: '&7&oQuick! Hide your Villagers!'
+    Description: '&7&oSchnell! Versteck deine Dorfbewohner!'
   Frog:
     menu-name: '&2&lFrosch'
     entity-displayname: '&l%playername%''s Frosch'
-    Description: '&7&oDoesn''t like Fireflies!'
+    Description: '&7&oMag keine Glühwürmchen!'
   Warden:
     menu-name: '&3&lWärter'
     entity-displayname: '&l%playername%''s Wärter'
@@ -598,11 +598,11 @@ Morphs:
   Snowman:
     name: '&f&lSchneemann'
     skill: '&eLeft Click&7 to: &aThrow Snowball'
-  Equip: '%prefix% &9You morphed into %morphname%'
-  Unequip: '%prefix% &9You unmorphed from %morphname%'
+  Equip: '%prefix% &9Du hast dich verwandelt in: %morphname%'
+  Unequip: '%prefix% &9Du hast die %morphname% Verwandlung beendet'
   WitherSkeleton:
     name: '&8&lWitherskelett'
-    skill: '&eSneak&7 to: &aBone Bomb'
+    skill: '&eSchleichen&7: &aKnochenbombe'
   ElderGuardian:
     name: '&8&lGroßer Wächter'
     skill: '&eLinksklick&7: &aLaser'
@@ -647,7 +647,7 @@ Hats:
     Description: '&7&oDas ist mir irgendwie peinlich.'
   Kissy:
     Name: '&c&lKüssen'
-    Description: '&7&oWanna kiss?'
+    Description: '&7&oMöchtest du küssen?'
   Sad:
     Name: '&9&lTraurig'
     Description: '&7&oIch bin so traurig.'
@@ -655,34 +655,34 @@ Hats:
     Name: '&6&lCool'
     Description: '&7&oIch bin so ein cooler Typ.'
   Surprised:
-    Name: '&4&lSurprised'
-    Description: '&7&oWow, did not expect that!'
+    Name: '&4&lÜberrascht'
+    Description: '&7&oWow, das hab ich nicht erwartet!'
   Dead:
-    Name: '&8&lDead'
-    Description: '&7&oGot rekt'
+    Name: '&8&lTot'
+    Description: '&7&oDu wurdest zerstört'
   Crying:
-    Name: '&9&lCrying'
-    Description: '&7&oI cry everytime'
+    Name: '&9&lWeinen'
+    Description: '&7&oIch weine jedes Mal'
   BigSmile:
     Name: '&6&lBigSmile'
     Description: '&7&oBecause I''m really happy!'
   Wink:
-    Name: '&e&lWink'
+    Name: '&e&lZwinkern'
     Description: '&7&oYou know what I mean ;)'
   Derp:
     Name: '&3&lDerp'
-    Description: '&7&oDerp Derp Derping all around'
+    Description: '&7&oDerp Derp Derp'
   Smile:
-    Name: '&e&lSmile'
+    Name: '&e&lLächeln'
     Description: '&7&oBecause I''m happy'
   Iron:
-    Name: '&7&lIron'
+    Name: '&7&lEisen'
     Description: '&7&oAs hard as iron!'
   Gold:
     Name: '&e&lGold'
     Description: '&7&oMy precious!'
   Diamond:
-    Name: '&b&lDiamond'
+    Name: '&b&lDiamant'
     Description: '&7&oThis is really strong!'
   CommandBlock:
     Name: '&7&lCommand Block'
@@ -691,8 +691,8 @@ Hats:
     Name: '&9&lMusik'
     Description: '&7&oYou are so musical.'
   Squid:
-    Name: '&3&lSquid'
-    Description: '&7&oBloop Bloop!'
+    Name: '&3&lTintenfisch'
+    Description: '&7&oBlub Blub!'
   Chicken:
     Name: '&f&lHuhn'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -988,7 +988,7 @@ Emotes:
   Unequip: '%prefix% &9You unequipped %emotename%'
   Cry:
     Name: '&9&lWeinen'
-    Description: '&7&oAre you really sad? :('
+    Description: '&7&oBist du sehr traurig? :('
   Angry:
     Name: '&c&lWütend'
     Description: '&7&oShow your rage to the other players!'
