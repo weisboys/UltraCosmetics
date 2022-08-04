@@ -1,15 +1,19 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.hats.Hat;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.inventory.ItemStack;
 
 import com.cryptomorin.xseries.XMaterial;
-import org.bukkit.ChatColor;
-import org.bukkit.inventory.ItemStack;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -197,5 +201,19 @@ public class HatType extends CosmeticType<Hat> {
         new HatType("83618ff1217640bec5b525fa2a8e671c75d2a7d7cb2ddc31d79d9d895eab1", "X", "&7&oThe twenty-fourth letter in the alphabet!");
         new HatType("d9c1d29a38bcf113b7e8c34e148a79f9fe41edf41aa8b1de873bb1d433b3861", "Y", "&7&oThe twenty-fifth letter in the alphabet!");
         new HatType("b9295734195d2c7fa389b98757e9686ce6437c16c58bdf2b4cd538389b5912", "Z", "&7&oThe twenty-sixth letter in the alphabet!");
+
+        ConfigurationSection hats = getCustomConfig(Category.HATS);
+        if (hats == null) return;
+
+        String url;
+        for (String key : hats.getKeys(false)) {
+            url = hats.getString(key + ".url");
+            if (url == null) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "Incomplete custom hat '" + key + "'");
+                continue;
+            }
+            MessageManager.addMessage(Category.HATS.getConfigPath() + "." + key + ".Name", key);
+            new HatType(url, key, "A custom hat!");
+        }
     }
 }

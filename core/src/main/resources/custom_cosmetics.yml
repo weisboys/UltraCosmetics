@@ -1,0 +1,37 @@
+# In this file, you can define custom hats, emotes, suits, or pets! How exciting!
+
+# Format for hats:
+# Start with the internal name of the cosmetic,
+# which must be ASCII-only and less than 32 characters.
+#   datatags:
+#       # 'url' should be the end of a texture URL, like if the url is:
+#       # http://textures.minecraft.net/texture/40c761ccdb237d4c148fa48f36bdcff14f60cface2a6ea52214e150207d
+#       # Then the 'url' option should be:
+#       url: 40c761ccdb237d4c148fa48f36bdcff14f60cface2a6ea52214e150207d
+# Once the hat is loaded, you will be able to change the display name and description in the messages file.
+Hats:
+
+# Format for emotes:
+# Again, start with the internal name of the cosmetic. The same rules apply.
+# This example is a built-in emote so don't activate it.
+#   DealWithIt:
+#       # 'ticksPerFrame' is how many ticks should be between each frame change.
+#       # 1 second = 20 ticks, so a value of 2 means update 10 times per second.
+#       ticksPerFrame: 2
+#       # 'urls' should be a list of ends of texture URLs, just like with hats.
+#       # But for emotes, you need a list of them.
+#       urls:
+#       - 72bb8ba79648718fe80687ed4df2b9e284e732583e05658e227efd7fdf80f4
+#       - 29b5b1f2c92a1283456f608b29ec3617191aba2bd31bd4b4b08e6cba6806227
+#       - 7959ef5fabb3f83fb19bba6ca67bb97758eec60235cf46e71d834b237337c4
+#       - 6313411e97963d104322218967a85a5d691330bad5f7192e3781d9565ebbdf
+#       - fa3f7f2f6970d32db284261520c8c441fe4b3268ac0c99aeb4a5248656bd
+# Again, once it's set up, you can change the name and description in the messages file.
+Emotes:
+
+# Not yet implemented
+Suits:
+
+# Not yet implemented
+Pets:
+

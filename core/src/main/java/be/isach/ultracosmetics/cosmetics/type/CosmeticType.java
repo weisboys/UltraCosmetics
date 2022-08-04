@@ -9,13 +9,18 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
 
+import com.cryptomorin.xseries.XMaterial;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
@@ -29,6 +34,7 @@ import java.util.StringJoiner;
 public abstract class CosmeticType<T extends Cosmetic<?>> {
     private static final Permission ALL_PERMISSION = new Permission("ultracosmetics.allcosmetics");
     private static boolean PERMISSIONS_OK = true;
+    private static YamlConfiguration customConfig = new YamlConfiguration();
 
     static {
         try {
@@ -38,6 +44,20 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
             UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "It seems like you are attempting to reload UltraCosmetics. This is not recommended. If you experience issues, please fully restart the server.");
             PERMISSIONS_OK = false;
         }
+        try {
+            File configFile = new File(UltraCosmeticsData.get().getPlugin().getDataFolder(), "custom_cosmetics.yml");
+            if (!configFile.exists()) {
+                UltraCosmeticsData.get().getPlugin().saveResource("custom_cosmetics.yml", false);
+            }
+            customConfig.load(configFile);
+        } catch (InvalidConfigurationException | IOException e) {
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "Failed to load custom cosmetics, they will be ignored.");
+            e.printStackTrace();
+        }
+    }
+
+    protected static ConfigurationSection getCustomConfig(Category cat) {
+        return customConfig.getConfigurationSection(cat.getConfigPath());
     }
 
     private final String configName;
@@ -165,7 +185,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     /**
      * Gets the weight of getting this cosmetic in its category.
      * The absolute chance of getting this cosmetic is also affected by the category weight.
-     * 
+     *
      * @return its weight
      */
     public int getChestWeight() {
