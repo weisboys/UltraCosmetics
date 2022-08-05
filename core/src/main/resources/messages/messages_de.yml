@@ -574,30 +574,30 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&lLohe'
-    skill: '&eCrouch&7 to: &aFly'
+    skill: '&eSchleichen&7: &afliegen'
   Chicken:
     name: '&f&lHuhn'
-    skill: '&eCrouch&7 to: &aLay eggs'
+    skill: '&eSchleichen&7: &aEier legen'
   Slime:
     name: '&a&lSchleim'
-    skill: '&eCrouch&7 to: &aBounce'
+    skill: '&eSchleichen&7: &aspringen'
   Pig:
     name: '&d&lSchwein'
-    skill: '&eCollide&7 to: &aBounce Players'
+    skill: '&eKollidieren&7: &aSpieler wegstoßen'
   Enderman:
     name: '&5&lEnderman'
-    skill: '&eDouble Jump&7 to: &aTeleport'
+    skill: '&eDoppelsprung&7: &ateleportieren'
   Bat:
     name: '&8&lFledermaus'
-    skill: '&eDouble Jump&7 to: &aFlap'
+    skill: '&eDoppelsprung&7: &afliegen'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eCrouch&7 to: &aDetonate'
-    charging: '&a&lCharging: %chargelevel%/100'
+    skill: '&eSchleichen&7: &aexplodieren'
+    charging: '&a&lAufladen: %chargelevel%/100'
     release-to-explode: '&f&lLoslassen zum explodieren!'
   Snowman:
     name: '&f&lSchneemann'
-    skill: '&eLeft Click&7 to: &aThrow Snowball'
+    skill: '&eLinksklick&7: &aSchneeball werfen'
   Equip: '%prefix% &9Du hast dich verwandelt in: %morphname%'
   Unequip: '%prefix% &9Du hast die %morphname% Verwandlung beendet'
   WitherSkeleton:
@@ -626,10 +626,10 @@ Morphs:
     skill: '&eLinksklick&7: &aBlizzard'
   Llama:
     name: '&3&lLama'
-    skill: '&eLinksklick&7: &aSpucken'
+    skill: '&eLinksklick&7: &aspucken'
   Parrot:
     name: '&a&lPapagei'
-    skill: '&eDoppelsprung&7: &aFliegen'
+    skill: '&eDoppelsprung&7: &afliegen'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
@@ -664,32 +664,32 @@ Hats:
     Name: '&9&lWeinen'
     Description: '&7&oIch weine jedes Mal'
   BigSmile:
-    Name: '&6&lBigSmile'
-    Description: '&7&oBecause I''m really happy!'
+    Name: '&6&lGroßes Lächeln'
+    Description: '&7&oWeil ich sehr fröhlich bin!'
   Wink:
     Name: '&e&lZwinkern'
-    Description: '&7&oYou know what I mean ;)'
+    Description: '&7&oDu weißt was ich meine ;)'
   Derp:
     Name: '&3&lDerp'
     Description: '&7&oDerp Derp Derp'
   Smile:
     Name: '&e&lLächeln'
-    Description: '&7&oBecause I''m happy'
+    Description: '&7&oWeil ich fröhlich bin'
   Iron:
     Name: '&7&lEisen'
-    Description: '&7&oAs hard as iron!'
+    Description: '&7&oSo hart wie Eisen!'
   Gold:
     Name: '&e&lGold'
-    Description: '&7&oMy precious!'
+    Description: '&7&oMein Schatz!'
   Diamond:
     Name: '&b&lDiamant'
-    Description: '&7&oThis is really strong!'
+    Description: '&7&oDas ist sehr stark!'
   CommandBlock:
-    Name: '&7&lCommand Block'
-    Description: '&7&oControl the world with it!'
+    Name: '&7&lBefehlsblock'
+    Description: '&7&oKontrolliere die Welt damit!'
   Music:
     Name: '&9&lMusik'
-    Description: '&7&oYou are so musical.'
+    Description: '&7&oDu bist so musikalisch.'
   Squid:
     Name: '&3&lTintenfisch'
     Description: '&7&oBlub Blub!'
@@ -698,10 +698,10 @@ Hats:
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
   Blaze:
     Name: '&6&lLohe'
-    Description: '&7&oWatch out for the fire!'
+    Description: '&7&oPass auf das Feuer auf!'
   Piston:
-    Name: '&7&lPiston'
-    Description: '&7&oHave you got the redstone?'
+    Name: '&7&lKolben'
+    Description: '&7&oHast du das Redstone?'
   Sheep:
     Name: '&f&lSchaf'
     Description: '&7&oBaaaa, baa'
@@ -713,7 +713,7 @@ Hats:
     Description: '&7&oI''m your guard.'
   Enderman:
     Name: '&5&lEnderman'
-    Description: '&7&oNow I''m here, now I''m there!'
+    Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -722,16 +722,16 @@ Hats:
     Description: '&7&oLuigi time!'
   Batman:
     Name: '&8&lBatman'
-    Description: '&7&oI''m Batman!'
+    Description: '&7&oIch bin Batman!'
   Chest:
     Name: '&6&lTruhe'
-    Description: '&7&oOpen, and close'
+    Description: '&7&oÖffnen, und schließen'
   Skull:
     Name: '&f&lSchädel'
-    Description: '&7&oWho is headless now?'
+    Description: '&7&oWer ist jetzt kopflos?'
   JackOLantern:
-    Name: '&6&lJack-O''-Lantern'
-    Description: '&7&oA little pumpkin'
+    Name: '&6&lKürbislaterne'
+    Description: '&7&oEin kleiner Kürbis'
   Ghost:
     Name: '&f&lGeist'
     Description: '&7&oZu gruselig für dich'
@@ -752,7 +752,7 @@ Hats:
     Description: '&7&oIch arbeite für den Weihnachtsmann!'
   Bedrock:
     Name: '&8&lBedrock'
-    Description: '&7&oUnbreakable!'
+    Description: '&7&oUnzerbrechlich!'
   RedCrewmate:
     Name: '&4&lRoter Crewmate'
     Description: '&7&oRot ist sus!'
@@ -797,7 +797,7 @@ Hats:
     Description: '&7&oSag "cheese"!'
   Pancakes:
     Name: '&f&lPfannkuchen'
-    Description: '&7&oBetter with syrup!'
+    Description: '&7&oBesser mit Sirup!'
   Cake:
     Name: '&c&lKuchen'
     Description: '&7&oMmmm, Kuchen.'
