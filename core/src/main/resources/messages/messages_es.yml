@@ -179,7 +179,7 @@ Gadgets:
     name: '&f&lChickenator'
     Description: '&7&o1.Dispara! 2.Boom! 3.KFC!'
   PortalGun:
-    name: '&c&lPortal &9&lArco'
+    name: '&c&lPortal &9&lGun'
     No-Block-Range: '%prefix% &c&lNo hay BLOQUES en rango!'
     Different-Worlds: '%prefix% &c&lLos portales tienen que estar en el mismo mundo!'
     Description: '&7&oThe cake is a lie!'
@@ -259,16 +259,16 @@ Gadgets:
       &7&oEntra en la festividad y la diversion
       &7&otirando bolas de nieve a otros jugadores!
   PartyPopper:
-    name: '&e&lParty Popper'
+    name: '&e&lPapelPicado'
     Description: |-
-      &7&oCelebrate by blasting confetti into
-      &7&othe air!
+      &7&oCelebra disparando papel picado
+      &7&oa los ojos de otros jugadores!
   Trampoline:
     name: '&9&lTrampolin'
     Description: |-
-      &7&oConstructs a trampoline
-      &7&othat sends you and your
-      &7&ofriends into the air!
+      &7&oConstruye un trampolin!
+      &7&oque envia a ti y a tus
+      &7&oamigos en el aire!
   Gadget-Ready-ActionBar: '%gadgetname% &f&lesta listo!'
   Lore: '&9Gadget'
 Mounts:
@@ -299,7 +299,7 @@ Mounts:
   EcologistHorse:
     menu-name: '&a&lCaballo Ecologista'
     entity-displayname: '&lCaballo Ecologista de %playername%'
-    Description: '&7&oBecome an ecologist!'
+    Description: '&7&oConviertete en ecologista!'
   NyanSheep:
     menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
     entity-displayname: '&lNyan Sheep de %playername%'
@@ -487,22 +487,22 @@ Pets:
   PolarBear:
     menu-name: '&b&lOso Polar'
     entity-displayname: '&lOso Polar de %playername%'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&oPrefiero zonas frías'
   Llama:
     menu-name: '&7&lLlama'
     entity-displayname: '&lLlama de %playername%'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oNecesitas que lleve algo?'
   Parrot:
     menu-name: '&a&lLoro'
     entity-displayname: '&lLoro de %playername%'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly quiere una galleta?'
   Vex:
     menu-name: '&7&lVex'
     entity-displayname: '&lVex de %playername%'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&lPanda de %playername%'
-    Description: '&7&oLikes Bamboo!'
+    Description: '&7&oLe gusta el Bamboo!'
   Fox:
     menu-name: '&d&lFox'
     entity-displayname: '&lFox de %playername%'
@@ -510,11 +510,11 @@ Pets:
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&lAxolotl de %playername%'
-    Description: '&7&oSooo Cute!'
+    Description: '&7&oMuy Lindo!'
   Piglin:
     menu-name: '&6&lDealer de Oro'
     entity-displayname: '&lDealer de Oro de %playername%'
-    Description: '&7&oDeals with Gold!'
+    Description: '&7&oOfertas con Oro!'
   Slime:
     menu-name: '&a&lSlime'
     entity-displayname: '&lSlime de %playername%'
@@ -557,7 +557,7 @@ Pets:
   Frog:
     menu-name: '&2&lRana'
     entity-displayname: '&lRana de %playername%'
-    Description: '&7&oDoesn''t like Fireflies!'
+    Description: '&7&oNo le gusta las luciernagas!'
   Warden:
     menu-name: '&3&lWarden'
     entity-displayname: '&lWarden de %playername%'
@@ -1011,8 +1011,8 @@ Emotes:
     Name: '&a&lGuiño'
     Description: '&7&oTe diviertes? Hazle saber a alguien que estas en la broma'
   Must-Remove-Helmet: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
+Enabled-SelfMorphView: '%prefix% &9Activaste vista propia de las transformaciones!'
+Disabled-SelfMorphView: '%prefix% &9Desactivaste vista propia de las transformaciones!'
 Enabled-Gadgets: '%prefix% &9Activaste los gadgets!'
 Disabled-Gadgets: '%prefix% &9Desactivaste los gadgets!'
 Not-Allowed-From-Console: '&c&lEsto no puede ser ejecutado desde la consola!'
