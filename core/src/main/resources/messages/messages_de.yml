@@ -143,7 +143,7 @@ Enable-Treasure-Notification: '&c&lSchatztruhen Mitteilungen aktiviert'
 Gadgets-Enabled-Needed: '%prefix% &c&lDu musst Gadgets aktivieren!'
 Gadgets:
   Equip: '%prefix% &9Du hast %gadgetname% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %gadgetname% nicht mehr ausgerüstet'
+  Unequip: '%prefix% &9Du hast %gadgetname% entfernt'
   Countdown-Message: '%prefix% &c&lDu kannst %gadgetname% &c&lin %time%s wieder benutzen!'
   PaintballGun:
     name: '&b&lPaintball-Waffe'
@@ -310,7 +310,7 @@ Mounts:
   Snake:
     menu-name: '&6&lSchlange'
     entity-displayname: '&l%playername%''s Schlange'
-    Description: '&7&oWatch out! It may bite..'
+    Description: '&7&oAchtung! Es kann beißen..'
   Dragon:
     menu-name: '&5&lDrache'
     entity-displayname: '&l%playername%''s Drache'
@@ -352,11 +352,11 @@ Mounts:
     entity-displayname: '&l%playername%''s Fliegendes Schiff'
   Equip: '%prefix% &9Du hast %mountname% ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% entfernt'
-  Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
+  Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
   Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
 Particle-Effects:
-  Equip: '%prefix% &9You summoned %effectname%'
-  Unequip: '%prefix% &9You unsummoned %effectname%'
+  Equip: '%prefix% &9Du hast %effectname% ausgerüstet'
+  Unequip: '%prefix% &9Du hast %effectname% entfernt'
   RainCloud:
     name: '&9&lRegenwolke'
     Description: |-
@@ -368,7 +368,7 @@ Particle-Effects:
       &7&oThe weather forecast
       &7&ois telling me it's snowing.
   BloodHelix:
-    name: '&4&lBlood Helix'
+    name: '&4&lBlutspirale'
     Description: |-
       &7&oAncient legend says this magic
       &7&oempowers the blood of its user,
@@ -458,15 +458,15 @@ Pets:
   Wither:
     menu-name: '&8&lWither'
     entity-displayname: '&l%playername%''s Wither'
-    Description: '&7&oWatch out for me..'
+    Description: '&7&oNimm dich vor mir in Acht..'
   Pumpling:
-    menu-name: '&6&lPumpling'
-    entity-displayname: '&l%playername%''s pumpling'
-    Description: '&7&oJust a little floating pumpkin'
+    menu-name: '&6&lKürbis'
+    entity-displayname: '&l%playername%''s Kürbis'
+    Description: '&7&oNur ein kleiner, schwebender Kürbis'
   ChristmasElf:
     menu-name: '&a&lWeihnachtself'
-    entity-displayname: '&l%playername%''s Christmas elf'
-    Description: '&7&oI can make presents for you!'
+    entity-displayname: '&l%playername%''s Weihnachtself'
+    Description: '&7&oIch kann Geschenke für dich machen!'
   Mooshroom:
     menu-name: '&4&lMooshroom'
     entity-displayname: '&l%playername%''s Mooshroom'
@@ -515,9 +515,9 @@ Pets:
     entity-displayname: '&l%playername%''s Axolotl'
     Description: '&7&oSooo niedlich!'
   Piglin:
-    menu-name: '&6&lGold Dealer'
-    entity-displayname: '&l%playername%''s Gold Dealer'
-    Description: '&7&oDeals with Gold!'
+    menu-name: '&6&lGoldhändler'
+    entity-displayname: '&l%playername%''s Goldhändler'
+    Description: '&7&oHandelt mit Gold!'
   Slime:
     menu-name: '&a&lSchleim'
     entity-displayname: '&l%playername%''s Schleim'
@@ -532,7 +532,7 @@ Pets:
   Silverfish:
     menu-name: '&7&lSilberfischchen'
     entity-displayname: '&l%playername%''s Silberfischchen'
-    Description: '&7&oLurking in the walls...'
+    Description: '&7&oLauert in den Wänden...'
   Horse:
     menu-name: '&a&lPferd'
     entity-displayname: '&l%playername%''s Pferd'
@@ -631,8 +631,8 @@ Morphs:
     name: '&a&lPapagei'
     skill: '&eDoppelsprung&7: &afliegen'
 Hats:
-  Equip: '%prefix% &9You equipped %hatname% &9hat!'
-  Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
+  Equip: '%prefix% &9Du hast %hatname% &9Kopf ausgerüstet!'
+  Unequip: '%prefix% &9Du hast %hatname% &9Kopf entfernt!'
   Astronaut:
     Name: '&7&lAstronaut'
     Description: '&7&oHouston, wir haben ein Problem.'
@@ -936,11 +936,11 @@ Hats:
   Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
 Suits:
   Rave:
-    whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
-    helmet-name: '&b&lR&a&la&e&lv&6&le &f&lHelmet'
-    chestplate-name: '&b&lR&a&la&e&lv&6&le &f&lChestplate'
-    leggings-name: '&b&lR&a&la&e&lv&6&le &f&lLeggings'
-    boots-name: '&b&lR&a&la&e&lv&6&le &f&lBoots'
+    whole-equip: '&f&lKompletter &b&lR&a&la&e&lv&6&le&f&l-Anzug'
+    helmet-name: '&b&lR&a&la&e&lv&6&le&f&l-Helm'
+    chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Brustpanzer'
+    leggings-name: '&b&lR&a&la&e&lv&6&le&f&l-Hose'
+    boots-name: '&b&lR&a&la&e&lv&6&le&f&l-Stiefel'
     Description: '&7&oSuch amazing colors!'
   Astronaut:
     whole-equip: '&f&lwhole &f&lAstronaut &f&lsuit'
@@ -950,32 +950,32 @@ Suits:
     boots-name: '&f&lAstronaut &f&lBoots'
     Description: '&7&oHouston?'
   Diamond:
-    whole-equip: '&f&lwhole &b&lDiamond &f&lsuit'
-    helmet-name: '&b&lDiamond &f&lHelmet'
-    chestplate-name: '&b&lDiamond &f&lChestplate'
-    leggings-name: '&b&lDiamond &f&lLeggings'
-    boots-name: '&b&lDiamond &f&lBoots'
+    whole-equip: '&f&lKompletter &b&lDiamant&f&l-Anzug'
+    helmet-name: '&b&lDiamant&f&lhelm'
+    chestplate-name: '&b&lDiamant&f&lbrustpanzer'
+    leggings-name: '&b&lDiamant&f&lhose'
+    boots-name: '&b&lDiamant&f&lstiefel'
     Description: |-
       &7&oShow your Mining skills
       &7&owith this amazing outfit!
   Santa:
-    whole-equip: '&f&lKomplettes &4&lWeihnachtsmann&f&l-Kostüm'
+    whole-equip: '&f&lKompletter &4&lWeihnachtsmann&f&l-Anzug'
     helmet-name: '&f&lMütze des &4&lWeihnachtsmanns'
     chestplate-name: '&f&lMantel des &4&lWeihnachtsmanns'
     leggings-name: '&f&lHose des &4&lWeihnachtsmanns'
     boots-name: '&f&lStiefel des &4&lWeihnachtsmanns'
     Description: '&7&oWerde zum Weihnachtsmann und liefere Geschenke!'
   Frozen:
-    whole-equip: '&f&lwhole &b&lFrozen &f&lsuit'
-    helmet-name: '&b&lFrozen &f&lHelmet'
-    chestplate-name: '&b&lFrozen &f&lChestplate'
-    leggings-name: '&b&lFrozen &f&lLeggings'
-    boots-name: '&b&lFrozen &f&lBoots'
+    whole-equip: '&f&lKompletter &b&lgefrorener &f&lAnzug'
+    helmet-name: '&b&lGefrorener &f&lHelm'
+    chestplate-name: '&b&lGefrorener &f&lBrustpanzer'
+    leggings-name: '&b&lGefrorene &f&lHose'
+    boots-name: '&b&lGefrorene &f&lStiefel'
     Description: |-
       &7&oThis suit belongs to the
       &7&oLord of the Frozen Lands!
-  Equip: '%prefix% &9You equipped %suitname%!'
-  Unequip: '%prefix% &9You unequipped %suitname%!'
+  Equip: '%prefix% &9Du hast %suitname% ausgerüstet!'
+  Unequip: '%prefix% &9Du hast %suitname% entfernt!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oRüste den ganzen Anzug aus!'
   Must-Remove:
@@ -984,8 +984,8 @@ Suits:
     LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
     BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
 Emotes:
-  Equip: '%prefix% &9You equipped %emotename%'
-  Unequip: '%prefix% &9You unequipped %emotename%'
+  Equip: '%prefix% &9Du hast %emotename% ausgerüstet'
+  Unequip: '%prefix% &9Du hast %emotename% entfernt'
   Cry:
     Name: '&9&lWeinen'
     Description: '&7&oBist du sehr traurig? :('
@@ -1019,8 +1019,8 @@ Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
 Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
 Not-Allowed-From-Console: '&c&lThis can''t be executed from console!'
-World-Disabled: '%prefix% &c&lCosmetics are disabled in this world!'
-Region-Disabled: '%prefix% &c&lCosmetics are disabled in this area!'
+World-Disabled: '%prefix% &c&lKosmetika sind in dieser Welt deaktiviert!'
+Region-Disabled: '%prefix% &c&lKosmetika sind in dieser Region deaktiviert!'
 Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
