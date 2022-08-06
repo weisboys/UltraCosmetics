@@ -1,36 +1,23 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.treasurechests.ChestType;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.PacketSender;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.v1_8_R3.pathfinders.CustomPathFinderGoalPanic;
 import be.isach.ultracosmetics.version.IEntityUtil;
-import net.minecraft.server.v1_8_R3.BlockPosition;
-import net.minecraft.server.v1_8_R3.EntityArmorStand;
-import net.minecraft.server.v1_8_R3.EntityBoat;
-import net.minecraft.server.v1_8_R3.EntityCreature;
-import net.minecraft.server.v1_8_R3.EntityEnderDragon;
-import net.minecraft.server.v1_8_R3.EntityInsentient;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityEquipment;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntityLiving;
-import net.minecraft.server.v1_8_R3.PathEntity;
-import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
-import net.minecraft.server.v1_8_R3.TileEntityChest;
-import net.minecraft.server.v1_8_R3.TileEntityEnderChest;
-import net.minecraft.server.v1_8_R3.Vector3f;
-import net.minecraft.server.v1_8_R3.World;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.*;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBoat;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEnderDragon;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftWither;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.craftbukkit.v1_8_R3.util.UnsafeList;
 import org.bukkit.entity.Creature;
@@ -48,13 +35,30 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.EntityArmorStand;
+import net.minecraft.server.v1_8_R3.EntityBoat;
+import net.minecraft.server.v1_8_R3.EntityCreature;
+import net.minecraft.server.v1_8_R3.EntityEnderDragon;
+import net.minecraft.server.v1_8_R3.EntityInsentient;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityEquipment;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityTeleport;
+import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntityLiving;
+import net.minecraft.server.v1_8_R3.PathEntity;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R3.TileEntity;
+import net.minecraft.server.v1_8_R3.Vector3f;
+import net.minecraft.server.v1_8_R3.World;
+
 /**
  * Created by Sacha on 14/03/16.
  */
 public class EntityUtil implements IEntityUtil {
     private final Random r = new Random();
-    private final Map<Player, Set<EntityArmorStand>> fakeArmorStandsMap = new HashMap<>();
-    private final Map<Player, Set<Entity>> cooldownJumpMap = new HashMap<>();
+    private final Map<Player,Set<EntityArmorStand>> fakeArmorStandsMap = new HashMap<>();
+    private final Map<Player,Set<Entity>> cooldownJumpMap = new HashMap<>();
 
     @Override
     public void resetWitherSize(Wither wither) {
@@ -179,13 +183,8 @@ public class EntityUtil implements IEntityUtil {
         Location location = b.getLocation();
         World world = ((CraftWorld) location.getWorld()).getHandle();
         BlockPosition position = new BlockPosition(location.getX(), location.getY(), location.getZ());
-        if (design.getChestType() == ChestType.ENDER) {
-            TileEntityEnderChest tileChest = (TileEntityEnderChest) world.getTileEntity(position);
-            world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
-        } else {
-            TileEntityChest tileChest = (TileEntityChest) world.getTileEntity(position);
-            world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
-        }
+        TileEntity tileChest = world.getTileEntity(position);
+        world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
     }
 
     @Override

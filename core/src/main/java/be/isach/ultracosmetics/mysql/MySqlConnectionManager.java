@@ -12,6 +12,8 @@ import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import org.bukkit.configuration.ConfigurationSection;
 
+import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
@@ -62,8 +64,21 @@ public class MySqlConnectionManager {
         String username = section.getString("username");
         String password = section.getString("password");
         tableName = section.getString("table");
+        HikariHook hook;
 
-        hikariHook = new HikariHook(hostname, port, database, username, password);
+        try {
+            hook = new HikariHook(hostname, port, database, username, password);
+        } catch (PoolInitializationException e) {
+            // We have to do this weirdness to be able to break out of the constructor early.
+            hikariHook = null;
+            dataSource = null;
+            CREATE_TABLE = null;
+            reportFailure(e);
+            return;
+        }
+
+        hikariHook = hook;
+
         dataSource = hikariHook.getDataSource();
 
         // "PRIMARY KEY" implies UNIQUE NOT NULL.

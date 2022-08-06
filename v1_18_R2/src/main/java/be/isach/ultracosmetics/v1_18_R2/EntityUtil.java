@@ -5,7 +5,6 @@ import static java.lang.Math.sin;
 import static java.lang.Math.toRadians;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.treasurechests.ChestType;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
@@ -15,6 +14,8 @@ import be.isach.ultracosmetics.version.IEntityUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.block.Lidded;
 import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_18_R2.entity.CraftBoat;
 import org.bukkit.craftbukkit.v1_18_R2.entity.CraftCreature;
@@ -43,7 +44,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Rotations;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -68,9 +68,6 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 
@@ -80,8 +77,8 @@ import net.minecraft.world.phys.Vec3;
 public class EntityUtil implements IEntityUtil {
 
     private final Random r = new Random();
-    private Map<Player, Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
-    private Map<Player, Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
+    private Map<Player,Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
+    private Map<Player,Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
 
     private static Field memoriesField;
     private static Field sensorsField;
@@ -113,7 +110,7 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void sendBlizzard(final Player player, Location loc,
-            Function<org.bukkit.entity.Entity, Boolean> canAffectFunc, Vector v) {
+            Function<org.bukkit.entity.Entity,Boolean> canAffectFunc, Vector v) {
         final Set<ArmorStand> fakeArmorStands = fakeArmorStandsMap.computeIfAbsent(player, k -> new HashSet<>());
         final Set<org.bukkit.entity.Entity> cooldownJump = cooldownJumpMap.computeIfAbsent(player,
                 k -> new HashSet<>());
@@ -131,7 +128,7 @@ public class EntityUtil implements IEntityUtil {
         ClientboundAddEntityPacket addPacket = new ClientboundAddEntityPacket(as);
         ClientboundSetEntityDataPacket dataPacket = new ClientboundSetEntityDataPacket(as.getId(), as.getEntityData(),
                 false);
-        List<Pair<EquipmentSlot, ItemStack>> equipment = new ArrayList<>();
+        List<Pair<EquipmentSlot,ItemStack>> equipment = new ArrayList<>();
         equipment.add(new Pair<>(EquipmentSlot.HEAD,
                 CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
         ClientboundSetEquipmentPacket equipmentPacket = new ClientboundSetEquipmentPacket(as.getId(), equipment);
@@ -160,8 +157,7 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void clearBlizzard(Player player) {
-        if (!fakeArmorStandsMap.containsKey(player))
-            return;
+        if (!fakeArmorStandsMap.containsKey(player)) return;
 
         for (ArmorStand as : fakeArmorStandsMap.get(player)) {
             if (as == null) {
@@ -208,7 +204,7 @@ public class EntityUtil implements IEntityUtil {
             goalSelector.removeAllGoals();
             targetSelector.removeAllGoals();
 
-            lockedFlagsField.set(targetSelector, new EnumMap<Goal.Flag, WrappedGoal>(Goal.Flag.class));
+            lockedFlagsField.set(targetSelector, new EnumMap<Goal.Flag,WrappedGoal>(Goal.Flag.class));
 
             disabledFlagsField.set(targetSelector, EnumSet.noneOf(Goal.Flag.class));
         } catch (ReflectiveOperationException e) {
@@ -234,8 +230,7 @@ public class EntityUtil implements IEntityUtil {
         PathfinderMob ec = ((CraftCreature) creature).getHandle();
         ec.maxUpStep = 1;
 
-        if (loc == null)
-            return;
+        if (loc == null) return;
 
         ec.yHeadRot = loc.getYaw();
         Path path = ec.getNavigation().createPath(loc.getX(), loc.getY(), loc.getZ(), 1);
@@ -280,16 +275,9 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void playChestAnimation(Block b, boolean open, TreasureChestDesign design) {
-        Location location = b.getLocation();
-        Level world = ((CraftWorld) location.getWorld()).getHandle();
-        BlockPos position = new BlockPos(location.getX(), location.getY(), location.getZ());
-        if (design.getChestType() == ChestType.ENDER) {
-            EnderChestBlockEntity tileChest = (EnderChestBlockEntity) world.getBlockEntity(position);
-            world.blockEvent(position, tileChest.getBlockState().getBlock(), 1, open ? 1 : 0);
-        } else {
-            ChestBlockEntity tileChest = (ChestBlockEntity) world.getBlockEntity(position);
-            world.blockEvent(position, tileChest.getBlockState().getBlock(), 1, open ? 1 : 0);
-        }
+        BlockState state = b.getState();
+        ((Lidded) state).open();
+        state.update();
     }
 
     @Override
