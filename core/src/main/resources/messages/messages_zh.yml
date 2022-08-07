@@ -572,13 +572,13 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&l烈焰'
-    skill: '&e蹲下&7 即可 &a起飞'
+    skill: '&eSneak&7 to: &aFly'
   Chicken:
     name: '&f&l鸡'
-    skill: '&e蹲下&7 即可： &a铺腿'
+    skill: '&eSneak&7 to: &aLay eggs'
   Slime:
     name: '&a&l史莱姆'
-    skill: '&e蹲下&7 即可: &a蹦蹦跳跳'
+    skill: '&eSneak&7 to: &aBounce'
   Pig:
     name: '&d&l猪'
     skill: '&e碰撞&7 即可: &a弹起玩家'
@@ -590,7 +590,7 @@ Morphs:
     skill: '&e二段跳&7 即可:&a扇动翅膀'
   Creeper:
     name: '&a&l苦力怕'
-    skill: '&e蹲下&7 即可: &a引爆'
+    skill: '&eSneak&7 to: &aDetonate'
     charging: '&a&l充能中: %chargelevel%/100'
     release-to-explode: '&f&l释放即爆炸！'
   Snowman:
@@ -612,7 +612,7 @@ Morphs:
     skill: '&e左键点击&7 即可: &a改变颜色'
   Mooshroom:
     name: '&c&l哞菇'
-    skill: '&e蹲下&7 即可: &a扔出一碗汤'
+    skill: '&eSneak&7 to: &aSoup Throw'
   Villager:
     name: '&a&l村民'
     skill: '&e左键点击&7 即可: &a扔出绿宝石'
