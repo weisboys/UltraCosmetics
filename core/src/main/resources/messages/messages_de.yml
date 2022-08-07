@@ -574,13 +574,13 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&lLohe'
-    skill: '&eSchleichen&7: &afliegen'
+    skill: '&eSneak&7 to: &aFly'
   Chicken:
     name: '&f&lHuhn'
-    skill: '&eSchleichen&7: &aEier legen'
+    skill: '&eSneak&7 to: &aLay eggs'
   Slime:
     name: '&a&lSchleim'
-    skill: '&eSchleichen&7: &aspringen'
+    skill: '&eSneak&7 to: &aBounce'
   Pig:
     name: '&d&lSchwein'
     skill: '&eKollidieren&7: &aSpieler wegstoßen'
@@ -592,7 +592,7 @@ Morphs:
     skill: '&eDoppelsprung&7: &afliegen'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eSchleichen&7: &aexplodieren'
+    skill: '&eSneak&7 to: &aDetonate'
     charging: '&a&lAufladen: %chargelevel%/100'
     release-to-explode: '&f&lLoslassen zum explodieren!'
   Snowman:
@@ -614,7 +614,7 @@ Morphs:
     skill: '&eLinksklick&7: &aFarbe ändern'
   Mooshroom:
     name: '&c&lMooshroom'
-    skill: '&eSchleichen&7: &aSuppe werfen'
+    skill: '&eSneak&7 to: &aSoup Throw'
   Villager:
     name: '&a&lDorfbewohner'
     skill: '&eLinksklick&7: &aSmaragd werfen'
