@@ -225,10 +225,10 @@ Gadgets:
       &7&oLedakkan beberapa orang!
       &7&oKABOOM!
   FunGun:
-    name: '&6&lFun Gun'
-    Description: '&7&oWoow! So much fun in a gun!'
+    name: '&6&lSenjata Meriah'
+    Description: '&7&oWoow! Banyak kemeriahan dalam sebuah senjata!'
   Parachute:
-    name: '&f&lParachute'
+    name: '&f&lParasut'
     Description: '&7&oGERONIMOOO!'
   QuakeGun:
     name: '&d&lTembakan &5&lGempa'
@@ -316,76 +316,76 @@ Mounts:
     entity-displayname: '&lNaga milik %playername%'
     Description: '&7&oMenjadi pengendara naga!'
   SkySquid:
-    menu-name: '&9&lSky Squid'
-    entity-displayname: '&l%playername%''s sky squid'
+    menu-name: '&9&lCumi Cumi Angkasa'
+    entity-displayname: '&lCumi Cumi Angkasa milik %playername%'
   HypeCart:
     menu-name: '&7&lHypeCart'
-    entity-displayname: '&l%playername%''s hypecart'
+    entity-displayname: '&lHypeCart milik %playername%'
     Description: |-
-      &7&oEver wanted to drive a F1?
-      &7&oNow you can!
+      &7&oIngin mengendarai sebuah F1?
+      &7&oSekarang anda bisa!
   Slime:
     menu-name: '&a&lSlime'
-    entity-displayname: '&l%playername%''s slime'
+    entity-displayname: '&lSlime milik %playername%'
     Description: '&7&oSplat! Splat!'
   Spider:
-    menu-name: '&8&lSpider'
-    entity-displayname: '&l%playername%''s spider'
-    Description: '&7&oYOU are the spider jockey!'
+    menu-name: '&8&lLaba Laba'
+    entity-displayname: '&lLaba Laba milik %playername%'
+    Description: '&7&oANDA adalah pengendara laba laba!'
   Rudolph:
     menu-name: '&f&lRudolp&4&lh'
-    entity-displayname: '&l%playername%''s rudolph'
+    entity-displayname: '&lRudolph milik %playername%'
     Description: |-
-      &7&oWhat would be Christmas
-      &7&owithout Rudolph the Reindeer?
+      &7&oApa yang akan terjadi jika Natal
+      &7&otanpa Rudolph the Reindeer?
   MoltenSnake:
-    menu-name: '&c&lMolten Snake'
-    entity-displayname: '&l%playername%''s Molten Snake'
+    menu-name: '&c&lUlar Cair'
+    entity-displayname: '&lUlar Cair milik %playername%'
     Description: |-
-      &7&oDeep under the Earth's surface, there
-      &7&oexists a mythical species of Molten
-      &7&oSnakes. This one will serve you eternally.
+      &7&oDalam di bawah permukaan Bumi, ada
+      &7&ospesies mitos dari Ular
+      &7&oCair. Hewan ini akan melayani anda selamanya.
   FlyingShip:
-    menu-name: '&a&lFlying Ship'
-    entity-displayname: '&l%playername%''s Flying Ship'
-  Equip: '%prefix% &9You spawned %mountname%'
-  Unequip: '%prefix% &9You despawned %mountname%'
-  Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
-  Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
+    menu-name: '&a&lKapal Terbang'
+    entity-displayname: '&lKapal Terbang milik %playername%'
+  Equip: '%prefix% &9Anda memanggil %mountname%'
+  Unequip: '%prefix% &9Anda menyimpan %mountname%'
+  Cant-Spawn: '%prefix% &c&lMonster tidak bisa dipanggil di sini!'
+  Not-Enough-Room: '%prefix% &c&lTidak ada cukup ruang untuk sebuah kendaraan disini!'
 Particle-Effects:
-  Equip: '%prefix% &9You summoned %effectname%'
-  Unequip: '%prefix% &9You unsummoned %effectname%'
+  Equip: '%prefix% &9Anda menggunakan %effectname%'
+  Unequip: '%prefix% &9Anda melepas %effectname%'
   RainCloud:
-    name: '&9&lRain Cloud'
+    name: '&9&lAwan Hujan'
     Description: |-
-      &7&oThe weather forecast
-      &7&ois telling me it's raining.
+      &7&oRamalan Cuaca
+      &7&omemberitahuku bahwa akan ada hujan.
   SnowCloud:
-    name: '&f&lSnow Cloud'
+    name: '&f&lAwan Salju'
     Description: |-
-      &7&oThe weather forecast
-      &7&ois telling me it's snowing.
+      &7&oRamalan Cuaca
+      &7&omemberitahuku bahwa akan ada hujan salju.
   BloodHelix:
-    name: '&4&lBlood Helix'
+    name: '&4&lDarah Helix'
     Description: |-
-      &7&oAncient legend says this magic
-      &7&oempowers the blood of its user,
-      &7&ogiving them godly powers..
+      &7&oLegenda kuno memberitahu bahwa sihir ini
+      &7&omemperkuat darah dari penggunanya,
+      &7&omemberikan mereka kekuatan dewa..
   FrostLord:
-    name: '&b&lFrost Lord'
-    Description: '&7&oI am The Almighty Frostlord!'
+    name: '&b&lRaja Es'
+    Description: '&7&oSaya adalah Raja Es yang Mahakuasa!'
   FlameRings:
-    name: '&c&lFlame Rings'
-    Description: '&7&oWatch out! They are hot!'
+    name: '&c&lCincin Api'
+    Description: '&7&oHati hati! Mereka panas!'
   GreenSparks:
-    name: '&a&lGreen Sparks'
-    Description: '&7&oLittle and green sparkly sparks!'
+    name: '&a&lPercikan api hijau'
+    Description: '&7&oPercikan hijau dan kecil!'
   InLove:
-    name: '&c&lIn Love'
-    Description: '&7&oOMG wow I''m in love!'
+    name: '&c&lJatuh Cinta'
+    Description: '&7&owow Omg aku sedang Jatuh Cinta!'
   FrozenWalk:
-    name: '&b&lFrozen Walk'
-    Description: '&7&oMy feet are so cold!'
+    name: '&b&lLangkah Beku'
+    Description: '&7&oKaki ku sangat dingin!'
   Enchanted:
     name: '&7&lEnchanted'
     Description: '&7&oBecome an almighty enchanter!'
@@ -572,13 +572,13 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&lBlaze'
-    skill: '&eCrouch&7 to: &aFly'
+    skill: '&eSneak&7 to: &aFly'
   Chicken:
     name: '&f&lChicken'
-    skill: '&eCrouch&7 to: &aLay eggs'
+    skill: '&eSneak&7 to: &aLay eggs'
   Slime:
     name: '&a&lSlime'
-    skill: '&eCrouch&7 to: &aBounce'
+    skill: '&eSneak&7 to: &aBounce'
   Pig:
     name: '&d&lPig'
     skill: '&eCollide&7 to: &aBounce Players'
@@ -590,7 +590,7 @@ Morphs:
     skill: '&eDouble Jump&7 to: &aFlap'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eCrouch&7 to: &aDetonate'
+    skill: '&eSneak&7 to: &aDetonate'
     charging: '&a&lCharging: %chargelevel%/100'
     release-to-explode: '&f&lRelease to explode!'
   Snowman:
@@ -612,7 +612,7 @@ Morphs:
     skill: '&eLeft-Click&7 to: &aChange Colors'
   Mooshroom:
     name: '&c&lMooshroom'
-    skill: '&eCrouch&7 to: &aSoup Throw'
+    skill: '&eSneak&7 to: &aSoup Throw'
   Villager:
     name: '&a&lVillager'
     skill: '&eLeft-Click&7 to: &aEmerald Throw'
