@@ -21,6 +21,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
@@ -50,13 +51,16 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
     protected void onRightClick() {
         play(XSound.ENTITY_FIREWORK_ROCKET_LAUNCH, getPlayer().getLocation(), 2.0f, 1.0f);
         getPlayer().setVelocity(new Vector(0, 3, 0));
-        final BukkitTask task = Bukkit.getScheduler().runTaskTimer(getUltraCosmetics(), () -> {
-            if (getOwner() != null && getPlayer() != null && isEquipped()) {
-                Particles.CLOUD.display(getPlayer().getLocation());
-            } else {
-                cancel();
+        final BukkitTask task = new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (getOwner() != null && getPlayer() != null && isEquipped()) {
+                    Particles.CLOUD.display(getPlayer().getLocation());
+                } else {
+                    cancel();
+                }
             }
-        }, 0, 1);
+        }.runTaskTimer(getUltraCosmetics(), 0, 1);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             if (getOwner() != null && getPlayer() != null && isEquipped()) {
                 task.cancel();
