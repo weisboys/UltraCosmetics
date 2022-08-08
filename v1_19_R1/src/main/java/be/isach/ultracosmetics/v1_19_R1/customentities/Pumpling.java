@@ -55,8 +55,7 @@ public class Pumpling extends Zombie {
 
     @Override
     protected void playStepSound(BlockPos blockposition, BlockState iblockdata) {
-        if (isCustomEntity())
-            return;
+        if (isCustomEntity()) return;
         super.playStepSound(blockposition, iblockdata);
     }
 
@@ -67,5 +66,10 @@ public class Pumpling extends Zombie {
 
     private boolean isCustomEntity() {
         return CustomEntities.isCustomEntity(this);
+    }
+
+    @Override
+    public boolean convertsInWater() {
+        return false;
     }
 }

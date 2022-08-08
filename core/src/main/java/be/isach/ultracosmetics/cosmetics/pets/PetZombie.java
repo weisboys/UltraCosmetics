@@ -14,7 +14,7 @@ public class PetZombie extends Pet {
     public PetZombie(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
         super(owner, ultraCosmetics, PetType.getByName("zombie"));
     }
-    
+
     @Override
     public void onUpdate() {
         super.onUpdate();

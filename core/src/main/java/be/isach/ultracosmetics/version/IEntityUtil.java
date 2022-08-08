@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.version;
 
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
+
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Creature;

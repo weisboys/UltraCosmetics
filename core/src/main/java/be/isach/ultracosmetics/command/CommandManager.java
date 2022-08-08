@@ -12,9 +12,11 @@ import be.isach.ultracosmetics.command.subcommands.SubCommandSelfView;
 import be.isach.ultracosmetics.command.subcommands.SubCommandToggle;
 import be.isach.ultracosmetics.command.subcommands.SubCommandTreasure;
 import be.isach.ultracosmetics.command.subcommands.SubCommandTreasureNotification;
+import be.isach.ultracosmetics.command.subcommands.SubCommandTroubleshoot;
 import be.isach.ultracosmetics.command.subcommands.SubCommandUpdate;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.MathUtils;
+import be.isach.ultracosmetics.util.Problem;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -25,6 +27,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Command manager.
@@ -44,6 +47,7 @@ public class CommandManager implements CommandExecutor {
         PluginCommand cmd = ultraCosmetics.getCommand("ultracosmetics");
         cmd.setExecutor(this);
         cmd.setTabCompleter(new UCTabCompleter(ultraCosmetics));
+        registerCommands();
     }
 
     /**
@@ -89,8 +93,11 @@ public class CommandManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (ultraCosmetics.getFailReason() != null) {
-            sender.sendMessage(ChatColor.RED + "Plugin is currently disabled because: " + ultraCosmetics.getFailReason());
+        Set<Problem> problems = ultraCosmetics.getSevereProblems();
+        if (problems.size() > 0) {
+            sender.sendMessage(ChatColor.RED + "Plugin is currently disabled because:");
+            problems.forEach(p -> sender.sendMessage(ChatColor.RED + p.getDescription()));
+            SubCommandTroubleshoot.sendSupportMessage(sender);
             return true;
         }
 
@@ -136,7 +143,7 @@ public class CommandManager implements CommandExecutor {
         return commands;
     }
 
-    public void registerCommands(UltraCosmetics ultraCosmetics) {
+    public void registerCommands() {
         registerCommand(new SubCommandGadgets(ultraCosmetics));
         registerCommand(new SubCommandSelfView(ultraCosmetics));
         registerCommand(new SubCommandMenu(ultraCosmetics));
@@ -150,5 +157,6 @@ public class CommandManager implements CommandExecutor {
         registerCommand(new SubCommandReward(ultraCosmetics));
         registerCommand(new SubCommandReload(ultraCosmetics));
         registerCommand(new SubCommandUpdate(ultraCosmetics));
+        registerCommand(new SubCommandTroubleshoot(ultraCosmetics));
     }
 }

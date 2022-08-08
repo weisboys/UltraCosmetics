@@ -13,6 +13,7 @@ import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
+import be.isach.ultracosmetics.listeners.PriorityListener;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.permissions.LuckPermsHook;
@@ -27,13 +28,15 @@ import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
+import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
-import be.isach.ultracosmetics.util.UpdateManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.UpdateManager;
 import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.AFlagManager;
+import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
 
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
@@ -60,8 +63,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -137,9 +142,9 @@ public class UltraCosmetics extends JavaPlugin {
     private boolean enableFinished = false;
 
     /**
-     * Stores the reason plugin load failed, if any.
+     * Problems with the configuration of UC, severe (aka fatal) or otherwise
      */
-    private String failReason = null;
+    private Set<Problem> activeProblems = new HashSet<>();
 
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
@@ -151,8 +156,11 @@ public class UltraCosmetics extends JavaPlugin {
 
         UltraCosmeticsData.init(this);
 
-        failReason = UltraCosmeticsData.get().checkServerVersion();
-        if (failReason != null) return;
+        Problem problem = UltraCosmeticsData.get().checkServerVersion();
+        if (problem != null) {
+            activeProblems.add(problem);
+            return;
+        }
 
         // Use super.getConfig() because CustomConfiguration doesn't load until onEnable
         boolean worldGuardIntegration = super.getConfig().getBoolean("WorldGuard-Integration", true);
@@ -173,6 +181,7 @@ public class UltraCosmetics extends JavaPlugin {
                 getSmartLogger().write(LogLevel.WARNING, "for your version of Minecraft. Debug info:");
                 e.printStackTrace();
                 getSmartLogger().write("WorldGuard support is disabled.");
+                activeProblems.add(Problem.WORLDGUARD_HOOK_FAILURE);
             }
         }
     }
@@ -186,11 +195,14 @@ public class UltraCosmetics extends JavaPlugin {
         // so we can print helpful error messages about
         // why the plugin didn't start correctly.
         commandManager = new CommandManager(this);
+
+        // Also register early so we can send a message about issues.
+        getServer().getPluginManager().registerEvents(new PriorityListener(this), this);
         // Set up config.
         if (!setUpConfig()) {
             getSmartLogger().write(LogLevel.ERROR, "Failed to load config.yml, shutting down to protect data.");
             getSmartLogger().write(LogLevel.ERROR, "Please run config.yml through a YAML checker site.");
-            failReason = "Failed to load config.yml, please run it through a YAML checker";
+            activeProblems.add(Problem.BAD_CONFIG);
             return;
         }
 
@@ -242,7 +254,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         // Initialize NMS Module
         if (!UltraCosmeticsData.get().initModule()) {
-            failReason = "Failed to load NMS module";
+            // This method sets its own problems
             return;
         }
 
@@ -250,7 +262,7 @@ public class UltraCosmetics extends JavaPlugin {
         if (!MessageManager.success()) {
             getSmartLogger().write(LogLevel.ERROR, "Failed to load messages.yml, shutting down to protect data.");
             getSmartLogger().write(LogLevel.ERROR, "Please run messages.yml through a YAML checker site.");
-            failReason = "Failed to load messages.yml, please run it through a YAML checker";
+            activeProblems.add(Problem.BAD_MESSAGES);
             return;
         }
 
@@ -260,9 +272,6 @@ public class UltraCosmetics extends JavaPlugin {
         // Register Listeners.
         registerListeners();
 
-        // Register the command pt. 2
-        commandManager.registerCommands(this);
-
         // Set up Cosmetics config.
         new CosmeticManager(this).setupCosmeticsConfigs();
 
@@ -271,12 +280,14 @@ public class UltraCosmetics extends JavaPlugin {
             if (!Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")) {
                 getSmartLogger().write();
                 getSmartLogger().write(LogLevel.WARNING, "Morphs require Lib's Disguises, but it is not installed. Morphs will be disabled.");
+                // TODO: make this a Problem?
             } else {
                 try {
                     // Option is not present on older versions of LibsDisguises, added in commit af492c2
                     if (!DisguiseConfig.isTallSelfDisguises()) {
                         getSmartLogger().write();
                         getSmartLogger().write(LogLevel.WARNING, "You have TallSelfDisguises disabled in LibsDisguises's players.yml. Self view of morphs may not work as expected.");
+                        activeProblems.add(Problem.TALL_DISGUISES_DISABLED);
                     }
                 } catch (NoSuchMethodError ignored) {
                 }
@@ -307,6 +318,7 @@ public class UltraCosmetics extends JavaPlugin {
                 getSmartLogger().write("Connected to MySQL database.");
             } else {
                 getSmartLogger().write("File storage will be used instead.");
+                activeProblems.add(Problem.SQL_INIT_FAILURE);
             }
         }
         playerManager.initPlayers();
@@ -393,13 +405,17 @@ public class UltraCosmetics extends JavaPlugin {
     }
 
     private void setupPermissionProvider() {
-        if (SettingsManager.getConfig().getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
+        CustomConfiguration config = SettingsManager.getConfig();
+        if (config.getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
             if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
                 permissionProvider = new LuckPermsHook(this);
                 return;
             }
             getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present. Please change it manually.");
-            SettingsManager.getConfig().set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
+            config.set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
+        }
+        if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
+            activeProblems.add(Problem.PERMISSION_COMMAND_NOT_SET);
         }
         permissionProvider = new PermissionCommand();
     }
@@ -409,6 +425,7 @@ public class UltraCosmetics extends JavaPlugin {
             if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
                 getSmartLogger().write(LogLevel.ERROR, "WorldGuard is not enabled yet! Is WorldGuard up to date? Is another plugin interfering with the load order?");
                 getSmartLogger().write(LogLevel.ERROR, "WorldGuard support will be disabled.");
+                activeProblems.add(Problem.WORLDGUARD_HOOK_FAILURE);
                 flagManager = null;
                 return;
             }
@@ -634,7 +651,7 @@ public class UltraCosmetics extends JavaPlugin {
             e1.printStackTrace();
         }
 
-        config.set("Supported-Languages", supportedLanguages, "Languagues supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
+        config.set("Supported-Languages", supportedLanguages, "Languages supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
         config.addDefault("Language", "en", "The language to use. Can be set to any language listed above.");
 
         upgradeIdsToMaterials();
@@ -852,14 +869,21 @@ public class UltraCosmetics extends JavaPlugin {
         }
     }
 
-    public String getFailReason() {
-        return failReason;
+    public void addProblem(Problem problem) {
+        activeProblems.add(problem);
     }
 
-    // has to be outside AFlagManager because AFlagManager cannot load if WorldGuard is not present
-    public enum CosmeticRegionState {
-        BLOCKED_ALL,
-        BLOCKED_CATEGORY,
-        ALLOWED,
+    public void removeProblem(Problem problem) {
+        activeProblems.remove(problem);
+    }
+
+    public Set<Problem> getProblems() {
+        return activeProblems;
+    }
+
+    public Set<Problem> getSevereProblems() {
+        Set<Problem> severe = new HashSet<>(activeProblems);
+        severe.removeIf(p -> !p.isSevere());
+        return severe;
     }
 }
