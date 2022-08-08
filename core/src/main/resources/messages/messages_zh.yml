@@ -660,9 +660,9 @@ Hats:
     Description: '&7&o需要补给'
   Crying:
     Name: '&9&l哭'
-    Description: '&7&o我每时每刻都在哭'
+    Description: '&7&oI cri evrytiem'
   BigSmile:
-    Name: '&6&l大笑'
+    Name: '&6&lBig Smile'
     Description: '&7&o因为我真的很开心！'
   Wink:
     Name: '&e&l眨眼'
