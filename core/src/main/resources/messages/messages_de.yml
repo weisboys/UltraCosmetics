@@ -1,4 +1,4 @@
-Prefix: '&l&oKosmetika >&r'
+Prefix: '&l&oKosmetik >&r'
 No-Permission: '%prefix% &c&lDu hast keine Rechte für diesen Befehl!'
 Cosmetic-Disabled: '%prefix% &c&lDieses Item ist deaktiviert!'
 Invalid-Gadget: '%prefix% &c&lUngültiges Gadget!'
@@ -26,13 +26,13 @@ Dont-Have-Key: '&4&lDu brauchst einen Schlüssel!'
 Click-Open-Chest: '&aKlicken: Truhe öffnen'
 Click-Buy-Key: '&aKlicken: Schlüssel kaufen'
 Left-Click-Open-Chest: '&aLinksklick: Truhe öffnen'
-Right-Click-Simple: '&aRechtsklick: nur Kosmetika bekommen'
+Right-Click-Simple: '&aRechtsklick: nur Items bekommen'
 Your-Keys: '&7&oDeine Schlüssel: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lSchatzschlüssel &e&lfür $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lDu hast gewonnen: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lAlle Plätze sind besetzt, bitte warte und versuche es erneut'
 Clear:
-  Cosmetics: '&c&lAlle Items entfernen'
+  Cosmetics: '&c&lKosmetische Items entfernen'
   Gadgets: '&c&lAktuelles Gadget entfernen'
   Pets: '&c&lAktuelles Haustier entfernen'
   Mounts: '&c&lAktuelles Reittier entfernen'
@@ -243,8 +243,8 @@ Gadgets:
   Firework:
     name: '&c&lFeuerwerk'
     Description: |-
-      &7&oNeed to celebrate?
-      &7&oUse fireworks!
+      &7&oDu musst feiern?
+      &7&oBenutze Feuerwerk!
   ChristmasTree:
     name: '&2&lWeihnachtsbaum'
     Click-On-Block: '%prefix% &c&lBitte auf einen Block klicken!'
@@ -574,13 +574,13 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&lLohe'
-    skill: '&eSneak&7 to: &aFly'
+    skill: '&eSchleichen&7: &afliegen'
   Chicken:
     name: '&f&lHuhn'
-    skill: '&eSneak&7 to: &aLay eggs'
+    skill: '&eSchleichen&7: &aEier legen'
   Slime:
     name: '&a&lSchleim'
-    skill: '&eSneak&7 to: &aBounce'
+    skill: '&eSchleichen&7: &aspringen'
   Pig:
     name: '&d&lSchwein'
     skill: '&eKollidieren&7: &aSpieler wegstoßen'
@@ -592,7 +592,7 @@ Morphs:
     skill: '&eDoppelsprung&7: &afliegen'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eSneak&7 to: &aDetonate'
+    skill: '&eSchleichen&7: &aexplodieren'
     charging: '&a&lAufladen: %chargelevel%/100'
     release-to-explode: '&f&lLoslassen zum explodieren!'
   Snowman:
@@ -614,7 +614,7 @@ Morphs:
     skill: '&eLinksklick&7: &aFarbe ändern'
   Mooshroom:
     name: '&c&lMooshroom'
-    skill: '&eSneak&7 to: &aSoup Throw'
+    skill: '&eSchleichen&7: &aSuppe werfen'
   Villager:
     name: '&a&lDorfbewohner'
     skill: '&eLinksklick&7: &aSmaragd werfen'
@@ -662,9 +662,9 @@ Hats:
     Description: '&7&oDu wurdest zerstört'
   Crying:
     Name: '&9&lWeinen'
-    Description: '&7&oIch weine jedes Mal'
+    Description: '&7&oI cri evrytiem'
   BigSmile:
-    Name: '&6&lGroßes Lächeln'
+    Name: '&6&lBig Smile'
     Description: '&7&oWeil ich sehr fröhlich bin!'
   Wink:
     Name: '&e&lZwinkern'
@@ -938,16 +938,16 @@ Suits:
   Rave:
     whole-equip: '&f&lKompletter &b&lR&a&la&e&lv&6&le&f&l-Anzug'
     helmet-name: '&b&lR&a&la&e&lv&6&le&f&l-Helm'
-    chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Brustpanzer'
+    chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Jacke'
     leggings-name: '&b&lR&a&la&e&lv&6&le&f&l-Hose'
     boots-name: '&b&lR&a&la&e&lv&6&le&f&l-Stiefel'
     Description: '&7&oSuch amazing colors!'
   Astronaut:
-    whole-equip: '&f&lwhole &f&lAstronaut &f&lsuit'
-    helmet-name: '&f&lAstronaut &f&lHelmet'
-    chestplate-name: '&f&lAstronaut &f&lChestplate'
-    leggings-name: '&f&lAstronaut &f&lLeggings'
-    boots-name: '&f&lAstronaut &f&lBoots'
+    whole-equip: '&f&lKompletter &f&lAstronauten&f&l-Anzug'
+    helmet-name: '&f&lAstronauten&f&l-Helm'
+    chestplate-name: '&f&lAstronauten&f&l-Jacke'
+    leggings-name: '&f&lAstronauten&f&l-Hose'
+    boots-name: '&f&lAstronauten&f&l-Stiefel'
     Description: '&7&oHouston?'
   Diamond:
     whole-equip: '&f&lKompletter &b&lDiamant&f&l-Anzug'
@@ -960,10 +960,10 @@ Suits:
       &7&owith this amazing outfit!
   Santa:
     whole-equip: '&f&lKompletter &4&lWeihnachtsmann&f&l-Anzug'
-    helmet-name: '&f&lMütze des &4&lWeihnachtsmanns'
-    chestplate-name: '&f&lMantel des &4&lWeihnachtsmanns'
-    leggings-name: '&f&lHose des &4&lWeihnachtsmanns'
-    boots-name: '&f&lStiefel des &4&lWeihnachtsmanns'
+    helmet-name: '&4&lWeihnachtsmann&f&l-Mütze'
+    chestplate-name: '&4&lWeihnachtsmann&f&l-Mantel'
+    leggings-name: '&4&lWeihnachtsmann&f&l-Hose'
+    boots-name: '&4&lWeihnachtsmann&f&l-Stiefel'
     Description: '&7&oWerde zum Weihnachtsmann und liefere Geschenke!'
   Frozen:
     whole-equip: '&f&lKompletter &b&lgefrorener &f&lAnzug'
@@ -1002,7 +1002,7 @@ Emotes:
     Name: '&4&lLiebe'
     Description: '&7&oYou have beautiful eyes, do you know that?'
   DealWithIt:
-    Name: '&7&lDeal With it'
+    Name: '&7&lKomm damit klar'
     Description: '&7&oDo you feel like showing off? This emote is for you!'
   Cool:
     Name: '&9&lCool'
@@ -1013,14 +1013,14 @@ Emotes:
   Wink:
     Name: '&a&lZwinkern'
     Description: '&7&oHaving fun? Let someone know you are in on the joke'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
-Not-Allowed-From-Console: '&c&lThis can''t be executed from console!'
-World-Disabled: '%prefix% &c&lKosmetika sind in dieser Welt deaktiviert!'
-Region-Disabled: '%prefix% &c&lKosmetika sind in dieser Region deaktiviert!'
-Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
-Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
-Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
+  Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm abnehmen, um ein Emote auszurüsten!'
+Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
+Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
+Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
+Disabled-Gadgets: '%prefix% &9Du hast Gadgets deaktiviert!'
+Not-Allowed-From-Console: '&c&lDas kann nicht von der Konsole ausgeführt werden!'
+World-Disabled: '%prefix% &c&lKosmetische Items sind in dieser Welt deaktiviert!'
+Region-Disabled: '%prefix% &c&lKosmetische Items sind in dieser Region deaktiviert!'
+Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region deaktiviert!'
+Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
+Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
