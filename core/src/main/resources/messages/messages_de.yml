@@ -262,8 +262,8 @@ Gadgets:
   PartyPopper:
     name: '&e&lKonfettikanone'
     Description: |-
-      &7&oCelebrate by blasting confetti into
-      &7&othe air!
+      &7&oFeier indem du Konfetti
+      &7&oin die Luft schießt!
   Trampoline:
     name: '&9&lTrampolin'
     Description: |-
@@ -274,8 +274,8 @@ Gadgets:
   Lore: '&9Gadget'
 Mounts:
   DruggedHorse:
-    menu-name: '&2&lDrugged Horse'
-    entity-displayname: '&l%playername%''s drugged horse'
+    menu-name: '&2&lBetrunkenes Pferd'
+    entity-displayname: '&l%playername%''s Betrunkenes Pferd'
     Description: '&7&oDas ist einfach zu viel!'
   InfernalHorror:
     menu-name: '&4&lInfernaler Horror'
@@ -332,7 +332,7 @@ Mounts:
   Spider:
     menu-name: '&8&lSpinne'
     entity-displayname: '&l%playername%''s Spinne'
-    Description: '&7&oYOU are the spider jockey!'
+    Description: '&7&oDU bist der Spinnenreiter!'
   Rudolph:
     menu-name: '&f&lRudolp&4&lh'
     entity-displayname: '&l%playername%''s Rudolph'
@@ -353,20 +353,20 @@ Mounts:
   Equip: '%prefix% &9Du hast %mountname% ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
-  Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
+  Not-Enough-Room: '%prefix% &c&lHier ist nicht genug Platz für ein Reittier!'
 Particle-Effects:
   Equip: '%prefix% &9Du hast %effectname% ausgerüstet'
   Unequip: '%prefix% &9Du hast %effectname% entfernt'
   RainCloud:
     name: '&9&lRegenwolke'
     Description: |-
-      &7&oThe weather forecast
-      &7&ois telling me it's raining.
+      &7&oDer Wetterbericht sagt,
+      &7&odass es regnet.
   SnowCloud:
     name: '&f&lSchneewolke'
     Description: |-
-      &7&oThe weather forecast
-      &7&ois telling me it's snowing.
+      &7&oDer Wetterbericht sagt,
+      &7&odass es schneit.
   BloodHelix:
     name: '&4&lBlutspirale'
     Description: |-
@@ -386,7 +386,7 @@ Particle-Effects:
     name: '&c&lVerliebt'
     Description: '&7&oOMG wow ich bin verliebt!'
   FrozenWalk:
-    name: '&b&lFrozen Walk'
+    name: '&b&lGefrorene Schritte'
     Description: '&7&oMeine Füße sind so kalt!'
   Enchanted:
     name: '&7&lVerzaubert'
@@ -396,7 +396,7 @@ Particle-Effects:
     Description: '&7&oViel Musik!'
   Inferno:
     name: '&4&lInferno'
-    Description: '&7&oEffect created by Satan himself!'
+    Description: '&7&oEffekt, der von Satan selbst erstellt wurde!'
   AngelWings:
     name: '&f&lEngelsflügel'
     Description: '&7&oWerde ein Engel!'
@@ -418,13 +418,13 @@ Particle-Effects:
       &7&oThese mystic particle attach to
       &7&oonly the most legendary of players!
   FlameFairy:
-    name: '&6&lFlame Fairy'
+    name: '&6&lFlammenfee'
     Description: '&7&oHEY!!'
   MagicalRods:
-    name: '&8&lMagical Rods'
-    Description: '&7&oMay these magical rods protect you!'
+    name: '&8&lMagische Stangen'
+    Description: '&7&oMögen diese magischen Stangen dich schützen!'
   FireWaves:
-    name: '&e&lFire Waves'
+    name: '&e&lFeuerwellen'
     Description: '&7&oSome say theses waves of fire acts as a shield...'
 Pets:
   Piggy:
@@ -540,7 +540,7 @@ Pets:
   Blaze:
     menu-name: '&c&lLohe'
     entity-displayname: '&l%playername%''s Lohe'
-    Description: '&7&oFlying and hot!'
+    Description: '&7&oFliegend und heiß!'
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&l%playername%''s Creeper'
@@ -664,7 +664,7 @@ Hats:
     Name: '&9&lWeinen'
     Description: '&7&oI cri evrytiem'
   BigSmile:
-    Name: '&6&lBig Smile'
+    Name: '&6&lGroßes Lächeln'
     Description: '&7&oWeil ich sehr fröhlich bin!'
   Wink:
     Name: '&e&lZwinkern'
@@ -710,7 +710,7 @@ Hats:
     Description: '&7&oOink Oink!'
   Golem:
     Name: '&7&lGolem'
-    Description: '&7&oI''m your guard.'
+    Description: '&7&oIch bin dein Schutz.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
@@ -743,7 +743,7 @@ Hats:
     Description: '&7&oHo ho ho! Frohe Weihnachten!'
   Snowman:
     Name: '&f&lSchneemann'
-    Description: '&7&oI don''t have a skull.. or bones'
+    Description: '&7&oIch hab keinen Schädel... oder Knochen'
   Present:
     Name: '&c&lGeschenk'
     Description: '&7&oVom Weihnachtsmann, für dich!'
@@ -941,7 +941,7 @@ Suits:
     chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Jacke'
     leggings-name: '&b&lR&a&la&e&lv&6&le&f&l-Hose'
     boots-name: '&b&lR&a&la&e&lv&6&le&f&l-Stiefel'
-    Description: '&7&oSuch amazing colors!'
+    Description: '&7&oSo tolle Farben!'
   Astronaut:
     whole-equip: '&f&lKompletter &f&lAstronauten&f&l-Anzug'
     helmet-name: '&f&lAstronauten&f&l-Helm'
@@ -972,11 +972,11 @@ Suits:
     leggings-name: '&b&lGefrorene &f&lHose'
     boots-name: '&b&lGefrorene &f&lStiefel'
     Description: |-
-      &7&oThis suit belongs to the
-      &7&oLord of the Frozen Lands!
+      &7&oDieser Anzug gehört dem
+      &7&oLord der gefrorenen Lande!
   Equip: '%prefix% &9Du hast %suitname% ausgerüstet!'
   Unequip: '%prefix% &9Du hast %suitname% entfernt!'
-  Suit-Part-Lore: '&9Suits Part'
+  Suit-Part-Lore: '&9Anzug-Teil'
   Whole-Equip-Lore: '&7&oRüste den ganzen Anzug aus!'
   Must-Remove:
     HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
@@ -1000,7 +1000,7 @@ Emotes:
     Description: '&7&oDu bist gerne frech? Nun, dieses Emote ist für dich!'
   Love:
     Name: '&4&lLiebe'
-    Description: '&7&oYou have beautiful eyes, do you know that?'
+    Description: '&7&oDu hast schöne Augen, weißt du das?'
   DealWithIt:
     Name: '&7&lKomm damit klar'
     Description: '&7&oDo you feel like showing off? This emote is for you!'
