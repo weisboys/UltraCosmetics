@@ -367,12 +367,12 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             return false; // we just opened another inventory, don't close it
         }
 
-        if (clicked.getItemMeta().getDisplayName().startsWith(category.getDeactivateTooltip())) {
+        if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getDeactivateTooltip())) {
             toggleOff(ultraPlayer, cosmeticType);
             if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
                 open(ultraPlayer, currentPage);
             }
-        } else if (clicked.getItemMeta().getDisplayName().startsWith(category.getActivateTooltip())) {
+        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getActivateTooltip())) {
             if (!ultraPlayer.hasPermission(cosmeticType.getPermission())) {
                 ultraPlayer.sendMessage(MessageManager.getMessage("No-Permission"));
                 return true;
@@ -383,6 +383,10 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             }
         }
         return true;
+    }
+
+    protected boolean startsWithColorless(String a, String b) {
+        return ChatColor.stripColor(a).startsWith(ChatColor.stripColor(b));
     }
 
     protected boolean shouldHideItem(UltraPlayer player, CosmeticType<?> cosmeticType) {
