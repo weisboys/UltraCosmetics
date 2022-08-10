@@ -67,7 +67,7 @@ public class ItemFactory {
     }
 
     public static ItemStack rename(ItemStack itemstack, String displayName) {
-        return rename(itemstack, displayName, (String[])null);
+        return rename(itemstack, displayName, (String[]) null);
     }
 
     public static ItemStack rename(ItemStack itemstack, String displayName, String... lore) {
@@ -76,8 +76,9 @@ public class ItemFactory {
         if (lore != null) {
             List<String> finalLore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
             for (String s : lore) {
-                if (s != null) {
-                    finalLore.add(ChatColor.translateAlternateColorCodes('&', s));
+                if (s == null) continue;
+                for (String line : s.split("\n")) {
+                    finalLore.add(ChatColor.translateAlternateColorCodes('&', line));
                 }
             }
             meta.setLore(finalLore);
@@ -110,8 +111,7 @@ public class ItemFactory {
         if (SettingsManager.getConfig().getBoolean("Fill-Blank-Slots-With-Item.Enabled")) {
             for (int i = 0; i < inventory.getSize(); i++) {
                 if (inventory.getItem(i) == null
-                        || inventory.getItem(i).getType() == Material.AIR)
-                    inventory.setItem(i, fillerItem);
+                        || inventory.getItem(i).getType() == Material.AIR) inventory.setItem(i, fillerItem);
             }
         }
     }
@@ -169,7 +169,8 @@ public class ItemFactory {
         Method setProfileMethod = null;
         try {
             setProfileMethod = headMeta.getClass().getDeclaredMethod("setProfile", GameProfile.class);
-        } catch (NoSuchMethodException | SecurityException ignored) {}
+        } catch (NoSuchMethodException | SecurityException ignored) {
+        }
         try {
             // if available, we use setProfile(GameProfile) so that it sets both the profile field and the
             // serialized profile field for us. If the serialized profile field isn't set

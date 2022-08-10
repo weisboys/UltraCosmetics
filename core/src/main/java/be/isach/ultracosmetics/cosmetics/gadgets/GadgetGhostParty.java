@@ -65,6 +65,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     }
 
     private void killBats() {
+        if (bats == null) return;
         for (Bat bat : bats.getEntities()) {
             bat.getPassengers().forEach(e -> e.remove());
         }
