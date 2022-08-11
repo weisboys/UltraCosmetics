@@ -6,7 +6,7 @@ Invalid-Pet: '%prefix% &c&lUngültiges Haustier!'
 Invalid-Mount: '%prefix% &c&lUngültiges Reittier!'
 Invalid-Effect: '%prefix% &c&lUngültiger Effekt!'
 Invalid-Morph: '%prefix% &c&lUngültige Verwandlung!'
-Invalid-Hat: '%prefix% &c&lUngültiger Kopf!'
+Invalid-Hat: '%prefix% &c&lUngültiger Hut!'
 Invalid-Suit: '%prefix% &c&lUngültiger Anzug!'
 Invalid-Emote: '%prefix% &c&lUngültiges Emote!'
 Invalid-Menu: '%prefix% &c&lUngültiges Menü!'
@@ -38,7 +38,7 @@ Clear:
   Mounts: '&c&lAktuelles Reittier entfernen'
   Particle-Effects: '&c&lAktuellen Effekt entfernen'
   Morphs: '&c&lAktuelle Verwandlung entfernen'
-  Hats: '&c&lAktuellen Kopf entfernen'
+  Hats: '&c&lAktuellen Hut entfernen'
   Suits: '&c&lAktuellen Anzug entfernen'
   Emotes: '&c&lAktuelles Emote entfernen'
 Menu:
@@ -80,9 +80,9 @@ Menu:
       Tooltip-Equip: '&b&lVerwandeln'
       Tooltip-Unequip: '&c&lVerwandlung beenden'
   Hats:
-    Title: '&lKöpfe'
+    Title: '&lHüte'
     Button:
-      Name: '&b&lKöpfe'
+      Name: '&b&lHüte'
       Tooltip-Equip: '&b&lAusrüsten'
       Tooltip-Unequip: '&c&lNicht mehr ausrüsten'
   Particle-Effects:
@@ -124,7 +124,7 @@ Treasure-Chests-Loot:
   Mount: '%mount% Reittier'
   Effect: '%effect% Effekt'
   Morph: '%morph% Verwandlung'
-  Hat: '%hat% Kopf'
+  Hat: '%hat% Hut'
   Money: '&e&l%money%$'
   Gadget: '%gadget% Gadget'
   Suit: '%suit%'
@@ -233,8 +233,8 @@ Gadgets:
   QuakeGun:
     name: '&5&lQuake &d&lWaffe'
     Description: |-
-      &7&oGet a real Rail Gun
-      &7&oand strike players and mobs!
+      &7&oHol dir eine echte Railgun
+      &7&ound triff Spieler und Kreaturen!
   GhostParty:
     name: '&f&lGeisterparty'
     Description: |-
@@ -310,14 +310,12 @@ Mounts:
   Snake:
     menu-name: '&6&lSchlange'
     entity-displayname: '&l%playername%''s Schlange'
-    Description: '&7&oAchtung! Es kann beißen..'
+    Description: '&7&oAchtung! Es kann beißen...'
   Dragon:
     menu-name: '&5&lDrache'
     entity-displayname: '&l%playername%''s Drache'
     Description: '&7&oWerde ein Drachenreiter!'
-  SkySquid:
-    menu-name: '&9&lHimmel-Tintenfisch'
-    entity-displayname: '&l%playername%''s Himmel-Tintenfisch'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&l%playername%''s HypeCart'
@@ -372,7 +370,7 @@ Particle-Effects:
     Description: |-
       &7&oAncient legend says this magic
       &7&oempowers the blood of its user,
-      &7&ogiving them godly powers..
+      &7&ogiving them godly powers...
   FrostLord:
     name: '&b&lFrostlord'
     Description: '&7&oIch bin der allmächtige Frostlord!'
@@ -407,7 +405,7 @@ Particle-Effects:
     name: '&4&lWeihnachtsmann&f&lmütze'
     Description: '&7&oWerde zum Weihnachtsmann!'
   CrushedCandyCane:
-    name: '&4&lCrushed &f&lCandy &4&lCane'
+    name: '&4&lZerkleinerte &f&lZucker&4&lstange'
     Description: |-
       &7&oThere's no such thing as too much
       &7&oChristmas Candy. Do not listen
@@ -425,7 +423,7 @@ Particle-Effects:
     Description: '&7&oMögen diese magischen Stangen dich schützen!'
   FireWaves:
     name: '&e&lFeuerwellen'
-    Description: '&7&oSome say theses waves of fire acts as a shield...'
+    Description: '&7&oMan sagt, dass diese Feuerwellen ein Schild sind...'
 Pets:
   Piggy:
     menu-name: '&d&lSchwein'
@@ -458,7 +456,7 @@ Pets:
   Wither:
     menu-name: '&8&lWither'
     entity-displayname: '&l%playername%''s Wither'
-    Description: '&7&oNimm dich vor mir in Acht..'
+    Description: '&7&oNimm dich vor mir in Acht...'
   Pumpling:
     menu-name: '&6&lKürbis'
     entity-displayname: '&l%playername%''s Kürbis'
@@ -544,15 +542,15 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&l%playername%''s Creeper'
-    Description: '&7&oLikes blowing up your favorite Stuff...'
+    Description: '&7&oMag es Sachen in die Luft zu sprengen...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
-    Description: '&7&oDont look at it or it will hunt you!'
+    Description: '&7&oDon''t look at it or it will hunt you!'
   Skeleton:
     menu-name: '&f&lSkelett'
     entity-displayname: '&l%playername%''s Skelett'
-    Description: '&7&oWatch out, it will try to shoot you!'
+    Description: '&7&oAchtung, es wird versuchen dich zu erschießen!'
   Zombie:
     menu-name: '&2&lZombie'
     entity-displayname: '&l%playername%''s Zombie'
@@ -631,8 +629,8 @@ Morphs:
     name: '&a&lPapagei'
     skill: '&eDoppelsprung&7: &afliegen'
 Hats:
-  Equip: '%prefix% &9Du hast %hatname% &9Kopf ausgerüstet!'
-  Unequip: '%prefix% &9Du hast %hatname% &9Kopf entfernt!'
+  Equip: '%prefix% &9Du hast %hatname% &9Hut ausgerüstet!'
+  Unequip: '%prefix% &9Du hast %hatname% &9Hut entfernt!'
   Astronaut:
     Name: '&7&lAstronaut'
     Description: '&7&oHouston, wir haben ein Problem.'
@@ -933,7 +931,7 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oDer 26. Buchstabe im Alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
+  Must-Remove-Hat: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Hut auszurüsten!'
 Suits:
   Rave:
     whole-equip: '&f&lKompletter &b&lR&a&la&e&lv&6&le&f&l-Anzug'
@@ -956,8 +954,8 @@ Suits:
     leggings-name: '&b&lDiamant&f&lhose'
     boots-name: '&b&lDiamant&f&lstiefel'
     Description: |-
-      &7&oShow your Mining skills
-      &7&owith this amazing outfit!
+      &7&oZeig deine Bergbaufähigkeiten
+      &7&omit diesem tollen Outfit!
   Santa:
     whole-equip: '&f&lKompletter &4&lWeihnachtsmann&f&l-Anzug'
     helmet-name: '&4&lWeihnachtsmann&f&l-Mütze'
@@ -979,10 +977,10 @@ Suits:
   Suit-Part-Lore: '&9Anzug-Teil'
   Whole-Equip-Lore: '&7&oRüste den ganzen Anzug aus!'
   Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+    HELMET: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Anzug-Helm auszurüsten!'
+    CHESTPLATE: '%prefix% &c&lDu musst deinen Brustpanzer entfernen, um einen Anzug-Brustpanzer auszurüsten!'
+    LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
+    BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
 Emotes:
   Equip: '%prefix% &9Du hast %emotename% ausgerüstet'
   Unequip: '%prefix% &9Du hast %emotename% entfernt'
@@ -991,7 +989,7 @@ Emotes:
     Description: '&7&oBist du sehr traurig? :('
   Angry:
     Name: '&c&lWütend'
-    Description: '&7&oShow your rage to the other players!'
+    Description: '&7&oZeig deine Wut den anderen Spielern!'
   Happy:
     Name: '&e&lFröhlich'
     Description: '&7&oDon''t worry, be happy!'
@@ -1003,7 +1001,7 @@ Emotes:
     Description: '&7&oDu hast schöne Augen, weißt du das?'
   DealWithIt:
     Name: '&7&lKomm damit klar'
-    Description: '&7&oDo you feel like showing off? This emote is for you!'
+    Description: '&7&oHast du Lust anzugeben? Dieses Emote ist für dich!'
   Cool:
     Name: '&9&lCool'
     Description: '&7&oBleib cool!'
@@ -1012,8 +1010,8 @@ Emotes:
     Description: '&7&oOH MEIN GOTT!!!'
   Wink:
     Name: '&a&lZwinkern'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke'
-  Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm abnehmen, um ein Emote auszurüsten!'
+    Description: '&7&oHast du Spaß? Lass sie wissen, dass du eingeweiht bist'
+  Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
