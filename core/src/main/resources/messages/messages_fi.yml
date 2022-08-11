@@ -310,14 +310,12 @@ Mounts:
   Snake:
     menu-name: '&6&lKäärme'
     entity-displayname: '&l%playername%''s snake'
-    Description: '&7&oWatch out! It may bite..'
+    Description: '&7&oWatch out! It may bite...'
   Dragon:
     menu-name: '&5&lLohikäärme'
     entity-displayname: '&l%playername%''s dragon'
     Description: '&7&oBecome a dragon rider!'
-  SkySquid:
-    menu-name: '&9&lLentävä mustekala'
-    entity-displayname: '&l%playername%''s sky squid'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHyper Kärry'
     entity-displayname: '&l%playername%''s hypecart'
@@ -370,7 +368,7 @@ Particle-Effects:
     Description: |-
       &7&oAncient legend says this magic
       &7&oempowers the blood of its user,
-      &7&ogiving them godly powers..
+      &7&ogiving them godly powers...
   FrostLord:
     name: '&b&lFrost Lord'
     Description: '&7&oI am The Almighty Frostlord!'
@@ -423,7 +421,7 @@ Particle-Effects:
     Description: '&7&oMay these magical rods protect you!'
   FireWaves:
     name: '&e&lFire Waves'
-    Description: '&7&oSome say theses waves of fire acts as a shield...'
+    Description: '&7&oSome say these waves of fire act as a shield...'
 Pets:
   Piggy:
     menu-name: '&d&lPiggy'
@@ -456,7 +454,7 @@ Pets:
   Wither:
     menu-name: '&8&lWitheri'
     entity-displayname: '&l%playername%''s wither'
-    Description: '&7&oWatch out for me..'
+    Description: '&7&oWatch out for me...'
   Pumpling:
     menu-name: '&6&lPumpling'
     entity-displayname: '&l%playername%''s pumpling'
@@ -546,7 +544,7 @@ Pets:
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
-    Description: '&7&oDont look at it or it will hunt you!'
+    Description: '&7&oDon''t look at it or it will hunt you!'
   Skeleton:
     menu-name: '&f&lSkeleton'
     entity-displayname: '&l%playername%''s Skeleton'
@@ -741,7 +739,7 @@ Hats:
     Description: '&7&oHo ho ho! Merry Christmas!'
   Snowman:
     Name: '&f&lLumiukko'
-    Description: '&7&oI don''t have a skull.. or bones'
+    Description: '&7&oI don''t have a skull... or bones'
   Present:
     Name: '&c&lLahja'
     Description: '&7&oFrom Santa, to you!'
