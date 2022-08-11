@@ -314,9 +314,7 @@ Mounts:
     menu-name: '&5&lDragon'
     entity-displayname: '&lDragon de %playername%'
     Description: '&7&oConviertete en domador de Dragones!'
-  SkySquid:
-    menu-name: '&9&lSky Squid'
-    entity-displayname: '&lSky Squid de %playername%'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&lHypeCart de %playername%'
