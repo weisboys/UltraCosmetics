@@ -270,7 +270,7 @@ Gadgets:
       &7&o建造一个蹦床，
       &7&o并用它将你和你的朋友
       &7&o送入空中！
-  Gadget-Ready-ActionBar: '%gadgetname% &f&l以就绪！'
+  Gadget-Ready-ActionBar: '%gadgetname% &f&l已就绪！'
   Lore: '&9小道具'
 Mounts:
   DruggedHorse:
@@ -315,9 +315,7 @@ Mounts:
     menu-name: '&5&l龙'
     entity-displayname: '&l%playername%的龙'
     Description: '&7&o成为一个龙骑士！'
-  SkySquid:
-    menu-name: '&9&l飞天鱿鱼'
-    entity-displayname: '&l%playername%的飞天鱿鱼'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&l超级车'
     entity-displayname: '&l%playername%的超级车'
@@ -572,13 +570,13 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&l烈焰'
-    skill: '&eSneak&7 to: &aFly'
+    skill: '&e潜行&7 即可: &a起飞'
   Chicken:
     name: '&f&l鸡'
-    skill: '&eSneak&7 to: &aLay eggs'
+    skill: '&e潜行&7 即可: &a下蛋'
   Slime:
     name: '&a&l史莱姆'
-    skill: '&eSneak&7 to: &aBounce'
+    skill: '&e潜行&7 即可: &a蹦蹦跳跳'
   Pig:
     name: '&d&l猪'
     skill: '&e碰撞&7 即可: &a弹起玩家'
@@ -590,7 +588,7 @@ Morphs:
     skill: '&e二段跳&7 即可:&a扇动翅膀'
   Creeper:
     name: '&a&l苦力怕'
-    skill: '&eSneak&7 to: &aDetonate'
+    skill: '&e潜行&7 即可: &a引爆'
     charging: '&a&l充能中: %chargelevel%/100'
     release-to-explode: '&f&l释放即爆炸！'
   Snowman:
@@ -612,7 +610,7 @@ Morphs:
     skill: '&e左键点击&7 即可: &a改变颜色'
   Mooshroom:
     name: '&c&l哞菇'
-    skill: '&eSneak&7 to: &aSoup Throw'
+    skill: '&e潜行&7 即可: &a扔出蘑菇煲'
   Villager:
     name: '&a&l村民'
     skill: '&e左键点击&7 即可: &a扔出绿宝石'
@@ -660,9 +658,9 @@ Hats:
     Description: '&7&o需要补给'
   Crying:
     Name: '&9&l哭'
-    Description: '&7&oI cri evrytiem'
+    Description: '&7&o我每时每刻都在哭'
   BigSmile:
-    Name: '&6&lBig Smile'
+    Name: '&6&l巨型史莱姆'
     Description: '&7&o因为我真的很开心！'
   Wink:
     Name: '&e&l眨眼'
