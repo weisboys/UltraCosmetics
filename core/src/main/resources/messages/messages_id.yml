@@ -315,9 +315,7 @@ Mounts:
     menu-name: '&5&lNaga'
     entity-displayname: '&lNaga milik %playername%'
     Description: '&7&oMenjadi pengendara naga!'
-  SkySquid:
-    menu-name: '&9&lCumi Cumi Angkasa'
-    entity-displayname: '&lCumi Cumi Angkasa milik %playername%'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&lHypeCart milik %playername%'
@@ -423,55 +421,55 @@ Particle-Effects:
     Description: '&7&oMay these magical rods protect you!'
   FireWaves:
     name: '&e&lFire Waves'
-    Description: '&7&oSome say theses waves of fire acts as a shield...'
+    Description: '&7&oSome say these waves of fire act as a shield...'
 Pets:
   Piggy:
     menu-name: '&d&lPiggy'
-    entity-displayname: '&l%playername%''s piggy'
+    entity-displayname: '&l%playername%''s Piggy'
     Description: '&7&oOink! Oink!'
   Sheep:
     menu-name: '&f&lSheep'
-    entity-displayname: '&l%playername%''s sheep'
+    entity-displayname: '&l%playername%''s Sheep'
     Description: '&7&oBaaaa, baa'
   EasterBunny:
     menu-name: '&6&lEaster Bunny'
-    entity-displayname: '&l%playername%''s easter bunny'
+    entity-displayname: '&l%playername%''s Easter Bunny'
     Description: '&7&oIs it Easter yet?'
   Cow:
     menu-name: '&c&lCow'
-    entity-displayname: '&l%playername%''s cow'
+    entity-displayname: '&l%playername%''s Cow'
     Description: '&7&oMoooo!'
   Kitty:
     menu-name: '&9&lKitty'
-    entity-displayname: '&l%playername%''s kitty'
+    entity-displayname: '&l%playername%''s Kitty'
     Description: '&7&oMeoooow'
   Dog:
     menu-name: '&7&lDog'
-    entity-displayname: '&l%playername%''s dog'
+    entity-displayname: '&l%playername%''s Dog'
     Description: '&7&oWoof!'
   Chick:
     menu-name: '&e&lChick'
-    entity-displayname: '&l%playername%''s chick'
+    entity-displayname: '&l%playername%''s Chick'
     Description: '&7&oBwaaaaaaak!!'
   Wither:
     menu-name: '&8&lWither'
-    entity-displayname: '&l%playername%''s wither'
-    Description: '&7&oWatch out for me..'
+    entity-displayname: '&l%playername%''s Wither'
+    Description: '&7&oWatch out for me...'
   Pumpling:
     menu-name: '&6&lPumpling'
-    entity-displayname: '&l%playername%''s pumpling'
+    entity-displayname: '&l%playername%''s Pumpling'
     Description: '&7&oJust a little floating pumpkin'
   ChristmasElf:
     menu-name: '&a&lChristmas Elf'
-    entity-displayname: '&l%playername%''s Christmas elf'
+    entity-displayname: '&l%playername%''s Christmas Elf'
     Description: '&7&oI can make presents for you!'
   Mooshroom:
     menu-name: '&4&lMooshroom'
     entity-displayname: '&l%playername%''s Mooshroom'
     Description: '&7&oMoooo!'
   IronGolem:
-    menu-name: '&7&lIronGolem'
-    entity-displayname: '&l%playername%''s IronGolem'
+    menu-name: '&7&lIron Golem'
+    entity-displayname: '&l%playername%''s Iron Golem'
     Description: '&7&oI like flowers'
   Snowman:
     menu-name: '&f&lSnowman'
@@ -486,8 +484,8 @@ Pets:
     entity-displayname: '&l%playername%''s Bat'
     Description: '&7&oI prefer dark areas'
   PolarBear:
-    menu-name: '&b&lPolarBear'
-    entity-displayname: '&l%playername%''s PolarBear'
+    menu-name: '&b&lPolar Bear'
+    entity-displayname: '&l%playername%''s Polar Bear'
     Description: '&7&oI prefer cold areas'
   Llama:
     menu-name: '&7&lLlama'
@@ -546,7 +544,7 @@ Pets:
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
-    Description: '&7&oDont look at it or it will hunt you!'
+    Description: '&7&oDon''t look at it or it will hunt you!'
   Skeleton:
     menu-name: '&f&lSkeleton'
     entity-displayname: '&l%playername%''s Skeleton'
@@ -620,7 +618,7 @@ Morphs:
     name: '&5&lWitch'
     skill: '&eLeft-Click&7 to: &aPotion Throw'
   PolarBear:
-    name: '&f&lPolarBear'
+    name: '&f&lPolar Bear'
     skill: '&eLeft-Click&7 to: &aBlizzard'
   Llama:
     name: '&3&lLlama'
@@ -741,7 +739,7 @@ Hats:
     Description: '&7&oHo ho ho! Merry Christmas!'
   Snowman:
     Name: '&f&lSnowman'
-    Description: '&7&oI don''t have a skull.. or bones'
+    Description: '&7&oI don''t have a skull... or bones'
   Present:
     Name: '&c&lPresent'
     Description: '&7&oFrom Santa, to you!'
