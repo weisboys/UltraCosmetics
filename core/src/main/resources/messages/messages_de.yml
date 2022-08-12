@@ -257,8 +257,8 @@ Gadgets:
   Snowball:
     name: '&f&lSchneeball'
     Description: |-
-      &7&oJoin in on the festive fun by
-      &7&othrowing snow at people!
+      &7&oSchließ dich dem festlichen Spaß an,
+      &7&oindem du Schnee auf Leute wirfst!
   PartyPopper:
     name: '&e&lKonfettikanone'
     Description: |-
@@ -267,9 +267,9 @@ Gadgets:
   Trampoline:
     name: '&9&lTrampolin'
     Description: |-
-      &7&oConstructs a trampoline
-      &7&othat sends you and your
-      &7&ofriends into the air!
+      &7&oBaut ein Trampolin, welches
+      &7&odich und deine Freunde
+      &7&oin die Luft schleudert!
   Gadget-Ready-ActionBar: '%gadgetname% &f&list bereit!'
   Lore: '&9Gadget'
 Mounts:
@@ -368,9 +368,9 @@ Particle-Effects:
   BloodHelix:
     name: '&4&lBlutspirale'
     Description: |-
-      &7&oAncient legend says this magic
-      &7&oempowers the blood of its user,
-      &7&ogiving them godly powers...
+      &7&oEine antike Legende besagt, dass diese
+      &7&oMagie das Blut der Anwender verstärkt,
+      &7&owodurch sie göttliche Kräfte erhalten...
   FrostLord:
     name: '&b&lFrostlord'
     Description: '&7&oIch bin der allmächtige Frostlord!'
@@ -407,14 +407,14 @@ Particle-Effects:
   CrushedCandyCane:
     name: '&4&lZerkleinerte &f&lZucker&4&lstange'
     Description: |-
-      &7&oThere's no such thing as too much
-      &7&oChristmas Candy. Do not listen
-      &7&oto your dentist.
+      &7&oSo etwas wie "zu viele Weihnachts-
+      &7&osüßigkeiten" gibt es nicht.
+      &7&oHör nicht auf deinen Zahnarzt.
   EnderAura:
     name: '&d&lEnder Aura'
     Description: |-
-      &7&oThese mystic particle attach to
-      &7&oonly the most legendary of players!
+      &7&oDiese mystischen Partikel halten
+      &7&onur an den legendärsten Spielern!
   FlameFairy:
     name: '&6&lFlammenfee'
     Description: '&7&oHEY!!'
@@ -546,7 +546,7 @@ Pets:
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
-    Description: '&7&oDon''t look at it or it will hunt you!'
+    Description: '&7&oNicht anschauen, sonst wird es dich jagen!'
   Skeleton:
     menu-name: '&f&lSkelett'
     entity-displayname: '&l%playername%''s Skelett'
@@ -989,7 +989,7 @@ Emotes:
     Description: '&7&oBist du sehr traurig? :('
   Angry:
     Name: '&c&lWütend'
-    Description: '&7&oZeig deine Wut den anderen Spielern!'
+    Description: '&7&oZeig den anderen Spielern deine Wut!'
   Happy:
     Name: '&e&lFröhlich'
     Description: '&7&oDon''t worry, be happy!'
@@ -1010,7 +1010,7 @@ Emotes:
     Description: '&7&oOH MEIN GOTT!!!'
   Wink:
     Name: '&a&lZwinkern'
-    Description: '&7&oHast du Spaß? Lass sie wissen, dass du eingeweiht bist'
+    Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast'
   Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
