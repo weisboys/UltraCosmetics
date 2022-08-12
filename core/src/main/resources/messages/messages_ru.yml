@@ -334,7 +334,7 @@ Mounts:
     menu-name: '&f&lRudolp&4&lh'
     entity-displayname: '&l%playername%''s Rudolph'
     Description: |-
-      &7&oWhat would be Christmas
+      &7&oWhat would Christmas be
       &7&owithout Rudolph the Reindeer?
   MoltenSnake:
     menu-name: '&c&lMolten Snake'
@@ -411,7 +411,7 @@ Particle-Effects:
   EnderAura:
     name: '&d&lEnder Aura'
     Description: |-
-      &7&oThese mystic particle attach to
+      &7&oThese mystic particles attach to
       &7&oonly the most legendary of players!
   FlameFairy:
     name: '&6&lFlame Fairy'
