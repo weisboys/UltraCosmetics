@@ -291,7 +291,7 @@ public class TreasureRandomizer {
             fm.addEffect(getRandomFireworkEffect());
             f.setFireworkMeta(fm);
             fireworks.add(f);
-            f.setMetadata("UCFirework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), 1));
+            f.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), 1));
         }
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
             for (Firework f : fireworks)

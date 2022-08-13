@@ -16,10 +16,13 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Bat;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import java.util.Set;
 
 /**
  * Represents an instance of a ghost party gadget summoned by a player.
@@ -32,6 +35,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhkMjE4MzY0MDIxOGFiMzMwYWM1NmQyYWFiN2UyOWE5NzkwYTU0NWY2OTE2MTllMzg1NzhlYTRhNjlhZTBiNiJ9fX0", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(Material.LEATHER_CHESTPLATE, 255, 255, 255);
     private EntitySpawner<Bat> bats;
+    private Set<ArmorStand> ghosts;
 
     public GadgetGhostParty(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
         super(owner, GadgetType.valueOf("ghostparty"), ultraCosmetics);
@@ -50,6 +54,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
             ghost.setHelmet(GHOST_HEAD);
             ghost.setChestplate(GHOST_CHESTPLATE);
             ghost.setItemInHand(new ItemStack(Material.DIAMOND_HOE));
+            ghosts.add(ghost);
             bat.setPassenger(ghost);
         }, getUltraCosmetics());
 
@@ -66,9 +71,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
 
     private void killBats() {
         if (bats == null) return;
-        for (Bat bat : bats.getEntities()) {
-            bat.getPassengers().forEach(e -> e.remove());
-        }
+        ghosts.forEach(ArmorStand::remove);
         bats.removeEntities();
     }
 
@@ -83,5 +86,12 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     @Override
     public void onClear() {
         killBats();
+    }
+
+    @EventHandler
+    public void onDamage(EntityDamageByEntityEvent event) {
+        if (bats.contains(event.getEntity()) || ghosts.contains(event.getEntity())) {
+            event.setCancelled(true);
+        }
     }
 }
