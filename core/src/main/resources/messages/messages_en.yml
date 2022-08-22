@@ -707,12 +707,108 @@ Hats:
   Pig:
     Name: '&d&lPig'
     Description: '&7&oOink Oink!'
+  Cow:
+    Name: '&a&lCow'
+    Description: '&7&oempty'
+  Mooshroom:
+    Name: '&c&lMooshroom'
+    Description: '&7&oempty'
+  BrownMooshroom:
+    Name: '&b&lBrown Mooshroom'
+    Description: '&7&oempty'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oI''m your guard.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oNow I''m here, now I''m there!'
+  EndermanKing:
+    Name: '&d&lEnderman King'
+    Description: '&7&oempty'
+  Slime:
+    Name: '&a&lSlime'
+    Description: '&7&oempty'
+  Creeper:
+    Name: '&2&lCreeper'
+    Description: '&7&oempty'
+  Skeleton:
+    Name: '&7&lSkeleton'
+    Description: '&7&oempty'
+  Zombie:
+    Name: '&2&lZombie'
+    Description: '&7&oempty'
+  Strider:
+    Name: '&c&lStrider'
+    Description: '&7&oempty'
+  WitherSkeleton:
+    Name: '&7&lWither Skeleton'
+    Description: '&7&oempty'
+  Ghast:
+    Name: '&f&lGhast'
+    Description: '&7&oempty'
+  Warden:
+    Name: '&3&lWarden'
+    Description: '&7&oempty'
+  Witch:
+    Name: '&5&lWitch'
+    Description: '&7&oempty'
+  FletcherVillager:
+    Name: '&a&lFletcher Villager'
+    Description: '&7&oempty'
+  LibrarianVillager:
+    Name: '&6&lLibrarian Villager'
+    Description: '&7&oempty'
+  Bee:
+    Name: '&e&lBee'
+    Description: '&7&oempty'
+  Fox:
+    Name: '&6&lFox'
+    Description: '&7&oempty'
+  SnowFox:
+    Name: '&f&lSnow Fox'
+    Description: '&7&oempty'
+  Ocelot:
+    Name: '&e&lOcelot'
+    Description: '&7&oempty'
+  Frog:
+    Name: '&2&lFrog'
+    Description: '&7&oempty'
+  AxolotlBlue:
+    Name: '&9&lBlue Axolotl'
+    Description: '&7&oempty'
+  Turtle:
+    Name: '&a&lTurtle'
+    Description: '&7&oempty'
+  Clownfish:
+    Name: '&6&lClownfish'
+    Description: '&7&oempty'
+  BlackCat:
+    Name: '&2&lBlack Cat'
+    Description: '&7&oempty'
+  Allay:
+    Name: '&b&lAllay'
+    Description: '&7&oempty'
+  Bat:
+    Name: '&5&lBat'
+    Description: '&7&oempty'
+  MCD-Steve:
+    Name: '&9&lSteve'
+    Description: '&7&oempty'
+  MCD-Alex:
+    Name: '&6&lAlex'
+    Description: '&7&oempty'
+  MCD-QuestGiver:
+    Name: '&5&lQuest Giver'
+    Description: '&7&oI have a quest for you.'
+  MCD-LuxuryMerchant:
+    Name: '&6&lLuxury Merchant'
+    Description: '&7&oempty'
+  MCD-Necromancer:
+    Name: '&b&lNecromancer'
+    Description: '&7&oempty'
+  MCD-NamelessOne:
+    Name: '&2&lNameless One'
+    Description: '&7&oempty'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -788,6 +884,30 @@ Hats:
   BrownCrewmate:
     Name: '&8&lBrown Crewmate'
     Description: '&7&oBrown sus!'
+  FrogPrince:
+    Name: '&2&lFrog Prince'
+    Description: '&7&oempty'
+  Notch:
+    Name: '&f&lNotch'
+    Description: '&7&oempty'
+  KitsuneMask:
+    Name: '&c&lKitsune Mask'
+    Description: '&7&oempty'
+  Goblin:
+    Name: '&9&lGoblin'
+    Description: '&7&oempty'
+  Unicorn:
+    Name: '&d&lUnicorn'
+    Description: '&7&oempty'
+  Ogre:
+    Name: '&2&lOgre'
+    Description: '&7&oempty'
+  GreenDragon:
+    Name: '&a&lGreen Dragon'
+    Description: '&7&oempty'
+  GigaChad:
+    Name: '&7&lGigaChad'
+    Description: '&7&oempty'
   Bread:
     Name: '&f&lBread'
     Description: '&7&oFreshly baked'
