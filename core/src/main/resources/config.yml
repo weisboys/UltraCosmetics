@@ -290,8 +290,7 @@ No-Permission:
   Allow-Purchase: false
   Custom-Item:
     enabled: false
-    Type: INK_SACK
-    Data: 8
+    Type: BARRIER
     Name: '&c&l{cosmetic-name}'
     Lore:
       - ''
