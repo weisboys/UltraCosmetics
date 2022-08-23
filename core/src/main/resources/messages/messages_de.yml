@@ -59,50 +59,50 @@ Menu:
     Title: '&lHaustiere'
     Button:
       Name: '&a&lHaustiere'
-      Tooltip-Equip: '&b&lSpawnen'
-      Tooltip-Unequip: '&c&lDespawnen'
+      Tooltip-Equip: '&b&lSpawnen:'
+      Tooltip-Unequip: '&c&lDespawnen:'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
-      Tooltip-Equip: '&b&lAktivieren'
-      Tooltip-Unequip: '&c&lDeaktivieren'
+      Tooltip-Equip: '&b&lAktivieren:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Mounts:
     Title: '&lReittiere'
     Button:
       Name: '&6&lReittiere'
-      Tooltip-Equip: '&b&lSpawnen'
-      Tooltip-Unequip: '&c&lDespawnen'
+      Tooltip-Equip: '&b&lSpawnen:'
+      Tooltip-Unequip: '&c&lDespawnen:'
   Morphs:
     Title: '&lVerwandlungen'
     Button:
       Name: '&2&lVerwandlungen'
-      Tooltip-Equip: '&b&lVerwandeln'
-      Tooltip-Unequip: '&c&lVerwandlung beenden'
+      Tooltip-Equip: '&b&lVerwandeln in:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Hats:
     Title: '&lHüte'
     Button:
       Name: '&b&lHüte'
-      Tooltip-Equip: '&b&lAusrüsten'
-      Tooltip-Unequip: '&c&lNicht mehr ausrüsten'
+      Tooltip-Equip: '&b&lAusrüsten:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Particle-Effects:
     Title: '&lPartikeleffekte'
     Button:
       Name: '&b&lPartikeleffekte'
-      Tooltip-Equip: '&b&lAusrüsten'
-      Tooltip-Unequip: '&c&lNicht mehr ausrüsten'
+      Tooltip-Equip: '&b&lAusrüsten:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Suits:
     Title: '&lAnzüge'
     Button:
       Name: '&c&lAnzüge'
-      Tooltip-Equip: '&b&lAusrüsten'
-      Tooltip-Unequip: '&c&lNicht mehr ausrüsten'
+      Tooltip-Equip: '&b&lAusrüsten:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Emotes:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
-      Tooltip-Equip: '&b&lAusrüsten'
-      Tooltip-Unequip: '&c&lNicht mehr ausrüsten'
+      Tooltip-Equip: '&b&lAusrüsten:'
+      Tooltip-Unequip: '&c&lDeaktivieren:'
   Buy-Ammo:
     Title: '&lMunition kaufen'
   Misc:
