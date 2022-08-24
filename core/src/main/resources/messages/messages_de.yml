@@ -136,14 +136,14 @@ Enable-Gadgets: '&a&lGadgets aktivieren'
 Enable-Gadgets-Lore: '&aAktiviert das Benutzen von Gadgets und dessen Effekte auf dich'
 Disable-Third-Person-View: '&c&lDeaktiviere die Dritte-Person-Ansicht der Verwandlungen'
 Enable-Third-Person-View: '&a&lAktiviere die Dritte-Person-Ansicht der Verwandlungen'
-Disable-Filter-By-Owned: '&c&lAlle anzeigen lassen'
+Disable-Filter-By-Owned: '&c&lAlle anzeigen'
 Enable-Filter-By-Owned: '&c&lNach Besitz filtern'
 Disable-Treasure-Notification: '&c&lSchatztruhen Mitteilungen deaktiviert'
 Enable-Treasure-Notification: '&c&lSchatztruhen Mitteilungen aktiviert'
 Gadgets-Enabled-Needed: '%prefix% &c&lDu musst Gadgets aktivieren!'
 Gadgets:
-  Equip: '%prefix% &9Du hast %gadgetname% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %gadgetname% entfernt'
+  Equip: '%prefix% &9Du hast %gadgetname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %gadgetname% &9entfernt'
   Countdown-Message: '%prefix% &c&lDu kannst %gadgetname% &c&lin %time%s wieder benutzen!'
   PaintballGun:
     name: '&b&lPaintball-Waffe'
@@ -348,13 +348,13 @@ Mounts:
   FlyingShip:
     menu-name: '&a&lFliegendes Schiff'
     entity-displayname: '&l%playername%''s Fliegendes Schiff'
-  Equip: '%prefix% &9Du hast %mountname% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %mountname% entfernt'
+  Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
   Not-Enough-Room: '%prefix% &c&lHier ist nicht genug Platz für ein Reittier!'
 Particle-Effects:
-  Equip: '%prefix% &9Du hast %effectname% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %effectname% entfernt'
+  Equip: '%prefix% &9Du hast %effectname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %effectname% &9entfernt'
   RainCloud:
     name: '&9&lRegenwolke'
     Description: |-
@@ -567,8 +567,8 @@ Pets:
     menu-name: '&a&lHilfsgeist'
     entity-displayname: '&l%playername%''s Hilfsgeist'
     Description: '&7&oEin neuer Freund!'
-  Equip: '%prefix% &9Du hast %petname% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %petname% entfernt'
+  Equip: '%prefix% &9Du hast %petname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %petname% &9entfernt'
 Morphs:
   Blaze:
     name: '&6&lLohe'
@@ -597,7 +597,7 @@ Morphs:
     name: '&f&lSchneemann'
     skill: '&eLinksklick&7: &aSchneeball werfen'
   Equip: '%prefix% &9Du hast dich verwandelt in: %morphname%'
-  Unequip: '%prefix% &9Du hast die %morphname% Verwandlung beendet'
+  Unequip: '%prefix% &9Du hast die %morphname% &9Verwandlung beendet'
   WitherSkeleton:
     name: '&8&lWitherskelett'
     skill: '&eSchleichen&7: &aKnochenbombe'
@@ -972,8 +972,8 @@ Suits:
     Description: |-
       &7&oDieser Anzug gehört dem
       &7&oLord der gefrorenen Lande!
-  Equip: '%prefix% &9Du hast %suitname% ausgerüstet!'
-  Unequip: '%prefix% &9Du hast %suitname% entfernt!'
+  Equip: '%prefix% &9Du hast %suitname% &9ausgerüstet!'
+  Unequip: '%prefix% &9Du hast %suitname% &9entfernt!'
   Suit-Part-Lore: '&9Anzug-Teil'
   Whole-Equip-Lore: '&7&oRüste den ganzen Anzug aus!'
   Must-Remove:
@@ -982,8 +982,8 @@ Suits:
     LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
     BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
 Emotes:
-  Equip: '%prefix% &9Du hast %emotename% ausgerüstet'
-  Unequip: '%prefix% &9Du hast %emotename% entfernt'
+  Equip: '%prefix% &9Du hast %emotename% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %emotename% &9entfernt'
   Cry:
     Name: '&9&lWeinen'
     Description: '&7&oBist du sehr traurig? :('
