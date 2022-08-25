@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
@@ -37,8 +38,8 @@ import be.isach.ultracosmetics.cosmetics.pets.PetVillager;
 import be.isach.ultracosmetics.cosmetics.pets.PetWarden;
 import be.isach.ultracosmetics.cosmetics.pets.PetWither;
 import be.isach.ultracosmetics.cosmetics.pets.PetZombie;
+import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ServerVersion;
-import be.isach.ultracosmetics.version.GetForVersion;
 
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -86,10 +87,17 @@ public final class PetType extends CosmeticEntType<Pet> {
         ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
     }
 
-    private PetType(String configName, XMaterial material, String defaultDesc, EntityType entityType, Class<? extends Pet> clazz) {
+    private final String customization;
+
+    private PetType(String configName, XMaterial material, String defaultDesc, EntityType entityType, Class<? extends Pet> clazz, String customization) {
         super(Category.PETS, configName, defaultDesc, material, entityType, clazz);
+        this.customization = customization;
 
         VALUES.add(this);
+    }
+
+    private PetType(String configName, XMaterial material, String defaultDesc, EntityType entityType, Class<? extends Pet> clazz) {
+        this(configName, material, defaultDesc, entityType, clazz, null);
     }
 
     public String getEntityName(Player player) {
@@ -99,6 +107,15 @@ public final class PetType extends CosmeticEntType<Pet> {
     @Override
     public String getName() {
         return MessageManager.getMessage("Pets." + getConfigName() + ".menu-name");
+    }
+
+    @Override
+    public Pet equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
+        Pet pet = super.equip(player, ultraCosmetics);
+        if (pet != null && customization != null) {
+            pet.customize(customization);
+        }
+        return pet;
     }
 
     public static void register() {
@@ -150,11 +167,11 @@ public final class PetType extends CosmeticEntType<Pet> {
         }
 
         if (serverVersion.isAtLeast(ServerVersion.v1_12_R1)) {
-            new PetType("PolarBear", XMaterial.SNOW_BLOCK, "&7&oI prefer cold areas", GetForVersion.entityType("POLAR_BEAR"), PetPolarBear.class);
-            new PetType("Llama", XMaterial.RED_WOOL, "&7&oNeed me to carry anything?", GetForVersion.entityType("LLAMA"), PetLlama.class);
-            new PetType("Parrot", XMaterial.COOKIE, "&7&oPolly want a cracker?", GetForVersion.entityType("PARROT"), PetParrot.class);
+            new PetType("PolarBear", XMaterial.SNOW_BLOCK, "&7&oI prefer cold areas", EntityType.POLAR_BEAR, PetPolarBear.class);
+            new PetType("Llama", XMaterial.RED_WOOL, "&7&oNeed me to carry anything?", EntityType.LLAMA, PetLlama.class);
+            new PetType("Parrot", XMaterial.COOKIE, "&7&oPolly want a cracker?", EntityType.PARROT, PetParrot.class);
             /* Vex disabled because its just not following the player at all (Besides teleport) */
-            /* new PetType("Vex", XMaterial.IRON_SWORD, "&7&oYAAHH Ehehhehe!", GetForVersion.entityType("VEX"), PetVex.class); */
+            /* new PetType("Vex", XMaterial.IRON_SWORD, "&7&oYAAHH Ehehhehe!", EntityType.VEX, PetVex.class); */
         }
     }
 }

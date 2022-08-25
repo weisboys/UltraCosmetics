@@ -33,7 +33,7 @@ public interface IEntityUtil {
 
     void moveDragon(Player player, Vector vector, Entity entity);
 
-    void setClimb(Entity entity);
+    void setStepHeight(Entity entity);
 
     void moveShip(Player player, Entity entity, Vector vector);
 
@@ -41,9 +41,5 @@ public interface IEntityUtil {
 
     void follow(Entity toFollow, Entity follower);
 
-    void chickenFall(Player player);
-
     void sendTeleportPacket(Player player, Entity entity);
-
-    boolean isMoving(Player entity);
 }

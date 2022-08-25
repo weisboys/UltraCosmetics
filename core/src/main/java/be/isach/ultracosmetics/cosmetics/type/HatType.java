@@ -17,7 +17,6 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,8 +30,6 @@ public class HatType extends CosmeticType<Hat> {
 
     private static final List<HatType> ENABLED = new ArrayList<>();
     private static final List<HatType> VALUES = new ArrayList<>();
-    private static final String URL_PREFIX = "{\"textures\":{\"SKIN\":{\"url\":\"http://textures.minecraft.net/texture/";
-    private static final String URL_SUFFIX = "\"}}}";
 
     public static List<HatType> enabled() {
         return ENABLED;
@@ -60,9 +57,7 @@ public class HatType extends CosmeticType<Hat> {
 
     private HatType(String texture, String configName, String defaultDesc) {
         super(Category.HATS, configName, defaultDesc, XMaterial.PLAYER_HEAD, Hat.class);
-        String url = URL_PREFIX + texture + URL_SUFFIX;
-        String base64 = Base64.getEncoder().encodeToString(url.getBytes());
-        this.itemStack = ItemFactory.createSkull(base64, ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Hat");
+        this.itemStack = ItemFactory.createSkull(texture, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + "Hat");
 
         VALUES.add(this);
     }

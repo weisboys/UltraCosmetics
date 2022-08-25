@@ -26,7 +26,6 @@ import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -73,7 +72,7 @@ public enum Category {
 
     public CosmeticType<?> valueOfType(String name) {
         if (name == null) return null;
-        switch(this) {
+        switch (this) {
         case EFFECTS:
             return ParticleEffectType.valueOf(name);
         case EMOTES:
@@ -110,9 +109,9 @@ public enum Category {
     /**
      * Category of Cosmetic.
      *
-     * @param configPath       The config path name.
+     * @param configPath      The config path name.
      * @param chatPlaceholder
-     * @param prefix TODO
+     * @param prefix          TODO
      */
     private Category(String configPath, String chatPlaceholder, String permission, String prefix, Function<Menus,CosmeticMenu<?>> menuFunc, Supplier<List<? extends CosmeticType<?>>> enabledFunc, Class<? extends Cosmetic<?>> cosmeticClass) {
         this.configPath = configPath;
@@ -134,10 +133,8 @@ public enum Category {
         if (SettingsManager.getConfig().contains("Categories." + configPath + ".Main-Menu-Item")) {
             is = ItemFactory.getItemStackFromConfig("Categories." + configPath + ".Main-Menu-Item");
         } else {
-            is = ItemFactory.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA" +
-                    "6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTA1OWQ1OWViNGU1OWM" +
-                    "zMWVlY2Y5ZWNlMmY5Y2YzOTM0ZTQ1YzBlYzQ3NmZjODZiZmFlZjhlYTkxM2VhNzE" +
-                    "wIn19fQ==", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC);
+            // TODO: not sure when this is used?
+            is = ItemFactory.createSkull("5059d59eb4e59c31eecf9ece2f9cf3934e45c0ec476fc86bfaef8ea913ea710", "");
         }
         ItemMeta itemMeta = is.getItemMeta();
         itemMeta.setDisplayName(MessageManager.getMessage("Menu." + configPath + ".Button.Name"));

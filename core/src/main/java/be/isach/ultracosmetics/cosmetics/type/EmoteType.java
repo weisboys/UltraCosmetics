@@ -6,9 +6,10 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.emotes.Emote;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-import be.isach.ultracosmetics.util.TexturedSkullFactory;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 
@@ -228,7 +229,7 @@ public class EmoteType extends CosmeticType<Emote> {
     }
 
     public void appendTexture(String texture, int count) {
-        ItemStack stack = TexturedSkullFactory.createSkull(texture);
+        ItemStack stack = ItemFactory.createSkull(texture, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + "Emote");
         for (int i = 0; i < count; i++) {
             frames.add(stack);
         }

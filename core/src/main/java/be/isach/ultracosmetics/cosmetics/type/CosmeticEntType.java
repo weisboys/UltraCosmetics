@@ -3,14 +3,14 @@ package be.isach.ultracosmetics.cosmetics.type;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Slime;
 
+import com.cryptomorin.xseries.XMaterial;
+
 /**
- * Represents a Cosmetic Type with a Material, a Data, and an Entity Type.
+ * Represents a Cosmetic Type with an entity type.
  *
  * @author iSach
  * @since 08-04-2016

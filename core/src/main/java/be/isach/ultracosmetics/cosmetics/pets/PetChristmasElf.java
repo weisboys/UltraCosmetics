@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.TexturedSkullFactory;
+import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.inventory.ItemStack;
 
@@ -38,6 +38,6 @@ public class PetChristmasElf extends Pet {
     }
 
     private static ItemStack getSkull(String url) {
-        return TexturedSkullFactory.createSkull(url);
+        return ItemFactory.createSkull(url, "");
     }
 }
