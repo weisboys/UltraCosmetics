@@ -84,25 +84,25 @@ Menu:
     Button:
       Name: '&b&lHüte'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lDeaktivieren:'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Particle-Effects:
     Title: '&lPartikeleffekte'
     Button:
       Name: '&b&lPartikeleffekte'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lDeaktivieren:'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Suits:
     Title: '&lAnzüge'
     Button:
       Name: '&c&lAnzüge'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lDeaktivieren:'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Emotes:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lDeaktivieren:'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Buy-Ammo:
     Title: '&lMunition kaufen'
   Misc:
