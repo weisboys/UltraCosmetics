@@ -50,7 +50,7 @@ public class EmoteType extends CosmeticType<Emote> {
     static {
 
         /* CRY BEGIN */
-        EmoteType CRY = new EmoteType("Cry", "&7&oAre you really sad? :(", 1);
+        EmoteType CRY = new EmoteType("Cry", 1);
         CRY.appendTexture("d6a4b88a297c78f9dd53ee8c7164dda0ded7e988382555bc7d89c901922b32e");
         CRY.appendTexture("196b8e272c54a422d9df36d85caff26624c733e7b3f6040d3e4c9cd6e");
         CRY.appendTexture("dec9aa9b3f46195ae9c7fea7c61148764a41e0d68dae41e82868d792b3c");
@@ -85,7 +85,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* CRY END */
 
         /* ANGRY BEGIN */
-        EmoteType ANGRY = new EmoteType("Angry", "&7&oShow your rage to the other players!", 1);
+        EmoteType ANGRY = new EmoteType("Angry", 1);
         ANGRY.appendTexture("7d41407363bcb46837538a63fdf7055278d42dc4aac639ed5794533bbd770");
         ANGRY.appendTexture("47bbf6d9f4c57556eef816c50eb75f9d158f53954957aabe6c2e14ffa6c90");
         ANGRY.appendTexture("a750127f1c3c71f6a5f5e9917a825e9235e1959b258ff29b6ff9771cb44");
@@ -103,7 +103,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* ANGRY END */
 
         /* HAPPY BEGIN */
-        EmoteType HAPPY = new EmoteType("Happy", "&7&oDon't worry, be happy!", 1);
+        EmoteType HAPPY = new EmoteType("Happy", 1);
         HAPPY.appendTexture("ef66c7485ccb853a6538122e45c8a4821fbe097f96a6060feb981f7a2bba890");
         HAPPY.appendTexture("a5d43eb0ec5f6de1d469b69680978a6dd7117772ee0d82ffdf08749e84df7ed");
         HAPPY.appendTexture("473e72cc371de25f3305665769dd7e9ff1161695252e799612580deeedd3", 7);
@@ -112,7 +112,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* HAPPY END */
 
         /* CHEEKY BEGIN */
-        EmoteType CHEEKY = new EmoteType("Cheeky", "&7&oYou like being cheeky? Well, this emote is for you!", 1);
+        EmoteType CHEEKY = new EmoteType("Cheeky", 1);
         CHEEKY.appendTexture("319ec094258842725e41f985346a7f824af6fc6cf13fbe949c9c465a30bc99", 4);
         CHEEKY.appendTexture("b7d533e65f2cae97afe334c81ecc97e2fa5b3e5d3ecf8b91bc39a5adb2e79a");
         CHEEKY.appendTexture("35a46f8334e49d273384eb72b2ac15e24a640d7648e4b28c348efce93dc97ab");
@@ -132,7 +132,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* CHEEKY END */
 
         /* LOVE BEGIN */
-        EmoteType LOVE = new EmoteType("Love", "&7&oYou have beautiful eyes, do you know that?", 2);
+        EmoteType LOVE = new EmoteType("Love", 2);
         LOVE.appendTexture("a080c9bfc64aeb5aed2acaa885d6fcbbd5e5ddf468956d3f1b1e455774d48893");
         LOVE.appendTexture("a4d678bb120fbd3beacaf36bdb117766a63d7c2d96a6e85a8ef5a2b13e166");
         LOVE.appendTexture("42737e99e4c0596a3712e7711baecae8d1ddb774ac1cf531896862380753e16");
@@ -146,7 +146,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* LOVE END */
 
         /* DEAL WITH IT BEGIN */
-        EmoteType DEAL_WITH_IT = new EmoteType("DealWithIt", "&7&oDo you feel like showing off? This emote is for you!", 3);
+        EmoteType DEAL_WITH_IT = new EmoteType("DealWithIt", 3);
         DEAL_WITH_IT.appendTexture("72bb8ba79648718fe80687ed4df2b9e284e732583e05658e227efd7fdf80f4");
         DEAL_WITH_IT.appendTexture("29b5b1f2c92a1283456f608b29ec3617191aba2bd31bd4b4b08e6cba6806227");
         DEAL_WITH_IT.appendTexture("7959ef5fabb3f83fb19bba6ca67bb97758eec60235cf46e71d834b237337c4");
@@ -156,7 +156,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* DEAL WITH IT END */
 
         /* COOL BEGIN */
-        EmoteType COOL = new EmoteType("Cool", "&7&oKeep cool man!", 2);
+        EmoteType COOL = new EmoteType("Cool", 2);
         COOL.appendTexture("a21e6dbfd74a1859ddbae3380fc1ab71f2389745945fc92329b164635bd14f");
         COOL.appendTexture("3733db9a94bfe15cdbb7ca5832c85cfada98ad2c839934766bdc41f977b5c163");
         COOL.appendTexture("766b3eef3c726ecb816c43839189eeb8e36382e3e5fe41128372785185a322", 4);
@@ -164,7 +164,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* COOL END */
 
         /* SURPRISED BEGIN */
-        EmoteType SURPRISED = new EmoteType("Surprised", "&7&oOH LORD!!!", 1);
+        EmoteType SURPRISED = new EmoteType("Surprised", 1);
         SURPRISED.appendTexture("6b7f24bb6a4585de8f42303161bded5c8398ce375631be149460d6835aec44e");
         SURPRISED.appendTexture("33c760f660d447846ab6b3d5a914c4b01f10672b63d4311d468b6dc28ba0e3");
         SURPRISED.appendTexture("382d15e94182206025973ff1928f4456bf7abaff737942d54b1c5699892c");
@@ -174,7 +174,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* SURPRISED END */
 
         /* WINK BEGIN */
-        EmoteType WINK = new EmoteType("Wink", "&7&oHaving fun? Let someone know you are in on the joke", 2);
+        EmoteType WINK = new EmoteType("Wink", 2);
         WINK.appendTexture("ef66c7485ccb853a6538122e45c8a4821fbe097f96a6060feb981f7a2bba890");
         WINK.appendTexture("a5d43eb0ec5f6de1d469b69680978a6dd7117772ee0d82ffdf08749e84df7ed");
         WINK.appendTexture("473e72cc371de25f3305665769dd7e9ff1161695252e799612580deeedd3", 2);
@@ -190,7 +190,8 @@ public class EmoteType extends CosmeticType<Emote> {
                     continue;
                 }
                 MessageManager.addMessage(Category.EMOTES.getConfigPath() + "." + key + ".Name", key);
-                EmoteType custom = new EmoteType(key, "A custom emote!", emotes.getInt(key + ".ticksPerFrame"));
+                MessageManager.addMessage(Category.EMOTES.getConfigPath() + "." + key + ".Description", "A custom emote!");
+                EmoteType custom = new EmoteType(key, emotes.getInt(key + ".ticksPerFrame"));
                 for (String url : emotes.getStringList(key + ".urls")) {
                     custom.appendTexture(url);
                 }
@@ -201,8 +202,8 @@ public class EmoteType extends CosmeticType<Emote> {
     private List<ItemStack> frames = new ArrayList<>();
     private int ticksPerFrame;
 
-    private EmoteType(String configName, String defaultDesc, int ticksPerFrame) {
-        super(Category.EMOTES, configName, defaultDesc, XMaterial.PLAYER_HEAD, Emote.class);
+    private EmoteType(String configName, int ticksPerFrame) {
+        super(Category.EMOTES, configName, XMaterial.PLAYER_HEAD, Emote.class);
         this.ticksPerFrame = ticksPerFrame;
 
         VALUES.add(this);
