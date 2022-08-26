@@ -36,8 +36,8 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
     private HammerPickupListener listener;
     private Vector v;
 
-    public GadgetThorHammer(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("thorhammer"), ultraCosmetics);
+    public GadgetThorHammer(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

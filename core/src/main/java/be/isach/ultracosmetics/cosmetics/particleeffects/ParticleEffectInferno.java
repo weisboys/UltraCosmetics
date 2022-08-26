@@ -18,8 +18,8 @@ public class ParticleEffectInferno extends ParticleEffect {
     boolean[] up = {true, false, true, false};
     int[] steps = {0, 0, 0, 0};
 
-    public ParticleEffectInferno(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("inferno"));
+    public ParticleEffectInferno(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

@@ -1,10 +1,10 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
-import org.bukkit.entity.Slime;
-
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
+import org.bukkit.entity.Slime;
 
 /**
  * Represents an instance of a slime pet summoned by a player.
@@ -14,12 +14,24 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  */
 
 public class PetSlime extends Pet {
-    public PetSlime(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("slime"));
+    public PetSlime(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
     public void setupEntity() {
-        ((Slime)entity).setSize(1);
+        ((Slime) entity).setSize(1);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        int size;
+        try {
+            size = Integer.parseInt(customization);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        ((Slime) entity).setSize(size);
+        return true;
     }
 }

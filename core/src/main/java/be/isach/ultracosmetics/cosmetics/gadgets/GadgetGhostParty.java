@@ -37,8 +37,8 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     private EntitySpawner<Bat> bats;
     private Set<ArmorStand> ghosts;
 
-    public GadgetGhostParty(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("ghostparty"), ultraCosmetics);
+    public GadgetGhostParty(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

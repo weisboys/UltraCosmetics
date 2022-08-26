@@ -11,8 +11,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 13-04-2022
  */
 public class PetZombie extends Pet {
-    public PetZombie(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("zombie"));
+    public PetZombie(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

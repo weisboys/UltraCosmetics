@@ -22,8 +22,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class MorphVillager extends Morph {
     private long coolDown = 0;
 
-    public MorphVillager(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("villager"), ultraCosmetics);
+    public MorphVillager(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

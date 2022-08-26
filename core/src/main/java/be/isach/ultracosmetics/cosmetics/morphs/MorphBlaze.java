@@ -19,8 +19,8 @@ import com.cryptomorin.xseries.XSound;
  */
 public class MorphBlaze extends Morph implements Updatable {
 
-    public MorphBlaze(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("blaze"), ultraCosmetics);
+    public MorphBlaze(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

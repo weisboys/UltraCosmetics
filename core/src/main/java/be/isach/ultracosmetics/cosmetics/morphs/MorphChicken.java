@@ -39,8 +39,8 @@ public class MorphChicken extends Morph implements Updatable {
     private List<Chicken> chickens = new ArrayList<>();
     private boolean cooldown;
 
-    public MorphChicken(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("chicken"), ultraCosmetics);
+    public MorphChicken(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

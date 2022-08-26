@@ -22,8 +22,8 @@ public class ParticleEffectFireWaves extends ParticleEffect {
     private boolean heightFactorDir; // Indicates whether the height diff between columns is going up or down (gives dynamism)
     private double heightFactor = MAX_HEIGHT_DIFF; // Height diff between columns. Variates over time with hoveringDirectionUp.
 
-    public ParticleEffectFireWaves(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("firewaves"));
+    public ParticleEffectFireWaves(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

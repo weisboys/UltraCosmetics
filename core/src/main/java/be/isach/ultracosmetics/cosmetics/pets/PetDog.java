@@ -14,13 +14,30 @@ import org.bukkit.entity.Wolf;
  * @since 08-12-2015
  */
 public class PetDog extends Pet {
-    public PetDog(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("dog"));
+    private boolean fixedColor = false;
+
+    public PetDog(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
-        ((Wolf)entity).setCollarColor(DyeColor.values()[RANDOM.nextInt(16)]);
+        if (!fixedColor) {
+            ((Wolf) entity).setCollarColor(DyeColor.values()[RANDOM.nextInt(16)]);
+        }
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        DyeColor color;
+        try {
+            color = DyeColor.valueOf(customization.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        ((Wolf) entity).setCollarColor(color);
+        fixedColor = true;
+        return true;
     }
 }

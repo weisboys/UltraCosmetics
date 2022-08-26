@@ -18,8 +18,8 @@ public class MorphSnowman extends Morph {
 
     private long coolDown = 0;
 
-    public MorphSnowman(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("snowman"), ultraCosmetics);
+    public MorphSnowman(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

@@ -17,8 +17,8 @@ public class PetEasterBunny extends Pet {
     private static final List<XMaterial> EGGS = Arrays.asList(XMaterial.CREEPER_SPAWN_EGG, XMaterial.BLAZE_SPAWN_EGG, XMaterial.SQUID_SPAWN_EGG,
             XMaterial.ZOMBIE_HORSE_SPAWN_EGG, XMaterial.ENDERMAN_SPAWN_EGG, XMaterial.GHAST_SPAWN_EGG, XMaterial.OCELOT_SPAWN_EGG);
 
-    public PetEasterBunny(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("easterbunny"));
+    public PetEasterBunny(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

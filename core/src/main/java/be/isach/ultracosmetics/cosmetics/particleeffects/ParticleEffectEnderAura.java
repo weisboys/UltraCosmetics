@@ -13,8 +13,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class ParticleEffectEnderAura extends ParticleEffect {
 
-    public ParticleEffectEnderAura(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("enderaura"));
+    public ParticleEffectEnderAura(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

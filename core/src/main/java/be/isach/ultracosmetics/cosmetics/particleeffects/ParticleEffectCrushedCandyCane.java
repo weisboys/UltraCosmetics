@@ -22,8 +22,8 @@ public class ParticleEffectCrushedCandyCane extends ParticleEffect {
 
     private int step;
 
-    public ParticleEffectCrushedCandyCane(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("crushedcandycane"));
+    public ParticleEffectCrushedCandyCane(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

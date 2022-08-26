@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.particleeffects;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
@@ -29,8 +28,8 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
      */
     protected boolean ignoreMove = false;
 
-    public ParticleEffect(UltraCosmetics ultraCosmetics, UltraPlayer ultraPlayer, final ParticleEffectType type) {
-        super(ultraCosmetics, Category.EFFECTS, ultraPlayer, type);
+    public ParticleEffect(UltraPlayer ultraPlayer, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(ultraPlayer, type, ultraCosmetics);
     }
 
     @Override
@@ -53,8 +52,7 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
                         && getType() != ParticleEffectType.valueOf("santahat")
                         && getType() != ParticleEffectType.valueOf("flamefairy")
                         && getType() != ParticleEffectType.valueOf("enderaura")) {
-                    if (!isMoving() || ignoreMove)
-                        onUpdate();
+                    if (!isMoving() || ignoreMove) onUpdate();
                     if (isMoving()) {
                         boolean c = getType() == ParticleEffectType.valueOf("angelwings");
                         if (getType().getEffect() == Particles.REDSTONE) {
@@ -95,7 +93,7 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
     protected boolean isMoving() {
         return getOwner().isMoving();
     }
-    
+
     protected int getModifiedAmount(int originalAmount) {
         // always return at least 1 so the particles work
         return Integer.max((int) (originalAmount * getType().getParticleMultiplier()), 1);

@@ -39,8 +39,8 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
 
     private List<Firework> fireworkList = new ArrayList<>();
 
-    public GadgetQuakeGun(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("quakegun"), ultraCosmetics);
+    public GadgetQuakeGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

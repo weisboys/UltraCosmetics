@@ -11,8 +11,8 @@ import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
  * Created by Sacha on 17/10/15.
  */
 public class MountSlime extends MountCustomEntity {
-    public MountSlime(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("slime"), ultraCosmetics);
+    public MountSlime(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

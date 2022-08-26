@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
@@ -89,7 +88,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     private final Material material;
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, Category.GADGETS, owner, type);
+        super(owner, type, ultraCosmetics);
         material = type.getMaterial().parseMaterial();
     }
 

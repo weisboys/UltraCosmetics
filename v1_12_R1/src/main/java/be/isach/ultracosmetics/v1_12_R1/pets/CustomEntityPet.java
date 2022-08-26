@@ -15,8 +15,8 @@ import org.bukkit.entity.Entity;
  */
 public abstract class CustomEntityPet extends Pet {
 
-    public CustomEntityPet(UltraPlayer owner, UltraCosmetics ultraCosmetics, PetType petType) {
-        super(owner, ultraCosmetics, petType);
+    public CustomEntityPet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics) {
+        super(owner, petType, ultraCosmetics);
     }
 
     @Override

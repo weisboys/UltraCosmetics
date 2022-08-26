@@ -17,8 +17,9 @@ import org.bukkit.inventory.ItemStack;
 public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<T> {
     protected boolean success = false;
     protected ItemStack itemStack;
-    public ArmorCosmetic(UltraCosmetics ultraCosmetics, Category category, UltraPlayer owner, T type) {
-        super(ultraCosmetics, category, owner, type);
+
+    public ArmorCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
@@ -122,7 +123,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
         // but gets duplicated elsewhere in the inventory.
         if (player == getPlayer() && (isItemThis(current) || isItemThis(event.getCursor()))) {
             event.setCancelled(true);
-            //player.updateInventory();
+            // player.updateInventory();
             if (event.getAction().name().contains("DROP")) {
                 handleDrop();
             }
@@ -135,5 +136,6 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
     }
 
     protected abstract ArmorSlot getArmorSlot();
+
     protected abstract String getOccupiedSlotKey();
 }

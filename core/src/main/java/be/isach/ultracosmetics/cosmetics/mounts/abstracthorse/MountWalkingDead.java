@@ -10,8 +10,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class MountWalkingDead extends MountAbstractHorse {
 
-    public MountWalkingDead(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("walkingdead"), ultraCosmetics);
+    public MountWalkingDead(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, ultraCosmetics, type);
     }
 
     @Override

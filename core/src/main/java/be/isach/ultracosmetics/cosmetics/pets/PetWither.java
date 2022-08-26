@@ -19,8 +19,8 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
  */
 public class PetWither extends Pet {
 
-    public PetWither(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("wither"));
+    public PetWither(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

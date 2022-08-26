@@ -12,8 +12,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  */
 public class ParticleEffectInLove extends ParticleEffect {
 
-    public ParticleEffectInLove(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("inlove"));
+    public ParticleEffectInLove(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

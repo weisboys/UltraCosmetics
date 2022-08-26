@@ -19,8 +19,8 @@ public class ParticleEffectAngelWings extends ParticleEffect {
     boolean x = true;
     boolean o = false;
 
-    public ParticleEffectAngelWings(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("angelwings"));
+    public ParticleEffectAngelWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     private boolean[][] shape = {

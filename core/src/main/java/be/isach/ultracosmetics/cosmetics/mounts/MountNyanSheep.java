@@ -33,8 +33,8 @@ public class MountNyanSheep extends Mount {
         COLORS.add(new Color(148, 0, 211));
     }
 
-    public MountNyanSheep(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("nyansheep"), ultraCosmetics);
+    public MountNyanSheep(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

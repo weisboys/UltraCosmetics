@@ -95,7 +95,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     public T equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
         T cosmetic = null;
         try {
-            cosmetic = getClazz().getDeclaredConstructor(UltraPlayer.class, UltraCosmetics.class).newInstance(player, ultraCosmetics);
+            cosmetic = getClazz().getDeclaredConstructor(UltraPlayer.class, getClass(), UltraCosmetics.class).newInstance(player, this, ultraCosmetics);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             return null;

@@ -21,8 +21,8 @@ import org.bukkit.util.Vector;
  */
 public class MountDragon extends Mount {
 
-    public MountDragon(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("dragon"), ultraCosmetics);
+    public MountDragon(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

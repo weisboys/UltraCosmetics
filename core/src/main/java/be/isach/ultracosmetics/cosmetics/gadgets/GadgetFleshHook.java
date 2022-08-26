@@ -31,8 +31,8 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
 
     private Set<Item> items = new HashSet<>();
 
-    public GadgetFleshHook(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("fleshhook"), ultraCosmetics);
+    public GadgetFleshHook(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

@@ -1,11 +1,9 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.hats.Hat;
-import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
@@ -15,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,19 +57,6 @@ public class HatType extends CosmeticType<Hat> {
         this.itemStack = ItemFactory.createSkull(texture, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + "Hat");
 
         VALUES.add(this);
-    }
-
-    @Override
-    public Hat equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
-        Hat cosmetic = null;
-        try {
-            cosmetic = getClazz().getDeclaredConstructor(UltraCosmetics.class, UltraPlayer.class, HatType.class).newInstance(ultraCosmetics, player, this);
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
-        cosmetic.equip();
-        return cosmetic;
     }
 
     /**

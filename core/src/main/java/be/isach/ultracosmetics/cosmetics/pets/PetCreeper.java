@@ -4,6 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.Creeper;
+
 /**
  * Represents an instance of a creeper pet summoned by a player.
  *
@@ -11,7 +13,15 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 12-04-2022
  */
 public class PetCreeper extends Pet {
-    public PetCreeper(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("creeper"));
+    public PetCreeper(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        if (customization.equalsIgnoreCase("true")) {
+            ((Creeper) entity).setPowered(true);
+        }
+        return true;
     }
 }

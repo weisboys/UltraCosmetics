@@ -14,8 +14,8 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
  * @since 08-06-2022
  */
 public class PetAllay extends Pet {
-    public PetAllay(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("allay"));
+    public PetAllay(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

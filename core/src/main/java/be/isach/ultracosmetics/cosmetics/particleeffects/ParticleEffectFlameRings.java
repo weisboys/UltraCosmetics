@@ -17,8 +17,8 @@ public class ParticleEffectFlameRings extends ParticleEffect {
 
     float step = 0;
 
-    public ParticleEffectFlameRings(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("flamerings"));
+    public ParticleEffectFlameRings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
 

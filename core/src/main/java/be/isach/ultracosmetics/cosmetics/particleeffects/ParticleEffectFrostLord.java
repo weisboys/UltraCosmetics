@@ -20,8 +20,8 @@ public class ParticleEffectFrostLord extends ParticleEffect {
     private float stepY = 0;
     private float radius = 1.5f;
 
-    public ParticleEffectFrostLord(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("frostlord"));
+    public ParticleEffectFrostLord(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

@@ -43,8 +43,8 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
     private int i = 1;
     private boolean playEffect;
 
-    public GadgetSmashDown(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("smashdown"), ultraCosmetics);
+    public GadgetSmashDown(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

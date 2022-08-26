@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
@@ -16,6 +15,7 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
+import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -27,6 +27,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
@@ -63,18 +64,18 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
      */
     protected ItemStack dropItem;
 
-    public Pet(UltraPlayer owner, UltraCosmetics ultraCosmetics, PetType petType, ItemStack dropItem) {
-        super(ultraCosmetics, Category.PETS, owner, petType);
+    public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, ItemStack dropItem) {
+        super(owner, petType, ultraCosmetics);
         this.dropItem = dropItem;
         this.followTask = UltraCosmeticsData.get().getVersionManager().newPlayerFollower(this, getPlayer());
     }
 
-    public Pet(UltraPlayer owner, UltraCosmetics ultraCosmetics, PetType petType, XMaterial dropItem) {
-        this(owner, ultraCosmetics, petType, dropItem.parseItem());
+    public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, XMaterial dropItem) {
+        this(owner, petType, ultraCosmetics, dropItem.parseItem());
     }
 
-    public Pet(UltraPlayer owner, UltraCosmetics ultraCosmetics, PetType petType) {
-        this(owner, ultraCosmetics, petType, petType.getItemStack());
+    public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics) {
+        this(owner, petType, ultraCosmetics, petType.getItemStack());
     }
 
     @SuppressWarnings("deprecation")
@@ -119,7 +120,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
         updateName();
 
         ((LivingEntity) entity).setRemoveWhenFarAway(false);
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(entity);
         if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent", false)) {
             UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSilent(entity, true);
         }
@@ -255,5 +255,28 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
 
     public boolean isCustomEntity() {
         return false;
+    }
+
+    public boolean customize(String customization) {
+        return false;
+    }
+
+    protected ItemStack parseCustomItem(String customization) {
+        String[] parts = customization.split(":", 2);
+        Material mat = Material.matchMaterial(parts[0]);
+        if (mat == null) return null;
+        ItemStack stack = new ItemStack(mat);
+        if (parts.length > 1) {
+            int model;
+            try {
+                model = Integer.parseInt(parts[1]);
+            } catch (NumberFormatException e) {
+                return null;
+            }
+            ItemMeta meta = stack.getItemMeta();
+            meta.setCustomModelData(model);
+            stack.setItemMeta(meta);
+        }
+        return stack;
     }
 }

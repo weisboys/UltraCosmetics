@@ -40,14 +40,20 @@ import be.isach.ultracosmetics.cosmetics.pets.PetWither;
 import be.isach.ultracosmetics.cosmetics.pets.PetZombie;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.util.SmartLogger;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -59,8 +65,10 @@ import java.util.stream.Collectors;
  */
 public final class PetType extends CosmeticEntType<Pet> {
 
-    private final static List<PetType> ENABLED = new ArrayList<>();
-    private final static List<PetType> VALUES = new ArrayList<>();
+    private static final List<PetType> ENABLED = new ArrayList<>();
+    private static final List<PetType> VALUES = new ArrayList<>();
+
+    private static final Map<EntityType,Class<? extends Pet>> PET_MAP = new HashMap<>();
 
     public static List<PetType> enabled() {
         return ENABLED;
@@ -94,6 +102,7 @@ public final class PetType extends CosmeticEntType<Pet> {
         this.customization = customization;
 
         VALUES.add(this);
+        PET_MAP.putIfAbsent(entityType, clazz);
     }
 
     private PetType(String configName, XMaterial material, String defaultDesc, EntityType entityType, Class<? extends Pet> clazz) {
@@ -113,7 +122,10 @@ public final class PetType extends CosmeticEntType<Pet> {
     public Pet equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
         Pet pet = super.equip(player, ultraCosmetics);
         if (pet != null && customization != null) {
-            pet.customize(customization);
+            if (!pet.customize(customization)) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "Invalid customization string for pet " + getConfigName());
+                player.sendMessage(ChatColor.RED + "Invalid customization string, please contact an admin.");
+            }
         }
         return pet;
     }
@@ -172,6 +184,36 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Parrot", XMaterial.COOKIE, "&7&oPolly want a cracker?", EntityType.PARROT, PetParrot.class);
             /* Vex disabled because its just not following the player at all (Besides teleport) */
             /* new PetType("Vex", XMaterial.IRON_SWORD, "&7&oYAAHH Ehehhehe!", EntityType.VEX, PetVex.class); */
+        }
+
+        ConfigurationSection pets = getCustomConfig(Category.PETS);
+        EntityType type;
+        Optional<XMaterial> mat;
+        SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
+        for (String key : pets.getKeys(false)) {
+            ConfigurationSection pet = pets.getConfigurationSection(key);
+            if (!pet.isString("type") || !pet.isString("item") || !pet.isString("customization")) {
+                log.write(LogLevel.WARNING, "Incomplete custom pet '" + key + "'");
+                continue;
+            }
+            try {
+                type = EntityType.valueOf(pet.getString("type").toUpperCase());
+            } catch (IllegalArgumentException e) {
+                log.write(LogLevel.WARNING, "Invalid entity type for custom pet '" + key + "'");
+                continue;
+            }
+            if (!PET_MAP.containsKey(type)) {
+                log.write(LogLevel.WARNING, "Entity type '" + type + "' for pet '" + key + "' does not exist as a pet.");
+                continue;
+            }
+            mat = XMaterial.matchXMaterial(pet.getString("item"));
+            if (!mat.isPresent() || !mat.get().parseMaterial().isItem()) {
+                log.write(LogLevel.WARNING, "Invalid item for custom pet '" + key + "'");
+                continue;
+            }
+            MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".menu-name", key);
+            MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".entity-displayname", "&l%playername%'s " + key);
+            new PetType(key, mat.get(), "A custom pet!", type, PET_MAP.get(type), pet.getString("customization"));
         }
     }
 }

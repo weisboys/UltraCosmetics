@@ -32,8 +32,8 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
     private Location playerStartLoc;
     private EntitySpawner<Bat> bats;
 
-    public GadgetBatBlaster(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("batblaster"), ultraCosmetics);
+    public GadgetBatBlaster(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

@@ -18,8 +18,8 @@ import org.bukkit.util.Vector;
  */
 public class MountHypeCart extends Mount {
 
-    public MountHypeCart(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("hypecart"), ultraCosmetics);
+    public MountHypeCart(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

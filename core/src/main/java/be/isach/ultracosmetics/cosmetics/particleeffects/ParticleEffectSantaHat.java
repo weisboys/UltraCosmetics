@@ -16,8 +16,8 @@ import org.bukkit.Location;
  */
 public class ParticleEffectSantaHat extends ParticleEffect {
 
-    public ParticleEffectSantaHat(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("santahat"));
+    public ParticleEffectSantaHat(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
         this.ignoreMove = true;
     }
 

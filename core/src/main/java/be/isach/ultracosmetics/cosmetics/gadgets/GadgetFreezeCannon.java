@@ -29,8 +29,8 @@ public class GadgetFreezeCannon extends Gadget implements Updatable {
 
     private Set<Item> items = new HashSet<>();
 
-    public GadgetFreezeCannon(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("freezecannon"), ultraCosmetics);
+    public GadgetFreezeCannon(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

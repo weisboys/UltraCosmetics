@@ -1,11 +1,9 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.emotes.Emote;
-import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
@@ -15,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -209,19 +206,6 @@ public class EmoteType extends CosmeticType<Emote> {
         this.ticksPerFrame = ticksPerFrame;
 
         VALUES.add(this);
-    }
-
-    @Override
-    public Emote equip(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics) {
-        Emote cosmetic = null;
-        try {
-            cosmetic = getClazz().getDeclaredConstructor(UltraPlayer.class, EmoteType.class, UltraCosmetics.class).newInstance(ultraPlayer, this, ultraCosmetics);
-        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-            e.printStackTrace();
-            return null;
-        }
-        cosmetic.equip();
-        return cosmetic;
     }
 
     public void appendTexture(String texture) {

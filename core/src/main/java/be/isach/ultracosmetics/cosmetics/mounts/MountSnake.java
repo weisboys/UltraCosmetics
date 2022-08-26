@@ -29,8 +29,8 @@ public class MountSnake extends Mount {
     private List<Creature> tail = new ArrayList<>();
     private int color = 1;
 
-    public MountSnake(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("snake"), ultraCosmetics);
+    public MountSnake(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

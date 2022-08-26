@@ -33,13 +33,13 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     protected final T cosmeticType;
     private final UUID ownerUniqueId;
 
-    public Cosmetic(UltraCosmetics ultraCosmetics, Category category, UltraPlayer owner, T type) {
+    public Cosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         if (owner == null || Bukkit.getPlayer(owner.getUUID()) == null) {
             throw new IllegalArgumentException("Invalid UltraPlayer.");
         }
         this.owner = owner;
         this.ownerUniqueId = owner.getUUID();
-        this.category = category;
+        this.category = type.getCategory();
         this.ultraCosmetics = ultraCosmetics;
         this.cosmeticType = type;
     }
@@ -93,7 +93,8 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
 
         try {
             cancel();
-        } catch (IllegalStateException ignored) {} // not scheduled yet
+        } catch (IllegalStateException ignored) {
+        } // not scheduled yet
 
         // Call untask finally. (in main thread)
         onClear();
@@ -121,7 +122,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         if (getPlayer() == null || getOwner().getCosmetic(category) != this) {
             return;
         }
-        ((Updatable)this).onUpdate();
+        ((Updatable) this).onUpdate();
     }
 
     protected abstract void onEquip();

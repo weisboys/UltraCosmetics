@@ -11,8 +11,8 @@ public abstract class EntityCosmetic<T extends CosmeticEntType<?>> extends Cosme
      * The Entity, if it isn't a Custom Entity.
      */
     protected Entity entity;
-    public EntityCosmetic(UltraCosmetics ultraCosmetics, Category category, UltraPlayer owner, T type) {
-        super(ultraCosmetics, category, owner, type);
+    public EntityCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     public Entity getEntity() {
