@@ -14,8 +14,8 @@ import org.bukkit.entity.Horse.Color;
  */
 public class MountWalkingDead extends MountHorse {
 
-    public MountWalkingDead(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("walkingdead"), ultraCosmetics);
+    public MountWalkingDead(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, ultraCosmetics, type);
     }
 
     @Override

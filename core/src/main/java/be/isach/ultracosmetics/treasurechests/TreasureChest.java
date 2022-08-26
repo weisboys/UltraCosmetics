@@ -196,7 +196,7 @@ public class TreasureChest implements Listener {
 
     @EventHandler
     public void onBreakBlock(BlockBreakEvent event) {
-        if (blocksToRestore.containsKey(event.getBlock())) {
+        if (blocksToRestore.containsKey(event.getBlock()) || chests.contains(event.getBlock())) {
             event.setCancelled(true);
         }
     }
@@ -218,27 +218,28 @@ public class TreasureChest implements Listener {
 
     @EventHandler
     public void onInter(final PlayerInteractEvent event) {
-        if (event.getPlayer() == getPlayer() && event.getClickedBlock() != null
-                && chests.contains(event.getClickedBlock()) && !cooldown) {
-            UltraCosmeticsData.get().getVersionManager().getEntityUtil().playChestAnimation(event.getClickedBlock(), true, design);
-            randomGenerator.setLocation(event.getClickedBlock().getLocation().add(0.0D, 1.0D, 0.0D));
-            randomGenerator.giveRandomThing();
+        if (event.getClickedBlock() == null || !chests.contains(event.getClickedBlock())) return;
+        event.setCancelled(true);
+        if (event.getPlayer() != getPlayer() || cooldown) return;
 
-            cooldown = true;
-            Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> cooldown = false, 3L);
+        UltraCosmeticsData.get().getVersionManager().getEntityUtil().playChestAnimation(event.getClickedBlock(), true, design);
+        randomGenerator.setLocation(event.getClickedBlock().getLocation().add(0.0D, 1.0D, 0.0D));
+        randomGenerator.giveRandomThing();
 
-            ItemStack is = randomGenerator.getItemStack();
+        cooldown = true;
+        Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> cooldown = false, 3L);
 
-            items.add(spawnItem(is, event.getClickedBlock().getLocation()));
-            final String name = randomGenerator.getName();
-            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> spawnHologram(event.getClickedBlock().getLocation().add(0.5D, 0.3D, 0.5D), name), 15L);
+        ItemStack is = randomGenerator.getItemStack();
 
-            chestsLeft -= 1;
-            chests.remove(event.getClickedBlock());
-            chestsToRemove.add(event.getClickedBlock());
-            if (chestsLeft == 0) {
-                Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, 50L);
-            }
+        items.add(spawnItem(is, event.getClickedBlock().getLocation()));
+        final String name = randomGenerator.getName();
+        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> spawnHologram(event.getClickedBlock().getLocation().add(0.5D, 0.3D, 0.5D), name), 15L);
+
+        chestsLeft -= 1;
+        chests.remove(event.getClickedBlock());
+        chestsToRemove.add(event.getClickedBlock());
+        if (chestsLeft == 0) {
+            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, 50L);
         }
     }
 

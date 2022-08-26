@@ -23,7 +23,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * A cosmetic type.
@@ -67,26 +66,17 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     private final XMaterial material;
     private Permission permission;
 
-    public CosmeticType(Category category, String configName, String defaultDescription, XMaterial material, Class<? extends T> clazz) {
-        this(category, configName, defaultDescription, material, clazz, true);
+    public CosmeticType(Category category, String configName, XMaterial material, Class<? extends T> clazz) {
+        this(category, configName, material, clazz, true);
     }
 
-    public CosmeticType(Category category, String configName, String defaultDescription, XMaterial material, Class<? extends T> clazz, boolean registerPerm) {
+    public CosmeticType(Category category, String configName, XMaterial material, Class<? extends T> clazz, boolean registerPerm) {
         this.configName = configName;
         this.clazz = clazz;
         this.category = category;
         this.material = material;
 
-        String descPath = getCategory().getConfigPath() + "." + configName + ".Description";
-        if (SettingsManager.getConfig().getStringList(descPath).size() > 0) {
-            StringJoiner builder = new StringJoiner("\n");
-            SettingsManager.getConfig().getStringList(descPath).forEach(k -> builder.add(k));
-            MessageManager.addMessage(descPath, builder.toString());
-            SettingsManager.getConfig().set(descPath, null);
-        } else {
-            MessageManager.addMessage(descPath, defaultDescription);
-        }
-        description = MessageManager.getMessage(descPath);
+        description = MessageManager.getMessage(getCategory().getConfigPath() + "." + configName + ".Description");
         if (registerPerm) {
             registerPermission();
         }
@@ -95,7 +85,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     public T equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
         T cosmetic = null;
         try {
-            cosmetic = getClazz().getDeclaredConstructor(UltraPlayer.class, UltraCosmetics.class).newInstance(player, ultraCosmetics);
+            cosmetic = getClazz().getDeclaredConstructor(UltraPlayer.class, getClass(), UltraCosmetics.class).newInstance(player, this, ultraCosmetics);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             return null;

@@ -16,7 +16,7 @@ Cancel: '&c&lCANCEL'
 Buy-Ammo-Description: '&e&lBuy %amount% %gadgetname% ammo &e&lfor $%price%'
 Buy-Cosmetic-Description: '&e&lBuy %gadgetname% &e&lfor $%price%'
 Right-Click-Buy-Ammo: '&7Right Click to Buy Ammo'
-Right-Click-Purchase: '&eRight Click to purchase for $%price%'
+Click-To-Purchase: '&eClick to purchase for $%price%'
 Not-Enough-Money: '%prefix% &c&lYou don''t have enough money!'
 Successful-Purchase: '%prefix% &a&lSuccessful purchase!'
 Buy-Treasure-Key: '&lBuy a Treasure Key'
@@ -569,61 +569,83 @@ Morphs:
   Blaze:
     name: '&6&lBlaze'
     skill: '&eSneak&7 to: &aFly'
+    Description: '&7&oIt might be hot on there...'
   Chicken:
     name: '&f&lChicken'
     skill: '&eSneak&7 to: &aLay eggs'
+    Description: '&7&oBecome a chicken!'
   Slime:
     name: '&a&lSlime'
     skill: '&eSneak&7 to: &aBounce'
+    Description: '&7&oSplat splat!'
   Pig:
     name: '&d&lPig'
     skill: '&eCollide&7 to: &aBounce Players'
+    Description: '&7&oMust hold your carrot!'
   Enderman:
     name: '&5&lEnderman'
     skill: '&eDouble Jump&7 to: &aTeleport'
+    Description: |-
+      &7&oI go from there to
+      &7&othere, then you lost me...
   Bat:
     name: '&8&lBat'
     skill: '&eDouble Jump&7 to: &aFlap'
+    Description: '&7&oBecome a bat!'
   Creeper:
     name: '&a&lCreeper'
     skill: '&eSneak&7 to: &aDetonate'
     charging: '&a&lCharging: %chargelevel%/100'
     release-to-explode: '&f&lRelease to explode!'
+    Description: '&7&oHey What''sssssss up?'
   Snowman:
     name: '&f&lSnowman'
     skill: '&eLeft Click&7 to: &aThrow Snowball'
+    Description: '&7&oBecome Olaf!'
   Equip: '%prefix% &9You morphed into %morphname%'
   Unequip: '%prefix% &9You unmorphed from %morphname%'
   WitherSkeleton:
     name: '&8&lWither Skeleton'
     skill: '&eSneak&7 to: &aBone Bomb'
+    Description: |-
+      &7&oJust a regular skeleton...
+      &7&obut from the Nether!
   ElderGuardian:
     name: '&8&lElder Guardian'
     skill: '&eLeft-Click&7 to: &aLaser'
+    Description: '&7&oBecome an Elder Guardian!!'
   Cow:
     name: '&8&lCow'
     skill: '&eLeft-Click&7 to: &aMoo'
+    Description: '&7&oMoooo!'
   Sheep:
     name: '&f&lSheep'
     skill: '&eLeft-Click&7 to: &aChange Colors'
+    Description: '&7&oBaaaa, baa'
   Mooshroom:
     name: '&c&lMooshroom'
     skill: '&eSneak&7 to: &aSoup Throw'
+    Description: '&7&oMoooo!'
   Villager:
     name: '&a&lVillager'
     skill: '&eLeft-Click&7 to: &aEmerald Throw'
+    Description: '&7&oHmmmmmmmmm'
   Witch:
     name: '&5&lWitch'
     skill: '&eLeft-Click&7 to: &aPotion Throw'
+    Description: '&7&oMuahahahahaha'
   PolarBear:
     name: '&f&lPolar Bear'
     skill: '&eLeft-Click&7 to: &aBlizzard'
+    Description: '&7&oI prefer cold areas'
   Llama:
     name: '&3&lLlama'
     skill: '&eLeft-Click&7 to: &aSpit'
+    Description: '&7&oNeed me to carry anything?'
   Parrot:
     name: '&a&lParrot'
     skill: '&eDouble Jump&7 to: &aFlap'
+    Description: '&7&oPolly want a cracker?'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'

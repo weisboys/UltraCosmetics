@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
@@ -54,7 +53,7 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     protected final boolean placesBlocks = getType().doesPlaceBlocks();
 
     public Mount(UltraPlayer ultraPlayer, MountType type, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, Category.MOUNTS, ultraPlayer, type);
+        super(ultraPlayer, type, ultraCosmetics);
     }
 
     /**

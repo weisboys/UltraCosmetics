@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.worldguard;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmetics.CosmeticRegionState;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 

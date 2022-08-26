@@ -15,8 +15,8 @@ import org.bukkit.entity.Horse;
  */
 public class MountOfFire extends MountHorse {
 
-    public MountOfFire(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("mountoffire"), ultraCosmetics);
+    public MountOfFire(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, ultraCosmetics, type);
     }
 
     @Override

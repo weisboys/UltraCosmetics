@@ -48,8 +48,8 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
     private ArmorStand armorStand;
     private boolean running = false;
 
-    public GadgetDiscoBall(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("discoball"), ultraCosmetics);
+    public GadgetDiscoBall(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

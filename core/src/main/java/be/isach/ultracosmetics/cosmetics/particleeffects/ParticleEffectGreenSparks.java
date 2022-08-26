@@ -18,8 +18,8 @@ public class ParticleEffectGreenSparks extends ParticleEffect {
     float height;
     int step;
 
-    public ParticleEffectGreenSparks(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("greensparks"));
+    public ParticleEffectGreenSparks(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

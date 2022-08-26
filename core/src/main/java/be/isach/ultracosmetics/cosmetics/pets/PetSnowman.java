@@ -1,9 +1,12 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ServerVersion;
 
+import org.bukkit.entity.Snowman;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.EntityBlockFormEvent;
 
@@ -14,8 +17,8 @@ import org.bukkit.event.block.EntityBlockFormEvent;
  * @since 07-02-2017
  */
 public class PetSnowman extends Pet {
-    public PetSnowman(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("snowman"));
+    public PetSnowman(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler
@@ -23,5 +26,16 @@ public class PetSnowman extends Pet {
         if (event.getEntity() == entity) {
             event.setCancelled(true);
         }
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3) {
+            return false;
+        }
+        if (customization.equalsIgnoreCase("true")) {
+            ((Snowman) entity).setDerp(true);
+        }
+        return true;
     }
 }

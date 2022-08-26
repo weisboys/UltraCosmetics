@@ -1,21 +1,20 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.suits.*;
-import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
+import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import be.isach.ultracosmetics.util.MathUtils;
+
+import org.bukkit.Color;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.bukkit.Color;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 /**
  * Suit types.
@@ -51,30 +50,17 @@ public class SuitType extends CosmeticType<Suit> {
     private final SuitCategory category;
 
     /**
-     * @param material         The suit part material
-     * @param slot             The slot this suit part should occupy
-     * @param category         The Suit category this part belongs to
+     * @param material The suit part material
+     * @param slot     The slot this suit part should occupy
+     * @param category The Suit category this part belongs to
      */
     protected SuitType(XMaterial material, ArmorSlot slot, SuitCategory category) {
-        super(Category.SUITS, category.getConfigName(), category.getDefaultDesc(), material, category.getSuitClass(), false);
+        super(Category.SUITS, category.getConfigName(), material, category.getSuitClass(), false);
         this.slot = slot;
         this.category = category;
         // delay permission registration until we've loaded slot and category fields
         registerPermission();
         VALUES.add(this);
-    }
-
-    @Override
-    public Suit equip(UltraPlayer player, UltraCosmetics ultraCosmetics) {
-        Suit suit = null;
-        try {
-            suit = getClazz().getDeclaredConstructor(UltraPlayer.class, SuitType.class, UltraCosmetics.class).newInstance(player, this, ultraCosmetics);
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-            return null;
-        }
-        suit.equip();
-        return suit;
     }
 
     @Override
@@ -104,7 +90,7 @@ public class SuitType extends CosmeticType<Suit> {
             int g = MathUtils.random(255);
             int b = MathUtils.random(255);
 
-            color = Color.fromRGB(r, g, b);            
+            color = Color.fromRGB(r, g, b);
         } else if (category == SuitCategory.SANTA) {
             color = Color.RED;
         } else if (category == SuitCategory.FROZEN && slot != ArmorSlot.HELMET) {

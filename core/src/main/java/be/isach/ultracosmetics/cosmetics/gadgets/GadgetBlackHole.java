@@ -30,8 +30,8 @@ public class GadgetBlackHole extends Gadget implements PlayerAffectingCosmetic, 
 
     private Item item;
 
-    public GadgetBlackHole(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("blackhole"), ultraCosmetics);
+    public GadgetBlackHole(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

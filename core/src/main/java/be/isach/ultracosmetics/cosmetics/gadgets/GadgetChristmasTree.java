@@ -27,8 +27,8 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
 
     private static final Color LOG_COLOR = Color.fromRGB(101, 67, 33);
 
-    public GadgetChristmasTree(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("christmastree"), ultraCosmetics);
+    public GadgetChristmasTree(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

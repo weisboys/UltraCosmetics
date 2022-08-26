@@ -63,7 +63,7 @@ public class PermissionPrinter {
         writer.println("Commands:");
         writer.println("  - ultracosmetics.command.*");
         for (SubCommand subCommand : ultraCosmetics.getCommandManager().getCommands()) {
-            writer.print("  - " + subCommand.getPermission());
+            writer.print("  - " + subCommand.getPermission().getName());
             if (subCommand.isDefault()) {
                 writer.print(" (enabled by default)");
             }

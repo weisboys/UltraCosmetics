@@ -26,8 +26,8 @@ public class MorphPolarBear extends Morph implements Updatable {
     private Location location;
     private Vector vector;
 
-    public MorphPolarBear(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("polarbear"), ultraCosmetics);
+    public MorphPolarBear(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

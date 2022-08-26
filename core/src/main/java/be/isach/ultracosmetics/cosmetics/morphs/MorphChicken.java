@@ -14,6 +14,7 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
@@ -38,8 +39,8 @@ public class MorphChicken extends Morph implements Updatable {
     private List<Chicken> chickens = new ArrayList<>();
     private boolean cooldown;
 
-    public MorphChicken(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("chicken"), ultraCosmetics);
+    public MorphChicken(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler
@@ -113,7 +114,6 @@ public class MorphChicken extends Morph implements Updatable {
         }
     }
 
-
     @Override
     protected void onClear() {
         for (Chicken chicken : chickens) {
@@ -125,6 +125,10 @@ public class MorphChicken extends Morph implements Updatable {
 
     @Override
     public void onUpdate() {
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().chickenFall(getPlayer());
+        Player player = getPlayer();
+        @SuppressWarnings("deprecation")
+        boolean onGround = player.isOnGround();
+        if (onGround || player.getVelocity().getY() >= 0) return;
+        player.setVelocity(player.getVelocity().multiply(0.85));
     }
 }

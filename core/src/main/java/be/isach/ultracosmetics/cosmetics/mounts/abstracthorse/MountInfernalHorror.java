@@ -10,8 +10,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class MountInfernalHorror extends MountAbstractHorse {
 
-    public MountInfernalHorror(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("infernalhorror"), ultraCosmetics);
+    public MountInfernalHorror(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, ultraCosmetics, type);
     }
 
     @Override

@@ -11,8 +11,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 12-04-2022
  */
 public class PetSkeleton extends Pet {
-    public PetSkeleton(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("skeleton"));
+    public PetSkeleton(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
     
     @Override

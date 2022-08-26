@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Firework;
@@ -23,7 +24,14 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -61,7 +69,7 @@ public class PlayerListener implements Listener {
                     if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
                         event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getLastVersion());
                         event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED.toString() + ChatColor.BOLD + " to install the update.");
-                    } 
+                    }
                 }
             }
         }.runTaskAsynchronously(ultraCosmetics);
@@ -150,9 +158,7 @@ public class PlayerListener implements Listener {
             player.updateInventory();
             if (isMenuItem && SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
                 // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> 
-                    ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player))
-                , 1);
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player)), 1);
             }
         }
     }
@@ -170,9 +176,7 @@ public class PlayerListener implements Listener {
             event.setCancelled(true);
             player.closeInventory(); // Close the inventory because clicking again results in the event being handled client side
             if (SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> 
-                    ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player))
-                , 1);
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player)), 1);
             }
         }
     }
@@ -231,17 +235,14 @@ public class PlayerListener implements Listener {
             event.getEntity().getInventory().setItem(slot, null);
         }
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getEntity());
-        if (ultraPlayer.getCurrentGadget() != null)
-            event.getDrops().remove(event.getEntity().getInventory().getItem((Integer) SettingsManager.getConfig().get("Gadget-Slot")));
-        if (ultraPlayer.getCurrentHat() != null)
-            event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
+        if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(event.getEntity().getInventory().getItem((Integer) SettingsManager.getConfig().get("Gadget-Slot")));
+        if (ultraPlayer.getCurrentHat() != null) event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
         Arrays.asList(ArmorSlot.values()).forEach(armorSlot -> {
             if (ultraPlayer.getSuit(armorSlot) != null) {
                 event.getDrops().remove(ultraPlayer.getSuit(armorSlot).getItemStack());
             }
         });
-        if (ultraPlayer.getCurrentEmote() != null)
-            event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
+        if (ultraPlayer.getCurrentEmote() != null) event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
         ultraPlayer.clear();
     }
 
@@ -262,7 +263,7 @@ public class PlayerListener implements Listener {
 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerPickUpItem(PlayerPickupItemEvent event) {
+    public void onPlayerPickUpItem(org.bukkit.event.player.PlayerPickupItemEvent event) {
         if (isMenuItem(event.getItem().getItemStack())) {
             event.setCancelled(true);
             event.getItem().remove();
@@ -272,8 +273,7 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerInteractGhost(PlayerInteractAtEntityEvent event) {
         if (event.getRightClicked() != null
-                && event.getRightClicked().hasMetadata("C_AD_ArmorStand"))
-            event.setCancelled(true);
+                && event.getRightClicked().hasMetadata("C_AD_ArmorStand")) event.setCancelled(true);
     }
 
     @EventHandler

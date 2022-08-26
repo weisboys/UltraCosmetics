@@ -1,36 +1,22 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.treasurechests.ChestType;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.PacketSender;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.v1_8_R3.pathfinders.CustomPathFinderGoalPanic;
 import be.isach.ultracosmetics.version.IEntityUtil;
-import net.minecraft.server.v1_8_R3.BlockPosition;
-import net.minecraft.server.v1_8_R3.EntityArmorStand;
-import net.minecraft.server.v1_8_R3.EntityBoat;
-import net.minecraft.server.v1_8_R3.EntityCreature;
-import net.minecraft.server.v1_8_R3.EntityEnderDragon;
-import net.minecraft.server.v1_8_R3.EntityInsentient;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityEquipment;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntityLiving;
-import net.minecraft.server.v1_8_R3.PathEntity;
-import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
-import net.minecraft.server.v1_8_R3.TileEntityChest;
-import net.minecraft.server.v1_8_R3.TileEntityEnderChest;
-import net.minecraft.server.v1_8_R3.Vector3f;
-import net.minecraft.server.v1_8_R3.World;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_8_R3.entity.*;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftBoat;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEnderDragon;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftWither;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.craftbukkit.v1_8_R3.util.UnsafeList;
 import org.bukkit.entity.Creature;
@@ -48,13 +34,30 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.EntityArmorStand;
+import net.minecraft.server.v1_8_R3.EntityBoat;
+import net.minecraft.server.v1_8_R3.EntityCreature;
+import net.minecraft.server.v1_8_R3.EntityEnderDragon;
+import net.minecraft.server.v1_8_R3.EntityInsentient;
+import net.minecraft.server.v1_8_R3.Packet;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityEquipment;
+import net.minecraft.server.v1_8_R3.PacketPlayOutEntityTeleport;
+import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntityLiving;
+import net.minecraft.server.v1_8_R3.PathEntity;
+import net.minecraft.server.v1_8_R3.PathfinderGoalSelector;
+import net.minecraft.server.v1_8_R3.TileEntity;
+import net.minecraft.server.v1_8_R3.Vector3f;
+import net.minecraft.server.v1_8_R3.World;
+
 /**
  * Created by Sacha on 14/03/16.
  */
 public class EntityUtil implements IEntityUtil {
     private final Random r = new Random();
-    private final Map<Player, Set<EntityArmorStand>> fakeArmorStandsMap = new HashMap<>();
-    private final Map<Player, Set<Entity>> cooldownJumpMap = new HashMap<>();
+    private final Map<Player,Set<EntityArmorStand>> fakeArmorStandsMap = new HashMap<>();
+    private final Map<Player,Set<Entity>> cooldownJumpMap = new HashMap<>();
 
     @Override
     public void resetWitherSize(Wither wither) {
@@ -74,8 +77,8 @@ public class EntityUtil implements IEntityUtil {
         as.setLocation(loc.getX() + MathUtils.randomDouble(-1.5, 1.5), loc.getY() + MathUtils.randomDouble(0, .5) - 0.75, loc.getZ() + MathUtils.randomDouble(-1.5, 1.5), 0, 0);
         fakeArmorStands.add(as);
         for (Player players : player.getWorld().getPlayers()) {
-            PacketSender.send(players, new PacketPlayOutSpawnEntityLiving(as));
-            PacketSender.send(players, new PacketPlayOutEntityEquipment(as.getId(), 4, CraftItemStack.asNMSCopy(new ItemStack(org.bukkit.Material.PACKED_ICE))));
+            sendPacket(players, new PacketPlayOutSpawnEntityLiving(as));
+            sendPacket(players, new PacketPlayOutEntityEquipment(as.getId(), 4, CraftItemStack.asNMSCopy(new ItemStack(org.bukkit.Material.PACKED_ICE))));
         }
         Particles.CLOUD.display(loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, .5) - 0.75, MathUtils.randomDouble(-1.5, 1.5)), 2, 0.4f);
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
@@ -83,7 +86,7 @@ public class EntityUtil implements IEntityUtil {
                 if (as == null) {
                     continue;
                 }
-                PacketSender.send(pl, new PacketPlayOutEntityDestroy(as.getId()));
+                sendPacket(pl, new PacketPlayOutEntityDestroy(as.getId()));
             }
             fakeArmorStands.remove(as);
         }, 20);
@@ -101,25 +104,26 @@ public class EntityUtil implements IEntityUtil {
         if (!fakeArmorStandsMap.containsKey(player)) return;
 
         for (EntityArmorStand as : fakeArmorStandsMap.get(player))
-            for (Player pl : player.getWorld().getPlayers())
-                PacketSender.send(pl, new PacketPlayOutEntityDestroy(as.getId()));
+            for (Player pl : player.getWorld().getPlayers()) {
+                sendPacket(pl, new PacketPlayOutEntityDestroy(as.getId()));
+            }
         fakeArmorStandsMap.remove(player);
         cooldownJumpMap.remove(player);
     }
 
     @Override
-    public void clearPathfinders(Entity entity) {
-        EntityInsentient entitySheep = (EntityInsentient) ((CraftEntity) entity).getHandle();
+    public void clearPathfinders(Entity bukkitEntity) {
+        EntityInsentient entity = (EntityInsentient) ((CraftEntity) bukkitEntity).getHandle();
 
         try {
             Field bField = PathfinderGoalSelector.class.getDeclaredField("b");
             bField.setAccessible(true);
             Field cField = PathfinderGoalSelector.class.getDeclaredField("c");
             cField.setAccessible(true);
-            bField.set(entitySheep.goalSelector, new UnsafeList<PathfinderGoalSelector>());
-            bField.set(entitySheep.targetSelector, new UnsafeList<PathfinderGoalSelector>());
-            cField.set(entitySheep.goalSelector, new UnsafeList<PathfinderGoalSelector>());
-            cField.set(entitySheep.targetSelector, new UnsafeList<PathfinderGoalSelector>());
+            bField.set(entity.goalSelector, new UnsafeList<PathfinderGoalSelector>());
+            bField.set(entity.targetSelector, new UnsafeList<PathfinderGoalSelector>());
+            cField.set(entity.goalSelector, new UnsafeList<PathfinderGoalSelector>());
+            cField.set(entity.targetSelector, new UnsafeList<PathfinderGoalSelector>());
         } catch (ReflectiveOperationException exc) {
             exc.printStackTrace();
         }
@@ -133,14 +137,13 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void sendDestroyPacket(Player player, Entity entity) {
-        PacketPlayOutEntityDestroy packet = new PacketPlayOutEntityDestroy(((CraftEntity) entity).getHandle().getId());
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+        sendPacket(player, new PacketPlayOutEntityDestroy(((CraftEntity) entity).getHandle().getId()));
     }
 
     @Override
     public void move(Creature creature, Location loc) {
         EntityCreature ec = ((CraftCreature) creature).getHandle();
-        ec.S = 1;
+        setStepHeight(creature);
 
         if (loc == null) return;
 
@@ -160,7 +163,7 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void setClimb(Entity entity) {
+    public void setStepHeight(Entity entity) {
         ((CraftEntity) entity).getHandle().S = 1;
     }
 
@@ -179,13 +182,8 @@ public class EntityUtil implements IEntityUtil {
         Location location = b.getLocation();
         World world = ((CraftWorld) location.getWorld()).getHandle();
         BlockPosition position = new BlockPosition(location.getX(), location.getY(), location.getZ());
-        if (design.getChestType() == ChestType.ENDER) {
-            TileEntityEnderChest tileChest = (TileEntityEnderChest) world.getTileEntity(position);
-            world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
-        } else {
-            TileEntityChest tileChest = (TileEntityChest) world.getTileEntity(position);
-            world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
-        }
+        TileEntity tileChest = world.getTileEntity(position);
+        world.playBlockAction(position, tileChest.w(), 1, open ? 1 : 0);
     }
 
     @Override
@@ -202,27 +200,11 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void chickenFall(Player player) {
-        EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        if (!entityPlayer.onGround && entityPlayer.motY < 0.0D) {
-            Vector v = player.getVelocity();
-            player.setVelocity(v);
-            entityPlayer.motY *= 0.85;
-        }
-    }
-
-    @Override
     public void sendTeleportPacket(Player player, Entity entity) {
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutEntityTeleport(((CraftEntity) entity).getHandle()));
+        sendPacket(player, new PacketPlayOutEntityTeleport(((CraftEntity) entity).getHandle()));
     }
 
-    @Override
-    public boolean isMoving(org.bukkit.entity.Player entity) {
-        EntityPlayer ent = ((CraftPlayer) entity).getHandle();
-        long time = System.currentTimeMillis() - ent.D();
-        if (time > 0.001) {
-            return true;
-        }
-        return false;
+    private void sendPacket(Player player, Packet<?> packet) {
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
 }

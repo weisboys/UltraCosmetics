@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 // Class for mounts that are like horses but not normal horses
 public abstract class MountAbstractHorse extends Mount {
 
-    public MountAbstractHorse(UltraPlayer ultraPlayer, MountType type, UltraCosmetics ultraCosmetics) {
+    public MountAbstractHorse(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics, MountType type) {
         super(ultraPlayer, type, ultraCosmetics);
     }
 

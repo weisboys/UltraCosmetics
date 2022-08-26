@@ -21,8 +21,8 @@ import com.cryptomorin.xseries.XSound;
  */
 public class GadgetPartyPopper extends Gadget {
 
-    public GadgetPartyPopper(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("partypopper"), ultraCosmetics);
+    public GadgetPartyPopper(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
 
         setAsynchronous(true);
     }

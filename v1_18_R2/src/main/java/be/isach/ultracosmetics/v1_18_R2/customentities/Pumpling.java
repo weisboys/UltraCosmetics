@@ -25,25 +25,32 @@ public class Pumpling extends Zombie {
         if (isCustomEntity()) {
             playSound(SoundEvents.FIRE_AMBIENT, 0.05f, 2f);
             return null;
-        } else return super.getAmbientSound();
+        } else
+            return super.getAmbientSound();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) { // Hurt
-        if (isCustomEntity()) return null;
-        else return super.getHurtSound(damageSource);
+        if (isCustomEntity())
+            return null;
+        else
+            return super.getHurtSound(damageSource);
     }
 
     @Override
     protected SoundEvent getDeathSound() { // Death
-        if (isCustomEntity()) return null;
-        else return super.getDeathSound();
+        if (isCustomEntity())
+            return null;
+        else
+            return super.getDeathSound();
     }
 
     @Override
     protected SoundEvent getStepSound() { // Step
-        if (isCustomEntity()) return null;
-        else return super.getStepSound();
+        if (isCustomEntity())
+            return null;
+        else
+            return super.getStepSound();
     }
 
     @Override
@@ -59,5 +66,10 @@ public class Pumpling extends Zombie {
 
     private boolean isCustomEntity() {
         return CustomEntities.isCustomEntity(this);
+    }
+
+    @Override
+    public boolean convertsInWater() {
+        return false;
     }
 }

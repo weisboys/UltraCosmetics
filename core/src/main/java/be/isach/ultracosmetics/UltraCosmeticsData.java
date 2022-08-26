@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics;
 
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
@@ -118,6 +119,7 @@ public class UltraCosmeticsData {
             logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
             logger.write(LogLevel.WARNING, "UltraCosmetics will continue running but you will likely experience issues!");
             logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
         }
 
         versionManager = new VersionManager(serverVersion);
@@ -126,6 +128,7 @@ public class UltraCosmeticsData {
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             logger.write("No module found for " + serverVersion + "! UC will now be disabled.");
+            ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
         if (versionManager.getModule().enable()) {
@@ -133,6 +136,7 @@ public class UltraCosmeticsData {
             return true;
         }
         logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
+        ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
         return false;
     }
 
@@ -141,7 +145,7 @@ public class UltraCosmeticsData {
      *
      * @return the reason the check failed, or null if it succeeded.
      */
-    String checkServerVersion() {
+    Problem checkServerVersion() {
         String versionString = Bukkit.getServer().getClass().getPackage().getName();
         String mcVersion;
         try {
@@ -149,7 +153,7 @@ public class UltraCosmeticsData {
         } catch (ArrayIndexOutOfBoundsException e) {
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Unable to determine server version. Please report this error.");
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Version string: " + versionString);
-            return "Unable to determine server version";
+            return Problem.UNKNOWN_MC_VERSION;
         }
 
         ServerVersion serverVersion;
@@ -168,7 +172,7 @@ public class UltraCosmeticsData {
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "ULTRACOSMETICS CAN ONLY RUN ON " + sj.toString() + ", OR " + ServerVersion.latest().getName() + "!");
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "");
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "----------------------------");
-            return "Unsupported MC version";
+            return Problem.BAD_MC_VERSION;
         }
 
         setServerVersion(serverVersion);

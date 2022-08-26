@@ -8,6 +8,7 @@ import java.util.EnumSet;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ai.util.LandRandomPos;
 import net.minecraft.world.phys.Vec3;
 
@@ -15,7 +16,17 @@ import net.minecraft.world.phys.Vec3;
  * @author RadBuilder
  */
 public class CustomPathFinderGoalPanic extends Goal {
-
+    private static final Method IN_LIQUID_METHOD;
+    static {
+        Method method = null;
+        try {
+            method = PathNavigation.class.getDeclaredMethod(ObfuscatedFields.IS_IN_LIQUID);
+            method.setAccessible(true);
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+        }
+        IN_LIQUID_METHOD = method;
+    }
     // NMS Entity
     private PathfinderMob entity;
 
@@ -47,12 +58,9 @@ public class CustomPathFinderGoalPanic extends Goal {
         }
         // CraftBukkit end
         // Call by reflection (protected...)
-        Method inLiquidMethod = null;
         boolean inLiquid = false;
         try {
-            inLiquidMethod = this.entity.getNavigation().getClass().getSuperclass().getDeclaredMethod(ObfuscatedFields.IS_IN_LIQUID);
-            inLiquidMethod.setAccessible(true);
-            inLiquid = (boolean) inLiquidMethod.invoke((this.entity.getNavigation()));
+            inLiquid = (boolean) IN_LIQUID_METHOD.invoke(this.entity.getNavigation());
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             return false;

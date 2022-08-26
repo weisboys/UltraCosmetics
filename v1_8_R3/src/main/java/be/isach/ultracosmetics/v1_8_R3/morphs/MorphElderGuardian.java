@@ -42,8 +42,8 @@ public class MorphElderGuardian extends Morph implements Updatable {
      */
     public static List<net.minecraft.server.v1_8_R3.Entity> customEntities = new ArrayList<>();
 
-    public MorphElderGuardian(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("elderguardian"), ultraCosmetics);
+    public MorphElderGuardian(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

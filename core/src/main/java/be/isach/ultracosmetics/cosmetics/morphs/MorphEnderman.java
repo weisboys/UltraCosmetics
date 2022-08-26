@@ -27,8 +27,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 public class MorphEnderman extends Morph {
     private boolean cooldown;
 
-    public MorphEnderman(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("enderman"), ultraCosmetics);
+    public MorphEnderman(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

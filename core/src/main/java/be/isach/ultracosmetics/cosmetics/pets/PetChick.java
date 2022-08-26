@@ -11,7 +11,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 08-12-2015
  */
 public class PetChick extends Pet {
-    public PetChick(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("chick"));
+    public PetChick(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 }

@@ -14,8 +14,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class ParticleEffectMusic extends ParticleEffect {
 
-    public ParticleEffectMusic(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("music"));
+    public ParticleEffectMusic(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

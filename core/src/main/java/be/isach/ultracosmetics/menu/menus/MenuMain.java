@@ -104,7 +104,7 @@ public class MenuMain extends Menu {
                 buyKeyMessage = "\n" + MessageManager.getMessage("Click-Buy-Key") + "\n";
             }
             String[] chestLore;
-            if (player.getKeys() == 0) {
+            if (player.getKeys() < 1) {
                 chestLore = new String[] { "", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage };
             } else {
                 if (SettingsManager.getConfig().getString("TreasureChests.Mode", "").equalsIgnoreCase("both")) {
@@ -127,7 +127,7 @@ public class MenuMain extends Menu {
 
             ItemStack chest = ItemFactory.create(XMaterial.CHEST, msgChests, chestLore);
             putItem(inventory, 3, chest, (data) -> {
-                if (!canBuyKeys && player.getKeys() == 0) {
+                if (!canBuyKeys && player.getKeys() < 1) {
                     XSound.BLOCK_ANVIL_LAND.play(player.getBukkitPlayer().getLocation(), 0.2f, 1.2f);
                     return;
                 }
@@ -139,7 +139,7 @@ public class MenuMain extends Menu {
                         mode = "structure";
                     }
                 }
-                if (mode.equalsIgnoreCase("simple")) {
+                if (player.getKeys() > 0 && mode.equalsIgnoreCase("simple")) {
                     player.removeKey();
                     int count = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
                     TreasureRandomizer tr = new TreasureRandomizer(player.getBukkitPlayer(), player.getBukkitPlayer().getLocation(), true);
@@ -149,6 +149,7 @@ public class MenuMain extends Menu {
                     // Refresh with new key count
                     open(player);
                 } else {
+                    // Opens the buy-a-key menu if the player doesn't have enough keys
                     TreasureChestManager.tryOpenChest(player.getBukkitPlayer());
                 }
             });

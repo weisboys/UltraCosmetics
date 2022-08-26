@@ -4,6 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.MushroomCow;
+import org.bukkit.entity.MushroomCow.Variant;
+
 /**
  * Represents an instance of a mooshroom pet summoned by a player.
  *
@@ -11,7 +14,19 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 06-26-2015
  */
 public class PetMooshroom extends Pet {
-    public PetMooshroom(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("mooshroom"));
+    public PetMooshroom(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        Variant variant;
+        try {
+            variant = Variant.valueOf(customization.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        ((MushroomCow) entity).setVariant(variant);
+        return true;
     }
 }

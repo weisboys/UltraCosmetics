@@ -18,8 +18,8 @@ public class ParticleEffectBloodHelix extends ParticleEffect {
 
     double i = 0;
 
-    public ParticleEffectBloodHelix(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("bloodhelix"));
+    public ParticleEffectBloodHelix(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

@@ -4,6 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.Cat;
+import org.bukkit.entity.Cat.Type;
+
 /**
  * Represents an instance of a kitten pet summoned by a player.
  *
@@ -12,8 +15,19 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  */
 public class PetKitty extends Pet {
 
-    public PetKitty(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("kitty"));
-        // cat.setCatType(Cat.Type.RED_CAT); TODO, Ocelot.Type.RED_CAT in >= 1.12.2, Cat.Type.RED in >= 1.13
+    public PetKitty(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        Type type;
+        try {
+            type = Type.valueOf(customization.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        ((Cat) entity).setCatType(type);
+        return true;
     }
 }

@@ -31,8 +31,8 @@ public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
 
     private Set<Entity> entities = new HashSet<>();
 
-    public GadgetTNT(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("tnt"), ultraCosmetics);
+    public GadgetTNT(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

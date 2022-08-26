@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.TexturedSkullFactory;
+import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.inventory.ItemStack;
 
@@ -27,8 +27,8 @@ public class PetChristmasElf extends Pet {
             getSkull("6cef9aa14e884773eac134a4ee8972063f466de678363cf7b1a21a85b7"),
             getSkull("aa074845885202e17ed5c4be4103733121235c5440ae3a1c49fbd39317b04d"));
 
-    public PetChristmasElf(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("christmaself"));
+    public PetChristmasElf(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
@@ -38,6 +38,6 @@ public class PetChristmasElf extends Pet {
     }
 
     private static ItemStack getSkull(String url) {
-        return TexturedSkullFactory.createSkull(url);
+        return ItemFactory.createSkull(url, "");
     }
 }

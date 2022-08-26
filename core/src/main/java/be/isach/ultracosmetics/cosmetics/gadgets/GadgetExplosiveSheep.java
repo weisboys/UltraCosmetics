@@ -36,8 +36,8 @@ public class GadgetExplosiveSheep extends Gadget {
     private Set<Sheep> sheeps = new HashSet<>();
     private BukkitRunnable sheepExplosionRunnable = null;
 
-    public GadgetExplosiveSheep(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("explosivesheep"), ultraCosmetics);
+    public GadgetExplosiveSheep(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

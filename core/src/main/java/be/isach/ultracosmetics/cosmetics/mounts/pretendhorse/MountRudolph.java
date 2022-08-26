@@ -26,8 +26,8 @@ public class MountRudolph extends MountHorse {
 
     private ArmorStand left, right;
 
-    public MountRudolph(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("rudolph"), ultraCosmetics);
+    public MountRudolph(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, ultraCosmetics, type);
     }
 
     @Override

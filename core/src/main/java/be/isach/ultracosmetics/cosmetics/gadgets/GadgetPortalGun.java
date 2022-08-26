@@ -35,8 +35,8 @@ public class GadgetPortalGun extends Gadget implements Updatable {
     private PortalLoc red = new PortalLoc(255, 0, 0);
     private PortalLoc blue = new PortalLoc(31, 0, 127);
 
-    public GadgetPortalGun(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("portalgun"), ultraCosmetics);
+    public GadgetPortalGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
         displayCooldownMessage = false;
     }
 

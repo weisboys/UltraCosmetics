@@ -40,8 +40,8 @@ public class GadgetTrampoline extends Gadget implements Updatable {
     private Location center;
     private boolean running;
 
-    public GadgetTrampoline(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("trampoline"), ultraCosmetics);
+    public GadgetTrampoline(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

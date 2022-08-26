@@ -5,7 +5,6 @@ import static java.lang.Math.sin;
 import static java.lang.Math.toRadians;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.treasurechests.ChestType;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
@@ -15,6 +14,8 @@ import be.isach.ultracosmetics.version.IEntityUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
+import org.bukkit.block.Lidded;
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftBoat;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftCreature;
@@ -43,7 +44,6 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Rotations;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
@@ -51,7 +51,6 @@ import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.network.protocol.game.ClientboundTeleportEntityPacket;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -68,9 +67,6 @@ import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
-import net.minecraft.world.level.block.entity.EnderChestBlockEntity;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 
@@ -80,8 +76,8 @@ import net.minecraft.world.phys.Vec3;
 public class EntityUtil implements IEntityUtil {
 
     private final Random r = new Random();
-    private Map<Player, Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
-    private Map<Player, Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
+    private Map<Player,Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
+    private Map<Player,Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
 
     private static Field memoriesField;
     private static Field sensorsField;
@@ -113,10 +109,9 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void sendBlizzard(final Player player, Location loc,
-            Function<org.bukkit.entity.Entity, Boolean> canAffectFunc, Vector v) {
+            Function<org.bukkit.entity.Entity,Boolean> canAffectFunc, Vector v) {
         final Set<ArmorStand> fakeArmorStands = fakeArmorStandsMap.computeIfAbsent(player, k -> new HashSet<>());
-        final Set<org.bukkit.entity.Entity> cooldownJump = cooldownJumpMap.computeIfAbsent(player,
-                k -> new HashSet<>());
+        final Set<org.bukkit.entity.Entity> cooldownJump = cooldownJumpMap.computeIfAbsent(player, k -> new HashSet<>());
 
         final ArmorStand as = new ArmorStand(EntityType.ARMOR_STAND, ((CraftWorld) player.getWorld()).getHandle());
         as.setInvisible(true);
@@ -124,23 +119,21 @@ public class EntityUtil implements IEntityUtil {
         as.setSmall(true);
         as.setNoGravity(true);
         as.setShowArms(true);
-        as.setHeadPose(new Rotations((r.nextInt(360)), (r.nextInt(360)), (r.nextInt(360))));
-        as.absMoveTo(loc.getX() + MathUtils.randomDouble(-1.5, 1.5), loc.getY() + MathUtils.randomDouble(0, .5) - 0.75,
+        as.setHeadPose(new Rotations(r.nextInt(360), r.nextInt(360), r.nextInt(360)));
+        as.absMoveTo(loc.getX() + MathUtils.randomDouble(-1.5, 1.5), loc.getY() + MathUtils.randomDouble(0, 0.5) - 0.75,
                 loc.getZ() + MathUtils.randomDouble(-1.5, 1.5), 0, 0);
         fakeArmorStands.add(as);
         ClientboundAddEntityPacket addPacket = new ClientboundAddEntityPacket(as);
-        ClientboundSetEntityDataPacket dataPacket = new ClientboundSetEntityDataPacket(as.getId(), as.getEntityData(),
-                false);
-        List<Pair<EquipmentSlot, ItemStack>> equipment = new ArrayList<>();
-        equipment.add(new Pair<>(EquipmentSlot.HEAD,
-                CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
+        ClientboundSetEntityDataPacket dataPacket = new ClientboundSetEntityDataPacket(as.getId(), as.getEntityData(), false);
+        List<Pair<EquipmentSlot,ItemStack>> equipment = new ArrayList<>();
+        equipment.add(new Pair<>(EquipmentSlot.HEAD, CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
         ClientboundSetEquipmentPacket equipmentPacket = new ClientboundSetEquipmentPacket(as.getId(), equipment);
         for (Player loopPlayer : player.getWorld().getPlayers()) {
             sendPacket(loopPlayer, addPacket);
             sendPacket(loopPlayer, dataPacket);
             sendPacket(loopPlayer, equipmentPacket);
         }
-        Particles.CLOUD.display(loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, .5) - 0.75,
+        Particles.CLOUD.display(loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, 0.5) - 0.75,
                 MathUtils.randomDouble(-1.5, 1.5)), 2, 0.4f);
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
             for (Player pl : player.getWorld().getPlayers()) {
@@ -160,8 +153,7 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void clearBlizzard(Player player) {
-        if (!fakeArmorStandsMap.containsKey(player))
-            return;
+        if (!fakeArmorStandsMap.containsKey(player)) return;
 
         for (ArmorStand as : fakeArmorStandsMap.get(player)) {
             if (as == null) {
@@ -208,7 +200,7 @@ public class EntityUtil implements IEntityUtil {
             goalSelector.removeAllGoals();
             targetSelector.removeAllGoals();
 
-            lockedFlagsField.set(targetSelector, new EnumMap<Goal.Flag, WrappedGoal>(Goal.Flag.class));
+            lockedFlagsField.set(targetSelector, new EnumMap<Goal.Flag,WrappedGoal>(Goal.Flag.class));
 
             disabledFlagsField.set(targetSelector, EnumSet.noneOf(Goal.Flag.class));
         } catch (ReflectiveOperationException e) {
@@ -224,18 +216,15 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void sendDestroyPacket(Player player, org.bukkit.entity.Entity entity) {
-        ClientboundRemoveEntitiesPacket packet = new ClientboundRemoveEntitiesPacket(
-                ((CraftEntity) entity).getHandle().getId());
-        ((CraftPlayer) player).getHandle().connection.send(packet);
+        sendPacket(player, new ClientboundRemoveEntitiesPacket(((CraftEntity) entity).getHandle().getId()));
     }
 
     @Override
     public void move(Creature creature, Location loc) {
         PathfinderMob ec = ((CraftCreature) creature).getHandle();
-        ec.maxUpStep = 1;
+        setStepHeight(creature);
 
-        if (loc == null)
-            return;
+        if (loc == null) return;
 
         ec.yHeadRot = loc.getYaw();
         Path path = ec.getNavigation().createPath(loc.getX(), loc.getY(), loc.getZ(), 1);
@@ -246,11 +235,11 @@ public class EntityUtil implements IEntityUtil {
     public void moveDragon(Player player, Vector vector, org.bukkit.entity.Entity entity) {
         EnderDragon ec = ((CraftEnderDragon) entity).getHandle();
 
+        float yaw = player.getLocation().getYaw();
+
         ec.hurtTime = -1;
         ec.setXRot(player.getLocation().getPitch());
-        ec.setYRot(player.getLocation().getYaw() - 180);
-
-        float yaw = player.getPlayer().getLocation().getYaw();
+        ec.setYRot(yaw - 180);
 
         double angleInRadians = toRadians(-yaw);
 
@@ -263,7 +252,8 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void setClimb(org.bukkit.entity.Entity entity) {
+    public void setStepHeight(org.bukkit.entity.Entity entity) {
+        ((CraftEntity) entity).getHandle().maxUpStep = 1;
     }
 
     @Override
@@ -280,16 +270,9 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void playChestAnimation(Block b, boolean open, TreasureChestDesign design) {
-        Location location = b.getLocation();
-        Level world = ((CraftWorld) location.getWorld()).getHandle();
-        BlockPos position = new BlockPos(location.getX(), location.getY(), location.getZ());
-        if (design.getChestType() == ChestType.ENDER) {
-            EnderChestBlockEntity tileChest = (EnderChestBlockEntity) world.getBlockEntity(position);
-            world.blockEvent(position, tileChest.getBlockState().getBlock(), 1, open ? 1 : 0);
-        } else {
-            ChestBlockEntity tileChest = (ChestBlockEntity) world.getBlockEntity(position);
-            world.blockEvent(position, tileChest.getBlockState().getBlock(), 1, open ? 1 : 0);
-        }
+        BlockState state = b.getState();
+        ((Lidded) state).open();
+        state.update();
     }
 
     @Override
@@ -308,24 +291,8 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void chickenFall(Player player) {
-        ServerPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        if (!entityPlayer.isOnGround() && entityPlayer.getDeltaMovement().y() < 0.0D) {
-            Vector v = player.getVelocity();
-            player.setVelocity(v);
-            entityPlayer.setDeltaMovement(entityPlayer.getDeltaMovement().scale(0.85));
-        }
-    }
-
-    @Override
     public void sendTeleportPacket(Player player, org.bukkit.entity.Entity entity) {
-        ((CraftPlayer) player).getHandle().connection
-                .send(new ClientboundTeleportEntityPacket(((CraftEntity) entity).getHandle()));
-    }
-
-    @Override
-    public boolean isMoving(Player entity) {
-        return false;
+        sendPacket(player, new ClientboundTeleportEntityPacket(((CraftEntity) entity).getHandle()));
     }
 
     private void sendPacket(Player player, Packet<?> packet) {

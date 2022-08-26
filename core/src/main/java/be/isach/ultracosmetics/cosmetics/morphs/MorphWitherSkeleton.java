@@ -26,8 +26,8 @@ import be.isach.ultracosmetics.util.MathUtils;
 public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmetic {
     private boolean inCooldown;
 
-    public MorphWitherSkeleton(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("witherskeleton"), ultraCosmetics);
+    public MorphWitherSkeleton(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

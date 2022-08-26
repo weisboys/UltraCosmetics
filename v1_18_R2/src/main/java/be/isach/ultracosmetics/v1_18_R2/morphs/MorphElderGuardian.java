@@ -38,8 +38,8 @@ public class MorphElderGuardian extends Morph implements Updatable {
     private boolean cooldown;
     private CustomGuardian customGuardian;
 
-    public MorphElderGuardian(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("elderguardian"), ultraCosmetics);
+    public MorphElderGuardian(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

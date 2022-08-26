@@ -26,8 +26,8 @@ public class GadgetTsunami extends Gadget implements PlayerAffectingCosmetic {
 
     private final List<Entity> cooldownJump = new ArrayList<>();
 
-    public GadgetTsunami(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("tsunami"), ultraCosmetics);
+    public GadgetTsunami(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

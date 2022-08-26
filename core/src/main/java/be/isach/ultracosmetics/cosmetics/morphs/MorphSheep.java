@@ -23,8 +23,8 @@ import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
 public class MorphSheep extends Morph {
     private long coolDown = 0;
 
-    public MorphSheep(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("sheep"), ultraCosmetics);
+    public MorphSheep(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

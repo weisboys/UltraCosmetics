@@ -13,8 +13,8 @@ import net.minecraft.server.v1_8_R3.Entity;
  * Created by Sacha on 18/10/15.
  */
 public class PetPumpling extends CustomEntityPet {
-    public PetPumpling(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("pumpling"));
+    public PetPumpling(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
