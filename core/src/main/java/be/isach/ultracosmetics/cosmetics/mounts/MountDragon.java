@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
@@ -27,6 +28,7 @@ public class MountDragon extends Mount {
 
     @Override
     public void onUpdate() {
+        if (SettingsManager.getConfig().getBoolean("Mounts." + getType().getConfigName() + ".Stationary")) return;
         Vector vector = getPlayer().getLocation().toVector();
 
         double rotX = getPlayer().getLocation().getYaw();
@@ -54,8 +56,7 @@ public class MountDragon extends Mount {
     @EventHandler
     public void stopDragonDamage(EntityExplodeEvent event) {
         Entity e = event.getEntity();
-        if (e instanceof EnderDragonPart)
-            e = ((EnderDragonPart) e).getParent();
+        if (e instanceof EnderDragonPart) e = ((EnderDragonPart) e).getParent();
         if (e == entity) {
             event.setCancelled(true);
         }

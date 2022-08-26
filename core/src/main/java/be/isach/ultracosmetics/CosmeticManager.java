@@ -96,6 +96,7 @@ public class CosmeticManager {
                 config.addDefault("Mounts." + mountType.getConfigName() + ".Blocks-To-Place", mountType.getDefaultBlocks().stream().map(m -> m.name()).collect(Collectors.toList()), "Blocks to choose from as this mount walks.");
             }
         }
+        config.addDefault("Mounts.Dragon.Stationary", false, "If true, the dragon will not move.");
         for (SuitCategory suit : SuitCategory.values()) {
             setupCosmetic(config, suit.getConfigPath());
         }

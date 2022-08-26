@@ -80,11 +80,14 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
             if (shouldHideItem(player, cosmeticType)) continue;
 
+            final int price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
+
             if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled")
                     && !player.hasPermission(cosmeticType.getPermission())) {
                 ItemStack stack = ItemFactory.getItemStackFromConfig("No-Permission.Custom-Item.Type");
                 String name = ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("No-Permission.Custom-Item.Name")).replace("{cosmetic-name}", cosmeticType.getName());
                 List<String> npLore = SettingsManager.getConfig().getStringList("No-Permission.Custom-Item.Lore");
+                addPurchaseLore(price, npLore, cosmeticType, player);
                 String[] array = new String[npLore.size()];
                 npLore.toArray(array);
                 putItem(inventory, slot, ItemFactory.rename(stack, name, array), clickData -> {
@@ -124,11 +127,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
                 loreList.add(ChatColor.translateAlternateColorCodes('&', s));
             }
 
-            final int price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
-            if (price > 0 && !player.hasPermission(cosmeticType.getPermission()) && SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase")) {
-                loreList.add("");
-                loreList.add(MessageManager.getMessage("Right-Click-Purchase").replace("%price%", String.valueOf(price)));
-            }
+            addPurchaseLore(price, loreList, cosmeticType, player);
 
             itemMeta.setLore(loreList);
 
@@ -188,6 +187,13 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         putItems(inventory, player, page);
         ItemFactory.fillInventory(inventory);
         player.getBukkitPlayer().openInventory(inventory);
+    }
+
+    private void addPurchaseLore(int price, List<String> lore, T cosmeticType, UltraPlayer player) {
+        if (price > 0 && !player.hasPermission(cosmeticType.getPermission()) && SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase")) {
+            lore.add("");
+            lore.add(MessageManager.getMessage("Click-To-Purchase").replace("%price%", String.valueOf(price)));
+        }
     }
 
     public T getCosmeticType(String name) {
@@ -343,8 +349,27 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
                 handleRightClick(ultraPlayer, cosmeticType);
                 return false;
             }
-            if (!SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase")) return false;
-            if (price <= 0) return false;
+        }
+
+        if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getDeactivateTooltip())) {
+            toggleOff(ultraPlayer, cosmeticType);
+            if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
+                open(ultraPlayer, currentPage);
+            }
+        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getActivateTooltip())) {
+            if (ultraPlayer.hasPermission(cosmeticType.getPermission())) {
+                toggleOn(ultraPlayer, cosmeticType, getUltraCosmetics());
+                if (hasEquipped(ultraPlayer, cosmeticType)) {
+                    return handleActivate(ultraPlayer);
+                }
+                return true;
+            }
+
+            if (!SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase") || price <= 0) {
+                ultraPlayer.sendMessage(MessageManager.getMessage("No-Permission"));
+                return true;
+            }
+
             String itemName = MessageManager.getMessage("Buy-Cosmetic-Description");
             itemName = itemName.replace("%price%", String.valueOf(price));
             itemName = itemName.replace("%gadgetname%", cosmeticType.getName());
@@ -365,23 +390,9 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             MenuPurchase mp = new MenuPurchase(getUltraCosmetics(), "Purchase " + cosmeticType.getName(), pd);
             ultraPlayer.getBukkitPlayer().openInventory(mp.getInventory(ultraPlayer));
             return false; // we just opened another inventory, don't close it
-        }
 
-        if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getDeactivateTooltip())) {
-            toggleOff(ultraPlayer, cosmeticType);
-            if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
-                open(ultraPlayer, currentPage);
-            }
-        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getActivateTooltip())) {
-            if (!ultraPlayer.hasPermission(cosmeticType.getPermission())) {
-                ultraPlayer.sendMessage(MessageManager.getMessage("No-Permission"));
-                return true;
-            }
-            toggleOn(ultraPlayer, cosmeticType, getUltraCosmetics());
-            if (hasEquipped(ultraPlayer, cosmeticType)) {
-                return handleActivate(ultraPlayer);
-            }
         }
+        // If we ended up here, that's a bug
         return true;
     }
 

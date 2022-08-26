@@ -16,8 +16,10 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -52,7 +54,8 @@ public class TreasureChestManager implements Listener {
         }
     }
 
-    private TreasureChestManager() {}
+    private TreasureChestManager() {
+    }
 
     private static String getRandomDesign() {
         Set<String> set = UltraCosmeticsData.get().getPlugin().getConfig().getConfigurationSection("TreasureChests.Designs").getKeys(false);
@@ -99,11 +102,7 @@ public class TreasureChestManager implements Listener {
         }
 
         for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, 5, 5, 5)) {
-            if (!(ent instanceof Player)) continue;
-            Player loopPlayer = (Player) ent;
-            // check Bukkit.getPlayer(UUID) in case loopPlayer is really a player NPC
-            if (Bukkit.getPlayer(loopPlayer.getUniqueId()) != null 
-                    && plugin.getPlayerManager().getUltraPlayer(loopPlayer).getCurrentTreasureChest() != null) {
+            if (ent instanceof LivingEntity) {
                 player.closeInventory();
                 player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close"));
                 return;
