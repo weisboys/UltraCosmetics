@@ -1,33 +1,33 @@
-Prefix: '&l&oУкрашения >&r'
-No-Permission: '%prefix% &c&lУ вас нет права!'
-Cosmetic-Disabled: '%prefix% &c&lЭто украшение отключено!'
-Invalid-Gadget: '%prefix% &c&lInvalid Gadget!'
-Invalid-Pet: '%prefix% &c&lInvalid Pet!'
-Invalid-Mount: '%prefix% &c&lInvalid Mount!'
-Invalid-Effect: '%prefix% &c&lInvalid Effect!'
-Invalid-Morph: '%prefix% &c&lInvalid Morph!'
-Invalid-Hat: '%prefix% &c&lInvalid Hat!'
-Invalid-Suit: '%prefix% &c&lInvalid Suit!'
-Invalid-Emote: '%prefix% &c&lInvalid Emote!'
-Invalid-Menu: '%prefix% &c&lInvalid Menu!'
-Ammo: '&7Your ammo: &e%ammo%'
-Purchase: '&a&lPURCHASE'
-Cancel: '&c&lCANCEL'
-Buy-Ammo-Description: '&e&lBuy %amount% %gadgetname% ammo &e&lfor $%price%'
-Buy-Cosmetic-Description: '&e&lBuy %gadgetname% &e&lfor $%price%'
-Right-Click-Buy-Ammo: '&7Right Click to Buy Ammo'
+Prefix: '&l&oKosmetyki >&r'
+No-Permission: '%prefix% &c&lNie masz uprawnień!'
+Cosmetic-Disabled: '%prefix% &c&lTen kosmetyk jest wyłączony!'
+Invalid-Gadget: '%prefix% &c&lNieprawidłowy gadżet!'
+Invalid-Pet: '%prefix% &c&lNieprawidłowy zwierzak!'
+Invalid-Mount: '%prefix% &c&lNieprawidłowy wierzchowiec!'
+Invalid-Effect: '%prefix% &c&lNieprawidłowy efekt!'
+Invalid-Morph: '%prefix% &c&lNieprawidłowa przemiana!'
+Invalid-Hat: '%prefix% &c&lNieprawidłowy kapelusz!'
+Invalid-Suit: '%prefix% &c&lNieprawidłowy strój!'
+Invalid-Emote: '%prefix% &c&lNieprawidłowa emotka!'
+Invalid-Menu: '%prefix% &c&lNieprawidłowe menu!'
+Ammo: '&7Twoja amunicja: &e%ammo%'
+Purchase: '&a&lKUP'
+Cancel: '&c&lANULUJ'
+Buy-Ammo-Description: '&e&lKup %amount% do %gadgetname% &e&lza $%price%'
+Buy-Cosmetic-Description: '&e&las Kup %gadgetname% &e&lza $%price%'
+Right-Click-Buy-Ammo: '&7Kliknij prawym przyciskiem myszy, aby kupić amunicję'
 Click-To-Purchase: '&eClick to purchase for $%price%'
-Not-Enough-Money: '%prefix% &c&lУ вас недостаточно средств!'
-Successful-Purchase: '%prefix% &a&lSuccessful purchase!'
-Buy-Treasure-Key: '&lBuy a Treasure Key'
-Treasure-Keys: '&7&lTreasure Keys'
-Treasure-Chests: '&6&lTreasure Chests'
-Dont-Have-Key: '&4&lВам нужен ключ!'
-Click-Open-Chest: '&aКликните, чтобы открыть сундук'
-Click-Buy-Key: '&aКликните, чтобы купить ключ'
+Not-Enough-Money: '%prefix% &c&lNie masz wystarczająco pieniędzy!'
+Successful-Purchase: '%prefix% &a&lUdany zakup!'
+Buy-Treasure-Key: '&lKup klucz do skrzyni skarbów'
+Treasure-Keys: '&7&lKlucze do Skrzyni skarbów'
+Treasure-Chests: '&6&lSkrzynie skarbów'
+Dont-Have-Key: '&4&lYou need a key!'
+Click-Open-Chest: '&aClick to open a chest'
+Click-Buy-Key: '&aClick to buy a key'
 Left-Click-Open-Chest: '&aLeft-click to open a chest'
 Right-Click-Simple: '&aRight-click to just get cosmetics'
-Your-Keys: '&7&oВаши ключи: &f&l%keys%'
+Your-Keys: '&7&oYour keys: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lTreasure Key &e&lfor $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lYou won: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lAll treasure locations are full, please wait and try again'
@@ -45,26 +45,26 @@ Menu:
   Purchase-Rename:
     Button:
       Showcase: '&c&lRename the pet to &f&l%name% &c&lfor &e&l$%price%'
-    Title: '&lПереименовать питомца'
+    Title: '&lRename Pet'
   Rename-Pet:
     Button:
       Name: '&c&lClick to rename: %petname%'
     Placeholder: Pet Name
     Title: Rename pet
   Main:
-    Title: '&lГлавное меню'
+    Title: '&lMain Menu'
     Button:
-      Name: '&c&lГлавное меню'
+      Name: '&c&lMain Menu'
   Pets:
-    Title: '&lПитомцы'
+    Title: '&lPets'
     Button:
-      Name: '&a&lПитомцы'
+      Name: '&a&lPets'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Gadgets:
-    Title: '&lГаджеты'
+    Title: '&lGadgets'
     Button:
-      Name: '&9&lГаджеты'
+      Name: '&9&lGadgets'
       Tooltip-Equip: '&b&lActivate'
       Tooltip-Unequip: '&c&lDeactivate'
   Mounts:
@@ -80,9 +80,9 @@ Menu:
       Tooltip-Equip: '&b&lMorph into'
       Tooltip-Unequip: '&c&lUnmorph from'
   Hats:
-    Title: '&lШляпы'
+    Title: '&lHats'
     Button:
-      Name: '&b&lШляпы'
+      Name: '&b&lHats'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Particle-Effects:
@@ -98,17 +98,17 @@ Menu:
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Emotes:
-    Title: '&lЭмоции'
+    Title: '&lEmotes'
     Button:
-      Name: '&e&lЭмоции'
+      Name: '&e&lEmotes'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lBuy Ammo'
   Misc:
     Button:
-      Previous-Page: '&c&lПредыдущая страница'
-      Next-Page: '&a&lСледующая страница'
+      Previous-Page: '&c&lPrevious Page'
+      Next-Page: '&a&lNext Page'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
   Too-Close: '%prefix% &c&lYou are too close to another treasure chest!'
@@ -120,11 +120,11 @@ Chest-Location:
 Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% ammo'
-  Pet: '%pet% питомец'
+  Pet: '%pet% pet'
   Mount: '%mount% mount'
-  Effect: '%effect% эффект'
+  Effect: '%effect% effect'
   Morph: '%morph% morph'
-  Hat: '%hat% шляпа'
+  Hat: '%hat% hat'
   Money: '&e&l%money%$'
   Gadget: '%gadget% gadget'
   Suit: '%suit%'
@@ -169,18 +169,18 @@ Gadgets:
       &7&oat them and pulling them
       &7&oto you!
   DiscoBall:
-    name: '&d&lDisco шар'
+    name: '&d&lDisco Ball'
     Already-Active: '&c&lThere is already a disco ball active!'
     Not-Space-Above: '&c&lThere is not enough space above you!'
     Description: '&7&oJust dance!'
   ColorBomb:
-    name: '&d&lЦветная бомба'
-    Description: '&7&oРазноцветная бомба!'
+    name: '&d&lColor Bomb'
+    Description: '&7&oA colorful bomb!'
   Chickenator:
     name: '&f&lChickenator'
     Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
   PortalGun:
-    name: '&c&lПортальная &9&lпушка'
+    name: '&c&lPortal &9&lGun'
     No-Block-Range: '%prefix% &c&lNo BLOCKS in range!'
     Different-Worlds: '%prefix% &c&lPortals must be in the same world!'
     Description: '&7&oThe cake is a lie!'
@@ -188,7 +188,7 @@ Gadgets:
     name: '&b&lBlizzard Blaster'
     Description: '&7&oLet it snow!'
   ThorHammer:
-    name: '&f&lМолот Тора'
+    name: '&f&lThor''s Hammer'
     Description: '&7&oGet the real Mjölnir!'
   SmashDown:
     name: '&c&lSmashDown'
@@ -200,7 +200,7 @@ Gadgets:
       &7&oAre you sure it's supposed
       &7&oto flicker like that?
   AntiGravity:
-    name: '&d&lАнти-гравитация'
+    name: '&d&lAnti Gravity'
     Description: |-
       &7&oYou don't like gravity?
       &7&oThen, this gadget is made for you!
@@ -210,11 +210,11 @@ Gadgets:
       &7&oTSUNAMI!
       &7&oRun for your life!
   Rocket:
-    name: '&d&lРакета'
+    name: '&4&lRocket'
     Not-Enough-Space: '%prefix% &c&lNot enough space around and above you!'
     Not-On-Ground: '%prefix% &c&lYou must be on the ground!'
     Takeoff: '&4&lTAKEOFF!!'
-    LaunchAborted: '&c&lЗапуск прерван!'
+    LaunchAborted: '&c&lLaunch aborted!'
     Description: '&7&oHouston, we have a problem...'
   BlackHole:
     name: '&1&lBlack Hole'

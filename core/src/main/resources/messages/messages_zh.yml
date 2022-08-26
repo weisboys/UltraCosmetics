@@ -16,7 +16,7 @@ Cancel: '&c&l取消'
 Buy-Ammo-Description: '&e&l购买 %amount% %gadgetname% 次使用次数 &e&l需要花费 $%price%'
 Buy-Cosmetic-Description: '&e&l购买 %gadgetname% &e&l需花费 $%price%'
 Right-Click-Buy-Ammo: '&7右键即可购买使用次数'
-Right-Click-Purchase: '&e右键即可花费 $%price% 来购买'
+Click-To-Purchase: '&eClick to purchase for $%price%'
 Not-Enough-Money: '%prefix% &c&l你没有足够的金钱！'
 Successful-Purchase: '%prefix% &a&l购买成功！'
 Buy-Treasure-Key: '&l购买一把宝藏钥匙'
@@ -270,74 +270,74 @@ Gadgets:
       &7&o建造一个蹦床，
       &7&o并用它将你和你的朋友
       &7&o送入空中！
-  Gadget-Ready-ActionBar: '%gadgetname% &f&l以就绪！'
+  Gadget-Ready-ActionBar: '%gadgetname% &f&l已就绪！'
   Lore: '&9小道具'
 Mounts:
   DruggedHorse:
     menu-name: '&2&l嗑药的马'
-    entity-displayname: '&l%playername%的嗑药马'
+    entity-displayname: '&l%playername%''s drugged horse'
     Description: '&7&o这太过分了！'
   InfernalHorror:
     menu-name: '&4&l地狱恐惧'
-    entity-displayname: '&l%playername%的地狱恐惧'
+    entity-displayname: '&l%playername%''s infernal horror'
     Description: '&7&o这个载具直接来自... 地狱!'
   GlacialSteed:
     menu-name: '&b&l冰川骏马'
-    entity-displayname: '&l%playername%的冰川骏马'
+    entity-displayname: '&l%playername%''s glacial steed'
     Description: '&7&o这个载具来自北极'
   WalkingDead:
     menu-name: '&2&l行走死亡'
-    entity-displayname: '&l%playername%的行走死亡'
+    entity-displayname: '&l%playername%''s walking dead'
     Description: '&7&o呜...'
   MountOfFire:
     menu-name: '&c&l火之坐骑'
-    entity-displayname: '&l%playername%的火之载具'
+    entity-displayname: '&l%playername%''s mount of fire'
     Description: '&7&o冥王的坐骑！'
   MountOfWater:
     menu-name: '&9&l水之坐骑'
-    entity-displayname: '&l%playername%的水之坐骑'
+    entity-displayname: '&l%playername%''s mount of water'
     Description: '&7&o波塞冬坐骑！'
   EcologistHorse:
     menu-name: '&a&l生态马'
-    entity-displayname: '&l%playername%的生态马'
+    entity-displayname: '&l%playername%''s ecologist horse'
     Description: '&7&o成为一名生态学家！'
   NyanSheep:
     menu-name: '&4&l咩咩&6&l羊'
-    entity-displayname: '&l%playername%的咩咩羊'
+    entity-displayname: '&l%playername%''s nyan sheep'
     Description: |-
       &4&l咩 &6&l咩 &e&l咩
       &a&l咩 &3&l咩 &9&l咩
   Snake:
     menu-name: '&6&l蛇'
-    entity-displayname: '&l%playername%的蛇'
-    Description: '&7&o小心！它可能会咬人...'
+    entity-displayname: '&l%playername%''s snake'
+    Description: '&7&oWatch out! It may bite..'
   Dragon:
     menu-name: '&5&l龙'
-    entity-displayname: '&l%playername%的龙'
+    entity-displayname: '&l%playername%''s dragon'
     Description: '&7&o成为一个龙骑士！'
   SkySquid:
-    menu-name: '&9&l飞天鱿鱼'
-    entity-displayname: '&l%playername%的飞天鱿鱼'
+    menu-name: '&9&lSky Squid'
+    entity-displayname: '&l%playername%''s sky squid'
   HypeCart:
     menu-name: '&7&l超级车'
-    entity-displayname: '&l%playername%的超级车'
+    entity-displayname: '&l%playername%''s hypecart'
     Description: |-
       &7&o想开F1赛车？
       &7&o现在你可以了！
   Slime:
     menu-name: '&a&l史莱姆'
-    entity-displayname: '&l%playername%的史莱姆'
+    entity-displayname: '&l%playername%''s slime'
     Description: '&7&o啪嗒！啪嗒！'
   Spider:
     menu-name: '&8&l蜘蛛'
-    entity-displayname: '&l%playername%的蜘蛛'
+    entity-displayname: '&l%playername%''s spider'
     Description: '&7&o你就是蜘蛛骑士！'
   Rudolph:
     menu-name: '&f&l鲁道&4&l夫'
-    entity-displayname: '&l%playername%的鲁道夫'
+    entity-displayname: '&l%playername%''s rudolph'
     Description: |-
-      &7&o什么是没有驯鹿鲁道夫
-      &7&o的圣诞节?
+      &7&oWhat would be Christmas
+      &7&owithout Rudolph the Reindeer?
   MoltenSnake:
     menu-name: '&c&l熔蛇'
     entity-displayname: '&l%playername%的熔蛇'
@@ -346,8 +346,8 @@ Mounts:
       &7&o存在着一种神话般的熔蛇
       &7&o它将永远为你服务
   FlyingShip:
-    menu-name: '&a&l飞船'
-    entity-displayname: '&l%playername%的飞船'
+    menu-name: '&a&lFlying Ship'
+    entity-displayname: '&l%playername%''s Flying Ship'
   Equip: '%prefix% &9你召唤了 %mountname%'
   Unequip: '%prefix% &9你收回了 %mountname%'
   Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
@@ -368,9 +368,9 @@ Particle-Effects:
   BloodHelix:
     name: '&4&l血色螺旋体'
     Description: |-
-      &7&o古老的传说说这种魔法
-      &7&o赋予其使用者的血液以力量。
-      &7&o赋予他们神的力量。
+      &7&oAncient legend says this magic
+      &7&oempowers the blood of its user,
+      &7&ogiving them godly powers..
   FrostLord:
     name: '&b&l冰霜领主'
     Description: '&7&o我是全能的 冰霜领主!'
@@ -413,8 +413,8 @@ Particle-Effects:
   EnderAura:
     name: '&d&l末影光环'
     Description: |-
-      &7&o这些神秘的粒子附着在
-      &7&o最富传奇色彩的玩家身上!
+      &7&oThese mystic particle attach to
+      &7&oonly the most legendary of players!
   FlameFairy:
     name: '&6&l火焰精灵'
     Description: '&7&o嘿！！'
@@ -423,55 +423,55 @@ Particle-Effects:
     Description: '&7&o也许这些魔杖能保护你！'
   FireWaves:
     name: '&e&l火浪'
-    Description: '&7&o有人说这些火浪起到了保护作用...'
+    Description: '&7&oSome say theses waves of fire acts as a shield...'
 Pets:
   Piggy:
     menu-name: '&d&l猪仔'
-    entity-displayname: '&l%playername%的猪仔'
+    entity-displayname: '&l%playername%''s piggy'
     Description: '&7&o哼！哼！'
   Sheep:
     menu-name: '&f&l羊'
-    entity-displayname: '&l%playername%的羊'
+    entity-displayname: '&l%playername%''s sheep'
     Description: '&7&o咩，咩'
   EasterBunny:
     menu-name: '&6&l复活节兔'
-    entity-displayname: '&l%playername%的复活节兔'
+    entity-displayname: '&l%playername%''s easter bunny'
     Description: '&7&o到复活节了吗'
   Cow:
     menu-name: '&c&l牛'
-    entity-displayname: '&l%playername%的牛'
+    entity-displayname: '&l%playername%''s cow'
     Description: '&7&o哞!'
   Kitty:
     menu-name: '&9&lKitty猫'
-    entity-displayname: '&l%playername%的Kitty猫'
+    entity-displayname: '&l%playername%''s kitty'
     Description: '&7&o喵~'
   Dog:
     menu-name: '&7&l狗'
-    entity-displayname: '&l%playername%的狗'
+    entity-displayname: '&l%playername%''s dog'
     Description: '&7&o汪！'
   Chick:
     menu-name: '&e&l鸡'
-    entity-displayname: '&l%playername%的鸡'
+    entity-displayname: '&l%playername%''s chick'
     Description: '&7&o咯咯哒！'
   Wither:
     menu-name: '&8&l凋零'
-    entity-displayname: '&l%playername%的凋零'
-    Description: '&7&o为我小心......'
+    entity-displayname: '&l%playername%''s wither'
+    Description: '&7&oWatch out for me..'
   Pumpling:
     menu-name: '&6&l小南瓜'
-    entity-displayname: '&l%playername%的小南瓜'
+    entity-displayname: '&l%playername%''s pumpling'
     Description: '&7&o只是一个漂浮的小南瓜'
   ChristmasElf:
     menu-name: '&a&l圣诞精灵'
-    entity-displayname: '&l%playername%的圣诞精灵'
+    entity-displayname: '&l%playername%''s Christmas elf'
     Description: '&7&o我可以给你做礼物！'
   Mooshroom:
     menu-name: '&4&l哞菇'
     entity-displayname: '&l%playername%的哞菇'
     Description: '&7&o哞!'
   IronGolem:
-    menu-name: '&7&l铁傀儡'
-    entity-displayname: '&l%playername%的铁傀儡'
+    menu-name: '&7&lIronGolem'
+    entity-displayname: '&l%playername%''s IronGolem'
     Description: '&7&o我喜欢花'
   Snowman:
     menu-name: '&f&l雪人'
@@ -486,8 +486,8 @@ Pets:
     entity-displayname: '&l%playername%的蝙蝠'
     Description: '&7&o我喜欢黑暗的地方'
   PolarBear:
-    menu-name: '&b&l北极熊'
-    entity-displayname: '&l%playername%的北极熊'
+    menu-name: '&b&lPolarBear'
+    entity-displayname: '&l%playername%''s PolarBear'
     Description: '&7&o我更倾向于冷的地方'
   Llama:
     menu-name: '&7&l羊驼'
@@ -546,7 +546,7 @@ Pets:
   Enderman:
     menu-name: '&5&l末影人'
     entity-displayname: '&l%playername%的末影人'
-    Description: '&7&o别看着它，不然他会追杀你！'
+    Description: '&7&oDont look at it or it will hunt you!'
   Skeleton:
     menu-name: '&f&l骷髅'
     entity-displayname: '&l%playername%的骷髅'
@@ -572,62 +572,84 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&l烈焰'
-    skill: '&e蹲下&7 即可 &a起飞'
+    skill: '&e潜行&7 即可: &a起飞'
+    Description: '&7&oIt might be hot on there...'
   Chicken:
     name: '&f&l鸡'
-    skill: '&e蹲下&7 即可： &a铺腿'
+    skill: '&e潜行&7 即可: &a下蛋'
+    Description: '&7&oBecome a chicken!'
   Slime:
     name: '&a&l史莱姆'
-    skill: '&e蹲下&7 即可: &a蹦蹦跳跳'
+    skill: '&e潜行&7 即可: &a蹦蹦跳跳'
+    Description: '&7&oSplat splat!'
   Pig:
     name: '&d&l猪'
     skill: '&e碰撞&7 即可: &a弹起玩家'
+    Description: '&7&oMust hold your carrot!'
   Enderman:
     name: '&5&l末影人'
     skill: '&e二段跳&7 即可:&a传送'
+    Description: |-
+      &7&oI go from there to
+      &7&othere, then you lost me...
   Bat:
     name: '&8&l蝙蝠'
     skill: '&e二段跳&7 即可:&a扇动翅膀'
+    Description: '&7&oBecome a bat!'
   Creeper:
     name: '&a&l苦力怕'
-    skill: '&e蹲下&7 即可: &a引爆'
+    skill: '&e潜行&7 即可: &a引爆'
     charging: '&a&l充能中: %chargelevel%/100'
     release-to-explode: '&f&l释放即爆炸！'
+    Description: '&7&oHey What''sssssss up?'
   Snowman:
     name: '&f&l雪人'
     skill: '&e左键点击&7 即可 &a发射雪球'
+    Description: '&7&oBecome Olaf!'
   Equip: '%prefix% &9你伪装成了 %morphname%'
   Unequip: '%prefix% &9你取消了伪装从 %morphname%'
   WitherSkeleton:
     name: '&8&l凋零骷髅'
     skill: '&e潜行&7 即可发射: &a骨头炸弹'
+    Description: |-
+      &7&oJust a regular skeleton...
+      &7&obut from the Nether!
   ElderGuardian:
     name: '&8&l远古守卫者'
     skill: '&e左键点击&7 发射: &a激光'
+    Description: '&7&oBecome an Elder Guardian!!'
   Cow:
     name: '&8&l牛'
     skill: '&e左键点击&7 即可: &a哞~'
+    Description: '&7&oMoooo!'
   Sheep:
     name: '&f&l羊'
     skill: '&e左键点击&7 即可: &a改变颜色'
+    Description: '&7&oBaaaa, baa'
   Mooshroom:
     name: '&c&l哞菇'
-    skill: '&e蹲下&7 即可: &a扔出一碗汤'
+    skill: '&e潜行&7 即可: &a扔出蘑菇煲'
+    Description: '&7&oMoooo!'
   Villager:
     name: '&a&l村民'
     skill: '&e左键点击&7 即可: &a扔出绿宝石'
+    Description: '&7&oHmmmmmmmmm'
   Witch:
     name: '&5&l女巫'
     skill: '&e左键点击&7 即可: &a扔出药水'
+    Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&l北极熊'
+    name: '&f&lPolarBear'
     skill: '&e左键点击&7 即可召唤: &a召唤暴风雪'
+    Description: '&7&oI prefer cold areas'
   Llama:
     name: '&3&l羊驼'
     skill: '&e左键点击&7 即可: &a吐口水'
+    Description: '&7&oNeed me to carry anything?'
   Parrot:
     name: '&a&l鹦鹉'
     skill: '&e二段跳&7 即可:&a扇动翅膀'
+    Description: '&7&oPolly want a cracker?'
 Hats:
   Equip: '%prefix% &9你装备了 %hatname% &9头饰!'
   Unequip: '%prefix% &9你取下了 %hatname% &9头饰！'
@@ -662,7 +684,7 @@ Hats:
     Name: '&9&l哭'
     Description: '&7&o我每时每刻都在哭'
   BigSmile:
-    Name: '&6&l大笑'
+    Name: '&6&l巨型史莱姆'
     Description: '&7&o因为我真的很开心！'
   Wink:
     Name: '&e&l眨眼'
@@ -741,7 +763,7 @@ Hats:
     Description: '&7&o吼吼吼！圣诞快乐！'
   Snowman:
     Name: '&f&l雪人'
-    Description: '&7&o我没有头骨... 或骨头'
+    Description: '&7&oI don''t have a skull.. or bones'
   Present:
     Name: '&c&l礼物'
     Description: '&7&o来自圣诞老人，给你！'
