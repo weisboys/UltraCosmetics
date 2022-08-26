@@ -343,9 +343,7 @@ Mounts:
       &7&oDeep under the Earth's surface, there
       &7&oexists a mythical species of Molten
       &7&oSnakes. This one will serve you eternally.
-  FlyingShip:
-    menu-name: '&a&lFlying Ship'
-    entity-displayname: '&l%playername%''s Flying Ship'
+  FlyingShip: [ ]
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
