@@ -274,69 +274,67 @@ Gadgets:
 Mounts:
   DruggedHorse:
     menu-name: '&2&lCaballo Nauseabundo'
-    entity-displayname: '&l%playername%''s drugged horse'
+    entity-displayname: '&lCaballo Nauseabundo de %playername%'
     Description: '&7&oEsto es demasiado...:S!'
   InfernalHorror:
     menu-name: '&4&lInfernal Horror'
-    entity-displayname: '&l%playername%''s infernal horror'
+    entity-displayname: '&lInfernal Horror de %playername%'
     Description: '&7&oEsta montura viene directo del mismisimo infierno!'
   GlacialSteed:
     menu-name: '&b&lGlacial Steed'
-    entity-displayname: '&l%playername%''s glacial steed'
+    entity-displayname: '&lGlacial Steed de %playername%'
     Description: '&7&oEsta montura viene desde el Polo Norte!'
   WalkingDead:
     menu-name: '&2&lWalking Dead'
-    entity-displayname: '&l%playername%''s walking dead'
+    entity-displayname: '&lWalking Dead de %playername%'
     Description: '&7&oGraaaaw...'
   MountOfFire:
     menu-name: '&c&lMontura de Fuego'
-    entity-displayname: '&l%playername%''s mount of fire'
+    entity-displayname: '&lMontura de Fuego de %playername%'
     Description: '&7&oLa montura de Hades!'
   MountOfWater:
     menu-name: '&9&lMontura de Agua'
-    entity-displayname: '&l%playername%''s mount of water'
+    entity-displayname: '&lMontura de Agua de %playername%'
     Description: '&7&oLa montura de Poseidon!'
   EcologistHorse:
     menu-name: '&a&lCaballo Ecologista'
-    entity-displayname: '&l%playername%''s ecologist horse'
+    entity-displayname: '&lCaballo Ecologista de %playername%'
     Description: '&7&oConviertete en ecologista!'
   NyanSheep:
     menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
-    entity-displayname: '&l%playername%''s nyan sheep'
+    entity-displayname: '&lNyan Sheep de %playername%'
     Description: |-
       &4&lNyan &6&lnyan &e&lnyan
       &a&lnyan &3&lnyan &9&lnyan
   Snake:
     menu-name: '&6&lSerpiente'
-    entity-displayname: '&l%playername%''s snake'
-    Description: '&7&oWatch out! It may bite..'
+    entity-displayname: '&lSerpiente de %playername%'
+    Description: '&7&oCuidado! Puede morder...'
   Dragon:
     menu-name: '&5&lDragon'
-    entity-displayname: '&l%playername%''s dragon'
+    entity-displayname: '&lDragon de %playername%'
     Description: '&7&oConviertete en domador de Dragones!'
-  SkySquid:
-    menu-name: '&9&lSky Squid'
-    entity-displayname: '&l%playername%''s sky squid'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
-    entity-displayname: '&l%playername%''s hypecart'
+    entity-displayname: '&lHypeCart de %playername%'
     Description: |-
       &7&oSiempre quisiste conducir una Formula 1?
       &7&oAhora puedes!
   Slime:
     menu-name: '&a&lSlime'
-    entity-displayname: '&l%playername%''s slime'
+    entity-displayname: '&lSlime de %playername%'
     Description: '&7&oSplat! Splat!'
   Spider:
     menu-name: '&8&lAraña'
-    entity-displayname: '&l%playername%''s spider'
+    entity-displayname: '&lAraña de %playername%'
     Description: '&7&oConviertete en Spider-Jockey!'
   Rudolph:
     menu-name: '&f&lRudolp&4&lh'
-    entity-displayname: '&l%playername%''s rudolph'
+    entity-displayname: '&lRudolph de %playername%'
     Description: |-
-      &7&oWhat would be Christmas
-      &7&owithout Rudolph the Reindeer?
+      &7&oQue seria de Navidad
+      &7&osin Rudolph el Reno?
   MoltenSnake:
     menu-name: '&c&lSerpiente Fundida'
     entity-displayname: '&lSerpiente Fundida de %playername%'
@@ -344,9 +342,7 @@ Mounts:
       &7&oBajo la superficie de la tierra
       &7&oExiste una mitica especie de Serpientes
       &7&oFundidas. Esta sirve a su amo por la eternidad.
-  FlyingShip:
-    menu-name: '&a&lFlying Ship'
-    entity-displayname: '&l%playername%''s Flying Ship'
+  FlyingShip: [ ]
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
@@ -367,9 +363,9 @@ Particle-Effects:
   BloodHelix:
     name: '&4&lElixir de Sangre'
     Description: |-
-      &7&oAncient legend says this magic
-      &7&oempowers the blood of its user,
-      &7&ogiving them godly powers..
+      &7&oLegendas ancestrales dicen que esta magia
+      &7&oempodera la sangre del usuario,
+      &7&ootorgandole poderes de un Dios...
   FrostLord:
     name: '&b&lFrost Lord'
     Description: '&7&oYo soy el TodoPoderoso Frostlord!'
@@ -412,8 +408,8 @@ Particle-Effects:
   EnderAura:
     name: '&d&lEnder Aura'
     Description: |-
-      &7&oThese mystic particle attach to
-      &7&oonly the most legendary of players!
+      &7&oEstas particulas misticas se adhieren
+      &7&osolo a jugadores legendarios!
   FlameFairy:
     name: '&6&lHada de Fuego'
     Description: '&7&oHEY!!'
@@ -422,55 +418,55 @@ Particle-Effects:
     Description: '&7&oQue estas varas magicas te protejan!'
   FireWaves:
     name: '&e&lOndas de Fuego'
-    Description: '&7&oSome say theses waves of fire acts as a shield...'
+    Description: '&7&oAlgunos dicen que estas ondas de fuego actuan como un escudo...'
 Pets:
   Piggy:
     menu-name: '&d&lPiggy'
-    entity-displayname: '&l%playername%''s piggy'
+    entity-displayname: '&lPiggy de %playername%'
     Description: '&7&oOink! Oink!'
   Sheep:
     menu-name: '&f&lOveja'
-    entity-displayname: '&l%playername%''s sheep'
+    entity-displayname: '&lOveja de %playername%'
     Description: '&7&oBaaaa, baa'
   EasterBunny:
     menu-name: '&6&lConejo de Pascua'
-    entity-displayname: '&l%playername%''s easter bunny'
+    entity-displayname: '&lConejo de Pascua de %playername%'
     Description: '&7&oYa es pascua?'
   Cow:
     menu-name: '&c&lVaca'
-    entity-displayname: '&l%playername%''s cow'
+    entity-displayname: '&lVaca de %playername%'
     Description: '&7&oMoooo!'
   Kitty:
     menu-name: '&9&lKitty'
-    entity-displayname: '&l%playername%''s kitty'
+    entity-displayname: '&lKitty de %playername%'
     Description: '&7&oMeoooow'
   Dog:
     menu-name: '&7&lDoggy'
-    entity-displayname: '&l%playername%''s dog'
+    entity-displayname: '&lDoggy de %playername%'
     Description: '&7&oWoof!'
   Chick:
     menu-name: '&e&lChick'
-    entity-displayname: '&l%playername%''s chick'
+    entity-displayname: '&lChick de %playername%'
     Description: '&7&oBwaaaaaaak!!'
   Wither:
     menu-name: '&8&lWither'
-    entity-displayname: '&l%playername%''s wither'
-    Description: '&7&oWatch out for me..'
+    entity-displayname: '&lWither de %playername%'
+    Description: '&7&oTen cuidado conmigo-...'
   Pumpling:
     menu-name: '&6&lPumpling'
-    entity-displayname: '&l%playername%''s pumpling'
+    entity-displayname: '&lPumpling de %playername%'
     Description: '&7&oSolo una calabaza flotante'
   ChristmasElf:
     menu-name: '&a&lElfo de Navidad'
-    entity-displayname: '&l%playername%''s Christmas elf'
+    entity-displayname: '&lElfo de %playername%'
     Description: '&7&oPuedo hacer regalos para ti!'
   Mooshroom:
     menu-name: '&4&lMooshroom'
     entity-displayname: '&lMooshroom de %playername%'
     Description: '&7&oMoooo!'
   IronGolem:
-    menu-name: '&7&lIronGolem'
-    entity-displayname: '&l%playername%''s IronGolem'
+    menu-name: '&7&lGolem de Hierro'
+    entity-displayname: '&lGolem de %playername%'
     Description: '&7&oMe encantan las flores'
   Snowman:
     menu-name: '&f&lSnowman'
@@ -485,8 +481,8 @@ Pets:
     entity-displayname: '&lMurcielago de %playername%'
     Description: '&7&oPrefiero areas oscuras'
   PolarBear:
-    menu-name: '&b&lPolarBear'
-    entity-displayname: '&l%playername%''s PolarBear'
+    menu-name: '&b&lOso Polar'
+    entity-displayname: '&lOso Polar de %playername%'
     Description: '&7&oPrefiero zonas frías'
   Llama:
     menu-name: '&7&lLlama'
@@ -545,7 +541,7 @@ Pets:
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&lEnderman de %playername%'
-    Description: '&7&oDont look at it or it will hunt you!'
+    Description: '&7&oNo le mires a los ojos o te perseguira!'
   Skeleton:
     menu-name: '&f&lEsqueleto'
     entity-displayname: '&lEsqueleto de %playername%'
@@ -638,7 +634,7 @@ Morphs:
     skill: '&eClick izquierdo&7 para: &aLanzar Pociones'
     Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&lPolarBear'
+    name: '&f&lPolar Bear'
     skill: '&eClick izquierdo&7 para: &aTormenta de nieve'
     Description: '&7&oI prefer cold areas'
   Llama:
@@ -762,7 +758,7 @@ Hats:
     Description: '&7&oOh oh oh! Feliz Navidad!'
   Snowman:
     Name: '&f&lSnowman'
-    Description: '&7&oI don''t have a skull.. or bones'
+    Description: '&7&oI don''t have a skull... or bones'
   Present:
     Name: '&c&lRegalo'
     Description: '&7&oDe Santa, para ti!'
