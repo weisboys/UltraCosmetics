@@ -730,7 +730,7 @@ Hats:
     Description: '&7&oempty'
   Creeper:
     Name: '&2&lCreeper'
-    Description: '&7&oempty'
+    Description: '&7&oScare your friends!'
   Skeleton:
     Name: '&7&lSkeleton'
     Description: '&7&oempty'
@@ -784,7 +784,7 @@ Hats:
     Description: '&7&oempty'
   BlackCat:
     Name: '&2&lBlack Cat'
-    Description: '&7&oempty'
+    Description: '&7&oA witch''s best friend.'
   Allay:
     Name: '&b&lAllay'
     Description: '&7&oempty'
@@ -886,7 +886,7 @@ Hats:
     Description: '&7&oBrown sus!'
   FrogPrince:
     Name: '&2&lFrog Prince'
-    Description: '&7&oempty'
+    Description: '&7&oKiss me!'
   Notch:
     Name: '&f&lNotch'
     Description: '&7&oempty'
