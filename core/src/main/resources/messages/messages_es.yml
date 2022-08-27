@@ -1039,3 +1039,4 @@ Region-Disabled: '%prefix% &c&lCosmetics esta desactivado en este area!'
 Region-Disabled-Category: '%prefix% &c&l%category% cosmetics estan desactivados en este area!'
 Disabled-Command-Message: '%prefix% &c&lNo puedes usar este comando cuando tienes ese cosmetics equipado!'
 Not-Allowed-In-Vanish: '%prefix% &c&lNo puedes usar ese comando mientras estes Vanish!'
+Too-Long: Too long, try again
