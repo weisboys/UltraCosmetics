@@ -1042,3 +1042,4 @@ Region-Disabled: '%prefix% &c&lKosmetische Items sind in dieser Region deaktivie
 Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region deaktiviert!'
 Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
 Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
+Too-Long: Too long, try again
