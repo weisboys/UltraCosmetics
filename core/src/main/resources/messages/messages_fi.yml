@@ -1040,3 +1040,4 @@ Region-Disabled: '%prefix% &c&lKosmetiikat eivät ole käytössä täällä!'
 Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
 Disabled-Command-Message: '%prefix% &c&lEt voi käyttää tuota komentoa kun käytät kosmetiikkaa!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
+Too-Long: Too long, try again
