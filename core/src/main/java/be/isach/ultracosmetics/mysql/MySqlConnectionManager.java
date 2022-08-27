@@ -32,6 +32,7 @@ import javax.sql.DataSource;
  * Project: UltraCosmetics
  */
 public class MySqlConnectionManager {
+    public static final int MAX_NAME_SIZE = 64;
     private final String database;
     private final String tableName;
     /**
@@ -96,7 +97,7 @@ public class MySqlConnectionManager {
         for (PetType petType : PetType.values()) {
             // Anvil can only hold 50 characters on 1.18
             // But, for 4-byte-per-char encoding, a length of at least 64 (size 256) will cause it to be stored "off page"
-            columns.add(new StringColumn(petType.getConfigName().toLowerCase(), 64, false));
+            columns.add(new StringColumn(petType.getConfigName().toLowerCase(), MAX_NAME_SIZE, false));
         }
 
         for (Category cat : Category.values()) {
