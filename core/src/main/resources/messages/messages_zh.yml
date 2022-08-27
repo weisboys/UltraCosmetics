@@ -1040,3 +1040,4 @@ Region-Disabled: '%prefix% &c&l装饰品在这个区域已被禁用！'
 Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域已被禁用！'
 Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
 Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
+Too-Long: Too long, try again
