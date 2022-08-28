@@ -726,13 +726,13 @@ Hats:
     Description: '&7&oOink Oink!'
   Cow:
     Name: '&a&lCow'
-    Description: '&7&oempty'
+    Description: '&7&oMoooo!'
   Mooshroom:
     Name: '&c&lMooshroom'
-    Description: '&7&oempty'
+    Description: '&7&oMoooo!'
   BrownMooshroom:
     Name: '&b&lBrown Mooshroom'
-    Description: '&7&oempty'
+    Description: '&7&oMoooo!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oI''m your guard.'
@@ -753,7 +753,7 @@ Hats:
     Description: '&7&oempty'
   Zombie:
     Name: '&2&lZombie'
-    Description: '&7&oempty'
+    Description: '&7&oBrains!!!'
   Strider:
     Name: '&c&lStrider'
     Description: '&7&oempty'
@@ -771,7 +771,7 @@ Hats:
     Description: '&7&oempty'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
-    Description: '&7&oempty'
+    Description: '&7&oI make arrows.'
   LibrarianVillager:
     Name: '&6&lLibrarian Villager'
     Description: '&7&oKnowledge is power.'
@@ -804,7 +804,7 @@ Hats:
     Description: '&7&oA witch''s best friend.'
   Allay:
     Name: '&b&lAllay'
-    Description: '&7&oempty'
+    Description: '&7&oThe little helper'
   Bat:
     Name: '&5&lBat'
     Description: '&7&oempty'
@@ -813,19 +813,19 @@ Hats:
     Description: '&7&oempty'
   MCD-Alex:
     Name: '&6&lAlex'
-    Description: '&7&oempty'
+    Description: '&7&oSteve''s friend'
   MCD-QuestGiver:
     Name: '&5&lQuest Giver'
     Description: '&7&oI have a quest for you.'
   MCD-LuxuryMerchant:
     Name: '&6&lLuxury Merchant'
-    Description: '&7&oempty'
+    Description: '&7&oI sell gems.'
   MCD-Necromancer:
     Name: '&b&lNecromancer'
-    Description: '&7&oempty'
+    Description: '&7&oSummon the undead!'
   MCD-NamelessOne:
     Name: '&2&lNameless One'
-    Description: '&7&oempty'
+    Description: '&7&oPowerful necromancer'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -906,25 +906,25 @@ Hats:
     Description: '&7&oKiss me!'
   Notch:
     Name: '&f&lNotch'
-    Description: '&7&oempty'
+    Description: '&7&oCreator of Minecraft'
   KitsuneMask:
     Name: '&c&lKitsune Mask'
-    Description: '&7&oempty'
+    Description: '&7&oWhite fox mask'
   Goblin:
     Name: '&9&lGoblin'
     Description: '&7&oempty'
   Unicorn:
     Name: '&d&lUnicorn'
-    Description: '&7&oempty'
+    Description: '&7&oBe magical!'
   Ogre:
     Name: '&2&lOgre'
-    Description: '&7&oempty'
+    Description: '&7&oI''m hungry.'
   GreenDragon:
     Name: '&a&lGreen Dragon'
     Description: '&7&oempty'
   GigaChad:
     Name: '&7&lGigaChad'
-    Description: '&7&oempty'
+    Description: '&7&oEmbrace masculinity!'
   Bread:
     Name: '&f&lBread'
     Description: '&7&oFreshly baked'
