@@ -16,7 +16,7 @@ Cancel: '&c&lABBRECHEN'
 Buy-Ammo-Description: '&e&l%amount% %gadgetname% Munition &e&lfür $%price% kaufen'
 Buy-Cosmetic-Description: '&e&l%gadgetname% &e&lfür $%price% kaufen'
 Right-Click-Buy-Ammo: '&7Rechtsklick: Munition kaufen'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&eKlicken: für $%price% kaufen'
 Not-Enough-Money: '%prefix% &c&lDu hast nicht genug Geld!'
 Successful-Purchase: '%prefix% &a&lErfolgreich gekauft!'
 Buy-Treasure-Key: '&lSchatzschlüssel kaufen'
@@ -579,7 +579,7 @@ Morphs:
   Slime:
     name: '&a&lSchleim'
     skill: '&eSchleichen&7: &aspringen'
-    Description: '&7&oSplat splat!'
+    Description: '&7&oPlatsch! Platsch!'
   Pig:
     name: '&d&lSchwein'
     skill: '&eKollidieren&7: &aSpieler wegstoßen'
@@ -619,7 +619,7 @@ Morphs:
   Cow:
     name: '&8&lKuh'
     skill: '&eLinksklick&7: &aMuuuh'
-    Description: '&7&oMoooo!'
+    Description: '&7&oMuuuh!'
   Sheep:
     name: '&f&lSchaf'
     skill: '&eLinksklick&7: &aFarbe ändern'
@@ -627,7 +627,7 @@ Morphs:
   Mooshroom:
     name: '&c&lMooshroom'
     skill: '&eSchleichen&7: &aSuppe werfen'
-    Description: '&7&oMoooo!'
+    Description: '&7&oMuuuh!'
   Villager:
     name: '&a&lDorfbewohner'
     skill: '&eLinksklick&7: &aSmaragd werfen'
@@ -637,17 +637,17 @@ Morphs:
     skill: '&eLinksklick&7: &aTrank werfen'
     Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&lPolar Bear'
+    name: '&f&lEisbär'
     skill: '&eLinksklick&7: &aBlizzard'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&oIch bevorzuge kalte Regionen'
   Llama:
     name: '&3&lLama'
     skill: '&eLinksklick&7: &aspucken'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oSoll ich etwas tragen?'
   Parrot:
     name: '&a&lPapagei'
     skill: '&eDoppelsprung&7: &afliegen'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly will einen Keks?'
 Hats:
   Equip: '%prefix% &9Du hast %hatname% &9Hut ausgerüstet!'
   Unequip: '%prefix% &9Du hast %hatname% &9Hut entfernt!'
@@ -761,7 +761,7 @@ Hats:
     Description: '&7&oHo ho ho! Frohe Weihnachten!'
   Snowman:
     Name: '&f&lSchneemann'
-    Description: '&7&oI don''t have a skull... or bones'
+    Description: '&7&oIch hab keinen Schädel... oder Knochen'
   Present:
     Name: '&c&lGeschenk'
     Description: '&7&oVom Weihnachtsmann, für dich!'
