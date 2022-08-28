@@ -187,6 +187,8 @@ public final class PetType extends CosmeticEntType<Pet> {
         }
 
         ConfigurationSection pets = getCustomConfig(Category.PETS);
+        if (pets == null) return;
+
         EntityType type;
         Optional<XMaterial> mat;
         SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
