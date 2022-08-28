@@ -16,7 +16,7 @@ Cancel: '&c&lANNULER'
 Buy-Ammo-Description: '&e&lAcheter %amount% rechages de %gadgetname% &e&lpour $%price%'
 Buy-Cosmetic-Description: '&e&lAcheter %gadgetname% &e&lpour $%price%'
 Right-Click-Buy-Ammo: '&7Clic droit pour acheter des munitions'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&eCliquez pour acheter%price%$'
 Not-Enough-Money: '%prefix% &c&lTu n''as pas assez d''argent !'
 Successful-Purchase: '%prefix% &a&lAchat réussi !'
 Buy-Treasure-Key: '&lAcheter une clé de coffre aux trésors'
@@ -72,7 +72,7 @@ Menu:
     Button:
       Name: '&6&lMontures'
       Tooltip-Equip: '&b&lSpawn'
-      Tooltip-Unequip: '&c&lDespawn'
+      Tooltip-Unequip: '&c&Disparaître'
   Morphs:
     Title: '&lMorphs'
     Button:
@@ -88,7 +88,7 @@ Menu:
   Particle-Effects:
     Title: '&lEffets de particules'
     Button:
-      Name: '&b&lParticle Effects'
+      Name: '&b&Effets de particules'
       Tooltip-Equip: '&b&lSummon'
       Tooltip-Unequip: '&c&lUnsummon'
   Suits:
