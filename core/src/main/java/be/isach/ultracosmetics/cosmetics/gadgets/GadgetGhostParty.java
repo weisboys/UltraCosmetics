@@ -32,13 +32,13 @@ import java.util.Set;
  */
 public class GadgetGhostParty extends Gadget implements Updatable {
 
-    private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjhkMjE4MzY0MDIxOGFiMzMwYWM1NmQyYWFiN2UyOWE5NzkwYTU0NWY2OTE2MTllMzg1NzhlYTRhNjlhZTBiNiJ9fX0", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
+    private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("68d2183640218ab330ac56d2aab7e29a9790a545f691619e38578ea4a69ae0b6", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(Material.LEATHER_CHESTPLATE, 255, 255, 255);
     private EntitySpawner<Bat> bats;
     private Set<ArmorStand> ghosts;
 
-    public GadgetGhostParty(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("ghostparty"), ultraCosmetics);
+    public GadgetGhostParty(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

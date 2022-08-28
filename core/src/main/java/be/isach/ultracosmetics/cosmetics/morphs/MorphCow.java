@@ -19,8 +19,8 @@ public class MorphCow extends Morph {
     // TODO: Add something better for this morph - having it just "moo" isn't much.
     private long coolDown = 0;
 
-    public MorphCow(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("cow"), ultraCosmetics);
+    public MorphCow(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

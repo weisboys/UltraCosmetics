@@ -25,8 +25,8 @@ import com.cryptomorin.xseries.messages.ActionBar;
 public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Updatable {
     private int charge = 0;
 
-    public MorphCreeper(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("creeper"), ultraCosmetics);
+    public MorphCreeper(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

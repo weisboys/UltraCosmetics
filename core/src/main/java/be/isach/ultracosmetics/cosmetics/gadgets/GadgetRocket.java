@@ -62,8 +62,8 @@ public class GadgetRocket extends Gadget implements Updatable {
     private Entity playerVehicle = null;
     private BukkitTask currentTask = null;
 
-    public GadgetRocket(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("rocket"), ultraCosmetics);
+    public GadgetRocket(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

@@ -5,6 +5,9 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 
+import org.bukkit.DyeColor;
+import org.bukkit.entity.Sheep;
+
 import com.cryptomorin.xseries.XTag;
 
 /**
@@ -14,13 +17,25 @@ import com.cryptomorin.xseries.XTag;
  * @since 08-12-2015
  */
 public class PetSheep extends Pet {
-    public PetSheep(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("sheep"));
+    public PetSheep(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
     public void onUpdate() {
         dropItem = ItemFactory.randomItemFromTag(XTag.WOOL);
         super.onUpdate();
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        DyeColor color;
+        try {
+            color = DyeColor.valueOf(customization.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        ((Sheep) entity).setColor(color);
+        return true;
     }
 }

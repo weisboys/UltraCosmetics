@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.menu.ClickRunnable;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.menu.PurchaseData;
+import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.version.AnvilGUI;
@@ -67,7 +68,16 @@ public class MenuPets extends CosmeticMenu<PetType> {
                 .text(MessageManager.getMessage("Menu.Rename-Pet.Placeholder"))
                 .title(MessageManager.getMessage("Menu.Rename-Pet.Title"))
                 .onComplete((Player player, String text) -> {
-                    String newName = ChatColor.translateAlternateColorCodes('&', text);
+                    String newName = text;
+                    StringBuilder pattern = new StringBuilder("&#");
+                    for (int i = 0; i < 6; i++) {
+                        pattern.append("([\\da-f])");
+                    }
+                    newName = newName.replaceAll(pattern.toString(), "&x&$1&$2&$3&$4&$5&$6");
+                    newName = ChatColor.translateAlternateColorCodes('&', newName);
+                    if (newName.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
+                        return AnvilGUI.Response.text(MessageManager.getMessage("Too-Long"));
+                    }
                     if (SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled") &&
                             ultraCosmetics.getEconomyHandler().isUsingEconomy()) {
                         return AnvilGUI.Response.openInventory(buyRenamePet(ultraPlayer, newName));

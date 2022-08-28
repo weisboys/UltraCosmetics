@@ -85,7 +85,6 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
     @Override
     protected void handleRightClick(UltraPlayer ultraPlayer, GadgetType type) {
         if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoEnabled() && type.requiresAmmo()) {
-            toggleOn(ultraPlayer, type, getUltraCosmetics());
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
             ultraCosmetics.getMenus().openAmmoPurchaseMenu(type, ultraPlayer);
         }

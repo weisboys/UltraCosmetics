@@ -16,7 +16,7 @@ Cancel: '&c&l取消'
 Buy-Ammo-Description: '&e&l购买 %amount% %gadgetname% 次使用次数 &e&l需要花费 $%price%'
 Buy-Cosmetic-Description: '&e&l购买 %gadgetname% &e&l需花费 $%price%'
 Right-Click-Buy-Ammo: '&7右键即可购买使用次数'
-Right-Click-Purchase: '&e右键即可花费 $%price% 来购买'
+Click-To-Purchase: '&eClick to purchase for $%price%'
 Not-Enough-Money: '%prefix% &c&l你没有足够的金钱！'
 Successful-Purchase: '%prefix% &a&l购买成功！'
 Buy-Treasure-Key: '&l购买一把宝藏钥匙'
@@ -270,7 +270,7 @@ Gadgets:
       &7&o建造一个蹦床，
       &7&o并用它将你和你的朋友
       &7&o送入空中！
-  Gadget-Ready-ActionBar: '%gadgetname% &f&l以就绪！'
+  Gadget-Ready-ActionBar: '%gadgetname% &f&l已就绪！'
   Lore: '&9小道具'
 Mounts:
   DruggedHorse:
@@ -315,9 +315,7 @@ Mounts:
     menu-name: '&5&l龙'
     entity-displayname: '&l%playername%的龙'
     Description: '&7&o成为一个龙骑士！'
-  SkySquid:
-    menu-name: '&9&l飞天鱿鱼'
-    entity-displayname: '&l%playername%的飞天鱿鱼'
+  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&l超级车'
     entity-displayname: '&l%playername%的超级车'
@@ -336,8 +334,8 @@ Mounts:
     menu-name: '&f&l鲁道&4&l夫'
     entity-displayname: '&l%playername%的鲁道夫'
     Description: |-
-      &7&o什么是没有驯鹿鲁道夫
-      &7&o的圣诞节?
+      &7&oWhat would Christmas be
+      &7&owithout Rudolph the Reindeer?
   MoltenSnake:
     menu-name: '&c&l熔蛇'
     entity-displayname: '&l%playername%的熔蛇'
@@ -345,9 +343,7 @@ Mounts:
       &7&o在地球的深处，
       &7&o存在着一种神话般的熔蛇
       &7&o它将永远为你服务
-  FlyingShip:
-    menu-name: '&a&l飞船'
-    entity-displayname: '&l%playername%的飞船'
+  FlyingShip: [ ]
   Equip: '%prefix% &9你召唤了 %mountname%'
   Unequip: '%prefix% &9你收回了 %mountname%'
   Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
@@ -572,62 +568,84 @@ Pets:
 Morphs:
   Blaze:
     name: '&6&l烈焰'
-    skill: '&e蹲下&7 即可 &a起飞'
+    skill: '&e潜行&7 即可: &a起飞'
+    Description: '&7&oIt might be hot on there...'
   Chicken:
     name: '&f&l鸡'
-    skill: '&e蹲下&7 即可： &a铺腿'
+    skill: '&e潜行&7 即可: &a下蛋'
+    Description: '&7&oBecome a chicken!'
   Slime:
     name: '&a&l史莱姆'
-    skill: '&e蹲下&7 即可: &a蹦蹦跳跳'
+    skill: '&e潜行&7 即可: &a蹦蹦跳跳'
+    Description: '&7&oSplat splat!'
   Pig:
     name: '&d&l猪'
     skill: '&e碰撞&7 即可: &a弹起玩家'
+    Description: '&7&oMust hold your carrot!'
   Enderman:
     name: '&5&l末影人'
     skill: '&e二段跳&7 即可:&a传送'
+    Description: |-
+      &7&oI go from there to
+      &7&othere, then you lost me...
   Bat:
     name: '&8&l蝙蝠'
     skill: '&e二段跳&7 即可:&a扇动翅膀'
+    Description: '&7&oBecome a bat!'
   Creeper:
     name: '&a&l苦力怕'
-    skill: '&e蹲下&7 即可: &a引爆'
+    skill: '&e潜行&7 即可: &a引爆'
     charging: '&a&l充能中: %chargelevel%/100'
     release-to-explode: '&f&l释放即爆炸！'
+    Description: '&7&oHey What''sssssss up?'
   Snowman:
     name: '&f&l雪人'
     skill: '&e左键点击&7 即可 &a发射雪球'
+    Description: '&7&oBecome Olaf!'
   Equip: '%prefix% &9你伪装成了 %morphname%'
   Unequip: '%prefix% &9你取消了伪装从 %morphname%'
   WitherSkeleton:
     name: '&8&l凋零骷髅'
     skill: '&e潜行&7 即可发射: &a骨头炸弹'
+    Description: |-
+      &7&oJust a regular skeleton...
+      &7&obut from the Nether!
   ElderGuardian:
     name: '&8&l远古守卫者'
     skill: '&e左键点击&7 发射: &a激光'
+    Description: '&7&oBecome an Elder Guardian!!'
   Cow:
     name: '&8&l牛'
     skill: '&e左键点击&7 即可: &a哞~'
+    Description: '&7&oMoooo!'
   Sheep:
     name: '&f&l羊'
     skill: '&e左键点击&7 即可: &a改变颜色'
+    Description: '&7&oBaaaa, baa'
   Mooshroom:
     name: '&c&l哞菇'
-    skill: '&e蹲下&7 即可: &a扔出一碗汤'
+    skill: '&e潜行&7 即可: &a扔出蘑菇煲'
+    Description: '&7&oMoooo!'
   Villager:
     name: '&a&l村民'
     skill: '&e左键点击&7 即可: &a扔出绿宝石'
+    Description: '&7&oHmmmmmmmmm'
   Witch:
     name: '&5&l女巫'
     skill: '&e左键点击&7 即可: &a扔出药水'
+    Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&l北极熊'
+    name: '&f&lPolar Bear'
     skill: '&e左键点击&7 即可召唤: &a召唤暴风雪'
+    Description: '&7&oI prefer cold areas'
   Llama:
     name: '&3&l羊驼'
     skill: '&e左键点击&7 即可: &a吐口水'
+    Description: '&7&oNeed me to carry anything?'
   Parrot:
     name: '&a&l鹦鹉'
     skill: '&e二段跳&7 即可:&a扇动翅膀'
+    Description: '&7&oPolly want a cracker?'
 Hats:
   Equip: '%prefix% &9你装备了 %hatname% &9头饰!'
   Unequip: '%prefix% &9你取下了 %hatname% &9头饰！'
@@ -662,7 +680,7 @@ Hats:
     Name: '&9&l哭'
     Description: '&7&o我每时每刻都在哭'
   BigSmile:
-    Name: '&6&l大笑'
+    Name: '&6&l巨型史莱姆'
     Description: '&7&o因为我真的很开心！'
   Wink:
     Name: '&e&l眨眼'
@@ -741,7 +759,7 @@ Hats:
     Description: '&7&o吼吼吼！圣诞快乐！'
   Snowman:
     Name: '&f&l雪人'
-    Description: '&7&o我没有头骨... 或骨头'
+    Description: '&7&oI don''t have a skull... or bones'
   Present:
     Name: '&c&l礼物'
     Description: '&7&o来自圣诞老人，给你！'
@@ -1022,3 +1040,4 @@ Region-Disabled: '%prefix% &c&l装饰品在这个区域已被禁用！'
 Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域已被禁用！'
 Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
 Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
+Too-Long: Too long, try again

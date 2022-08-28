@@ -17,22 +17,16 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
+import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -155,38 +149,11 @@ public class ItemFactory {
         return XMaterial.matchXMaterial(fromConfig).orElse(null);
     }
 
-    @SuppressWarnings("deprecation")
-    public static ItemStack createSkull(String url, String name) {
+    public static ItemStack createSkull(String str, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
-
-        if (url.isEmpty()) return head;
-
-        SkullMeta headMeta = (SkullMeta) head.getItemMeta();
-        // TODO: is this required?
-        headMeta.setOwner("Notch");
-        GameProfile profile = new GameProfile(UUID.randomUUID(), null);
-        profile.getProperties().put("textures", new Property("textures", url));
-        Method setProfileMethod = null;
-        try {
-            setProfileMethod = headMeta.getClass().getDeclaredMethod("setProfile", GameProfile.class);
-        } catch (NoSuchMethodException | SecurityException ignored) {
-        }
-        try {
-            // if available, we use setProfile(GameProfile) so that it sets both the profile field and the
-            // serialized profile field for us. If the serialized profile field isn't set
-            // ItemStack#isSimilar() and ItemStack#equals() throw an error.
-            if (setProfileMethod == null) {
-                Field profileField = headMeta.getClass().getDeclaredField("profile");
-                profileField.setAccessible(true);
-                profileField.set(headMeta, profile);
-            } else {
-                setProfileMethod.setAccessible(true);
-                setProfileMethod.invoke(headMeta, profile);
-            }
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException | SecurityException | InvocationTargetException e1) {
-            e1.printStackTrace();
-        }
-        head.setItemMeta(headMeta);
+        ItemMeta meta = head.getItemMeta();
+        SkullUtils.applySkin(meta, str);
+        head.setItemMeta(meta);
         return head;
     }
 

@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.morphs;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -25,7 +24,7 @@ public abstract class Morph extends Cosmetic<MorphType> {
     protected MobDisguise disguise;
 
     public Morph(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, Category.MORPHS, owner, type);
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

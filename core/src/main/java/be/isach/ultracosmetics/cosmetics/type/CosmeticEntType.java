@@ -3,14 +3,14 @@ package be.isach.ultracosmetics.cosmetics.type;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Monster;
 import org.bukkit.entity.Slime;
 
+import com.cryptomorin.xseries.XMaterial;
+
 /**
- * Represents a Cosmetic Type with a Material, a Data, and an Entity Type.
+ * Represents a Cosmetic Type with an entity type.
  *
  * @author iSach
  * @since 08-04-2016
@@ -19,8 +19,8 @@ public abstract class CosmeticEntType<T extends Cosmetic<?>> extends CosmeticTyp
 
     private final EntityType entityType;
 
-    public CosmeticEntType(Category category, String configName, String description, XMaterial material, EntityType entityType, Class<? extends T> clazz) {
-        super(category, configName, description, material, clazz);
+    public CosmeticEntType(Category category, String configName, XMaterial material, EntityType entityType, Class<? extends T> clazz) {
+        super(category, configName, material, clazz);
         this.entityType = entityType;
     }
 

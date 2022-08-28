@@ -24,8 +24,8 @@ public class GadgetBlizzardBlaster extends Gadget implements PlayerAffectingCosm
     private Location location;
     private Vector vector;
 
-    public GadgetBlizzardBlaster(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("blizzardblaster"), ultraCosmetics);
+    public GadgetBlizzardBlaster(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

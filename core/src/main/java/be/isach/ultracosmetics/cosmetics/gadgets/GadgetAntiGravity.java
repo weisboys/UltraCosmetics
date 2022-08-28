@@ -35,8 +35,8 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
     private ArmorStand as;
     private boolean running;
 
-    public GadgetAntiGravity(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("antigravity"), ultraCosmetics);
+    public GadgetAntiGravity(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

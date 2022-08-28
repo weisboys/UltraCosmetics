@@ -33,8 +33,8 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
     private Item melon = null;
     private final Set<Item> melonSlices = new HashSet<>();
 
-    public GadgetMelonThrower(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("melonthrower"), ultraCosmetics);
+    public GadgetMelonThrower(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @SuppressWarnings("deprecation")

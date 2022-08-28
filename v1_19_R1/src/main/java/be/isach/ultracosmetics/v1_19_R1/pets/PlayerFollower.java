@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.v1_19_R1.pets;
 import be.isach.ultracosmetics.cosmetics.pets.APlayerFollower;
 import be.isach.ultracosmetics.cosmetics.pets.Pet;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEntity;
 import org.bukkit.entity.EntityType;
@@ -36,7 +35,7 @@ public class PlayerFollower extends APlayerFollower {
             return;
         }
 
-        if (!player.getWorld().equals(petEntity.getBukkitEntity().getWorld())) {
+        if (player.getWorld() != petEntity.getBukkitEntity().getWorld()) {
             petEntity.getBukkitEntity().teleport(player.getLocation());
             return;
         }
@@ -46,7 +45,7 @@ public class PlayerFollower extends APlayerFollower {
         Path path = path((Mob) petEntity, targetLocation);
 
         try {
-            double distanceSquared = Bukkit.getPlayer(player.getName()).getLocation().distanceSquared(petEntity.getBukkitEntity().getLocation());
+            double distanceSquared = player.getLocation().distanceSquared(petEntity.getBukkitEntity().getLocation());
 
             @SuppressWarnings("deprecation")
             boolean onGround = player.isOnGround();

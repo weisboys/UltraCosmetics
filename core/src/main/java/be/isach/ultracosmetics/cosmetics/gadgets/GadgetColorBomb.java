@@ -33,8 +33,8 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
     private ArrayList<Item> items = new ArrayList<>();
     private boolean running = false;
 
-    public GadgetColorBomb(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("colorbomb"), ultraCosmetics);
+    public GadgetColorBomb(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

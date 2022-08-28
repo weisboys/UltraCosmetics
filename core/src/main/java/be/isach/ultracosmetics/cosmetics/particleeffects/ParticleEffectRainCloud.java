@@ -13,8 +13,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class ParticleEffectRainCloud extends ParticleEffect {
 
-    public ParticleEffectRainCloud(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("raincloud"));
+    public ParticleEffectRainCloud(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

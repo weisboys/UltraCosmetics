@@ -29,9 +29,39 @@ Hats:
 # Again, once it's set up, you can change the name and description in the messages file.
 Emotes:
 
-# Not yet implemented
-Suits:
+# This allows you to create "more specific" pets. To customize a pet, the pet must already exist.
+# For example, you cannot customize an Ender Dragon pet, because it doesn't exist as a normal pet.
+# To customize a pet, specify the entity type of the new pet, the item it displays in the menu, and the customization string.
+# Valid entity types: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+# Valid dye colors: (BLACK, BLUE, BROWN, CYAN, GRAY, GREEN, LIGHT_BLUE, LIGHT_GRAY [SILVER if <1.13], LIME, MAGENTA, ORANGE, PINK, PURPLE, RED, WHITE, YELLOW)
+# Valid blocks/items: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+# Customization options:
+#     Axolotl: specify a color, options are (BLUE, CYAN, GOLD, LUCY, WILD)
+#     Creeper: charged, options are (true)
+#     Wolf: collar color, options are any valid dye color (see above)
+#     Enderman: held item, options are any valid block (see above)
+#     Fox: fox type, options are (RED, SNOW)
+#     Frog: frog type (controls color) options are (COLD, TEMPERATE, WARM)
+#     Goat: left horn, right horn, and screaming, (true/false separated by ':') for example a screaming goat with no horns would be "false,false,true"
+#     Horse: color and style, separated by ':'. Options for color are (BLACK, BROWN, CHESTNUT, CREAMY, DARK_BROWN, GRAY, WHITE), options for style are (BLACK_DOTS, NONE, WHITE, WHITE_DOTS, WHITEFIELD)
+#     Iron Golem: held item, options are any item with optional custom model data separated by ':'
+#     Cat: style, options are (ALL_BLACK, BLACK, BRITISH_SHORTHAIR, CALICO, JELLIE, PERSIAN, RAGDOLL, RED, SIAMESE, TABBY, WHITE)
+#     Llama: color and optionally carpet, separated by ':', color options are (BROWN, CREAMY, GRAY, WHITE) and carpet options are technically any valid block, but carpets are standard.
+#     Mooshroom: variant, options are (BROWN, RED)
+#     Panda: personality, options are (AGGRESSIVE, BROWN, LAZY, NORMAL, PLAYFUL, WEAK, WORRIED)
+#     Parrot: color, options are (BLUE, CYAN, GRAY, GREEN, RED)
+#     Sheep: color, options are any valid dye color.
+#     Slime: size, options are any number 1 to 127. (4 is the largest that spawns naturally.)
+#     Snowman: sheared (no pumpkin), options are (true). Not supported on 1.8.8.
+#     Villager: biome and profession, separated by ':'. Only suppored on 1.14.4 or higher. Biome options: (DESERT, JUNGLE, PLAINS, SAVANNA, SNOW, SWAMP, TAIGA), profession options: (ARMORER, BUTCHER, CARTOGRAPHER, CLERIC, FARMER, FISHERMAN, FLETCHER, LEATHERWORKER, LIBRARIAN, MASON, NITWIT, NONE, SHEPHERD, TOOLSMITH, WEAPONSMITH)
+# Here's an example:
+#   ExamplePet:
+#       type: AXOLOTL
+#       item: AXOLOTL_BUCKET
+#       customization: BLUE
+
+Pets:
 
 # Not yet implemented
-Pets:
+Suits:
 

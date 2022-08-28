@@ -20,8 +20,8 @@ import org.bukkit.util.Vector;
  */
 public class ParticleEffectFrozenWalk extends ParticleEffect {
 
-    public ParticleEffectFrozenWalk(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("frozenwalk"));
+    public ParticleEffectFrozenWalk(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

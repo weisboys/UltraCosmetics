@@ -3,6 +3,8 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
+import org.bukkit.Material;
 import org.bukkit.entity.Piglin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.PiglinBarterEvent;
@@ -14,8 +16,8 @@ import org.bukkit.event.entity.PiglinBarterEvent;
  * @since 16-01-2022
  */
 public class PetPiglin extends Pet {
-    public PetPiglin(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("piglin"));
+    public PetPiglin(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
@@ -23,6 +25,9 @@ public class PetPiglin extends Pet {
         Piglin piglin = (Piglin) entity;
         piglin.setImmuneToZombification(true);
         piglin.getEquipment().clear();
+        for (Material interest : piglin.getInterestList()) {
+            piglin.removeMaterialOfInterest(interest);
+        }
     }
 
     @EventHandler

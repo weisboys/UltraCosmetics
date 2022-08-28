@@ -18,8 +18,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
  */
 public class GadgetFirework extends Gadget {
 
-    public GadgetFirework(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("firework"), ultraCosmetics);
+    public GadgetFirework(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

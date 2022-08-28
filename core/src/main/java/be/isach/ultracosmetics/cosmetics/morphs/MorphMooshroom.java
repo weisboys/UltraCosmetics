@@ -28,8 +28,8 @@ import be.isach.ultracosmetics.util.MathUtils;
 public class MorphMooshroom extends Morph implements PlayerAffectingCosmetic {
     private boolean inCooldown = false;
 
-    public MorphMooshroom(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("mooshroom"), ultraCosmetics);
+    public MorphMooshroom(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

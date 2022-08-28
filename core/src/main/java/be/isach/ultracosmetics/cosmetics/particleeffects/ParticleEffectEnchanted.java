@@ -14,8 +14,8 @@ import be.isach.ultracosmetics.util.Particles;
  */
 public class ParticleEffectEnchanted extends ParticleEffect {
 
-    public ParticleEffectEnchanted(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("enchanted"));
+    public ParticleEffectEnchanted(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

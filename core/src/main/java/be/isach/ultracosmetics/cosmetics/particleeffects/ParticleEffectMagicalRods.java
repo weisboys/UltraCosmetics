@@ -45,8 +45,8 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     private double angle = 0; // Current angle
     private double heightDiffFactor = MAX_HEIGHT_DIFF; // Height diff between columns. Variates over time with hoveringDirectionUp.
 
-    public ParticleEffectMagicalRods(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, owner, ParticleEffectType.valueOf("magicalrods"));
+    public ParticleEffectMagicalRods(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

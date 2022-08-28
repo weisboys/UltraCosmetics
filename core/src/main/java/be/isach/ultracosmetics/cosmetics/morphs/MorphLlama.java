@@ -18,8 +18,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class MorphLlama extends Morph {
     private long coolDown = 0;
 
-    public MorphLlama(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("llama"), ultraCosmetics);
+    public MorphLlama(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

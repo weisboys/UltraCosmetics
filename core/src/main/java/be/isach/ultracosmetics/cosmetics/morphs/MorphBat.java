@@ -20,8 +20,8 @@ import com.cryptomorin.xseries.XSound;
  */
 public class MorphBat extends Morph implements PlayerAffectingCosmetic {
 
-    public MorphBat(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("bat"), ultraCosmetics);
+    public MorphBat(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

@@ -4,6 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.Frog;
+import org.bukkit.entity.Frog.Variant;
+
 /**
  * Represents an instance of a frog pet summoned by a player.
  *
@@ -11,7 +14,19 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 08-06-2022
  */
 public class PetFrog extends Pet {
-    public PetFrog(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("frog"));
+    public PetFrog(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        Variant variant;
+        try {
+            variant = Variant.valueOf(customization.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        ((Frog) entity).setVariant(variant);
+        return true;
     }
 }

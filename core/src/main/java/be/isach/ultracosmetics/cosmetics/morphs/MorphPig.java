@@ -21,8 +21,8 @@ import com.cryptomorin.xseries.XSound;
 public class MorphPig extends Morph implements PlayerAffectingCosmetic, Updatable {
     private boolean cooldown = false;
 
-    public MorphPig(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("pig"), ultraCosmetics);
+    public MorphPig(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

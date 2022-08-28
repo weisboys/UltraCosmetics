@@ -45,7 +45,7 @@ public class GadgetPaintballGun extends Gadget {
     private static final List<XMaterial> PAINT_BLOCKS = new ArrayList<>();
 
     static {
-        String ending = SettingsManager.getConfig().getString("Gadgets." + GadgetType.valueOf("paintballgun").getConfigName() + ".Block-Type", "_TERRACOTTA").toUpperCase();
+        String ending = SettingsManager.getConfig().getString("Gadgets.PaintballGun.Block-Type", "_TERRACOTTA").toUpperCase();
         for (XMaterial mat : XMaterial.VALUES) {
             if (mat.name().endsWith(ending)) {
                 PAINT_BLOCKS.add(mat);
@@ -60,8 +60,8 @@ public class GadgetPaintballGun extends Gadget {
     private final Set<Projectile> projectiles = new HashSet<>();
     private final int radius;
 
-    public GadgetPaintballGun(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("paintballgun"), ultraCosmetics);
+    public GadgetPaintballGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
         radius = SettingsManager.getConfig().getInt("Gadgets." + getType().getConfigName() + ".Radius", 2);
         displayCooldownMessage = false;
     }

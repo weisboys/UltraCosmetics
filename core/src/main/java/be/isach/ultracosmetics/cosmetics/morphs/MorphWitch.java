@@ -17,8 +17,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class MorphWitch extends Morph {
     private long coolDown = 0;
 
-    public MorphWitch(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("witch"), ultraCosmetics);
+    public MorphWitch(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

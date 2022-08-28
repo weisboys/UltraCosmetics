@@ -33,8 +33,8 @@ public class GadgetParachute extends Gadget implements Updatable {
     private EntitySpawner<Chicken> chickens;
     private boolean active;
 
-    public GadgetParachute(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("parachute"), ultraCosmetics);
+    public GadgetParachute(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
@@ -51,10 +51,12 @@ public class GadgetParachute extends Gadget implements Updatable {
     }
 
     private void killParachute() {
-        for (Chicken chicken : chickens.getEntities()) {
-            chicken.setLeashHolder(null);
+        if (chickens != null) {
+            for (Chicken chicken : chickens.getEntities()) {
+                chicken.setLeashHolder(null);
+            }
+            chickens.removeEntities();
         }
-        chickens.removeEntities();
         MathUtils.applyVelocity(getPlayer(), new Vector(0, 0.15, 0));
         active = false;
         getOwner().setCanBeHitByOtherGadgets(true);
@@ -62,6 +64,7 @@ public class GadgetParachute extends Gadget implements Updatable {
 
     @EventHandler
     public void onChickenDeath(EntityDeathEvent event) {
+        if (chickens == null) return;
         // can't just cancel the event for some reason, so just eliminate the effects
         if (chickens.contains(event.getEntity())) {
             event.setDroppedExp(0);
@@ -73,6 +76,7 @@ public class GadgetParachute extends Gadget implements Updatable {
 
     @EventHandler
     public void onChickenUnleash(EntityUnleashEvent event) {
+        if (chickens == null) return;
         // can't cancel this either, but setting the leash holder to null prevents the lead from dropping
         if (chickens.contains(event.getEntity())) {
             ((Chicken) event.getEntity()).setLeashHolder(null);

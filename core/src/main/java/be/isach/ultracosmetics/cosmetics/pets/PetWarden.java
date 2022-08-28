@@ -15,8 +15,8 @@ import org.bukkit.event.entity.EntityPotionEffectEvent.Cause;
  * @since 08-06-2022
  */
 public class PetWarden extends Pet {
-    public PetWarden(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, PetType.getByName("warden"));
+    public PetWarden(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @EventHandler

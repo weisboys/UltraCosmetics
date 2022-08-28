@@ -17,8 +17,8 @@ import org.bukkit.util.Vector;
  * @since 07-03-2017
  */
 public class MorphParrot extends Morph {
-    public MorphParrot(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MorphType.valueOf("parrot"), ultraCosmetics);
+    public MorphParrot(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

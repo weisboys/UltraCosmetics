@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.v1_12_R1;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.PacketSender;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.v1_12_R1.pathfinders.CustomPathFinderGoalPanic;
 import be.isach.ultracosmetics.version.IEntityUtil;
@@ -41,9 +40,9 @@ import net.minecraft.server.v1_12_R1.EntityBoat;
 import net.minecraft.server.v1_12_R1.EntityCreature;
 import net.minecraft.server.v1_12_R1.EntityEnderDragon;
 import net.minecraft.server.v1_12_R1.EntityInsentient;
-import net.minecraft.server.v1_12_R1.EntityPlayer;
 import net.minecraft.server.v1_12_R1.EnumItemSlot;
 import net.minecraft.server.v1_12_R1.EnumMoveType;
+import net.minecraft.server.v1_12_R1.Packet;
 import net.minecraft.server.v1_12_R1.PacketPlayOutEntityDestroy;
 import net.minecraft.server.v1_12_R1.PacketPlayOutEntityEquipment;
 import net.minecraft.server.v1_12_R1.PacketPlayOutEntityTeleport;
@@ -81,13 +80,14 @@ public class EntityUtil implements IEntityUtil {
         as.setLocation(loc.getX() + MathUtils.randomDouble(-1.5, 1.5), loc.getY() + MathUtils.randomDouble(0, .5) - 0.75, loc.getZ() + MathUtils.randomDouble(-1.5, 1.5), 0, 0);
         fakeArmorStands.add(as);
         for (Player players : player.getWorld().getPlayers()) {
-            PacketSender.send(players, new PacketPlayOutSpawnEntityLiving(as));
-            PacketSender.send(players, new PacketPlayOutEntityEquipment(as.getId(), EnumItemSlot.HEAD, CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
+            sendPacket(players, new PacketPlayOutSpawnEntityLiving(as));
+            sendPacket(players, new PacketPlayOutEntityEquipment(as.getId(), EnumItemSlot.HEAD, CraftItemStack.asNMSCopy(new org.bukkit.inventory.ItemStack(org.bukkit.Material.PACKED_ICE))));
         }
         Particles.CLOUD.display(loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, .5) - 0.75, MathUtils.randomDouble(-1.5, 1.5)), 2, 0.4f);
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
-            for (Player pl : player.getWorld().getPlayers())
-                PacketSender.send(pl, new PacketPlayOutEntityDestroy(as.getId()));
+            for (Player pl : player.getWorld().getPlayers()) {
+                sendPacket(pl, new PacketPlayOutEntityDestroy(as.getId()));
+            }
             fakeArmorStands.remove(as);
         }, 20);
         as.getBukkitEntity().getNearbyEntities(0.5, 0.5, 0.5).stream().filter(ent -> !cooldownJump.contains(ent) && ent != player && canAffectFunc.apply(ent)).forEachOrdered(ent -> {
@@ -106,7 +106,7 @@ public class EntityUtil implements IEntityUtil {
                 continue;
             }
             for (Player pl : player.getWorld().getPlayers()) {
-                PacketSender.send(pl, new PacketPlayOutEntityDestroy(as.getId()));
+                sendPacket(pl, new PacketPlayOutEntityDestroy(as.getId()));
             }
         }
 
@@ -139,14 +139,13 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void sendDestroyPacket(Player player, org.bukkit.entity.Entity entity) {
-        PacketPlayOutEntityDestroy packet = new PacketPlayOutEntityDestroy(((CraftEntity) entity).getHandle().getId());
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+        sendPacket(player, new PacketPlayOutEntityDestroy(((CraftEntity) entity).getHandle().getId()));
     }
 
     @Override
     public void move(Creature creature, Location loc) {
         EntityCreature ec = ((CraftCreature) creature).getHandle();
-        ec.P = 1;
+        setStepHeight(creature);
 
         if (loc == null) return;
 
@@ -165,12 +164,11 @@ public class EntityUtil implements IEntityUtil {
         ec.yaw = player.getLocation().getYaw() - 180;
 
         Vector v = ec.getBukkitEntity().getLocation().getDirection();
-        Vector v1 = ec.getBukkitEntity().getLocation().getDirection().multiply(-1);
-        ec.move(EnumMoveType.SELF, v1.getX(), v.getY(), v1.getZ());
+        ec.move(EnumMoveType.SELF, -v.getX(), v.getY(), -v.getZ());
     }
 
     @Override
-    public void setClimb(org.bukkit.entity.Entity entity) {
+    public void setStepHeight(org.bukkit.entity.Entity entity) {
         ((CraftEntity) entity).getHandle().P = 1;
     }
 
@@ -210,22 +208,11 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void chickenFall(Player player) {
-        EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
-        if (!entityPlayer.onGround && entityPlayer.motY < 0.0D) {
-            Vector v = player.getVelocity();
-            player.setVelocity(v);
-            entityPlayer.motY *= 0.85;
-        }
-    }
-
-    @Override
     public void sendTeleportPacket(Player player, org.bukkit.entity.Entity entity) {
-        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutEntityTeleport(((CraftEntity) entity).getHandle()));
+        sendPacket(player, new PacketPlayOutEntityTeleport(((CraftEntity) entity).getHandle()));
     }
 
-    @Override
-    public boolean isMoving(org.bukkit.entity.Player entity) {
-        return false;
+    private void sendPacket(Player player, Packet<?> packet) {
+        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
 }

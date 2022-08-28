@@ -32,8 +32,8 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
     private boolean handledThisTick = false;
     private Location lastLoc = null;
 
-    public GadgetEtherealPearl(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, GadgetType.valueOf("etherealpearl"), ultraCosmetics);
+    public GadgetEtherealPearl(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
         running = false;
     }
 

@@ -13,8 +13,8 @@ import net.minecraft.world.entity.LivingEntity;
  * @author RadBuilder
  */
 public class MountSpider extends MountCustomEntity {
-    public MountSpider(UltraPlayer owner, UltraCosmetics ultraCosmetics) {
-        super(owner, MountType.valueOf("spider"), ultraCosmetics);
+    public MountSpider(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
