@@ -165,7 +165,7 @@ Gadgets:
   FleshHook:
     name: '&7&lFleischhaken'
     Description: |-
-      &7&oMach neue Freunde indem du
+      &7&oFinde neue Freunde, indem du
       &7&oeinen Haken nach ihnen
       &7&owirfst und sie zu dir ziehst!
   DiscoBall:
@@ -262,7 +262,7 @@ Gadgets:
   PartyPopper:
     name: '&e&lKonfettikanone'
     Description: |-
-      &7&oFeier indem du Konfetti
+      &7&oFeier, indem du Konfetti
       &7&oin die Luft schießt!
   Trampoline:
     name: '&9&lTrampolin'
