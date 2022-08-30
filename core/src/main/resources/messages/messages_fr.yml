@@ -11,7 +11,7 @@ Invalid-Suit: '%prefix% &c&lInvalid Suit!'
 Invalid-Emote: '%prefix% &c&lEmote Invalide !'
 Invalid-Menu: '%prefix% &c&lMenu invalide !'
 Ammo: '&7Vos munitions: &e%ammo%'
-Purchase: '&a&Achat'
+Purchase: '&a&lAchat'
 Cancel: '&c&lANNULER'
 Buy-Ammo-Description: '&e&lAcheter %amount% rechages de %gadgetname% &e&lpour $%price%'
 Buy-Cosmetic-Description: '&e&lAcheter %gadgetname% &e&lpour $%price%'
@@ -72,7 +72,7 @@ Menu:
     Button:
       Name: '&6&lMontures'
       Tooltip-Equip: '&b&lSpawn'
-      Tooltip-Unequip: '&c&Disparaître'
+      Tooltip-Unequip: '&c&lDisparaître'
   Morphs:
     Title: '&lMorphs'
     Button:
@@ -83,12 +83,12 @@ Menu:
     Title: '&lHats'
     Button:
       Name: '&b&lHats'
-      Tooltip-Equip: '&b&l''Équiper'
+      Tooltip-Equip: '&b&ll''Équiper'
       Tooltip-Unequip: '&c&lDéséquiper'
   Particle-Effects:
     Title: '&lEffets de particules'
     Button:
-      Name: '&b&Effets de particules'
+      Name: '&b&lEffets de particules'
       Tooltip-Equip: '&b&lSummon'
       Tooltip-Unequip: '&c&lUnsummon'
   Suits:
