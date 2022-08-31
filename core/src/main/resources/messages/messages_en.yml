@@ -765,7 +765,7 @@ Hats:
     Description: '&7&oempty'
   Warden:
     Name: '&3&lWarden'
-    Description: '&7&oempty'
+    Description: '&7&oBe quiet...'
   Witch:
     Name: '&5&lWitch'
     Description: '&7&oempty'
@@ -777,7 +777,7 @@ Hats:
     Description: '&7&oKnowledge is power.'
   Bee:
     Name: '&e&lBee'
-    Description: '&7&oempty'
+    Description: '&7&oBe careful!'
   Fox:
     Name: '&6&lFox'
     Description: '&7&oempty'
@@ -786,19 +786,19 @@ Hats:
     Description: '&7&oempty'
   Ocelot:
     Name: '&e&lOcelot'
-    Description: '&7&oempty'
+    Description: '&7&oKing of the jungle'
   Frog:
     Name: '&2&lFrog'
     Description: '&7&oempty'
   AxolotlBlue:
     Name: '&9&lBlue Axolotl'
-    Description: '&7&oempty'
+    Description: '&7&oThe cutest predator'
   Turtle:
     Name: '&a&lTurtle'
     Description: '&7&oempty'
   Clownfish:
     Name: '&6&lClownfish'
-    Description: '&7&oempty'
+    Description: '&7&oYou found him!'
   BlackCat:
     Name: '&2&lBlack Cat'
     Description: '&7&oA witch''s best friend.'
