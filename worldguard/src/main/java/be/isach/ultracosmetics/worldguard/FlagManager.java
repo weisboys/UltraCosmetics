@@ -1,14 +1,15 @@
-package be.isach.ultracosmetics.v1_18_R2.worldguard;
+package be.isach.ultracosmetics.worldguard;
 
+import be.isach.ultracosmetics.abstraction.worldguard.UCFlag;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.worldguard.AFlagManager;
 
 import org.bukkit.entity.Player;
 
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.flags.EnumFlag;
+import com.sk89q.worldguard.protection.flags.SetFlag;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
@@ -17,13 +18,15 @@ import com.sk89q.worldguard.session.handler.Handler;
 
 import java.util.Set;
 
-public class FlagManager extends AFlagManager {
+public class FlagManager implements IFlagManager {
+    protected static final SetFlag<Category> CATEGORY_FLAG = new SetFlag<>("uc-blocked-categories", new EnumFlag<>(null, Category.class));
+
     @Override
-    protected void register() {
+    public void register() {
         FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
-        registry.register(COSMETIC_FLAG);
-        registry.register(TREASURE_FLAG);
-        registry.register(AFFECT_PLAYERS_FLAG);
+        for (UCFlag flag : UCFlag.values()) {
+            registry.register(flag.getFlag());
+        }
         registry.register(CATEGORY_FLAG);
     }
 
@@ -33,11 +36,19 @@ public class FlagManager extends AFlagManager {
     }
 
     @Override
-    protected boolean flagCheck(StateFlag flag, Player bukkitPlayer) {
+    public boolean flagCheck(UCFlag flag, Player bukkitPlayer) {
         LocalPlayer player = WorldGuardPlugin.inst().wrapPlayer(bukkitPlayer);
         RegionContainer rc = WorldGuard.getInstance().getPlatform().getRegionContainer();
         RegionQuery query = rc.createQuery();
-        return query.testState(player.getLocation(), player, flag);
+        return query.testState(player.getLocation(), player, flag.getFlag());
+    }
+
+    @Override
+    public Set<Category> categoryFlagCheck(Player bukkitPlayer) {
+        LocalPlayer player = WorldGuardPlugin.inst().wrapPlayer(bukkitPlayer);
+        RegionContainer rc = WorldGuard.getInstance().getPlatform().getRegionContainer();
+        RegionQuery query = rc.createQuery();
+        return query.queryValue(player.getLocation(), player, CATEGORY_FLAG);
     }
 
     // from WorldGuard documentation:
@@ -47,15 +58,7 @@ public class FlagManager extends AFlagManager {
     public static class Factory extends Handler.Factory<CosmeticFlagHandler> {
         @Override
         public CosmeticFlagHandler create(Session session) {
-            return new CosmeticFlagHandler(session, COSMETIC_FLAG, CATEGORY_FLAG);
+            return new CosmeticFlagHandler(session, UCFlag.COSMETICS.getFlag(), CATEGORY_FLAG);
         }
-    }
-
-    @Override
-    protected Set<Category> categoryFlagCheck(Player bukkitPlayer) {
-        LocalPlayer player = WorldGuardPlugin.inst().wrapPlayer(bukkitPlayer);
-        RegionContainer rc = WorldGuard.getInstance().getPlatform().getRegionContainer();
-        RegionQuery query = rc.createQuery();
-        return query.queryValue(player.getLocation(), player, CATEGORY_FLAG);
     }
 }

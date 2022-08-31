@@ -1,7 +1,9 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
-import be.isach.ultracosmetics.version.IAnvilWrapper;
 import net.minecraft.server.v1_8_R3.*;
+
+import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
+
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.entity.Player;

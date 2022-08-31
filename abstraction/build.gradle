@@ -1,0 +1,5 @@
+dependencies {
+    implementation 'org.spigotmc:spigot-api:1.19.2-R0.1-SNAPSHOT'
+    // Last version of WorldGuard compiled with Java 8
+    implementation 'com.sk89q.worldguard:worldguard-bukkit:7.0.3'
+}

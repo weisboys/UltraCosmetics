@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.menu.menus.MenuEmotes;
 import be.isach.ultracosmetics.menu.menus.MenuGadgets;
@@ -18,6 +19,9 @@ import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Stores menus.
  *
@@ -27,63 +31,28 @@ import org.bukkit.inventory.ItemStack;
 public class Menus {
 
     private final UltraCosmetics ultraCosmetics;
-    private final MenuEmotes emotesMenu;
-    private final MenuGadgets gadgetsMenu;
-    private final MenuHats hatsMenu;
-    private final MenuMorphs morphsMenu;
-    private final MenuMounts mountsMenu;
-    private final MenuParticleEffects effectsMenu;
-    private final MenuPets petsMenu;
-    private final MenuSuits suitsMenu;
+    private final Map<Category,CosmeticMenu<?>> categoryMenus = new HashMap<>();
     private final MenuMain mainMenu;
 
     public Menus(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
-        this.emotesMenu = new MenuEmotes(ultraCosmetics);
-        this.gadgetsMenu = new MenuGadgets(ultraCosmetics);
-        this.effectsMenu = new MenuParticleEffects(ultraCosmetics);
-        this.hatsMenu = new MenuHats(ultraCosmetics);
-        this.morphsMenu = new MenuMorphs(ultraCosmetics);
-        this.mountsMenu = new MenuMounts(ultraCosmetics);
-        this.petsMenu = new MenuPets(ultraCosmetics);
-        this.suitsMenu = new MenuSuits(ultraCosmetics);
+        categoryMenus.put(Category.EMOTES, new MenuEmotes(ultraCosmetics));
+        categoryMenus.put(Category.GADGETS, new MenuGadgets(ultraCosmetics));
+        categoryMenus.put(Category.EFFECTS, new MenuParticleEffects(ultraCosmetics));
+        categoryMenus.put(Category.HATS, new MenuHats(ultraCosmetics));
+        categoryMenus.put(Category.MORPHS, new MenuMorphs(ultraCosmetics));
+        categoryMenus.put(Category.MOUNTS, new MenuMounts(ultraCosmetics));
+        categoryMenus.put(Category.PETS, new MenuPets(ultraCosmetics));
+        categoryMenus.put(Category.SUITS, new MenuSuits(ultraCosmetics));
         this.mainMenu = new MenuMain(ultraCosmetics);
-    }
-
-    public MenuEmotes getEmotesMenu() {
-        return emotesMenu;
     }
 
     public MenuMain getMainMenu() {
         return mainMenu;
     }
 
-    public MenuGadgets getGadgetsMenu() {
-        return gadgetsMenu;
-    }
-
-    public MenuHats getHatsMenu() {
-        return hatsMenu;
-    }
-
-    public MenuMorphs getMorphsMenu() {
-        return morphsMenu;
-    }
-
-    public MenuMounts getMountsMenu() {
-        return mountsMenu;
-    }
-
-    public MenuParticleEffects getEffectsMenu() {
-        return effectsMenu;
-    }
-
-    public MenuPets getPetsMenu() {
-        return petsMenu;
-    }
-
-    public MenuSuits getSuitsMenu() {
-        return suitsMenu;
+    public CosmeticMenu<?> getCategoryMenu(Category category) {
+        return categoryMenus.get(category);
     }
 
     /**
@@ -96,15 +65,16 @@ public class Menus {
         itemName = itemName.replace("%gadgetname%", type.getName());
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
         PurchaseData pd = new PurchaseData();
+        MenuGadgets mg = (MenuGadgets) categoryMenus.get(Category.GADGETS);
         pd.setPrice(type.getAmmoPrice());
         pd.setShowcaseItem(display);
         pd.setOnPurchase(() -> {
             player.addAmmo(type, type.getResultAmmoAmount());
-            ultraCosmetics.getMenus().getGadgetsMenu().open(player, player.getGadgetsPage());
+            mg.open(player, player.getGadgetsPage());
             player.setGadgetsPage(1);
         });
         pd.setOnCancel(() -> {
-            ultraCosmetics.getMenus().getGadgetsMenu().open(player, player.getGadgetsPage());
+            mg.open(player, player.getGadgetsPage());
             player.setGadgetsPage(1);
         });
         MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Menu.Buy-Ammo.Title"), pd);

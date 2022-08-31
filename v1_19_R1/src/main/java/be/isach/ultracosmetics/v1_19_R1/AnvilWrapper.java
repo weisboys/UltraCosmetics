@@ -1,7 +1,7 @@
 package be.isach.ultracosmetics.v1_19_R1;
 
+import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
 import be.isach.ultracosmetics.v1_19_R1.customentities.CustomEntities;
-import be.isach.ultracosmetics.version.IAnvilWrapper;
 
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;

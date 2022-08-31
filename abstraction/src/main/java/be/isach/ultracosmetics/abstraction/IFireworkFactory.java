@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.version;
+package be.isach.ultracosmetics.abstraction;
 
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;

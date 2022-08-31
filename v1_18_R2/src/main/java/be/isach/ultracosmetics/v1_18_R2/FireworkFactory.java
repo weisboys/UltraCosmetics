@@ -1,7 +1,8 @@
 package be.isach.ultracosmetics.v1_18_R2;
 
+import be.isach.ultracosmetics.abstraction.IFireworkFactory;
 import be.isach.ultracosmetics.v1_18_R2.customentities.CustomEntityFirework;
-import be.isach.ultracosmetics.version.IFireworkFactory;
+
 import net.minecraft.world.entity.Entity;
 
 import org.bukkit.FireworkEffect;

@@ -69,7 +69,7 @@ public class MenuMain extends Menu {
     public void open(UltraPlayer player) {
         if (!UltraCosmeticsData.get().areTreasureChestsEnabled()
                 && Category.enabledSize() == 1) {
-            Category.enabled().get(0).getMenu(getUltraCosmetics().getMenus()).open(player);
+            getUltraCosmetics().getMenus().getCategoryMenu(Category.enabled().get(0)).open(player);
             return;
         }
         super.open(player);
@@ -82,7 +82,7 @@ public class MenuMain extends Menu {
                 int slot = layout[i];
                 Category category = Category.enabled().get(i);
                 putItem(inventory, slot, category.getItemStack(), data -> {
-                    category.getMenu(getUltraCosmetics().getMenus()).open(player);
+                    getUltraCosmetics().getMenus().getCategoryMenu(category).open(player);
                 });
             }
         }

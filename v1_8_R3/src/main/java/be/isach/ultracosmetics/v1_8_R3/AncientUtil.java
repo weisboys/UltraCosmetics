@@ -1,10 +1,12 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
+import be.isach.ultracosmetics.abstraction.IAncientUtil;
+
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import be.isach.ultracosmetics.version.IAncientUtil;
+
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 

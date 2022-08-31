@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
 
 import java.util.function.BiFunction;
 import java.util.function.Consumer;

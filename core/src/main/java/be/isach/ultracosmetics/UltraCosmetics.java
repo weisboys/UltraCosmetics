@@ -29,14 +29,12 @@ import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.Problem;
-import be.isach.ultracosmetics.util.ReflectionUtils;
-import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
 import be.isach.ultracosmetics.version.VersionManager;
-import be.isach.ultracosmetics.worldguard.AFlagManager;
 import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
+import be.isach.ultracosmetics.worldguard.WorldGuardManager;
 
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
@@ -57,7 +55,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -136,7 +133,7 @@ public class UltraCosmetics extends JavaPlugin {
     /**
      * Manages WorldGuard flags.
      */
-    private AFlagManager flagManager = null;
+    private WorldGuardManager worldGuardManager = new WorldGuardManager();
 
     private boolean legacyMessagePrinted = false;
     private boolean enableFinished = false;
@@ -167,22 +164,7 @@ public class UltraCosmetics extends JavaPlugin {
         // Not using isPluginEnabled() because WorldGuard should be
         // loaded but not yet enabled when registering flags
         if (worldGuardIntegration && getServer().getPluginManager().getPlugin("WorldGuard") != null) {
-            // does reflect-y things but isn't in VersionManager because of the load timing
-            // and because it should only happen if WorldGuard is present
-            String wgVersionPackage = (VersionManager.IS_VERSION_1_13 ? ServerVersion.v1_18_R2 : ServerVersion.v1_12_R1).name();
-            try {
-                flagManager = (AFlagManager) ReflectionUtils.instantiateObject(Class.forName(VersionManager.PACKAGE + "." + wgVersionPackage + ".worldguard.FlagManager"));
-            } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                    | InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (NoClassDefFoundError | NoSuchMethodError | NoSuchMethodException | ClassNotFoundException e) {
-                getSmartLogger().write(LogLevel.WARNING, "Couldn't find required classes for WorldGuard integration.");
-                getSmartLogger().write(LogLevel.WARNING, "Please make sure you are using the latest version of WorldGuard");
-                getSmartLogger().write(LogLevel.WARNING, "for your version of Minecraft. Debug info:");
-                e.printStackTrace();
-                getSmartLogger().write("WorldGuard support is disabled.");
-                activeProblems.add(Problem.WORLDGUARD_HOOK_FAILURE);
-            }
+            worldGuardManager.register(this);
         }
     }
 
@@ -421,15 +403,15 @@ public class UltraCosmetics extends JavaPlugin {
     }
 
     private void setupWorldGuard() {
-        if (flagManager != null) {
+        if (worldGuardManager != null) {
             if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
                 getSmartLogger().write(LogLevel.ERROR, "WorldGuard is not enabled yet! Is WorldGuard up to date? Is another plugin interfering with the load order?");
                 getSmartLogger().write(LogLevel.ERROR, "WorldGuard support will be disabled.");
                 activeProblems.add(Problem.WORLDGUARD_HOOK_FAILURE);
-                flagManager = null;
+                worldGuardManager = null;
                 return;
             }
-            flagManager.registerPhase2();
+            worldGuardManager.registerPhase2();
             getSmartLogger().write();
             getSmartLogger().write("WorldGuard custom flags enabled");
         }
@@ -758,34 +740,34 @@ public class UltraCosmetics extends JavaPlugin {
         return permissionProvider;
     }
 
-    public AFlagManager getFlagManager() {
-        return flagManager;
+    public WorldGuardManager getFlagManager() {
+        return worldGuardManager;
     }
 
     public boolean worldGuardHooked() {
-        return flagManager != null;
+        return worldGuardManager != null;
     }
 
     public boolean areCosmeticsAllowedInRegion(Player player, Category category) {
-        return !worldGuardHooked() || flagManager.areCosmeticsAllowedHere(player, category);
+        return !worldGuardHooked() || worldGuardManager.areCosmeticsAllowedHere(player, category);
     }
 
     public boolean areChestsAllowedInRegion(Player player) {
-        return !worldGuardHooked() || flagManager.areChestsAllowedHere(player);
+        return !worldGuardHooked() || worldGuardManager.areChestsAllowedHere(player);
     }
 
     public boolean arePlayersAffectedInRegion(Player target) {
-        return !worldGuardHooked() || flagManager.canAffectPlayersHere(target);
+        return !worldGuardHooked() || worldGuardManager.canAffectPlayersHere(target);
     }
 
     public CosmeticRegionState cosmeticRegionState(Player player, Category category) {
         if (!worldGuardHooked()) return CosmeticRegionState.ALLOWED;
-        return flagManager.allowedCosmeticsState(player, category);
+        return worldGuardManager.allowedCosmeticsState(player, category);
     }
 
     public void forceRegionCheck(Player target) {
         if (!worldGuardHooked()) return;
-        flagManager.doCosmeticCheck(target, this);
+        worldGuardManager.doCosmeticCheck(target, this);
     }
 
     public boolean loadConfiguration(File file) {

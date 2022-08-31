@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.v1_12_R1.worldguard;
+package be.isach.ultracosmetics.worldguard.legacy;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
