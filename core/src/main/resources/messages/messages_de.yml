@@ -1,5 +1,5 @@
 Prefix: '&l&oKosmetik >&r'
-No-Permission: '%prefix% &c&lDu hast keine Rechte für diesen Befehl!'
+No-Permission: '%prefix% &c&lDafür hast du keine Rechte!'
 Cosmetic-Disabled: '%prefix% &c&lDieses Item ist deaktiviert!'
 Invalid-Gadget: '%prefix% &c&lUngültiges Gadget!'
 Invalid-Pet: '%prefix% &c&lUngültiges Haustier!'
@@ -701,7 +701,7 @@ Hats:
     Description: '&7&oMein Schatz!'
   Diamond:
     Name: '&b&lDiamant'
-    Description: '&7&oDas ist sehr stark!'
+    Description: '&7&oDas ist wirklich stark!'
   CommandBlock:
     Name: '&7&lBefehlsblock'
     Description: '&7&oKontrolliere die Welt damit!'
