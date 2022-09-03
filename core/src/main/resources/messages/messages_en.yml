@@ -789,13 +789,13 @@ Hats:
     Description: '&7&oKing of the jungle'
   Frog:
     Name: '&2&lFrog'
-    Description: '&7&oempty'
+    Description: '&7&oEats whatever bugs him.'
   AxolotlBlue:
     Name: '&9&lBlue Axolotl'
     Description: '&7&oThe cutest predator'
   Turtle:
     Name: '&a&lTurtle'
-    Description: '&7&oempty'
+    Description: '&7&oTake your time.'
   Clownfish:
     Name: '&6&lClownfish'
     Description: '&7&oYou found him!'
@@ -807,7 +807,7 @@ Hats:
     Description: '&7&oThe little helper'
   Bat:
     Name: '&5&lBat'
-    Description: '&7&oempty'
+    Description: '&7&oEnjoy the nightlife.'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oempty'
