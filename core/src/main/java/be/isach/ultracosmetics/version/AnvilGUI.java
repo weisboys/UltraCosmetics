@@ -1,5 +1,7 @@
 package be.isach.ultracosmetics.version;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
+
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,9 +17,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
-
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
 
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
@@ -66,7 +65,7 @@ public class AnvilGUI {
     /**
      * An {@link BiFunction} that is called when the {@link Slot#OUTPUT} slot has been clicked
      */
-    private final BiFunction<Player, String, Response> completeFunction;
+    private final BiFunction<Player,String,Response> completeFunction;
 
     /**
      * An {@link Consumer} that is called when the {@link Slot#INPUT_LEFT} slot has been clicked
@@ -100,13 +99,13 @@ public class AnvilGUI {
      *
      * @param plugin     A {@link org.bukkit.plugin.java.JavaPlugin} instance
      * @param holder     The {@link Player} to open the inventory for
-     * @param insert  What to have the text already set to
+     * @param insert     What to have the text already set to
      * @param biFunction A {@link BiFunction} that is called when the player clicks the {@link Slot#OUTPUT} slot
      * @throws NullPointerException If the server version isn't supported
      * @deprecated As of version 1.2.3, use {@link AnvilGUI.Builder}
      */
     @Deprecated
-    public AnvilGUI(Plugin plugin, Player holder, String insert, BiFunction<Player, String, String> biFunction) {
+    public AnvilGUI(Plugin plugin, Player holder, String insert, BiFunction<Player,String,String> biFunction) {
         this(plugin, holder, "Repair & Name", insert, null, null, false, null, null, null, (player, text) -> {
             String response = biFunction.apply(player, text);
             if (response != null) {
@@ -140,8 +139,7 @@ public class AnvilGUI {
             Consumer<Player> closeListener,
             Consumer<Player> inputLeftClickListener,
             Consumer<Player> inputRightClickListener,
-            BiFunction<Player, String, Response> completeFunction
-    ) {
+            BiFunction<Player,String,Response> completeFunction) {
         this.plugin = plugin;
         this.player = player;
         this.inventoryTitle = inventoryTitle;
@@ -200,6 +198,7 @@ public class AnvilGUI {
 
     /**
      * Closes the inventory if it's open, only sending the close inventory packets if the arg is true
+     *
      * @param sendClosePacket Whether to send the close inventory event, packet, etc
      */
     private void closeInventory(boolean sendClosePacket) {
@@ -238,10 +237,8 @@ public class AnvilGUI {
 
         @EventHandler
         public void onInventoryClick(InventoryClickEvent event) {
-            if (
-                    event.getInventory().equals(inventory) &&
-                    (event.getRawSlot() < 3 || event.getAction().equals(InventoryAction.MOVE_TO_OTHER_INVENTORY))
-            ) {
+            if (event.getInventory().equals(inventory) &&
+                    (event.getRawSlot() < 3 || event.getAction().equals(InventoryAction.MOVE_TO_OTHER_INVENTORY))) {
                 event.setCancelled(true);
                 final Player clicker = (Player) event.getWhoClicked();
                 if (event.getRawSlot() == Slot.OUTPUT) {
@@ -250,8 +247,7 @@ public class AnvilGUI {
 
                     final Response response = completeFunction.apply(
                             clicker,
-                            clicked.hasItemMeta() ? clicked.getItemMeta().getDisplayName() : ""
-                    );
+                            clicked.hasItemMeta() ? clicked.getItemMeta().getDisplayName() : "");
                     if (response.getText() != null) {
                         final ItemMeta meta = clicked.getItemMeta();
                         meta.setDisplayName(response.getText());
@@ -322,7 +318,7 @@ public class AnvilGUI {
         /**
          * An {@link BiFunction} that is called when the anvil output slot has been clicked
          */
-        private BiFunction<Player, String, Response> completeFunction;
+        private BiFunction<Player,String,Response> completeFunction;
         /**
          * The {@link Plugin} that this anvil GUI is associated with
          */
@@ -396,7 +392,7 @@ public class AnvilGUI {
          * @return The {@link Builder} instance
          * @throws IllegalArgumentException when the completeFunction is null
          */
-        public Builder onComplete(BiFunction<Player, String, Response> completeFunction) {
+        public Builder onComplete(BiFunction<Player,String,Response> completeFunction) {
             Validate.notNull(completeFunction, "Complete function cannot be null");
             this.completeFunction = completeFunction;
             return this;
@@ -569,7 +565,7 @@ public class AnvilGUI {
      */
     public static class Slot {
 
-        private static final int[] values = new int[]{Slot.INPUT_LEFT, Slot.INPUT_RIGHT, Slot.OUTPUT};
+        private static final int[] values = new int[] { Slot.INPUT_LEFT, Slot.INPUT_RIGHT, Slot.OUTPUT };
 
         /**
          * The slot on the far left, where the first input is inserted. An {@link ItemStack} is always inserted
@@ -597,4 +593,3 @@ public class AnvilGUI {
     }
 
 }
-

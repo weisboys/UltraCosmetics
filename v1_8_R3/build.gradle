@@ -1,5 +1,4 @@
 dependencies {
     implementation 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
-    implementation project(':abstraction')
     implementation project(':core')
 }

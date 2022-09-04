@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.worldguard;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.abstraction.worldguard.UCFlag;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.util.Problem;

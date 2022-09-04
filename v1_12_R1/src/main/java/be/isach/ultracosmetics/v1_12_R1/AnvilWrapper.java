@@ -1,13 +1,23 @@
 package be.isach.ultracosmetics.v1_12_R1;
 
-import net.minecraft.server.v1_12_R1.*;
-
-import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
+import be.isach.ultracosmetics.version.IAnvilWrapper;
 
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_12_R1.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+
+import net.minecraft.server.v1_12_R1.BlockPosition;
+import net.minecraft.server.v1_12_R1.Blocks;
+import net.minecraft.server.v1_12_R1.ChatMessage;
+import net.minecraft.server.v1_12_R1.Container;
+import net.minecraft.server.v1_12_R1.ContainerAnvil;
+import net.minecraft.server.v1_12_R1.EntityHuman;
+import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_12_R1.IInventory;
+import net.minecraft.server.v1_12_R1.PacketPlayOutCloseWindow;
+import net.minecraft.server.v1_12_R1.PacketPlayOutOpenWindow;
+import net.minecraft.server.v1_12_R1.World;
 
 /**
  * {@link VersionWrapper} implemented for NMS version 1_12_R1
@@ -134,5 +144,3 @@ public class AnvilWrapper implements IAnvilWrapper {
     }
 
 }
-
-

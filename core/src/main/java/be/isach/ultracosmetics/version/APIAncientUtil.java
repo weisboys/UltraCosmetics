@@ -1,7 +1,5 @@
 package be.isach.ultracosmetics.version;
 
-import be.isach.ultracosmetics.abstraction.IAncientUtil;
-
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;

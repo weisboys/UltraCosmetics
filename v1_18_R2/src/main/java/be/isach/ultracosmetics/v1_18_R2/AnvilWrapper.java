@@ -1,5 +1,13 @@
 package be.isach.ultracosmetics.v1_18_R2;
 
+import be.isach.ultracosmetics.version.IAnvilWrapper;
+
+import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R2.event.CraftEventFactory;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -10,14 +18,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
-
-import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
-
-import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_18_R2.event.CraftEventFactory;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 /**
  * AUTHOR: WesJD (Thanks!)
@@ -85,7 +85,7 @@ public class AnvilWrapper implements IAnvilWrapper {
      */
     @Override
     public void setActiveContainerId(Object container, int containerId) {
-        //noop
+        // noop
     }
 
     /**
@@ -145,7 +145,7 @@ public class AnvilWrapper implements IAnvilWrapper {
 
         @Override
         protected void clearContainer(net.minecraft.world.entity.player.Player entityhuman,
-                                      net.minecraft.world.Container iinventory) {
+                net.minecraft.world.Container iinventory) {
         }
 
         public int getContainerId() {

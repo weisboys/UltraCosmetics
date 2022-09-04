@@ -1,9 +1,6 @@
 package be.isach.ultracosmetics.version;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.abstraction.IAncientUtil;
-import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
-import be.isach.ultracosmetics.abstraction.IFireworkFactory;
 import be.isach.ultracosmetics.cosmetics.pets.APlayerFollower;
 import be.isach.ultracosmetics.cosmetics.pets.Pet;
 import be.isach.ultracosmetics.util.ReflectionUtils;

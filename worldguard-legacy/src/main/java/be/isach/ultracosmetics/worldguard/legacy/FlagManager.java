@@ -1,8 +1,8 @@
 package be.isach.ultracosmetics.worldguard.legacy;
 
-import be.isach.ultracosmetics.abstraction.worldguard.UCFlag;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.worldguard.IFlagManager;
+import be.isach.ultracosmetics.worldguard.UCFlag;
 
 import org.bukkit.entity.Player;
 

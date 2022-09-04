@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.abstraction;
+package be.isach.ultracosmetics.version;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

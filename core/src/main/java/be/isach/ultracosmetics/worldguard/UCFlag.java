@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.abstraction.worldguard;
+package be.isach.ultracosmetics.worldguard;
 
 import com.sk89q.worldguard.protection.flags.StateFlag;
 

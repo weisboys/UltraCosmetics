@@ -1,13 +1,21 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
-import net.minecraft.server.v1_8_R3.*;
-
-import be.isach.ultracosmetics.abstraction.IAnvilWrapper;
+import be.isach.ultracosmetics.version.IAnvilWrapper;
 
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_8_R3.event.CraftEventFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+
+import net.minecraft.server.v1_8_R3.BlockPosition;
+import net.minecraft.server.v1_8_R3.Blocks;
+import net.minecraft.server.v1_8_R3.ChatMessage;
+import net.minecraft.server.v1_8_R3.Container;
+import net.minecraft.server.v1_8_R3.ContainerAnvil;
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
+import net.minecraft.server.v1_8_R3.PacketPlayOutCloseWindow;
+import net.minecraft.server.v1_8_R3.PacketPlayOutOpenWindow;
 
 /**
  * {@link VersionWrapper} implemented for NMS version 1_8_R3

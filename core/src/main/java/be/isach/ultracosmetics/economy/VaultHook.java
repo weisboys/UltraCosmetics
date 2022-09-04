@@ -1,9 +1,11 @@
 package be.isach.ultracosmetics.economy;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import net.milkbowl.vault.economy.Economy;
+
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
+
+import net.milkbowl.vault.economy.Economy;
 
 /**
  * Vault economy hook.
@@ -29,7 +31,7 @@ public class VaultHook implements EconomyHook {
             economyEnabled = true;
         } else {
             ultraCosmetics.getSmartLogger().write("");
-            ultraCosmetics.getSmartLogger().write("Something happened while hooking into Vault for economy.");
+            ultraCosmetics.getSmartLogger().write("Found Vault but no economy, please check whether your economy plugin supports Vault.");
             ultraCosmetics.getSmartLogger().write("");
             economyEnabled = false;
         }

@@ -1,6 +1,6 @@
 package be.isach.ultracosmetics.v1_8_R3;
 
-import be.isach.ultracosmetics.abstraction.IAncientUtil;
+import be.isach.ultracosmetics.version.IAncientUtil;
 
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
@@ -18,7 +18,7 @@ public class AncientUtil implements IAncientUtil {
 
     @Override
     public void setSilent(Entity entity, boolean silent) {
-        net.minecraft.server.v1_8_R3.Entity nms = ((CraftEntity)entity).getHandle();
+        net.minecraft.server.v1_8_R3.Entity nms = ((CraftEntity) entity).getHandle();
         NBTTagCompound nbt = new NBTTagCompound();
         // Copy entity's tags into nbt
         nms.c(nbt);

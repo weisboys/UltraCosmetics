@@ -1,9 +1,7 @@
 package be.isach.ultracosmetics.v1_18_R2;
 
-import be.isach.ultracosmetics.abstraction.IFireworkFactory;
 import be.isach.ultracosmetics.v1_18_R2.customentities.CustomEntityFirework;
-
-import net.minecraft.world.entity.Entity;
+import be.isach.ultracosmetics.version.IFireworkFactory;
 
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -11,6 +9,8 @@ import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
+
+import net.minecraft.world.entity.Entity;
 
 /**
  * @author RadBuilder
@@ -22,10 +22,10 @@ public class FireworkFactory implements IFireworkFactory {
         FireworkMeta meta = ((Firework) firework.getBukkitEntity()).getFireworkMeta();
         meta.addEffect(effect);
         ((Firework) firework.getBukkitEntity()).setFireworkMeta(meta);
-        ((Entity)firework).setPos(location.getX(), location.getY(), location.getZ());
+        ((Entity) firework).setPos(location.getX(), location.getY(), location.getZ());
 
         if ((((CraftWorld) location.getWorld()).getHandle()).addFreshEntity(firework)) {
-            ((Entity)firework).setInvisible(true);
+            ((Entity) firework).setInvisible(true);
         }
     }
 }
