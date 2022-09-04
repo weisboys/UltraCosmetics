@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.gadgets.Gadget;
@@ -32,7 +31,6 @@ import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTNT;
 import be.isach.ultracosmetics.cosmetics.gadgets.GadgetThorHammer;
 import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTrampoline;
 import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTsunami;
-import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
@@ -89,27 +87,22 @@ public class GadgetType extends CosmeticType<Gadget> {
         ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
     }
 
-    private final double countdown;
+    private final double cooldown;
     private final int runTime;
 
-    private GadgetType(XMaterial material, double defaultCountdown, int runTime, String configName, Class<? extends Gadget> clazz) {
+    private GadgetType(XMaterial material, double defaultCooldown, int runTime, String configName, Class<? extends Gadget> clazz) {
         super(Category.GADGETS, configName, material, clazz);
 
-        if (SettingsManager.getConfig().get("Gadgets." + configName + ".Cooldown") == null) {
-            this.countdown = defaultCountdown;
-            SettingsManager.getConfig().set("Gadgets." + configName + ".Cooldown", defaultCountdown);
+        if (!SettingsManager.getConfig().isDouble("Gadgets." + configName + ".Cooldown")) {
+            this.cooldown = defaultCooldown;
+            SettingsManager.getConfig().set("Gadgets." + configName + ".Cooldown", defaultCooldown);
         } else {
-            this.countdown = Double.valueOf(String.valueOf(SettingsManager.getConfig().get("Gadgets." + configName + ".Cooldown")));
+            this.cooldown = SettingsManager.getConfig().getDouble("Gadgets." + configName + ".Cooldown");
         }
 
         this.runTime = runTime;
 
         VALUES.add(this);
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return !(this == GadgetType.valueOf("etherealpearl") && UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_12_R1) && super.isEnabled();
     }
 
     public boolean requiresAmmo() {
@@ -136,7 +129,7 @@ public class GadgetType extends CosmeticType<Gadget> {
 
     public double getCountdown() {
         // cooldown should not be lower than runtime unless you enjoy bugs
-        return Math.max(countdown, runTime);
+        return Math.max(cooldown, runTime);
     }
 
     public int getRunTime() {

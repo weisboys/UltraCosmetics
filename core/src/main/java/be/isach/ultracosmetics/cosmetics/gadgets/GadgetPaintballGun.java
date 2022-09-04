@@ -132,7 +132,7 @@ public class GadgetPaintballGun extends Gadget {
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent event) {
         // TODO: can we check if the pearl that caused the spawn is the pearl thrown by this gadget?
-        if (UltraCosmeticsData.get().getServerVersion() != ServerVersion.v1_8_R3 && event.getSpawnReason() == SpawnReason.ENDER_PEARL) {
+        if (UltraCosmeticsData.get().getServerVersion() != ServerVersion.v1_8 && event.getSpawnReason() == SpawnReason.ENDER_PEARL) {
             event.setCancelled(true);
         }
     }

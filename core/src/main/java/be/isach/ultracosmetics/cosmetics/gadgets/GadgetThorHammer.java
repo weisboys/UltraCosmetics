@@ -31,7 +31,7 @@ import com.cryptomorin.xseries.XMaterial;
  */
 public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic {
     // EntityPickupItemEvent didn't exist until 1.12
-    private static final boolean USE_OTHER_LISTENER = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_12_R1);
+    private static final boolean USE_OTHER_LISTENER = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_12);
     private Item hammer = null;
     private HammerPickupListener listener;
     private Vector v;

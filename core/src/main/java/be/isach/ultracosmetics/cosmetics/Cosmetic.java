@@ -61,7 +61,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             return;
         } else if (state == CosmeticRegionState.BLOCKED_CATEGORY) {
             getPlayer().sendMessage(MessageManager.getMessage("Region-Disabled-Category")
-                    .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getConfigName() + ".Title"))));
+                    .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
             return;
         }
 

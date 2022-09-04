@@ -20,7 +20,7 @@ public class WorldGuardManager {
 
     public void register(UltraCosmetics ultraCosmetics) {
         String path = "be.isach.ultracosmetics.worldguard.";
-        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_18_R2)) {
+        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13)) {
             path += "legacy.";
         }
         try {
@@ -82,7 +82,7 @@ public class WorldGuardManager {
         for (Category category : blockedCategories) {
             if (blockedCategories.contains(category) && uc.getPlayerManager().getUltraPlayer(player).removeCosmetic(category)) {
                 player.sendMessage(MessageManager.getMessage("Region-Disabled-Category")
-                        .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getConfigName() + ".Title"))));
+                        .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
             }
         }
     }

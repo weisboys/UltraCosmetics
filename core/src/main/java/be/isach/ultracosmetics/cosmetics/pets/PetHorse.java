@@ -24,7 +24,7 @@ public class PetHorse extends Pet {
     @SuppressWarnings("deprecation")
     @Override
     public void setupEntity() {
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3) {
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
             // if we don't set this, it sometimes spawns a donkey instead of a horse
             ((Horse) entity).setVariant(org.bukkit.entity.Horse.Variant.HORSE);
         }

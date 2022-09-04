@@ -271,7 +271,7 @@ public class UltraCosmetics extends JavaPlugin {
                         getSmartLogger().write(LogLevel.WARNING, "You have TallSelfDisguises disabled in LibsDisguises's players.yml. Self view of morphs may not work as expected.");
                         activeProblems.add(Problem.TALL_DISGUISES_DISABLED);
                     }
-                } catch (NoSuchMethodError ignored) {
+                } catch (NoSuchMethodError | NoClassDefFoundError ignored) {
                 }
             }
         }

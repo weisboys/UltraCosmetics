@@ -12,16 +12,17 @@ import org.bukkit.entity.Player;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class VersionManager {
     // Used for knowing whether to use 'new' API methods that were added in 1.13
-    public static boolean IS_VERSION_1_13 = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_18_R2);
+    public static boolean IS_VERSION_1_13 = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13);
     public static final String PACKAGE = "be.isach.ultracosmetics";
     // TODO: value as Pair or something?
-    private static final Map<String,Integer> WORLD_MIN_HEIGHTS = new HashMap<>();
-    private static final Map<String,Integer> WORLD_MAX_HEIGHTS = new HashMap<>();
+    private static final Map<UUID,Integer> WORLD_MIN_HEIGHTS = new HashMap<>();
+    private static final Map<UUID,Integer> WORLD_MAX_HEIGHTS = new HashMap<>();
+    private final ServerVersion serverVersion;
     private IModule module;
-    private ServerVersion serverVersion;
     private IEntityUtil entityUtil;
     private IAncientUtil ancientUtil;
     private IFireworkFactory fireworkFactory;
@@ -36,25 +37,24 @@ public class VersionManager {
 
     @SuppressWarnings("unchecked")
     public void load() throws ReflectiveOperationException {
-        module = loadModule("Module");
-        entityUtil = loadModule("EntityUtil");
-        mounts = new Mounts();
-        if (serverVersion == ServerVersion.v1_8_R3) {
+        if (serverVersion == ServerVersion.v1_8) {
             ancientUtil = loadModule("AncientUtil");
         } else {
             ancientUtil = new APIAncientUtil();
         }
+        module = loadModule("Module");
+        entityUtil = loadModule("EntityUtil");
+        mounts = new Mounts();
         fireworkFactory = loadModule("FireworkFactory");
         pets = loadModule("Pets");
         morphs = loadModule("Morphs");
-        playerFollowerConstructor = (Constructor<? extends APlayerFollower>) ReflectionUtils.getConstructor(Class.forName(PACKAGE + "." + serverVersion + ".pets.PlayerFollower"), Pet.class, Player.class);
+        playerFollowerConstructor = (Constructor<? extends APlayerFollower>) ReflectionUtils.getConstructor(Class.forName(PACKAGE + "." + serverVersion.getNmsVersion() + ".pets.PlayerFollower"), Pet.class, Player.class);
         playerFollowerConstructor.setAccessible(true);
     }
 
     @SuppressWarnings("unchecked")
     private <T> T loadModule(String name) throws ReflectiveOperationException {
-        return (T) ReflectionUtils
-                .instantiateObject(Class.forName(PACKAGE + "." + serverVersion + "." + name));
+        return (T) ReflectionUtils.instantiateObject(Class.forName(PACKAGE + "." + serverVersion.getNmsVersion() + "." + name));
     }
 
     public IEntityUtil getEntityUtil() {
@@ -104,7 +104,7 @@ public class VersionManager {
     }
 
     public int getWorldMinHeight(World world) {
-        return WORLD_MIN_HEIGHTS.computeIfAbsent(world.getName(), w -> {
+        return WORLD_MIN_HEIGHTS.computeIfAbsent(world.getUID(), w -> {
             try {
                 return world.getMinHeight();
             } catch (NoSuchMethodError ex) {
@@ -114,7 +114,7 @@ public class VersionManager {
     }
 
     public int getWorldMaxHeight(World world) {
-        return WORLD_MAX_HEIGHTS.computeIfAbsent(world.getName(), w -> {
+        return WORLD_MAX_HEIGHTS.computeIfAbsent(world.getUID(), w -> {
             try {
                 return world.getMaxHeight();
             } catch (NoSuchMethodError ex) {

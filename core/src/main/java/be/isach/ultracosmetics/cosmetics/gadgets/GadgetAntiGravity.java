@@ -31,7 +31,7 @@ import org.bukkit.util.Vector;
  */
 public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
-    private static final boolean USE_LEVITATION = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_12_R1);
+    private static final boolean USE_LEVITATION = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9);
     private ArmorStand as;
     private boolean running;
 

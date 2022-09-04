@@ -156,34 +156,42 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Skeleton", XMaterial.BOW, EntityType.SKELETON, PetSkeleton.class);
         new PetType("Zombie", XMaterial.ROTTEN_FLESH, EntityType.ZOMBIE, PetZombie.class);
 
-        if (serverVersion.isAtLeast(ServerVersion.v1_19_R1)) {
+        // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
+        switch (serverVersion) {
+        case v1_19:
             new PetType("Frog", XMaterial.LILY_PAD, EntityType.FROG, PetFrog.class);
             new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class);
             new PetType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, PetAllay.class);
             new PetType("Goat", XMaterial.GOAT_HORN, EntityType.GOAT, PetGoat.class);
-        } else if (serverVersion.isAtLeast(ServerVersion.v1_18_R2)) {
-            new PetType("Goat", XMaterial.WHEAT, EntityType.GOAT, PetGoat.class);
-        }
-
-        if (serverVersion.isAtLeast(ServerVersion.v1_18_R2)) {
+        case v1_17:
             new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class);
+        case v1_16:
             new PetType("Piglin", XMaterial.GOLD_INGOT, EntityType.PIGLIN, PetPiglin.class);
+        case v1_15:
             new PetType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, PetBee.class);
+        case v1_14:
             new PetType("Panda", XMaterial.BAMBOO, EntityType.PANDA, PetPanda.class);
             new PetType("Fox", XMaterial.SWEET_BERRIES, EntityType.FOX, PetFox.class);
             new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.CAT, PetKitty.class);
             new PetType("Horse", XMaterial.LEATHER_HORSE_ARMOR, EntityType.HORSE, PetHorse.class);
-        } else {
-            new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.OCELOT, PetKitty.class);
-            new PetType("Horse", XMaterial.LEATHER, EntityType.HORSE, PetHorse.class);
-        }
-
-        if (serverVersion.isAtLeast(ServerVersion.v1_12_R1)) {
-            new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
-            new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
+        case v1_12:
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
+        case v1_11:
+            new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
             /* Vex disabled because its just not following the player at all (Besides teleport) */
             /* new PetType("Vex", XMaterial.IRON_SWORD, "&7&oYAAHH Ehehhehe!", EntityType.VEX, PetVex.class); */
+        case v1_10:
+            new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
+        default:
+            break;
+        }
+        if (serverVersion == ServerVersion.v1_18) {
+            new PetType("Goat", XMaterial.WHEAT, EntityType.GOAT, PetGoat.class);
+        }
+
+        if (!serverVersion.isAtLeast(ServerVersion.v1_14)) {
+            new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.OCELOT, PetKitty.class);
+            new PetType("Horse", XMaterial.LEATHER, EntityType.HORSE, PetHorse.class);
         }
 
         ConfigurationSection pets = getCustomConfig(Category.PETS);

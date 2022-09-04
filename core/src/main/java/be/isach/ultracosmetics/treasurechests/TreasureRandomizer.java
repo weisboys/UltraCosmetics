@@ -91,7 +91,7 @@ public class TreasureRandomizer {
 
     private void setupChance(Category category) {
         // word case, like "Pets" rather than "PETS"
-        String configPath = "TreasureChests.Loots." + category.getConfigName();
+        String configPath = "TreasureChests.Loots." + category.getMessagesName();
         if (!SettingsManager.getConfig().getBoolean(configPath + ".Enabled")) return;
         if (!category.isEnabled()) return;
         ResultType result = ResultType.fromCategory(category);
@@ -138,7 +138,7 @@ public class TreasureRandomizer {
                 // ammo
                 weight = AMMO_CHANCE;
             } else {
-                weight = SettingsManager.getConfig().getInt("TreasureChests.Loots." + result.category.getConfigName() + ".Chance");
+                weight = SettingsManager.getConfig().getInt("TreasureChests.Loots." + result.category.getMessagesName() + ".Chance");
             }
             choices.add(result, weight);
         }

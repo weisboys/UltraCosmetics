@@ -24,7 +24,7 @@ public class PetVillager extends Pet {
     @Override
     public boolean customize(String customization) {
         // If we don't have new villager API, do nothing
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_18_R2)) {
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14)) {
             return false;
         }
         Type type;

@@ -13,7 +13,7 @@ public class Mounts {
     private final boolean is18;
     private final String packageName;
     public Mounts() {
-        is18 = UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3;
+        is18 = UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8;
         packageName = "be.isach.ultracosmetics.cosmetics.mounts." + (is18 ? "pretend" : "abstract") + "horse";
     }
 

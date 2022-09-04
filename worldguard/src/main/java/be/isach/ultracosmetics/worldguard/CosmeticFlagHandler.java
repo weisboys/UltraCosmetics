@@ -70,7 +70,7 @@ public class CosmeticFlagHandler extends Handler {
             UltraPlayer up = pm.getUltraPlayer(bukkitPlayer);
             for (Category cat : needsUpdating) {
                 if (up.removeCosmetic(cat)) {
-                    bukkitPlayer.sendMessage(MessageManager.getMessage("Region-Disabled-Category").replace("%category%", cat.getConfigName()));
+                    bukkitPlayer.sendMessage(MessageManager.getMessage("Region-Disabled-Category").replace("%category%", cat.getMessagesName()));
                 }
             }
         }

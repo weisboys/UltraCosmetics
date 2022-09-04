@@ -135,7 +135,7 @@ public class MessageManager {
 
         migrateClearMsg("Cosmetics", "Cosmetics");
         for (Category cat : Category.values()) {
-            String configName = cat.getConfigName();
+            String configName = cat.getMessagesName();
             migrateClearMsg(cat.getConfigPath(), configName.substring(0, configName.length() - 1));
         }
     }

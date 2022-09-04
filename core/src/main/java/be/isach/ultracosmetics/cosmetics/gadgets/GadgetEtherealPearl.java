@@ -1,10 +1,12 @@
 package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -85,20 +87,25 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
     public void onEntityDismount(EntityDismountEvent event) {
         if (pearl == null) return;
         if (event.getEntity() != getPlayer()) return;
-        endRide();
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
+            // 1.8.8 has weird timing problems with dismounting
+            Bukkit.getScheduler().runTask(getUltraCosmetics(), this::endRide);
+        } else {
+            endRide();
+        }
     }
 
     @EventHandler
     public void onItemFrameBreak(HangingBreakByEntityEvent event) {
-        if (pearl == event.getRemover()
-                || event.getRemover() == getPlayer()) {
+        if (event.getRemover() == pearl) {
             event.setCancelled(true);
         }
     }
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        if (pearl == event.getEntity()) {
+        // Player is (at least sometimes) blamed for the pearl hitting a painting
+        if (event.getEntity() == pearl || event.getEntity() == getPlayer()) {
             event.getEntity().remove();
             pearl = null;
         }
@@ -109,15 +116,17 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
             getPlayer().setAllowFlight(false);
         }
 
+        // Remove the pearl before we attempt to teleport or we get stuck in a loop on 1.8.8
+        if (pearl != null) {
+            pearl.remove();
+            pearl = null;
+        }
+
         // Don't get stuck in the ground or in a wall
         if (lastLoc != null) {
             getPlayer().teleport(lastLoc.add(0, 1, 0));
         }
         spawnRandomFirework(getPlayer().getLocation(), Color.fromRGB(100, 0, 100), Color.fromRGB(30, 0, 30));
-        if (pearl != null) {
-            pearl.remove();
-            pearl = null;
-        }
         running = false;
     }
 

@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
@@ -12,7 +11,6 @@ import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -92,10 +90,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         }
         armorStand.setHeadPose(armorStand.getHeadPose().add(0, 0.2, 0));
 
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3) {
-            // TODO: why only on 1.8.8? does it work on other versions?
-            setHelmet(armorStand, ItemFactory.getRandomStainedGlass());
-        }
+        setHelmet(armorStand, ItemFactory.getRandomStainedGlass());
 
         Particles.SPELL.display(armorStand.getEyeLocation(), 1, 1f);
         Particles.SPELL_INSTANT.display(armorStand.getEyeLocation(), 1, 1f);

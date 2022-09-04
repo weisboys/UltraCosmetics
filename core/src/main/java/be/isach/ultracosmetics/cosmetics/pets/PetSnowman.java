@@ -30,7 +30,7 @@ public class PetSnowman extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3) {
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
             return false;
         }
         if (customization.equalsIgnoreCase("true")) {

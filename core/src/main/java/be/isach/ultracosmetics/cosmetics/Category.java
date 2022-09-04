@@ -32,11 +32,11 @@ import java.util.stream.Collectors;
  */
 public enum Category {
 
-    PETS("Pets", "%petname%", "pets", "pe", () -> PetType.enabled()),
+    PETS("Pets", "%petname%", "pets", "pe", () -> PetType.enabled(), () -> UltraCosmeticsData.get().getServerVersion().isNmsSupported()),
     GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", () -> GadgetType.enabled()),
     EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", () -> ParticleEffectType.enabled()),
     MOUNTS("Mounts", "%mountname%", "mounts", "mou", () -> MountType.enabled()),
-    MORPHS("Morphs", "%morphname%", "morphs", "mor", () -> MorphType.enabled()),
+    MORPHS("Morphs", "%morphname%", "morphs", "mor", () -> MorphType.enabled(), () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
     HATS("Hats", "%hatname%", "hats", "h", () -> HatType.enabled()),
     SUITS("Suits", "%suitname%", "suits", "s", () -> SuitType.enabled()),
     EMOTES("Emotes", "%emotename%", "emotes", "e", () -> EmoteType.enabled());
@@ -92,6 +92,7 @@ public enum Category {
     private final String permission;
     private final String prefix;
     private final Supplier<List<? extends CosmeticType<?>>> enabledFunc;
+    private final Supplier<Boolean> enableCondition;
 
     /**
      * Category of Cosmetic.
@@ -100,12 +101,17 @@ public enum Category {
      * @param chatPlaceholder
      * @param prefix          TODO
      */
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc) {
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc, Supplier<Boolean> enableCondition) {
         this.configPath = configPath;
         this.chatPlaceholder = chatPlaceholder;
         this.permission = permission;
         this.prefix = prefix;
         this.enabledFunc = enabledFunc;
+        this.enableCondition = enableCondition;
+    }
+
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc) {
+        this(configPath, chatPlaceholder, permission, prefix, enabledFunc, () -> true);
     }
 
     /**
@@ -133,8 +139,7 @@ public enum Category {
      * @return {@code true} if enabled, otherwise {@code false}.
      */
     public boolean isEnabled() {
-        return !(this == MORPHS && !Bukkit.getPluginManager().isPluginEnabled("LibsDisguises"))
-                && SettingsManager.getConfig().getBoolean("Categories-Enabled." + configPath);
+        return enableCondition.get() && SettingsManager.getConfig().getBoolean("Categories-Enabled." + configPath);
     }
 
     /**
@@ -143,9 +148,8 @@ public enum Category {
      * @return {@code true} if has arrow, otherwise {@code false}
      */
     public boolean hasGoBackArrow() {
-        return !(!UltraCosmeticsData.get().areTreasureChestsEnabled()
-                && enabledSize() == 1)
-                && (boolean) (SettingsManager.getConfig().get("Categories." + configPath + ".Go-Back-Arrow"));
+        return !(!UltraCosmeticsData.get().areTreasureChestsEnabled() && enabledSize() == 1)
+                && SettingsManager.getConfig().getBoolean("Categories." + configPath + ".Go-Back-Arrow");
     }
 
     /**
@@ -155,7 +159,7 @@ public enum Category {
         return configPath;
     }
 
-    public String getConfigName() {
+    public String getMessagesName() {
         // Like configPath but value is different for Category.EFFECTS
         return name().substring(0, 1) + name().substring(1).toLowerCase();
     }

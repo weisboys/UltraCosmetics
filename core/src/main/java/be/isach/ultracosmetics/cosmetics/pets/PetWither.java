@@ -27,7 +27,7 @@ public class PetWither extends Pet {
     public void onUpdate() {
         // Do not call super.onUpdate(), wither does not drop items.
         // No bossbar API on 1.8.8
-        if (UltraCosmeticsData.get().getServerVersion() != ServerVersion.v1_8_R3) {
+        if (UltraCosmeticsData.get().getServerVersion() != ServerVersion.v1_8) {
             // This runs onUpdate because if players walk in range, the bossbar reappears
             // Must call .getBossBar() every time rather than using a variable because
             // creating a bossbar variable makes 1.8 servers unhappy

@@ -104,7 +104,7 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
         }
 
         // setCustomNameVisible(true) doesn't seem to work on 1.8, so we'll just use armor stands in that case
-        if (isCustomEntity() || UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8_R3) {
+        if (isCustomEntity() || UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
             armorStand = (ArmorStand) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.ARMOR_STAND);
             armorStand.setVisible(false);
             armorStand.setSmall(true);
