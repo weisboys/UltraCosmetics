@@ -575,6 +575,10 @@ Pets:
     menu-name: '&3&lGlow Squid'
     entity-displayname: '&l%playername%''s Glow Squid'
     Description: '&7&oIt glows!'
+  Mule:
+    menu-name: '&7&lMule'
+    entity-displayname: '&l%playername%''s Mule'
+    Description: '&7&oBasically a donkey!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
