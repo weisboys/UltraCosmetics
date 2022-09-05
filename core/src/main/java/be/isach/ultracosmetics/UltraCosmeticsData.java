@@ -101,13 +101,13 @@ public class UltraCosmeticsData {
     /**
      * Check Treasure Chests requirements.
      */
-    void checkTreasureChests() {
+    protected void checkTreasureChests() {
         moneyTreasureLoot = ultraCosmetics.getEconomyHandler().isUsingEconomy()
                 && SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Money.Enabled");
         treasureChests = SettingsManager.getConfig().getBoolean("TreasureChests.Enabled");
     }
 
-    boolean initModule() {
+    protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         logger.write("Initializing module " + serverVersion);
 
@@ -145,11 +145,12 @@ public class UltraCosmeticsData {
      *
      * @return the reason the check failed, or null if it succeeded.
      */
-    Problem checkServerVersion() {
+    protected Problem checkServerVersion() {
         String versionString = Bukkit.getServer().getClass().getPackage().getName();
         String mcVersion;
         try {
             mcVersion = versionString.split("\\.")[3];
+            mcVersion = mcVersion.substring(0, mcVersion.lastIndexOf('_'));
         } catch (ArrayIndexOutOfBoundsException e) {
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Unable to determine server version. Please report this error.");
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Version string: " + versionString);
@@ -180,7 +181,7 @@ public class UltraCosmeticsData {
         return null;
     }
 
-    boolean checkMappingsVersion(ServerVersion version) {
+    protected boolean checkMappingsVersion(ServerVersion version) {
         String currentMappingsVersion = null;
         @SuppressWarnings("deprecation")
         Object magicNumbers = Bukkit.getUnsafe();
