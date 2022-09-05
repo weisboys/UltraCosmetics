@@ -741,10 +741,10 @@ Hats:
     Description: '&7&oNow I''m here, now I''m there!'
   EndermanKing:
     Name: '&d&lEnderman King'
-    Description: '&7&oempty'
+    Description: '&7&oKing of the endermen'
   Slime:
     Name: '&a&lSlime'
-    Description: '&7&oempty'
+    Description: '&7&oVery slimy'
   Creeper:
     Name: '&2&lCreeper'
     Description: '&7&oScare your friends!'
@@ -762,7 +762,7 @@ Hats:
     Description: '&7&oempty'
   Ghast:
     Name: '&f&lGhast'
-    Description: '&7&oempty'
+    Description: '&7&o*high-pitched scream*'
   Warden:
     Name: '&3&lWarden'
     Description: '&7&oBe quiet...'
@@ -780,7 +780,7 @@ Hats:
     Description: '&7&oBe careful!'
   Fox:
     Name: '&6&lFox'
-    Description: '&7&oempty'
+    Description: '&7&oFast and smart!'
   SnowFox:
     Name: '&f&lSnow Fox'
     Description: '&7&oempty'
@@ -912,7 +912,7 @@ Hats:
     Description: '&7&oWhite fox mask'
   Goblin:
     Name: '&9&lGoblin'
-    Description: '&7&oempty'
+    Description: '&7&oSneaky!'
   Unicorn:
     Name: '&d&lUnicorn'
     Description: '&7&oBe magical!'
