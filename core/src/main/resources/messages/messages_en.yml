@@ -567,6 +567,10 @@ Pets:
     menu-name: '&7&lCod'
     entity-displayname: '&l%playername%''s Cod'
     Description: '&7&oPrefers water over land!'
+  Donkey:
+    menu-name: '&7&lDonkey'
+    entity-displayname: '&l%playername%''s Donkey'
+    Description: '&7&oCan carry all your Stuff!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
