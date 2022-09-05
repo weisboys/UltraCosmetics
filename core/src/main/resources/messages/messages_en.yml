@@ -563,6 +563,10 @@ Pets:
     menu-name: '&a&lAllay'
     entity-displayname: '&l%playername%''s Allay'
     Description: '&7&oA new Friend!'
+  Cod:
+    menu-name: '&7&lCod'
+    entity-displayname: '&l%playername%''s Cod'
+    Description: '&7&oPrefers water over land!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
