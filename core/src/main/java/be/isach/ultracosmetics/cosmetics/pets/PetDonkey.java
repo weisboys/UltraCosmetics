@@ -5,7 +5,7 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
 /**
- * Represents an instance of a cod pet summoned by a player.
+ * Represents an instance of a donkey pet summoned by a player.
  *
  * @author Chris6ix
  * @since 05-09-2022
