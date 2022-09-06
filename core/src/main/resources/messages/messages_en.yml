@@ -591,6 +591,10 @@ Pets:
     menu-name: '&c&lSalmon'
     entity-displayname: '&l%playername%''s Salmon'
     Description: '&7&oThey''re very tasty!'
+  SkeletonHorse:
+    menu-name: '&f&lSkeleton Horse'
+    entity-displayname: '&l%playername%''s Skeleton Horse'
+    Description: '&7&oLook out for lightning strikes!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
