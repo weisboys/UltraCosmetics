@@ -595,6 +595,10 @@ Pets:
     menu-name: '&f&lSkeleton Horse'
     entity-displayname: '&l%playername%''s Skeleton Horse'
     Description: '&7&oLook out for lightning strikes!'
+  Squid:
+    menu-name: '&0&lSquid'
+    entity-displayname: '&l%playername%''s Squid'
+    Description: '&7&oDon''t scare it or the water turns black!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
