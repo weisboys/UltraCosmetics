@@ -125,7 +125,8 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Donkey", XMaterial.CHEST, EntityType.DONKEY, PetDonkey.class);
         new PetType("Mule", XMaterial.SADDLE, EntityType.MULE, PetMule.class);
         new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
-        new PetType("Squid", XMaterial.INK_SAC, EntityType.SQUID, PetSquid.class);
+        /* Squid disabled because its not moving at all, its just turning around all the time */
+        /* new PetType("Squid", XMaterial.INK_SAC, EntityType.SQUID, PetSquid.class); */
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
