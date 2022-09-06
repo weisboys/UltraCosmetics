@@ -603,6 +603,10 @@ Pets:
     menu-name: '&c&lStrider'
     entity-displayname: '&l%playername%''s Strider'
     Description: '&7&oWalks over Lava!'
+  Tadpole:
+    menu-name: '&8&lTadpole'
+    entity-displayname: '&l%playername%''s Tadpole'
+    Description: '&7&oWill grow into a Frog!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
