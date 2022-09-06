@@ -587,6 +587,10 @@ Pets:
     menu-name: '&e&lOcelot'
     entity-displayname: '&l%playername%''s Ocelot'
     Description: '&7&oWatch out...they''re pretty shy!'
+  Salmon:
+    menu-name: '&c&lSalmon'
+    entity-displayname: '&l%playername%''s Salmon'
+    Description: '&7&oThey''re very tasty!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
