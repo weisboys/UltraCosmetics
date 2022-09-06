@@ -599,6 +599,10 @@ Pets:
     menu-name: '&0&lSquid'
     entity-displayname: '&l%playername%''s Squid'
     Description: '&7&oDon''t scare it or the water turns black!'
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: '&7&oWalks over Lava!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
