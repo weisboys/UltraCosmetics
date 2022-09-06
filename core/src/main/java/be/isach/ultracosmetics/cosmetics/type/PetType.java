@@ -134,6 +134,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class);
             new PetType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, PetAllay.class);
             new PetType("Goat", XMaterial.GOAT_HORN, EntityType.GOAT, PetGoat.class);
+            new PetType("Tadpole", XMaterial.TADPOLE_BUCKET, EntityType.TADPOLE, PetTadpole.class);
         case v1_17:
             new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class);
             /* Glow Squid disabled because its not moving at all, its just turning around all the time */
