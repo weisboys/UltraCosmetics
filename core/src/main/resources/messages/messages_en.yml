@@ -750,16 +750,16 @@ Hats:
     Description: '&7&oScare your friends!'
   Skeleton:
     Name: '&7&lSkeleton'
-    Description: '&7&oempty'
+    Description: '&7&oVery good archer!'
   Zombie:
     Name: '&2&lZombie'
     Description: '&7&oBrains!!!'
   Strider:
     Name: '&c&lStrider'
-    Description: '&7&oempty'
+    Description: '&7&oI hate water!'
   WitherSkeleton:
     Name: '&7&lWither Skeleton'
-    Description: '&7&oempty'
+    Description: '&7&oGuardian of the nether fortress'
   Ghast:
     Name: '&f&lGhast'
     Description: '&7&o*high-pitched scream*'
@@ -768,7 +768,7 @@ Hats:
     Description: '&7&oBe quiet...'
   Witch:
     Name: '&5&lWitch'
-    Description: '&7&oempty'
+    Description: '&7&oPlease try my potion!'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
     Description: '&7&oI make arrows.'
@@ -783,7 +783,7 @@ Hats:
     Description: '&7&oFast and smart!'
   SnowFox:
     Name: '&f&lSnow Fox'
-    Description: '&7&oempty'
+    Description: '&7&oSnowy biomes are my home.'
   Ocelot:
     Name: '&e&lOcelot'
     Description: '&7&oKing of the jungle'
@@ -810,7 +810,7 @@ Hats:
     Description: '&7&oEnjoy the nightlife.'
   MCD-Steve:
     Name: '&9&lSteve'
-    Description: '&7&oempty'
+    Description: '&7&oThe best skin'
   MCD-Alex:
     Name: '&6&lAlex'
     Description: '&7&oSteve''s friend'
@@ -921,7 +921,7 @@ Hats:
     Description: '&7&oI''m hungry.'
   GreenDragon:
     Name: '&a&lGreen Dragon'
-    Description: '&7&oempty'
+    Description: '&7&oBe a dragon.'
   GigaChad:
     Name: '&7&lGigaChad'
     Description: '&7&oEmbrace masculinity!'
