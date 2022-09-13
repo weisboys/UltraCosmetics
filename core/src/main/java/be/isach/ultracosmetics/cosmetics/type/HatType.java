@@ -115,7 +115,7 @@ public class HatType extends CosmeticType<Hat> {
         new HatType("301268e9c492da1f0d88271cb492a4b302395f515a7bbf77f4a20b95fc02eb2", "Skeleton");
         new HatType("56fc854bb84cf4b7697297973e02b79bc10698460b51a639c60e5e417734e11", "Zombie");
         new HatType("b78ef2e4cf2c41a2d14bfde9caff10219f5b1bf5b35a49eb51c6467882cb5f0", "Blaze");
-        new HatType("cb7ffdda656c68d88851a8e05b48cd2493773ffc4ab7d64e9302229fe3571059", "Strider");
+        new HatType("65ccbb547820b667cc9d3bc9fff1e3d65da2375655a3427b30e1d009eeb272ce", "Strider");
         new HatType("7953b6c68448e7e6b6bf8fb273d7203acd8e1be19e81481ead51f45de59a8", "WitherSkeleton");
         new HatType("8b6a72138d69fbbd2fea3fa251cabd87152e4f1c97e5f986bf685571db3cc0", "Ghast");
         new HatType("6cf3674b2ddc0ef7c39e3b9c6b58677de5cf377d2eb073f2f3fe50919b1ca4c9", "Warden");
