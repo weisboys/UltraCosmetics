@@ -21,7 +21,8 @@ public class ParticleEffectFlameFairy extends ParticleEffect {
 
     private Location currentLocation, targetLocation;
 
-    public double noMoveTime = 0, movementSpeed = 0.2d;
+    private double noMoveTime = 0;
+    private double movementSpeed = 0.2d;
 
     public ParticleEffectFlameFairy(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -40,34 +41,36 @@ public class ParticleEffectFlameFairy extends ParticleEffect {
         }
 
         double distanceBtw = getPlayer().getEyeLocation().distance(currentLocation);
-        double distTarget = currentLocation.distance(targetLocation);
+        double distTarget = currentLocation.distanceSquared(targetLocation);
 
-        if (distTarget < 1d || distanceBtw > 3)
+        if (distTarget < 1 || distanceBtw > 3) {
             targetLocation = generateNewTarget();
-
-        distTarget = currentLocation.distance(targetLocation);
+            distTarget = currentLocation.distanceSquared(targetLocation);
+        }
 
         if (RANDOM.nextDouble() > 0.98) {
             noMoveTime = System.currentTimeMillis() + MathUtils.randomDouble(0, 2000);
         }
 
-        if (getPlayer().getEyeLocation().distance(currentLocation) < 3)
+        if (getPlayer().getEyeLocation().distanceSquared(currentLocation) < 3 * 3) {
             movementSpeed = noMoveTime > System.currentTimeMillis() ? Math.max(0, movementSpeed - 0.0075)
                     : Math.min(0.1, movementSpeed + 0.0075);
-        else {
+        } else {
             noMoveTime = 0;
             movementSpeed = Math.min(0.15 + distanceBtw * 0.05, movementSpeed + 0.02);
         }
 
         targetDirection.add(targetLocation.toVector().subtract(currentLocation.toVector()).multiply(0.2));
 
-        if (targetDirection.length() < 1)
-            movementSpeed = targetDirection.length() * movementSpeed;
+        if (targetDirection.length() < 1) {
+            movementSpeed *= targetDirection.length();
+        }
 
         targetDirection = targetDirection.normalize();
 
-        if (distTarget > 0.1)
+        if (distTarget > 0.1 * 0.1) {
             currentLocation.add(targetDirection.clone().multiply(movementSpeed));
+        }
 
         Particles.LAVA.display(currentLocation);
         Particles.FLAME.display(currentLocation);
@@ -75,8 +78,8 @@ public class ParticleEffectFlameFairy extends ParticleEffect {
 
     private Location generateNewTarget() {
         return getPlayer().getEyeLocation()
-                .add(Math.random() * 6 - 3,
-                        Math.random() * 1.5,
-                        Math.random() * 6 - 3);
+                .add(RANDOM.nextInt(6) - 3,
+                        RANDOM.nextDouble() * 1.5,
+                        RANDOM.nextInt(6) - 3);
     }
 }
