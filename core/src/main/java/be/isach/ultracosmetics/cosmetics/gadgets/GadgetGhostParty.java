@@ -22,6 +22,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -34,8 +35,8 @@ public class GadgetGhostParty extends Gadget implements Updatable {
 
     private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("68d2183640218ab330ac56d2aab7e29a9790a545f691619e38578ea4a69ae0b6", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(Material.LEATHER_CHESTPLATE, 255, 255, 255);
-    private EntitySpawner<Bat> bats;
-    private Set<ArmorStand> ghosts;
+    private EntitySpawner<Bat> bats = EntitySpawner.empty();
+    private Set<ArmorStand> ghosts = new HashSet<>();
 
     public GadgetGhostParty(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -70,14 +71,12 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     }
 
     private void killBats() {
-        if (bats == null) return;
         ghosts.forEach(ArmorStand::remove);
         bats.removeEntities();
     }
 
     @Override
     public void onUpdate() {
-        if (bats == null) return;
         for (Bat bat : bats.getEntities()) {
             Particles.CLOUD.display(0.05f, 0.05f, 0.05f, bat.getLocation().add(0, 1.5, 0), 1);
         }

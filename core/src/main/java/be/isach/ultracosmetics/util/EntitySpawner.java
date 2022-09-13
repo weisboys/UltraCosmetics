@@ -97,4 +97,7 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
         return entities.contains(entity);
     }
 
+    public static <K extends Entity> EntitySpawner<K> empty() {
+        return new EntitySpawner<>(null, null, 0, null);
+    }
 }
