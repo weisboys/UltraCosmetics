@@ -11,13 +11,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.player.profile.ProfileKey;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Package: be.isach.ultracosmetics.mysql
@@ -78,6 +78,8 @@ public class SqlCache extends CosmeticsProfile {
 
     @Override
     public void setGadgetsEnabled(boolean gadgetsEnabled) {
+        // If the value did not change, skip the update.
+        if (gadgetsEnabled == hasGadgetsEnabled()) return;
         super.setGadgetsEnabled(gadgetsEnabled);
         queueUpdate(ProfileKey.GADGETS_ENABLED, gadgetsEnabled);
     }
@@ -105,6 +107,7 @@ public class SqlCache extends CosmeticsProfile {
      * a single update query, as well as properly handling any
      * conflicting queries in the order they were actually
      * received.
+     *
      * @param key
      * @param value
      */
@@ -116,7 +119,7 @@ public class SqlCache extends CosmeticsProfile {
                 @Override
                 public void run() {
                     StandardQuery query = table.update().uuid(uuid);
-                    updateQueue.forEach((k,v) -> query.set(k, v.orElse(null)));
+                    updateQueue.forEach((k, v) -> query.set(k, v.orElse(null)));
                     query.execute();
                     updateQueue.clear();
                 }

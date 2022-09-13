@@ -28,8 +28,16 @@ public class SubCommandGadgets extends SubCommand {
             return;
         }
 
-        UltraPlayer customPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(sender);
-        customPlayer.setGadgetsEnabled(!customPlayer.hasGadgetsEnabled());
+        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(sender);
+        boolean enabled = !ultraPlayer.hasGadgetsEnabled();
+        if (args.length > 1) {
+            if (args[1].equalsIgnoreCase("true") || args[1].equalsIgnoreCase("on") || args[1].equalsIgnoreCase("yes")) {
+                enabled = true;
+            } else if (args[1].equalsIgnoreCase("false") || args[1].equalsIgnoreCase("off") || args[1].equalsIgnoreCase("no")) {
+                enabled = false;
+            }
+        }
+        ultraPlayer.setGadgetsEnabled(enabled);
     }
 
     @Override

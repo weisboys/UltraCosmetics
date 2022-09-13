@@ -29,6 +29,7 @@ import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.Problem;
+import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
@@ -419,7 +420,13 @@ public class UltraCosmetics extends JavaPlugin {
 
     private void setupMetrics() {
         Metrics metrics = new Metrics(this, 2629);
-        String nms = UltraCosmeticsData.get().getServerVersion().toString();
+        String nms;
+        ServerVersion sv = UltraCosmeticsData.get().getServerVersion();
+        if (sv.isNmsSupported()) {
+            nms = sv.getNmsVersion();
+        } else {
+            nms = "NMS-less " + (sv.isAtLeast(ServerVersion.v1_13) ? "flattening" : "legacy");
+        }
         String version = getDescription().getVersion();
         metrics.addCustomChart(new DrilldownPie("uc_by_mc", () -> {
             Map<String,Map<String,Integer>> map = new HashMap<>();
