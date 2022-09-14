@@ -615,6 +615,10 @@ Pets:
     menu-name: '&2&lTurtle'
     entity-displayname: '&l%playername%''s Turtle'
     Description: '&7&oSome of them get over 150 years old!'
+  WanderingTrader:
+    menu-name: '&1&lWandering Trader'
+    entity-displayname: '&l%playername%''s Wandering Trader'
+    Description: '&7&oWanders around trying to sell his stuff!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
