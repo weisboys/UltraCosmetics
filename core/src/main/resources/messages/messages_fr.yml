@@ -2,12 +2,12 @@ Prefix: '&l&oCosmétiques >&r'
 No-Permission: '%prefix% &c&lVous n''avez pas la permission !'
 Cosmetic-Disabled: '%prefix% &c&lCe cosmétique est désactivé !'
 Invalid-Gadget: '%prefix% &c&lGadget invalide !'
-Invalid-Pet: '%prefix% &c&lAnimal de compagnie invalide !'
+Invalid-Pet: '%prefix% &c&lFamilier invalide !'
 Invalid-Mount: '%prefix% &c&lMonture invalide !'
 Invalid-Effect: '%prefix% &c&lEffet invalide!'
 Invalid-Morph: '%prefix% &c&lTransformation invalide !'
 Invalid-Hat: '%prefix% &c&lChapeau invalide !'
-Invalid-Suit: '%prefix% &c&lInvalid Suit!'
+Invalid-Suit: '%prefix% &c&lCostume invalide !'
 Invalid-Emote: '%prefix% &c&lEmote Invalide !'
 Invalid-Menu: '%prefix% &c&lMenu invalide !'
 Ammo: '&7Vos munitions: &e%ammo%'
@@ -34,7 +34,7 @@ Treasure-Chest-Occupied: '%prefix% &c&lAucun espace disponible pour ouvrir un co
 Clear:
   Cosmetics: '&c&lRetirer les cosmétiques'
   Gadgets: '&c&lRetirer le gadget actuel'
-  Pets: '&c&lRetirer l''animal de compagnie actuel'
+  Pets: '&c&lRetirer le familier actuel'
   Mounts: '&c&lRetirer la monture actuel'
   Particle-Effects: '&c&lRetirer l''effet actuel'
   Morphs: '&c&lRetirer la transformation actuel'
@@ -44,21 +44,21 @@ Clear:
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: '&c&lRenommer l''animal en &f&l%name% &c&lpour &e&l%price%$'
-    Title: '&lRenommer l''animal de compagnie'
+      Showcase: '&c&lRenommer le familier en &f&l%name% &c&lpour &e&l%price%$'
+    Title: '&lRenommer le familier de compagnie'
   Rename-Pet:
     Button:
       Name: '&c&lCliquez pour renommer: %petname%'
-    Placeholder: Nom de l'animal
-    Title: Renommer l'animal de compagnie
+    Placeholder: Nom du familier
+    Title: Renommer le familier
   Main:
     Title: '&lMenu Principal'
     Button:
       Name: '&c&lMenu Principal'
   Pets:
-    Title: '&lAnimaux de compagnie'
+    Title: '&lFamiliers'
     Button:
-      Name: '&a&lAnimaux de compagnie'
+      Name: '&a&lAFamiliers'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Gadgets:
@@ -74,68 +74,68 @@ Menu:
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDisparaître'
   Morphs:
-    Title: '&lMorphs'
+    Title: '&lTransformations'
     Button:
-      Name: '&2&lMorphs'
-      Tooltip-Equip: '&b&lMorph into'
-      Tooltip-Unequip: '&c&lUnmorph from'
+      Name: '&2&lTransformations'
+      Tooltip-Equip: '&b&lTransformer en'
+      Tooltip-Unequip: '&c&lRetransformer depuis'
   Hats:
-    Title: '&lHats'
+    Title: '&lChapeaux'
     Button:
-      Name: '&b&lHats'
+      Name: '&b&lChapeaux'
       Tooltip-Equip: '&b&ll''Équiper'
       Tooltip-Unequip: '&c&lDéséquiper'
   Particle-Effects:
     Title: '&lEffets de particules'
     Button:
       Name: '&b&lEffets de particules'
-      Tooltip-Equip: '&b&lSummon'
-      Tooltip-Unequip: '&c&lUnsummon'
+      Tooltip-Equip: '&b&lInvoquer'
+      Tooltip-Unequip: '&c&lFaire disparaître'
   Suits:
-    Title: '&lSuits'
+    Title: '&lCostumes'
     Button:
-      Name: '&c&lSuits'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&c&lCostumes'
+      Tooltip-Equip: '&b&lÉquiper'
+      Tooltip-Unequip: '&c&lDéséquiper'
   Emotes:
-    Title: '&lEmotes'
+    Title: '&lÉmotes'
     Button:
-      Name: '&e&lEmotes'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&e&lÉmotes'
+      Tooltip-Equip: '&b&lÉquiper'
+      Tooltip-Unequip: '&c&lDéséquiper'
   Buy-Ammo:
-    Title: '&lBuy Ammo'
+    Title: '&lAcheter des munitions'
   Misc:
     Button:
-      Previous-Page: '&c&lPrevious Page'
-      Next-Page: '&a&lNext Page'
+      Previous-Page: '&c&lPage précédente'
+      Next-Page: '&a&lPage suivante'
 Chest-Location:
-  Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
-  Too-Close: '%prefix% &c&lYou are too close to another treasure chest!'
-  Region-Disabled: '%prefix% &c&lYou can''t open a chest here!'
-  Invalid: '%prefix% &c&lThat''s not a valid location.'
-  In-Air: '%prefix% &c&lThat location is not on the ground!'
-  In-Ground: '%prefix% &c&lThat location is in the ground!'
-  Suggestion: '%prefix% &aMaybe you meant %location%?'
-Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
+  Not-Enough-Space: '%prefix% &c&lIl n''y a pas assez de place pour un coffre au trésor !'
+  Too-Close: '%prefix% &c&lVous êtes trop proche d''un autre coffre au trésor !'
+  Region-Disabled: '%prefix% &c&lVous ne pouvez pas ouvrir un coffre ici !'
+  Invalid: '%prefix% &c&lCe n''est pas un emplacement valide.'
+  In-Air: '%prefix% &c&lCet emplacement n''est pas au sol !'
+  In-Ground: '%prefix% &c&lCet emplacement est au sol !'
+  Suggestion: '%prefix% &aVous vouliez peut-être dire %location% ?'
+Active-Pet-Needed: '&c&lVous devez faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% ammo'
-  Pet: '%pet% pet'
-  Mount: '%mount% mount'
-  Effect: '%effect% effect'
-  Morph: '%morph% morph'
+  Ammo: '%ammo% %name% munition'
+  Pet: '%pet% familier'
+  Mount: 'Monture de %mount%'
+  Effect: 'Effet %effect%'
+  Morph: '%morph% transformation'
   Hat: '%hat% Chapeau'
-  Money: '&e&l%money%$'
+  Money: '&e&l%money% €'
   Gadget: '%gadget% gadget'
   Suit: '%suit%'
-  Emote: '%emote% emote'
-  Nothing: '&c&lNothing'
-Disable-Gadgets: '&c&lDisable Gadgets'
-Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
-Enable-Gadgets: '&a&lEnable Gadgets'
-Enable-Gadgets-Lore: '&aEnables use of gadgets and effects of them on you'
-Disable-Third-Person-View: '&c&lDisable Morphs Third Person View'
-Enable-Third-Person-View: '&a&lEnable Morphs Third Person View'
+  Emote: 'Émote %emote%'
+  Nothing: '&c&lRien'
+Disable-Gadgets: '&c&lDésactiver les gadgets'
+Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur vous'
+Enable-Gadgets: '&a&lActiver les gadgets'
+Enable-Gadgets-Lore: '&cActive l''utilisation des gadgets et leurs effets sur vous'
+Disable-Third-Person-View: '&c&lDésactiver la vue de la troisième personne'
+Enable-Third-Person-View: '&a&lActiver la vue de la troisième personne'
 Disable-Filter-By-Owned: '&c&lChanger pour tout afficher'
 Enable-Filter-By-Owned: '&c&lPasser à Filtrer par propriétaire'
 Disable-Treasure-Notification: '&c&lNotifications de coffres désactivées'
@@ -151,8 +151,8 @@ Gadgets:
   BatBlaster:
     name: '&7&lChauve-Souris Blaster'
     Description: |-
-      &7&oLaunch waves of bats
-      &7&oat people you don't like!
+      &7&oLancer des vagues de chauves-souris
+      &7&osur les personnes que vous n'aimez pas !
   MelonThrower:
     name: '&a&lLanceur de Melon'
     Wait-For-Finish: '%prefix% &c&lAttendez que votre melon précédent finisse d''exploser !'
@@ -165,20 +165,20 @@ Gadgets:
   FleshHook:
     name: '&7&lCrochet de chair'
     Description: |-
-      &7&oMake new friends by throwing a hook
-      &7&oat them and pulling them
-      &7&oto you!
+      &7&oFaites-vous de nouveaux amis en leur lançant un crochet
+      &7&odans leur face et en les ramenant
+      &7&overs vous !
   DiscoBall:
     name: '&d&lBoule Disco'
     Already-Active: '&c&lIl y a déjà une boule de disco active !'
     Not-Space-Above: '&c&lIl n''y a pas assez d''espace au-dessus de vous !'
-    Description: '&7&oJust dance!'
+    Description: '&7&oDansez !'
   ColorBomb:
     name: '&d&lBombe de Couleur'
     Description: '&7&oUne bombe colorée !'
   Chickenator:
     name: '&f&lLanceur de Poulets'
-    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
+    Description: '&7&o1. Tirez ! 2. Boom ! 3. KFC !'
   PortalGun:
     name: '&c&lPistolet &9&lPortail'
     No-Block-Range: '%prefix% &c&lAucun BLOCKS à portée !'
@@ -186,16 +186,16 @@ Gadgets:
     Description: '&7&oLe gâteau est un mensonge !'
   BlizzardBlaster:
     name: '&b&lBlizzard Blaster'
-    Description: '&7&oLet it snow!'
+    Description: '&7&oQu''il neige !'
   ThorHammer:
     name: '&f&lMarteau de Thor'
-    Description: '&7&oGet the real Mjölnir!'
+    Description: '&7&oObtenez le vrai Mjölnir !'
   SmashDown:
     name: '&c&lSmashDown'
-    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
+    Description: '&7&oAND HIS NAME IS... JOHN CENA!'
   ExplosiveSheep:
     name: '&4&lMouton explosif'
-    Already-Active: '&c&lThere is already an explosive sheep active!'
+    Already-Active: '&c&lIl y a déjà un mouton explosif actif !'
     Description: |-
       &7&oÊtes-vous sûr que c'est supposé
       &7&oscintiller comme ça ?
@@ -207,96 +207,96 @@ Gadgets:
   Tsunami:
     name: '&9&lTsunami'
     Description: |-
-      &7&oTSUNAMI!
-      &7&oRun for your life!
+      &7&oTSUNAMI !
+      &7&oSauve qui peut !
   Rocket:
     name: '&4&lFusée'
     Not-Enough-Space: '%prefix% &c&lPas assez d''espace autour et au-dessus de vous!'
     Not-On-Ground: '%prefix% &c&lVous devez être au sol !'
     Takeoff: '&4&lENLEVEZ!!'
     LaunchAborted: '&c&lLauncement terminé !'
-    Description: '&7&oHouston, we have a problem...'
+    Description: '&7&oHouston, on a un problème...'
   BlackHole:
-    name: '&1&lBlack Hole'
-    Description: '&7&oYou should not get caught by it!'
+    name: '&1&lTrou Noir'
+    Description: '&7&oNe vous faites pas prendre !'
   TNT:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
-      &7&oBlow some people up!
-      &7&oKABOOM!
+      &7&oFaites sauter quelques personnes !
+      &7&oBoum !
   FunGun:
     name: '&6&lFun Gun'
-    Description: '&7&oWoow! So much fun in a gun!'
+    Description: '&7&oWoow ! Tant de fun dans un gun !'
   Parachute:
     name: '&f&lParachute'
-    Description: '&7&oGERONIMOOO!'
+    Description: '&7&oGERONIMOOO !'
   QuakeGun:
     name: '&5&lQuake &d&lGun'
     Description: |-
-      &7&oGet a real Rail Gun
-      &7&oand strike players and mobs!
+      &7&oObtenez un véritable Rail Gun
+      &7&oet tirez sur les joueurs et les mobs !
   GhostParty:
-    name: '&f&lGhost Party'
+    name: '&f&lFête fantôme'
     Description: |-
       &7&oWho you gonna call?
       &7&oGHOST BUSTERS!
   Firework:
-    name: '&c&lFirework'
+    name: '&c&lFeu d''artifice'
     Description: |-
-      &7&oNeed to celebrate?
-      &7&oUse fireworks!
+      &7&oEnvie de célébrer ?
+      &7&oUtilisez des feux d'artifice !
   ChristmasTree:
-    name: '&2&lChristmas Tree'
-    Click-On-Block: '%prefix% &c&lPlease click on a block!'
+    name: '&2&lArbre de Noël'
+    Click-On-Block: '%prefix% &c&lVeuillez cliquer sur un bloc !'
     Description: |-
-      &7&oHere is a Christmas
-      &7&oTree for you!
+      &7&oVoici un arbre de Noël
+      &7&opour vous !
   FreezeCannon:
-    name: '&b&lFreeze Cannon'
-    Description: '&7&oTransform the floor into a rink!'
+    name: '&b&lCanon à glace'
+    Description: '&7&oTransformez le sol en une patinoire !'
   Snowball:
-    name: '&f&lSnowball'
+    name: '&f&Boule de neige'
     Description: |-
-      &7&oJoin in on the festive fun by
-      &7&othrowing snow at people!
+      &7&oJoignez-vous à la fête en
+      &7&ojetant de la neige sur les gens !
   PartyPopper:
-    name: '&e&lParty Popper'
+    name: '&e&lCanon à confettis'
     Description: |-
-      &7&oCelebrate by blasting confetti into
-      &7&othe air!
+      &7&oCélébrez en lançant des confettis
+      &7&odans les airs !
   Trampoline:
     name: '&9&lTrampoline'
     Description: |-
-      &7&oConstructs a trampoline
-      &7&othat sends you and your
-      &7&ofriends into the air!
-  Gadget-Ready-ActionBar: '%gadgetname% &f&lis ready!'
+      &7&oConstruisez un trampoline
+      &7&oqui vous envoie vous et vos
+      &7&oamis dans les airs !
+  Gadget-Ready-ActionBar: '%gadgetname% &f&lest prêt !'
   Lore: '&9Gadget'
 Mounts:
   DruggedHorse:
-    menu-name: '&2&lDrugged Horse'
-    entity-displayname: '&l%playername%''s Drugged Horse'
-    Description: '&7&oThat is just too much!'
+    menu-name: '&2&lCheval dopé'
+    entity-displayname: '&lCheval dopé de %playername%'
+    Description: '&7&oC''est vraiment trop !'
   InfernalHorror:
-    menu-name: '&4&lInfernal Horror'
-    entity-displayname: '&l%playername%''s Infernal Horror'
-    Description: '&7&oThis mount comes directly from... hell!'
+    menu-name: '&4&lHorreur infernale'
+    entity-displayname: '&lHorreur infernale de %playername%'
+    Description: '&7&oCette monture vient directement de... l''enfer !'
   GlacialSteed:
-    menu-name: '&b&lGlacial Steed'
-    entity-displayname: '&l%playername%''s Glacial Steed'
-    Description: '&7&oThis mount comes from North Pole!'
+    menu-name: '&b&lCoursier glacial'
+    entity-displayname: '&lCoursier glacial de %playername%'
+    Description: '&7&oCette monture vient du pôle Nord !'
   WalkingDead:
-    menu-name: '&2&lWalking Dead'
-    entity-displayname: '&l%playername%''s Walking Dead'
+    menu-name: '&2&lMort-vivant'
+    entity-displayname: '&lMort-vivant de %playername%'
     Description: '&7&oGraaaaw...'
   MountOfFire:
-    menu-name: '&c&lMount of Fire'
-    entity-displayname: '&l%playername%''s Mount of Fire'
-    Description: '&7&oThe mount of Hades!'
+    menu-name: '&c&lMonture du Feu'
+    entity-displayname: '&lMonture du Feu de %playername%'
+    Description: '&7&oLa monture d''Hadès!'
   MountOfWater:
-    menu-name: '&9&lMount of Water'
-    entity-displayname: '&l%playername%''s Mount of Water'
-    Description: '&7&oThe mount of Poseidon!'
+    menu-name: '&9&lMonture de l''eau'
+    entity-displayname: '&lMonture de l''eau de %playername%'
+    Description: '&7&oLa monture de Poséidon!'
   EcologistHorse:
     menu-name: '&a&lEcologist Horse'
     entity-displayname: '&l%playername%''s Ecologist Horse'
@@ -399,13 +399,13 @@ Particle-Effects:
     Description: '&7&oBecome Superman!'
   SantaHat:
     name: '&4&lSanta &f&lHat'
-    Description: '&7&oBecome Santa!'
+    Description: '&7&oDevenez le Père Noël!'
   CrushedCandyCane:
-    name: '&4&lCrushed &f&lCandy &4&lCane'
+    name: '&4&lSucre &f&d''Orge &4&lécrasé'
     Description: |-
-      &7&oThere's no such thing as too much
-      &7&oChristmas Candy. Do not listen
-      &7&oto your dentist.
+      &7&oIl n'y a jamais assez de
+      &7&loconfiseries de Noël. N'écoutez pas
+      &7&ovotre dentiste.
   EnderAura:
     name: '&d&lEnder Aura'
     Description: |-
