@@ -1,5 +1,5 @@
 Prefix: '&l&oKosmetik >&r'
-No-Permission: '%prefix% &c&lDu hast keine Rechte für diesen Befehl!'
+No-Permission: '%prefix% &c&lDafür hast du keine Rechte!'
 Cosmetic-Disabled: '%prefix% &c&lDieses Item ist deaktiviert!'
 Invalid-Gadget: '%prefix% &c&lUngültiges Gadget!'
 Invalid-Pet: '%prefix% &c&lUngültiges Haustier!'
@@ -16,7 +16,7 @@ Cancel: '&c&lABBRECHEN'
 Buy-Ammo-Description: '&e&l%amount% %gadgetname% Munition &e&lfür $%price% kaufen'
 Buy-Cosmetic-Description: '&e&l%gadgetname% &e&lfür $%price% kaufen'
 Right-Click-Buy-Ammo: '&7Rechtsklick: Munition kaufen'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&eKlicken: für $%price% kaufen'
 Not-Enough-Money: '%prefix% &c&lDu hast nicht genug Geld!'
 Successful-Purchase: '%prefix% &a&lErfolgreich gekauft!'
 Buy-Treasure-Key: '&lSchatzschlüssel kaufen'
@@ -165,7 +165,7 @@ Gadgets:
   FleshHook:
     name: '&7&lFleischhaken'
     Description: |-
-      &7&oMach neue Freunde indem du
+      &7&oFinde neue Freunde, indem du
       &7&oeinen Haken nach ihnen
       &7&owirfst und sie zu dir ziehst!
   DiscoBall:
@@ -262,7 +262,7 @@ Gadgets:
   PartyPopper:
     name: '&e&lKonfettikanone'
     Description: |-
-      &7&oFeier indem du Konfetti
+      &7&oFeier, indem du Konfetti
       &7&oin die Luft schießt!
   Trampoline:
     name: '&9&lTrampolin'
@@ -571,55 +571,55 @@ Morphs:
   Blaze:
     name: '&6&lLohe'
     skill: '&eSchleichen&7: &afliegen'
-    Description: '&7&oIt might be hot on there...'
+    Description: '&7&oDa oben könnte es heiß sein...'
   Chicken:
     name: '&f&lHuhn'
     skill: '&eSchleichen&7: &aEier legen'
-    Description: '&7&oBecome a chicken!'
+    Description: '&7&oWerde ein Huhn!'
   Slime:
     name: '&a&lSchleim'
     skill: '&eSchleichen&7: &aspringen'
-    Description: '&7&oSplat splat!'
+    Description: '&7&oPlatsch! Platsch!'
   Pig:
     name: '&d&lSchwein'
     skill: '&eKollidieren&7: &aSpieler wegstoßen'
-    Description: '&7&oMust hold your carrot!'
+    Description: '&7&oDu musst eine Karotte halten!'
   Enderman:
     name: '&5&lEnderman'
     skill: '&eDoppelsprung&7: &ateleportieren'
     Description: |-
-      &7&oI go from there to
-      &7&othere, then you lost me...
+      &7&oIch gehe von da nach da,
+      &7&odann hast du mich verloren...
   Bat:
     name: '&8&lFledermaus'
     skill: '&eDoppelsprung&7: &afliegen'
-    Description: '&7&oBecome a bat!'
+    Description: '&7&oWerde eine Fledermaus!'
   Creeper:
     name: '&a&lCreeper'
     skill: '&eSchleichen&7: &aexplodieren'
     charging: '&a&lAufladen: %chargelevel%/100'
     release-to-explode: '&f&lLoslassen zum explodieren!'
-    Description: '&7&oHey What''sssssss up?'
+    Description: '&7&oHey, wasssssss geht ab?'
   Snowman:
     name: '&f&lSchneemann'
     skill: '&eLinksklick&7: &aSchneeball werfen'
-    Description: '&7&oBecome Olaf!'
+    Description: '&7&oWerde zu Olaf!'
   Equip: '%prefix% &9Du hast dich verwandelt in: %morphname%'
   Unequip: '%prefix% &9Du hast die %morphname% &9Verwandlung beendet'
   WitherSkeleton:
     name: '&8&lWitherskelett'
     skill: '&eSchleichen&7: &aKnochenbombe'
     Description: |-
-      &7&oJust a regular skeleton...
-      &7&obut from the Nether!
+      &7&oNur ein normales Skelett...
+      &7&oaber aus dem Nether!
   ElderGuardian:
     name: '&8&lGroßer Wächter'
     skill: '&eLinksklick&7: &aLaser'
-    Description: '&7&oBecome an Elder Guardian!!'
+    Description: '&7&oWerde ein großer Wächter!!'
   Cow:
     name: '&8&lKuh'
     skill: '&eLinksklick&7: &aMuuuh'
-    Description: '&7&oMoooo!'
+    Description: '&7&oMuuuh!'
   Sheep:
     name: '&f&lSchaf'
     skill: '&eLinksklick&7: &aFarbe ändern'
@@ -627,7 +627,7 @@ Morphs:
   Mooshroom:
     name: '&c&lMooshroom'
     skill: '&eSchleichen&7: &aSuppe werfen'
-    Description: '&7&oMoooo!'
+    Description: '&7&oMuuuh!'
   Villager:
     name: '&a&lDorfbewohner'
     skill: '&eLinksklick&7: &aSmaragd werfen'
@@ -637,17 +637,17 @@ Morphs:
     skill: '&eLinksklick&7: &aTrank werfen'
     Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&lPolar Bear'
+    name: '&f&lEisbär'
     skill: '&eLinksklick&7: &aBlizzard'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&oIch bevorzuge kalte Regionen'
   Llama:
     name: '&3&lLama'
     skill: '&eLinksklick&7: &aspucken'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oSoll ich etwas tragen?'
   Parrot:
     name: '&a&lPapagei'
     skill: '&eDoppelsprung&7: &afliegen'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly will einen Keks?'
 Hats:
   Equip: '%prefix% &9Du hast %hatname% &9Hut ausgerüstet!'
   Unequip: '%prefix% &9Du hast %hatname% &9Hut entfernt!'
@@ -701,7 +701,7 @@ Hats:
     Description: '&7&oMein Schatz!'
   Diamond:
     Name: '&b&lDiamant'
-    Description: '&7&oDas ist sehr stark!'
+    Description: '&7&oDas ist wirklich stark!'
   CommandBlock:
     Name: '&7&lBefehlsblock'
     Description: '&7&oKontrolliere die Welt damit!'
@@ -726,12 +726,108 @@ Hats:
   Pig:
     Name: '&d&lSchwein'
     Description: '&7&oOink Oink!'
+  Cow:
+    Name: '&a&lCow'
+    Description: '&7&oMoooo!'
+  Mooshroom:
+    Name: '&c&lMooshroom'
+    Description: '&7&oMoooo!'
+  BrownMooshroom:
+    Name: '&b&lBrown Mooshroom'
+    Description: '&7&oMoooo!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
+  EndermanKing:
+    Name: '&d&lEnderman King'
+    Description: '&7&oKing of the endermen'
+  Slime:
+    Name: '&a&lSlime'
+    Description: '&7&oVery slimy'
+  Creeper:
+    Name: '&2&lCreeper'
+    Description: '&7&oScare your friends!'
+  Skeleton:
+    Name: '&7&lSkeleton'
+    Description: '&7&oVery good archer!'
+  Zombie:
+    Name: '&2&lZombie'
+    Description: '&7&oBrains!!!'
+  Strider:
+    Name: '&c&lStrider'
+    Description: '&7&oI hate water!'
+  WitherSkeleton:
+    Name: '&7&lWither Skeleton'
+    Description: '&7&oGuardian of the nether fortress'
+  Ghast:
+    Name: '&f&lGhast'
+    Description: '&7&o*high-pitched scream*'
+  Warden:
+    Name: '&3&lWarden'
+    Description: '&7&oBe quiet...'
+  Witch:
+    Name: '&5&lWitch'
+    Description: '&7&oPlease try my potion!'
+  FletcherVillager:
+    Name: '&a&lFletcher Villager'
+    Description: '&7&oI make arrows.'
+  LibrarianVillager:
+    Name: '&6&lLibrarian Villager'
+    Description: '&7&oKnowledge is power.'
+  Bee:
+    Name: '&e&lBee'
+    Description: '&7&oBe careful!'
+  Fox:
+    Name: '&6&lFox'
+    Description: '&7&oFast and smart!'
+  SnowFox:
+    Name: '&f&lSnow Fox'
+    Description: '&7&oSnowy biomes are my home.'
+  Ocelot:
+    Name: '&e&lOcelot'
+    Description: '&7&oKing of the jungle'
+  Frog:
+    Name: '&2&lFrog'
+    Description: '&7&oEats whatever bugs him.'
+  AxolotlBlue:
+    Name: '&9&lBlue Axolotl'
+    Description: '&7&oThe cutest predator'
+  Turtle:
+    Name: '&a&lTurtle'
+    Description: '&7&oTake your time.'
+  Clownfish:
+    Name: '&6&lClownfish'
+    Description: '&7&oYou found him!'
+  BlackCat:
+    Name: '&2&lBlack Cat'
+    Description: '&7&oA witch''s best friend.'
+  Allay:
+    Name: '&b&lAllay'
+    Description: '&7&oThe little helper'
+  Bat:
+    Name: '&5&lBat'
+    Description: '&7&oEnjoy the nightlife.'
+  MCD-Steve:
+    Name: '&9&lSteve'
+    Description: '&7&oThe best skin'
+  MCD-Alex:
+    Name: '&6&lAlex'
+    Description: '&7&oSteve''s friend'
+  MCD-QuestGiver:
+    Name: '&5&lQuest Giver'
+    Description: '&7&oI have a quest for you.'
+  MCD-LuxuryMerchant:
+    Name: '&6&lLuxury Merchant'
+    Description: '&7&oI sell gems.'
+  MCD-Necromancer:
+    Name: '&b&lNecromancer'
+    Description: '&7&oSummon the undead!'
+  MCD-NamelessOne:
+    Name: '&2&lNameless One'
+    Description: '&7&oPowerful necromancer'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -761,7 +857,7 @@ Hats:
     Description: '&7&oHo ho ho! Frohe Weihnachten!'
   Snowman:
     Name: '&f&lSchneemann'
-    Description: '&7&oI don''t have a skull... or bones'
+    Description: '&7&oIch hab keinen Schädel... oder Knochen'
   Present:
     Name: '&c&lGeschenk'
     Description: '&7&oVom Weihnachtsmann, für dich!'
@@ -807,6 +903,30 @@ Hats:
   BrownCrewmate:
     Name: '&8&lBrauner Crewmate'
     Description: '&7&oBraun ist sus!'
+  FrogPrince:
+    Name: '&2&lFrog Prince'
+    Description: '&7&oKiss me!'
+  Notch:
+    Name: '&f&lNotch'
+    Description: '&7&oCreator of Minecraft'
+  KitsuneMask:
+    Name: '&c&lKitsune Mask'
+    Description: '&7&oWhite fox mask'
+  Goblin:
+    Name: '&9&lGoblin'
+    Description: '&7&oSneaky!'
+  Unicorn:
+    Name: '&d&lUnicorn'
+    Description: '&7&oBe magical!'
+  Ogre:
+    Name: '&2&lOgre'
+    Description: '&7&oI''m hungry.'
+  GreenDragon:
+    Name: '&a&lGreen Dragon'
+    Description: '&7&oBe a dragon.'
+  GigaChad:
+    Name: '&7&lGigaChad'
+    Description: '&7&oEmbrace masculinity!'
   Bread:
     Name: '&f&lBrot'
     Description: '&7&oFrisch gebacken'
@@ -1042,4 +1162,4 @@ Region-Disabled: '%prefix% &c&lKosmetische Items sind in dieser Region deaktivie
 Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region deaktiviert!'
 Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
 Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
-Too-Long: Too long, try again
+Too-Long: Zu lang, versuche es erneut

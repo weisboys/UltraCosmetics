@@ -72,7 +72,7 @@ public class ParticleEffectType extends CosmeticType<ParticleEffect> {
     public int getRepeatDelay() {
         return repeatDelay;
     }
-    
+
     public double getParticleMultiplier() {
         return particleMultiplier;
     }

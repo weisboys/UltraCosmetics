@@ -768,12 +768,108 @@ Hats:
   Pig:
     Name: '&d&lPig'
     Description: '&7&oOink Oink!'
+  Cow:
+    Name: '&a&lCow'
+    Description: '&7&oMoooo!'
+  Mooshroom:
+    Name: '&c&lMooshroom'
+    Description: '&7&oMoooo!'
+  BrownMooshroom:
+    Name: '&b&lBrown Mooshroom'
+    Description: '&7&oMoooo!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oI''m your guard.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oNow I''m here, now I''m there!'
+  EndermanKing:
+    Name: '&d&lEnderman King'
+    Description: '&7&oKing of the endermen'
+  Slime:
+    Name: '&a&lSlime'
+    Description: '&7&oVery slimy'
+  Creeper:
+    Name: '&2&lCreeper'
+    Description: '&7&oScare your friends!'
+  Skeleton:
+    Name: '&7&lSkeleton'
+    Description: '&7&oVery good archer!'
+  Zombie:
+    Name: '&2&lZombie'
+    Description: '&7&oBrains!!!'
+  Strider:
+    Name: '&c&lStrider'
+    Description: '&7&oI hate water!'
+  WitherSkeleton:
+    Name: '&7&lWither Skeleton'
+    Description: '&7&oGuardian of the nether fortress'
+  Ghast:
+    Name: '&f&lGhast'
+    Description: '&7&o*high-pitched scream*'
+  Warden:
+    Name: '&3&lWarden'
+    Description: '&7&oBe quiet...'
+  Witch:
+    Name: '&5&lWitch'
+    Description: '&7&oPlease try my potion!'
+  FletcherVillager:
+    Name: '&a&lFletcher Villager'
+    Description: '&7&oI make arrows.'
+  LibrarianVillager:
+    Name: '&6&lLibrarian Villager'
+    Description: '&7&oKnowledge is power.'
+  Bee:
+    Name: '&e&lBee'
+    Description: '&7&oBe careful!'
+  Fox:
+    Name: '&6&lFox'
+    Description: '&7&oFast and smart!'
+  SnowFox:
+    Name: '&f&lSnow Fox'
+    Description: '&7&oSnowy biomes are my home.'
+  Ocelot:
+    Name: '&e&lOcelot'
+    Description: '&7&oKing of the jungle'
+  Frog:
+    Name: '&2&lFrog'
+    Description: '&7&oEats whatever bugs him.'
+  AxolotlBlue:
+    Name: '&9&lBlue Axolotl'
+    Description: '&7&oThe cutest predator'
+  Turtle:
+    Name: '&a&lTurtle'
+    Description: '&7&oTake your time.'
+  Clownfish:
+    Name: '&6&lClownfish'
+    Description: '&7&oYou found him!'
+  BlackCat:
+    Name: '&2&lBlack Cat'
+    Description: '&7&oA witch''s best friend.'
+  Allay:
+    Name: '&b&lAllay'
+    Description: '&7&oThe little helper'
+  Bat:
+    Name: '&5&lBat'
+    Description: '&7&oEnjoy the nightlife.'
+  MCD-Steve:
+    Name: '&9&lSteve'
+    Description: '&7&oThe best skin'
+  MCD-Alex:
+    Name: '&6&lAlex'
+    Description: '&7&oSteve''s friend'
+  MCD-QuestGiver:
+    Name: '&5&lQuest Giver'
+    Description: '&7&oI have a quest for you.'
+  MCD-LuxuryMerchant:
+    Name: '&6&lLuxury Merchant'
+    Description: '&7&oI sell gems.'
+  MCD-Necromancer:
+    Name: '&b&lNecromancer'
+    Description: '&7&oSummon the undead!'
+  MCD-NamelessOne:
+    Name: '&2&lNameless One'
+    Description: '&7&oPowerful necromancer'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -849,6 +945,30 @@ Hats:
   BrownCrewmate:
     Name: '&8&lBrown Crewmate'
     Description: '&7&oBrown sus!'
+  FrogPrince:
+    Name: '&2&lFrog Prince'
+    Description: '&7&oKiss me!'
+  Notch:
+    Name: '&f&lNotch'
+    Description: '&7&oCreator of Minecraft'
+  KitsuneMask:
+    Name: '&c&lKitsune Mask'
+    Description: '&7&oWhite fox mask'
+  Goblin:
+    Name: '&9&lGoblin'
+    Description: '&7&oSneaky!'
+  Unicorn:
+    Name: '&d&lUnicorn'
+    Description: '&7&oBe magical!'
+  Ogre:
+    Name: '&2&lOgre'
+    Description: '&7&oI''m hungry.'
+  GreenDragon:
+    Name: '&a&lGreen Dragon'
+    Description: '&7&oBe a dragon.'
+  GigaChad:
+    Name: '&7&lGigaChad'
+    Description: '&7&oEmbrace masculinity!'
   Bread:
     Name: '&f&lBread'
     Description: '&7&oFreshly baked'
