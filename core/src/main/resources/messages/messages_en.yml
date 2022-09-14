@@ -607,6 +607,10 @@ Pets:
     menu-name: '&8&lTadpole'
     entity-displayname: '&l%playername%''s Tadpole'
     Description: '&7&oWill grow into a Frog!'
+  TropicalFish:
+    menu-name: '&e&lTropical Fish'
+    entity-displayname: '&l%playername%''s Tropical Fish'
+    Description: '&7&oA colorful fish!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
