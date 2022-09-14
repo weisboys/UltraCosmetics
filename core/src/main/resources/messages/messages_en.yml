@@ -611,6 +611,10 @@ Pets:
     menu-name: '&e&lTropical Fish'
     entity-displayname: '&l%playername%''s Tropical Fish'
     Description: '&7&oA colorful fish!'
+  Turtle:
+    menu-name: '&2&lTurtle'
+    entity-displayname: '&l%playername%''s Turtle'
+    Description: '&7&oSome of them get over 150 years old!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
