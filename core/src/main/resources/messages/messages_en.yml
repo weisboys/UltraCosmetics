@@ -643,6 +643,10 @@ Pets:
     menu-name: '&3&lElder Guardian'
     entity-displayname: '&l%playername%''s Elder Guardian'
     Description: '&7&oGuards ancient Temples!'
+  Endermite:
+    menu-name: '&5&lEndermite'
+    entity-displayname: '&l%playername%''s Endermite'
+    Description: '&7&oAttracts Endermen!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
