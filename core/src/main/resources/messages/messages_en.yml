@@ -635,6 +635,10 @@ Pets:
     menu-name: '&d&lZombified Piglin'
     entity-displayname: '&l%playername%''s Zombified Piglin'
     Description: '&7&oAttack it and all of them will be after you!'
+  Drowned:
+    menu-name: '&3&lDrowned'
+    entity-displayname: '&l%playername%''s Drowned'
+    Description: '&7&oAn underwater Zombie!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
