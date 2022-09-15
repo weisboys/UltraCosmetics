@@ -131,6 +131,7 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Spider", XMaterial.STRING, EntityType.SPIDER, PetSpider.class);
         new PetType("ZombifiedPiglin", XMaterial.GOLDEN_SWORD, EntityType.ZOMBIFIED_PIGLIN, PetZombifiedPiglin.class);
         new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class);
+        new PetType("Endermite", XMaterial.ENDER_EYE, EntityType.ENDERMITE, PetEndermite.class);
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
