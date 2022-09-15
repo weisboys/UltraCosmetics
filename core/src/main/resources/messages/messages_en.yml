@@ -639,6 +639,10 @@ Pets:
     menu-name: '&3&lDrowned'
     entity-displayname: '&l%playername%''s Drowned'
     Description: '&7&oAn underwater Zombie!'
+  ElderGuardian:
+    menu-name: '&3&lElder Guardian'
+    entity-displayname: '&l%playername%''s Elder Guardian'
+    Description: '&7&oGuards ancient Temples!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
