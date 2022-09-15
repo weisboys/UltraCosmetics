@@ -628,7 +628,7 @@ Pets:
     entity-displayname: '&l%playername%''s Dolphin'
     Description: '&7&oTODO'
   Spider:
-    menu-name: '&0&lSpider'
+    menu-name: '&8&lSpider'
     entity-displayname: '&l%playername%''s Spider'
     Description: '&7&oYour friendly neighborhood Spider!'
   Equip: '%prefix% &9You spawned %petname%'
