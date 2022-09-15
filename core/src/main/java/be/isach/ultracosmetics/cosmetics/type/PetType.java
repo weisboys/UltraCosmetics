@@ -127,6 +127,8 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
         /* Squid disabled because its not moving at all, its just turning around all the time */
         /* new PetType("Squid", XMaterial.INK_SAC, EntityType.SQUID, PetSquid.class); */
+        new PetType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, PetCaveSpider.class);
+        new PetType("Spider", XMaterial.STRING, EntityType.SPIDER, PetSpider.class);
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
@@ -158,6 +160,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Salmon", XMaterial.SALMON_BUCKET, EntityType.SALMON, PetSalmon.class);
             new PetType("TropicalFish", XMaterial.TROPICAL_FISH_BUCKET, EntityType.TROPICAL_FISH, PetTropicalFish.class);
             new PetType("Turtle", XMaterial.TURTLE_HELMET, EntityType.TURTLE, PetTurtle.class);
+            new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, PetDolphin.class);
         case v1_12:
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
         case v1_11:
