@@ -647,6 +647,10 @@ Pets:
     menu-name: '&5&lEndermite'
     entity-displayname: '&l%playername%''s Endermite'
     Description: '&7&oAttracts Endermen!'
+  Evoker:
+    menu-name: '&7&lEvoker'
+    entity-displayname: '&l%playername%''s Evoker'
+    Description: '&7&oTODO!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
