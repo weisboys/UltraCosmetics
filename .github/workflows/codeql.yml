@@ -66,8 +66,7 @@ jobs:
 
     - run: |
        echo "Run, Build Application using script"
-       # This is what the autobuild script does except this runs it only for core
-       ./gradlew --no-daemon -S -Dorg.gradle.dependency.verification=off --init-script "/tmp/semmleTempDir/init.gradle" core:testClasses worldguard:testClasses worldguard-legacy:testClasses
+       ./gradlew --no-daemon -S core:testClasses worldguard:testClasses worldguard-legacy:testClasses
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
