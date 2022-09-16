@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.v1_18_R2.pathfinders.CustomPathFinderGoalPanic;
 import be.isach.ultracosmetics.version.IEntityUtil;
 
 import org.bukkit.Bukkit;
@@ -31,13 +30,9 @@ import org.bukkit.util.Vector;
 
 import com.mojang.datafixers.util.Pair;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -51,18 +46,10 @@ import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.network.protocol.game.ClientboundTeleportEntityPacket;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.Brain;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.GoalSelector;
-import net.minecraft.world.entity.ai.goal.WrappedGoal;
-import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -78,29 +65,6 @@ public class EntityUtil implements IEntityUtil {
     private final Random r = new Random();
     private Map<Player,Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
     private Map<Player,Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
-
-    private static Field memoriesField;
-    private static Field sensorsField;
-    private static Field lockedFlagsField;
-    private static Field disabledFlagsField;
-    static {
-        try {
-            memoriesField = Brain.class.getDeclaredField(ObfuscatedFields.MEMORIES);
-            memoriesField.setAccessible(true);
-
-            sensorsField = Brain.class.getDeclaredField(ObfuscatedFields.SENSORS);
-            sensorsField.setAccessible(true);
-
-            lockedFlagsField = GoalSelector.class.getDeclaredField(ObfuscatedFields.LOCKED_FLAGS);
-            lockedFlagsField.setAccessible(true);
-
-            disabledFlagsField = GoalSelector.class.getDeclaredField(ObfuscatedFields.DISABLED_FLAGS);
-            disabledFlagsField.setAccessible(true);
-        } catch (NoSuchFieldException | SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void resetWitherSize(Wither wither) {
@@ -169,52 +133,6 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void clearPathfinders(org.bukkit.entity.Entity entity) {
-        Mob nmsEntity = (Mob) ((CraftEntity) entity).getHandle();
-        GoalSelector goalSelector = nmsEntity.goalSelector;
-        GoalSelector targetSelector = nmsEntity.targetSelector;
-
-        Brain<?> brain = ((LivingEntity) nmsEntity).getBrain();
-
-        // deprecated and annotated VisibleForTesting but super convenient
-        @SuppressWarnings("deprecation")
-        Set<MemoryModuleType<?>> memoryTypes = brain.getMemories().keySet();
-        for (MemoryModuleType<?> type : memoryTypes) {
-            brain.eraseMemory(type);
-        }
-
-        try {
-            sensorsField.set(brain, new LinkedHashMap<>());
-
-            // this method is annotated with VisibleForTesting but it seems like the easiest
-            // thing to do at the moment
-            // this clears net.minecraft.world.entity.ai.Brain#availableBehaviorsByPriority
-            brain.removeAllBehaviors();
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            // this is also annotated VisibleForTesting
-            // this clears net.minecraft.world.entity.ai.goal.GoalSelector#availableGoals
-            goalSelector.removeAllGoals();
-            targetSelector.removeAllGoals();
-
-            lockedFlagsField.set(targetSelector, new EnumMap<Goal.Flag,WrappedGoal>(Goal.Flag.class));
-
-            disabledFlagsField.set(targetSelector, EnumSet.noneOf(Goal.Flag.class));
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void makePanic(org.bukkit.entity.Entity entity) {
-        PathfinderMob insentient = (PathfinderMob) ((CraftEntity) entity).getHandle();
-        insentient.goalSelector.addGoal(3, new CustomPathFinderGoalPanic(insentient));
-    }
-
-    @Override
     public void sendDestroyPacket(Player player, org.bukkit.entity.Entity entity) {
         sendPacket(player, new ClientboundRemoveEntitiesPacket(((CraftEntity) entity).getHandle().getId()));
     }
@@ -273,21 +191,6 @@ public class EntityUtil implements IEntityUtil {
         BlockState state = b.getState();
         ((Lidded) state).open();
         state.update();
-    }
-
-    @Override
-    public void follow(org.bukkit.entity.Entity toFollow, org.bukkit.entity.Entity follower) {
-        Entity pett = ((CraftEntity) follower).getHandle();
-        ((Mob) pett).getNavigation().setMaxVisitedNodesMultiplier(2);
-        Object petf = ((CraftEntity) follower).getHandle();
-        Location targetLocation = toFollow.getLocation();
-        Path path;
-        path = ((Mob) petf).getNavigation().createPath(targetLocation.getX() + 1, targetLocation.getY(),
-                targetLocation.getZ() + 1, 1);
-        if (path != null) {
-            ((Mob) petf).getNavigation().moveTo(path, 1.05D);
-            ((Mob) petf).getNavigation().setSpeedModifier(1.05D);
-        }
     }
 
     @Override

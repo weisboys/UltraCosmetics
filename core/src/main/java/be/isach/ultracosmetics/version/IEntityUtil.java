@@ -23,10 +23,6 @@ public interface IEntityUtil {
 
     void clearBlizzard(final Player player);
 
-    void clearPathfinders(Entity entity);
-
-    void makePanic(Entity entity);
-
     void sendDestroyPacket(Player player, Entity entity);
 
     void move(Creature creature, Location location);
@@ -38,8 +34,6 @@ public interface IEntityUtil {
     void moveShip(Player player, Entity entity, Vector vector);
 
     void playChestAnimation(Block b, boolean open, TreasureChestDesign design);
-
-    void follow(Entity toFollow, Entity follower);
 
     void sendTeleportPacket(Player player, Entity entity);
 }
