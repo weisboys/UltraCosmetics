@@ -1,8 +1,8 @@
 package be.isach.ultracosmetics.cosmetics.morphs;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Updatable;
+import be.isach.ultracosmetics.cosmetics.pets.PetPathfinder;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
@@ -26,6 +26,9 @@ import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a chicken morph summoned by a player.
@@ -69,22 +72,13 @@ public class MorphChicken extends Morph implements Updatable {
                         chicken.setBaby();
                         chicken.setNoDamageTicks(Integer.MAX_VALUE);
                         chicken.setVelocity(new Vector(0, 0.5f, 0));
-                        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(chicken);
-                        UltraCosmeticsData.get().getVersionManager().getEntityUtil().follow(getPlayer(), chicken);
+                        EntityBrain brain = BukkitBrain.getBrain(chicken);
+                        brain.getGoalAI().clear();
+                        brain.getTargetAI().clear();
+                        brain.getGoalAI().put(new PetPathfinder(chicken, getPlayer()), 0);
                         i.remove();
                         chickens.add(chicken);
                     }
-                    new BukkitRunnable() {
-                        @Override
-                        public void run() {
-                            if (chickens.isEmpty()) {
-                                cancel();
-                            }
-                            for (Chicken chicken : chickens) {
-                                UltraCosmeticsData.get().getVersionManager().getEntityUtil().follow(getPlayer(), chicken);
-                            }
-                        }
-                    }.runTaskTimer(getUltraCosmetics(), 0, 4);
                     Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
                         for (Chicken chicken : chickens) {
                             Particles.LAVA.display(chicken.getLocation(), 10);

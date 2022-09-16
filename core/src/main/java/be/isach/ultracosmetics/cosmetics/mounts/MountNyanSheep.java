@@ -15,6 +15,9 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
+
 /**
  * Represents an instance of a nyansheep mount.
  *
@@ -39,15 +42,18 @@ public class MountNyanSheep extends Mount {
 
     @Override
     public void setupEntity() {
-        ((Sheep)entity).setNoDamageTicks(Integer.MAX_VALUE);
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(entity);
+        Sheep sheep = (Sheep) entity;
+        sheep.setNoDamageTicks(Integer.MAX_VALUE);
+        EntityBrain brain = BukkitBrain.getBrain(sheep);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
     }
 
     @Override
     public void onUpdate() {
         move();
 
-        ((Sheep)entity).setColor(DyeColor.values()[RANDOM.nextInt(16)]);
+        ((Sheep) entity).setColor(DyeColor.values()[RANDOM.nextInt(16)]);
 
         Location particleLoc = entity.getLocation().add(entity.getLocation().getDirection().normalize().multiply(-2)).add(0, 1.2, 0);
         for (Color rgbColor : COLORS) {
@@ -63,6 +69,6 @@ public class MountNyanSheep extends Mount {
         Vector vel = playerLoc.getDirection().setY(0).normalize().multiply(4);
         playerLoc.add(vel);
 
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().move(((Sheep)entity), playerLoc);
+        UltraCosmeticsData.get().getVersionManager().getEntityUtil().move(((Sheep) entity), playerLoc);
     }
 }

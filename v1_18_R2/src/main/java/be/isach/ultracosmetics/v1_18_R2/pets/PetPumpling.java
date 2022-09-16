@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.v1_18_R2.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
@@ -32,7 +31,6 @@ public class PetPumpling extends CustomEntityPet {
     public void setupEntity() {
         // use API when we can
         Zombie zombie = (Zombie) getEntity();
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(zombie);
         zombie.setBaby();
         zombie.getEquipment().setHelmet(new ItemStack(Material.CARVED_PUMPKIN));
     }
