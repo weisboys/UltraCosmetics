@@ -37,7 +37,7 @@ import com.cryptomorin.xseries.XMaterial;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.gamercoder215.mobchip.ai.EntityAI;
+import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -85,9 +85,12 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
         entity = spawnEntity();
         EntitySpawningManager.setBypass(false);
 
-        EntityAI ai = BukkitBrain.getBrain((Mob) entity).getGoalAI();
-        ai.clear();
-        ai.put(new PetPathfinder((Mob) entity, getPlayer()), 0);
+        EntityBrain brain = BukkitBrain.getBrain((Mob) entity);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
+        // brain.getGoalAI().put(new PetPathfinder((Mob) entity, getPlayer()), 0);
+        // getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
+        // brain.getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
 
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
@@ -153,6 +156,9 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
             onUpdate();
 
             // followTask.run();
+            if (getPlayer().getLocation().distanceSquared(entity.getLocation()) > 1) {
+                BukkitBrain.getBrain((Mob) entity).getController().moveTo(getPlayer());
+            }
         } else {
             clear();
         }

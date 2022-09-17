@@ -3,15 +3,18 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 
+import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.CustomPathfinder;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 public class PetPathfinder extends CustomPathfinder {
     private final Player target;
+    private final EntityBrain brain;
 
     public PetPathfinder(Mob mob, Player target) {
         super(mob);
         this.target = target;
+        this.brain = BukkitBrain.getBrain(mob);
     }
 
     @Override
@@ -21,12 +24,12 @@ public class PetPathfinder extends CustomPathfinder {
 
     @Override
     public PathfinderFlag[] getFlags() {
-        return new PathfinderFlag[] { PathfinderFlag.MOVEMENT, PathfinderFlag.LOOKING };
+        return new PathfinderFlag[] { PathfinderFlag.MOVEMENT };
     }
 
     @Override
     public void start() {
-        BukkitBrain.getBrain(entity).getController().moveTo(target);
+        brain.getController().moveTo(target.getLocation().add(0, 0, 15));
     }
 
     @Override
