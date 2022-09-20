@@ -496,6 +496,7 @@ Pets:
   Vex:
     menu-name: '&7&l恼鬼'
     entity-displayname: '&l%playername%的恼鬼'
+    Description: '&7&oYAAHH Ehehhehe!'
   Panda:
     menu-name: '&a&l熊猫'
     entity-displayname: '&l%playername%的熊猫'
@@ -515,6 +516,7 @@ Pets:
   Slime:
     menu-name: '&a&l史莱姆'
     entity-displayname: '&l%playername%的史莱姆'
+    Description: '&7&oSquish...'
   Bee:
     menu-name: '&e&l蜜蜂'
     entity-displayname: '&l%playername%的蜜蜂'
