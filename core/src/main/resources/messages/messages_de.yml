@@ -498,6 +498,7 @@ Pets:
   Vex:
     menu-name: '&7&lPlagegeist'
     entity-displayname: '&l%playername%''s Plagegeist'
+    Description: '&7&oYAAHH Ehehhehe!'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&l%playername%''s Panda'
@@ -517,6 +518,7 @@ Pets:
   Slime:
     menu-name: '&a&lSchleim'
     entity-displayname: '&l%playername%''s Schleim'
+    Description: '&7&oSquish...'
   Bee:
     menu-name: '&e&lBiene'
     entity-displayname: '&l%playername%''s Biene'
