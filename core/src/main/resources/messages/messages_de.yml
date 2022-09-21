@@ -518,7 +518,7 @@ Pets:
   Slime:
     menu-name: '&a&lSchleim'
     entity-displayname: '&l%playername%''s Schleim'
-    Description: '&7&oSquish...'
+    Description: '&7&oZerquetschen...'
   Bee:
     menu-name: '&e&lBiene'
     entity-displayname: '&l%playername%''s Biene'
