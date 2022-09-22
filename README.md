@@ -42,9 +42,10 @@ server software running the following Minecraft versions:
 
 ## 📥 Download
 
-You can download the latest stable release of UltraCosmetics here:
+You can download the latest stable release of UltraCosmetics from our official
+links:
 
-- [https://www.spigotmc.org/resources/10905/][spigotmc-link]
+- [SpigotMC][spigotmc-link]
 
 ### Development Builds
 
