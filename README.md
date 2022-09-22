@@ -1,7 +1,6 @@
 <!-- markdownlint-disable-next-line -->
 ![Logo](.github/readme-assets/logo.png)
 
-[![CI Status](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml/badge.svg?branch=master)](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml)
 [![Version](https://img.shields.io/spiget/version/10905?label=version)][spigotmc-link]
 [![Discord](https://img.shields.io/discord/185055040036143104?color=404eed&label=Discord&logo=discord&logoColor=ffffff)][discord-invite]
 [![View on SpigotMC](https://img.shields.io/badge/view%20on-SpigotMC-orange.svg)][spigotmc-link]
@@ -20,13 +19,9 @@ guidelines that everyone must follow.
   [code of conduct](CODE_OF_CONDUCT.md).
 - When creating an issue, please make sure you're using the correct
   [issue template](https://github.com/datatags/UltraCosmetics/issues/new/choose).
-- When submitting a pull request, please make sure you're using the
-  [pull request template](PULL_REQUEST_TEMPLATE.md).
-- When contributing, please make sure you check out the
-  [contribution guidelines](CONTRIBUTING.md).
 
-If you're looking to compile the project yourself, please check out the
-[compiling documentation](COMPILING.md).
+Are you a developer? Please check out the
+[Development section](#-development) in this README.
 
 ---
 
@@ -86,6 +81,20 @@ us know on our [Discord server][discord-invite].
 For questions and support please visit our [Discord server][discord-invite].
 The Issues page of this repository is **exclusively** for bug reports and
 feature requests.
+
+## 💻 Development
+
+[![CI Status](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml)
+[![CodeQL Status](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml)
+
+When contributing, please make sure you check out the
+[contribution guidelines](CONTRIBUTING.md).
+
+If you're looking to compile the project yourself, please check out the
+[compiling documentation](COMPILING.md).
+
+When submitting a pull request, please make sure you're using the
+[pull request template](PULL_REQUEST_TEMPLATE.md).
 
 ## 📄 License
 
