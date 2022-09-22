@@ -58,8 +58,8 @@ on GitHub.
 
 ## 📖 Documentation
 
-Check out the [Wiki page][wiki-link] or read the
-[Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide).
+Read the [Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide)
+and check out the [Wiki page][wiki-link].
 
 ## 🐛 Report a Bug
 
