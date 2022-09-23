@@ -20,7 +20,7 @@ guidelines that everyone must follow.
 - When creating an issue, please make sure you're using the correct
   [issue template](https://github.com/datatags/UltraCosmetics/issues/new/choose).
 
-Are you a developer? Please check out the
+Do you want to fix a bug or add a new feature? Please read the
 [Development section](#-development) in this README.
 
 ---
