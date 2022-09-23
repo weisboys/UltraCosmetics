@@ -55,7 +55,7 @@ You can find development builds in the **#beta-testing** channel on our
 ## 📖 Documentation
 
 Read the [Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide)
-and check out the [Wiki page][wiki-link].
+and check out the [Wiki][wiki-link].
 
 ## 🐛 Report a Bug
 
