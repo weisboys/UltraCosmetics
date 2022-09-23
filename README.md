@@ -45,9 +45,7 @@ links:
 ### Development Builds
 
 You can find development builds in the **#beta-testing** channel on our
-[Discord server][discord-invite] or in the
-[Actions tab](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml)
-on GitHub.
+[Discord server][discord-invite].
 
 > **Warning**
 > Do not use any unofficial downloads/mirrors!
