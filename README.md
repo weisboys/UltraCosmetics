@@ -5,7 +5,7 @@
 [![Discord](https://img.shields.io/discord/185055040036143104?color=404eed&label=Discord&logo=discord&logoColor=ffffff)][discord-invite]
 [![View on SpigotMC](https://img.shields.io/badge/view%20on-SpigotMC-orange.svg)][spigotmc-link]
 [![Downloads](https://img.shields.io/spiget/downloads/10905?color=blue)][spigotmc-link]
-[![Crowdin](https://badges.crowdin.net/ultracosmetics/localized.svg)](https://crowdin.com/project/ultracosmetics)
+[![Crowdin](https://badges.crowdin.net/ultracosmetics/localized.svg)][crowdin-link]
 
 # UltraCosmetics
 
@@ -68,10 +68,11 @@ template!
 ## 🌍 Translations
 
 Supported languages: **English, Spanish, German, Chinese Simplified**
+**and [more][crowdin-link].**
 
 Do you speak multiple languages? You can help translate UltraCosmetics on our
-[Crowdin page](https://crowdin.com/project/ultracosmetics). Contributions to
-our community translations are greatly appreciated!
+[Crowdin page][crowdin-link]. Contributions to our community translations are
+greatly appreciated!
 
 If your language isn't listed or doesn't have an active proofreader, please let
 us know on our [Discord server][discord-invite].
@@ -121,3 +122,4 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 [discord-invite]: https://discord.gg/PgSXZT37JV
 [wiki-link]: https://github.com/datatags/UltraCosmetics/wiki
 [spigotmc-link]: https://www.spigotmc.org/resources/10905/
+[crowdin-link]: https://crowdin.com/project/ultracosmetics
