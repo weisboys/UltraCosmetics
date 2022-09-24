@@ -27,7 +27,7 @@ public interface IEntityUtil {
 
     void move(Creature creature, Location location);
 
-    void moveDragon(Player player, Vector vector, Entity entity);
+    void moveDragon(Player player, Entity entity);
 
     void setStepHeight(Entity entity);
 

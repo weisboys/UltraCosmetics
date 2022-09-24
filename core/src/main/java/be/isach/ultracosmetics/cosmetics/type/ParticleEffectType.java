@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.particleeffects.*;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
@@ -77,7 +78,7 @@ public class ParticleEffectType extends CosmeticType<ParticleEffect> {
         return particleMultiplier;
     }
 
-    public static void register() {
+    public static void register(ServerVersion version) {
         new ParticleEffectType("SnowCloud", 1, Particles.SNOW_SHOVEL, XMaterial.SNOWBALL, ParticleEffectSnowCloud.class, true);
         new ParticleEffectType("BloodHelix", 1, Particles.REDSTONE, XMaterial.REDSTONE, ParticleEffectBloodHelix.class, true);
         new ParticleEffectType("FrostLord", 1, Particles.SNOW_SHOVEL, XMaterial.PACKED_ICE, ParticleEffectFrostLord.class, true);

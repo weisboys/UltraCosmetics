@@ -6,11 +6,11 @@ package be.isach.ultracosmetics.util;
 public enum ServerVersion {
 
     // Do not supply a mapping version when there is no NMS module.
-    v1_8("1.8.8", null, 3),
+    v1_8("1.8.8", null, 0),
     v1_9("1.9.4", null, 0),
     v1_10("1.10.2", null, 0),
     v1_11("1.11.2", null, 0),
-    v1_12("1.12.2", null, 1),
+    v1_12("1.12.2", null, 0),
     v1_13("1.13.2", null, 0),
     v1_14("1.14.4", null, 0),
     v1_15("1.15.2", null, 0),
@@ -58,6 +58,10 @@ public enum ServerVersion {
 
     public boolean offhandAvailable() {
         return isAtLeast(v1_9);
+    }
+
+    public boolean isMobChipAvailable() {
+        return isAtLeast(v1_13);
     }
 
     public boolean isNmsSupported() {

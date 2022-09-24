@@ -14,6 +14,7 @@ import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.entity.LivingEntity;
 
@@ -53,10 +54,11 @@ public class CosmeticManager {
         config.addDefault("Ammo-System-For-Gadgets.Show-Ammo-In-Menu-As-Item-Amount", true, "Do you want that in the gadgets menu", "each gadget item has an amount", "corresponding to your ammo.");
 
         // CALL STATIC BLOCK.
-        GadgetType.register();
-        MountType.register();
-        ParticleEffectType.register();
-        PetType.register();
+        ServerVersion version = UltraCosmeticsData.get().getServerVersion();
+        GadgetType.register(version);
+        MountType.register(version);
+        ParticleEffectType.register(version);
+        PetType.register(version);
         HatType.register();
         // SuitType uses a static block
         if (Category.MORPHS.isEnabled()) {

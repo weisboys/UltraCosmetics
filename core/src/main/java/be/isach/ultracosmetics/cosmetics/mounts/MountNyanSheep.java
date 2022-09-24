@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
@@ -26,6 +25,7 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  */
 public class MountNyanSheep extends Mount {
     private static final List<Color> COLORS = new ArrayList<>();
+    private EntityBrain brain;
 
     static {
         COLORS.add(new Color(255, 0, 0));
@@ -44,7 +44,7 @@ public class MountNyanSheep extends Mount {
     public void setupEntity() {
         Sheep sheep = (Sheep) entity;
         sheep.setNoDamageTicks(Integer.MAX_VALUE);
-        EntityBrain brain = BukkitBrain.getBrain(sheep);
+        brain = BukkitBrain.getBrain(sheep);
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
     }
@@ -69,6 +69,6 @@ public class MountNyanSheep extends Mount {
         Vector vel = playerLoc.getDirection().setY(0).normalize().multiply(4);
         playerLoc.add(vel);
 
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().move(((Sheep) entity), playerLoc);
+        brain.getController().moveTo(playerLoc, 2);
     }
 }

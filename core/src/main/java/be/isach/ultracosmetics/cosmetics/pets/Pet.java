@@ -14,6 +14,7 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
@@ -22,7 +23,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
-import org.bukkit.entity.Slime;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -38,7 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.controller.EntityController;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -89,9 +88,9 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         brain.getTargetAI().clear();
         brain.getScheduleManager().clear();
 
-        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
-        getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
-        BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
+        // brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        // getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
+        // BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
 
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
@@ -167,7 +166,7 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         }
 
         double distanceSquared = getPlayer().getLocation().distanceSquared(entity.getLocation());
-        if (distanceSquared < 1.3 * 1.3) return;
+        if (distanceSquared < 2 * 2) return;
 
         EntityBrain brain = BukkitBrain.getBrain(entity);
 
@@ -176,12 +175,12 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             speed *= 1.3;
         }
 
-        EntityController controller = brain.getController();
-        if (entity instanceof Slime) {
-            controller.lookAt(getPlayer());
-            return;
-        }
-        controller.moveTo(getPlayer(), speed);
+        move(brain, getPlayer().getEyeLocation(), speed);
+
+    }
+
+    protected void move(EntityBrain brain, Location loc, double speed) {
+        brain.getController().moveTo(loc, speed);
     }
 
     @Override

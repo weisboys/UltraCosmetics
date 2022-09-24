@@ -97,8 +97,7 @@ public final class PetType extends CosmeticEntType<Pet> {
         return pet;
     }
 
-    public static void register() {
-        ServerVersion serverVersion = UltraCosmeticsData.get().getServerVersion();
+    public static void register(ServerVersion serverVersion) {
 
         new PetType("Piggy", XMaterial.PORKCHOP, EntityType.PIG, PetPiggy.class);
         new PetType("EasterBunny", XMaterial.CARROT, EntityType.RABBIT, PetEasterBunny.class);
@@ -115,7 +114,7 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, PetSheep.class);
         new PetType("Wither", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER, PetWither.class);
         /* Slime disabled because its just constantly jumping in one direction instead of following the player */
-        new PetType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, PetSlime.class);
+        // new PetType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, PetSlime.class);
         new PetType("Silverfish", XMaterial.GRAY_DYE, EntityType.SILVERFISH, PetSilverfish.class);
         new PetType("Blaze", XMaterial.BLAZE_ROD, EntityType.BLAZE, PetBlaze.class);
         new PetType("Creeper", XMaterial.GUNPOWDER, EntityType.CREEPER, PetCreeper.class);
@@ -145,7 +144,6 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
         case v1_11:
             new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
-            /* Vex disabled because its just not following the player at all (Besides teleport) */
             new PetType("Vex", XMaterial.IRON_SWORD, EntityType.VEX, PetVex.class);
         case v1_10:
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);

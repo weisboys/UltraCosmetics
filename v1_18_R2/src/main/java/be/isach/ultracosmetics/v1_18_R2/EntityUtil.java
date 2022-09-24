@@ -150,7 +150,7 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void moveDragon(Player player, Vector vector, org.bukkit.entity.Entity entity) {
+    public void moveDragon(Player player, org.bukkit.entity.Entity entity) {
         EnderDragon ec = ((CraftEnderDragon) entity).getHandle();
 
         float yaw = player.getLocation().getYaw();

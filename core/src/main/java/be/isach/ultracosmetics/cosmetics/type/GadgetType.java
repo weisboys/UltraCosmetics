@@ -2,35 +2,8 @@ package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.gadgets.Gadget;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetAntiGravity;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetBatBlaster;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetBlackHole;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetBlizzardBlaster;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetChickenator;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetChristmasTree;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetColorBomb;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetDiscoBall;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetEtherealPearl;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetExplosiveSheep;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetFirework;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetFleshHook;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetFreezeCannon;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetFunGun;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetGhostParty;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetMelonThrower;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetPaintballGun;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetParachute;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetPartyPopper;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetPortalGun;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetQuakeGun;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetRocket;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetSmashDown;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetSnowball;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTNT;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetThorHammer;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTrampoline;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetTsunami;
+import be.isach.ultracosmetics.cosmetics.gadgets.*;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
@@ -136,16 +109,14 @@ public class GadgetType extends CosmeticType<Gadget> {
         return runTime;
     }
 
-    public static void register() {
+    public static void register(ServerVersion version) {
         new GadgetType(XMaterial.IRON_HORSE_ARMOR, 8, 3, "BatBlaster", GadgetBatBlaster.class);
         new GadgetType(XMaterial.COOKED_CHICKEN, 6, 3, "Chickenator", GadgetChickenator.class);
         new GadgetType(XMaterial.BEACON, 45, 20, "DiscoBall", GadgetDiscoBall.class);
         new GadgetType(XMaterial.ENDER_PEARL, 2, 0, "EtherealPearl", GadgetEtherealPearl.class);
         new GadgetType(XMaterial.TRIPWIRE_HOOK, 5, 0, "FleshHook", GadgetFleshHook.class);
         new GadgetType(XMaterial.MELON, 2, 0, "MelonThrower", GadgetMelonThrower.class);
-        new GadgetType(XMaterial.PACKED_ICE, 12, 2, "BlizzardBlaster", GadgetBlizzardBlaster.class);
         new GadgetType(XMaterial.COMPARATOR, 2, 0, "PortalGun", GadgetPortalGun.class);
-        new GadgetType(XMaterial.SHEARS, 25, 11, "ExplosiveSheep", GadgetExplosiveSheep.class);
         new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class);
         new GadgetType(XMaterial.IRON_AXE, 8, 0, "ThorHammer", GadgetThorHammer.class);
         new GadgetType(XMaterial.ENDER_EYE, 30, 12, "AntiGravity", GadgetAntiGravity.class);
@@ -155,7 +126,6 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.TNT, 10, 0, "TNT", GadgetTNT.class);
         new GadgetType(XMaterial.BLAZE_ROD, 4, 0, "FunGun", GadgetFunGun.class);
         new GadgetType(XMaterial.LEAD, 60, 7, "Parachute", GadgetParachute.class);
-        new GadgetType(XMaterial.DIAMOND_HOE, 3, 0, "QuakeGun", GadgetQuakeGun.class);
         new GadgetType(XMaterial.SKELETON_SKULL, 45, 8, "GhostParty", GadgetGhostParty.class);
         new GadgetType(XMaterial.FIREWORK_ROCKET, 0.2, 0, "Firework", GadgetFirework.class);
         new GadgetType(XMaterial.FERN, 20, 10, "ChristmasTree", GadgetChristmasTree.class);
@@ -165,5 +135,14 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.LIGHT_BLUE_WOOL, 25, 7, "ColorBomb", GadgetColorBomb.class);
         new GadgetType(XMaterial.BLUE_WOOL, 75, 12, "Trampoline", GadgetTrampoline.class);
         new GadgetType(XMaterial.BLACK_TERRACOTTA, 35, 8, "BlackHole", GadgetBlackHole.class);
+
+        if (version.isMobChipAvailable()) {
+            new GadgetType(XMaterial.SHEARS, 25, 11, "ExplosiveSheep", GadgetExplosiveSheep.class);
+        }
+
+        if (version.isNmsSupported()) {
+            new GadgetType(XMaterial.PACKED_ICE, 12, 2, "BlizzardBlaster", GadgetBlizzardBlaster.class);
+            new GadgetType(XMaterial.DIAMOND_HOE, 3, 0, "QuakeGun", GadgetQuakeGun.class);
+        }
     }
 }

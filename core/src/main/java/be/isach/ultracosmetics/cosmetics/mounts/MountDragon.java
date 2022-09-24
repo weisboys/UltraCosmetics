@@ -12,7 +12,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.util.Vector;
 
 /**
  * Represents an instance of a enderdragon mount.
@@ -29,19 +28,8 @@ public class MountDragon extends Mount {
     @Override
     public void onUpdate() {
         if (SettingsManager.getConfig().getBoolean("Mounts." + getType().getConfigName() + ".Stationary")) return;
-        Vector vector = getPlayer().getLocation().toVector();
 
-        double rotX = getPlayer().getLocation().getYaw();
-        double rotY = getPlayer().getLocation().getPitch();
-
-        vector.setY(-Math.sin(Math.toRadians(rotY)));
-
-        double h = Math.cos(Math.toRadians(rotY));
-
-        vector.setX(-h * Math.sin(Math.toRadians(rotX)));
-        vector.setZ(h * Math.cos(Math.toRadians(rotX)));
-
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().moveDragon(getPlayer(), vector, entity);
+        UltraCosmeticsData.get().getVersionManager().getEntityUtil().moveDragon(getPlayer(), entity);
     }
 
     @SuppressWarnings("deprecation")
