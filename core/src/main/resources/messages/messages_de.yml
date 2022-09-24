@@ -249,8 +249,8 @@ Gadgets:
     name: '&2&lWeihnachtsbaum'
     Click-On-Block: '%prefix% &c&lBitte auf einen Block klicken!'
     Description: |-
-      &7&oHier ist ein Weihnachts-
-      &7&obaum für dich!
+      &7&oHier ist ein Weihnachtsbaum
+      &7&ofür dich!
   FreezeCannon:
     name: '&b&lFrostkanone'
     Description: '&7&oVerwandel den Boden in eine Eisbahn!'
