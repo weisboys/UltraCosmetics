@@ -1,335 +1,335 @@
-Prefix: '&l&oKosmetik >&r'
-No-Permission: '%prefix% &c&lAnda tidak memiliki ijin!'
-Cosmetic-Disabled: '%prefix% &c&lKosmetik ini telah dimatikan!'
-Invalid-Gadget: '%prefix% &c&lPeralatan tidak ditemukan!'
-Invalid-Pet: '%prefix% &c&lPeliharaan tidak ditemukan!'
-Invalid-Mount: '%prefix% &c&lKendaraan tidak ditemukan!'
-Invalid-Effect: '%prefix% &c&lEfek tidak ditemukan!'
-Invalid-Morph: '%prefix% &c&lTransformasi tidak ditemukan!'
-Invalid-Hat: '%prefix% &c&lTopi tidak ditemukan!'
-Invalid-Suit: '%prefix% &c&lBaju setelan tidak ditemukan!'
-Invalid-Emote: '%prefix% &c&lEmote tidak ditemukan!'
-Invalid-Menu: '%prefix% &c&lMenu tidak ditemukan!'
-Ammo: '&7Peluru anda: &e%ammo%'
-Purchase: '&a&lBELI'
-Cancel: '&c&lBATAL'
-Buy-Ammo-Description: '&e&lBeli peluru %gadgetname% %amount% &e&lseharga $%price%'
-Buy-Cosmetic-Description: '&e&lBeli %gadgetname% &e&lseharga $%price%'
-Right-Click-Buy-Ammo: '&7Tekan kanan untuk membeli Peluru'
-Click-To-Purchase: '&eClick to purchase for $%price%'
-Not-Enough-Money: '%prefix% &c&lAnda tidak memiliki cukup uang!'
-Successful-Purchase: '%prefix% &a&lPembelian berhasil!'
-Buy-Treasure-Key: '&lBeli kunci kotak Kosmetik'
-Treasure-Keys: '&7&lKunci Kotak Kosmetik'
-Treasure-Chests: '&6&lKotak Kosmetik'
-Dont-Have-Key: '&4&lAnda membutuhkan kunci!'
-Click-Open-Chest: '&aTekan untuk membuka kotak'
-Click-Buy-Key: '&aTekan untuk membeli sebuah kunci'
-Left-Click-Open-Chest: '&aTekan kiri untuk membuka kotak'
-Right-Click-Simple: '&aTekan kanan untuk mengambil kosmetik'
-Your-Keys: '&7&oKunci anda: &f&l%keys%'
-Buy-Treasure-Key-ItemName: '&e&l1 &7&lKunci Kotak Kosmetik &e&lseharga $%price%'
-You-Won-Treasure-Chests: '%prefix% &f&lAnda mendapatkan: %name%!'
-Treasure-Chest-Occupied: '%prefix% &c&lSemua lokasi kotak kosmetik telah penuh, mohon tunggu dan coba kembali'
+Prefix: '&l&oCosméticos >&r'
+No-Permission: '%prefix% &c&lVocê não tem a permissão!'
+Cosmetic-Disabled: '%prefix% &c&lEste cosmético está desativado!'
+Invalid-Gadget: '%prefix% &c&lEngenhoca inválida!'
+Invalid-Pet: '%prefix% &c&lMascote inválido!'
+Invalid-Mount: '%prefix% &c&lMontaria inválida!'
+Invalid-Effect: '%prefix% &c&lEfeito Inválido!'
+Invalid-Morph: '%prefix% &c&lTransformação inválida!'
+Invalid-Hat: '%prefix% &c&lChapéu inválido!'
+Invalid-Suit: '%prefix% &c&lTraje Inválido!'
+Invalid-Emote: '%prefix% &c&lEmote inválido!'
+Invalid-Menu: '%prefix% &c&lMenu inválido!'
+Ammo: '&7Sua munição: &e%ammo%'
+Purchase: '&a&lCOMPRAR'
+Cancel: '&c&lCANCELAR'
+Buy-Ammo-Description: '&e&lComprar %amount% munição de %gadgetname% &e&lpor $%price%'
+Buy-Cosmetic-Description: '&e&lCompra %gadgetname% &e&lpor $%price%'
+Right-Click-Buy-Ammo: '&7Clique direito para comprar munição'
+Click-To-Purchase: '&eClique para comprar por $%price%'
+Not-Enough-Money: '%prefix% &c&lVocê não tem dinheiro suficiente!'
+Successful-Purchase: '%prefix% &a&lCompra bem sucedida!'
+Buy-Treasure-Key: '&lCompre uma chave de tesouro'
+Treasure-Keys: '&7&lChaves de Tesouro'
+Treasure-Chests: '&6&lBaús de Tesouro'
+Dont-Have-Key: '&4&lVocê precisa de uma chave!'
+Click-Open-Chest: '&aClique para abrir o baú'
+Click-Buy-Key: '&aClique para comprar uma chave'
+Left-Click-Open-Chest: '&aClique esquerdo para abrir um baú'
+Right-Click-Simple: '&aClique direito para obter apenas cosméticos'
+Your-Keys: '&7&oSuas chaves: &f&l%keys%'
+Buy-Treasure-Key-ItemName: '&e&l1 &7&lChave de Tesouro &e&lpor $%price%'
+You-Won-Treasure-Chests: '%prefix% &f&lVocê ganhou: %name%!'
+Treasure-Chest-Occupied: '%prefix% &c&lTodos os locais do tesouro estão cheios, aguarde e tente novamente'
 Clear:
-  Cosmetics: '&c&lBersihkan kosmetik'
-  Gadgets: '&c&lBersihkan peralatan saat ini'
-  Pets: '&c&lBersihkan hewan peliharaan saat ini'
-  Mounts: '&c&lBersihkan kendaraan saat ini'
-  Particle-Effects: '&c&lBersihkan efek saat ini'
-  Morphs: '&c&lBersihkan transformasi saat ini'
-  Hats: '&c&lBersihkan topi saat ini'
-  Suits: '&c&lBersihkan baju setelan saat ini'
-  Emotes: '&c&lBersihkan emote saat ini'
+  Cosmetics: '&c&lLimpar cosméticos'
+  Gadgets: '&c&lLimpar a engenhoca atual'
+  Pets: '&c&lLimpar o mascote atual'
+  Mounts: '&c&lLimpar a montaria atual'
+  Particle-Effects: '&c&lLimpe o efeito atual'
+  Morphs: '&c&lLimpar a atual transformação'
+  Hats: '&c&lLimpar o chapéu atual'
+  Suits: '&c&lLimpar o traje atual'
+  Emotes: '&c&lLimpar o emote atual'
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: '&c&lGanti nama hewan peliharaan menjadi &f&l%name% &c&lseharga &e&l$%price%'
-    Title: '&lGanti nama hewan peliharaan'
+      Showcase: '&c&lRenomeie o mascote para &f&l%name% &c&lpor &e&l$%price%'
+    Title: '&lRenomear Mascote'
   Rename-Pet:
     Button:
-      Name: '&c&lTekan untuk mengganti nama: %petname%'
-    Placeholder: Nama hewan peliharaan
-    Title: Ganti nama hewan peliharaan
+      Name: '&c&lClique para renomear: %petname%'
+    Placeholder: Nome do Mascote
+    Title: Renomear mascote
   Main:
-    Title: '&lMenu Utama'
+    Title: '&lMenu Principal'
     Button:
-      Name: '&c&lMenu Utama'
+      Name: '&c&lMenu Principal'
   Pets:
-    Title: '&lHewan Peliharaan'
+    Title: '&lMascotes'
     Button:
-      Name: '&a&lHewan Peliharaan'
-      Tooltip-Equip: '&b&lMunculkan'
-      Tooltip-Unequip: '&c&lHilangkan'
+      Name: '&a&lMascotes'
+      Tooltip-Equip: '&b&lSpawnar'
+      Tooltip-Unequip: '&c&lDespawnar'
   Gadgets:
-    Title: '&lPeralatan'
+    Title: '&lEngenhocas'
     Button:
-      Name: '&9&lPeralatan'
-      Tooltip-Equip: '&b&lAktif'
-      Tooltip-Unequip: '&c&lNon-aktif'
+      Name: '&9&lEngenhocas'
+      Tooltip-Equip: '&b&lativar'
+      Tooltip-Unequip: '&c&lDesativar'
   Mounts:
-    Title: '&lKendaraan'
+    Title: '&lMontarias'
     Button:
-      Name: '&6&lKendaraan'
-      Tooltip-Equip: '&b&lMunculkan'
-      Tooltip-Unequip: '&c&lHilangkan'
+      Name: '&6&lMounts'
+      Tooltip-Equip: '&b&lSpawn'
+      Tooltip-Unequip: '&c&lDespawn'
   Morphs:
-    Title: '&lTransformasi'
+    Title: '&lMorphs'
     Button:
-      Name: '&2&lTransformasi'
-      Tooltip-Equip: '&b&lTransformasi menjadi'
-      Tooltip-Unequip: '&c&lTransformasi kembali dari'
+      Name: '&2&lMorphs'
+      Tooltip-Equip: '&b&lMorph into'
+      Tooltip-Unequip: '&c&lUnmorph from'
   Hats:
-    Title: '&lTopi'
+    Title: '&lHats'
     Button:
-      Name: '&b&lTopi'
-      Tooltip-Equip: '&b&lPakai'
-      Tooltip-Unequip: '&c&lLepas'
+      Name: '&b&lHats'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Particle-Effects:
-    Title: '&lEfek Partikel'
+    Title: '&lParticle Effects'
     Button:
-      Name: '&b&lEfek Partikel'
-      Tooltip-Equip: '&b&lPanggil'
-      Tooltip-Unequip: '&c&lBatalkan'
+      Name: '&b&lParticle Effects'
+      Tooltip-Equip: '&b&lSummon'
+      Tooltip-Unequip: '&c&lUnsummon'
   Suits:
-    Title: '&lBaju Setelan'
+    Title: '&lSuits'
     Button:
-      Name: '&c&lBaju Setelan'
-      Tooltip-Equip: '&b&lPakai'
-      Tooltip-Unequip: '&c&lLepas'
+      Name: '&c&lSuits'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Emotes:
-    Title: '&lEmote'
+    Title: '&lEmotes'
     Button:
-      Name: '&e&lEmote'
-      Tooltip-Equip: '&b&lPakai'
-      Tooltip-Unequip: '&c&lLepas'
+      Name: '&e&lEmotes'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
-    Title: '&lBeli Peluru'
+    Title: '&lBuy Ammo'
   Misc:
     Button:
-      Previous-Page: '&c&lHalaman Sebelumnya'
-      Next-Page: '&a&lHalaman Selanjutnya'
+      Previous-Page: '&c&lPrevious Page'
+      Next-Page: '&a&lNext Page'
 Chest-Location:
-  Not-Enough-Space: '%prefix% &c&lTidak ada cukup ruang untuk membuka kotak kosmetik!'
-  Too-Close: '%prefix% &c&lAnda terlalu dekat dengan kotak kosmetik lainnya!'
-  Region-Disabled: '%prefix% &c&lAnda tidak dapat membuka kotak kosmetik disini!'
-  Invalid: '%prefix% &c&lLokasi tersebut tidak sah.'
-  In-Air: '%prefix% &c&lLokasi tersebut tidak berada di tanah!'
-  In-Ground: '%prefix% &c&lLokasi tersebut ada di dalam tanah!'
-  Suggestion: '%prefix% &aMungkin maksud anda %location%?'
-Active-Pet-Needed: '&c&lAnda harus memanggil hewan peliharaan untuk mengganti nama'
+  Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
+  Too-Close: '%prefix% &c&lYou are too close to another treasure chest!'
+  Region-Disabled: '%prefix% &c&lYou can''t open a chest here!'
+  Invalid: '%prefix% &c&lThat''s not a valid location.'
+  In-Air: '%prefix% &c&lThat location is not on the ground!'
+  In-Ground: '%prefix% &c&lThat location is in the ground!'
+  Suggestion: '%prefix% &aMaybe you meant %location%?'
+Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
 Treasure-Chests-Loot:
-  Ammo: 'peluru %name% %ammo%'
-  Pet: 'hewan peliharaan %pet%'
-  Mount: 'Kendaraan %mount%'
-  Effect: 'Efek %effect%'
-  Morph: 'Transformasi %morph%'
-  Hat: 'Topi %hat%'
-  Money: '&e&l$%money%'
-  Gadget: 'Peralatan %gadget%'
+  Ammo: '%ammo% %name% ammo'
+  Pet: '%pet% pet'
+  Mount: '%mount% mount'
+  Effect: '%effect% effect'
+  Morph: '%morph% morph'
+  Hat: '%hat% hat'
+  Money: '&e&l%money%$'
+  Gadget: '%gadget% gadget'
   Suit: '%suit%'
-  Emote: 'Emote %emote%'
-  Nothing: '&c&lTidak ada apa-apa'
-Disable-Gadgets: '&c&lNon-aktifkan Peralatan'
-Disable-Gadgets-Lore: '&cMenon-aktitkan peralatan dan efek pada anda'
-Enable-Gadgets: '&a&lAktifkan peralatan'
-Enable-Gadgets-Lore: '&aMengaktifkan pemakaian peralatan dan efek kepada anda'
-Disable-Third-Person-View: '&c&lNon-aktifkan Transformasi Third Person View'
-Enable-Third-Person-View: '&a&lAktifkan Transformasi Third Person View'
-Disable-Filter-By-Owned: '&c&lUbah menjadi Munculkan Semua'
-Enable-Filter-By-Owned: '&c&lUbah filter menjadi Yang di Miliki'
-Disable-Treasure-Notification: '&c&lNotifikasi kotak kosmetik dimatikan'
-Enable-Treasure-Notification: '&c&lNotifikasi kotak kosmetik dinyalakan'
-Gadgets-Enabled-Needed: '%prefix% &c&lAnda harus mengaktifkan peralatan!'
+  Emote: '%emote% emote'
+  Nothing: '&c&lNothing'
+Disable-Gadgets: '&c&lDisable Gadgets'
+Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
+Enable-Gadgets: '&a&lEnable Gadgets'
+Enable-Gadgets-Lore: '&aEnables use of gadgets and effects of them on you'
+Disable-Third-Person-View: '&c&lDisable Morphs Third Person View'
+Enable-Third-Person-View: '&a&lEnable Morphs Third Person View'
+Disable-Filter-By-Owned: '&c&lChange to Show All'
+Enable-Filter-By-Owned: '&c&lChange to Filter By Owned'
+Disable-Treasure-Notification: '&c&lTreasure notifications disabled'
+Enable-Treasure-Notification: '&c&lTreasure notifications enabled'
+Gadgets-Enabled-Needed: '%prefix% &c&lYou need to enable gadgets!'
 Gadgets:
-  Equip: '%prefix% &9Anda menggunakan %gadgetname%'
-  Unequip: '%prefix% &9Anda menyimpan %gadgetname%'
-  Countdown-Message: '%prefix% &c&lAnda tidak dapat menggunakan %gadgetname% &c&lselama %time%s!'
+  Equip: '%prefix% &9You equipped %gadgetname%'
+  Unequip: '%prefix% &9You unequipped %gadgetname%'
+  Countdown-Message: '%prefix% &c&lYou can''t use %gadgetname% &c&lfor %time%s!'
   PaintballGun:
-    name: '&b&lSenjata Paintball'
+    name: '&b&lPaintball Gun'
     Description: '&7&oPEW PEW PEW PEW!!!'
   BatBlaster:
-    name: '&7&lTembakan Kelelawar'
+    name: '&7&lBat Blaster'
     Description: |-
-      &7&oTembakan beberapa kelelawar
-      &7&oke orang yang tidak kamu suka!
+      &7&oLaunch waves of bats
+      &7&oat people you don't like!
   MelonThrower:
-    name: '&a&lPelempar Melon'
-    Wait-For-Finish: '%prefix% &c&lTunggu untuk melon sebelumnya untuk selesai meledak!'
-    Description: '&7&oLezat serunya!'
+    name: '&a&lMelon Thrower'
+    Wait-For-Finish: '%prefix% &c&lWait for your previous melon to finish exploding!'
+    Description: '&7&oDeliciously fun!'
   EtherealPearl:
-    name: '&5&lMutiara Ethereal'
+    name: '&5&lEthereal Pearl'
     Description: |-
-      &7&oLakukan perjalanan melalui angkasa
-      &7&odengan mutiara Ethereal anda sendiri!
+      &7&oTake a ride through the skies
+      &7&oon your very own Ethereal Pearl!
   FleshHook:
-    name: '&7&lKait Daging'
+    name: '&7&lFlesh Hook'
     Description: |-
-      &7&oBuat teman baru dengan melempar kait
-      &7&okepada mereka dan tarik mereka
-      &7&opada anda!
+      &7&oMake new friends by throwing a hook
+      &7&oat them and pulling them
+      &7&oto you!
   DiscoBall:
-    name: '&d&lBola Disko'
-    Already-Active: '&c&lSudah ada bola disko yang aktif!'
-    Not-Space-Above: '&c&lTidak ada cukup ruang diatas anda!'
-    Description: '&7&oMenari saja!'
+    name: '&d&lDisco Ball'
+    Already-Active: '&c&lThere is already a disco ball active!'
+    Not-Space-Above: '&c&lThere is not enough space above you!'
+    Description: '&7&oJust dance!'
   ColorBomb:
-    name: '&d&lBom Warna'
-    Description: '&7&oSebuah bom warna warni!'
+    name: '&d&lColor Bomb'
+    Description: '&7&oA colorful bomb!'
   Chickenator:
-    name: '&f&lAyaminator'
-    Description: '&7&o1.Tembak! 2.Meledak! 3.KFC!'
+    name: '&f&lChickenator'
+    Description: '&7&o1.Shoot! 2.Boom! 3.KFC!'
   PortalGun:
-    name: '&c&lSenjata &9&lPortal'
-    No-Block-Range: '%prefix% &c&lTidak ada BLOCK dalam jangkauan!'
-    Different-Worlds: '%prefix% &c&lPortal harus didunia yang sama!'
-    Description: '&7&oKuenya adalah sebuah kebohongan!'
+    name: '&c&lPortal &9&lGun'
+    No-Block-Range: '%prefix% &c&lNo BLOCKS in range!'
+    Different-Worlds: '%prefix% &c&lPortals must be in the same world!'
+    Description: '&7&oThe cake is a lie!'
   BlizzardBlaster:
-    name: '&b&lTembakan Badai Salju'
-    Description: '&7&oBiarkan bersalju!'
+    name: '&b&lBlizzard Blaster'
+    Description: '&7&oLet it snow!'
   ThorHammer:
-    name: '&f&lPalu Thor'
-    Description: '&7&oDapatkan Mjölnir sebenarnya!'
+    name: '&f&lThor''s Hammer'
+    Description: '&7&oGet the real Mjölnir!'
   SmashDown:
     name: '&c&lSmashDown'
-    Description: '&7&oDAN NAMANYA ADALAH...JOHN CENA!'
+    Description: '&7&oAND HIS NAME IS...JOHN CENA!'
   ExplosiveSheep:
-    name: '&4&lDomba Meledak'
-    Already-Active: '&c&lSudah ada domba meledak yang sedang aktif!'
+    name: '&4&lExplosive Sheep'
+    Already-Active: '&c&lThere is already an explosive sheep active!'
     Description: |-
-      &7&oApakah anda yakin itu terlihat
-      &7&oberkedip seperti itu?
+      &7&oAre you sure it's supposed
+      &7&oto flicker like that?
   AntiGravity:
-    name: '&d&lAnti Gravitasi'
+    name: '&d&lAnti Gravity'
     Description: |-
-      &7&oAnda tidak suka gravitasi
-      &7&oMaka, peralatan ini dibuat untuk anda!
+      &7&oYou don't like gravity?
+      &7&oThen, this gadget is made for you!
   Tsunami:
     name: '&9&lTsunami'
     Description: |-
       &7&oTSUNAMI!
-      &7&oLari untuk hidup anda!
+      &7&oRun for your life!
   Rocket:
-    name: '&4&lRoket'
-    Not-Enough-Space: '%prefix% &c&lTidak ada cukup ruang disekitar dan atas anda!'
-    Not-On-Ground: '%prefix% &c&lAnda harus berada di tanah!'
-    Takeoff: '&4&lMELUNCUR!!'
-    LaunchAborted: '&c&lPeluncuran dibatalkan!'
-    Description: '&7&oHouston, kami memiliki masalah...'
+    name: '&4&lRocket'
+    Not-Enough-Space: '%prefix% &c&lNot enough space around and above you!'
+    Not-On-Ground: '%prefix% &c&lYou must be on the ground!'
+    Takeoff: '&4&lTAKEOFF!!'
+    LaunchAborted: '&c&lLaunch aborted!'
+    Description: '&7&oHouston, we have a problem...'
   BlackHole:
-    name: '&1&lLubang Hitam'
-    Description: '&7&oAnda tidak boleh sampai terkena oleh itu!'
+    name: '&1&lBlack Hole'
+    Description: '&7&oYou should not get caught by it!'
   TNT:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
-      &7&oLedakkan beberapa orang!
+      &7&oBlow some people up!
       &7&oKABOOM!
   FunGun:
-    name: '&6&lSenjata Meriah'
-    Description: '&7&oWoow! Banyak kemeriahan dalam sebuah senjata!'
+    name: '&6&lFun Gun'
+    Description: '&7&oWoow! So much fun in a gun!'
   Parachute:
-    name: '&f&lParasut'
+    name: '&f&lParachute'
     Description: '&7&oGERONIMOOO!'
   QuakeGun:
-    name: '&d&lTembakan &5&lGempa'
+    name: '&5&lQuake &d&lGun'
     Description: |-
-      &7&oDapatkan senjata rel sebenarnya
-      &7&odan serang pemain dan para mob!
+      &7&oGet a real Rail Gun
+      &7&oand strike players and mobs!
   GhostParty:
-    name: '&f&lPesta Hantu'
+    name: '&f&lGhost Party'
     Description: |-
-      &7&oSiapa yang akan ada panggil?
-      &7&oPEMBURU HANTU!
+      &7&oWho you gonna call?
+      &7&oGHOST BUSTERS!
   Firework:
-    name: '&c&lKembang Api'
+    name: '&c&lFirework'
     Description: |-
-      &7&oMembutuhkan selebrasi?
-      &7&oPakai kembang api!
+      &7&oNeed to celebrate?
+      &7&oUse fireworks!
   ChristmasTree:
-    name: '&2&lPohon Natal'
-    Click-On-Block: '%prefix% &c&lMohon tekan disebuah block!'
+    name: '&2&lChristmas Tree'
+    Click-On-Block: '%prefix% &c&lPlease click on a block!'
     Description: |-
-      &7&oIni sebuah Pohon
-      &7&oNatal untuk anda!
+      &7&oHere is a Christmas
+      &7&oTree for you!
   FreezeCannon:
-    name: '&b&lMeriam Beku'
-    Description: '&7&oUbah semua lantai menjadi arena es!'
+    name: '&b&lFreeze Cannon'
+    Description: '&7&oTransform the floor into a rink!'
   Snowball:
-    name: '&f&lBola Salju'
+    name: '&f&lSnowball'
     Description: |-
-      &7&oBergabung dalam meriahnya festival dengan
-      &7&omelempar salju ke orang lain!
+      &7&oJoin in on the festive fun by
+      &7&othrowing snow at people!
   PartyPopper:
-    name: '&e&lPeriah Pesta'
+    name: '&e&lParty Popper'
     Description: |-
-      &7&oRamaikan dengan menggunakan meriam konfeti
-      &7&oke udara!
+      &7&oCelebrate by blasting confetti into
+      &7&othe air!
   Trampoline:
-    name: '&9&lTrampolin'
+    name: '&9&lTrampoline'
     Description: |-
-      &7&oBangun sebuah trampolin
-      &7&oyang mengirim anda anda teman
-      &7&oanda ke udara!
-  Gadget-Ready-ActionBar: '%gadgetname% &f&ltelah siap!'
-  Lore: '&9Peralatan'
+      &7&oConstructs a trampoline
+      &7&othat sends you and your
+      &7&ofriends into the air!
+  Gadget-Ready-ActionBar: '%gadgetname% &f&lis ready!'
+  Lore: '&9Gadget'
 Mounts:
   DruggedHorse:
-    menu-name: '&2&lKuda Bius'
+    menu-name: '&2&lDrugged Horse'
     entity-displayname: '&l%playername%''s Drugged Horse'
-    Description: '&7&oIni memang terlalu banyak!'
+    Description: '&7&oThat is just too much!'
   InfernalHorror:
-    menu-name: '&4&lHoror Neraka'
+    menu-name: '&4&lInfernal Horror'
     entity-displayname: '&l%playername%''s Infernal Horror'
-    Description: '&7&oKendaraan ini datang langsung dari... Neraka!'
+    Description: '&7&oThis mount comes directly from... hell!'
   GlacialSteed:
-    menu-name: '&b&lKuda Glasial'
+    menu-name: '&b&lGlacial Steed'
     entity-displayname: '&l%playername%''s Glacial Steed'
-    Description: '&7&oKendaraan ini datang dari Kutub Utara!'
+    Description: '&7&oThis mount comes from North Pole!'
   WalkingDead:
-    menu-name: '&2&lMayat Berjalan'
+    menu-name: '&2&lWalking Dead'
     entity-displayname: '&l%playername%''s Walking Dead'
-    Description: '&7&oGraaaaaw...'
+    Description: '&7&oGraaaaw...'
   MountOfFire:
-    menu-name: '&c&lKendaraan Berapi'
+    menu-name: '&c&lMount of Fire'
     entity-displayname: '&l%playername%''s Mount of Fire'
-    Description: '%7&oSebuah kendaraan neraka!'
+    Description: '&7&oThe mount of Hades!'
   MountOfWater:
-    menu-name: '&c&lKendaraan Air'
+    menu-name: '&9&lMount of Water'
     entity-displayname: '&l%playername%''s Mount of Water'
-    Description: '&7&oSebuah kendaraan yang digunakan oleh Poseidon!'
+    Description: '&7&oThe mount of Poseidon!'
   EcologistHorse:
-    menu-name: '&a&lKuda Ekologi'
+    menu-name: '&a&lEcologist Horse'
     entity-displayname: '&l%playername%''s Ecologist Horse'
-    Description: '&7&oMenjadi ahli ekologi!'
+    Description: '&7&oBecome an ecologist!'
   NyanSheep:
-    menu-name: '&a&lDo&b&lm&d&lba &4&lNy&6&la&e&ln'
+    menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
     entity-displayname: '&l%playername%''s Nyan Sheep'
     Description: |-
       &4&lNyan &6&lnyan &e&lnyan
       &a&lnyan &3&lnyan &9&lnyan
   Snake:
-    menu-name: '&6&lUlar'
+    menu-name: '&6&lSnake'
     entity-displayname: '&l%playername%''s Snake'
     Description: '&7&oWatch out! It may bite...'
   Dragon:
-    menu-name: '&5&lNaga'
+    menu-name: '&5&lDragon'
     entity-displayname: '&l%playername%''s Dragon'
-    Description: '&7&oMenjadi pengendara naga!'
+    Description: '&7&oBecome a dragon rider!'
   SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&l%playername%''s HypeCart'
     Description: |-
-      &7&oIngin mengendarai sebuah F1?
-      &7&oSekarang anda bisa!
+      &7&oEver wanted to drive a F1?
+      &7&oNow you can!
   Slime:
     menu-name: '&a&lSlime'
     entity-displayname: '&l%playername%''s Slime'
     Description: '&7&oSplat! Splat!'
   Spider:
-    menu-name: '&8&lLaba Laba'
+    menu-name: '&8&lSpider'
     entity-displayname: '&l%playername%''s Spider'
-    Description: '&7&oANDA adalah pengendara laba laba!'
+    Description: '&7&oYOU are the spider jockey!'
   Rudolph:
     menu-name: '&f&lRudolp&4&lh'
     entity-displayname: '&l%playername%''s Rudolph'
@@ -337,51 +337,51 @@ Mounts:
       &7&oWhat would Christmas be
       &7&owithout Rudolph the Reindeer?
   MoltenSnake:
-    menu-name: '&c&lUlar Cair'
-    entity-displayname: '&lUlar Cair milik %playername%'
+    menu-name: '&c&lMolten Snake'
+    entity-displayname: '&l%playername%''s Molten Snake'
     Description: |-
-      &7&oDalam di bawah permukaan Bumi, ada
-      &7&ospesies mitos dari Ular
-      &7&oCair. Hewan ini akan melayani anda selamanya.
+      &7&oDeep under the Earth's surface, there
+      &7&oexists a mythical species of Molten
+      &7&oSnakes. This one will serve you eternally.
   FlyingShip: [ ]
-  Equip: '%prefix% &9Anda memanggil %mountname%'
-  Unequip: '%prefix% &9Anda menyimpan %mountname%'
-  Cant-Spawn: '%prefix% &c&lMonster tidak bisa dipanggil di sini!'
-  Not-Enough-Room: '%prefix% &c&lTidak ada cukup ruang untuk sebuah kendaraan disini!'
+  Equip: '%prefix% &9You spawned %mountname%'
+  Unequip: '%prefix% &9You despawned %mountname%'
+  Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
+  Not-Enough-Room: '%prefix% &c&lNot enough room for a mount here!'
 Particle-Effects:
-  Equip: '%prefix% &9Anda menggunakan %effectname%'
-  Unequip: '%prefix% &9Anda melepas %effectname%'
+  Equip: '%prefix% &9You summoned %effectname%'
+  Unequip: '%prefix% &9You unsummoned %effectname%'
   RainCloud:
-    name: '&9&lAwan Hujan'
+    name: '&9&lRain Cloud'
     Description: |-
-      &7&oRamalan Cuaca
-      &7&omemberitahuku bahwa akan ada hujan.
+      &7&oThe weather forecast
+      &7&ois telling me it's raining.
   SnowCloud:
-    name: '&f&lAwan Salju'
+    name: '&f&lSnow Cloud'
     Description: |-
-      &7&oRamalan Cuaca
-      &7&omemberitahuku bahwa akan ada hujan salju.
+      &7&oThe weather forecast
+      &7&ois telling me it's snowing.
   BloodHelix:
-    name: '&4&lDarah Helix'
+    name: '&4&lBlood Helix'
     Description: |-
       &7&oAncient legend says this magic
       &7&oempowers the blood of its user,
       &7&ogiving them godly powers...
   FrostLord:
-    name: '&b&lRaja Es'
-    Description: '&7&oSaya adalah Raja Es yang Mahakuasa!'
+    name: '&b&lFrost Lord'
+    Description: '&7&oI am The Almighty Frostlord!'
   FlameRings:
-    name: '&c&lCincin Api'
-    Description: '&7&oHati hati! Mereka panas!'
+    name: '&c&lFlame Rings'
+    Description: '&7&oWatch out! They are hot!'
   GreenSparks:
-    name: '&a&lPercikan api hijau'
-    Description: '&7&oPercikan hijau dan kecil!'
+    name: '&a&lGreen Sparks'
+    Description: '&7&oLittle and green sparkly sparks!'
   InLove:
-    name: '&c&lJatuh Cinta'
-    Description: '&7&owow Omg aku sedang Jatuh Cinta!'
+    name: '&c&lIn Love'
+    Description: '&7&oOMG wow I''m in love!'
   FrozenWalk:
-    name: '&b&lLangkah Beku'
-    Description: '&7&oKaki ku sangat dingin!'
+    name: '&b&lFrozen Walk'
+    Description: '&7&oMy feet are so cold!'
   Enchanted:
     name: '&7&lEnchanted'
     Description: '&7&oBecome an almighty enchanter!'

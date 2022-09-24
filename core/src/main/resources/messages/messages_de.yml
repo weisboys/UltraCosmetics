@@ -249,8 +249,8 @@ Gadgets:
     name: '&2&lWeihnachtsbaum'
     Click-On-Block: '%prefix% &c&lBitte auf einen Block klicken!'
     Description: |-
-      &7&oHier ist ein Weihnachts-
-      &7&obaum für dich!
+      &7&oHier ist ein Weihnachtsbaum
+      &7&ofür dich!
   FreezeCannon:
     name: '&b&lFrostkanone'
     Description: '&7&oVerwandel den Boden in eine Eisbahn!'
@@ -498,6 +498,7 @@ Pets:
   Vex:
     menu-name: '&7&lPlagegeist'
     entity-displayname: '&l%playername%''s Plagegeist'
+    Description: '&7&oYAAHH Ehehhehe!'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&l%playername%''s Panda'
@@ -517,6 +518,7 @@ Pets:
   Slime:
     menu-name: '&a&lSchleim'
     entity-displayname: '&l%playername%''s Schleim'
+    Description: '&7&oZerquetschen...'
   Bee:
     menu-name: '&e&lBiene'
     entity-displayname: '&l%playername%''s Biene'
@@ -727,14 +729,14 @@ Hats:
     Name: '&d&lSchwein'
     Description: '&7&oOink Oink!'
   Cow:
-    Name: '&a&lCow'
-    Description: '&7&oMoooo!'
+    Name: '&a&lKuh'
+    Description: '&7&oMuuuh!'
   Mooshroom:
     Name: '&c&lMooshroom'
-    Description: '&7&oMoooo!'
+    Description: '&7&oMuuuh!'
   BrownMooshroom:
-    Name: '&b&lBrown Mooshroom'
-    Description: '&7&oMoooo!'
+    Name: '&b&lBraune Mooshroom'
+    Description: '&7&oMuuuh!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
@@ -742,92 +744,92 @@ Hats:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
   EndermanKing:
-    Name: '&d&lEnderman King'
-    Description: '&7&oKing of the endermen'
+    Name: '&d&lEnderman König'
+    Description: '&7&oKönig der Endermen'
   Slime:
-    Name: '&a&lSlime'
-    Description: '&7&oVery slimy'
+    Name: '&a&lSchleim'
+    Description: '&7&oSehr schleimig'
   Creeper:
     Name: '&2&lCreeper'
-    Description: '&7&oScare your friends!'
+    Description: '&7&oErschrecke deine Freunde!'
   Skeleton:
-    Name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    Name: '&7&lSkelett'
+    Description: '&7&oSehr guter Bogenschütze!'
   Zombie:
     Name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Description: '&7&oGehirne!!!'
   Strider:
-    Name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    Name: '&c&lSchreiter'
+    Description: '&7&oIch hasse Wasser!'
   WitherSkeleton:
-    Name: '&7&lWither Skeleton'
-    Description: '&7&oGuardian of the nether fortress'
+    Name: '&7&lWitherskelett'
+    Description: '&7&oBeschützer der Netherfestung'
   Ghast:
     Name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Description: '&7&o*schriller Schrei*'
   Warden:
-    Name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    Name: '&3&lWärter'
+    Description: '&7&oSei leise...'
   Witch:
-    Name: '&5&lWitch'
-    Description: '&7&oPlease try my potion!'
+    Name: '&5&lHexe'
+    Description: '&7&oBitte probiere meinen Trank!'
   FletcherVillager:
-    Name: '&a&lFletcher Villager'
-    Description: '&7&oI make arrows.'
+    Name: '&a&lPfeilmacher'
+    Description: '&7&oIch mache Pfeile.'
   LibrarianVillager:
-    Name: '&6&lLibrarian Villager'
-    Description: '&7&oKnowledge is power.'
+    Name: '&6&lBibliothekar'
+    Description: '&7&oWissen ist Macht.'
   Bee:
-    Name: '&e&lBee'
-    Description: '&7&oBe careful!'
+    Name: '&e&lBiene'
+    Description: '&7&oSei vorsichtig!'
   Fox:
-    Name: '&6&lFox'
-    Description: '&7&oFast and smart!'
+    Name: '&6&lFuchs'
+    Description: '&7&oSchnell und intelligent!'
   SnowFox:
-    Name: '&f&lSnow Fox'
-    Description: '&7&oSnowy biomes are my home.'
+    Name: '&f&lSchneefuchs'
+    Description: '&7&oVerschneite Biome sind mein Zuhause.'
   Ocelot:
-    Name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    Name: '&e&lOzelot'
+    Description: '&7&oKönig des Dschungels'
   Frog:
-    Name: '&2&lFrog'
-    Description: '&7&oEats whatever bugs him.'
+    Name: '&2&lFrosch'
+    Description: '&7&oIsst alles, was ihn stört.'
   AxolotlBlue:
-    Name: '&9&lBlue Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: '&9&lBlaues Axolotl'
+    Description: '&7&oDas süßeste Raubtier'
   Turtle:
-    Name: '&a&lTurtle'
-    Description: '&7&oTake your time.'
+    Name: '&a&lSchildkröte'
+    Description: '&7&oLass dir Zeit.'
   Clownfish:
-    Name: '&6&lClownfish'
-    Description: '&7&oYou found him!'
+    Name: '&6&lClownfisch'
+    Description: '&7&oDu hast ihn gefunden!'
   BlackCat:
-    Name: '&2&lBlack Cat'
-    Description: '&7&oA witch''s best friend.'
+    Name: '&2&lSchwarze Katze'
+    Description: '&7&oBester Freund einer Hexe.'
   Allay:
-    Name: '&b&lAllay'
-    Description: '&7&oThe little helper'
+    Name: '&b&lHilfsgeist'
+    Description: '&7&oDer kleine Helfer'
   Bat:
-    Name: '&5&lBat'
-    Description: '&7&oEnjoy the nightlife.'
+    Name: '&5&lFledermaus'
+    Description: '&7&oGenieße das Nachtleben.'
   MCD-Steve:
     Name: '&9&lSteve'
-    Description: '&7&oThe best skin'
+    Description: '&7&oDer beste Skin'
   MCD-Alex:
     Name: '&6&lAlex'
-    Description: '&7&oSteve''s friend'
+    Description: '&7&oSteve''s Freund'
   MCD-QuestGiver:
-    Name: '&5&lQuest Giver'
-    Description: '&7&oI have a quest for you.'
+    Name: '&5&lQuestgeber'
+    Description: '&7&oIch habe eine Quest für dich.'
   MCD-LuxuryMerchant:
-    Name: '&6&lLuxury Merchant'
-    Description: '&7&oI sell gems.'
+    Name: '&6&lLuxushändler'
+    Description: '&7&oIch verkaufe Edelsteine.'
   MCD-Necromancer:
-    Name: '&b&lNecromancer'
-    Description: '&7&oSummon the undead!'
+    Name: '&b&lNekromant'
+    Description: '&7&oBeschwöre die Untoten!'
   MCD-NamelessOne:
-    Name: '&2&lNameless One'
-    Description: '&7&oPowerful necromancer'
+    Name: '&2&lNamenloser'
+    Description: '&7&oMächtiger Nekromant'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -904,29 +906,29 @@ Hats:
     Name: '&8&lBrauner Crewmate'
     Description: '&7&oBraun ist sus!'
   FrogPrince:
-    Name: '&2&lFrog Prince'
-    Description: '&7&oKiss me!'
+    Name: '&2&lFroschprinz'
+    Description: '&7&oKüss mich!'
   Notch:
     Name: '&f&lNotch'
-    Description: '&7&oCreator of Minecraft'
+    Description: '&7&oErsteller von Minecraft'
   KitsuneMask:
-    Name: '&c&lKitsune Mask'
-    Description: '&7&oWhite fox mask'
+    Name: '&c&lKitsune-Maske'
+    Description: '&7&oWeiße Fuchsmaske'
   Goblin:
-    Name: '&9&lGoblin'
-    Description: '&7&oSneaky!'
+    Name: '&9&lKobold'
+    Description: '&7&oHinterhältig!'
   Unicorn:
-    Name: '&d&lUnicorn'
-    Description: '&7&oBe magical!'
+    Name: '&d&lEinhorn'
+    Description: '&7&oSei magisch!'
   Ogre:
-    Name: '&2&lOgre'
-    Description: '&7&oI''m hungry.'
+    Name: '&2&lOger'
+    Description: '&7&oIch bin hungrig.'
   GreenDragon:
-    Name: '&a&lGreen Dragon'
-    Description: '&7&oBe a dragon.'
+    Name: '&a&lGrüner Drache'
+    Description: '&7&oSei ein Drache.'
   GigaChad:
     Name: '&7&lGigaChad'
-    Description: '&7&oEmbrace masculinity!'
+    Description: '&7&oAkzeptiere die Männlichkeit!'
   Bread:
     Name: '&f&lBrot'
     Description: '&7&oFrisch gebacken'
