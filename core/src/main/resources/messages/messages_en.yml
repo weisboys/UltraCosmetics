@@ -659,6 +659,10 @@ Pets:
     menu-name: '&3&lGuardian'
     entity-displayname: '&l%playername%''s Guardian'
     Description: '&7&oHates Squids!'
+  Hoglin:
+    menu-name: '&c&lHoglin'
+    entity-displayname: '&l%playername%''s Hoglin'
+    Description: '&7&oA pig, but in angry.'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
