@@ -40,7 +40,7 @@ in the Wiki.
 ## 📥 Download
 
 You can download the latest stable release of UltraCosmetics from our official
-links:
+link:
 
 - [SpigotMC][spigotmc-link]
 
