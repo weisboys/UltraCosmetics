@@ -655,6 +655,10 @@ Pets:
     menu-name: '&f&lGhast'
     entity-displayname: '&l%playername%''s Ghast'
     Description: '&7&o*Demonic screaming*'
+  Guardian:
+    menu-name: '&3&lGuardian'
+    entity-displayname: '&l%playername%''s Guardian'
+    Description: '&7&oHates Squids!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
