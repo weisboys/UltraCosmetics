@@ -7,6 +7,10 @@ import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.CustomPathfinder;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
+/**
+ * Not currently in use because adding custom pathfinders
+ * with MobChip does not work correctly.
+ */
 public class PetPathfinder extends CustomPathfinder {
     private final Player target;
     private final EntityBrain brain;

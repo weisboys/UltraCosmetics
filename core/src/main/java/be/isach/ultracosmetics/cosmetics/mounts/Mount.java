@@ -11,7 +11,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.Bukkit;
@@ -19,6 +18,7 @@ import org.bukkit.Difficulty;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Ageable;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Slime;
@@ -39,14 +39,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * Represents an instance of a mount summoned by a player.
  *
  * @author iSach
  * @since 08-03-2015
  */
-public abstract class Mount extends EntityCosmetic<MountType> implements Updatable {
+public abstract class Mount extends EntityCosmetic<MountType,Entity> implements Updatable {
     private BukkitTask mountRegionTask = null;
 
     protected boolean beingRemoved = false;
@@ -63,11 +62,10 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     @Override
     public void onEquip() {
 
-        EntitySpawningManager.setBypass(true);
         entity = spawnEntity();
-        EntitySpawningManager.setBypass(false);
+
         if (entity instanceof LivingEntity) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((LivingEntity)entity, getType().getMovementSpeed());
+            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((LivingEntity) entity, getType().getMovementSpeed());
             if (entity instanceof Ageable) {
                 ((Ageable) entity).setAdult();
             } else if (entity instanceof Slime) {
@@ -157,7 +155,7 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
             return;
         }
 
-        String name = getType().getName(getPlayer());;
+        String name = getType().getName(getPlayer());
 
         if (!beingRemoved
                 && name != null
@@ -205,7 +203,7 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
                     || event.getFrom().getBlockY() != event.getTo().getBlockY()
                     || event.getFrom().getBlockZ() != event.getTo().getBlockZ()
                     || !event.getFrom().getWorld().getName().equalsIgnoreCase(event.getTo().getWorld().getName()))) {
-                //clear();
+                // clear();
             }
         }
     }

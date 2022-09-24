@@ -25,7 +25,7 @@ public class PetAxolotl extends Pet {
         // For some strange reason, an axolotl has a default movement speed of 1.0, which is higher
         // than the default speed of every other entity except dolphin.
         if (!SettingsManager.getConfig().getBoolean("Pets.Axolotl.Fast")) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((Axolotl) entity, 0.6);
+            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed(entity, 0.6);
         }
     }
 

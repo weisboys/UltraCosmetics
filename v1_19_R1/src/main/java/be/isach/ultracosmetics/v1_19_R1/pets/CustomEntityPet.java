@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.v1_19_R1.customentities.CustomEntities;
 
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEntity;
+import org.bukkit.entity.Mob;
 
 import net.minecraft.world.entity.Entity;
 
@@ -21,8 +22,8 @@ public abstract class CustomEntityPet extends Pet {
     }
 
     @Override
-    public org.bukkit.entity.Entity spawnEntity() {
-        entity = getNewEntity().getBukkitEntity();
+    public Mob spawnEntity() {
+        entity = (Mob) getNewEntity().getBukkitEntity();
         double x = getPlayer().getLocation().getX();
         double y = getPlayer().getLocation().getY();
         double z = getPlayer().getLocation().getZ();

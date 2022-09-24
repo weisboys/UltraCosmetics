@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.ServerVersion;
 
@@ -23,6 +22,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
+import org.bukkit.entity.Slime;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.controller.EntityController;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -46,7 +47,8 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  * @author iSach
  * @since 03-08-2015
  */
-public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
+public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatable {
+
     /**
      * List of items popping out from Pet.
      */
@@ -80,17 +82,16 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
     @Override
     protected void onEquip() {
 
-        // Bypass WorldGuard protection.
-        EntitySpawningManager.setBypass(true);
         entity = spawnEntity();
-        EntitySpawningManager.setBypass(false);
 
-        EntityBrain brain = BukkitBrain.getBrain((Mob) entity);
+        EntityBrain brain = BukkitBrain.getBrain(entity);
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
-        // brain.getGoalAI().put(new PetPathfinder((Mob) entity, getPlayer()), 0);
-        // getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
-        // brain.getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
+        brain.getScheduleManager().clear();
+
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
+        BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
 
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
@@ -152,16 +153,35 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
             return;
         }
 
-        if (getOwner().isOnline() && getOwner().getCurrentPet() == this) {
-            onUpdate();
-
-            // followTask.run();
-            if (getPlayer().getLocation().distanceSquared(entity.getLocation()) > 1) {
-                BukkitBrain.getBrain((Mob) entity).getController().moveTo(getPlayer());
-            }
-        } else {
+        if (!getOwner().isOnline() || getOwner().getCurrentPet() != this) {
             clear();
+            return;
         }
+
+        onUpdate();
+
+        if (entity.getWorld() != getPlayer().getWorld()
+                || entity.getLocation().distanceSquared(getPlayer().getLocation()) > 10 * 10) {
+            entity.teleport(getPlayer());
+            return;
+        }
+
+        double distanceSquared = getPlayer().getLocation().distanceSquared(entity.getLocation());
+        if (distanceSquared < 1.3 * 1.3) return;
+
+        EntityBrain brain = BukkitBrain.getBrain(entity);
+
+        double speed = 1.15;
+        if (entity.getType() == EntityType.ZOMBIE) {
+            speed *= 1.3;
+        }
+
+        EntityController controller = brain.getController();
+        if (entity instanceof Slime) {
+            controller.lookAt(getPlayer());
+            return;
+        }
+        controller.moveTo(getPlayer(), speed);
     }
 
     @Override
@@ -205,15 +225,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
         } else {
             rename.setCustomName(getType().getEntityName(getPlayer()));
         }
-    }
-
-    /**
-     * This method is overridden by custom entity mobs that don't use the mobs own name tag for the hologram.
-     *
-     * @return the entity that should be renamed
-     */
-    protected Entity getNamedEntity() {
-        return entity;
     }
 
     @Override
