@@ -679,6 +679,10 @@ Pets:
     menu-name: '&6&lPiglin Brute'
     entity-displayname: '&l%playername%''s Piglin Brute'
     Description: '&7&oA pretty buff Piglin!'
+  Pillager:
+    menu-name: '&7&lPillager'
+    entity-displayname: '&l%playername%''s Pillager'
+    Description: '&7&oLikes to pillage Villages!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
