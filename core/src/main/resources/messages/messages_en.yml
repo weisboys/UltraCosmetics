@@ -667,6 +667,10 @@ Pets:
     menu-name: '&e&lHusk'
     entity-displayname: '&l%playername%''s Husk'
     Description: '&7&oA Zombie, but sandy.'
+  MagmaCube:
+    menu-name: '&4&lMagma Cube'
+    entity-displayname: '&l%playername%''s Magma Cube'
+    Description: '&7&oA very hot cube!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
