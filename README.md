@@ -16,7 +16,7 @@ In order for everyone to have the best experience possible, we have a few
 guidelines that everyone must follow.
 
 - For all things on GitHub, please make sure you follow the
-  [code of conduct](CODE_OF_CONDUCT.md).
+  [code of conduct](.github/CODE_OF_CONDUCT.md).
 - When creating an issue, please make sure you're using the correct
   [issue template](https://github.com/datatags/UltraCosmetics/issues/new/choose).
 
@@ -89,13 +89,13 @@ feature requests.
 [![CodeQL Status](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml)
 
 When contributing, please make sure you check out the
-[contribution guidelines](CONTRIBUTING.md).
+[contribution guidelines](.github/CONTRIBUTING.md).
 
 If you're looking to compile the project yourself, please check out the
 [compiling documentation](COMPILING.md).
 
 When submitting a pull request, please make sure you're using the
-[pull request template](PULL_REQUEST_TEMPLATE.md).
+[pull request template](.github/PULL_REQUEST_TEMPLATE.md).
 
 ## 📄 License
 
