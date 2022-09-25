@@ -174,7 +174,8 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Turtle", XMaterial.TURTLE_HELMET, EntityType.TURTLE, PetTurtle.class);
             new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, PetDolphin.class);
             new PetType("Drowned", XMaterial.TRIDENT, EntityType.DROWNED, PetDrowned.class);
-            new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class);
+            /* Phantom disabled because its just stuck flying down into the ground */
+            /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class); */
         case v1_12:
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
         case v1_11:
