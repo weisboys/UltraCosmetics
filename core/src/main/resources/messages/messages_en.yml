@@ -663,6 +663,10 @@ Pets:
     menu-name: '&c&lHoglin'
     entity-displayname: '&l%playername%''s Hoglin'
     Description: '&7&oA pig, but in angry.'
+  Husk:
+    menu-name: '&e&lHusk'
+    entity-displayname: '&l%playername%''s Husk'
+    Description: '&7&oA Zombie, but sandy.'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
