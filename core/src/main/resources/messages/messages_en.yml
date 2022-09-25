@@ -683,6 +683,10 @@ Pets:
     menu-name: '&7&lPillager'
     entity-displayname: '&l%playername%''s Pillager'
     Description: '&7&oLikes to pillage Villages!'
+  Ravager:
+    menu-name: '&8&lRavager'
+    entity-displayname: '&l%playername%''s Ravager'
+    Description: '&7&oA Pillager''s favorite Companion!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
