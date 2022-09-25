@@ -671,6 +671,10 @@ Pets:
     menu-name: '&4&lMagma Cube'
     entity-displayname: '&l%playername%''s Magma Cube'
     Description: '&7&oA very hot cube!'
+  Phantom:
+    menu-name: '&1&lPhantom'
+    entity-displayname: '&l%playername%''s Phantom'
+    Description: '&7&oHates players that don''t sleep!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
