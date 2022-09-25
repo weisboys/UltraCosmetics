@@ -675,6 +675,10 @@ Pets:
     menu-name: '&1&lPhantom'
     entity-displayname: '&l%playername%''s Phantom'
     Description: '&7&oHates players that don''t sleep!'
+  PiglinBrute:
+    menu-name: '&6&lPiglin Brute'
+    entity-displayname: '&l%playername%''s Piglin Brute'
+    Description: '&7&oA pretty buff Piglin!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
