@@ -178,6 +178,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, PetEvoker.class);
         case v1_10:
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
+            new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
         default:
             break;
         }
