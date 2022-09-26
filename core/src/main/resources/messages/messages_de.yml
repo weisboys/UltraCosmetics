@@ -131,11 +131,11 @@ Treasure-Chests-Loot:
   Emote: '%emote% Emote'
   Nothing: '&c&lNichts'
 Disable-Gadgets: '&c&lGadgets deaktivieren'
-Disable-Gadgets-Lore: "&cGadgets und dessen Effekte\n&cauf dich deaktivieren"
+Disable-Gadgets-Lore: '&cGadgets und dessen Effekte auf dich deaktivieren'
 Enable-Gadgets: '&a&lGadgets aktivieren'
-Enable-Gadgets-Lore: "&aGadgets und dessen Effekte\n&aauf dich aktivieren"
-Disable-Third-Person-View: "&c&lThird-Person-Ansicht der\n&c&lVerwandlungen deaktivieren"
-Enable-Third-Person-View: "&a&lThird-Person-Ansicht der\n&a&lVerwandlungen aktivieren"
+Enable-Gadgets-Lore: '&aGadgets und dessen Effekte auf dich aktivieren'
+Disable-Third-Person-View: '&c&lThird-Person-Ansicht der Verwandlungen deaktivieren'
+Enable-Third-Person-View: '&a&lThird-Person-Ansicht der Verwandlungen aktivieren'
 Disable-Filter-By-Owned: '&c&lAlle anzeigen'
 Enable-Filter-By-Owned: '&c&lNach Besitz filtern'
 Disable-Treasure-Notification: '&c&lSchatztruhen Mitteilungen deaktiviert'
