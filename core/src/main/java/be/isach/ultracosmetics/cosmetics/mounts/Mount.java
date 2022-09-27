@@ -12,10 +12,12 @@ import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
@@ -65,7 +67,9 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
         entity = spawnEntity();
 
         if (entity instanceof LivingEntity) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((LivingEntity) entity, getType().getMovementSpeed());
+            if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+                ((LivingEntity) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(getType().getMovementSpeed());
+            }
             if (entity instanceof Ageable) {
                 ((Ageable) entity).setAdult();
             } else if (entity instanceof Slime) {

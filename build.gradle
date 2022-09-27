@@ -103,6 +103,7 @@ subprojects { subproj ->
         }
 
         // AnvilGUI
+		// MobChip
         maven {
             url "https://repo.codemc.io/repository/maven-snapshots/"
         }

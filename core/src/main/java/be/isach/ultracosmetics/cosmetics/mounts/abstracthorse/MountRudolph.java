@@ -56,8 +56,7 @@ public class MountRudolph extends MountAbstractHorse {
 
     @Override
     public void onUpdate() {
-        if (left != null && right != null)
-            moveAntlers();
+        if (left != null && right != null) moveAntlers();
     }
 
     private void moveAntlers() {
@@ -80,8 +79,11 @@ public class MountRudolph extends MountAbstractHorse {
         location.add(location.getDirection().multiply(1.15));
         location.setY(y - 0.073);
         Particles.REDSTONE.display(255, 0, 0, location);
+        // Improves update time for antlers, but not a critical feature
+        if (!UltraCosmeticsData.get().getServerVersion().isNmsSupported()) return;
         new Thread(() -> {
             for (Player player : getPlayer().getWorld().getPlayers()) {
+                if (location.distanceSquared(player.getLocation()) > 32 * 32) continue;
                 UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendTeleportPacket(player, right);
                 UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendTeleportPacket(player, left);
             }
@@ -92,10 +94,8 @@ public class MountRudolph extends MountAbstractHorse {
     public void onClear() {
         super.onClear();
 
-        if (left != null)
-            left.remove();
-        if (right != null)
-            right.remove();
+        if (left != null) left.remove();
+        if (right != null) right.remove();
     }
 
     public static Vector getLeftVector(Location loc) {
@@ -113,6 +113,6 @@ public class MountRudolph extends MountAbstractHorse {
     }
 
     private Location getEyeLocation() {
-        return ((Mule)entity).getEyeLocation();
+        return ((Mule) entity).getEyeLocation();
     }
 }

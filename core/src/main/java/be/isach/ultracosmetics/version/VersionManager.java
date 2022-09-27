@@ -3,6 +3,8 @@ package be.isach.ultracosmetics.version;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.version.dummy.DummyEntityUtil;
+import be.isach.ultracosmetics.version.dummy.DummyModule;
 
 import org.bukkit.World;
 
@@ -20,8 +22,6 @@ public class VersionManager {
     private final ServerVersion serverVersion;
     private IModule module;
     private IEntityUtil entityUtil;
-    private IAncientUtil ancientUtil;
-    private IFireworkFactory fireworkFactory;
     private Mounts mounts;
 
     public VersionManager(ServerVersion serverVersion) {
@@ -29,15 +29,14 @@ public class VersionManager {
     }
 
     public void load() throws ReflectiveOperationException {
-        if (serverVersion == ServerVersion.v1_8) {
-            ancientUtil = loadModule("AncientUtil");
-        } else {
-            ancientUtil = new APIAncientUtil();
-        }
-        module = loadModule("Module");
-        entityUtil = loadModule("EntityUtil");
         mounts = new Mounts();
-        fireworkFactory = loadModule("FireworkFactory");
+        if (serverVersion.isNmsSupported()) {
+            module = loadModule("VersionModule");
+            entityUtil = loadModule("EntityUtil");
+        } else {
+            module = new DummyModule();
+            entityUtil = new DummyEntityUtil();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -47,14 +46,6 @@ public class VersionManager {
 
     public IEntityUtil getEntityUtil() {
         return entityUtil;
-    }
-
-    public IAncientUtil getAncientUtil() {
-        return ancientUtil;
-    }
-
-    public IFireworkFactory getFireworkFactory() {
-        return fireworkFactory;
     }
 
     public Mounts getMounts() {

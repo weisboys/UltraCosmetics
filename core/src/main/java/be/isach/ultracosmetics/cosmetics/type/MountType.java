@@ -116,7 +116,7 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA), 0.4, MountOfWater.class);
         new MountType("NyanSheep", XMaterial.CYAN_DYE, EntityType.SHEEP, 1, null, 0.4, MountNyanSheep.class);
         new MountType("EcologistHorse", XMaterial.GREEN_DYE, EntityType.HORSE, 2, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA), 0.4, MountEcologistHorse.class);
-        new MountType("Rudolph", XMaterial.DEAD_BUSH, vm.getMounts().getRudolphType(), 2, null, 0.4, vm.getMounts().getRudolphClass());
+        new MountType("Rudolph", XMaterial.DEAD_BUSH, vm.getMounts().getRudolphType(), 1, null, 0.4, vm.getMounts().getRudolphClass());
         new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, vm.getMounts().getWalkingDeadType(), 2, null, 0.4, vm.getMounts().getWalkingDeadClass());
         new MountType("InfernalHorror", XMaterial.BONE, vm.getMounts().getHorrorType(), 2, null, 0.4, vm.getMounts().getHorrorClass());
 

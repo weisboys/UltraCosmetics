@@ -28,7 +28,7 @@ dependencies {
     compileOnly 'net.luckperms:api:5.4'
     implementation 'com.zaxxer:HikariCP:4.0.3'
     implementation 'net.wesjd:anvilgui:1.5.3-SNAPSHOT'
-    //implementation 'com.github.GamerCoder215.MobChip:mobchip-bukkit:1.5.0'
+    //implementation 'me.gamercoder215:mobchip-bukkit:1.6.0-SNAPSHOT'
 	implementation(fileTree(dir: '.', include: ['MobChip-Bukkit-*.jar']))
 }
 shadowJar {
@@ -36,7 +36,7 @@ shadowJar {
     //minimize {
         // Loads classes reflectively
     //    exclude(dependency('net.wesjd:anvilgui:.*'))
-    //    exclude(dependency('com.github.GamerCoder215.MobChip:.*:.*'))
+    //    exclude(dependency('me.gamercoder215:.*:.*'))
     //}
     def path = 'be.isach.ultracosmetics.shaded'
     // XParticle is big and not required so don't shade it.

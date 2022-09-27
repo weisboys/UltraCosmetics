@@ -1,29 +1,17 @@
 package be.isach.ultracosmetics.v1_19_R1;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.toRadians;
-
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.treasurechests.TreasureChestDesign;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.version.IEntityUtil;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.block.Lidded;
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftBoat;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftCreature;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEnderDragon;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftWither;
 import org.bukkit.craftbukkit.v1_19_R1.inventory.CraftItemStack;
-import org.bukkit.entity.Creature;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wither;
 import org.bukkit.util.Vector;
@@ -37,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import java.util.function.Function;
+import java.util.function.Predicate;
 
 import net.minecraft.core.Rotations;
 import net.minecraft.network.protocol.Packet;
@@ -48,14 +36,8 @@ import net.minecraft.network.protocol.game.ClientboundSetEquipmentPacket;
 import net.minecraft.network.protocol.game.ClientboundTeleportEntityPacket;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.decoration.ArmorStand;
-import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.pathfinder.Path;
-import net.minecraft.world.phys.Vec3;
 
 /**
  * @authors RadBuilder, iSach
@@ -72,8 +54,7 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void sendBlizzard(final Player player, Location loc,
-            Function<org.bukkit.entity.Entity,Boolean> canAffectFunc, Vector v) {
+    public void sendBlizzard(final Player player, Location loc, Predicate<org.bukkit.entity.Entity> canAffectFunc, Vector v) {
         final Set<ArmorStand> fakeArmorStands = fakeArmorStandsMap.computeIfAbsent(player, k -> new HashSet<>());
         final Set<org.bukkit.entity.Entity> cooldownJump = cooldownJumpMap.computeIfAbsent(player, k -> new HashSet<>());
 
@@ -106,7 +87,7 @@ public class EntityUtil implements IEntityUtil {
             fakeArmorStands.remove(as);
         }, 20);
         as.getBukkitEntity().getNearbyEntities(0.5, 0.5, 0.5).stream()
-                .filter(ent -> !cooldownJump.contains(ent) && ent != player && canAffectFunc.apply(ent))
+                .filter(ent -> !cooldownJump.contains(ent) && ent != player && canAffectFunc.test(ent))
                 .forEachOrdered(ent -> {
                     MathUtils.applyVelocity(ent, new Vector(0, 1, 0).add(v));
                     cooldownJump.add(ent);
@@ -138,59 +119,8 @@ public class EntityUtil implements IEntityUtil {
     }
 
     @Override
-    public void move(Creature creature, Location loc) {
-        PathfinderMob ec = ((CraftCreature) creature).getHandle();
-        setStepHeight(creature);
-
-        if (loc == null) return;
-
-        ec.yHeadRot = loc.getYaw();
-        Path path = ec.getNavigation().createPath(loc.getX(), loc.getY(), loc.getZ(), 1);
-        ec.getNavigation().moveTo(path, 2);
-    }
-
-    @Override
-    public void moveDragon(Player player, org.bukkit.entity.Entity entity) {
-        EnderDragon ec = ((CraftEnderDragon) entity).getHandle();
-
-        float yaw = player.getLocation().getYaw();
-
-        ec.hurtTime = -1;
-        ec.setXRot(player.getLocation().getPitch());
-        ec.setYRot(yaw - 180);
-
-        double angleInRadians = toRadians(-yaw);
-
-        double x = sin(angleInRadians);
-        double z = cos(angleInRadians);
-
-        Vector v = ec.getBukkitEntity().getLocation().getDirection();
-
-        ec.move(MoverType.SELF, new Vec3(x, v.getY(), z));
-    }
-
-    @Override
     public void setStepHeight(org.bukkit.entity.Entity entity) {
         ((CraftEntity) entity).getHandle().maxUpStep = 1;
-    }
-
-    @Override
-    public void moveShip(Player player, org.bukkit.entity.Entity entity, Vector vector) {
-        Boat ec = ((CraftBoat) entity).getHandle();
-
-        ec.getBukkitEntity().setVelocity(vector);
-
-        ec.setXRot(player.getLocation().getPitch());
-        ec.setYRot(player.getLocation().getYaw() - 180);
-
-        ec.move(MoverType.SELF, new Vec3(1, 0, 0));
-    }
-
-    @Override
-    public void playChestAnimation(Block b, boolean open, TreasureChestDesign design) {
-        BlockState state = b.getState();
-        ((Lidded) state).open();
-        state.update();
     }
 
     @Override

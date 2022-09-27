@@ -1,7 +1,10 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+import static java.lang.Math.toRadians;
+
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -9,9 +12,15 @@ import be.isach.ultracosmetics.run.FallDamageManager;
 
 import org.bukkit.entity.EnderDragonPart;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Mob;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.util.Vector;
+
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.controller.NaturalMoveType;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a enderdragon mount.
@@ -20,16 +29,34 @@ import org.bukkit.event.entity.EntityExplodeEvent;
  * @since 08-17-2015
  */
 public class MountDragon extends Mount {
+    private EntityBrain brain;
 
     public MountDragon(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
 
     @Override
+    protected void setupEntity() {
+        brain = BukkitBrain.getBrain((Mob) entity);
+    }
+
+    @Override
     public void onUpdate() {
         if (SettingsManager.getConfig().getBoolean("Mounts." + getType().getConfigName() + ".Stationary")) return;
 
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().moveDragon(getPlayer(), entity);
+        float yaw = getPlayer().getLocation().getYaw();
+        brain.getBody().setPitch(getPlayer().getLocation().getPitch());
+        brain.getBody().setYaw(yaw - 180);
+
+        double angleInRadians = toRadians(-yaw);
+
+        double x = sin(angleInRadians);
+        double z = cos(angleInRadians);
+
+        Vector v = entity.getLocation().getDirection();
+
+        brain.getController().naturalMoveTo(x, v.getY(), z, NaturalMoveType.SELF);
+
     }
 
     @SuppressWarnings("deprecation")

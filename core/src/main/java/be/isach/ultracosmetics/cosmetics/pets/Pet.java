@@ -26,6 +26,7 @@ import org.bukkit.entity.Mob;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -34,10 +35,15 @@ import org.bukkit.util.Vector;
 
 import com.cryptomorin.xseries.XMaterial;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.memories.Memory;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -47,6 +53,21 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  * @since 03-08-2015
  */
 public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatable {
+
+    private static final Set<Memory<?>> MEMORIES = new HashSet<>();
+
+    static {
+        try {
+            for (Field field : Memory.class.getDeclaredFields()) {
+                if (field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) {
+                    MEMORIES.add((Memory<?>) field.get(null));
+                    Bukkit.getLogger().info("found memory");
+                }
+            }
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * List of items popping out from Pet.
@@ -87,10 +108,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
         brain.getScheduleManager().clear();
+        MEMORIES.forEach(brain::removeMemory);
 
-        // brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
-        // getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
-        // BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
+        BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
 
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
@@ -122,9 +144,9 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
 
         updateName();
 
-        ((LivingEntity) entity).setRemoveWhenFarAway(false);
-        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent", false)) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSilent(entity, true);
+        entity.setRemoveWhenFarAway(false);
+        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            entity.setSilent(true);
         }
 
         entity.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
@@ -158,24 +180,6 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         }
 
         onUpdate();
-
-        if (entity.getWorld() != getPlayer().getWorld()
-                || entity.getLocation().distanceSquared(getPlayer().getLocation()) > 10 * 10) {
-            entity.teleport(getPlayer());
-            return;
-        }
-
-        double distanceSquared = getPlayer().getLocation().distanceSquared(entity.getLocation());
-        if (distanceSquared < 2 * 2) return;
-
-        EntityBrain brain = BukkitBrain.getBrain(entity);
-
-        double speed = 1.15;
-        if (entity.getType() == EntityType.ZOMBIE) {
-            speed *= 1.3;
-        }
-
-        move(brain, getPlayer().getEyeLocation(), speed);
 
     }
 
@@ -243,6 +247,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             drop.remove();
             items.remove(drop);
         }, 5);
+    }
+
+    @EventHandler
+    public void onInteract(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() == getEntity()) event.setCancelled(true);
     }
 
     @EventHandler
