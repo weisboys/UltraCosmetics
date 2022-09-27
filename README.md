@@ -9,93 +9,70 @@
 
 # UltraCosmetics
 
-**Welcome to the UltraCosmetics GitHub repository!** UltraCosmetics is a Spigot
-plugin that adds cosmetics to your Minecraft server!
+**Welcome to the UltraCosmetics GitHub repository!**
+UltraCosmetics is a Spigot plugin that adds cosmetics to your Minecraft server!
 
-In order for everyone to have the best experience possible, we have a few
-guidelines that everyone must follow.
+Please read the [Contributing Guide](.github/CONTRIBUTING.md) before you open an issue or pull request.
 
-- For all things on GitHub, please make sure you follow the
-  [code of conduct](.github/CODE_OF_CONDUCT.md).
-- When creating an issue, please make sure you're using the correct
-  [issue template](https://github.com/datatags/UltraCosmetics/issues/new/choose).
-
-Do you want to fix a bug or add a new feature? Please read the
-[Development section](#-development) in this README.
+Do you want to fix a bug or add a new feature?
+Please read the [Development section](#-development) in this README.
 
 ---
 
 ## ✅ Compatibility
 
-UltraCosmetics v3 officially supports the **Spigot** and
-**[Paper](https://papermc.io/) (recommended)**
-server software running the following Minecraft versions:
+UltraCosmetics v3 officially supports the **Spigot** and **[Paper](https://papermc.io/) (recommended)** server software running the following Minecraft versions:
 
 - **1.8.8** to **latest**
 
-For more information please check out the
-[Supported Configurations page](https://github.com/datatags/UltraCosmetics/wiki/Supported-Configurations)
-in the Wiki.
+For more information please check out the [Supported Configurations page](https://github.com/datatags/UltraCosmetics/wiki/Supported-Configurations) in the Wiki.
 
 ## 📥 Download
 
-You can download the latest stable release of UltraCosmetics from our official
-link:
+You can download the latest stable release of UltraCosmetics from our official link:
 
 - [SpigotMC][spigotmc-link]
 
 ### Development Builds
 
-You can find development builds in the **#beta-testing** channel on our
-[Discord server][discord-invite].
+You can find development builds in the **#beta-testing** channel on our [Discord server][discord-invite].
 
 > **Warning**
 > Do not use any unofficial downloads/mirrors!
 
 ## 📖 Documentation
 
-Read the [Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide)
-and check out the [Wiki][wiki-link].
+Read the [Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide) and check out the [Wiki][wiki-link].
 
 ## 🐛 Report a Bug
 
-Please use the [Issues page](https://github.com/datatags/UltraCosmetics/issues)
-on GitHub to report a bug.
+Please use the [Issues page](https://github.com/datatags/UltraCosmetics/issues) on GitHub to report a bug.
 
-When creating an issue, please make sure you're using the bug report issue
-template!
+When creating an issue, please make sure you're using the bug report issue template!
 
 ## 🌍 Translations
 
-Supported languages: **English, Spanish, German, Chinese Simplified**
-**and [more][crowdin-link].**
+Supported languages: **English, Spanish, German, Chinese Simplified and [more][crowdin-link].**
 
-Do you speak multiple languages? You can help translate UltraCosmetics on our
-[Crowdin page][crowdin-link]. Contributions to our community translations are
-greatly appreciated!
+Do you speak multiple languages?
+You can help translate UltraCosmetics on our [Crowdin page][crowdin-link].
+Contributions to our community translations are greatly appreciated!
 
-If your language isn't listed or doesn't have an active proofreader, please let
-us know on our [Discord server][discord-invite].
+If your language isn't listed or doesn't have an active proofreader, please let us know on our [Discord server][discord-invite].
 
 ## ❓ Support
 
 For questions and support please visit our [Discord server][discord-invite].
-The Issues page of this repository is **exclusively** for bug reports and
-feature requests.
+The Issues page of this repository is **exclusively** for bug reports and feature requests.
 
 ## 💻 Development
 
 [![CI Status](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml)
 [![CodeQL Status](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml)
 
-When contributing, please make sure you check out the
-[contribution guidelines](.github/CONTRIBUTING.md).
+When contributing, please make sure you check out the [contribution guidelines](.github/CONTRIBUTING.md).
 
-If you're looking to compile the project yourself, please check out the
-[compiling documentation](COMPILING.md).
-
-When submitting a pull request, please make sure you're using the
-[pull request template](.github/PULL_REQUEST_TEMPLATE.md).
+If you're looking to compile the project yourself, please check out the [compiling documentation](COMPILING.md).
 
 ## 📄 License
 
