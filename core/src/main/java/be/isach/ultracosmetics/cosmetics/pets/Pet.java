@@ -35,15 +35,10 @@ import org.bukkit.util.Vector;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.memories.Memory;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -53,21 +48,6 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  * @since 03-08-2015
  */
 public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatable {
-
-    private static final Set<Memory<?>> MEMORIES = new HashSet<>();
-
-    static {
-        try {
-            for (Field field : Memory.class.getDeclaredFields()) {
-                if (field.getModifiers() == (Modifier.PUBLIC | Modifier.STATIC | Modifier.FINAL)) {
-                    MEMORIES.add((Memory<?>) field.get(null));
-                    Bukkit.getLogger().info("found memory");
-                }
-            }
-        } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * List of items popping out from Pet.
@@ -104,16 +84,6 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
 
         entity = spawnEntity();
 
-        EntityBrain brain = BukkitBrain.getBrain(entity);
-        brain.getGoalAI().clear();
-        brain.getTargetAI().clear();
-        brain.getScheduleManager().clear();
-        MEMORIES.forEach(brain::removeMemory);
-
-        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
-        getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
-        BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
-
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
             if (SettingsManager.getConfig().getBoolean("Pets-Are-Babies")) {
@@ -142,6 +112,9 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             getEntity().setCustomNameVisible(true);
         }
 
+        // Must run AFTER setting the entity to a baby
+        clearPathfinders();
+
         updateName();
 
         entity.setRemoveWhenFarAway(false);
@@ -151,6 +124,15 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
 
         entity.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
         setupEntity();
+    }
+
+    private void clearPathfinders() {
+        EntityBrain brain = BukkitBrain.getBrain(entity);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
+        brain.getScheduleManager().clear();
+
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
     }
 
     @Override
