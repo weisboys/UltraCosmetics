@@ -183,6 +183,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class); */
         case v1_12:
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
+            new PetType("Illusioner", XMaterial.COMMAND_BLOCK, EntityType.ILLUSIONER, PetIllusioner.class);
         case v1_11:
             new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
             /* Vex disabled because its just not following the player at all (Besides teleport) */
