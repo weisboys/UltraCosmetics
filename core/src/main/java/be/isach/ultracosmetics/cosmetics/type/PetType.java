@@ -157,6 +157,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Strider", XMaterial.WARPED_FUNGUS, EntityType.STRIDER, PetStrider.class);
             new PetType("Hoglin", XMaterial.COOKED_PORKCHOP, EntityType.HOGLIN, PetHoglin.class);
             new PetType("PiglinBrute", XMaterial.GOLDEN_AXE, EntityType.PIGLIN_BRUTE, PetPiglinBrute.class);
+            new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, EntityType.ZOGLIN, PetZoglin.class);
         case v1_15:
             new PetType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, PetBee.class);
         case v1_14:
