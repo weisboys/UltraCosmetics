@@ -137,6 +137,7 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Guardian", XMaterial.PRISMARINE_SHARD, EntityType.GUARDIAN, PetGuardian.class);
         /* Magma Cube disabled because its just constantly jumping in one direction instead of following the player */
         /* new PetType("MagmaCube", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, PetMagmaCube.class); */
+        new PetType("Witch", XMaterial.POTION, EntityType.WITCH, PetWitch.class);
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
