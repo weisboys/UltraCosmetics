@@ -695,6 +695,10 @@ Pets:
     menu-name: '&8&lStray'
     entity-displayname: '&l%playername%''s Stray'
     Description: '&7&oA freezing cold Skeleton!'
+  Vindicator:
+    menu-name: '&7&lVindicator'
+    entity-displayname: '&l%playername%''s Vindicator'
+    Description: '&7&oDon''t underestimate their strength!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
