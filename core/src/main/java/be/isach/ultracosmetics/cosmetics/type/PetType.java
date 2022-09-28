@@ -186,6 +186,8 @@ public final class PetType extends CosmeticEntType<Pet> {
         case v1_10:
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
             new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
+        case v1_9:
+            new PetType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER, PetShulker.class);
         default:
             break;
         }
