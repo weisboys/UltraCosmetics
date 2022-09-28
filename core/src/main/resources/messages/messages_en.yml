@@ -719,6 +719,10 @@ Pets:
     menu-name: '&2&lZombie Horse'
     entity-displayname: '&l%playername%''s Zombie Horse'
     Description: '&7&oThe rarest Horse in Minecraft!'
+  Illusioner:
+    menu-name: '&1&lIllusioner'
+    entity-displayname: '&l%playername%''s Illusioner'
+    Description: '&7&oOnly spawnable with commands!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
