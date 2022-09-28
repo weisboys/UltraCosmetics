@@ -691,6 +691,10 @@ Pets:
     menu-name: '&5&lShulker'
     entity-displayname: '&l%playername%''s Shulker'
     Description: '&7&oLikes to hide!'
+  Stray:
+    menu-name: '&8&lStray'
+    entity-displayname: '&l%playername%''s Stray'
+    Description: '&7&oA freezing cold Skeleton!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
