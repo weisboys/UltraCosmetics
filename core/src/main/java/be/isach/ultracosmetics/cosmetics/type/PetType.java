@@ -183,6 +183,7 @@ public final class PetType extends CosmeticEntType<Pet> {
             /* Vex disabled because its just not following the player at all (Besides teleport) */
             /* new PetType("Vex", XMaterial.IRON_SWORD, "&7&oYAAHH Ehehhehe!", EntityType.VEX, PetVex.class); */
             new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, PetEvoker.class);
+            new PetType("Vindicator", XMaterial.IRON_AXE, EntityType.VINDICATOR, PetVindicator.class);
         case v1_10:
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
             new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
