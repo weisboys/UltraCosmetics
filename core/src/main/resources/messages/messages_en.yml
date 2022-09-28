@@ -699,6 +699,10 @@ Pets:
     menu-name: '&7&lVindicator'
     entity-displayname: '&l%playername%''s Vindicator'
     Description: '&7&oDon''t underestimate their strength!'
+  Witch:
+    menu-name: '&5&lWitch'
+    entity-displayname: '&l%playername%''s Witch'
+    Description: '&7&oLoves black Cats!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
