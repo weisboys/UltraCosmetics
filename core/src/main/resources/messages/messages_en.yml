@@ -626,7 +626,7 @@ Pets:
   Dolphin:
     menu-name: '&b&lDolphin'
     entity-displayname: '&l%playername%''s Dolphin'
-    Description: '&7&oTODO'
+    Description: '&7&oThe happiest creature of the seas!'
   Spider:
     menu-name: '&8&lSpider'
     entity-displayname: '&l%playername%''s Spider'
@@ -650,7 +650,7 @@ Pets:
   Evoker:
     menu-name: '&7&lEvoker'
     entity-displayname: '&l%playername%''s Evoker'
-    Description: '&7&oTODO!'
+    Description: '&7&oSummons Vexes for a living!'
   Ghast:
     menu-name: '&f&lGhast'
     entity-displayname: '&l%playername%''s Ghast'
