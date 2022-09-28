@@ -703,6 +703,10 @@ Pets:
     menu-name: '&5&lWitch'
     entity-displayname: '&l%playername%''s Witch'
     Description: '&7&oLoves black Cats!'
+  WitherSkeleton:
+    menu-name: '&8&lWither Skeleton'
+    entity-displayname: '&l%playername%''s Wither Skeleton'
+    Description: '&7&oThe reason why Looting exists.'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
