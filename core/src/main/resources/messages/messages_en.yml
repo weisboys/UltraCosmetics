@@ -707,6 +707,10 @@ Pets:
     menu-name: '&8&lWither Skeleton'
     entity-displayname: '&l%playername%''s Wither Skeleton'
     Description: '&7&oThe reason why Looting exists.'
+  Zoglin:
+    menu-name: '&c&lZoglin'
+    entity-displayname: '&l%playername%''s Zoglin'
+    Description: '&7&oA zombified Hoglin!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
