@@ -711,6 +711,10 @@ Pets:
     menu-name: '&c&lZoglin'
     entity-displayname: '&l%playername%''s Zoglin'
     Description: '&7&oA zombified Hoglin!'
+  ZombieVillager:
+    menu-name: '&2&lZombie Villager'
+    entity-displayname: '&l%playername%''s Zombie Villager'
+    Description: '&7&oA Villager Trader''s dream!'
   Equip: '%prefix% &9You spawned %petname%'
   Unequip: '%prefix% &9You despawned %petname%'
 Morphs:
