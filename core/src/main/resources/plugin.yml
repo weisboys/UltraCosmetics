@@ -1,6 +1,6 @@
 name: UltraCosmetics
 version: @VERSION@
-author: iSach
+authors: ['iSach', 'Datatags', 'Chris6ix', 'dennishzg', 'DartPower', 'RadBuilder', 'David Duarte', 'Matthew Yu', 'BananaCNetwork', 'MinusKube'] 
 load: POSTWORLD
 main: be.isach.ultracosmetics.UltraCosmetics
 api-version: 1.13
