@@ -23,6 +23,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -39,6 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -133,6 +135,7 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         brain.getScheduleManager().clear();
 
         brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        brain.getGoalAI().put(new PathfinderLookAtEntity<>(entity, Player.class), 1);
     }
 
     @Override

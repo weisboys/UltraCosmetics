@@ -122,22 +122,21 @@ public class UltraCosmeticsData {
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
         }
 
-        versionManager = new VersionManager(serverVersion);
         try {
-            versionManager.load();
+            versionManager = new VersionManager(serverVersion);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             logger.write("No module found for " + serverVersion + "! UC will now be disabled.");
             ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
-        if (versionManager.getModule().enable()) {
-            logger.write("Module initialized");
-            return true;
+        if (!versionManager.getModule().enable()) {
+            logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
+            ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
+            return false;
         }
-        logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
-        ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
-        return false;
+        logger.write("Module initialized");
+        return true;
     }
 
     /**
