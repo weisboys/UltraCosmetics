@@ -231,7 +231,8 @@ public class UltraCosmetics extends JavaPlugin {
         // Beginning of boot log. basic informations.
         getSmartLogger().write("-------------------------------------------------------------------");
         getSmartLogger().write("Thanks for using UltraCosmetics!");
-        getSmartLogger().write("Plugin by Datatags. (Original Author: iSach)");
+        getSmartLogger().write("Plugin by Datatags.");
+        getSmartLogger().write("Original Author: iSach");
         getSmartLogger().write("Link: https://bit.ly/UltraCosmetics");
 
         // Initialize NMS Module
