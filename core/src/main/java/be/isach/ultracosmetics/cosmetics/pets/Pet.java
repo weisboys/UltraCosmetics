@@ -8,13 +8,13 @@ import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
@@ -22,9 +22,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -36,13 +39,18 @@ import com.cryptomorin.xseries.XMaterial;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
+
 /**
  * Represents an instance of a pet summoned by a player.
  *
  * @author iSach
  * @since 03-08-2015
  */
-public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
+public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatable {
+
     /**
      * List of items popping out from Pet.
      */
@@ -54,11 +62,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
     protected ArmorStand armorStand;
 
     /**
-     * Task that forces pets to follow player
-     */
-    protected final APlayerFollower followTask;
-
-    /**
      * The {@link org.bukkit.inventory.ItemStack ItemStack} this pet drops, null if none.
      * Sometimes modified before dropping to change what is dropped
      */
@@ -67,7 +70,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
     public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, ItemStack dropItem) {
         super(owner, petType, ultraCosmetics);
         this.dropItem = dropItem;
-        this.followTask = UltraCosmeticsData.get().getVersionManager().newPlayerFollower(this, getPlayer());
     }
 
     public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, XMaterial dropItem) {
@@ -82,12 +84,7 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
     @Override
     protected void onEquip() {
 
-        // Bypass WorldGuard protection.
-        EntitySpawningManager.setBypass(true);
         entity = spawnEntity();
-        EntitySpawningManager.setBypass(false);
-
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(entity);
 
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
@@ -117,15 +114,28 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
             getEntity().setCustomNameVisible(true);
         }
 
+        // Must run AFTER setting the entity to a baby
+        clearPathfinders();
+
         updateName();
 
-        ((LivingEntity) entity).setRemoveWhenFarAway(false);
-        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent", false)) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSilent(entity, true);
+        entity.setRemoveWhenFarAway(false);
+        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            entity.setSilent(true);
         }
 
         entity.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
         setupEntity();
+    }
+
+    private void clearPathfinders() {
+        EntityBrain brain = BukkitBrain.getBrain(entity);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
+        brain.getScheduleManager().clear();
+
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        brain.getGoalAI().put(new PathfinderLookAtEntity<>(entity, Player.class), 1);
     }
 
     @Override
@@ -149,13 +159,17 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
             return;
         }
 
-        if (getOwner().isOnline() && getOwner().getCurrentPet() == this) {
-            onUpdate();
-
-            followTask.run();
-        } else {
+        if (!getOwner().isOnline() || getOwner().getCurrentPet() != this) {
             clear();
+            return;
         }
+
+        onUpdate();
+
+    }
+
+    protected void move(EntityBrain brain, Location loc, double speed) {
+        brain.getController().moveTo(loc, speed);
     }
 
     @Override
@@ -173,10 +187,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
 
         // Clear items.
         items.clear();
-    }
-
-    public APlayerFollower getFollowTask() {
-        return followTask;
     }
 
     public ArmorStand getArmorStand() {
@@ -205,15 +215,6 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
         }
     }
 
-    /**
-     * This method is overridden by custom entity mobs that don't use the mobs own name tag for the hologram.
-     *
-     * @return the entity that should be renamed
-     */
-    protected Entity getNamedEntity() {
-        return entity;
-    }
-
     @Override
     public void onUpdate() {
         if (SettingsManager.getConfig().getBoolean("Pets-Drop-Items")) {
@@ -231,6 +232,11 @@ public abstract class Pet extends EntityCosmetic<PetType> implements Updatable {
             drop.remove();
             items.remove(drop);
         }, 5);
+    }
+
+    @EventHandler
+    public void onInteract(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() == getEntity()) event.setCancelled(true);
     }
 
     @EventHandler

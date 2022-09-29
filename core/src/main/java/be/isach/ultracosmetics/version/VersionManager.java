@@ -1,55 +1,37 @@
 package be.isach.ultracosmetics.version;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.cosmetics.pets.APlayerFollower;
-import be.isach.ultracosmetics.cosmetics.pets.Pet;
 import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.version.dummy.DummyEntityUtil;
+import be.isach.ultracosmetics.version.dummy.DummyModule;
 
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
-import java.lang.reflect.Constructor;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class VersionManager {
     // Used for knowing whether to use 'new' API methods that were added in 1.13
-    public static boolean IS_VERSION_1_13 = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13);
+    public static final boolean IS_VERSION_1_13 = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13);
     public static final String PACKAGE = "be.isach.ultracosmetics";
-    // TODO: value as Pair or something?
     private static final Map<UUID,Integer> WORLD_MIN_HEIGHTS = new HashMap<>();
     private static final Map<UUID,Integer> WORLD_MAX_HEIGHTS = new HashMap<>();
+
     private final ServerVersion serverVersion;
-    private IModule module;
-    private IEntityUtil entityUtil;
-    private IAncientUtil ancientUtil;
-    private IFireworkFactory fireworkFactory;
-    private Mounts mounts;
-    private IPets pets;
-    private IMorphs morphs;
-    private Constructor<? extends APlayerFollower> playerFollowerConstructor;
+    private final IModule module;
+    private final IEntityUtil entityUtil;
 
-    public VersionManager(ServerVersion serverVersion) {
+    public VersionManager(ServerVersion serverVersion) throws ReflectiveOperationException {
         this.serverVersion = serverVersion;
-    }
-
-    @SuppressWarnings("unchecked")
-    public void load() throws ReflectiveOperationException {
-        if (serverVersion == ServerVersion.v1_8) {
-            ancientUtil = loadModule("AncientUtil");
+        if (serverVersion.isNmsSupported()) {
+            module = loadModule("VersionModule");
+            entityUtil = loadModule("EntityUtil");
         } else {
-            ancientUtil = new APIAncientUtil();
+            module = new DummyModule();
+            entityUtil = new DummyEntityUtil();
         }
-        module = loadModule("Module");
-        entityUtil = loadModule("EntityUtil");
-        mounts = new Mounts();
-        fireworkFactory = loadModule("FireworkFactory");
-        pets = loadModule("Pets");
-        morphs = loadModule("Morphs");
-        playerFollowerConstructor = (Constructor<? extends APlayerFollower>) ReflectionUtils.getConstructor(Class.forName(PACKAGE + "." + serverVersion.getNmsVersion() + ".pets.PlayerFollower"), Pet.class, Player.class);
-        playerFollowerConstructor.setAccessible(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -61,46 +43,8 @@ public class VersionManager {
         return entityUtil;
     }
 
-    public IAncientUtil getAncientUtil() {
-        return ancientUtil;
-    }
-
-    public IFireworkFactory getFireworkFactory() {
-        return fireworkFactory;
-    }
-
-    public Mounts getMounts() {
-        return mounts;
-    }
-
-    public APlayerFollower newPlayerFollower(Pet pet, Player player) {
-        try {
-            return playerFollowerConstructor.newInstance(pet, player);
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public IPets getPets() {
-        return pets;
-    }
-
-    public IMorphs getMorphs() {
-        return morphs;
-    }
-
     public IModule getModule() {
         return module;
-    }
-
-    public IAnvilWrapper getAnvilWrapper() {
-        try {
-            return loadModule("AnvilWrapper");
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     public int getWorldMinHeight(World world) {

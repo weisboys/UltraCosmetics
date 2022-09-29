@@ -3,7 +3,9 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import org.bukkit.Material;
+import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,22 +23,34 @@ public abstract class MountHorse extends Mount {
     @SuppressWarnings("deprecation")
     @Override
     public void setupEntity() {
-        Horse horse = (Horse) entity;
-        // setColor has no effect on variant horses so skip if it's a variant horse
-        if (getVariant() == null) {
-            horse.setColor(getColor());
+        // AbstractHorse does not exist on 1.8.8 so we have to do this weirdness
+        if (entity instanceof Horse) {
+            Horse horse = (Horse) entity;
+            // setColor has no effect on variant horses so skip if it's a variant horse
+            if (getVariant() == null) {
+                horse.setColor(getColor());
+            } else {
+                // Setting variant twice makes it work better with ViaVersion
+                horse.setVariant(getVariant());
+                horse.setVariant(getVariant());
+            }
+            horse.setTamed(true);
+            horse.setDomestication(1);
+            horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+            horse.setJumpStrength(0.7);
         } else {
-            // Setting variant twice makes it work better with ViaVersion
-            horse.setVariant(getVariant());
-            horse.setVariant(getVariant());
+            AbstractHorse horse = (AbstractHorse) entity;
+            horse.setTamed(true);
+            horse.setDomestication(1);
+            horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+            horse.setJumpStrength(0.7);
         }
-        horse.setTamed(true);
-        horse.setDomestication(1);
-        horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
-        horse.setJumpStrength(0.7);
+
     }
 
-    abstract protected Horse.Color getColor();
+    protected Horse.Color getColor() {
+        return null;
+    }
 
     @SuppressWarnings("deprecation")
     protected Horse.Variant getVariant() {

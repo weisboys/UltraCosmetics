@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
@@ -22,6 +21,10 @@ import com.cryptomorin.xseries.XSound;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.behavior.CreatureBehavior;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a explosive sheep gadget summoned by a player.
@@ -49,7 +52,9 @@ public class GadgetExplosiveSheep extends Gadget {
         sheep.setNoDamageTicks(100000);
         sheeps.add(sheep);
 
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(sheep);
+        EntityBrain brain = BukkitBrain.getBrain(sheep);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
 
         new SheepColorRunnable(sheep, 7, true);
     }
@@ -117,8 +122,10 @@ public class GadgetExplosiveSheep extends Gadget {
                 sheep.setBaby();
                 sheep.setAgeLock(true);
                 sheep.setNoDamageTicks(120);
-                UltraCosmeticsData.get().getVersionManager().getEntityUtil().clearPathfinders(sheep);
-                UltraCosmeticsData.get().getVersionManager().getEntityUtil().makePanic(sheep);
+                EntityBrain brain = BukkitBrain.getBrain(sheep);
+                brain.getGoalAI().clear();
+                brain.getTargetAI().clear();
+                ((CreatureBehavior) brain.getBehaviors()).panic();
             }, getUltraCosmetics());
             sheepExplosionRunnable = new BukkitRunnable() {
                 @Override

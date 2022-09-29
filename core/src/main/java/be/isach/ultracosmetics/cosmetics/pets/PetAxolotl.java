@@ -5,7 +5,9 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ServerVersion;
 
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Axolotl.Variant;
 
@@ -24,8 +26,8 @@ public class PetAxolotl extends Pet {
     public void setupEntity() {
         // For some strange reason, an axolotl has a default movement speed of 1.0, which is higher
         // than the default speed of every other entity except dolphin.
-        if (!SettingsManager.getConfig().getBoolean("Pets.Axolotl.Fast")) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((Axolotl) entity, 0.6);
+        if (!SettingsManager.getConfig().getBoolean("Pets.Axolotl.Fast") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.6);
         }
     }
 

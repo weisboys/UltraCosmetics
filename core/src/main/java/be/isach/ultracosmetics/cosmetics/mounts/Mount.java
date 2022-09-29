@@ -11,14 +11,17 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
+import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Ageable;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Slime;
@@ -27,7 +30,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -39,14 +41,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  * Represents an instance of a mount summoned by a player.
  *
  * @author iSach
  * @since 08-03-2015
  */
-public abstract class Mount extends EntityCosmetic<MountType> implements Updatable {
+public abstract class Mount extends EntityCosmetic<MountType,Entity> implements Updatable {
     private BukkitTask mountRegionTask = null;
 
     protected boolean beingRemoved = false;
@@ -63,11 +64,12 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     @Override
     public void onEquip() {
 
-        EntitySpawningManager.setBypass(true);
         entity = spawnEntity();
-        EntitySpawningManager.setBypass(false);
+
         if (entity instanceof LivingEntity) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((LivingEntity)entity, getType().getMovementSpeed());
+            if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+                ((LivingEntity) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(getType().getMovementSpeed());
+            }
             if (entity instanceof Ageable) {
                 ((Ageable) entity).setAdult();
             } else if (entity instanceof Slime) {
@@ -152,23 +154,11 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
 
     @EventHandler
     public void onPlayerToggleSneakEvent(VehicleExitEvent event) {
-        if (event.getVehicle().getType() == EntityType.BOAT
-                || event.getVehicle().getType().toString().contains("MINECART")) {
+        if (event.getVehicle().getType() == EntityType.BOAT || event.getVehicle().getType() == EntityType.MINECART) {
             return;
         }
 
-        String name = getType().getName(getPlayer());;
-
-        if (!beingRemoved
-                && name != null
-                && getOwner() != null
-                && getPlayer() != null
-                && getOwner() != null
-                && event.getVehicle() != null
-                && event.getExited() != null
-                && event.getVehicle().getCustomName() != null
-                && event.getVehicle().getCustomName().equals(name)
-                && event.getExited() == getPlayer()) {
+        if (!beingRemoved && event.getExited() == getPlayer() && event.getVehicle() == entity) {
             beingRemoved = true;
             clear();
         }
@@ -178,11 +168,10 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() == getEntity()) {
             event.setCancelled(true);
+            return;
         }
 
-        if (event.getEntity() == getPlayer()
-                && getOwner().getCurrentMount() != null
-                && getOwner().getCurrentMount().getType() == getType()
+        if (event.getEntity() == getPlayer() && getOwner().getCurrentMount() == this
                 && !getUltraCosmetics().getConfig().getBoolean("allow-damage-to-players-on-mounts")) {
             event.setCancelled(true);
         }
@@ -192,21 +181,6 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() == getEntity() || event.getDamager() == getEntity()) {
             event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void teleportEvent(PlayerTeleportEvent event) {
-        if (getOwner() != null
-                && getPlayer() != null
-                && getOwner().getCurrentMount() == this
-                && event.getPlayer() == getPlayer()) {
-            if ((event.getFrom().getBlockX() != event.getTo().getBlockX()
-                    || event.getFrom().getBlockY() != event.getTo().getBlockY()
-                    || event.getFrom().getBlockZ() != event.getTo().getBlockZ()
-                    || !event.getFrom().getWorld().getName().equalsIgnoreCase(event.getTo().getWorld().getName()))) {
-                //clear();
-            }
         }
     }
 
@@ -226,7 +200,10 @@ public abstract class Mount extends EntityCosmetic<MountType> implements Updatab
     }
 
     private boolean isHorse(EntityType type) {
-        return UltraCosmeticsData.get().getVersionManager().getMounts().isAbstractHorse(type);
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
+            return type == EntityType.HORSE;
+        }
+        return AbstractHorse.class.isAssignableFrom(type.getEntityClass());
     }
 
     @EventHandler

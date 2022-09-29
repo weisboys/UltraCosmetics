@@ -27,6 +27,7 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
@@ -65,10 +66,16 @@ public class MorphType extends CosmeticType<Morph> {
      * Disguise Type of the morph.
      */
     private final DisguiseType disguiseType;
+    private final boolean canUseSkill;
 
     private MorphType(String configName, XMaterial material, DisguiseType disguiseType, Class<? extends Morph> clazz) {
+        this(configName, material, disguiseType, clazz, v -> true);
+    }
+
+    private MorphType(String configName, XMaterial material, DisguiseType disguiseType, Class<? extends Morph> clazz, Predicate<ServerVersion> canUseSkill) {
         super(Category.MORPHS, configName, material, clazz);
         this.disguiseType = disguiseType;
+        this.canUseSkill = canUseSkill.test(UltraCosmeticsData.get().getServerVersion());
 
         VALUES.add(this);
     }
@@ -80,6 +87,10 @@ public class MorphType extends CosmeticType<Morph> {
      */
     public String getSkill() {
         return MessageManager.getMessage("Morphs." + getConfigName() + ".skill");
+    }
+
+    public boolean canUseSkill() {
+        return canUseSkill;
     }
 
     /**
@@ -102,14 +113,14 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Slime", XMaterial.SLIME_BALL, DisguiseType.SLIME, MorphSlime.class);
         new MorphType("Creeper", XMaterial.GUNPOWDER, DisguiseType.CREEPER, MorphCreeper.class);
         new MorphType("Snowman", XMaterial.SNOWBALL, DisguiseType.SNOWMAN, MorphSnowman.class);
-        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, DisguiseType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getMorphs().getElderGuardianClass());
+        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, DisguiseType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass());
         new MorphType("Cow", XMaterial.MILK_BUCKET, DisguiseType.COW, MorphCow.class);
         new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, DisguiseType.MUSHROOM_COW, MorphMooshroom.class);
         new MorphType("Villager", XMaterial.EMERALD, DisguiseType.VILLAGER, MorphVillager.class);
         new MorphType("Witch", XMaterial.POISONOUS_POTATO, DisguiseType.WITCH, MorphWitch.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
-            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, DisguiseType.POLAR_BEAR, MorphPolarBear.class);
+            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, DisguiseType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
         }
 
         if (version.isAtLeast(ServerVersion.v1_11)) {

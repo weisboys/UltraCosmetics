@@ -53,13 +53,11 @@ public class MorphPolarBear extends Morph implements Updatable {
             }
 
             if (BlockUtils.isAir(location.clone().subtract(0, 1, 0).getBlock().getType())) {
-                if (!location.clone().getBlock().getType().toString().contains("SLAB"))
-                    location.add(0, -1, 0);
+                if (!location.clone().getBlock().getType().toString().contains("SLAB")) location.add(0, -1, 0);
             }
 
             for (int i = 0; i < 3; i++) {
-                UltraCosmeticsData.get().getVersionManager().getEntityUtil()
-                        .sendBlizzard(getPlayer(), location, ent -> false, vector);
+                UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendBlizzard(getPlayer(), location, ent -> false, vector);
             }
 
             location.add(vector);
