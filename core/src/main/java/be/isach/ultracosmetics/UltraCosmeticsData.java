@@ -109,7 +109,7 @@ public class UltraCosmeticsData {
 
     protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
-        logger.write("Initializing module " + serverVersion + " (server: " + UltraCosmeticsData.get().getServerVersion().getName() + ")");
+        logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
 
         // mappings check is here so it's grouped with other NMS log messages
         // bigger message so server owners might see it
