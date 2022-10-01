@@ -38,34 +38,33 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
     @SuppressWarnings("deprecation")
     @EventHandler
     public void onItemPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
+        if (!items.remove(event.getItem())) return;
+        event.setCancelled(true);
+
         UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(event.getPlayer());
+
         if (ultraPlayer != null && !ultraPlayer.canBeHitByOtherGadgets()) {
-            event.setCancelled(true);
             return;
         }
 
-        if (items.contains(event.getItem())) {
-            event.setCancelled(true);
-            if (event.getPlayer() == getPlayer() || !canAffect(event.getPlayer())) {
-                return;
-            }
-            items.remove(event.getItem());
-            event.getItem().remove();
-            final Player HIT = event.getPlayer();
-            HIT.playEffect(EntityEffect.HURT);
-            Player hitter = getPlayer();
-            double dX = HIT.getLocation().getX() - hitter.getLocation().getX();
-            double dY = HIT.getLocation().getY() - hitter.getLocation().getY();
-            double dZ = HIT.getLocation().getZ() - hitter.getLocation().getZ();
-            double yaw = Math.atan2(dZ, dX);
-            double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-            double X = Math.sin(pitch) * Math.cos(yaw);
-            double Y = Math.sin(pitch) * Math.sin(yaw);
-            double Z = Math.cos(pitch);
-
-            Vector vector = new Vector(X, Z, Y);
-            MathUtils.applyVelocity(HIT, vector.multiply(2.5D).add(new Vector(0D, 1.45D, 0D)));
+        if (event.getPlayer() == getPlayer() || !canAffect(event.getPlayer())) {
+            return;
         }
+        event.getItem().remove();
+        final Player HIT = event.getPlayer();
+        HIT.playEffect(EntityEffect.HURT);
+        Player hitter = getPlayer();
+        double dX = HIT.getLocation().getX() - hitter.getLocation().getX();
+        double dY = HIT.getLocation().getY() - hitter.getLocation().getY();
+        double dZ = HIT.getLocation().getZ() - hitter.getLocation().getZ();
+        double yaw = Math.atan2(dZ, dX);
+        double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+        double X = Math.sin(pitch) * Math.cos(yaw);
+        double Y = Math.sin(pitch) * Math.sin(yaw);
+        double Z = Math.cos(pitch);
+
+        Vector vector = new Vector(X, Z, Y);
+        MathUtils.applyVelocity(HIT, vector.multiply(2.5D).add(new Vector(0D, 1.45D, 0D)));
     }
 
     @Override

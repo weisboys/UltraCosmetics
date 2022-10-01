@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
@@ -21,7 +22,8 @@ public class PetWarden extends Pet {
 
     @EventHandler
     public void onDarkness(EntityPotionEffectEvent event) {
-        if (event.getEntity() == getPlayer() && event.getCause() == Cause.WARDEN) {
+        if (event.getEntity() == getPlayer() && event.getCause() == Cause.WARDEN
+                && SettingsManager.getConfig().getBoolean(getOptionPath("Block-Effect"))) {
             event.setCancelled(true);
         }
     }

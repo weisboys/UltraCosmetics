@@ -31,7 +31,7 @@ public class PetWither extends Pet {
             // This runs onUpdate because if players walk in range, the bossbar reappears
             // Must call .getBossBar() every time rather than using a variable because
             // creating a bossbar variable makes 1.8 servers unhappy
-            String setting = SettingsManager.getConfig().getString("Pets.Wither.Bossbar", "in range");
+            String setting = SettingsManager.getConfig().getString(getOptionPath("Bossbar"), "in range");
             if (setting.equalsIgnoreCase("owner")) {
                 ((Wither) entity).getBossBar().getPlayers().stream().filter(p -> p != getPlayer()).forEach(p -> ((Wither) entity).getBossBar().removePlayer(p));
             } else if (setting.equalsIgnoreCase("none")) {

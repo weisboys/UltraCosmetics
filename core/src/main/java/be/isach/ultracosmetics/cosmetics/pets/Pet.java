@@ -14,7 +14,6 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
@@ -26,6 +25,7 @@ import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -165,11 +165,6 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         }
 
         onUpdate();
-
-    }
-
-    protected void move(EntityBrain brain, Location loc, double speed) {
-        brain.getController().moveTo(loc, speed);
     }
 
     @Override
@@ -247,6 +242,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getPlayer() == getPlayer()) getEntity().teleport(getPlayer());
+    }
+
+    @EventHandler
+    public void onCombust(EntityCombustEvent event) {
+        if (event.getEntity() == entity) event.setCancelled(true);
     }
 
     @Override

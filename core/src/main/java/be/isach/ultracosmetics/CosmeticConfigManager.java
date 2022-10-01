@@ -29,11 +29,11 @@ import java.util.stream.Collectors;
  * @author iSach
  * @since 08-09-2016
  */
-public class CosmeticManager {
+public class CosmeticConfigManager {
 
     private UltraCosmetics ultraCosmetics;
 
-    public CosmeticManager(UltraCosmetics ultraCosmetics) {
+    public CosmeticConfigManager(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
     }
 
@@ -118,6 +118,14 @@ public class CosmeticManager {
                 "'in range': vanilla behavior, visible to all players in range.",
                 "'owner': only visible to pet owner",
                 "'none': not visible to any players");
+        config.addDefault("Pets.Warden.Block-Effect", true,
+                "Whether the darkness effect is blocked while this pet is equipped.",
+                "Please note that this will also block darkness from real wardens,",
+                "due to Spigot API limitations.");
+        config.addDefault("Pets.ElderGuardian.Block-Effect", true,
+                "Whether the mining fatigue effect is blocked while this pet is equipped.",
+                "Please note that this will also block mining fatigue from real elder guardians,",
+                "due to Spigot API limitations.");
         setupCategory(config, HatType.values());
         setupCategory(config, EmoteType.values());
         setupCategory(config, ParticleEffectType.values());

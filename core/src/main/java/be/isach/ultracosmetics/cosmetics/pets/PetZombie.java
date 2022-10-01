@@ -14,10 +14,4 @@ public class PetZombie extends Pet {
     public PetZombie(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
-
-    @Override
-    public void onUpdate() {
-        super.onUpdate();
-        entity.setFireTicks(0);
-    }
 }
