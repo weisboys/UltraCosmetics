@@ -4,6 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.PufferFish;
+
 /**
  * Represents an instance of a pufferfish pet summoned by a player.
  *
@@ -13,5 +15,17 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 public class PetPufferfish extends Pet {
     public PetPufferfish(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        int value = -1;
+        try {
+            value = Integer.valueOf(customization);
+        } catch (NumberFormatException ignored) {
+        }
+        if (value < 0 || value > 2) return false;
+        ((PufferFish) entity).setPuffState(value);
+        return true;
     }
 }

@@ -23,14 +23,14 @@ import be.isach.ultracosmetics.cosmetics.morphs.MorphWitch;
 import be.isach.ultracosmetics.cosmetics.morphs.MorphWitherSkeleton;
 import be.isach.ultracosmetics.util.ServerVersion;
 
+import org.bukkit.entity.EntityType;
+
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 
 /**
  * Morph types.
@@ -65,14 +65,14 @@ public class MorphType extends CosmeticType<Morph> {
     /**
      * Disguise Type of the morph.
      */
-    private final DisguiseType disguiseType;
+    private final EntityType disguiseType;
     private final boolean canUseSkill;
 
-    private MorphType(String configName, XMaterial material, DisguiseType disguiseType, Class<? extends Morph> clazz) {
+    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz) {
         this(configName, material, disguiseType, clazz, v -> true);
     }
 
-    private MorphType(String configName, XMaterial material, DisguiseType disguiseType, Class<? extends Morph> clazz, Predicate<ServerVersion> canUseSkill) {
+    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz, Predicate<ServerVersion> canUseSkill) {
         super(Category.MORPHS, configName, material, clazz);
         this.disguiseType = disguiseType;
         this.canUseSkill = canUseSkill.test(UltraCosmeticsData.get().getServerVersion());
@@ -98,40 +98,40 @@ public class MorphType extends CosmeticType<Morph> {
      *
      * @return
      */
-    public DisguiseType getDisguiseType() {
+    public EntityType getDisguiseType() {
         return disguiseType;
     }
 
     public static void register() {
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
 
-        new MorphType("Bat", XMaterial.COAL, DisguiseType.BAT, MorphBat.class);
-        new MorphType("Blaze", XMaterial.BLAZE_POWDER, DisguiseType.BLAZE, MorphBlaze.class);
-        new MorphType("Chicken", XMaterial.EGG, DisguiseType.CHICKEN, MorphChicken.class);
-        new MorphType("Pig", XMaterial.PORKCHOP, DisguiseType.PIG, MorphPig.class);
-        new MorphType("Enderman", XMaterial.ENDER_PEARL, DisguiseType.ENDERMAN, MorphEnderman.class);
-        new MorphType("Slime", XMaterial.SLIME_BALL, DisguiseType.SLIME, MorphSlime.class);
-        new MorphType("Creeper", XMaterial.GUNPOWDER, DisguiseType.CREEPER, MorphCreeper.class);
-        new MorphType("Snowman", XMaterial.SNOWBALL, DisguiseType.SNOWMAN, MorphSnowman.class);
-        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, DisguiseType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass());
-        new MorphType("Cow", XMaterial.MILK_BUCKET, DisguiseType.COW, MorphCow.class);
-        new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, DisguiseType.MUSHROOM_COW, MorphMooshroom.class);
-        new MorphType("Villager", XMaterial.EMERALD, DisguiseType.VILLAGER, MorphVillager.class);
-        new MorphType("Witch", XMaterial.POISONOUS_POTATO, DisguiseType.WITCH, MorphWitch.class);
+        new MorphType("Bat", XMaterial.COAL, EntityType.BAT, MorphBat.class);
+        new MorphType("Blaze", XMaterial.BLAZE_POWDER, EntityType.BLAZE, MorphBlaze.class);
+        new MorphType("Chicken", XMaterial.EGG, EntityType.CHICKEN, MorphChicken.class);
+        new MorphType("Pig", XMaterial.PORKCHOP, EntityType.PIG, MorphPig.class);
+        new MorphType("Enderman", XMaterial.ENDER_PEARL, EntityType.ENDERMAN, MorphEnderman.class);
+        new MorphType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, MorphSlime.class);
+        new MorphType("Creeper", XMaterial.GUNPOWDER, EntityType.CREEPER, MorphCreeper.class);
+        new MorphType("Snowman", XMaterial.SNOWBALL, EntityType.SNOWMAN, MorphSnowman.class);
+        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass());
+        new MorphType("Cow", XMaterial.MILK_BUCKET, EntityType.COW, MorphCow.class);
+        new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, EntityType.MUSHROOM_COW, MorphMooshroom.class);
+        new MorphType("Villager", XMaterial.EMERALD, EntityType.VILLAGER, MorphVillager.class);
+        new MorphType("Witch", XMaterial.POISONOUS_POTATO, EntityType.WITCH, MorphWitch.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
-            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, DisguiseType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
+            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
         }
 
         if (version.isAtLeast(ServerVersion.v1_11)) {
-            new MorphType("Llama", XMaterial.RED_WOOL, DisguiseType.LLAMA, MorphLlama.class);
+            new MorphType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, MorphLlama.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_12)) {
-            new MorphType("Parrot", XMaterial.COOKIE, DisguiseType.PARROT, MorphParrot.class);
+            new MorphType("Parrot", XMaterial.COOKIE, EntityType.PARROT, MorphParrot.class);
         }
 
-        new MorphType("Sheep", XMaterial.WHITE_WOOL, DisguiseType.SHEEP, MorphSheep.class);
-        new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, DisguiseType.WITHER_SKELETON, MorphWitherSkeleton.class);
+        new MorphType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, MorphSheep.class);
+        new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER_SKELETON, MorphWitherSkeleton.class);
     }
 }

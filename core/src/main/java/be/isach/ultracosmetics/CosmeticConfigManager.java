@@ -53,7 +53,6 @@ public class CosmeticConfigManager {
         config.addDefault("TreasureChests.Loots.Emotes.Message.message", "%prefix% &6&l%name% found rare %emote%");
         config.addDefault("Ammo-System-For-Gadgets.Show-Ammo-In-Menu-As-Item-Amount", true, "Do you want that in the gadgets menu", "each gadget item has an amount", "corresponding to your ammo.");
 
-        // CALL STATIC BLOCK.
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
         GadgetType.register(version);
         MountType.register(version);
@@ -61,9 +60,7 @@ public class CosmeticConfigManager {
         PetType.register(version);
         HatType.register();
         // SuitType uses a static block
-        if (Category.MORPHS.isEnabled()) {
-            MorphType.register();
-        }
+        MorphType.register();
 
         for (GadgetType gadgetType : GadgetType.values()) {
             setupCosmetic(config, gadgetType);
@@ -143,9 +140,7 @@ public class CosmeticConfigManager {
         HatType.checkEnabled();
         SuitType.checkEnabled();
         EmoteType.checkEnabled();
-        if (Category.MORPHS.isEnabled()) {
-            MorphType.checkEnabled();
-        }
+        MorphType.checkEnabled();
 
         try {
             config.save(ultraCosmetics.getConfigFile());

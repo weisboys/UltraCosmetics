@@ -4,9 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
-import org.bukkit.entity.IronGolem;
-import org.bukkit.inventory.ItemStack;
-
 import com.cryptomorin.xseries.XMaterial;
 
 /**
@@ -22,9 +19,6 @@ public class PetIronGolem extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        ItemStack stack = this.parseCustomItem(customization);
-        if (stack == null) return false;
-        ((IronGolem) entity).getEquipment().setItemInMainHand(stack);
-        return true;
+        return customizeHeldItem(customization);
     }
 }

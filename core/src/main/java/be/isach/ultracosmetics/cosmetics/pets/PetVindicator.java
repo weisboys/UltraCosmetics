@@ -14,4 +14,9 @@ public class PetVindicator extends Pet {
     public PetVindicator(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
+
+    @Override
+    public boolean customize(String customization) {
+        return customizeHeldItem(customization);
+    }
 }

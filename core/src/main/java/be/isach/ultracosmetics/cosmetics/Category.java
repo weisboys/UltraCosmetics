@@ -21,6 +21,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
  */
 public enum Category {
 
-    PETS("Pets", "%petname%", "pets", "pe", () -> PetType.enabled(), () -> UltraCosmeticsData.get().getServerVersion().isNmsSupported()),
+    PETS("Pets", "%petname%", "pets", "pe", () -> PetType.enabled(), () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
     GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", () -> GadgetType.enabled()),
     EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", () -> ParticleEffectType.enabled()),
     MOUNTS("Mounts", "%mountname%", "mounts", "mou", () -> MountType.enabled()),
@@ -92,7 +93,7 @@ public enum Category {
     private final String permission;
     private final String prefix;
     private final Supplier<List<? extends CosmeticType<?>>> enabledFunc;
-    private final Supplier<Boolean> enableCondition;
+    private final BooleanSupplier enableCondition;
 
     /**
      * Category of Cosmetic.
@@ -101,7 +102,7 @@ public enum Category {
      * @param chatPlaceholder
      * @param prefix          TODO
      */
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc, Supplier<Boolean> enableCondition) {
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc, BooleanSupplier enableCondition) {
         this.configPath = configPath;
         this.chatPlaceholder = chatPlaceholder;
         this.permission = permission;
@@ -139,7 +140,7 @@ public enum Category {
      * @return {@code true} if enabled, otherwise {@code false}.
      */
     public boolean isEnabled() {
-        return enableCondition.get() && SettingsManager.getConfig().getBoolean("Categories-Enabled." + configPath);
+        return enableCondition.getAsBoolean() && SettingsManager.getConfig().getBoolean("Categories-Enabled." + configPath);
     }
 
     /**

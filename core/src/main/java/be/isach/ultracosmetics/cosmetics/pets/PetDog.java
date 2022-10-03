@@ -30,14 +30,7 @@ public class PetDog extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        DyeColor color;
-        try {
-            color = DyeColor.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Wolf) entity).setCollarColor(color);
-        fixedColor = true;
-        return true;
+        fixedColor = enumCustomize(DyeColor.class, customization, ((Wolf) entity)::setCollarColor);
+        return fixedColor;
     }
 }

@@ -4,6 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.Donkey;
+
 /**
  * Represents an instance of a donkey pet summoned by a player.
  *
@@ -13,5 +15,11 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 public class PetDonkey extends Pet {
     public PetDonkey(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        ((Donkey) entity).setCarryingChest(customization.equalsIgnoreCase("true"));
+        return true;
     }
 }

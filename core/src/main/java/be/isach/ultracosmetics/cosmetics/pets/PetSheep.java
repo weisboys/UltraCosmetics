@@ -29,13 +29,6 @@ public class PetSheep extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        DyeColor color;
-        try {
-            color = DyeColor.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Sheep) entity).setColor(color);
-        return true;
+        return enumCustomize(DyeColor.class, customization, ((Sheep) entity)::setColor);
     }
 }

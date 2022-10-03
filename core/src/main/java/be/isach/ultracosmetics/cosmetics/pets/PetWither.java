@@ -5,8 +5,8 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ServerVersion;
 
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Wither;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
@@ -26,21 +26,17 @@ public class PetWither extends Pet {
     @Override
     public void onUpdate() {
         // Do not call super.onUpdate(), wither does not drop items.
-        // No bossbar API on 1.8.8
-        if (UltraCosmeticsData.get().getServerVersion() != ServerVersion.v1_8) {
-            // This runs onUpdate because if players walk in range, the bossbar reappears
-            // Must call .getBossBar() every time rather than using a variable because
-            // creating a bossbar variable makes 1.8 servers unhappy
-            String setting = SettingsManager.getConfig().getString(getOptionPath("Bossbar"), "in range");
-            if (setting.equalsIgnoreCase("owner")) {
-                ((Wither) entity).getBossBar().getPlayers().stream().filter(p -> p != getPlayer()).forEach(p -> ((Wither) entity).getBossBar().removePlayer(p));
-            } else if (setting.equalsIgnoreCase("none")) {
-                ((Wither) entity).getBossBar().getPlayers().forEach(p -> ((Wither) entity).getBossBar().removePlayer(p));
-            }
+        // This runs onUpdate because if players walk in range, the bossbar reappears
+        String setting = SettingsManager.getConfig().getString(getOptionPath("Bossbar"), "in range");
+        BossBar bar = ((Wither) entity).getBossBar();
+        if (setting.equalsIgnoreCase("owner")) {
+            bar.getPlayers().stream().filter(p -> p != getPlayer()).forEach(bar::removePlayer);
+        } else if (setting.equalsIgnoreCase("none")) {
+            bar.getPlayers().forEach(bar::removePlayer);
         }
 
         if (!SettingsManager.getConfig().getBoolean("Pets-Are-Babies")) return;
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().resetWitherSize((Wither) getEntity());
+        UltraCosmeticsData.get().getVersionManager().getEntityUtil().resetWitherSize((Wither) entity);
     }
 
     @EventHandler

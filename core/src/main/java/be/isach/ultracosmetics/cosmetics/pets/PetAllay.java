@@ -24,4 +24,9 @@ public class PetAllay extends Pet {
             event.setCancelled(true);
         }
     }
+
+    @Override
+    public boolean customize(String customization) {
+        return customizeHeldItem(customization);
+    }
 }

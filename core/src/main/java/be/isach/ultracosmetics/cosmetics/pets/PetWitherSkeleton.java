@@ -14,4 +14,9 @@ public class PetWitherSkeleton extends Pet {
     public PetWitherSkeleton(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
+
+    @Override
+    public boolean customize(String customization) {
+        return customizeHeldItem(customization);
+    }
 }

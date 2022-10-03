@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.cosmetics.pets;
+package be.isach.ultracosmetics.util;
 
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;

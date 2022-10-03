@@ -33,13 +33,6 @@ public class PetAxolotl extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Variant variant;
-        try {
-            variant = Variant.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Axolotl) entity).setVariant(variant);
-        return true;
+        return enumCustomize(Variant.class, customization, ((Axolotl) entity)::setVariant);
     }
 }

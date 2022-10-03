@@ -20,13 +20,6 @@ public class PetMooshroom extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Variant variant;
-        try {
-            variant = Variant.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((MushroomCow) entity).setVariant(variant);
-        return true;
+        return enumCustomize(Variant.class, customization, ((MushroomCow) entity)::setVariant);
     }
 }

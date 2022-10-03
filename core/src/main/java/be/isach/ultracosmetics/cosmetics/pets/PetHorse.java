@@ -1,10 +1,8 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Horse.Color;
@@ -19,15 +17,6 @@ import org.bukkit.entity.Horse.Style;
 public class PetHorse extends Pet {
     public PetHorse(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public void setupEntity() {
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
-            // if we don't set this, it sometimes spawns a donkey instead of a horse
-            ((Horse) entity).setVariant(org.bukkit.entity.Horse.Variant.HORSE);
-        }
     }
 
     @Override

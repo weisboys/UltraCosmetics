@@ -4,6 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.entity.MagmaCube;
+
 /**
  * Represents an instance of a magma cube pet summoned by a player.
  *
@@ -13,5 +15,22 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 public class PetMagmaCube extends Pet {
     public PetMagmaCube(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public void setupEntity() {
+        ((MagmaCube) entity).setSize(1);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        int size;
+        try {
+            size = Integer.parseInt(customization);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        ((MagmaCube) entity).setSize(size);
+        return true;
     }
 }

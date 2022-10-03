@@ -21,13 +21,6 @@ public class PetKitty extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Type type;
-        try {
-            type = Type.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Cat) entity).setCatType(type);
-        return true;
+        return enumCustomize(Type.class, customization, ((Cat) entity)::setCatType);
     }
 }

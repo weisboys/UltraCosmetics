@@ -12,11 +12,12 @@ import java.util.List;
 
 /**
  * Represents an instance of a Christmas Elf pet summoned by a player.
+ * Extends villager pet so it uses the same customization function.
  *
  * @author iSach
  * @since 11-29-2015
  */
-public class PetChristmasElf extends Pet {
+public class PetChristmasElf extends PetVillager {
     private static final List<ItemStack> PRESENTS = Arrays.asList(
             getSkull("f5612dc7b86d71afc1197301c15fd979e9f39e7b1f41d8f1ebdf8115576e2e"),
             getSkull("6b4cde16a4014de0a7651f6067f12695bb5fed6feaec1e9413ca4271e7c819"),

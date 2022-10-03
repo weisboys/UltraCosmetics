@@ -3,7 +3,12 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
+import org.bukkit.entity.Rabbit;
+import org.bukkit.entity.Rabbit.Type;
+
 import com.cryptomorin.xseries.XMaterial;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,5 +30,10 @@ public class PetEasterBunny extends Pet {
     public void onUpdate() {
         dropItem = EGGS.get(RANDOM.nextInt(EGGS.size())).parseItem();
         super.onUpdate();
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        return enumCustomize(Type.class, customization, ((Rabbit) entity)::setRabbitType);
     }
 }

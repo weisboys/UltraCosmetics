@@ -14,4 +14,9 @@ public class PetZombieVillager extends Pet {
     public PetZombieVillager(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
+
+    @Override
+    public boolean customize(String customization) {
+        return customizeHeldItem(customization);
+    }
 }

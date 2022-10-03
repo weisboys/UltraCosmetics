@@ -4,6 +4,10 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.DyeColor;
+import org.bukkit.entity.TropicalFish;
+import org.bukkit.entity.TropicalFish.Pattern;
+
 /**
  * Represents an instance of a tropical fish pet summoned by a player.
  *
@@ -13,5 +17,26 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 public class PetTropicalFish extends Pet {
     public PetTropicalFish(UltraPlayer owner, PetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+    }
+
+    @Override
+    public boolean customize(String customization) {
+        Pattern pattern;
+        DyeColor bodyColor;
+        DyeColor patternColor;
+        String parts[] = customization.toUpperCase().split(":");
+        if (parts.length != 3) return false;
+        try {
+            pattern = Pattern.valueOf(parts[0]);
+            bodyColor = DyeColor.valueOf(parts[1]);
+            patternColor = DyeColor.valueOf(parts[2]);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        TropicalFish fish = (TropicalFish) entity;
+        fish.setPattern(pattern);
+        fish.setBodyColor(bodyColor);
+        fish.setPatternColor(patternColor);
+        return true;
     }
 }

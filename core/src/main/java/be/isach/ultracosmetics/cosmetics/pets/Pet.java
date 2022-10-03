@@ -9,12 +9,12 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.PetPathfinder;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
-import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -38,6 +38,9 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
@@ -119,6 +122,7 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
 
         updateName();
 
+        entity.getEquipment().clear();
         entity.setRemoveWhenFarAway(false);
         if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
             entity.setSilent(true);
@@ -267,22 +271,50 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         return false;
     }
 
-    protected ItemStack parseCustomItem(String customization) {
+    /**
+     * Generics are confusing...
+     * This function accepts an enum and a string representing a key to the enum.
+     * If the arg is able to be parsed as a value of the enum, func will be called
+     * with the resulting value.
+     *
+     * @param <T>   an enum (i.e. Variant)
+     * @param types the enum class (i.e. Variant.class)
+     * @param arg   the key to search for in the enum
+     * @param func  the function to call upon success
+     * @return true if arg was able to be parsed
+     */
+    protected <T extends Enum<T>> boolean enumCustomize(Class<T> types, String arg, Consumer<T> func) {
+        return valueCustomize(s -> Enum.valueOf(types, s), arg, func);
+    }
+
+    protected <T> boolean valueCustomize(Function<String,T> valueFunc, String arg, Consumer<T> func) {
+        T value;
+        try {
+            value = valueFunc.apply(arg.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        func.accept(value);
+        return true;
+    }
+
+    protected boolean customizeHeldItem(String customization) {
         String[] parts = customization.split(":", 2);
-        Material mat = Material.matchMaterial(parts[0]);
-        if (mat == null) return null;
-        ItemStack stack = new ItemStack(mat);
+        Optional<XMaterial> mat = XMaterial.matchXMaterial(parts[0]);
+        if (!mat.isPresent() || !mat.get().parseMaterial().isItem()) return false;
+        ItemStack stack = mat.get().parseItem();
         if (parts.length > 1) {
             int model;
             try {
                 model = Integer.parseInt(parts[1]);
             } catch (NumberFormatException e) {
-                return null;
+                return false;
             }
             ItemMeta meta = stack.getItemMeta();
             meta.setCustomModelData(model);
             stack.setItemMeta(meta);
         }
-        return stack;
+        entity.getEquipment().setItemInMainHand(stack);
+        return true;
     }
 }
