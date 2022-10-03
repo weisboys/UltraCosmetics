@@ -272,8 +272,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerInteractGhost(PlayerInteractAtEntityEvent event) {
-        if (event.getRightClicked() != null
-                && event.getRightClicked().hasMetadata("C_AD_ArmorStand")) event.setCancelled(true);
+        if (event.getRightClicked().hasMetadata("C_AD_ArmorStand")) event.setCancelled(true);
     }
 
     @EventHandler
