@@ -16,7 +16,7 @@ Cancel: '&c&lCANCELAR'
 Buy-Ammo-Description: '&e&lComprar %amount% %gadgetname% municion &e&lpor $%price%'
 Buy-Cosmetic-Description: '&e&lComprar %gadgetname% &e&lpor $%price%'
 Right-Click-Buy-Ammo: '&7Click Derecho para comprar Municion'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&eClick Derecho para comprar por $%price%'
 Not-Enough-Money: '%prefix% &c&lNo tienes el dinero suficiente!'
 Successful-Purchase: '%prefix% &a&lCompra realizada!'
 Buy-Treasure-Key: '&lComprar una llave del tesoro'
@@ -565,60 +565,60 @@ Pets:
     entity-displayname: '&lAllay de %playername%'
     Description: '&7&oUn nuevo amigo!'
   Cod:
-    menu-name: '&7&lCod'
-    entity-displayname: '&l%playername%''s Cod'
-    Description: '&7&oPrefers water over land!'
+    menu-name: '&7&lBacalao'
+    entity-displayname: '&lBacalao de %playername%'
+    Description: '&7&oPrefiere el agua sobre tierra!'
   Donkey:
-    menu-name: '&7&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
-    Description: '&7&oCan carry all your Stuff!'
+    menu-name: '&7&lBurro'
+    entity-displayname: '&lDoggy de %playername%'
+    Description: '&7&o¡Puedes llevar todas tus cosas!'
   GlowSquid:
-    menu-name: '&3&lGlow Squid'
-    entity-displayname: '&l%playername%''s Glow Squid'
-    Description: '&7&oIt glows!'
+    menu-name: '&3&lCalamar Brillante'
+    entity-displayname: '&lCalamar Brillante de %playername%'
+    Description: '&7&o¡Brilla!'
   Mule:
-    menu-name: '&7&lMule'
-    entity-displayname: '&l%playername%''s Mule'
-    Description: '&7&oBasically a donkey!'
+    menu-name: '&7&lMula'
+    entity-displayname: '&lMula de %playername%'
+    Description: '&7&oBásicamente un burro!'
   Pufferfish:
-    menu-name: '&e&lPufferfish'
-    entity-displayname: '&l%playername%''s Pufferfish'
-    Description: '&7&oDoesn''t like to be touched!'
+    menu-name: '&e&lPez globo'
+    entity-displayname: '&lSilverfish de %playername%'
+    Description: '&7&o¡No le gusta que lo toquen!'
   Ocelot:
-    menu-name: '&e&lOcelot'
-    entity-displayname: '&l%playername%''s Ocelot'
-    Description: '&7&oWatch out...they''re pretty shy!'
+    menu-name: '&e&lOcelote'
+    entity-displayname: '&lOcelote de %playername%'
+    Description: '&7&oCuidado...son muy tímidos!'
   Salmon:
     menu-name: '&c&lSalmon'
-    entity-displayname: '&l%playername%''s Salmon'
-    Description: '&7&oThey''re very tasty!'
+    entity-displayname: '&lSalmón de %playername%'
+    Description: '&7&o¡Son muy sabrosos!'
   SkeletonHorse:
-    menu-name: '&f&lSkeleton Horse'
-    entity-displayname: '&l%playername%''s Skeleton Horse'
-    Description: '&7&oLook out for lightning strikes!'
+    menu-name: '&f&lCaballo Esqueleto'
+    entity-displayname: '&lCaballo Esqueleto de %playername%'
+    Description: '&7&o¡Busca relámpagos!'
   Squid:
-    menu-name: '&0&lSquid'
-    entity-displayname: '&l%playername%''s Squid'
-    Description: '&7&oDon''t scare it or the water turns black!'
+    menu-name: '&0&lCalamar'
+    entity-displayname: '&lCalamar de %playername%'
+    Description: '&7&oNo le asustes, o el agua se teñirá negra!'
   Strider:
-    menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
-    Description: '&7&oWalks over Lava!'
+    menu-name: '&c&lCaminante'
+    entity-displayname: '&lCaminante de lava de %playername%'
+    Description: '&7&oCaminar sobre Lava!'
   Tadpole:
-    menu-name: '&8&lTadpole'
-    entity-displayname: '&l%playername%''s Tadpole'
-    Description: '&7&oWill grow into a Frog!'
+    menu-name: '&8&lRenacuajo'
+    entity-displayname: '&lRenacuajo de %playername%'
+    Description: '&7&o¡Crecerá en una Rana!'
   TropicalFish:
-    menu-name: '&e&lTropical Fish'
-    entity-displayname: '&l%playername%''s Tropical Fish'
-    Description: '&7&oA colorful fish!'
+    menu-name: '&e&Pez Tropical'
+    entity-displayname: '&lPez Tropical de %playername%'
+    Description: '&7&oUn pez de colores!'
   Turtle:
-    menu-name: '&2&lTurtle'
-    entity-displayname: '&l%playername%''s Turtle'
-    Description: '&7&oSome of them get over 150 years old!'
+    menu-name: '&2&lTortuga'
+    entity-displayname: '&lTortuga de %playername%'
+    Description: '&7&oAlgunas de ellas tienen más de 150 años!'
   WanderingTrader:
-    menu-name: '&1&lWandering Trader'
-    entity-displayname: '&l%playername%''s Wandering Trader'
+    menu-name: '&1&lVendedor Ambulante'
+    entity-displayname: '&lVendedor Ambulante de %playername%'
     Description: '&7&oWanders around trying to sell his stuff!'
   CaveSpider:
     menu-name: '&2&lCave Spider'
@@ -633,21 +633,21 @@ Pets:
     entity-displayname: '&l%playername%''s Spider'
     Description: '&7&oYour friendly neighborhood Spider!'
   ZombifiedPiglin:
-    menu-name: '&d&lZombified Piglin'
-    entity-displayname: '&l%playername%''s Zombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    menu-name: '&d&lPiglin Zombificado'
+    entity-displayname: '&lPiglin Zombificado de %playername%'
+    Description: '&7&oAtacalo y todos ellos estarán detrás de tí!'
   Drowned:
     menu-name: '&3&lDrowned'
     entity-displayname: '&l%playername%''s Drowned'
     Description: '&7&oAn underwater Zombie!'
   ElderGuardian:
-    menu-name: '&3&lElder Guardian'
-    entity-displayname: '&l%playername%''s Elder Guardian'
-    Description: '&7&oGuards ancient Temples!'
+    menu-name: '&3&lGuardián Mayor'
+    entity-displayname: '&lElder Guardian de %playername%'
+    Description: '&7&oGuardianes de templos antiguos!'
   Endermite:
-    menu-name: '&5&lEndermite'
-    entity-displayname: '&l%playername%''s Endermite'
-    Description: '&7&oAttracts Endermen!'
+    menu-name: '&5&lEndermita'
+    entity-displayname: '&lEndermita de %playername%'
+    Description: '&7&oAtrae Endermans!'
   Evoker:
     menu-name: '&7&lEvoker'
     entity-displayname: '&l%playername%''s Evoker'
@@ -657,9 +657,9 @@ Pets:
     entity-displayname: '&l%playername%''s Ghast'
     Description: '&7&o*Demonic screaming*'
   Guardian:
-    menu-name: '&3&lGuardian'
-    entity-displayname: '&l%playername%''s Guardian'
-    Description: '&7&oHates Squids!'
+    menu-name: '&3&lGuardián'
+    entity-displayname: '&lGuardián de %playername%'
+    Description: '&7&oOdia a los Calamares!'
   Hoglin:
     menu-name: '&c&lHoglin'
     entity-displayname: '&l%playername%''s Hoglin'
@@ -701,25 +701,25 @@ Pets:
     entity-displayname: '&l%playername%''s Vindicator'
     Description: '&7&oDon''t underestimate their strength!'
   Witch:
-    menu-name: '&5&lWitch'
-    entity-displayname: '&l%playername%''s Witch'
-    Description: '&7&oLoves black Cats!'
+    menu-name: '&5&lBruja'
+    entity-displayname: '&lBruja de %playername%'
+    Description: '&7&oAma los gatos negros!'
   WitherSkeleton:
-    menu-name: '&8&lWither Skeleton'
-    entity-displayname: '&l%playername%''s Wither Skeleton'
-    Description: '&7&oThe reason why Looting exists.'
+    menu-name: '&8&lEsqueleto Wither'
+    entity-displayname: '&lEsqueleto Wither de %playername%'
+    Description: '&7&oLa razón por la que el Saqueo existe.'
   Zoglin:
     menu-name: '&c&lZoglin'
     entity-displayname: '&l%playername%''s Zoglin'
     Description: '&7&oA zombified Hoglin!'
   ZombieVillager:
-    menu-name: '&2&lZombie Villager'
-    entity-displayname: '&l%playername%''s Zombie Villager'
-    Description: '&7&oA Villager Trader''s dream!'
+    menu-name: '&2&lAldeano Zombie'
+    entity-displayname: '&lAldeano Zombie de %playername%'
+    Description: '&7&oEl sueño de un Aldeano Vendedor!'
   ZombieHorse:
-    menu-name: '&2&lZombie Horse'
-    entity-displayname: '&l%playername%''s Zombie Horse'
-    Description: '&7&oThe rarest Horse in Minecraft!'
+    menu-name: '&2&lCaballo Zombie'
+    entity-displayname: '&lCaballo Zombie de %playername%'
+    Description: '&7&o¡El caballo más raro de Minecraft!'
   Illusioner:
     menu-name: '&1&lIllusioner'
     entity-displayname: '&l%playername%''s Illusioner'
@@ -769,12 +769,12 @@ Morphs:
     name: '&8&lEsqueleto Wither'
     skill: '&eSneak&7 para: &aBomba de Hueso'
     Description: |-
-      &7&oJust a regular skeleton...
-      &7&obut from the Nether!
+      &7&oUn esqueleto normal...
+      &7&opero del Nether!
   ElderGuardian:
     name: '&8&lElder Guardian'
     skill: '&eClick izquierdo&7 para: &aLaser'
-    Description: '&7&oBecome an Elder Guardian!!'
+    Description: '&7&oConviértete en un Elder Guardian!!'
   Cow:
     name: '&8&lVaca'
     skill: '&eClick izquierdo&7 para: &aMoo'
@@ -919,8 +919,8 @@ Hats:
     Name: '&c&lStrider'
     Description: '&7&oI hate water!'
   WitherSkeleton:
-    Name: '&7&lWither Skeleton'
-    Description: '&7&oGuardian of the nether fortress'
+    Name: '&7&lEsqueleto Wither'
+    Description: '&7&oGuardián de las Fortalezas del Nether'
   Ghast:
     Name: '&f&lGhast'
     Description: '&7&o*high-pitched scream*'
@@ -928,8 +928,8 @@ Hats:
     Name: '&3&lWarden'
     Description: '&7&oBe quiet...'
   Witch:
-    Name: '&5&lWitch'
-    Description: '&7&oPlease try my potion!'
+    Name: '&5&lBruja'
+    Description: '&7&oPor favor, prueba mi poción!'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
     Description: '&7&oI make arrows.'
@@ -962,7 +962,7 @@ Hats:
     Description: '&7&oYou found him!'
   BlackCat:
     Name: '&2&lBlack Cat'
-    Description: '&7&oA witch''s best friend.'
+    Description: '&7&oEl mejor amigo de una Bruja.'
   Allay:
     Name: '&b&lAllay'
     Description: '&7&oThe little helper'
@@ -1321,4 +1321,4 @@ Region-Disabled: '%prefix% &c&lCosmetics esta desactivado en este area!'
 Region-Disabled-Category: '%prefix% &c&l%category% cosmetics estan desactivados en este area!'
 Disabled-Command-Message: '%prefix% &c&lNo puedes usar este comando cuando tienes ese cosmetics equipado!'
 Not-Allowed-In-Vanish: '%prefix% &c&lNo puedes usar ese comando mientras estes Vanish!'
-Too-Long: Too long, try again
+Too-Long: Demasiado largo, inténtelo de nuevo
