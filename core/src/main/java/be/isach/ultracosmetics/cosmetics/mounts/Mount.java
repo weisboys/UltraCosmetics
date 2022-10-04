@@ -82,7 +82,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
         entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         setupEntity();
 
-        if (!getUltraCosmetics().worldGuardHooked()) return;
+        if (!getUltraCosmetics().getWorldGuardManager().isHooked()) return;
         // Horses trigger PlayerMoveEvent so the standard WG move handler will be sufficient
         if (isHorse(entity.getType())) return;
         mountRegionTask = new MountRegionChecker(getOwner(), getUltraCosmetics()).runTaskTimer(getUltraCosmetics(), 0, 1);
