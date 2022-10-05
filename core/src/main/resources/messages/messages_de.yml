@@ -574,7 +574,7 @@ Pets:
   Donkey:
     menu-name: '&7&lEsel'
     entity-displayname: '&l%playername%''s Esel'
-    Description: '&7&oCan carry all your Stuff!'
+    Description: '&7&oKann alle deine Sachen tragen!'
   GlowSquid:
     menu-name: '&3&lLeuchttintenfisch'
     entity-displayname: '&l%playername%''s Leuchttintenfisch'
@@ -582,7 +582,7 @@ Pets:
   Mule:
     menu-name: '&7&lMaultier'
     entity-displayname: '&l%playername%''s Maultier'
-    Description: '&7&oBasically a donkey!'
+    Description: '&7&oEigentlich ein Esel!'
   Pufferfish:
     menu-name: '&e&lKugelfisch'
     entity-displayname: '&l%playername%''s Kugelfisch'
@@ -594,7 +594,7 @@ Pets:
   Salmon:
     menu-name: '&c&lLachs'
     entity-displayname: '&l%playername%''s Lachs'
-    Description: '&7&oThey''re very tasty!'
+    Description: '&7&oSie sind sehr lecker!'
   SkeletonHorse:
     menu-name: '&f&lSkelettpferd'
     entity-displayname: '&l%playername%''s Skelettpferd'
