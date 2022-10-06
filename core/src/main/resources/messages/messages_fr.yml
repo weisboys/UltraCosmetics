@@ -566,24 +566,24 @@ Pets:
     entity-displayname: '&lAllay de %playername%'
     Description: '&7&oUn nouvel ami !'
   Cod:
-    menu-name: '&7&lCod'
-    entity-displayname: '&l%playername%''s Cod'
-    Description: '&7&oPrefers water over land!'
+    menu-name: '&7&lMorue'
+    entity-displayname: '&lMorue de %playername%'
+    Description: '&7&oPréfère l''eau à la terre!'
   Donkey:
-    menu-name: '&7&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
-    Description: '&7&oCan carry all your Stuff!'
+    menu-name: '&7&lÂne'
+    entity-displayname: '&lÂne de %playername%'
+    Description: '&7&oPeut transporter toutes vos affaires!'
   GlowSquid:
-    menu-name: '&3&lGlow Squid'
-    entity-displayname: '&l%playername%''s Glow Squid'
-    Description: '&7&oIt glows!'
+    menu-name: '&3&lCalamar Lumineux'
+    entity-displayname: '&l Calamar Lumineux de %playername%'
+    Description: '&7&oC''est lumineux!'
   Mule:
     menu-name: '&7&lMule'
-    entity-displayname: '&l%playername%''s Mule'
-    Description: '&7&oBasically a donkey!'
+    entity-displayname: '&lMule de %playername%'
+    Description: '&7&oFondamentalement un âne!'
   Pufferfish:
-    menu-name: '&e&lPufferfish'
-    entity-displayname: '&l%playername%''s Pufferfish'
+    menu-name: '&e&lPoisson-globe'
+    entity-displayname: '&lPoisson-globe de %playername%'
     Description: '&7&oDoesn''t like to be touched!'
   Ocelot:
     menu-name: '&e&lOcelot'
@@ -598,9 +598,9 @@ Pets:
     entity-displayname: '&l%playername%''s Skeleton Horse'
     Description: '&7&oLook out for lightning strikes!'
   Squid:
-    menu-name: '&0&lSquid'
-    entity-displayname: '&l%playername%''s Squid'
-    Description: '&7&oDon''t scare it or the water turns black!'
+    menu-name: '&0&lCalamar'
+    entity-displayname: '&lCalamar de %playername%'
+    Description: '&7&oNe l''effrayez pas ou l''eau devient noire!'
   Strider:
     menu-name: '&c&lStrider'
     entity-displayname: '&l%playername%''s Strider'
