@@ -606,7 +606,7 @@ Pets:
   Strider:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
-    Description: '&7&oWalks over Lava!'
+    Description: '&7&oLäuft über Lava!'
   Tadpole:
     menu-name: '&8&lKaulquappe'
     entity-displayname: '&l%playername%''s Kaulquappe'
@@ -614,7 +614,7 @@ Pets:
   TropicalFish:
     menu-name: '&e&lTropenfisch'
     entity-displayname: '&l%playername%''s Tropenfisch'
-    Description: '&7&oA colorful fish!'
+    Description: '&7&oEin bunter Fisch!'
   Turtle:
     menu-name: '&2&lSchildkröte'
     entity-displayname: '&l%playername%''s Schildkröte'
@@ -626,7 +626,7 @@ Pets:
   CaveSpider:
     menu-name: '&2&lHöhlenspinne'
     entity-displayname: '&l%playername%''s Höhlenspinne'
-    Description: '&7&oA Spider, but poisonous!'
+    Description: '&7&oEine Spinne, aber giftig!'
   Dolphin:
     menu-name: '&b&lDelfin'
     entity-displayname: '&l%playername%''s Delfin'
@@ -642,7 +642,7 @@ Pets:
   Drowned:
     menu-name: '&3&lErtrunkener'
     entity-displayname: '&l%playername%''s Ertrunkener'
-    Description: '&7&oAn underwater Zombie!'
+    Description: '&7&oEin Unterwasser-Zombie!'
   ElderGuardian:
     menu-name: '&3&lGroßer Wächter'
     entity-displayname: '&l%playername%''s Großer Wächter'
@@ -650,7 +650,7 @@ Pets:
   Endermite:
     menu-name: '&5&lEndermite'
     entity-displayname: '&l%playername%''s Endermite'
-    Description: '&7&oAttracts Endermen!'
+    Description: '&7&oZieht Endermen an!'
   Evoker:
     menu-name: '&7&lMagier'
     entity-displayname: '&l%playername%''s Magier'
@@ -658,11 +658,11 @@ Pets:
   Ghast:
     menu-name: '&f&lGhast'
     entity-displayname: '&l%playername%''s Ghast'
-    Description: '&7&o*Demonic screaming*'
+    Description: '&7&o*Dämonisches Gekreische*'
   Guardian:
     menu-name: '&3&lWächter'
     entity-displayname: '&l%playername%''s Wächter'
-    Description: '&7&oHates Squids!'
+    Description: '&7&oHasst Tintenfische!'
   Hoglin:
     menu-name: '&c&lHoglin'
     entity-displayname: '&l%playername%''s Hoglin'
@@ -670,11 +670,11 @@ Pets:
   Husk:
     menu-name: '&e&lWüstenzombie'
     entity-displayname: '&l%playername%''s Wüstenzombie'
-    Description: '&7&oA Zombie, but sandy.'
+    Description: '&7&oEin Zombie, aber sandig.'
   MagmaCube:
     menu-name: '&4&lMagmawürfel'
     entity-displayname: '&l%playername%''s Magmawürfel'
-    Description: '&7&oA very hot cube!'
+    Description: '&7&oEin sehr heißer Würfel!'
   Phantom:
     menu-name: '&1&lPhantom'
     entity-displayname: '&l%playername%''s Phantom'
@@ -706,7 +706,7 @@ Pets:
   Witch:
     menu-name: '&5&lHexe'
     entity-displayname: '&l%playername%''s Hexe'
-    Description: '&7&oLoves black Cats!'
+    Description: '&7&oLiebt schwarze Katzen!'
   WitherSkeleton:
     menu-name: '&8&lWitherskelett'
     entity-displayname: '&l%playername%''s Witherskelett'
