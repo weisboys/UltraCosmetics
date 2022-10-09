@@ -619,26 +619,26 @@ Pets:
   WanderingTrader:
     menu-name: '&1&lVendedor Ambulante'
     entity-displayname: '&lVendedor Ambulante de %playername%'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    Description: '&7&oDeambula tratando de vender cosas!'
   CaveSpider:
-    menu-name: '&2&lCave Spider'
-    entity-displayname: '&l%playername%''s Cave Spider'
-    Description: '&7&oA Spider, but poisonous!'
+    menu-name: '&2&lAraña de Cueva'
+    entity-displayname: '&lAraña de Cueva de %playername%'
+    Description: '&7&oA Araña, pero venenosa!'
   Dolphin:
-    menu-name: '&b&lDolphin'
-    entity-displayname: '&l%playername%''s Dolphin'
-    Description: '&7&oThe happiest creature of the seas!'
+    menu-name: '&b&lDelfin'
+    entity-displayname: '&lDelfin de %playername%'
+    Description: '&7&oLas criaturas mas felices de los mares!'
   Spider:
-    menu-name: '&8&lSpider'
-    entity-displayname: '&l%playername%''s Spider'
-    Description: '&7&oYour friendly neighborhood Spider!'
+    menu-name: '&8&lAraña'
+    entity-displayname: '&lAraña de %playername%'
+    Description: '&7&oTu amiga y vecina araña!'
   ZombifiedPiglin:
     menu-name: '&d&lPiglin Zombificado'
     entity-displayname: '&lPiglin Zombificado de %playername%'
     Description: '&7&oAtacalo y todos ellos estarán detrás de tí!'
   Drowned:
-    menu-name: '&3&lDrowned'
-    entity-displayname: '&l%playername%''s Drowned'
+    menu-name: '&3&lAhogado'
+    entity-displayname: '&lAhogado de %playername%'
     Description: '&7&oAn underwater Zombie!'
   ElderGuardian:
     menu-name: '&3&lGuardián Mayor'
