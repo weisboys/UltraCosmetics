@@ -639,7 +639,7 @@ Pets:
   Drowned:
     menu-name: '&3&lAhogado'
     entity-displayname: '&lAhogado de %playername%'
-    Description: '&7&oAn underwater Zombie!'
+    Description: '&7&oUn Zombie subacuatico!'
   ElderGuardian:
     menu-name: '&3&lGuardián Mayor'
     entity-displayname: '&lElder Guardian de %playername%'
@@ -650,56 +650,56 @@ Pets:
     Description: '&7&oAtrae Endermans!'
   Evoker:
     menu-name: '&7&lEvoker'
-    entity-displayname: '&l%playername%''s Evoker'
-    Description: '&7&oSummons Vexes for a living!'
+    entity-displayname: '&lEvoker de%playername%'
+    Description: '&7&oInvoca Vexes por instinto!'
   Ghast:
     menu-name: '&f&lGhast'
-    entity-displayname: '&l%playername%''s Ghast'
-    Description: '&7&o*Demonic screaming*'
+    entity-displayname: '&lGhast de %playername%'
+    Description: '&7&o*Grito demoniaco*'
   Guardian:
     menu-name: '&3&lGuardián'
     entity-displayname: '&lGuardián de %playername%'
     Description: '&7&oOdia a los Calamares!'
   Hoglin:
     menu-name: '&c&lHoglin'
-    entity-displayname: '&l%playername%''s Hoglin'
-    Description: '&7&oA pig, but in angry.'
+    entity-displayname: '&lHoglin de %playername%'
+    Description: '&7&oUn cerdo, pero enojado.'
   Husk:
     menu-name: '&e&lHusk'
-    entity-displayname: '&l%playername%''s Husk'
-    Description: '&7&oA Zombie, but sandy.'
+    entity-displayname: '&lHusk de %playername%'
+    Description: '&7&oUn Zombie, pero de la arena.'
   MagmaCube:
-    menu-name: '&4&lMagma Cube'
-    entity-displayname: '&l%playername%''s Magma Cube'
-    Description: '&7&oA very hot cube!'
+    menu-name: '&4&lCubo de Magma'
+    entity-displayname: '&lCubo de Magma de %playername%'
+    Description: '&7&oUn cubo muy caliente!'
   Phantom:
     menu-name: '&1&lPhantom'
-    entity-displayname: '&l%playername%''s Phantom'
-    Description: '&7&oHates players that don''t sleep!'
+    entity-displayname: '&lPhantom de %playername%'
+    Description: '&7&oOdia a quienes no duermen!'
   PiglinBrute:
-    menu-name: '&6&lPiglin Brute'
-    entity-displayname: '&l%playername%''s Piglin Brute'
-    Description: '&7&oA pretty buff Piglin!'
+    menu-name: '&6&lPiglin Bruto'
+    entity-displayname: '&lPiglin Bruto de %playername%'
+    Description: '&7&oUn Piglin fuertisimo!'
   Pillager:
     menu-name: '&7&lPillager'
-    entity-displayname: '&l%playername%''s Pillager'
-    Description: '&7&oLikes to pillage Villages!'
+    entity-displayname: '&lPillager de %playername%'
+    Description: '&7&oLe encanta saquear Aldeas!'
   Ravager:
     menu-name: '&8&lRavager'
-    entity-displayname: '&l%playername%''s Ravager'
-    Description: '&7&oA Pillager''s favorite Companion!'
+    entity-displayname: '&lRavager de %playername%'
+    Description: '&7&oEl acompañante favorito de los Pillagers!'
   Shulker:
     menu-name: '&5&lShulker'
-    entity-displayname: '&l%playername%''s Shulker'
-    Description: '&7&oLikes to hide!'
+    entity-displayname: '&lShulker de %playername%'
+    Description: '&7&oLe gusta esconderse!'
   Stray:
     menu-name: '&8&lStray'
-    entity-displayname: '&l%playername%''s Stray'
-    Description: '&7&oA freezing cold Skeleton!'
+    entity-displayname: '&lStray de %playername%'
+    Description: '&7&oUn esqueleto congeladamente frio!'
   Vindicator:
-    menu-name: '&7&lVindicator'
-    entity-displayname: '&l%playername%''s Vindicator'
-    Description: '&7&oDon''t underestimate their strength!'
+    menu-name: '&7&lVindicador'
+    entity-displayname: '&lVindicador de %playername%'
+    Description: '&7&oNo subestimes su fuerza!'
   Witch:
     menu-name: '&5&lBruja'
     entity-displayname: '&lBruja de %playername%'
@@ -710,8 +710,8 @@ Pets:
     Description: '&7&oLa razón por la que el Saqueo existe.'
   Zoglin:
     menu-name: '&c&lZoglin'
-    entity-displayname: '&l%playername%''s Zoglin'
-    Description: '&7&oA zombified Hoglin!'
+    entity-displayname: '&lZoglin de %playername%'
+    Description: '&7&oUn Hoglin Zombificado!'
   ZombieVillager:
     menu-name: '&2&lAldeano Zombie'
     entity-displayname: '&lAldeano Zombie de %playername%'
@@ -722,47 +722,47 @@ Pets:
     Description: '&7&o¡El caballo más raro de Minecraft!'
   Illusioner:
     menu-name: '&1&lIllusioner'
-    entity-displayname: '&l%playername%''s Illusioner'
-    Description: '&7&oOnly spawnable with commands!'
+    entity-displayname: '&lIllusioner de %playername%'
+    Description: '&7&oSpawneable solamente con comandos!'
   Equip: '%prefix% &9Spawneaste %petname%'
   Unequip: '%prefix% &9Despawneaste %petname%'
 Morphs:
   Blaze:
     name: '&6&lBlaze'
-    skill: '&eSneak&7 to: &aFly'
-    Description: '&7&oIt might be hot on there...'
+    skill: '&eAgachate&7 para: &aVolar'
+    Description: '&7&oPuede que esté caliente ahí...'
   Chicken:
     name: '&f&lPollo'
-    skill: '&eSneak&7 to: &aLay eggs'
-    Description: '&7&oBecome a chicken!'
+    skill: '&eAgachate&7 para: &aDropear huevos'
+    Description: '&7&oConviertete en un pollo!'
   Slime:
     name: '&a&lSlime'
-    skill: '&eSneak&7 to: &aBounce'
-    Description: '&7&oSplat splat!'
+    skill: '&eAgachate&7 para: &aSaltar'
+    Description: '&7&oSplat! Splat!'
   Pig:
     name: '&d&lPig'
     skill: '&eColisiona&7 para: &aRebotar a Jugadores'
-    Description: '&7&oMust hold your carrot!'
+    Description: '&7&oSosten tu zanahoria!'
   Enderman:
     name: '&5&lEnderman'
     skill: '&eDoble Salto&7 para: &aTeletransportar'
     Description: |-
-      &7&oI go from there to
-      &7&othere, then you lost me...
+      &7&oVoy de aqui hacia
+      &7&oalla, y ahora... me perdiste...
   Bat:
     name: '&8&lBat'
     skill: '&eDoble Salto&7 para: &aFlap'
-    Description: '&7&oBecome a bat!'
+    Description: '&7&oConviertete en un murcielago!'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eSneak&7 to: &aDetonate'
+    skill: '&eAgachate&7 para: &aDetonar'
     charging: '&a&lCargando: %chargelevel%/100'
     release-to-explode: '&f&lSuelta para explotar!'
-    Description: '&7&oHey What''sssssss up?'
+    Description: '&7&oHey! Que passssssa?'
   Snowman:
     name: '&f&lSnowman'
     skill: '&eClick Izquierdo&7 para: &aTirar bola de nieve'
-    Description: '&7&oBecome Olaf!'
+    Description: '&7&oConviertete en Olaf!'
   Equip: '%prefix% &9Transformado en %morphname%'
   Unequip: '%prefix% &9Removiste tu transformacion de %morphname%'
   WitherSkeleton:
@@ -785,28 +785,28 @@ Morphs:
     Description: '&7&oBaaaa, baa'
   Mooshroom:
     name: '&c&lVaca Mooshroom'
-    skill: '&eSneak&7 to: &aSoup Throw'
+    skill: '&eAgachate&7 para: &aLanzar sopas'
     Description: '&7&oMoooo!'
   Villager:
     name: '&a&lAldeano'
     skill: '&eClick izquierdo&7 para: &aLanzar Esmeraldas'
-    Description: '&7&oHmmmmmmmmm'
+    Description: '&7&oHaaaaaaaaa, Hmmm'
   Witch:
     name: '&5&lBruja'
     skill: '&eClick izquierdo&7 para: &aLanzar Pociones'
     Description: '&7&oMuahahahahaha'
   PolarBear:
-    name: '&f&lPolar Bear'
+    name: '&f&lOso Polar'
     skill: '&eClick izquierdo&7 para: &aTormenta de nieve'
-    Description: '&7&oI prefer cold areas'
+    Description: '&7&oPrefiero zonas frías'
   Llama:
     name: '&3&lLlama'
     skill: '&eClick izquierdo&7 para: &aEscupir'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oNecesitas que lleve algo?'
   Parrot:
     name: '&a&lParrot'
     skill: '&eDouble Jump&7 para: &aFlap'
-    Description: '&7&oPolly want a cracker?'
+    Description: '&7&oPolly quiere una galleta?'
 Hats:
   Equip: '%prefix% &9Equipaste el sombrero: %hatname%'
   Unequip: '%prefix% &9Desequipaste el sombrero: %hatname%'
@@ -839,9 +839,9 @@ Hats:
     Description: '&7&oNo lloren por mi, ya estoy muerto..'
   Crying:
     Name: '&9&lLlorando'
-    Description: '&7&oI cri evrytiem'
+    Description: '&7&oShiempre shoro'
   BigSmile:
-    Name: '&6&lBig Smile'
+    Name: '&6&lGran Sonrisa'
     Description: '&7&oUh, es porque estoy realmente feliz!'
   Wink:
     Name: '&e&lGuiño'
@@ -886,13 +886,13 @@ Hats:
     Name: '&d&lCerdo'
     Description: '&7&oOink Oink!'
   Cow:
-    Name: '&a&lCow'
+    Name: '&a&lVaca'
     Description: '&7&oMoooo!'
   Mooshroom:
-    Name: '&c&lMooshroom'
+    Name: '&c&lVaca Mooshroom'
     Description: '&7&oMoooo!'
   BrownMooshroom:
-    Name: '&b&lBrown Mooshroom'
+    Name: '&b&lVaca Champimarron'
     Description: '&7&oMoooo!'
   Golem:
     Name: '&7&lGolem'
@@ -901,32 +901,32 @@ Hats:
     Name: '&5&lEnderman'
     Description: '&7&oEstoy aca, Ahora estoy alla.'
   EndermanKing:
-    Name: '&d&lEnderman King'
-    Description: '&7&oKing of the endermen'
+    Name: '&d&lEnderman Rey'
+    Description: '&7&oRey de los endermen'
   Slime:
     Name: '&a&lSlime'
-    Description: '&7&oVery slimy'
+    Description: '&7&oMuy slimy'
   Creeper:
     Name: '&2&lCreeper'
-    Description: '&7&oScare your friends!'
+    Description: '&7&oAsusta a tus amigos!'
   Skeleton:
-    Name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    Name: '&7&lEsqueleto'
+    Description: '&7&oMuy buen arquero!'
   Zombie:
     Name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Description: '&7&oCerebrooooos!!!'
   Strider:
     Name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    Description: '&7&oOdio el agua!'
   WitherSkeleton:
     Name: '&7&lEsqueleto Wither'
     Description: '&7&oGuardián de las Fortalezas del Nether'
   Ghast:
     Name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Description: '&7&o*grito extremadamente agudo*'
   Warden:
     Name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    Description: '&7&oSe cauteloso...'
   Witch:
     Name: '&5&lBruja'
     Description: '&7&oPor favor, prueba mi poción!'
