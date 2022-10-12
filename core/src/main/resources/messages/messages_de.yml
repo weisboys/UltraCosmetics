@@ -570,7 +570,7 @@ Pets:
   Cod:
     menu-name: '&7&lKabeljau'
     entity-displayname: '&l%playername%''s Kabeljau'
-    Description: '&7&oBevorzugt Wasser gegenüber dem Land!'
+    Description: '&7&oBevorzugt Wasser gegenüber Land!'
   Donkey:
     menu-name: '&7&lEsel'
     entity-displayname: '&l%playername%''s Esel'
@@ -598,7 +598,7 @@ Pets:
   SkeletonHorse:
     menu-name: '&f&lSkelettpferd'
     entity-displayname: '&l%playername%''s Skelettpferd'
-    Description: '&7&oLook out for lightning strikes!'
+    Description: '&7&oPass auf Blitzeinschläge auf!'
   Squid:
     menu-name: '&0&lTintenfisch'
     entity-displayname: '&l%playername%''s Tintenfisch'
@@ -678,11 +678,11 @@ Pets:
   Phantom:
     menu-name: '&1&lPhantom'
     entity-displayname: '&l%playername%''s Phantom'
-    Description: '&7&oHates players that don''t sleep!'
+    Description: '&7&oHasst Spieler, die nicht schlafen!'
   PiglinBrute:
     menu-name: '&6&lPiglin-Barbar'
     entity-displayname: '&l%playername%''s Piglin-Barbar'
-    Description: '&7&oA pretty buff Piglin!'
+    Description: '&7&oEin ziemlich muskulöser Piglin!'
   Pillager:
     menu-name: '&7&lPlünderer'
     entity-displayname: '&l%playername%''s Plünderer'
@@ -694,15 +694,15 @@ Pets:
   Shulker:
     menu-name: '&5&lShulker'
     entity-displayname: '&l%playername%''s Shulker'
-    Description: '&7&oLikes to hide!'
+    Description: '&7&oVersteckt sich gerne!'
   Stray:
     menu-name: '&8&lEiswanderer'
     entity-displayname: '&l%playername%''s Eiswanderer'
-    Description: '&7&oA freezing cold Skeleton!'
+    Description: '&7&oEin eiskaltes Skelett!'
   Vindicator:
     menu-name: '&7&lDiener'
     entity-displayname: '&l%playername%''s Diener'
-    Description: '&7&oDon''t underestimate their strength!'
+    Description: '&7&oUnterschätze nicht ihre Stärke!'
   Witch:
     menu-name: '&5&lHexe'
     entity-displayname: '&l%playername%''s Hexe'
@@ -710,7 +710,7 @@ Pets:
   WitherSkeleton:
     menu-name: '&8&lWitherskelett'
     entity-displayname: '&l%playername%''s Witherskelett'
-    Description: '&7&oThe reason why Looting exists.'
+    Description: '&7&oDer Grund, warum Plünderungen existieren.'
   Zoglin:
     menu-name: '&c&lZoglin'
     entity-displayname: '&l%playername%''s Zoglin'
@@ -718,7 +718,7 @@ Pets:
   ZombieVillager:
     menu-name: '&2&lZombiedorfbewohner'
     entity-displayname: '&l%playername%''s Zombiedorfbewohner'
-    Description: '&7&oA Villager Trader''s dream!'
+    Description: '&7&oDer Traum eines Händlers!'
   ZombieHorse:
     menu-name: '&2&lZombiepferd'
     entity-displayname: '&l%playername%''s Zombiepferd'
@@ -726,7 +726,7 @@ Pets:
   Illusioner:
     menu-name: '&1&lIllusionist'
     entity-displayname: '&l%playername%''s Illusionist'
-    Description: '&7&oOnly spawnable with commands!'
+    Description: '&7&oNur mit Befehlen spawnbar!'
   Equip: '%prefix% &9Du hast %petname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %petname% &9entfernt'
 Morphs:
