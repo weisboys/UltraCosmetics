@@ -454,9 +454,9 @@ Pets:
     entity-displayname: '&lWither de %playername%'
     Description: '&7&oFaites attention à moi...'
   Pumpling:
-    menu-name: '&6&lPumpling'
-    entity-displayname: '&l%playername%''s Pumpling'
-    Description: '&7&oJust a little floating pumpkin'
+    menu-name: '&6&lCitrouille'
+    entity-displayname: '&lCitrouille de %playername%'
+    Description: '&7&oUne petite citrouille flottante'
   ChristmasElf:
     menu-name: '&a&lElfe de Noël'
     entity-displayname: '&lElfe de Noël de %playername%'
@@ -496,7 +496,7 @@ Pets:
   Vex:
     menu-name: '&7&lVex'
     entity-displayname: '&lVex de %playername%'
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: '&7&oOuuuaaais hahaha!'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&lPanda de %playername%'
@@ -516,7 +516,7 @@ Pets:
   Slime:
     menu-name: '&a&lSlime'
     entity-displayname: '&lSlime de %playername%'
-    Description: '&7&oSquish...'
+    Description: '&7&oPlop...'
   Bee:
     menu-name: '&e&lAbeille'
     entity-displayname: '&lAbeille de %playername%'
@@ -584,27 +584,27 @@ Pets:
   Pufferfish:
     menu-name: '&e&lPoisson-globe'
     entity-displayname: '&lPoisson-globe de %playername%'
-    Description: '&7&oDoesn''t like to be touched!'
+    Description: '&7&oN''aime pas être touché !'
   Ocelot:
     menu-name: '&e&lOcelot'
-    entity-displayname: '&l%playername%''s Ocelot'
-    Description: '&7&oWatch out...they''re pretty shy!'
+    entity-displayname: '&lOcelot de %playername%'
+    Description: '&7&oAttention ! Il est vraiment mignon !'
   Salmon:
-    menu-name: '&c&lSalmon'
-    entity-displayname: '&l%playername%''s Salmon'
-    Description: '&7&oThey''re very tasty!'
+    menu-name: '&c&lSaumon'
+    entity-displayname: '&lSaumon de %playername%'
+    Description: '&7&oIls ont l''air vraiment bon !'
   SkeletonHorse:
-    menu-name: '&f&lSkeleton Horse'
-    entity-displayname: '&l%playername%''s Skeleton Horse'
-    Description: '&7&oLook out for lightning strikes!'
+    menu-name: '&f&lCheval Squelette'
+    entity-displayname: '&lCheval Squelette de %playername%'
+    Description: '&7&oAttention aux coups de foudre !'
   Squid:
     menu-name: '&0&lCalamar'
     entity-displayname: '&lCalamar de %playername%'
     Description: '&7&oNe l''effrayez pas ou l''eau devient noire!'
   Strider:
-    menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
-    Description: '&7&oWalks over Lava!'
+    menu-name: '&c&lArpenteur'
+    entity-displayname: '&lArpenteur de %playername%'
+    Description: '&7&oMarche sur la lave !'
   Tadpole:
     menu-name: '&8&lTadpole'
     entity-displayname: '&l%playername%''s Tadpole'
