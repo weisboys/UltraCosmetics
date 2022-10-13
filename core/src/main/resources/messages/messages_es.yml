@@ -311,8 +311,8 @@ Mounts:
     entity-displayname: '&lSerpiente de %playername%'
     Description: '&7&oCuidado! Puede morder...'
   Dragon:
-    menu-name: '&5&lDragon'
-    entity-displayname: '&lDragon de %playername%'
+    menu-name: '&5&lDragón'
+    entity-displayname: '&lDragón de %playername%'
     Description: '&7&oConviertete en domador de Dragones!'
   SkySquid: [ ]
   HypeCart:
@@ -342,7 +342,12 @@ Mounts:
       &7&oBajo la superficie de la tierra
       &7&oExiste una mitica especie de Serpientes
       &7&oFundidas. Esta sirve a su amo por la eternidad.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: |-
+      &7&oA mysterious cube-shaped mob
+      &7&ocapable of walking straight over lava
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
@@ -804,7 +809,7 @@ Morphs:
     skill: '&eClick izquierdo&7 para: &aEscupir'
     Description: '&7&oNecesitas que lleve algo?'
   Parrot:
-    name: '&a&lParrot'
+    name: '&a&lLoro'
     skill: '&eDouble Jump&7 para: &aFlap'
     Description: '&7&oPolly quiere una galleta?'
 Hats:
@@ -857,7 +862,7 @@ Hats:
     Description: '&7&oDuro como el hierro!'
   Gold:
     Name: '&e&lOro'
-    Description: '&7&oMy precious!'
+    Description: '&7&oMi precioso!'
   Diamond:
     Name: '&b&lDiamantes'
     Description: '&7&oEsto es realmente fuerte!'
@@ -1296,7 +1301,7 @@ Emotes:
     Name: '&6&lCheeky'
     Description: '&7&oTe gusta ser burlon? Este emote es para ti!'
   Love:
-    Name: '&4&lLove'
+    Name: '&4&lAmor'
     Description: '&7&oTienes hermosos ojos, lo sabias?'
   DealWithIt:
     Name: '&7&lDeal With it'
