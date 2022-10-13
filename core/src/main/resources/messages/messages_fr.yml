@@ -343,7 +343,12 @@ Mounts:
       &7&oEn profondeur, sous la surface de la Terre,
       &7&oil existe une espèce mythique de serpents
       &7&oen fusion. Celui-ci te servira éternellement.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: |-
+      &7&oA mysterious cube-shaped mob
+      &7&ocapable of walking straight over lava
   Equip: '%prefix% &9Tu as fait apparaître %mountname%'
   Unequip: '%prefix% &9Tu as fait disparaître %mountname%'
   Cant-Spawn: '%prefix% &c&lLes monstres ne peuvent pas apparaître ici !'
@@ -496,7 +501,7 @@ Pets:
   Vex:
     menu-name: '&7&lVex'
     entity-displayname: '&lVex de %playername%'
-    Description: '&7&oOuuuaaais hahaha!'
+    Description: '&7&oYAAHH Ehehhehe!'
   Panda:
     menu-name: '&a&lPanda'
     entity-displayname: '&lPanda de %playername%'
