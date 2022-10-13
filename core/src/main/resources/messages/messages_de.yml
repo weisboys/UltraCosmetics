@@ -345,7 +345,12 @@ Mounts:
       &7&oexistiert eine mythische Spezies von
       &7&ogeschmolzenen Schlangen.
       &7&oDiese wird dir ewig dienen.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lSchreiter'
+    entity-displayname: '&l%playername%''s Schreiter'
+    Description: |-
+      &7&oEine mysteriöse würfelförmige Kreatur,
+      &7&odie direkt über Lava laufen kann.
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -542,7 +547,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&l%playername%''s Creeper'
-    Description: '&7&oMag es Sachen in die Luft zu sprengen...'
+    Description: '&7&oMag es, Sachen in die Luft zu sprengen...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
@@ -586,7 +591,7 @@ Pets:
   Pufferfish:
     menu-name: '&e&lKugelfisch'
     entity-displayname: '&l%playername%''s Kugelfisch'
-    Description: '&7&oDoesn''t like to be touched!'
+    Description: '&7&oMag es nicht, berührt zu werden!'
   Ocelot:
     menu-name: '&e&lOzelot'
     entity-displayname: '&l%playername%''s Ozelot'
@@ -602,7 +607,7 @@ Pets:
   Squid:
     menu-name: '&0&lTintenfisch'
     entity-displayname: '&l%playername%''s Tintenfisch'
-    Description: '&7&oDon''t scare it or the water turns black!'
+    Description: '&7&oNicht erschrecken, sonst wird das Wasser schwarz!'
   Strider:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
@@ -610,7 +615,7 @@ Pets:
   Tadpole:
     menu-name: '&8&lKaulquappe'
     entity-displayname: '&l%playername%''s Kaulquappe'
-    Description: '&7&oWill grow into a Frog!'
+    Description: '&7&oWird zu einem Frosch werden!'
   TropicalFish:
     menu-name: '&e&lTropenfisch'
     entity-displayname: '&l%playername%''s Tropenfisch'
@@ -622,7 +627,7 @@ Pets:
   WanderingTrader:
     menu-name: '&1&lFahrender Händler'
     entity-displayname: '&l%playername%''s Fahrender Händler'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    Description: '&7&oWandert umher und versucht, seine Sachen zu verkaufen!'
   CaveSpider:
     menu-name: '&2&lHöhlenspinne'
     entity-displayname: '&l%playername%''s Höhlenspinne'
@@ -634,11 +639,11 @@ Pets:
   Spider:
     menu-name: '&8&lSpinne'
     entity-displayname: '&l%playername%''s Spinne'
-    Description: '&7&oYour friendly neighborhood Spider!'
+    Description: '&7&oDeine freundliche Nachbarschaftsspinne!'
   ZombifiedPiglin:
     menu-name: '&d&lZombifizierter Piglin'
     entity-displayname: '&l%playername%''s Zombifizierter Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    Description: '&7&oGreife es an und alle werden hinter dir her sein!'
   Drowned:
     menu-name: '&3&lErtrunkener'
     entity-displayname: '&l%playername%''s Ertrunkener'
@@ -646,7 +651,7 @@ Pets:
   ElderGuardian:
     menu-name: '&3&lGroßer Wächter'
     entity-displayname: '&l%playername%''s Großer Wächter'
-    Description: '&7&oGuards ancient Temples!'
+    Description: '&7&oBewacht antike Tempel!'
   Endermite:
     menu-name: '&5&lEndermite'
     entity-displayname: '&l%playername%''s Endermite'
@@ -654,7 +659,7 @@ Pets:
   Evoker:
     menu-name: '&7&lMagier'
     entity-displayname: '&l%playername%''s Magier'
-    Description: '&7&oSummons Vexes for a living!'
+    Description: '&7&oBeschwört beruflich Plagegeister!'
   Ghast:
     menu-name: '&f&lGhast'
     entity-displayname: '&l%playername%''s Ghast'
@@ -686,11 +691,11 @@ Pets:
   Pillager:
     menu-name: '&7&lPlünderer'
     entity-displayname: '&l%playername%''s Plünderer'
-    Description: '&7&oLikes to pillage Villages!'
+    Description: '&7&oPlündert gerne Dörfer!'
   Ravager:
     menu-name: '&8&lVerwüster'
     entity-displayname: '&l%playername%''s Verwüster'
-    Description: '&7&oA Pillager''s favorite Companion!'
+    Description: '&7&oLieblingsbegleiter des Plünderers!'
   Shulker:
     menu-name: '&5&lShulker'
     entity-displayname: '&l%playername%''s Shulker'
