@@ -260,7 +260,7 @@ Gadgets:
       &7&oJoin in on the festive fun by
       &7&othrowing snow at people!
   PartyPopper:
-    name: '&e&lParty Popper'
+    name: '&e&Konfettitykki'
     Description: |-
       &7&oCelebrate by blasting confetti into
       &7&othe air!
@@ -278,7 +278,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Drugged Horse'
     Description: '&7&oThat is just too much!'
   InfernalHorror:
-    menu-name: '&4&lInfernal Horror'
+    menu-name: '&4&lHelvetin kauhu'
     entity-displayname: '&l%playername%''s Infernal Horror'
     Description: '&7&oThis mount comes directly from... hell!'
   GlacialSteed:
@@ -298,7 +298,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Mount of Water'
     Description: '&7&oThe mount of Poseidon!'
   EcologistHorse:
-    menu-name: '&a&lEcologist Horse'
+    menu-name: '&a&lEkologi hevonen'
     entity-displayname: '&l%playername%''s Ecologist Horse'
     Description: '&7&oBecome an ecologist!'
   NyanSheep:
@@ -343,7 +343,12 @@ Mounts:
       &7&oDeep under the Earth's surface, there
       &7&oexists a mythical species of Molten
       &7&oSnakes. This one will serve you eternally.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: |-
+      &7&oA mysterious cube-shaped mob
+      &7&ocapable of walking straight over lava
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
@@ -530,7 +535,7 @@ Pets:
     entity-displayname: '&l%playername%''s Silverfish'
     Description: '&7&oLurking in the walls...'
   Horse:
-    menu-name: '&a&lHorse'
+    menu-name: '&a&lHevonen'
     entity-displayname: '&l%playername%''s Horse'
     Description: '&7&o*fhrrrrhh*'
   Blaze:
@@ -546,7 +551,7 @@ Pets:
     entity-displayname: '&l%playername%''s Enderman'
     Description: '&7&oDon''t look at it or it will hunt you!'
   Skeleton:
-    menu-name: '&f&lSkeleton'
+    menu-name: '&f&lLuuranko'
     entity-displayname: '&l%playername%''s Skeleton'
     Description: '&7&oWatch out, it will try to shoot you!'
   Zombie:
@@ -554,8 +559,8 @@ Pets:
     entity-displayname: '&l%playername%''s Zombie'
     Description: '&7&oQuick! Hide your Villagers!'
   Frog:
-    menu-name: '&2&lFrog'
-    entity-displayname: '&l%playername%''s Frog'
+    menu-name: '&2&lSammakko'
+    entity-displayname: '&l%playername%''s Sammakko'
     Description: '&7&oDoesn''t like Fireflies!'
   Warden:
     menu-name: '&3&lWarden'
