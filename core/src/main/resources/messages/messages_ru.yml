@@ -343,7 +343,12 @@ Mounts:
       &7&oDeep under the Earth's surface, there
       &7&oexists a mythical species of Molten
       &7&oSnakes. This one will serve you eternally.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: |-
+      &7&oA mysterious cube-shaped mob
+      &7&ocapable of walking straight over lava
   Equip: '%prefix% &9Вы заспавнили %mountname%'
   Unequip: '%prefix% &9Вы зареспавнили %mountname%'
   Cant-Spawn: '%prefix% &c&lМонстры не могут спавниться здесь!'
