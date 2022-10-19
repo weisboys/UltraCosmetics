@@ -1,5 +1,5 @@
-Prefix: '&l&oCosmetics >&r'
-No-Permission: '%prefix% &c&lYou don''t have the permission!'
+Prefix: '&l&oKosmetik >&r'
+No-Permission: '%prefix% &c&lDu har ikke tilladelse!'
 Cosmetic-Disabled: '%prefix% &c&lThis cosmetic is disabled!'
 Invalid-Gadget: '%prefix% &c&lInvalid Gadget!'
 Invalid-Pet: '%prefix% &c&lInvalid Pet!'
