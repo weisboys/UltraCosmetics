@@ -347,7 +347,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
       &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava
+      &7&ocapable of walking straight over lava.
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
