@@ -155,7 +155,7 @@ Gadgets:
       &7&oat people you don't like!
   MelonThrower:
     name: '&a&lАрбузный метатель'
-    Wait-For-Finish: "%prefix% &c&lПодождите вашего предыдущего арбуза, чтобы завершить взрыв\n"
+    Wait-For-Finish: '%prefix% &c&lПодождите вашего предыдущего арбуза, чтобы завершить взрыв!'
     Description: '&7&oВкусно и весело!'
   EtherealPearl:
     name: '&5&lEthereal Pearl'
@@ -178,7 +178,7 @@ Gadgets:
     Description: '&7&oРазноцветная бомба!'
   Chickenator:
     name: '&f&lКуриценатор'
-    Description: "&7&o1.Выстрел! 2.Взрыв! 3.КФС!\n"
+    Description: '&7&o1.Выстрел! 2.Взрыв! 3.КФС!'
   PortalGun:
     name: '&c&lПортальная &9&lпушка'
     No-Block-Range: '%prefix% &c&lNo BLOCKS in range!'
@@ -348,7 +348,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
       &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava
+      &7&ocapable of walking straight over lava.
   Equip: '%prefix% &9Вы заспавнили %mountname%'
   Unequip: '%prefix% &9Вы зареспавнили %mountname%'
   Cant-Spawn: '%prefix% &c&lМонстры не могут спавниться здесь!'
