@@ -114,6 +114,10 @@ public class MorphType extends CosmeticType<Morph> {
             new MorphType("Parrot", XMaterial.COOKIE, EntityType.PARROT, MorphParrot.class);
         }
 
+        if (version.isAtLeast(ServerVersion.v1_15)) {
+            new MorphType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, MorphBee.class);
+        }
+
         if (version.isAtLeast(ServerVersion.v1_17)) {
             new MorphType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, MorphAxolotl.class);
         }

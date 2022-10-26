@@ -818,8 +818,12 @@ Morphs:
     skill: '&eDouble Jump&7 to: &aFlap'
     Description: '&7&oTODO'
   Axolotl:
-    name: '&a&lAxolotl'
+    name: '&5&lAxolotl'
     skill: '&eLeft-Click&7 for cute sounds'
+    Description: '&7&oTODO'
+  Bee:
+    name: '&e&lBee'
+    skill: '&eDouble Jump&7 to: &aFlap'
     Description: '&7&oTODO'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
