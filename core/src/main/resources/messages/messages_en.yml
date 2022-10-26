@@ -816,15 +816,31 @@ Morphs:
   Allay:
     name: '&a&lAllay'
     skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oTODO'
+    Description: '&7&oA new Friend!'
   Axolotl:
     name: '&5&lAxolotl'
     skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oTODO'
+    Description: '&7&oSooo Cute!'
   Bee:
     name: '&e&lBee'
     skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oTODO'
+    Description: '&7&o*bzzzz* *bzzzz*'
+  Cat:
+    name: '&e&lCat'
+    skill: '&eLeft-Click&7 to: &aMeow'
+    Description: '&7&oBasically a tiny Tiger'
+  CaveSpider:
+    name: '&e&lCaveSpider'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oA Spider, but poisonous!'
+  Cod:
+    name: '&e&lCod'
+    skill: '&eTODO'
+    Description: '&7&oPrefers water over land!'
+  Dolphin:
+    name: '&e&lDolphin'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oThe happiest creature of the seas!'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'

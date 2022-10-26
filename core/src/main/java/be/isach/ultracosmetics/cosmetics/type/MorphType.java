@@ -101,6 +101,7 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, EntityType.MUSHROOM_COW, MorphMooshroom.class);
         new MorphType("Villager", XMaterial.EMERALD, EntityType.VILLAGER, MorphVillager.class);
         new MorphType("Witch", XMaterial.POISONOUS_POTATO, EntityType.WITCH, MorphWitch.class);
+        new MorphType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, MorphCaveSpider.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
             new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
@@ -112,6 +113,15 @@ public class MorphType extends CosmeticType<Morph> {
 
         if (version.isAtLeast(ServerVersion.v1_12)) {
             new MorphType("Parrot", XMaterial.COOKIE, EntityType.PARROT, MorphParrot.class);
+        }
+
+        if (version.isAtLeast(ServerVersion.v1_13)) {
+            new MorphType("Cod", XMaterial.COD_BUCKET, EntityType.COD, MorphCod.class);
+            new MorphType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, MorphDolphin.class);
+        }
+
+        if (version.isAtLeast(ServerVersion.v1_14)) {
+            new MorphType("Cat", XMaterial.TROPICAL_FISH, EntityType.CAT, MorphCat.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_15)) {
