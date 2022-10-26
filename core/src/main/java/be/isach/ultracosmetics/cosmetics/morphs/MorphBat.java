@@ -31,7 +31,7 @@ public class MorphBat extends Morph implements PlayerAffectingCosmetic {
     }
 
     @EventHandler
-    public void onPlayerToggleFligh(PlayerToggleFlightEvent event) {
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
         if (event.getPlayer() == getPlayer()
                 && event.getPlayer().getGameMode() != GameMode.CREATIVE
                 && !event.getPlayer().isFlying()) {

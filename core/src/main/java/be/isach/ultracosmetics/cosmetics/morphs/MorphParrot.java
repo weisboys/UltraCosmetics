@@ -5,10 +5,11 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.util.Vector;
+
+import com.cryptomorin.xseries.XSound;
 
 /**
  * Represents an instance of a parrot morph summoned by a player.
@@ -37,7 +38,7 @@ public class MorphParrot extends Morph {
             MathUtils.applyVelocity(getPlayer(), v);
             event.getPlayer().setFlying(false);
             event.setCancelled(true);
-            event.getPlayer().playSound(event.getPlayer().getLocation(), Sound.ENTITY_PARROT_FLY, 0.4f, 1.0f);
+            XSound.ENTITY_PARROT_FLY.play(getPlayer(), 0.4f, 1.0f);
         }
     }
 
