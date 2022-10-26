@@ -18,9 +18,6 @@ import com.cryptomorin.xseries.XSound;
  * @since 25-10-2022
  */
 public class MorphAllay extends Morph {
-
-    private long coolDown = 0;
-
     public MorphAllay(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
    }

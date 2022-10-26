@@ -815,7 +815,11 @@ Morphs:
     Description: '&7&oPolly want a cracker?'
   Allay:
     name: '&a&lAllay'
-    skill: '&eTODO'
+    skill: '&eDouble Jump&7 to: &aFlap'
+    Description: '&7&oTODO'
+  Axolotl:
+    name: '&a&lAxolotl'
+    skill: '&eLeft-Click&7 for cute sounds'
     Description: '&7&oTODO'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
