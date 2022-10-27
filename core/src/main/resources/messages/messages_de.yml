@@ -31,6 +31,7 @@ Your-Keys: '&7&oDeine Schlüssel: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lSchatzschlüssel &e&lfür $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lDu hast gewonnen: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lAlle Plätze sind besetzt, bitte warte und versuche es erneut'
+No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
 Clear:
   Cosmetics: '&c&lKosmetische Items entfernen'
   Gadgets: '&c&lAktuelles Gadget entfernen'
@@ -117,6 +118,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lDiese Position ist nicht am Boden!'
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
+  Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% Munition'
@@ -349,8 +351,8 @@ Mounts:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
     Description: |-
-      &7&oEine mysteriöse würfelförmige Kreatur,
-      &7&odie direkt über Lava laufen kann.
+      &7&oA mysterious cube-shaped mob
+      &7&ocapable of walking straight over lava
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -878,6 +880,9 @@ Hats:
   Squid:
     Name: '&3&lTintenfisch'
     Description: '&7&oBlub Blub!'
+  GlowSquid:
+    Name: '&b&lGlow Squid'
+    Description: '&7&oLight up the ocean!'
   Chicken:
     Name: '&f&lHuhn'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -902,9 +907,18 @@ Hats:
   BrownMooshroom:
     Name: '&b&lBraune Mooshroom'
     Description: '&7&oMuuuh!'
+  Moobloom:
+    Name: '&e&lMoobloom'
+    Description: '&7&oVery rare cow!'
+  ChestnutHorse:
+    Name: '&2&lChestnut Horse'
+    Description: '&7&oDon''t forget the saddle!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
+  CopperGolem:
+    Name: '&6&lCopper Golem'
+    Description: '&7&oMade out of 100% copper.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
@@ -923,6 +937,9 @@ Hats:
   Zombie:
     Name: '&2&lZombie'
     Description: '&7&oGehirne!!!'
+  Drowned:
+    Name: '&3&lDrowned'
+    Description: '&7&oUnderwater zombie'
   Strider:
     Name: '&c&lSchreiter'
     Description: '&7&oIch hasse Wasser!'
@@ -938,6 +955,12 @@ Hats:
   Witch:
     Name: '&5&lHexe'
     Description: '&7&oBitte probiere meinen Trank!'
+  Guardian:
+    Name: '&3&lGuardian'
+    Description: '&7&oProtect the ocean monuments!'
+  ShepherdVillager:
+    Name: '&e&lShepherd Villager'
+    Description: '&7&oThe Lonely Shepherd'
   FletcherVillager:
     Name: '&a&lPfeilmacher'
     Description: '&7&oIch mache Pfeile.'
@@ -959,6 +982,9 @@ Hats:
   Frog:
     Name: '&2&lFrosch'
     Description: '&7&oIsst alles, was ihn stört.'
+  AxolotlPink:
+    Name: '&d&lPink Axolotl'
+    Description: '&7&oThe cutest predator'
   AxolotlBlue:
     Name: '&9&lBlaues Axolotl'
     Description: '&7&oDas süßeste Raubtier'
@@ -977,6 +1003,12 @@ Hats:
   Bat:
     Name: '&5&lFledermaus'
     Description: '&7&oGenieße das Nachtleben.'
+  Glare:
+    Name: '&2&lGlare'
+    Description: '&7&oIt hates the darkness.'
+  Rana:
+    Name: '&a&lRana'
+    Description: '&7&oFroggy hat!'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oDer beste Skin'
@@ -995,6 +1027,24 @@ Hats:
   MCD-NamelessOne:
     Name: '&2&lNamenloser'
     Description: '&7&oMächtiger Nekromant'
+  MCD-StrayKnight:
+    Name: '&7&lStray Knight'
+    Description: '&7&oA lonely knight...'
+  MCD-AncientGuardian:
+    Name: '&5&lAncient Guardian'
+    Description: '&7&oThe oldest guardian'
+  MCD-KeyGolem:
+    Name: '&6&lKey Golem'
+    Description: '&7&oUnlock every door!'
+  MCD-ArchIllager:
+    Name: '&3&lArch Illager'
+    Description: '&7&oLeader of the Illagers'
+  MCD-SunkenSkeleton:
+    Name: '&2&lSunken Skeleton'
+    Description: '&7&oUnderwater skeleton'
+  MCD-TheWildfire:
+    Name: '&4&lThe Wildfire'
+    Description: '&7&oHovering inferno'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -1094,6 +1144,9 @@ Hats:
   GigaChad:
     Name: '&7&lGigaChad'
     Description: '&7&oAkzeptiere die Männlichkeit!'
+  Anubis:
+    Name: '&6&lAnubis'
+    Description: '&7&oAncient Egyptian god'
   Bread:
     Name: '&f&lBrot'
     Description: '&7&oFrisch gebacken'
