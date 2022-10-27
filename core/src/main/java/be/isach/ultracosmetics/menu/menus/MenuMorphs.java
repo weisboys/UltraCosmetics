@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.menu.ClickRunnable;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -55,9 +56,11 @@ public class MenuMorphs extends CosmeticMenu<MorphType> {
         ItemMeta itemMeta = itemStack.getItemMeta();
         List<String> lore = itemMeta.getLore();
         lore.add("");
-        lore.add(cosmeticType.getSkill());
-        lore.add("");
-        itemMeta.setLore(lore);
+        if (cosmeticType.canUseSkill()) {
+            lore.add(cosmeticType.getSkill());
+            lore.add("");
+            itemMeta.setLore(lore);
+        }
         itemStack.setItemMeta(itemMeta);
     }
 

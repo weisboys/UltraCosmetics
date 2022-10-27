@@ -127,8 +127,7 @@ public class PlayerListener implements Listener {
         if (ultraPlayer == null) return;
         // Avoid triggering this when clicking in the inventory
         InventoryType t = event.getPlayer().getOpenInventory().getType();
-        if (t != InventoryType.CRAFTING
-                && t != InventoryType.CREATIVE) {
+        if (t != InventoryType.CRAFTING && t != InventoryType.CREATIVE) {
             return;
         }
         if (ultraPlayer.getCurrentTreasureChest() != null) {

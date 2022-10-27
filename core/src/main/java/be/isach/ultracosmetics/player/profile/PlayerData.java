@@ -1,12 +1,5 @@
 package be.isach.ultracosmetics.player.profile;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.Map.Entry;
-
-import org.bukkit.configuration.ConfigurationSection;
-
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
@@ -19,6 +12,13 @@ import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.mysql.StandardQuery;
 import be.isach.ultracosmetics.mysql.Table;
 
+import org.bukkit.configuration.ConfigurationSection;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.UUID;
+
 public class PlayerData {
     private UUID uuid;
     private int keys;
@@ -29,7 +29,8 @@ public class PlayerData {
     private Map<PetType,String> petNames = new HashMap<>();
     private Map<GadgetType,Integer> ammo = new HashMap<>();
     private Map<Category,CosmeticType<?>> enabledCosmetics = new HashMap<>();
-    private Map<ArmorSlot, SuitType> enabledSuitParts = new HashMap<>();
+    private Map<ArmorSlot,SuitType> enabledSuitParts = new HashMap<>();
+
     public PlayerData(UUID uuid) {
         this.uuid = uuid;
     }
@@ -78,11 +79,11 @@ public class PlayerData {
         this.filterByOwned = filterByOwned;
     }
 
-    public Map<PetType, String> getPetNames() {
+    public Map<PetType,String> getPetNames() {
         return petNames;
     }
 
-    public Map<GadgetType, Integer> getAmmo() {
+    public Map<GadgetType,Integer> getAmmo() {
         return ammo;
     }
 
@@ -228,10 +229,10 @@ public class PlayerData {
         query.set(ProfileKey.MORPH_VIEW.getSqlKey(), morphSelfView);
         query.set(ProfileKey.TREASURE_NOTIFICATION.getSqlKey(), treasureNotifications);
         query.set(ProfileKey.FILTER_OWNED.getSqlKey(), filterByOwned);
-        petNames.forEach((k,v) -> query.set(Table.cleanCosmeticName(k), v));
-        ammo.forEach((k,v) -> query.set(Table.cleanCosmeticName(k), v == null ? 0 : v));
-        enabledCosmetics.forEach((k,v) -> query.set(Table.cleanCategoryName(k), Table.cleanCosmeticName(v)));
-        enabledSuitParts.forEach((k,v) -> query.set(Table.cleanCategoryName(Category.SUITS) + "_" + k.toString().toLowerCase(), Table.cleanCosmeticName(v)));
+        petNames.forEach((k, v) -> query.set(Table.cleanCosmeticName(k), v));
+        ammo.forEach((k, v) -> query.set(Table.cleanCosmeticName(k), v == null ? 0 : v));
+        enabledCosmetics.forEach((k, v) -> query.set(Table.cleanCategoryName(k), Table.cleanCosmeticName(v)));
+        enabledSuitParts.forEach((k, v) -> query.set(Table.cleanCategoryName(Category.SUITS) + "_" + k.toString().toLowerCase(), Table.cleanCosmeticName(v)));
         query.execute();
     }
 }

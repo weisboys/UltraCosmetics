@@ -16,8 +16,10 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
+import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
@@ -148,21 +150,30 @@ public class GadgetTrampoline extends Gadget implements Updatable {
 
     private void setToRestore(Block block, XMaterial material) {
         trampoline.add(block.getState());
-        XBlock.setType(block, material);
+        XBlock.setType(block, material, material != XMaterial.LADDER);
     }
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        if (cuboid != null && running && cuboid.contains(event.getBlock())) event.setCancelled(true);
-        if (cuboid != null && running && (event.getBlock().getLocation().equals(center.getBlock().getRelative(-3, 0, 0).getLocation())
-                || event.getBlock().getLocation().equals(center.getBlock().getRelative(-3, 1, 0).getLocation()))) event.setCancelled(true);
+        onBlockEvent(event);
     }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        if (cuboid != null && running && cuboid.contains(event.getBlock())) event.setCancelled(true);
-        if (cuboid != null && running && (event.getBlock().getLocation().equals(center.getBlock().getRelative(-3, 0, 0).getLocation())
-                || event.getBlock().getLocation().equals(center.getBlock().getRelative(-3, 1, 0).getLocation()))) event.setCancelled(true);
+        onBlockEvent(event);
+    }
+
+    private void onBlockEvent(BlockEvent event) {
+        if (cuboid == null || !running) return;
+        Block block = event.getBlock();
+        if (cuboid.contains(block)) {
+            ((Cancellable) event).setCancelled(true);
+            return;
+        }
+        Location ladder = center.clone().add(-3, 0, 0);
+        if (block.getLocation().equals(ladder) || block.getLocation().equals(ladder.clone().add(0, 1, 0))) {
+            ((Cancellable) event).setCancelled(true);
+        }
     }
 
     private void clearBlocks() {
