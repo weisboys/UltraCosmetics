@@ -93,7 +93,8 @@ public class TreasuryHook implements EconomyHook {
 
             @Override
             public void succeed(Boolean t) {
-                EconomySubscriber<PlayerAccount> accountSubscriber = new EconomySubscriber<>() {
+                @SuppressWarnings("unused")
+                EconomySubscriber<PlayerAccount> accountSubscriber = new EconomySubscriber<PlayerAccount>() {
 
                     @Override
                     public void succeed(@NotNull PlayerAccount t) {
