@@ -214,7 +214,7 @@ public class TreasureRandomizer {
         int max = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max");
         int money = randomInRange(min, max);
         name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "");
-        UltraCosmeticsData.get().getPlugin().getEconomyHandler().deposit(player, money);
+        UltraCosmeticsData.get().getPlugin().getEconomyHandler().getHook().deposit(player, money);
         itemStack = XMaterial.SUNFLOWER.parseItem();
         if (money > 3 * SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max") / 4) {
             spawnRandomFirework(loc);

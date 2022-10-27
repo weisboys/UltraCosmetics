@@ -315,13 +315,6 @@ public class UltraPlayer {
         return true;
     }
 
-    public double getBalance() {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy()) {
-            return ultraCosmetics.getEconomyHandler().balance(getBukkitPlayer());
-        }
-        return 0;
-    }
-
     public boolean hasPermission(String permission) {
         return getBukkitPlayer().hasPermission(permission);
     }

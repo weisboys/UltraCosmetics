@@ -38,13 +38,13 @@ public class MenuPurchase extends Menu {
         ClickRunnable purchaseClickRunnable = data -> {
             player.getBukkitPlayer().closeInventory();
             EconomyHandler eh = getUltraCosmetics().getEconomyHandler();
-            if (eh.balance(player.getBukkitPlayer()) < purchaseData.getPrice()) {
+            eh.getHook().withdraw(player.getBukkitPlayer(), purchaseData.getPrice(), () -> {
+                player.sendMessage(MessageManager.getMessage("Successful-Purchase"));
+                purchaseData.getOnPurchase().run();
+            }, () -> {
                 player.sendMessage(MessageManager.getMessage("Not-Enough-Money"));
-                return;
-            }
-            eh.withdraw(player.getBukkitPlayer(), purchaseData.getPrice());
-            player.sendMessage(MessageManager.getMessage("Successful-Purchase"));
-            purchaseData.getOnPurchase().run();
+            });
+
         };
         for (int i = 27; i < 30; i++) {
             for (int j = i; j <= i + 18; j += 9) {

@@ -1,11 +1,12 @@
 package be.isach.ultracosmetics.economy;
 
-import be.isach.ultracosmetics.UltraCosmetics;
-
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import net.milkbowl.vault.economy.Economy;
+import net.milkbowl.vault.economy.EconomyResponse;
+import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
 
 /**
  * Vault economy hook.
@@ -14,32 +15,27 @@ import net.milkbowl.vault.economy.Economy;
  * @since 2.5
  */
 public class VaultHook implements EconomyHook {
-    private Economy economy = null;
-    private boolean economyEnabled;
+    private final Economy economy;
 
-    public VaultHook(UltraCosmetics ultraCosmetics) {
-        if (!ultraCosmetics.getServer().getPluginManager().isPluginEnabled("Vault")) {
-            economyEnabled = false;
-            return;
+    public VaultHook() {
+        if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+            throw new IllegalStateException("Vault is not present.");
         }
-        RegisteredServiceProvider<Economy> economyProvider = ultraCosmetics.getServer().getServicesManager().getRegistration(Economy.class);
-        if (economyProvider != null) {
-            economy = economyProvider.getProvider();
-            ultraCosmetics.getSmartLogger().write("");
-            ultraCosmetics.getSmartLogger().write("Hooked into Vault for economy: " + economy.getName());
-            ultraCosmetics.getSmartLogger().write("");
-            economyEnabled = true;
-        } else {
-            ultraCosmetics.getSmartLogger().write("");
-            ultraCosmetics.getSmartLogger().write("Found Vault but no economy, please check whether your economy plugin supports Vault.");
-            ultraCosmetics.getSmartLogger().write("");
-            economyEnabled = false;
+        RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServicesManager().getRegistration(Economy.class);
+        if (economyProvider == null) {
+            throw new IllegalStateException("Found Vault but no economy, please check whether your economy plugin supports Vault.");
         }
+        economy = economyProvider.getProvider();
     }
 
     @Override
-    public void withdraw(Player player, int amount) {
-        economy.withdrawPlayer(player, amount);
+    public void withdraw(Player player, int amount, Runnable onSuccess, Runnable onFailure) {
+        EconomyResponse response = economy.withdrawPlayer(player, amount);
+        if (response.type == ResponseType.SUCCESS) {
+            onSuccess.run();
+        } else {
+            onFailure.run();
+        }
     }
 
     @Override
@@ -48,17 +44,7 @@ public class VaultHook implements EconomyHook {
     }
 
     @Override
-    public double balance(Player player) {
-        return economy.getBalance(player);
-    }
-
-    @Override
     public String getName() {
         return "Vault:" + economy.getName();
-    }
-
-    @Override
-    public boolean economyEnabled() {
-        return economyEnabled;
     }
 }
