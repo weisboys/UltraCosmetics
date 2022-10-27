@@ -878,6 +878,9 @@ Hats:
   Squid:
     Name: '&3&lSquid'
     Description: '&7&oBloop Bloop!'
+  GlowSquid:
+    Name: '&b&lGlow Squid'
+    Description: '&7&oLight up the ocean!'
   Chicken:
     Name: '&f&lChicken'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -902,9 +905,18 @@ Hats:
   BrownMooshroom:
     Name: '&b&lBrown Mooshroom'
     Description: '&7&oMoooo!'
+  Moobloom:
+    Name: '&e&lMoobloom'
+    Description: '&7&oVery rare cow!'
+  ChestnutHorse:
+    Name: '&2&lChestnut Horse'
+    Description: '&7&oDon''t forget the saddle!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oI''m your guard.'
+  CopperGolem:
+    Name: '&6&lCopper Golem'
+    Description: '&7&oMade out of 100% copper.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oNow I''m here, now I''m there!'
@@ -923,6 +935,9 @@ Hats:
   Zombie:
     Name: '&2&lZombie'
     Description: '&7&oBrains!!!'
+  Drowned:
+    Name: '&3&lDrowned'
+    Description: '&7&oUnderwater zombie'
   Strider:
     Name: '&c&lStrider'
     Description: '&7&oI hate water!'
@@ -938,6 +953,12 @@ Hats:
   Witch:
     Name: '&5&lWitch'
     Description: '&7&oPlease try my potion!'
+  Guardian:
+    Name: '&3&lGuardian'
+    Description: '&7&oProtect the ocean monuments!'
+  ShepherdVillager:
+    Name: '&e&lShepherd Villager'
+    Description: '&7&oThe Lonely Shepherd'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
     Description: '&7&oI make arrows.'
@@ -959,6 +980,9 @@ Hats:
   Frog:
     Name: '&2&lFrog'
     Description: '&7&oEats whatever bugs him.'
+  AxolotlPink:
+    Name: '&d&lPink Axolotl'
+    Description: '&7&oThe cutest predator'
   AxolotlBlue:
     Name: '&9&lBlue Axolotl'
     Description: '&7&oThe cutest predator'
@@ -977,6 +1001,12 @@ Hats:
   Bat:
     Name: '&5&lBat'
     Description: '&7&oEnjoy the nightlife.'
+  Glare:
+    Name: '&2&lGlare'
+    Description: '&7&oIt hates the darkness.'
+  Rana:
+    Name: '&a&lRana'
+    Description: '&7&oFroggy hat!'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oThe best skin'
@@ -995,6 +1025,24 @@ Hats:
   MCD-NamelessOne:
     Name: '&2&lNameless One'
     Description: '&7&oPowerful necromancer'
+  MCD-StrayKnight:
+    Name: '&7&lStray Knight'
+    Description: '&7&oA lonely knight...'
+  MCD-AncientGuardian:
+    Name: '&5&lAncient Guardian'
+    Description: '&7&oThe oldest guardian'
+  MCD-KeyGolem:
+    Name: '&6&lKey Golem'
+    Description: '&7&oUnlock every door!'
+  MCD-ArchIllager:
+    Name: '&3&lArch Illager'
+    Description: '&7&oLeader of the Illagers'
+  MCD-SunkenSkeleton:
+    Name: '&2&lSunken Skeleton'
+    Description: '&7&oUnderwater skeleton'
+  MCD-TheWildfire:
+    Name: '&4&lThe Wildfire'
+    Description: '&7&oHovering inferno'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -1094,6 +1142,9 @@ Hats:
   GigaChad:
     Name: '&7&lGigaChad'
     Description: '&7&oEmbrace masculinity!'
+  Anubis:
+    Name: '&6&lAnubis'
+    Description: '&7&oAncient Egyptian god'
   Bread:
     Name: '&f&lBread'
     Description: '&7&oFreshly baked'
