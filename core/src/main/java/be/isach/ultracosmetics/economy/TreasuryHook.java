@@ -38,7 +38,7 @@ public class TreasuryHook implements EconomyHook {
     public void withdraw(Player player, int intAmount, Runnable onSuccess, Runnable onFailure) {
         BigDecimal amount = new BigDecimal(intAmount);
         getAccount(player.getUniqueId(), account -> {
-            account.canAfford(amount, economy.getPrimaryCurrency(), new EconomySubscriber<>() {
+            account.canAfford(amount, economy.getPrimaryCurrency(), new EconomySubscriber<Boolean>() {
 
                 @Override
                 public void succeed(@NotNull Boolean t) {
@@ -46,7 +46,7 @@ public class TreasuryHook implements EconomyHook {
                         onFailure.run();
                         return;
                     }
-                    account.withdrawBalance(amount, initiator, economy.getPrimaryCurrency(), new EconomySubscriber<>() {
+                    account.withdrawBalance(amount, initiator, economy.getPrimaryCurrency(), new EconomySubscriber<BigDecimal>() {
                         @Override
                         public void succeed(BigDecimal newBalance) {
                             onSuccess.run();
@@ -75,7 +75,7 @@ public class TreasuryHook implements EconomyHook {
     public void deposit(Player player, int amount) {
 
         getAccount(player.getUniqueId(), account -> {
-            account.depositBalance(new BigDecimal(amount), initiator, economy.getPrimaryCurrency(), new EconomySubscriber<>() {
+            account.depositBalance(new BigDecimal(amount), initiator, economy.getPrimaryCurrency(), new EconomySubscriber<BigDecimal>() {
                 @Override
                 public void succeed(BigDecimal newBalance) {
                 }
