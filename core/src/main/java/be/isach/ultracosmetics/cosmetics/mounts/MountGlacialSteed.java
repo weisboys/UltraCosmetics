@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
  * @author iSach
  * @since 08-10-2015
  */
-public class MountGlacialSteed extends MountHorse {
+public class MountGlacialSteed extends MountAbstractHorse {
 
     public MountGlacialSteed(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
         super(owner, ultraCosmetics, type);

@@ -22,7 +22,7 @@ import org.bukkit.util.Vector;
 /**
  * Created by sacha on 1/03/17.
  */
-public class MountRudolph extends MountHorse {
+public class MountRudolph extends MountAbstractHorse {
 
     private ArmorStand left, right;
 

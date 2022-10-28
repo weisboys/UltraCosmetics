@@ -15,7 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 /**
  * Created by sacha on 10/08/15.
  */
-public class MountDruggedHorse extends MountHorse {
+public class MountDruggedHorse extends MountAbstractHorse {
 
     private Player effectPlayer;
 

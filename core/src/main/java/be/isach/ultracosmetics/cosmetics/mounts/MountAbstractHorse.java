@@ -14,9 +14,9 @@ import org.bukkit.inventory.ItemStack;
  */
 // Handles mounts that are real horses, but also variant horses on 1.8
 // For variant horses on 1.9+ see MountAbstractHorse
-public abstract class MountHorse extends Mount {
+public abstract class MountAbstractHorse extends Mount {
 
-    public MountHorse(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics, MountType type) {
+    public MountAbstractHorse(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics, MountType type) {
         super(ultraPlayer, type, ultraCosmetics);
     }
 
