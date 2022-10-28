@@ -317,7 +317,6 @@ Mounts:
     menu-name: '&5&l龙'
     entity-displayname: '&l%playername%的龙'
     Description: '&7&o成为一个龙骑士！'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&l超级车'
     entity-displayname: '&l%playername%的超级车'
@@ -351,6 +350,18 @@ Mounts:
     Description: |-
       &7&oA mysterious cube-shaped mob
       &7&ocapable of walking straight over lava
+  Horse:
+    menu-name: '&7&lHorse'
+    entity-displayname: '&l%playername%''s Horse'
+    Description: '&7&oYour standard, everyday horse'
+  Donkey:
+    menu-name: '&8&lDonkey'
+    entity-displayname: '&l%playername%''s Donkey'
+    Description: '&7&oYour standard, everyday donkey'
+  Mule:
+    menu-name: '&8&lMule'
+    entity-displayname: '&l%playername%''s Mule'
+    Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9你召唤了 %mountname%'
   Unequip: '%prefix% &9你收回了 %mountname%'
   Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
