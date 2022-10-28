@@ -317,7 +317,6 @@ Mounts:
     menu-name: '&5&lDrache'
     entity-displayname: '&l%playername%''s Drache'
     Description: '&7&oWerde ein Drachenreiter!'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&l%playername%''s HypeCart'
@@ -351,8 +350,20 @@ Mounts:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
     Description: |-
-      &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava
+      &7&oEine mysteriöse würfelförmige Kreatur,
+      &7&odie direkt über Lava laufen kann.
+  Horse:
+    menu-name: '&7&lPferd'
+    entity-displayname: '&l%playername%''s Pferd'
+    Description: '&7&oYour standard, everyday horse'
+  Donkey:
+    menu-name: '&8&lEsel'
+    entity-displayname: '&l%playername%''s Esel'
+    Description: '&7&oYour standard, everyday donkey'
+  Mule:
+    menu-name: '&8&lMaultier'
+    entity-displayname: '&l%playername%''s Maultier'
+    Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -881,7 +892,7 @@ Hats:
     Name: '&3&lTintenfisch'
     Description: '&7&oBlub Blub!'
   GlowSquid:
-    Name: '&b&lGlow Squid'
+    Name: '&b&lLeuchttintenfisch'
     Description: '&7&oLight up the ocean!'
   Chicken:
     Name: '&f&lHuhn'
@@ -908,7 +919,7 @@ Hats:
     Name: '&b&lBraune Mooshroom'
     Description: '&7&oMuuuh!'
   Moobloom:
-    Name: '&e&lMoobloom'
+    Name: '&e&lBlumenkuh'
     Description: '&7&oVery rare cow!'
   ChestnutHorse:
     Name: '&2&lChestnut Horse'
