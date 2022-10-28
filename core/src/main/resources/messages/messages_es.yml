@@ -316,7 +316,6 @@ Mounts:
     menu-name: '&5&lDragón'
     entity-displayname: '&lDragón de %playername%'
     Description: '&7&oConviertete en domador de Dragones!'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&lHypeCart de %playername%'
@@ -350,6 +349,18 @@ Mounts:
     Description: |-
       &7&oA mysterious cube-shaped mob
       &7&ocapable of walking straight over lava
+  Horse:
+    menu-name: '&7&lHorse'
+    entity-displayname: '&l%playername%''s Horse'
+    Description: '&7&oYour standard, everyday horse'
+  Donkey:
+    menu-name: '&8&lDonkey'
+    entity-displayname: '&l%playername%''s Donkey'
+    Description: '&7&oYour standard, everyday donkey'
+  Mule:
+    menu-name: '&8&lMule'
+    entity-displayname: '&l%playername%''s Mule'
+    Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
