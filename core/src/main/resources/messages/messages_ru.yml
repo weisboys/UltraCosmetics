@@ -317,7 +317,6 @@ Mounts:
     menu-name: '&5&lДракон'
     entity-displayname: '&l%playername%''s Дракон'
     Description: '&7&oПрокатитесь на драконе!'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lГиперВагонетка'
     entity-displayname: '&l%playername%''s ГиперВагонетка'
@@ -351,6 +350,18 @@ Mounts:
     Description: |-
       &7&oA mysterious cube-shaped mob
       &7&ocapable of walking straight over lava
+  Horse:
+    menu-name: '&7&lHorse'
+    entity-displayname: '&l%playername%''s Horse'
+    Description: '&7&oYour standard, everyday horse'
+  Donkey:
+    menu-name: '&8&lDonkey'
+    entity-displayname: '&l%playername%''s Donkey'
+    Description: '&7&oYour standard, everyday donkey'
+  Mule:
+    menu-name: '&8&lMule'
+    entity-displayname: '&l%playername%''s Mule'
+    Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9Вы заспавнили %mountname%'
   Unequip: '%prefix% &9Вы зареспавнили %mountname%'
   Cant-Spawn: '%prefix% &c&lМонстры не могут спавниться здесь!'
