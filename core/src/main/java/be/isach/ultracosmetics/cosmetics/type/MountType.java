@@ -5,13 +5,16 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.mounts.Mount;
+import be.isach.ultracosmetics.cosmetics.mounts.MountDonkey;
 import be.isach.ultracosmetics.cosmetics.mounts.MountDragon;
 import be.isach.ultracosmetics.cosmetics.mounts.MountDruggedHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountEcologistHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountGlacialSteed;
+import be.isach.ultracosmetics.cosmetics.mounts.MountHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountHypeCart;
 import be.isach.ultracosmetics.cosmetics.mounts.MountInfernalHorror;
 import be.isach.ultracosmetics.cosmetics.mounts.MountMoltenSnake;
+import be.isach.ultracosmetics.cosmetics.mounts.MountMule;
 import be.isach.ultracosmetics.cosmetics.mounts.MountNyanSheep;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfFire;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfWater;
@@ -122,6 +125,9 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Rudolph", XMaterial.DEAD_BUSH, horseOrType("MULE", version), 1, null, 0.4, MountRudolph.class);
         new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, horseOrType("ZOMBIE_HORSE", version), 2, null, 0.4, MountWalkingDead.class);
         new MountType("InfernalHorror", XMaterial.BONE, horseOrType("SKELETON_HORSE", version), 2, null, 0.4, MountInfernalHorror.class);
+        new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, null, 0.4, MountHorse.class);
+        new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, null, 0.4, MountDonkey.class);
+        new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, null, 0.4, MountMule.class);
 
         if (version.isNmsSupported()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, null, 0.8, vm.getModule().getSlimeClass());
@@ -131,7 +137,7 @@ public class MountType extends CosmeticEntType<Mount> {
     }
 
     private static EntityType horseOrType(String name, ServerVersion version) {
-        if (version == ServerVersion.v1_8) return EntityType.HORSE;
+        if (!version.isAtLeast(ServerVersion.v1_11)) return EntityType.HORSE;
         return EntityType.valueOf(name);
     }
 }

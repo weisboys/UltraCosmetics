@@ -20,7 +20,7 @@ public class MountDruggedHorse extends MountAbstractHorse {
     private Player effectPlayer;
 
     public MountDruggedHorse(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, type);
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

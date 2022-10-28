@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 // For variant horses on 1.9+ see MountAbstractHorse
 public abstract class MountAbstractHorse extends Mount {
 
-    public MountAbstractHorse(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics, MountType type) {
+    public MountAbstractHorse(UltraPlayer ultraPlayer, MountType type, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, type, ultraCosmetics);
     }
 

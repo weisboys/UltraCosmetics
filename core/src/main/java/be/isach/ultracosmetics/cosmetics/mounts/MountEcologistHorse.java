@@ -15,7 +15,7 @@ import org.bukkit.entity.Horse;
  */
 public class MountEcologistHorse extends MountAbstractHorse {
     public MountEcologistHorse(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, type);
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
