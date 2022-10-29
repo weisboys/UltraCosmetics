@@ -106,7 +106,6 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, MorphCaveSpider.class);
         new MorphType("Donkey", XMaterial.CHEST, EntityType.DONKEY, MorphDonkey.class);
         new MorphType("Endermite", XMaterial.ENDER_EYE, EntityType.ENDERMITE, MorphEndermite.class);
-        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, MorphElderGuardian.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
             new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);

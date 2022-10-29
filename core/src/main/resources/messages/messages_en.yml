@@ -862,10 +862,6 @@ Morphs:
     name: '&3&lDrowned'
     skill: '&eLeft-Click&7 to: &aTODO'
     Description: '&7&oAn underwater Zombie!'
-  ElderGuardian:
-    name: '&3&lElder Guardian'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oGuards ancient Temples!'
   Endermite:
     name: '&5&lEndermite'
     skill: '&eLeft-Click&7 to: &aTODO'
