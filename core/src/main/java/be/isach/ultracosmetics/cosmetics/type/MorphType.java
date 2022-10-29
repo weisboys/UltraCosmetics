@@ -101,7 +101,12 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, EntityType.MUSHROOM_COW, MorphMooshroom.class);
         new MorphType("Villager", XMaterial.EMERALD, EntityType.VILLAGER, MorphVillager.class);
         new MorphType("Witch", XMaterial.POISONOUS_POTATO, EntityType.WITCH, MorphWitch.class);
+        new MorphType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, MorphSheep.class);
+        new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER_SKELETON, MorphWitherSkeleton.class);
         new MorphType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, MorphCaveSpider.class);
+        new MorphType("Donkey", XMaterial.CHEST, EntityType.DONKEY, MorphDonkey.class);
+        new MorphType("Endermite", XMaterial.ENDER_EYE, EntityType.ENDERMITE, MorphEndermite.class);
+        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, MorphElderGuardian.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
             new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
@@ -109,6 +114,7 @@ public class MorphType extends CosmeticType<Morph> {
 
         if (version.isAtLeast(ServerVersion.v1_11)) {
             new MorphType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, MorphLlama.class);
+            new MorphType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, MorphEvoker.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_12)) {
@@ -118,6 +124,7 @@ public class MorphType extends CosmeticType<Morph> {
         if (version.isAtLeast(ServerVersion.v1_13)) {
             new MorphType("Cod", XMaterial.COD_BUCKET, EntityType.COD, MorphCod.class);
             new MorphType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, MorphDolphin.class);
+            new MorphType("Drowned", XMaterial.TRIDENT, EntityType.DROWNED, MorphDrowned.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_14)) {
@@ -134,9 +141,7 @@ public class MorphType extends CosmeticType<Morph> {
         
         if (version.isAtLeast(ServerVersion.v1_19)) {
             new MorphType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, MorphAllay.class);
+            new MorphType("Frog", XMaterial.FROG_SPAWN_EGG, EntityType.FROG, MorphFrog.class);
         }
-
-        new MorphType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, MorphSheep.class);
-        new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER_SKELETON, MorphWitherSkeleton.class);
     }
 }

@@ -854,6 +854,30 @@ Morphs:
     name: '&e&lDolphin'
     skill: '&eLeft-Click&7 to: &aTODO'
     Description: '&7&oThe happiest creature of the seas!'
+  Donkey:
+    name: '&7&lDonkey'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oCan carry all your Stuff!'
+  Drowned:
+    name: '&3&lDrowned'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oAn underwater Zombie!'
+  ElderGuardian:
+    name: '&3&lElder Guardian'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oGuards ancient Temples!'
+  Endermite:
+    name: '&5&lEndermite'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oAttracts Endermen!'
+  Evoker:
+    name: '&7&lEvoker'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oSummons Vexes for a living!'
+  Frog:
+    name: '&2&lFrog'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oDoesn''t like Fireflies!'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
