@@ -348,7 +348,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
       &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava
+      &7&ocapable of walking straight over lava.
   Horse:
     menu-name: '&7&lHorse'
     entity-displayname: '&l%playername%''s Horse'
