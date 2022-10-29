@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.economy;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import org.bukkit.entity.Player;
 
 /**
  * Handles the current economy being used.
@@ -11,37 +10,36 @@ import org.bukkit.entity.Player;
  */
 public class EconomyHandler {
     private EconomyHook economyHook;
-    private boolean usingEconomy;
+    private boolean usingEconomy = false;
 
     public EconomyHandler(UltraCosmetics ultraCosmetics, String economy) {
         if (economy == null || economy.equalsIgnoreCase("")) {
             ultraCosmetics.getSmartLogger().write("Economy not specified in the config, disabling economy features.");
-            usingEconomy = false;
             return;
         }
 
-        if (economy.equalsIgnoreCase("vault")) {
-            economyHook = new VaultHook(ultraCosmetics);
+        ultraCosmetics.getSmartLogger().write("");
+        try {
+            if (economy.equalsIgnoreCase("treasury")) {
+                economyHook = new TreasuryHook();
+            } else if (economy.equalsIgnoreCase("vault")) {
+                economyHook = new VaultHook();
+            } else if (economy.equalsIgnoreCase("playerpoints")) {
+                economyHook = new PlayerPointsHook();
+            } else {
+                ultraCosmetics.getSmartLogger().write("Unknown economy: '" + economy + "'. Valid economies: Vault, PlayerPoints.");
+                return;
+            }
+            ultraCosmetics.getSmartLogger().write("Hooked into " + economyHook.getName() + " for economy.");
             usingEconomy = true;
-        } else if (economy.equalsIgnoreCase("playerpoints")) {
-            economyHook = new PlayerPointsHook(ultraCosmetics);
-            usingEconomy = true;
-        } else {
-            ultraCosmetics.getSmartLogger().write("Unknown economy: '" + economy + "'. Valid economies: Vault, PlayerPoints.");
-            usingEconomy = false;
+        } catch (IllegalStateException e) {
+            ultraCosmetics.getSmartLogger().write(e.getMessage());
         }
+        ultraCosmetics.getSmartLogger().write("");
     }
 
-    public void withdraw(Player player, int amount) {
-        economyHook.withdraw(player, amount);
-    }
-
-    public void deposit(Player player, int amount) {
-        economyHook.deposit(player, amount);
-    }
-
-    public double balance(Player player) {
-        return economyHook.balance(player);
+    public EconomyHook getHook() {
+        return economyHook;
     }
 
     public String getName() {
@@ -49,6 +47,6 @@ public class EconomyHandler {
     }
 
     public boolean isUsingEconomy() {
-        return usingEconomy && economyHook.economyEnabled();
+        return usingEconomy;
     }
 }

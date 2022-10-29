@@ -281,11 +281,13 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
             return;
         }
 
-        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
-            if (ultraPlayer.getAmmo(getType()) < 1) {
+        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo() && ultraPlayer.getAmmo(getType()) < 1) {
+            if (UltraCosmeticsData.get().getPlugin().getEconomyHandler().isUsingEconomy()) {
                 UltraCosmeticsData.get().getPlugin().getMenus().openAmmoPurchaseMenu(getType(), getOwner());
-                return;
+            } else {
+                player.sendMessage(MessageManager.getMessage("No-Ammo"));
             }
+            return;
         }
 
         if (!checkRequirements(event)) return;

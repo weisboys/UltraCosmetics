@@ -26,18 +26,18 @@ dependencies {
     api 'com.github.cryptomorin:XSeries:9.1.0'
     implementation 'org.bstats:bstats-bukkit:3.0.0'
     compileOnly 'net.luckperms:api:5.4'
+    compileOnly "me.lokka30:treasury-api:1.2.1-SNAPSHOT"
     implementation 'com.zaxxer:HikariCP:4.0.3'
     implementation 'net.wesjd:anvilgui:1.5.3-SNAPSHOT'
-    //implementation 'me.gamercoder215:mobchip-bukkit:1.6.0-SNAPSHOT'
-	implementation(fileTree(dir: '.', include: ['MobChip-Bukkit-*.jar']))
+    implementation 'me.gamercoder215:mobchip-bukkit:1.6.1-SNAPSHOT'
 }
 shadowJar {
     // removes unused classes in 'implementation' path dependencies
-    //minimize {
+    minimize {
         // Loads classes reflectively
-    //    exclude(dependency('net.wesjd:anvilgui:.*'))
-    //    exclude(dependency('me.gamercoder215:.*:.*'))
-    //}
+        exclude(dependency('net.wesjd:anvilgui:.*'))
+        exclude(dependency('me.gamercoder215:.*:.*'))
+    }
     def path = 'be.isach.ultracosmetics.shaded'
     // XParticle is big and not required so don't shade it.
     // It's not removed by minimize() because it's on the API path I guess?

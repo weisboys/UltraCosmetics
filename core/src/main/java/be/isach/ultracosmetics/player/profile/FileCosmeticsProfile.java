@@ -21,6 +21,4 @@ public class FileCosmeticsProfile extends CosmeticsProfile {
     public void save() {
         data.saveToFile();
     }
-
-    
 }

@@ -90,6 +90,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
 
     @Override
     protected void scheduleTask() {
+        if (getType().getRepeatDelay() == 0) return;
         runTaskTimer(getUltraCosmetics(), 0, getType().getRepeatDelay());
     }
 

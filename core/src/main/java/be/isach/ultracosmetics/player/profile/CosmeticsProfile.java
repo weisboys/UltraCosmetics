@@ -12,8 +12,6 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
-import org.bukkit.Bukkit;
-
 import java.util.Map.Entry;
 import java.util.UUID;
 
@@ -28,11 +26,10 @@ public abstract class CosmeticsProfile {
         this.uuid = ultraPlayer.getUUID();
         this.ultraCosmetics = ultraCosmetics;
         this.data = new PlayerData(uuid);
-        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> {
-            load();
-            if (!shouldLoadCosmetics()) return;
-            Bukkit.getScheduler().runTask(ultraCosmetics, () -> equip());
-        });
+        load();
+        if (shouldLoadCosmetics()) {
+            equip();
+        }
     }
 
     protected static boolean shouldLoadCosmetics() {

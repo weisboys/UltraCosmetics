@@ -15,7 +15,7 @@ public interface EconomyHook {
      * @param player The player to withdraw money from.
      * @param amount The amount to withdraw from the player.
      */
-    void withdraw(Player player, int amount);
+    void withdraw(Player player, int amount, Runnable onSuccess, Runnable onFailure);
 
     /**
      * Gives the specified amount of money to the specified player.
@@ -26,24 +26,9 @@ public interface EconomyHook {
     void deposit(Player player, int amount);
 
     /**
-     * Gets the balance of the specified player.
-     *
-     * @param player The player to get the balance of.
-     * @return The player's balance.
-     */
-    double balance(Player player);
-
-    /**
      * Gets the name of the economy being used.
      *
      * @return The name of the economy being used.
      */
     String getName();
-
-    /**
-     * Gets if the economy is enabled and functioning.
-     *
-     * @return True if the economy is enabled and functioning, false otherwise.
-     */
-    boolean economyEnabled();
 }
