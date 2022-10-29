@@ -893,7 +893,7 @@ Hats:
     Description: '&7&oBlub Blub!'
   GlowSquid:
     Name: '&b&lLeuchttintenfisch'
-    Description: '&7&oLight up the ocean!'
+    Description: '&7&oErleuchte den Ozean!'
   Chicken:
     Name: '&f&lHuhn'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -920,7 +920,7 @@ Hats:
     Description: '&7&oMuuuh!'
   Moobloom:
     Name: '&e&lBlumenkuh'
-    Description: '&7&oVery rare cow!'
+    Description: '&7&oSehr seltene Kuh!'
   ChestnutHorse:
     Name: '&2&lChestnut Horse'
     Description: '&7&oDon''t forget the saddle!'
@@ -928,7 +928,7 @@ Hats:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
   CopperGolem:
-    Name: '&6&lCopper Golem'
+    Name: '&6&lKupfergolem'
     Description: '&7&oMade out of 100% copper.'
   Enderman:
     Name: '&5&lEnderman'
@@ -949,8 +949,8 @@ Hats:
     Name: '&2&lZombie'
     Description: '&7&oGehirne!!!'
   Drowned:
-    Name: '&3&lDrowned'
-    Description: '&7&oUnderwater zombie'
+    Name: '&3&lErtrunkener'
+    Description: '&7&oUnterwasser-Zombie'
   Strider:
     Name: '&c&lSchreiter'
     Description: '&7&oIch hasse Wasser!'
@@ -967,11 +967,11 @@ Hats:
     Name: '&5&lHexe'
     Description: '&7&oBitte probiere meinen Trank!'
   Guardian:
-    Name: '&3&lGuardian'
+    Name: '&3&lWächter'
     Description: '&7&oProtect the ocean monuments!'
   ShepherdVillager:
     Name: '&e&lShepherd Villager'
-    Description: '&7&oThe Lonely Shepherd'
+    Description: '&7&oDer einsame Hirte'
   FletcherVillager:
     Name: '&a&lPfeilmacher'
     Description: '&7&oIch mache Pfeile.'
@@ -994,8 +994,8 @@ Hats:
     Name: '&2&lFrosch'
     Description: '&7&oIsst alles, was ihn stört.'
   AxolotlPink:
-    Name: '&d&lPink Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: '&d&lRosa Axolotl'
+    Description: '&7&oDas süßeste Raubtier'
   AxolotlBlue:
     Name: '&9&lBlaues Axolotl'
     Description: '&7&oDas süßeste Raubtier'
@@ -1019,7 +1019,7 @@ Hats:
     Description: '&7&oIt hates the darkness.'
   Rana:
     Name: '&a&lRana'
-    Description: '&7&oFroggy hat!'
+    Description: '&7&oFroschmütze!'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oDer beste Skin'
@@ -1052,7 +1052,7 @@ Hats:
     Description: '&7&oLeader of the Illagers'
   MCD-SunkenSkeleton:
     Name: '&2&lSunken Skeleton'
-    Description: '&7&oUnderwater skeleton'
+    Description: '&7&oUnterwasser-Skelett'
   MCD-TheWildfire:
     Name: '&4&lThe Wildfire'
     Description: '&7&oHovering inferno'
@@ -1157,7 +1157,7 @@ Hats:
     Description: '&7&oAkzeptiere die Männlichkeit!'
   Anubis:
     Name: '&6&lAnubis'
-    Description: '&7&oAncient Egyptian god'
+    Description: '&7&oAltägyptischer Gott'
   Bread:
     Name: '&f&lBrot'
     Description: '&7&oFrisch gebacken'
