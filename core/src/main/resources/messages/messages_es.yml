@@ -31,7 +31,7 @@ Your-Keys: '&7&oTienes: &f&l%keys% &7&ollaves del tesoro'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lLlave del tesoro &e&lpor $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lGanaste un: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lLos espacios para abrir cofres estan llenos. Por favor espera y prueba nuevamente'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '¡No tienes munición para este dispositivo!'
 Clear:
   Cosmetics: '&c&lQuitar todos los cosmetics activos'
   Gadgets: '&c&lQuitar gadget activo'
