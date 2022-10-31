@@ -355,15 +355,15 @@ Mounts:
   Horse:
     menu-name: '&7&lPferd'
     entity-displayname: '&l%playername%''s Pferd'
-    Description: '&7&oYour standard, everyday horse'
+    Description: '&7&oDein normales, alltägliches Pferd'
   Donkey:
     menu-name: '&8&lEsel'
     entity-displayname: '&l%playername%''s Esel'
-    Description: '&7&oYour standard, everyday donkey'
+    Description: '&7&oDein normaler, alltäglicher Esel'
   Mule:
     menu-name: '&8&lMaultier'
     entity-displayname: '&l%playername%''s Maultier'
-    Description: '&7&oYour standard, everyday mule'
+    Description: '&7&oDein normales, alltägliches Maultier'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -922,8 +922,8 @@ Hats:
     Name: '&e&lBlumenkuh'
     Description: '&7&oSehr seltene Kuh!'
   ChestnutHorse:
-    Name: '&2&lChestnut Horse'
-    Description: '&7&oDon''t forget the saddle!'
+    Name: '&2&lKastanienbraunes Pferd'
+    Description: '&7&oVergiss nicht den Sattel!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
@@ -968,9 +968,9 @@ Hats:
     Description: '&7&oBitte probiere meinen Trank!'
   Guardian:
     Name: '&3&lWächter'
-    Description: '&7&oProtect the ocean monuments!'
+    Description: '&7&oBeschütze die Ozeanmonumente!'
   ShepherdVillager:
-    Name: '&e&lShepherd Villager'
+    Name: '&e&lSchäfer'
     Description: '&7&oDer einsame Hirte'
   FletcherVillager:
     Name: '&a&lPfeilmacher'
@@ -1016,7 +1016,7 @@ Hats:
     Description: '&7&oGenieße das Nachtleben.'
   Glare:
     Name: '&2&lGlare'
-    Description: '&7&oIt hates the darkness.'
+    Description: '&7&oEs hasst die Dunkelheit.'
   Rana:
     Name: '&a&lRana'
     Description: '&7&oFroschmütze!'
@@ -1039,23 +1039,23 @@ Hats:
     Name: '&2&lNamenloser'
     Description: '&7&oMächtiger Nekromant'
   MCD-StrayKnight:
-    Name: '&7&lStray Knight'
-    Description: '&7&oA lonely knight...'
+    Name: '&7&lVerirrter Ritter'
+    Description: '&7&oEin einsamer Ritter...'
   MCD-AncientGuardian:
-    Name: '&5&lAncient Guardian'
-    Description: '&7&oThe oldest guardian'
+    Name: '&5&lAntiker Wächter'
+    Description: '&7&oDer älteste Wächter'
   MCD-KeyGolem:
-    Name: '&6&lKey Golem'
-    Description: '&7&oUnlock every door!'
+    Name: '&6&lSchlüsselgolem'
+    Description: '&7&oSchließe jede Tür auf!'
   MCD-ArchIllager:
-    Name: '&3&lArch Illager'
+    Name: '&3&lErz-Illager'
     Description: '&7&oAnführer der Illager'
   MCD-SunkenSkeleton:
-    Name: '&2&lSunken Skeleton'
+    Name: '&2&lVersunkenes Skelett'
     Description: '&7&oUnterwasser-Skelett'
   MCD-TheWildfire:
     Name: '&4&lThe Wildfire'
-    Description: '&7&oHovering inferno'
+    Description: '&7&oSchwebendes Inferno'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
