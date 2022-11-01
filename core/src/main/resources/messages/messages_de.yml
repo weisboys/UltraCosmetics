@@ -31,7 +31,7 @@ Your-Keys: '&7&oDeine Schlüssel: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lSchatzschlüssel &e&lfür $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lDu hast gewonnen: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lAlle Plätze sind besetzt, bitte warte und versuche es erneut'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '%prefix% &c&lDu hast keine Munition für dieses Gadget!'
 Clear:
   Cosmetics: '&c&lKosmetische Items entfernen'
   Gadgets: '&c&lAktuelles Gadget entfernen'
@@ -118,7 +118,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lDiese Position ist nicht am Boden!'
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
-  Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% Munition'
@@ -929,7 +929,7 @@ Hats:
     Description: '&7&oIch bin dein Schutz.'
   CopperGolem:
     Name: '&6&lKupfergolem'
-    Description: '&7&oMade out of 100% copper.'
+    Description: '&7&oHergestellt aus 100% Kupfer.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
