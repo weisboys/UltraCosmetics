@@ -31,7 +31,7 @@ Your-Keys: '&7&oVos clés : &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lClé de Coffre &e&lpour %price%$'
 You-Won-Treasure-Chests: '%prefix% &f&lTu as gagné : %name% !'
 Treasure-Chest-Occupied: '%prefix% &c&lPas d''endroits disponibles pour ouvrir un coffre, patiente un peu puis réessaye'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '%prefix% &c&lVous n''avez pas de munitions pour ce gadget!'
 Clear:
   Cosmetics: '&c&lRetirer les cosmétiques'
   Gadgets: '&c&lRetirer le gadget actuel'
@@ -118,7 +118,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lCet emplacement n''est pas au sol !'
   In-Ground: '%prefix% &c&lCet emplacement est au sol !'
   Suggestion: '%prefix% &aTu voulais peut-être dire %location% ?'
-  Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Dismount-First: '%prefix% &c&lVous devez démonter votre véhicule avant d''ouvrir un coffre.'
 Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% munition'
@@ -351,8 +351,8 @@ Mounts:
       &7&oA mysterious cube-shaped mob
       &7&ocapable of walking straight over lava.
   Horse:
-    menu-name: '&7&lHorse'
-    entity-displayname: '&l%playername%''s Horse'
+    menu-name: '&7&lCheval'
+    entity-displayname: '&lCheval de %playername%'
     Description: '&7&oYour standard, everyday horse'
   Donkey:
     menu-name: '&8&lDonkey'
@@ -700,7 +700,7 @@ Pets:
     entity-displayname: '&l%playername%''s Piglin Brute'
     Description: '&7&oA pretty buff Piglin!'
   Pillager:
-    menu-name: '&7&lPillager'
+    menu-name: '&7&lPilleur'
     entity-displayname: '&l%playername%''s Pillager'
     Description: '&7&oLikes to pillage Villages!'
   Ravager:
