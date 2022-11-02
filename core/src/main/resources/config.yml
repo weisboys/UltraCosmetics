@@ -43,7 +43,7 @@ Categories:
     Go-Back-Arrow: true
   Clear-Cosmetic-Item: REDSTONE_BLOCK
 
-# The economy that should be used. Supports 'Vault' or 'PlayerPoints'
+# The economy that should be used. Supports 'Vault', 'PlayerPoints', or 'Treasury'
 Economy: 'Vault'
 
 # Treasure Chests Settings.
@@ -253,8 +253,6 @@ Mounts-Block-Trails: true
 # for gadgets, for limited uses.
 # Ammo can be given with /uc give ammo
 # or bought from menu when activating gadget.
-#
-# Ammo will use MySQL if enabled.
 Ammo-System-For-Gadgets:
   Enabled: false
 
@@ -264,8 +262,16 @@ MySQL:
   username: root
   password: password
   port: '3306'
+  # Database must already exist, tables will be created
   database: UltraCosmetics
-  table: UltraCosmeticsData
+  # Stores player UUID and settings
+  player-data-table: UltraCosmetics-PlayerData
+  cosmetics-table: UltraCosmetics-Cosmetics
+  ammo-table: UltraCosmetics-Ammo
+  pet-names-table: UltraCosmetics-PetNames
+  equipped-cosmetics-table: UltraCosmetics-EquippedCosmetics
+  unlocked-cosmetics-table: UltraCosmetics-UnlockedCosmetics
+
 # The menu item settings.
 #
 # List for type: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html

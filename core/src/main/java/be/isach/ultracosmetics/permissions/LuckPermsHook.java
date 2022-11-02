@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.permissions;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import org.bukkit.Bukkit;
@@ -13,11 +14,12 @@ import net.luckperms.api.context.ImmutableContextSet;
 import net.luckperms.api.model.user.User;
 import net.luckperms.api.node.Node;
 
-public class LuckPermsHook implements PermissionProvider {
+public class LuckPermsHook implements CosmeticPermissionSetter, RawPermissionSetter {
     private final UltraCosmetics ultraCosmetics;
     private final LuckPerms api;
     private final ImmutableContextSet context;
     private boolean log = true;
+
     public LuckPermsHook(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
         api = Bukkit.getServicesManager().getRegistration(LuckPerms.class).getProvider();
@@ -39,7 +41,7 @@ public class LuckPermsHook implements PermissionProvider {
     }
 
     @Override
-    public void setPermission(Player player, String permission) {
+    public void setRawPermission(Player player, String permission) {
         if (log) {
             ultraCosmetics.getSmartLogger().write("Setting permission '" + permission + "' for user " + player.getName());
         }
@@ -54,4 +56,8 @@ public class LuckPermsHook implements PermissionProvider {
         }.runTaskAsynchronously(ultraCosmetics);
     }
 
+    @Override
+    public void setPermission(Player player, CosmeticType<?> type) {
+        setRawPermission(player, type.getPermission().getName());
+    }
 }

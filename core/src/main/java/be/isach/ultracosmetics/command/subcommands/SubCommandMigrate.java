@@ -15,7 +15,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.mysql.Table;
+import be.isach.ultracosmetics.mysql.tables.Table;
 import be.isach.ultracosmetics.player.profile.PlayerData;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 

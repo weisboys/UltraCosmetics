@@ -16,9 +16,7 @@ import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
-import be.isach.ultracosmetics.permissions.LuckPermsHook;
-import be.isach.ultracosmetics.permissions.PermissionCommand;
-import be.isach.ultracosmetics.permissions.PermissionProvider;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.placeholderapi.PlaceholderHook;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
@@ -127,7 +125,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     private EconomyHandler economyHandler;
 
-    private PermissionProvider permissionProvider;
+    private PermissionManager permissionManager;
 
     /**
      * Manages WorldGuard flags.
@@ -287,8 +285,6 @@ public class UltraCosmetics extends JavaPlugin {
         // Set up economy if needed.
         setupEconomy();
 
-        setupPermissionProvider();
-
         if (!UltraCosmeticsData.get().usingFileStorage()) {
             getSmartLogger().write();
             getSmartLogger().write("Connecting to MySQL database...");
@@ -302,6 +298,9 @@ public class UltraCosmetics extends JavaPlugin {
                 activeProblems.add(Problem.SQL_INIT_FAILURE);
             }
         }
+
+        permissionManager = new PermissionManager(this);
+
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
@@ -383,22 +382,6 @@ public class UltraCosmetics extends JavaPlugin {
     private void setupEconomy() {
         economyHandler = new EconomyHandler(this, getConfig().getString("Economy"));
         UltraCosmeticsData.get().checkTreasureChests();
-    }
-
-    private void setupPermissionProvider() {
-        CustomConfiguration config = SettingsManager.getConfig();
-        if (config.getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
-            if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
-                permissionProvider = new LuckPermsHook(this);
-                return;
-            }
-            getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present. Please change it manually.");
-            config.set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
-        }
-        if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
-            activeProblems.add(Problem.PERMISSION_COMMAND_NOT_SET);
-        }
-        permissionProvider = new PermissionCommand();
     }
 
     private void setupMetrics() {
@@ -726,8 +709,8 @@ public class UltraCosmetics extends JavaPlugin {
         return economyHandler;
     }
 
-    public PermissionProvider getPermissionProvider() {
-        return permissionProvider;
+    public PermissionManager getPermissionManager() {
+        return permissionManager;
     }
 
     public WorldGuardManager getWorldGuardManager() {

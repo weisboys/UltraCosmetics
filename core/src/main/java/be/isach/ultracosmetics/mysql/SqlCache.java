@@ -2,11 +2,9 @@ package be.isach.ultracosmetics.mysql;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
-import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.player.profile.ProfileKey;
@@ -15,9 +13,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Package: be.isach.ultracosmetics.mysql
@@ -26,13 +23,13 @@ import java.util.concurrent.ConcurrentHashMap;
  * Project: UltraCosmetics
  */
 public class SqlCache extends CosmeticsProfile {
-    private final Table table;
-    private Map<String,Optional<Object>> updateQueue = new ConcurrentHashMap<>();
+    private final MySqlConnectionManager sql;
+    private final Queue<Runnable> queue = new ConcurrentLinkedQueue<>();
     private BukkitTask updateTask = null;
 
     public SqlCache(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, ultraCosmetics);
-        this.table = ultraCosmetics.getMySqlConnectionManager().getTable();
+        this.sql = ultraCosmetics.getMySqlConnectionManager();
     }
 
     @Override
@@ -48,32 +45,25 @@ public class SqlCache extends CosmeticsProfile {
     @Override
     public void setEnabledCosmetic(Category cat, CosmeticType<?> type) {
         super.setEnabledCosmetic(cat, type);
-        if (cat == Category.SUITS) return; // handled by setEnabledSuitPart
-        queueUpdate(Table.cleanCategoryName(cat), type == null ? null : Table.cleanCosmeticName(type));
-    }
-
-    @Override
-    public void setEnabledSuitPart(ArmorSlot slot, SuitType type) {
-        super.setEnabledSuitPart(slot, type);
-        queueUpdate(Table.cleanCategoryName(Category.SUITS) + "_" + slot.toString().toLowerCase(), Table.cleanCosmeticName(type));
+        queueUpdate(() -> sql.getEquippedTable().setEquipped(uuid, type));
     }
 
     @Override
     public void setAmmo(GadgetType type, int amount) {
         super.setAmmo(type, amount);
-        queueUpdate(Table.cleanCosmeticName(type), amount);
+        queueUpdate(() -> sql.getAmmoTable().setAmmo(uuid, type, amount));
     }
 
     @Override
     public void setPetName(PetType type, String name) {
         super.setPetName(type, name);
-        queueUpdate(Table.cleanCosmeticName(type), name);
+        queueUpdate(() -> sql.getPetNames().setPetName(uuid, type, name));
     }
 
     @Override
     public void setKeys(int amount) {
         super.setKeys(amount);
-        queueUpdate(ProfileKey.KEYS, amount);
+        queueUpdate(() -> sql.getPlayerData().setKeys(uuid, amount));
     }
 
     @Override
@@ -81,25 +71,25 @@ public class SqlCache extends CosmeticsProfile {
         // If the value did not change, skip the update.
         if (gadgetsEnabled == hasGadgetsEnabled()) return;
         super.setGadgetsEnabled(gadgetsEnabled);
-        queueUpdate(ProfileKey.GADGETS_ENABLED, gadgetsEnabled);
+        queueUpdate(() -> sql.getPlayerData().setSetting(uuid, ProfileKey.GADGETS_ENABLED, gadgetsEnabled));
     }
 
     @Override
     public void setSeeSelfMorph(boolean seeSelfMorph) {
         super.setSeeSelfMorph(seeSelfMorph);
-        queueUpdate(ProfileKey.MORPH_VIEW, seeSelfMorph);
+        queueUpdate(() -> sql.getPlayerData().setSetting(uuid, ProfileKey.MORPH_VIEW, seeSelfMorph));
     }
 
     @Override
     public void setTreasureNotifications(boolean treasureNotifications) {
         super.setTreasureNotifications(treasureNotifications);
-        queueUpdate(ProfileKey.TREASURE_NOTIFICATION, treasureNotifications);
+        queueUpdate(() -> sql.getPlayerData().setSetting(uuid, ProfileKey.TREASURE_NOTIFICATION, treasureNotifications));
     }
 
     @Override
     public void setFilterByOwned(boolean filterByOwned) {
         super.setFilterByOwned(filterByOwned);
-        queueUpdate(ProfileKey.FILTER_OWNED, filterByOwned);
+        queueUpdate(() -> sql.getPlayerData().setSetting(uuid, ProfileKey.FILTER_OWNED, filterByOwned));
     }
 
     /**
@@ -111,23 +101,17 @@ public class SqlCache extends CosmeticsProfile {
      * @param key
      * @param value
      */
-    private void queueUpdate(String key, Object value) {
-        // use Optionals because ConcurrentHashMap doesn't support null values
-        updateQueue.put(key, Optional.ofNullable(value));
+    private void queueUpdate(Runnable update) {
+        queue.add(update);
         if (updateTask == null || !Bukkit.getScheduler().isQueued(updateTask.getTaskId())) {
             updateTask = new BukkitRunnable() {
                 @Override
                 public void run() {
-                    StandardQuery query = table.update().uuid(uuid);
-                    updateQueue.forEach((k, v) -> query.set(k, v.orElse(null)));
-                    query.execute();
-                    updateQueue.clear();
+                    while (!queue.isEmpty()) {
+                        queue.poll().run();
+                    }
                 }
             }.runTaskAsynchronously(ultraCosmetics);
         }
-    }
-
-    private void queueUpdate(ProfileKey key, Object value) {
-        queueUpdate(key.getSqlKey(), value);
     }
 }

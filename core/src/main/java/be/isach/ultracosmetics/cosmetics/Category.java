@@ -11,7 +11,6 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
-import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.util.ItemFactory;
 
@@ -22,6 +21,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BooleanSupplier;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -33,14 +33,15 @@ import java.util.stream.Collectors;
  */
 public enum Category {
 
-    PETS("Pets", "%petname%", "pets", "pe", () -> PetType.enabled(), () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
-    GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", () -> GadgetType.enabled()),
-    EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", () -> ParticleEffectType.enabled()),
-    MOUNTS("Mounts", "%mountname%", "mounts", "mou", () -> MountType.enabled()),
-    MORPHS("Morphs", "%morphname%", "morphs", "mor", () -> MorphType.enabled(), () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
-    HATS("Hats", "%hatname%", "hats", "h", () -> HatType.enabled()),
-    SUITS("Suits", "%suitname%", "suits", "s", () -> SuitType.enabled()),
-    EMOTES("Emotes", "%emotename%", "emotes", "e", () -> EmoteType.enabled());
+    PETS("Pets", "%petname%", "pets", "pe", PetType::enabled, PetType::values, PetType::valueOf, () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
+    GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", GadgetType::enabled, GadgetType::values, GadgetType::valueOf),
+    EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", ParticleEffectType::enabled, ParticleEffectType::values, ParticleEffectType::valueOf),
+    MOUNTS("Mounts", "%mountname%", "mounts", "mou", MountType::enabled, MountType::values, MountType::valueOf),
+    MORPHS("Morphs", "%morphname%", "morphs", "mor", MorphType::enabled, MorphType::values, MorphType::valueOf, () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
+    HATS("Hats", "%hatname%", "hats", "h", HatType::enabled, HatType::values, HatType::valueOf),
+    SUITS("Suits", "%suitname%", "suits", "s", SuitType::enabled, SuitType::values, null),
+    EMOTES("Emotes", "%emotename%", "emotes", "e", EmoteType::enabled, EmoteType::values, EmoteType::valueOf),
+    ;
 
     public static int enabledSize() {
         return enabled().size();
@@ -60,30 +61,6 @@ public enum Category {
         return null;
     }
 
-    public CosmeticType<?> valueOfType(String name) {
-        if (name == null) return null;
-        switch (this) {
-        case EFFECTS:
-            return ParticleEffectType.valueOf(name);
-        case EMOTES:
-            return EmoteType.valueOf(name);
-        case GADGETS:
-            return GadgetType.valueOf(name);
-        case HATS:
-            return HatType.valueOf(name);
-        case MORPHS:
-            return MorphType.valueOf(name);
-        case MOUNTS:
-            return MountType.valueOf(name);
-        case PETS:
-            return PetType.valueOf(name);
-        case SUITS:
-            // at least return something
-            return SuitCategory.valueOf(name).getHelmet();
-        }
-        return null;
-    }
-
     /**
      * The config path name.
      */
@@ -93,26 +70,25 @@ public enum Category {
     private final String permission;
     private final String prefix;
     private final Supplier<List<? extends CosmeticType<?>>> enabledFunc;
+    private final Supplier<List<? extends CosmeticType<?>>> valuesFunc;
+    private final Function<String,? extends CosmeticType<?>> valueOfFunc;
     private final BooleanSupplier enableCondition;
 
-    /**
-     * Category of Cosmetic.
-     *
-     * @param configPath      The config path name.
-     * @param chatPlaceholder
-     * @param prefix          TODO
-     */
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc, BooleanSupplier enableCondition) {
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc,
+            Supplier<List<? extends CosmeticType<?>>> valuesFunc, Function<String,? extends CosmeticType<?>> valueOfFunc, BooleanSupplier enableCondition) {
         this.configPath = configPath;
         this.chatPlaceholder = chatPlaceholder;
         this.permission = permission;
         this.prefix = prefix;
         this.enabledFunc = enabledFunc;
+        this.valuesFunc = valuesFunc;
+        this.valueOfFunc = valueOfFunc;
         this.enableCondition = enableCondition;
     }
 
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc) {
-        this(configPath, chatPlaceholder, permission, prefix, enabledFunc, () -> true);
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc,
+            Supplier<List<? extends CosmeticType<?>>> valuesFunc, Function<String,? extends CosmeticType<?>> valueOfFunc) {
+        this(configPath, chatPlaceholder, permission, prefix, enabledFunc, valuesFunc, valueOfFunc, () -> true);
     }
 
     /**
@@ -191,5 +167,14 @@ public enum Category {
 
     public List<? extends CosmeticType<?>> getEnabled() {
         return enabledFunc.get();
+    }
+
+    public List<? extends CosmeticType<?>> getValues() {
+        return valuesFunc.get();
+    }
+
+    public CosmeticType<?> valueOfType(String name) {
+        if (name == null) return null;
+        return valueOfFunc.apply(name);
     }
 }

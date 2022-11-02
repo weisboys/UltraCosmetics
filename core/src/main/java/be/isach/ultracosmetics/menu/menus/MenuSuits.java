@@ -8,11 +8,15 @@ import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import com.cryptomorin.xseries.XMaterial;
+
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.cryptomorin.xseries.XMaterial;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +30,7 @@ import java.util.Map;
  */
 public final class MenuSuits extends CosmeticMenu<SuitType> {
 
-    private static final int[] SLOTS = new int[] {10, 11, 12, 13, 14, 15, 16};
+    private static final int[] SLOTS = new int[] { 10, 11, 12, 13, 14, 15, 16 };
 
     public MenuSuits(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics, Category.SUITS);
@@ -52,7 +56,7 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, wholeEquipStack, clickData -> {
                 for (ArmorSlot armorSlot : ArmorSlot.values()) {
                     SuitType type = cat.getPiece(armorSlot);
-                    if (player.hasPermission(type.getPermission())) {
+                    if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
                         if (player.getSuit(armorSlot) != null
                                 && player.getSuit(armorSlot).getType() == type) {
                             continue;
@@ -117,12 +121,13 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
 
     @Override
     protected int getMaxPages(UltraPlayer player) {
+        PermissionManager pm = ultraCosmetics.getPermissionManager();
         int i = 0;
         for (SuitCategory cat : SuitCategory.enabled()) {
-            if (player.hasPermission(cat.getHelmet().getPermission())
-                    || player.hasPermission(cat.getChestplate().getPermission())
-                    || player.hasPermission(cat.getLeggings().getPermission())
-                    || player.hasPermission(cat.getBoots().getPermission())) {
+            if (pm.hasPermission(player, cat.getHelmet())
+                    || pm.hasPermission(player, cat.getChestplate())
+                    || pm.hasPermission(player, cat.getLeggings())
+                    || pm.hasPermission(player, cat.getBoots())) {
                 i++;
             }
         }

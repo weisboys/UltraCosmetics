@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.mysql;
+package be.isach.ultracosmetics.mysql.column;
 
 public class StringColumn extends Column<String> {
     private final int size;

@@ -36,7 +36,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.permissions.Permission;
 import org.bukkit.util.Vector;
 
 import com.cryptomorin.xseries.XMaterial;
@@ -313,14 +312,6 @@ public class UltraPlayer {
         getSuit(armorSlot).clear();
         setCurrentSuitPart(armorSlot, null);
         return true;
-    }
-
-    public boolean hasPermission(String permission) {
-        return getBukkitPlayer().hasPermission(permission);
-    }
-
-    public boolean hasPermission(Permission permission) {
-        return getBukkitPlayer().hasPermission(permission);
     }
 
     /**

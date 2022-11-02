@@ -46,7 +46,8 @@ public class MenuPets extends CosmeticMenu<PetType> {
             ItemStack stack;
             int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
             ClickRunnable run;
-            if (SettingsManager.getConfig().getBoolean("Pets-Rename.Permission-Required") && !player.hasPermission("ultracosmetics.pets.rename")) {
+            if (SettingsManager.getConfig().getBoolean("Pets-Rename.Permission-Required")
+                    && !player.getBukkitPlayer().hasPermission("ultracosmetics.pets.rename")) {
                 return;
             }
             if (player.getCurrentPet() != null) {

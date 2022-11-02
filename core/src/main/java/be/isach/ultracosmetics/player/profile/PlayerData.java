@@ -9,8 +9,10 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
-import be.isach.ultracosmetics.mysql.StandardQuery;
-import be.isach.ultracosmetics.mysql.Table;
+import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
+import be.isach.ultracosmetics.mysql.query.StandardQuery;
+import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
+import be.isach.ultracosmetics.mysql.tables.Table;
 
 import org.bukkit.configuration.ConfigurationSection;
 
@@ -190,32 +192,29 @@ public class PlayerData {
     }
 
     public void loadFromSQL() {
-        Table table = UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().getTable();
+        MySqlConnectionManager sql = UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager();
         // update table with UUID. If it's already there, ignore
-        table.insertIgnore().insert("uuid", uuid.toString()).execute();
-        Map<String,Object> properties = table.select("*").uuid(uuid).getAll();
-        gadgetsEnabled = (boolean) properties.get(ProfileKey.GADGETS_ENABLED.getSqlKey());
-        morphSelfView = (boolean) properties.get(ProfileKey.MORPH_VIEW.getSqlKey());
-        treasureNotifications = (boolean) properties.get(ProfileKey.TREASURE_NOTIFICATION.getSqlKey());
-        filterByOwned = (boolean) properties.get(ProfileKey.FILTER_OWNED.getSqlKey());
-        for (PetType type : PetType.enabled()) {
-            petNames.put(type, (String) properties.get(Table.cleanCosmeticName(type)));
-        }
-        for (GadgetType type : GadgetType.enabled()) {
-            ammo.put(type, (int) properties.get(Table.cleanCosmeticName(type)));
-        }
-        keys = (int) properties.get(ProfileKey.KEYS.getSqlKey());
+        PlayerDataTable pd = sql.getPlayerData();
+        pd.addPlayer(uuid);
+        Map<String,Object> settings = pd.getSettings(uuid);
+        gadgetsEnabled = (boolean) settings.get(ProfileKey.GADGETS_ENABLED.getSqlKey());
+        morphSelfView = (boolean) settings.get(ProfileKey.MORPH_VIEW.getSqlKey());
+        treasureNotifications = (boolean) settings.get(ProfileKey.TREASURE_NOTIFICATION.getSqlKey());
+        filterByOwned = (boolean) settings.get(ProfileKey.FILTER_OWNED.getSqlKey());
+        keys = (int) settings.get(ProfileKey.KEYS.getSqlKey());
+        petNames = sql.getPetNames().getAllPetNames(uuid);
+        ammo = sql.getAmmoTable().getAllAmmo(uuid);
         if (!UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) return;
         for (Category cat : Category.enabled()) {
             if (cat == Category.SUITS) {
                 for (ArmorSlot slot : ArmorSlot.values()) {
-                    String suitCategory = (String) properties.get(Category.SUITS.toString().toLowerCase() + "_" + slot.toString().toLowerCase());
+                    String suitCategory = (String) settings.get(Category.SUITS.toString().toLowerCase() + "_" + slot.toString().toLowerCase());
                     if (suitCategory == null) continue;
                     enabledSuitParts.put(slot, SuitCategory.valueOf(suitCategory.toUpperCase()).getPiece(slot));
                 }
                 continue;
             }
-            enabledCosmetics.put(cat, cat.valueOfType((String) properties.get(Table.cleanCategoryName(cat))));
+            enabledCosmetics.put(cat, cat.valueOfType((String) settings.get(Table.cleanCategoryName(cat))));
         }
     }
 

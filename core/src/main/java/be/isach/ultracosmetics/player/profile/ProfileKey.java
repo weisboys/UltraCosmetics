@@ -3,14 +3,16 @@ package be.isach.ultracosmetics.player.profile;
 public enum ProfileKey {
     KEYS("Keys", "treasureKeys"),
     GADGETS_ENABLED("Gadgets-Enabled", "gadgetsEnabled"),
-    MORPH_VIEW("Third-Person-Morph-View", "selfmorphview"),
+    MORPH_VIEW("Third-Person-Morph-View", "selfMorphView"),
     TREASURE_NOTIFICATION("Treasure-Notifications", "treasureNotifications"),
     FILTER_OWNED("Filter-By-Owned", "filterByOwned"),
     PET_NAMES("Pet-Names", null),
-    AMMO("Ammo", null);
+    AMMO("Ammo", null),
     ;
+
     private final String file;
     private final String sql;
+
     private ProfileKey(String file, String sql) {
         this.file = file;
         this.sql = sql;

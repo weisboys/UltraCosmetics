@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.util.WeightedSet;
 
 import org.bukkit.Bukkit;
@@ -20,7 +21,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.permissions.Permission;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
@@ -42,6 +42,7 @@ public class TreasureRandomizer {
     private final WeightedSet<ResultType> basicResultTypes = new WeightedSet<>();
     private final List<CommandReward> commandRewardList = new ArrayList<>();
     private final Map<ResultType,WeightedSet<CosmeticType<?>>> cosmetics = new HashMap<>();
+    private final PermissionManager permissionManager = UltraCosmeticsData.get().getPlugin().getPermissionManager();
     private Location loc;
     private final Player player;
     private final boolean forceMessageToOwner;
@@ -251,7 +252,7 @@ public class TreasureRandomizer {
     public void giveRandomCosmetic(ResultType result, String lang, String configName) {
         CosmeticType<?> cosmetic = getRandomCosmetic(result);
         name = MessageManager.getMessage("Treasure-Chests-Loot." + lang).replace("%" + lang.toLowerCase() + "%", cosmetic.getName());
-        givePermission(cosmetic.getPermission());
+        permissionManager.setPermission(player, cosmetic);
         spawnRandomFirework(loc);
         itemStack = cosmetic.getItemStack();
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots." + configName + ".Message.enabled");
@@ -275,10 +276,6 @@ public class TreasureRandomizer {
         spawnRandomFirework(loc);
 
         broadcast(ChatColor.translateAlternateColorCodes('&', reward.getMessage().replace("%prefix%", MessageManager.getMessage("Prefix"))), reward.getMessageEnabled());
-    }
-
-    public void givePermission(Permission permission) {
-        UltraCosmeticsData.get().getPlugin().getPermissionProvider().setPermission(player, permission);
     }
 
     public void spawnRandomFirework(Location location) {
