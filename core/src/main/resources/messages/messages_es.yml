@@ -663,7 +663,7 @@ Pets:
     entity-displayname: '&lElder Guardian de %playername%'
     Description: '&7&oGuardianes de templos antiguos!'
   Endermite:
-    menu-name: '&5&lEndermita'
+    menu-name: '&5&lEndermite'
     entity-displayname: '&lEndermita de %playername%'
     Description: '&7&oAtrae Endermans!'
   Evoker:
