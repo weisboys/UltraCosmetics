@@ -874,6 +874,22 @@ Morphs:
     name: '&2&lFrog'
     skill: '&eLeft-Click&7 to: &aTODO'
     Description: '&7&oDoesn''t like Fireflies!'
+  Fox:
+    name: '&d&lFox'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oWhat does the fox say?'
+  GlowSquid:
+    name: '&3&lGlow Squid'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oIt glows!'
+  Goat:
+    name: '&f&lGoat'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oBAAAA!'
+  Guardian:
+    name: '&3&lGuardian'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oHates Squids!'
 Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'

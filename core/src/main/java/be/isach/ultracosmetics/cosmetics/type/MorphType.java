@@ -106,6 +106,7 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, MorphCaveSpider.class);
         new MorphType("Donkey", XMaterial.CHEST, EntityType.DONKEY, MorphDonkey.class);
         new MorphType("Endermite", XMaterial.ENDER_EYE, EntityType.ENDERMITE, MorphEndermite.class);
+        new MorphType("Guardian", XMaterial.PRISMARINE_SHARD, EntityType.GUARDIAN, MorphGuardian.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
             new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
@@ -128,6 +129,7 @@ public class MorphType extends CosmeticType<Morph> {
 
         if (version.isAtLeast(ServerVersion.v1_14)) {
             new MorphType("Cat", XMaterial.TROPICAL_FISH, EntityType.CAT, MorphCat.class);
+            new MorphType("Fox", XMaterial.SWEET_BERRIES, EntityType.FOX, MorphFox.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_15)) {
@@ -136,8 +138,13 @@ public class MorphType extends CosmeticType<Morph> {
 
         if (version.isAtLeast(ServerVersion.v1_17)) {
             new MorphType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, MorphAxolotl.class);
+            new MorphType("GlowSquid", XMaterial.GLOW_INK_SAC, EntityType.GLOW_SQUID, MorphGlowSquid.class);
         }
         
+        if (version.isAtLeast(ServerVersion.v1_18)) {
+            new MorphType("Goat", XMaterial.GOAT_HORN, EntityType.GOAT, MorphGoat.class);
+        }
+
         if (version.isAtLeast(ServerVersion.v1_19)) {
             new MorphType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, MorphAllay.class);
             new MorphType("Frog", XMaterial.FROG_SPAWN_EGG, EntityType.FROG, MorphFrog.class);
