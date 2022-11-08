@@ -6,6 +6,8 @@ import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.Set;
+
 public class PermissionCommand implements CosmeticPermissionSetter, RawPermissionSetter {
     private final String commandTemplate;
 
@@ -20,7 +22,17 @@ public class PermissionCommand implements CosmeticPermissionSetter, RawPermissio
     }
 
     @Override
-    public void setPermission(Player player, CosmeticType<?> type) {
-        setRawPermission(player, type.getPermission().getName());
+    public void setPermissions(Player player, Set<CosmeticType<?>> type) {
+        type.forEach(t -> setRawPermission(player, t.getPermission().getName()));
+    }
+
+    @Override
+    public void unsetPermissions(Player player, Set<CosmeticType<?>> cosmeticType) {
+        throw new UnsupportedOperationException("Cannot unset permission with permission command");
+    }
+
+    @Override
+    public boolean isUnsetSupported() {
+        return false;
     }
 }

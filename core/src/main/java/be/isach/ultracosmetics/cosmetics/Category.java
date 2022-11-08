@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.cosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
@@ -21,6 +22,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BooleanSupplier;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -39,7 +41,10 @@ public enum Category {
     MOUNTS("Mounts", "%mountname%", "mounts", "mou", MountType::enabled, MountType::values, MountType::valueOf),
     MORPHS("Morphs", "%morphname%", "morphs", "mor", MorphType::enabled, MorphType::values, MorphType::valueOf, () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
     HATS("Hats", "%hatname%", "hats", "h", HatType::enabled, HatType::values, HatType::valueOf),
-    SUITS("Suits", "%suitname%", "suits", "s", SuitType::enabled, SuitType::values, null),
+    SUITS_HELMET(ArmorSlot.HELMET),
+    SUITS_CHESTPLATE(ArmorSlot.CHESTPLATE),
+    SUITS_LEGGINGS(ArmorSlot.LEGGINGS),
+    SUITS_BOOTS(ArmorSlot.BOOTS),
     EMOTES("Emotes", "%emotename%", "emotes", "e", EmoteType::enabled, EmoteType::values, EmoteType::valueOf),
     ;
 
@@ -59,6 +64,14 @@ public enum Category {
             }
         }
         return null;
+    }
+
+    public static void forEachCosmetic(Consumer<CosmeticType<?>> func) {
+        for (Category cat : values()) {
+            for (CosmeticType<?> type : cat.getValues()) {
+                func.accept(type);
+            }
+        }
     }
 
     /**
@@ -89,6 +102,10 @@ public enum Category {
     private Category(String configPath, String chatPlaceholder, String permission, String prefix, Supplier<List<? extends CosmeticType<?>>> enabledFunc,
             Supplier<List<? extends CosmeticType<?>>> valuesFunc, Function<String,? extends CosmeticType<?>> valueOfFunc) {
         this(configPath, chatPlaceholder, permission, prefix, enabledFunc, valuesFunc, valueOfFunc, () -> true);
+    }
+
+    private Category(ArmorSlot slot) {
+        this("Suits", "%suitname%", "suits", "suits_" + slot.toString().toLowerCase().charAt(0), SuitType::enabled, SuitType::values, s -> SuitType.getSuitPart(s, slot));
     }
 
     /**

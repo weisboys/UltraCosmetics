@@ -43,7 +43,11 @@ public class Menus {
         categoryMenus.put(Category.MORPHS, new MenuMorphs(ultraCosmetics));
         categoryMenus.put(Category.MOUNTS, new MenuMounts(ultraCosmetics));
         categoryMenus.put(Category.PETS, new MenuPets(ultraCosmetics));
-        categoryMenus.put(Category.SUITS, new MenuSuits(ultraCosmetics));
+        MenuSuits ms = new MenuSuits(ultraCosmetics);
+        categoryMenus.put(Category.SUITS_HELMET, ms);
+        categoryMenus.put(Category.SUITS_CHESTPLATE, ms);
+        categoryMenus.put(Category.SUITS_LEGGINGS, ms);
+        categoryMenus.put(Category.SUITS_BOOTS, ms);
         this.mainMenu = new MenuMain(ultraCosmetics);
     }
 

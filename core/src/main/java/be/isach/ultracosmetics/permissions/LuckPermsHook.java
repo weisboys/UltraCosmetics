@@ -9,6 +9,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Set;
+
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.context.ImmutableContextSet;
 import net.luckperms.api.model.user.User;
@@ -57,7 +59,17 @@ public class LuckPermsHook implements CosmeticPermissionSetter, RawPermissionSet
     }
 
     @Override
-    public void setPermission(Player player, CosmeticType<?> type) {
-        setRawPermission(player, type.getPermission().getName());
+    public void setPermissions(Player player, Set<CosmeticType<?>> types) {
+        types.forEach(t -> setRawPermission(player, t.getPermission().getName()));
+    }
+
+    @Override
+    public void unsetPermissions(Player player, Set<CosmeticType<?>> types) {
+        throw new UnsupportedOperationException("Cannot unset permission using LuckPerms API");
+    }
+
+    @Override
+    public boolean isUnsetSupported() {
+        return false;
     }
 }

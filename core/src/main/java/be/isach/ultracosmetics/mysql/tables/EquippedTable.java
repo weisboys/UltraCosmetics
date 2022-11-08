@@ -8,10 +8,12 @@ import be.isach.ultracosmetics.mysql.column.StringColumn;
 import be.isach.ultracosmetics.mysql.column.UUIDColumn;
 import be.isach.ultracosmetics.mysql.column.UniqueConstraint;
 import be.isach.ultracosmetics.mysql.column.VirtualUUIDColumn;
+import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import javax.sql.DataSource;
@@ -51,7 +53,16 @@ public class EquippedTable extends Table {
     }
 
     public void setEquipped(UUID uuid, CosmeticType<?> type) {
-        insert("uuid", "id", "category").insert(insertUUID(uuid), cosmeticTable.subqueryFor(type, true), new InsertValue(getCategoryName(type)))
+        insert("uuid", "id", "category").insert(insertUUID(uuid), cosmeticTable.subqueryFor(type, true), new InsertValue(cleanCategoryName(type)))
                 .updateOnDuplicate().execute();
+    }
+
+    public void setAllEquipped(UUID uuid, Map<Category,CosmeticType<?>> equipped) {
+        InsertQuery query = insert("uuid", "id", "category");
+        InsertValue uuidVal = insertUUID(uuid);
+        for (Entry<Category,CosmeticType<?>> entry : equipped.entrySet()) {
+            query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getValue(), true), new InsertValue(cleanCategoryName(entry.getKey())));
+        }
+        query.updateOnDuplicate().execute();
     }
 }

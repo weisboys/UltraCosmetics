@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.config.MessageManager;
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import be.isach.ultracosmetics.util.MathUtils;
@@ -55,7 +54,7 @@ public class SuitType extends CosmeticType<Suit> {
      * @param category The Suit category this part belongs to
      */
     protected SuitType(XMaterial material, ArmorSlot slot, SuitCategory category) {
-        super(Category.SUITS, category.getConfigName(), material, category.getSuitClass(), false);
+        super(slot.getSuitsCategory(), category.getConfigName(), material, category.getSuitClass(), false);
         this.slot = slot;
         this.category = category;
         // delay permission registration until we've loaded slot and category fields

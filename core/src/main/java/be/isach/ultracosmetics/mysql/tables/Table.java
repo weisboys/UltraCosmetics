@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.mysql.tables;
 
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
-import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 import be.isach.ultracosmetics.mysql.query.StandardQuery;
@@ -83,16 +82,15 @@ public abstract class Table {
     }
 
     public static String cleanCosmeticName(CosmeticType<?> cosmetic) {
-        return cosmetic == null ? null : cosmetic.getConfigName().toLowerCase().replace("_", "");
+        return cosmetic == null ? null : cosmetic.getConfigName().toLowerCase();
     }
 
-    public static String getCategoryName(CosmeticType<?> cosmetic) {
-        String catName = cosmetic.getCategory().toString();
-        if (cosmetic.getCategory() == Category.SUITS) {
-            SuitType suit = (SuitType) cosmetic;
-            catName += "_" + suit.getSlot().toString();
-        }
-        return catName.toLowerCase();
+    public static String cleanCategoryName(Category cat) {
+        return cat.toString().toLowerCase();
+    }
+
+    public static String cleanCategoryName(CosmeticType<?> cosmetic) {
+        return cleanCategoryName(cosmetic.getCategory());
     }
 
     public static String hexUUID(UUID uuid) {

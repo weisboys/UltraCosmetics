@@ -237,8 +237,8 @@ public class PlayerListener implements Listener {
         if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(event.getEntity().getInventory().getItem((Integer) SettingsManager.getConfig().get("Gadget-Slot")));
         if (ultraPlayer.getCurrentHat() != null) event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
         Arrays.asList(ArmorSlot.values()).forEach(armorSlot -> {
-            if (ultraPlayer.getSuit(armorSlot) != null) {
-                event.getDrops().remove(ultraPlayer.getSuit(armorSlot).getItemStack());
+            if (ultraPlayer.getCurrentSuit(armorSlot) != null) {
+                event.getDrops().remove(ultraPlayer.getCurrentSuit(armorSlot).getItemStack());
             }
         });
         if (ultraPlayer.getCurrentEmote() != null) event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());

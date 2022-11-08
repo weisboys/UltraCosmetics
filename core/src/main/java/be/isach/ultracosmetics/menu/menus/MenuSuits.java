@@ -33,7 +33,7 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     private static final int[] SLOTS = new int[] { 10, 11, 12, 13, 14, 15, 16 };
 
     public MenuSuits(UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, Category.SUITS);
+        super(ultraCosmetics, Category.SUITS_HELMET);
     }
 
     @Override
@@ -50,15 +50,15 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             SuitCategory cat = enabled.get(i);
             ItemStack wholeEquipStack = XMaterial.HOPPER.parseItem();
             ItemMeta wholeEquipMeta = wholeEquipStack.getItemMeta();
-            wholeEquipMeta.setDisplayName(Category.SUITS.getActivateTooltip() + " " + MessageManager.getMessage("Suits." + cat.getConfigName() + ".whole-equip"));
+            wholeEquipMeta.setDisplayName(Category.SUITS_HELMET.getActivateTooltip() + " " + MessageManager.getMessage("Suits." + cat.getConfigName() + ".whole-equip"));
             wholeEquipMeta.setLore(Arrays.asList("", MessageManager.getMessage("Suits.Whole-Equip-Lore"), ""));
             wholeEquipStack.setItemMeta(wholeEquipMeta);
             putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, wholeEquipStack, clickData -> {
                 for (ArmorSlot armorSlot : ArmorSlot.values()) {
                     SuitType type = cat.getPiece(armorSlot);
                     if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
-                        if (player.getSuit(armorSlot) != null
-                                && player.getSuit(armorSlot).getType() == type) {
+                        if (player.getCosmetic(armorSlot.getSuitsCategory()) != null
+                                && player.getCosmetic(armorSlot.getSuitsCategory()).getType() == type) {
                             continue;
                         }
                         toggleOn(clickData.getClicker(), type, getUltraCosmetics());
@@ -101,17 +101,9 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
         suitType.equip(ultraPlayer, ultraCosmetics);
     }
 
-    protected void toggleOff(UltraPlayer ultraPlayer, ArmorSlot armorSlot) {
-        ultraPlayer.removeSuit(armorSlot);
-    }
-
     @Override
     protected void toggleOff(UltraPlayer ultraPlayer, SuitType type) {
-        if (type == null) {
-            ultraPlayer.removeSuit();
-            return;
-        }
-        toggleOff(ultraPlayer, type.getSlot());
+        type.equip(ultraPlayer, ultraCosmetics);
     }
 
     @Override
@@ -132,10 +124,5 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             }
         }
         return Math.max(1, ((i - 1) / getItemsPerPage()) + 1);
-    }
-
-    @Override
-    public boolean hasEquipped(UltraPlayer ultraPlayer, SuitType type) {
-        return ultraPlayer.hasSuitPartOn(type.getSlot());
     }
 }

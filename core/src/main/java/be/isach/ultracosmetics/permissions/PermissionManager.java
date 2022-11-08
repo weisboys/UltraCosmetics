@@ -12,6 +12,9 @@ import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class PermissionManager {
     private CosmeticPermissionGetter cosmeticGetter;
     private RawPermissionGetter rawGetter;
@@ -21,7 +24,7 @@ public class PermissionManager {
     public PermissionManager(UltraCosmetics ultraCosmetics) {
         CustomConfiguration config = SettingsManager.getConfig();
         if (!UltraCosmeticsData.get().usingFileStorage() && config.getBoolean("MySQL.Unlocked-Cosmetics.Enabled")) {
-            MySQLPermissions mysql = new MySQLPermissions();
+            ProfilePermissions mysql = new ProfilePermissions(ultraCosmetics);
             cosmeticGetter = mysql;
             cosmeticSetter = mysql;
         }
@@ -69,8 +72,24 @@ public class PermissionManager {
         return rawGetter.hasRawPermission(player, permission);
     }
 
+    public void setPermissions(Player player, Set<CosmeticType<?>> types) {
+        cosmeticSetter.setPermissions(player, types);
+    }
+
+    public void unsetPermissions(Player player, Set<CosmeticType<?>> types) {
+        cosmeticSetter.unsetPermissions(player, types);
+    }
+
     public void setPermission(Player player, CosmeticType<?> type) {
-        cosmeticSetter.setPermission(player, type);
+        Set<CosmeticType<?>> types = new HashSet<>();
+        types.add(type);
+        setPermissions(player, types);
+    }
+
+    public void unsetPermission(Player player, CosmeticType<?> type) {
+        Set<CosmeticType<?>> types = new HashSet<>();
+        types.add(type);
+        unsetPermissions(player, types);
     }
 
     public void setPermission(UltraPlayer player, CosmeticType<?> type) {
@@ -79,5 +98,9 @@ public class PermissionManager {
 
     public void setRawPermission(Player player, String permission) {
         rawSetter.setRawPermission(player, permission);
+    }
+
+    public boolean isUsingSQL() {
+        return cosmeticGetter instanceof ProfilePermissions;
     }
 }

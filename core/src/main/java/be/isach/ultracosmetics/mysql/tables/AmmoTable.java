@@ -7,10 +7,12 @@ import be.isach.ultracosmetics.mysql.column.UUIDColumn;
 import be.isach.ultracosmetics.mysql.column.UniqueConstraint;
 import be.isach.ultracosmetics.mysql.column.VirtualUUIDColumn;
 import be.isach.ultracosmetics.mysql.query.InnerJoin;
+import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.UUID;
 
 import javax.sql.DataSource;
@@ -54,5 +56,14 @@ public class AmmoTable extends Table {
     public void setAmmo(UUID uuid, GadgetType type, int amount) {
         insert("uuid", "id", "ammo").insert(new InsertValue(hexUUID(uuid)), cosmeticTable.subqueryFor(type, true), new InsertValue(amount))
                 .updateOnDuplicate().execute();
+    }
+
+    public void setAllAmmo(UUID uuid, Map<GadgetType,Integer> ammo) {
+        InsertQuery query = insert("uuid", "id", "ammo");
+        InsertValue uuidVal = insertUUID(uuid);
+        for (Entry<GadgetType,Integer> entry : ammo.entrySet()) {
+            query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getKey(), true), new InsertValue(entry.getValue()));
+        }
+        query.updateOnDuplicate().execute();
     }
 }

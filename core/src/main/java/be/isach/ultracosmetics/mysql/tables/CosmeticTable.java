@@ -40,13 +40,13 @@ public class CosmeticTable extends Table {
 
     public SelectSubquery subqueryFor(CosmeticType<?> type, boolean insert) {
         return new SelectSubquery(insert ? null : "id", getWrappedName(), "id")
-                .where("category", getCategoryName(type)).where("type", type.getName().toLowerCase());
+                .where("category", cleanCategoryName(type)).where("type", cleanCosmeticName(type));
     }
 
     /*
      * Debugging only. For actual database interactions, use `subqueryFor`
      */
     public int getCosmeticID(CosmeticType<?> type) {
-        return select("id").where("category", getCategoryName(type)).where("type", type.getName().toLowerCase()).asInt();
+        return select("id").where("category", cleanCategoryName(type)).where("type", cleanCosmeticName(type)).asInt();
     }
 }

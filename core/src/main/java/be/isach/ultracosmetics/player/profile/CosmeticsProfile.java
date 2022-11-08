@@ -5,14 +5,13 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
-import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
-import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.UUID;
 
 public abstract class CosmeticsProfile {
@@ -47,13 +46,6 @@ public abstract class CosmeticsProfile {
             if (type.getValue() == null || !type.getKey().isEnabled() || !type.getValue().isEnabled()) continue;
             type.getValue().equip(ultraPlayer, ultraCosmetics);
         }
-
-        if (Category.SUITS.isEnabled()) {
-            for (SuitType type : data.getEnabledSuitParts().values()) {
-                if (type == null || !type.isEnabled()) continue;
-                type.equip(ultraPlayer, ultraCosmetics);
-            }
-        }
     }
 
     public void setEnabledCosmetic(Category cat, Cosmetic<?> cosmetic) {
@@ -61,19 +53,7 @@ public abstract class CosmeticsProfile {
     }
 
     public void setEnabledCosmetic(Category cat, CosmeticType<?> type) {
-        if (cat == Category.SUITS) {
-            if (type == null) {
-                throw new IllegalArgumentException("Updating Suit state requires a slot parameter");
-            }
-            SuitType suit = (SuitType) type;
-            setEnabledSuitPart(suit.getSlot(), suit);
-            return;
-        }
         data.getEnabledCosmetics().put(cat, type);
-    }
-
-    public void setEnabledSuitPart(ArmorSlot slot, SuitType suitType) {
-        data.getEnabledSuitParts().put(slot, suitType);
     }
 
     public int getAmmo(GadgetType gadget) {
@@ -139,4 +119,17 @@ public abstract class CosmeticsProfile {
     public void setFilterByOwned(boolean filterByOwned) {
         data.setFilterByOwned(filterByOwned);
     }
+
+    public boolean hasUnlocked(CosmeticType<?> type) {
+        return data.getUnlockedCosmetics().contains(type);
+    }
+
+    public void setUnlocked(Set<CosmeticType<?>> type) {
+        data.getUnlockedCosmetics().addAll(type);
+    }
+
+    public void setLocked(Set<CosmeticType<?>> type) {
+        data.getUnlockedCosmetics().removeAll(type);
+    }
+
 }

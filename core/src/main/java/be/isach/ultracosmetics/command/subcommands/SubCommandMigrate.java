@@ -1,5 +1,16 @@
 package be.isach.ultracosmetics.command.subcommands;
 
+import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.command.SubCommand;
+import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
+import be.isach.ultracosmetics.player.profile.PlayerData;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+
+import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,16 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.mysql.tables.Table;
-import be.isach.ultracosmetics.player.profile.PlayerData;
-import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 public class SubCommandMigrate extends SubCommand {
 
@@ -99,7 +100,7 @@ public class SubCommandMigrate extends SubCommand {
     }
 
     private List<UUID> getFlatfileUUIDs() {
-        Table table = ultraCosmetics.getMySqlConnectionManager().getTable();
+        PlayerDataTable table = ultraCosmetics.getMySqlConnectionManager().getPlayerData();
         List<UUID> uuids;
         try (Connection co = ultraCosmetics.getMySqlConnectionManager().getDataSource().getConnection()) {
             PreparedStatement statement = co.prepareStatement("SELECT uuid FROM " + table.getWrappedName());

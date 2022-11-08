@@ -114,7 +114,7 @@ public class TreasureRandomizer {
 
     private static Color randomColor() {
         Random r = ThreadLocalRandom.current();
-        return Color.fromRGB(r.nextInt(255), r.nextInt(255), r.nextInt(255));
+        return Color.fromRGB(r.nextInt(256), r.nextInt(256), r.nextInt(256));
     }
 
     private String getConfigMessage(String s) {
@@ -174,7 +174,10 @@ public class TreasureRandomizer {
         case GADGET:
             giveRandomCosmetic(type, "Gadget", "Gadgets");
             break;
-        case SUIT:
+        case SUIT_HELMET:
+        case SUIT_CHESTPLATE:
+        case SUIT_LEGGINGS:
+        case SUIT_BOOTS:
             giveRandomCosmetic(type, "Suit", "Suits");
             break;
         case EMOTE:
@@ -325,7 +328,10 @@ public class TreasureRandomizer {
         EFFECT(Category.EFFECTS),
         PET(Category.PETS),
         HAT(Category.HATS),
-        SUIT(Category.SUITS),
+        SUIT_HELMET(Category.SUITS_HELMET),
+        SUIT_CHESTPLATE(Category.SUITS_CHESTPLATE),
+        SUIT_LEGGINGS(Category.SUITS_LEGGINGS),
+        SUIT_BOOTS(Category.SUITS_BOOTS),
         EMOTE(Category.EMOTES),
         COMMAND,
         ;

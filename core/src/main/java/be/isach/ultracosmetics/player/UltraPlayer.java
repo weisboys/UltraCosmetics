@@ -43,6 +43,7 @@ import com.cryptomorin.xseries.XMaterial;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -61,7 +62,6 @@ public class UltraPlayer {
      * all others are in `equipped`.
      */
     private final Map<Category,Cosmetic<?>> equipped = new HashMap<>();
-    private final Map<ArmorSlot,Suit> suitMap = new HashMap<>();
     private TreasureChest currentTreasureChest;
 
     /**
@@ -167,7 +167,6 @@ public class UltraPlayer {
     }
 
     public Cosmetic<?> getCosmetic(Category category) {
-        if (category == Category.SUITS) throw new IllegalArgumentException("Can't use generic getCosmetic for suit category!");
         return equipped.get(category);
     }
 
@@ -200,6 +199,10 @@ public class UltraPlayer {
         return (Pet) getCosmetic(Category.PETS);
     }
 
+    public Suit getCurrentSuit(ArmorSlot slot) {
+        return (Suit) getCosmetic(slot.getSuitsCategory());
+    }
+
     public boolean hasCosmetic(Category category) {
         return equipped.containsKey(category);
     }
@@ -210,8 +213,6 @@ public class UltraPlayer {
      * @return {@code true} if a cosmetic was actually unequipped
      */
     public boolean removeCosmetic(Category category) {
-        if (category == Category.SUITS) return removeSuit();
-
         if (!equipped.containsKey(category)) return false;
 
         unsetCosmetic(category).clear();
@@ -246,14 +247,6 @@ public class UltraPlayer {
      * @param cosmetic The cosmetic to set as equipped.
      */
     public void setCosmeticEquipped(Cosmetic<?> cosmetic) {
-        if (cosmetic instanceof Suit) {
-            Suit suit = (Suit) cosmetic;
-            if (hasSuitPartOn(suit.getArmorSlot())) {
-                removeSuit(suit.getArmorSlot());
-            }
-            setCurrentSuitPart(suit.getArmorSlot(), suit);
-            return;
-        }
         removeCosmetic(cosmetic.getCategory());
         equipped.put(cosmetic.getCategory(), cosmetic);
         if (!isQuitting()) {
@@ -290,69 +283,11 @@ public class UltraPlayer {
         cosmeticsProfile.save();
     }
 
-    public void setCurrentSuitPart(ArmorSlot armorSlot, Suit suit) {
-        if (suit == null) {
-            suitMap.remove(armorSlot);
-        } else {
-            suitMap.put(armorSlot, suit);
-        }
-        if (!isQuitting()) {
-            cosmeticsProfile.setEnabledSuitPart(armorSlot, suit == null ? null : suit.getType());
-        }
-    }
-
-    /**
-     * Removes the current suit of armorSlot.
-     *
-     * @param armorSlot The ArmorSlot to remove.
-     */
-    public boolean removeSuit(ArmorSlot armorSlot) {
-        if (!suitMap.containsKey(armorSlot)) return false;
-
-        getSuit(armorSlot).clear();
-        setCurrentSuitPart(armorSlot, null);
-        return true;
-    }
-
-    /**
-     * @param armorSlot The armorslot to get.
-     * @return The Suit from the armor slot.
-     */
-    public Suit getSuit(ArmorSlot armorSlot) {
-        return suitMap.get(armorSlot);
-    }
-
-    /**
-     * Checks if this player has any suit piece on.
-     *
-     * @return True if this player has any suit piece on, false otherwise.
-     */
-    public boolean hasSuitOn() {
-        return suitMap.size() > 0;
-    }
-
-    public boolean hasSuitPartOn(ArmorSlot slot) {
-        return suitMap.containsKey(slot);
-    }
-
-    /**
-     * Removes entire suit.
-     */
-    public boolean removeSuit() {
-        boolean removedSomething = false;
-        for (ArmorSlot armorSlot : ArmorSlot.values()) {
-            if (removeSuit(armorSlot)) {
-                removedSomething = true;
-            }
-        }
-        return removedSomething;
-    }
-
     /**
      * Returns true if the player has any cosmetics equipped
      */
     public boolean hasCosmeticsEquipped() {
-        return equipped.size() > 0 || suitMap.size() > 0;
+        return equipped.size() > 0;
     }
 
     /**
@@ -681,5 +616,20 @@ public class UltraPlayer {
 
     public void setGadgetsPage(int gadgetsPage) {
         this.lastGadgetPage = gadgetsPage;
+    }
+
+    /*
+     * Internal use only
+     */
+    public boolean profileHasUnlocked(CosmeticType<?> type) {
+        return cosmeticsProfile.hasUnlocked(type);
+    }
+
+    public void profileSetUnlocked(Set<CosmeticType<?>> type) {
+        cosmeticsProfile.setUnlocked(type);
+    }
+
+    public void profileSetLocked(Set<CosmeticType<?>> type) {
+        cosmeticsProfile.setLocked(type);
     }
 }

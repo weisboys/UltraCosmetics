@@ -22,6 +22,7 @@ public class StandardQuery {
     protected final List<ClauseItem> whereItems = new ArrayList<>();
     protected final List<ClauseItem> setItems = new ArrayList<>();
     protected InnerJoin innerJoin;
+    protected boolean or = false;
 
     public StandardQuery(Table table, String command) {
         this.table = table;
@@ -37,7 +38,6 @@ public class StandardQuery {
         return where(new ClauseItemLiteral(key, value));
     }
 
-    // convenience since we use it so often
     public StandardQuery uuid(UUID uuid) {
         return where(new ClauseItemLiteral("uuid", Table.hexUUID(uuid), true));
     }
@@ -53,6 +53,19 @@ public class StandardQuery {
 
     public StandardQuery innerJoin(InnerJoin join) {
         this.innerJoin = join;
+        return this;
+    }
+
+    /**
+     * Joins conditions by OR instead of AND,
+     * not including the first condition, like:
+     *
+     * WHERE uuid = x'...' AND (id = 1 OR id = 2 ... )
+     *
+     * @return
+     */
+    public StandardQuery andOr() {
+        or = true;
         return this;
     }
 
@@ -76,7 +89,14 @@ public class StandardQuery {
         if (innerJoin != null) {
             sql.append(" ").append(innerJoin.toSQL(table.getWrappedName()));
         }
-        addClause(sql, "WHERE", " AND ", whereItems, objects);
+        if (or) {
+            sql.append(" WHERE ").append(whereItems.get(0).toSQL(objects)).append(" AND (");
+            addClause(sql, null, " OR ", whereItems, objects);
+            sql.append(")");
+        } else {
+            addClause(sql, "WHERE", " AND ", whereItems, objects);
+        }
+
         if (UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) {
             String plaintext = sql.toString();
             for (Object obj : objects) {
@@ -136,7 +156,9 @@ public class StandardQuery {
 
     private void addClause(StringBuilder sb, String clause, String joiner, List<ClauseItem> items, List<Object> objects) {
         if (items.size() == 0) return;
-        sb.append(" " + clause + " ");
+        if (clause != null) {
+            sb.append(" " + clause + " ");
+        }
         StringJoiner sj = new StringJoiner(joiner);
         for (ClauseItem item : items) {
             sj.add(item.toSQL(objects));

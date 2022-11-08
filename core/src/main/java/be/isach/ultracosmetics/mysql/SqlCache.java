@@ -14,6 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
@@ -90,6 +91,18 @@ public class SqlCache extends CosmeticsProfile {
     public void setFilterByOwned(boolean filterByOwned) {
         super.setFilterByOwned(filterByOwned);
         queueUpdate(() -> sql.getPlayerData().setSetting(uuid, ProfileKey.FILTER_OWNED, filterByOwned));
+    }
+
+    @Override
+    public void setUnlocked(Set<CosmeticType<?>> types) {
+        super.setUnlocked(types);
+        queueUpdate(() -> sql.getUnlockedTable().setUnlocked(uuid, types));
+    }
+
+    @Override
+    public void setLocked(Set<CosmeticType<?>> types) {
+        super.setLocked(types);
+        queueUpdate(() -> sql.getUnlockedTable().unsetUnlocked(uuid, types));
     }
 
     /**

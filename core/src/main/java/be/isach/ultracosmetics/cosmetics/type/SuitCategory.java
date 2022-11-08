@@ -1,9 +1,5 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
@@ -12,7 +8,12 @@ import be.isach.ultracosmetics.cosmetics.suits.SuitDiamond;
 import be.isach.ultracosmetics.cosmetics.suits.SuitFrozen;
 import be.isach.ultracosmetics.cosmetics.suits.SuitRave;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSanta;
+
 import com.cryptomorin.xseries.XMaterial;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public enum SuitCategory {
     RAVE("Rave", "rave", "&7&oSuch amazing colors!", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class),
@@ -21,6 +22,7 @@ public enum SuitCategory {
     SANTA("Santa", "santa", "&7&oBecome Santa and deliver presents!", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
     FROZEN("Frozen", "frozen", "&7&oThis suit belongs to the\n&7&oLord of the Frozen Lands!", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitFrozen.class),
     ;
+
     private final String configName;
     private final String permissionSuffix;
     private final String defaultDesc;
@@ -29,8 +31,9 @@ public enum SuitCategory {
     private final SuitType leggings;
     private final SuitType boots;
     private final Class<? extends Suit> clazz;
+
     private SuitCategory(String configName, String permissionSuffix, String defaultDesc,
-         XMaterial helmet, XMaterial chestplate, XMaterial leggings, XMaterial boots, Class<? extends Suit> clazz) {
+            XMaterial helmet, XMaterial chestplate, XMaterial leggings, XMaterial boots, Class<? extends Suit> clazz) {
         this.configName = configName;
         this.permissionSuffix = permissionSuffix;
         this.defaultDesc = defaultDesc;
