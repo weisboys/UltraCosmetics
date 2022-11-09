@@ -282,8 +282,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         }
 
         if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo() && ultraPlayer.getAmmo(getType()) < 1) {
-            if (UltraCosmeticsData.get().getPlugin().getEconomyHandler().isUsingEconomy()) {
-                UltraCosmeticsData.get().getPlugin().getMenus().openAmmoPurchaseMenu(getType(), getOwner());
+            if (UltraCosmeticsData.get().isAmmoPurchaseEnabled() && getUltraCosmetics().getEconomyHandler().isUsingEconomy()) {
+                getUltraCosmetics().getMenus().openAmmoPurchaseMenu(getType(), getOwner());
             } else {
                 player.sendMessage(MessageManager.getMessage("No-Ammo"));
             }
