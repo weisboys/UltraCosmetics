@@ -118,7 +118,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lEl lugar no esta en el suelo!'
   In-Ground: '%prefix% &c&lEl lugar esta en el suelo!'
   Suggestion: '%prefix% &aQuizas quisiste decir %location%?'
-  Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Dismount-First: '%prefix% &c&lDebes desmontar tu vehículo antes de abrir un cofre.'
 Active-Pet-Needed: '&c&lNecesitas spawnear una mascota para renombrarla'
 Treasure-Chests-Loot:
   Ammo: 'Municion: %ammo% %name%'
@@ -345,21 +345,21 @@ Mounts:
       &7&oFundidas. Esta sirve a su amo por la eternidad.
   Strider:
     menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
+    entity-displayname: '&l Strider de%playername%'
     Description: |-
-      &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava.
+      &7&oUn mob misterioso en forma de cubo
+      &7&ocapaz de caminar recto sobre lava.
   Horse:
-    menu-name: '&7&lHorse'
-    entity-displayname: '&l%playername%''s Horse'
-    Description: '&7&oYour standard, everyday horse'
+    menu-name: '&7&lCaballo'
+    entity-displayname: '&lCaballo de %playername%'
+    Description: '&7&oDonde estés, tu caballo estará'
   Donkey:
-    menu-name: '&8&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
-    Description: '&7&oYour standard, everyday donkey'
+    menu-name: '&8&lBurro'
+    entity-displayname: '&lBurro de %playername%'
+    Description: '&7&oDonde estés, tu burro estará'
   Mule:
-    menu-name: '&8&lMule'
-    entity-displayname: '&l%playername%''s Mule'
+    menu-name: '&8&lMula'
+    entity-displayname: '&lMula de %playername%'
     Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
@@ -889,7 +889,7 @@ Hats:
     Name: '&3&lCalamar'
     Description: '&7&oBloop Bloop!'
   GlowSquid:
-    Name: '&b&lGlow Squid'
+    Name: '&b&lCalamar Brillante'
     Description: '&7&oLight up the ocean!'
   Chicken:
     Name: '&f&lPollo'
@@ -925,7 +925,7 @@ Hats:
     Name: '&7&lGolem'
     Description: '&7&oSoy tu guardia.'
   CopperGolem:
-    Name: '&6&lCopper Golem'
+    Name: '&6&lGolem de Cobre'
     Description: '&7&oMade out of 100% copper.'
   Enderman:
     Name: '&5&lEnderman'
