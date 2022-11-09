@@ -1379,7 +1379,7 @@ Emotes:
     Description: '&7&oOH LORD!!!'
   Wink:
     Name: '&a&lWink'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke'
+    Description: '&7&oHaving fun? Let someone know you are in on the joke!'
   Must-Remove-Helmet: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
