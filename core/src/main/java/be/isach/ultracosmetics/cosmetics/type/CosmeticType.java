@@ -71,10 +71,10 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     public CosmeticType(Category category, String configName, XMaterial material, Class<? extends T> clazz, boolean registerPerm) {
-        this.configName = configName;
-        this.clazz = clazz;
         this.category = category;
+        this.configName = configName;
         this.material = material;
+        this.clazz = clazz;
 
         description = MessageManager.getMessage(getCategory().getConfigPath() + "." + configName + ".Description");
         if (registerPerm) {

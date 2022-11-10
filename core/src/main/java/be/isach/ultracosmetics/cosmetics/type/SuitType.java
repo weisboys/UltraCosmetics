@@ -55,7 +55,7 @@ public class SuitType extends CosmeticType<Suit> {
      * @param category The Suit category this part belongs to
      */
     protected SuitType(XMaterial material, ArmorSlot slot, SuitCategory category) {
-        super(Category.SUITS, category.getConfigName(), material, category.getSuitClass(), false);
+        super(Category.fromSlot(slot), category.getConfigName(), material, category.getSuitClass(), false);
         this.slot = slot;
         this.category = category;
         // delay permission registration until we've loaded slot and category fields

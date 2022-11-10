@@ -16,9 +16,7 @@ import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
-import be.isach.ultracosmetics.permissions.LuckPermsHook;
-import be.isach.ultracosmetics.permissions.PermissionCommand;
-import be.isach.ultracosmetics.permissions.PermissionProvider;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.placeholderapi.PlaceholderHook;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
@@ -127,7 +125,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     private EconomyHandler economyHandler;
 
-    private PermissionProvider permissionProvider;
+    private PermissionManager permissionManager;
 
     /**
      * Manages WorldGuard flags.
@@ -287,14 +285,13 @@ public class UltraCosmetics extends JavaPlugin {
         // Set up economy if needed.
         setupEconomy();
 
-        setupPermissionProvider();
-
         if (!UltraCosmeticsData.get().usingFileStorage()) {
             getSmartLogger().write();
             getSmartLogger().write("Connecting to MySQL database...");
 
             // Start MySQL. May forcefully switch to file storage if it fails to connect.
             mySqlConnectionManager = new MySqlConnectionManager(this);
+            mySqlConnectionManager.start();
             if (mySqlConnectionManager.success()) {
                 getSmartLogger().write("Connected to MySQL database.");
             } else {
@@ -302,6 +299,9 @@ public class UltraCosmetics extends JavaPlugin {
                 activeProblems.add(Problem.SQL_INIT_FAILURE);
             }
         }
+
+        permissionManager = new PermissionManager(this);
+
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
@@ -383,22 +383,6 @@ public class UltraCosmetics extends JavaPlugin {
     private void setupEconomy() {
         economyHandler = new EconomyHandler(this, getConfig().getString("Economy"));
         UltraCosmeticsData.get().checkTreasureChests();
-    }
-
-    private void setupPermissionProvider() {
-        CustomConfiguration config = SettingsManager.getConfig();
-        if (config.getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
-            if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
-                permissionProvider = new LuckPermsHook(this);
-                return;
-            }
-            getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present. Please change it manually.");
-            config.set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
-        }
-        if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
-            activeProblems.add(Problem.PERMISSION_COMMAND_NOT_SET);
-        }
-        permissionProvider = new PermissionCommand();
     }
 
     private void setupMetrics() {
@@ -537,8 +521,17 @@ public class UltraCosmetics extends JavaPlugin {
         }
         String oldMysqlKey = "Ammo-System-For-Gadgets.System";
         if (config.isString(oldMysqlKey)) {
-            config.set("MySQL.Enabled", !config.getString(oldMysqlKey).equalsIgnoreCase("file"));
+            config.set("MySQL.Enabled", false);
             config.set(oldMysqlKey, null);
+        }
+        if (!config.isString("MySQL.player-data-table")) {
+            config.set("MySQL.Enabled", false);
+            config.set("MySQL.table", null);
+            config.set("MySQL.Legacy", true, "To remove the warning about how the SQL config options", "have changed, delete this key.");
+        }
+        if (config.getBoolean("MySQL.Legacy")) {
+            getSmartLogger().write(LogLevel.WARNING, "SQL config options have changed, please verify them");
+            addProblem(Problem.SQL_MIGRATION_REQUIRED);
         }
         config.addDefault("Ammo-System-For-Gadgets.Allow-Purchase", "Whether players should be allowed to purchase ammo");
         config.addDefault("MySQL.Enabled", false);
@@ -547,7 +540,12 @@ public class UltraCosmetics extends JavaPlugin {
         config.addDefault("MySQL.password", "password");
         config.addDefault("MySQL.port", "3306");
         config.addDefault("MySQL.database", "database");
-        config.addDefault("MySQL.table", "UltraCosmeticsData");
+        config.addDefault("MySQL.player-data-table", "UltraCosmetics-PlayerData", "Stores player data, such as keys and settings");
+        config.addDefault("MySQL.cosmetics-table", "UltraCosmetics-Cosmetics", "Stores all cosmetic types for internal reference");
+        config.addDefault("MySQL.ammo-table", "UltraCosmetics-Ammo", "Stores ammo, if enabled");
+        config.addDefault("MySQL.pet-names-table", "UltraCosmetics-PetNames", "Stores pet names");
+        config.addDefault("MySQL.equipped-cosmetics-table", "UltraCosmetics-EquippedCosmetics", "Stores cosmetics that players have equipped, if enabled");
+        config.addDefault("MySQL.unlocked-cosmetics-table", "UltraCosmetics-UnlockedCosmetics", "Stores cosmetics that players have unlocked, if enabled");
 
         config.addDefault("Categories.Clear-Cosmetic-Item", XMaterial.REDSTONE_BLOCK.parseMaterial().toString(), "Item where user click to clear a cosmetic.");
         config.addDefault("Categories.Previous-Page-Item", XMaterial.ENDER_PEARL.parseMaterial().toString(), "Previous Page Item");
@@ -727,8 +725,8 @@ public class UltraCosmetics extends JavaPlugin {
         return economyHandler;
     }
 
-    public PermissionProvider getPermissionProvider() {
-        return permissionProvider;
+    public PermissionManager getPermissionManager() {
+        return permissionManager;
     }
 
     public WorldGuardManager getWorldGuardManager() {

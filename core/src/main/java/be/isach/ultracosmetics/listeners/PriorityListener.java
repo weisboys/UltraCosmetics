@@ -9,6 +9,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+/**
+ * This listener class is loaded as early as possible in the startup process
+ */
 public class PriorityListener implements Listener {
     private final UltraCosmetics ultraCosmetics;
     private final SubCommandTroubleshoot troubleshoot;

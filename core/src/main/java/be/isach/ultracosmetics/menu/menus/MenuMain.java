@@ -67,8 +67,7 @@ public class MenuMain extends Menu {
 
     @Override
     public void open(UltraPlayer player) {
-        if (!UltraCosmeticsData.get().areTreasureChestsEnabled()
-                && Category.enabledSize() == 1) {
+        if (!UltraCosmeticsData.get().areTreasureChestsEnabled() && Category.enabledSize() == 1) {
             getUltraCosmetics().getMenus().getCategoryMenu(Category.enabled().get(0)).open(player);
             return;
         }
@@ -78,10 +77,15 @@ public class MenuMain extends Menu {
     @Override
     protected void putItems(Inventory inventory, UltraPlayer player) {
         if (Category.enabledSize() > 0) {
-            for (int i = 0; i < Category.enabledSize(); i++) {
-                int slot = layout[i];
-                Category category = Category.enabled().get(i);
-                putItem(inventory, slot, category.getItemStack(), data -> {
+            int i = 0;
+            boolean foundSuits = false;
+            for (Category category : Category.enabled()) {
+                // Avoid counting suits categories as different menu items
+                if (category.isSuits()) {
+                    if (foundSuits) continue;
+                    foundSuits = true;
+                }
+                putItem(inventory, layout[i++], category.getItemStack(), data -> {
                     getUltraCosmetics().getMenus().getCategoryMenu(category).open(player);
                 });
             }
