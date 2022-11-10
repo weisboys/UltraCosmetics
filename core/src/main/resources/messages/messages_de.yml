@@ -31,6 +31,7 @@ Your-Keys: '&7&oDeine Schlüssel: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lSchatzschlüssel &e&lfür $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lDu hast gewonnen: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lAlle Plätze sind besetzt, bitte warte und versuche es erneut'
+No-Ammo: '%prefix% &c&lDu hast keine Munition für dieses Gadget!'
 Clear:
   Cosmetics: '&c&lKosmetische Items entfernen'
   Gadgets: '&c&lAktuelles Gadget entfernen'
@@ -117,6 +118,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lDiese Position ist nicht am Boden!'
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
+  Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% Munition'
@@ -131,11 +133,11 @@ Treasure-Chests-Loot:
   Emote: '%emote% Emote'
   Nothing: '&c&lNichts'
 Disable-Gadgets: '&c&lGadgets deaktivieren'
-Disable-Gadgets-Lore: '&cDeaktiviert das Benutzen von Gadgets und dessen Effekte auf dich'
+Disable-Gadgets-Lore: '&cGadgets und dessen Effekte auf dich deaktivieren'
 Enable-Gadgets: '&a&lGadgets aktivieren'
-Enable-Gadgets-Lore: '&aAktiviert das Benutzen von Gadgets und dessen Effekte auf dich'
-Disable-Third-Person-View: '&c&lDeaktiviere die Dritte-Person-Ansicht der Verwandlungen'
-Enable-Third-Person-View: '&a&lAktiviere die Dritte-Person-Ansicht der Verwandlungen'
+Enable-Gadgets-Lore: '&aGadgets und dessen Effekte auf dich aktivieren'
+Disable-Third-Person-View: '&c&lThird-Person-Ansicht der Verwandlungen deaktivieren'
+Enable-Third-Person-View: '&a&lThird-Person-Ansicht der Verwandlungen aktivieren'
 Disable-Filter-By-Owned: '&c&lAlle anzeigen'
 Enable-Filter-By-Owned: '&c&lNach Besitz filtern'
 Disable-Treasure-Notification: '&c&lSchatztruhen Mitteilungen deaktiviert'
@@ -315,7 +317,6 @@ Mounts:
     menu-name: '&5&lDrache'
     entity-displayname: '&l%playername%''s Drache'
     Description: '&7&oWerde ein Drachenreiter!'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&l%playername%''s HypeCart'
@@ -345,7 +346,24 @@ Mounts:
       &7&oexistiert eine mythische Spezies von
       &7&ogeschmolzenen Schlangen.
       &7&oDiese wird dir ewig dienen.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lSchreiter'
+    entity-displayname: '&l%playername%''s Schreiter'
+    Description: |-
+      &7&oEine mysteriöse würfelförmige Kreatur,
+      &7&odie direkt über Lava laufen kann.
+  Horse:
+    menu-name: '&7&lPferd'
+    entity-displayname: '&l%playername%''s Pferd'
+    Description: '&7&oDein normales, alltägliches Pferd'
+  Donkey:
+    menu-name: '&8&lEsel'
+    entity-displayname: '&l%playername%''s Esel'
+    Description: '&7&oDein normaler, alltäglicher Esel'
+  Mule:
+    menu-name: '&8&lMaultier'
+    entity-displayname: '&l%playername%''s Maultier'
+    Description: '&7&oDein normales, alltägliches Maultier'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -542,7 +560,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&l%playername%''s Creeper'
-    Description: '&7&oMag es Sachen in die Luft zu sprengen...'
+    Description: '&7&oMag es, Sachen in die Luft zu sprengen...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
@@ -567,6 +585,166 @@ Pets:
     menu-name: '&a&lHilfsgeist'
     entity-displayname: '&l%playername%''s Hilfsgeist'
     Description: '&7&oEin neuer Freund!'
+  Cod:
+    menu-name: '&7&lKabeljau'
+    entity-displayname: '&l%playername%''s Kabeljau'
+    Description: '&7&oBevorzugt Wasser gegenüber Land!'
+  Donkey:
+    menu-name: '&7&lEsel'
+    entity-displayname: '&l%playername%''s Esel'
+    Description: '&7&oKann alle deine Sachen tragen!'
+  GlowSquid:
+    menu-name: '&3&lLeuchttintenfisch'
+    entity-displayname: '&l%playername%''s Leuchttintenfisch'
+    Description: '&7&oEs leuchtet!'
+  Mule:
+    menu-name: '&7&lMaultier'
+    entity-displayname: '&l%playername%''s Maultier'
+    Description: '&7&oEigentlich ein Esel!'
+  Pufferfish:
+    menu-name: '&e&lKugelfisch'
+    entity-displayname: '&l%playername%''s Kugelfisch'
+    Description: '&7&oMag es nicht, berührt zu werden!'
+  Ocelot:
+    menu-name: '&e&lOzelot'
+    entity-displayname: '&l%playername%''s Ozelot'
+    Description: '&7&oAchtung... sie sind ziemlich schüchtern!'
+  Salmon:
+    menu-name: '&c&lLachs'
+    entity-displayname: '&l%playername%''s Lachs'
+    Description: '&7&oSie sind sehr lecker!'
+  SkeletonHorse:
+    menu-name: '&f&lSkelettpferd'
+    entity-displayname: '&l%playername%''s Skelettpferd'
+    Description: '&7&oPass auf Blitzeinschläge auf!'
+  Squid:
+    menu-name: '&0&lTintenfisch'
+    entity-displayname: '&l%playername%''s Tintenfisch'
+    Description: '&7&oNicht erschrecken, sonst wird das Wasser schwarz!'
+  Strider:
+    menu-name: '&c&lSchreiter'
+    entity-displayname: '&l%playername%''s Schreiter'
+    Description: '&7&oLäuft über Lava!'
+  Tadpole:
+    menu-name: '&8&lKaulquappe'
+    entity-displayname: '&l%playername%''s Kaulquappe'
+    Description: '&7&oWird zu einem Frosch werden!'
+  TropicalFish:
+    menu-name: '&e&lTropenfisch'
+    entity-displayname: '&l%playername%''s Tropenfisch'
+    Description: '&7&oEin bunter Fisch!'
+  Turtle:
+    menu-name: '&2&lSchildkröte'
+    entity-displayname: '&l%playername%''s Schildkröte'
+    Description: '&7&oManche von ihnen werden über 150 Jahre alt!'
+  WanderingTrader:
+    menu-name: '&1&lFahrender Händler'
+    entity-displayname: '&l%playername%''s Fahrender Händler'
+    Description: '&7&oWandert umher und versucht, seine Sachen zu verkaufen!'
+  CaveSpider:
+    menu-name: '&2&lHöhlenspinne'
+    entity-displayname: '&l%playername%''s Höhlenspinne'
+    Description: '&7&oEine Spinne, aber giftig!'
+  Dolphin:
+    menu-name: '&b&lDelfin'
+    entity-displayname: '&l%playername%''s Delfin'
+    Description: '&7&oDie glücklichste Kreatur der Meere!'
+  Spider:
+    menu-name: '&8&lSpinne'
+    entity-displayname: '&l%playername%''s Spinne'
+    Description: '&7&oDeine freundliche Nachbarschaftsspinne!'
+  ZombifiedPiglin:
+    menu-name: '&d&lZombifizierter Piglin'
+    entity-displayname: '&l%playername%''s Zombifizierter Piglin'
+    Description: '&7&oGreife es an und alle werden hinter dir her sein!'
+  Drowned:
+    menu-name: '&3&lErtrunkener'
+    entity-displayname: '&l%playername%''s Ertrunkener'
+    Description: '&7&oEin Unterwasser-Zombie!'
+  ElderGuardian:
+    menu-name: '&3&lGroßer Wächter'
+    entity-displayname: '&l%playername%''s Großer Wächter'
+    Description: '&7&oBewacht antike Tempel!'
+  Endermite:
+    menu-name: '&5&lEndermite'
+    entity-displayname: '&l%playername%''s Endermite'
+    Description: '&7&oZieht Endermen an!'
+  Evoker:
+    menu-name: '&7&lMagier'
+    entity-displayname: '&l%playername%''s Magier'
+    Description: '&7&oBeschwört beruflich Plagegeister!'
+  Ghast:
+    menu-name: '&f&lGhast'
+    entity-displayname: '&l%playername%''s Ghast'
+    Description: '&7&o*Dämonisches Gekreische*'
+  Guardian:
+    menu-name: '&3&lWächter'
+    entity-displayname: '&l%playername%''s Wächter'
+    Description: '&7&oHasst Tintenfische!'
+  Hoglin:
+    menu-name: '&c&lHoglin'
+    entity-displayname: '&l%playername%''s Hoglin'
+    Description: '&7&oEin Schwein, aber wütend.'
+  Husk:
+    menu-name: '&e&lWüstenzombie'
+    entity-displayname: '&l%playername%''s Wüstenzombie'
+    Description: '&7&oEin Zombie, aber sandig.'
+  MagmaCube:
+    menu-name: '&4&lMagmawürfel'
+    entity-displayname: '&l%playername%''s Magmawürfel'
+    Description: '&7&oEin sehr heißer Würfel!'
+  Phantom:
+    menu-name: '&1&lPhantom'
+    entity-displayname: '&l%playername%''s Phantom'
+    Description: '&7&oHasst Spieler, die nicht schlafen!'
+  PiglinBrute:
+    menu-name: '&6&lPiglin-Barbar'
+    entity-displayname: '&l%playername%''s Piglin-Barbar'
+    Description: '&7&oEin ziemlich muskulöser Piglin!'
+  Pillager:
+    menu-name: '&7&lPlünderer'
+    entity-displayname: '&l%playername%''s Plünderer'
+    Description: '&7&oPlündert gerne Dörfer!'
+  Ravager:
+    menu-name: '&8&lVerwüster'
+    entity-displayname: '&l%playername%''s Verwüster'
+    Description: '&7&oLieblingsbegleiter des Plünderers!'
+  Shulker:
+    menu-name: '&5&lShulker'
+    entity-displayname: '&l%playername%''s Shulker'
+    Description: '&7&oVersteckt sich gerne!'
+  Stray:
+    menu-name: '&8&lEiswanderer'
+    entity-displayname: '&l%playername%''s Eiswanderer'
+    Description: '&7&oEin eiskaltes Skelett!'
+  Vindicator:
+    menu-name: '&7&lDiener'
+    entity-displayname: '&l%playername%''s Diener'
+    Description: '&7&oUnterschätze nicht ihre Stärke!'
+  Witch:
+    menu-name: '&5&lHexe'
+    entity-displayname: '&l%playername%''s Hexe'
+    Description: '&7&oLiebt schwarze Katzen!'
+  WitherSkeleton:
+    menu-name: '&8&lWitherskelett'
+    entity-displayname: '&l%playername%''s Witherskelett'
+    Description: '&7&oDer Grund, warum Plünderungen existieren.'
+  Zoglin:
+    menu-name: '&c&lZoglin'
+    entity-displayname: '&l%playername%''s Zoglin'
+    Description: '&7&oEin zombifizierter Hoglin!'
+  ZombieVillager:
+    menu-name: '&2&lZombiedorfbewohner'
+    entity-displayname: '&l%playername%''s Zombiedorfbewohner'
+    Description: '&7&oDer Traum eines Händlers!'
+  ZombieHorse:
+    menu-name: '&2&lZombiepferd'
+    entity-displayname: '&l%playername%''s Zombiepferd'
+    Description: '&7&oDas seltenste Pferd in Minecraft!'
+  Illusioner:
+    menu-name: '&1&lIllusionist'
+    entity-displayname: '&l%playername%''s Illusionist'
+    Description: '&7&oNur mit Befehlen spawnbar!'
   Equip: '%prefix% &9Du hast %petname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %petname% &9entfernt'
 Morphs:
@@ -713,6 +891,9 @@ Hats:
   Squid:
     Name: '&3&lTintenfisch'
     Description: '&7&oBlub Blub!'
+  GlowSquid:
+    Name: '&b&lLeuchttintenfisch'
+    Description: '&7&oErleuchte den Ozean!'
   Chicken:
     Name: '&f&lHuhn'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -737,9 +918,18 @@ Hats:
   BrownMooshroom:
     Name: '&b&lBraune Mooshroom'
     Description: '&7&oMuuuh!'
+  Moobloom:
+    Name: '&e&lBlumenkuh'
+    Description: '&7&oSehr seltene Kuh!'
+  ChestnutHorse:
+    Name: '&2&lKastanienbraunes Pferd'
+    Description: '&7&oVergiss nicht den Sattel!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oIch bin dein Schutz.'
+  CopperGolem:
+    Name: '&6&lKupfergolem'
+    Description: '&7&oHergestellt aus 100% Kupfer.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oJetzt bin ich hier, jetzt bin ich dort!'
@@ -758,6 +948,9 @@ Hats:
   Zombie:
     Name: '&2&lZombie'
     Description: '&7&oGehirne!!!'
+  Drowned:
+    Name: '&3&lErtrunkener'
+    Description: '&7&oUnterwasser-Zombie'
   Strider:
     Name: '&c&lSchreiter'
     Description: '&7&oIch hasse Wasser!'
@@ -773,6 +966,12 @@ Hats:
   Witch:
     Name: '&5&lHexe'
     Description: '&7&oBitte probiere meinen Trank!'
+  Guardian:
+    Name: '&3&lWächter'
+    Description: '&7&oBeschütze die Ozeanmonumente!'
+  ShepherdVillager:
+    Name: '&e&lSchäfer'
+    Description: '&7&oDer einsame Hirte'
   FletcherVillager:
     Name: '&a&lPfeilmacher'
     Description: '&7&oIch mache Pfeile.'
@@ -794,6 +993,9 @@ Hats:
   Frog:
     Name: '&2&lFrosch'
     Description: '&7&oIsst alles, was ihn stört.'
+  AxolotlPink:
+    Name: '&d&lRosa Axolotl'
+    Description: '&7&oDas süßeste Raubtier'
   AxolotlBlue:
     Name: '&9&lBlaues Axolotl'
     Description: '&7&oDas süßeste Raubtier'
@@ -812,6 +1014,12 @@ Hats:
   Bat:
     Name: '&5&lFledermaus'
     Description: '&7&oGenieße das Nachtleben.'
+  Glare:
+    Name: '&2&lGlare'
+    Description: '&7&oEs hasst die Dunkelheit.'
+  Rana:
+    Name: '&a&lRana'
+    Description: '&7&oFroschmütze!'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oDer beste Skin'
@@ -830,6 +1038,24 @@ Hats:
   MCD-NamelessOne:
     Name: '&2&lNamenloser'
     Description: '&7&oMächtiger Nekromant'
+  MCD-StrayKnight:
+    Name: '&7&lVerirrter Ritter'
+    Description: '&7&oEin einsamer Ritter...'
+  MCD-AncientGuardian:
+    Name: '&5&lAntiker Wächter'
+    Description: '&7&oDer älteste Wächter'
+  MCD-KeyGolem:
+    Name: '&6&lSchlüsselgolem'
+    Description: '&7&oSchließe jede Tür auf!'
+  MCD-ArchIllager:
+    Name: '&3&lErz-Illager'
+    Description: '&7&oAnführer der Illager'
+  MCD-SunkenSkeleton:
+    Name: '&2&lVersunkenes Skelett'
+    Description: '&7&oUnterwasser-Skelett'
+  MCD-TheWildfire:
+    Name: '&4&lThe Wildfire'
+    Description: '&7&oSchwebendes Inferno'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -929,6 +1155,9 @@ Hats:
   GigaChad:
     Name: '&7&lGigaChad'
     Description: '&7&oAkzeptiere die Männlichkeit!'
+  Anubis:
+    Name: '&6&lAnubis'
+    Description: '&7&oAltägyptischer Gott'
   Bread:
     Name: '&f&lBrot'
     Description: '&7&oFrisch gebacken'
@@ -1152,7 +1381,7 @@ Emotes:
     Description: '&7&oOH MEIN GOTT!!!'
   Wink:
     Name: '&a&lZwinkern'
-    Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast'
+    Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast!'
   Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
