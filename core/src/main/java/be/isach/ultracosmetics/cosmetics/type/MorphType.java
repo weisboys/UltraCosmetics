@@ -113,7 +113,6 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, MorphSlime.class);
         new MorphType("Creeper", XMaterial.GUNPOWDER, EntityType.CREEPER, MorphCreeper.class);
         new MorphType("Snowman", XMaterial.SNOWBALL, EntityType.SNOWMAN, MorphSnowman.class);
-        new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass());
         new MorphType("Cow", XMaterial.MILK_BUCKET, EntityType.COW, MorphCow.class);
         new MorphType("Mooshroom", XMaterial.RED_MUSHROOM, EntityType.MUSHROOM_COW, MorphMooshroom.class);
         new MorphType("Villager", XMaterial.EMERALD, EntityType.VILLAGER, MorphVillager.class);
@@ -125,6 +124,7 @@ public class MorphType extends CosmeticType<Morph> {
 
         if (version.isAtLeast(ServerVersion.v1_11)) {
             new MorphType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, MorphLlama.class);
+            new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER_SKELETON, MorphWitherSkeleton.class);
         }
 
         if (version.isAtLeast(ServerVersion.v1_12)) {
@@ -132,6 +132,8 @@ public class MorphType extends CosmeticType<Morph> {
         }
 
         new MorphType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, MorphSheep.class);
-        new MorphType("WitherSkeleton", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER_SKELETON, MorphWitherSkeleton.class);
+        if (version.isNmsSupported()) {
+            new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass(), ServerVersion::isNmsSupported);
+        }
     }
 }
