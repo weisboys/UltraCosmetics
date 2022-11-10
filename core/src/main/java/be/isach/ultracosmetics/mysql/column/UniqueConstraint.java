@@ -12,7 +12,7 @@ public class UniqueConstraint extends Constraint {
         if (columns == null || columns.length < 2) {
             throw new IllegalArgumentException("Unique constraint requires at least two columns!");
         }
-        StringJoiner sj = new StringJoiner(", ", "UNIQUE(", ")");
+        StringJoiner sj = new StringJoiner(", ", "UNIQUE KEY (", ")");
         for (String column : columns) {
             sj.add(column);
         }

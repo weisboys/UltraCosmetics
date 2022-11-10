@@ -48,8 +48,14 @@ public enum Category {
     EMOTES("Emotes", "%emotename%", "emotes", "e", EmoteType::enabled, EmoteType::values, EmoteType::valueOf),
     ;
 
+    // Avoids counting suit categories multiple times since they share settings
     public static int enabledSize() {
-        return enabled().size();
+        int size = SUITS_HELMET.isEnabled() ? 1 : 0;
+        for (Category cat : enabled()) {
+            if (cat.isSuits()) continue;
+            size += 1;
+        }
+        return size;
     }
 
     public static List<Category> enabled() {
@@ -72,6 +78,10 @@ public enum Category {
                 func.accept(type);
             }
         }
+    }
+
+    public static Category fromSlot(ArmorSlot slot) {
+        return Category.valueOf("SUITS_" + slot.name());
     }
 
     /**
@@ -193,5 +203,9 @@ public enum Category {
     public CosmeticType<?> valueOfType(String name) {
         if (name == null) return null;
         return valueOfFunc.apply(name);
+    }
+
+    public boolean isSuits() {
+        return name().startsWith("SUITS_");
     }
 }

@@ -57,8 +57,8 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
                 for (ArmorSlot armorSlot : ArmorSlot.values()) {
                     SuitType type = cat.getPiece(armorSlot);
                     if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
-                        if (player.getCosmetic(armorSlot.getSuitsCategory()) != null
-                                && player.getCosmetic(armorSlot.getSuitsCategory()).getType() == type) {
+                        if (player.getCosmetic(type.getCategory()) != null
+                                && player.getCosmetic(type.getCategory()).getType() == type) {
                             continue;
                         }
                         toggleOn(clickData.getClicker(), type, getUltraCosmetics());

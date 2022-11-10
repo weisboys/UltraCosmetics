@@ -29,11 +29,11 @@ public class PetNameTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new UUIDColumn());
         tableInfo.add(new VirtualUUIDColumn());
         tableInfo.add(new Column<>("id", "INTEGER NOT NULL", Integer.class));
-        tableInfo.add(new StringColumn("name", 256, false, true));
+        tableInfo.add(new StringColumn("name", 256, false));
         tableInfo.add(new ForeignKeyConstraint("uuid", playerData.getWrappedName(), "uuid"));
         tableInfo.add(new ForeignKeyConstraint("id", cosmeticTable.getWrappedName(), "id"));
         tableInfo.add(new UniqueConstraint("uuid", "id"));
@@ -46,20 +46,29 @@ public class PetNameTable extends Table {
     public Map<PetType,String> getAllPetNames(UUID uuid) {
         return select("name, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Map<PetType,String> names = new HashMap<>();
-            while (!r.isAfterLast()) {
+            while (r.next()) {
                 names.put(PetType.valueOf(r.getString("type")), r.getString("name"));
-                r.next();
             }
             return names;
-        });
+        }, true);
     }
 
     public void setPetName(UUID uuid, PetType type, String name) {
-        insert("uuid", "id", "name").insert(new InsertValue(hexUUID(uuid)), cosmeticTable.subqueryFor(type, true), new InsertValue(name))
+        if (name == null) {
+            removePetName(uuid, type);
+            return;
+        }
+        insert("uuid", "id", "name").insert(insertUUID(uuid), cosmeticTable.subqueryFor(type, true), new InsertValue(name))
                 .updateOnDuplicate().execute();
     }
 
+    public void removePetName(UUID uuid, PetType type) {
+        delete().uuid(uuid).where(cosmeticTable.subqueryFor(type, false)).execute();
+    }
+
     public void setAllPetNames(UUID uuid, Map<PetType,String> names) {
+        delete().uuid(uuid).execute();
+        if (names.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "name");
         InsertValue uuidVal = insertUUID(uuid);
         for (Entry<PetType,String> entry : names.entrySet()) {

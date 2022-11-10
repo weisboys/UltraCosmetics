@@ -11,8 +11,10 @@ import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
 
 import org.bukkit.configuration.ConfigurationSection;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -96,6 +98,9 @@ public class PlayerData {
 
     /**
      * Loads the profile from the player file.
+     *
+     * These methods are here for the migrate command,
+     * because PlayerData need not be attached to an online player.
      */
     public void loadFromFile() {
         SettingsManager sm = SettingsManager.getData(uuid);
@@ -109,6 +114,12 @@ public class PlayerData {
 
         for (GadgetType gadget : GadgetType.enabled()) {
             ammo.put(gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
+        }
+
+        for (String value : sm.getStringList(ProfileKey.UNLOCKED.getFileKey())) {
+            String[] parts = value.split(":");
+            Category cat = Category.valueOf(parts[0]);
+            unlockedCosmetics.add(cat.valueOfType(parts[1]));
         }
 
         keys = sm.getInt(ProfileKey.KEYS.getFileKey());
@@ -163,6 +174,10 @@ public class PlayerData {
             if (amount != null && amount == 0) amount = null;
             data.set(ProfileKey.AMMO.getFileKey() + "." + entry.getKey().getConfigName().toLowerCase(), amount);
         }
+
+        List<String> unlocked = new ArrayList<>();
+        unlockedCosmetics.forEach(k -> unlocked.add(k.getCategory() + ":" + k.getConfigName()));
+        data.set(ProfileKey.UNLOCKED.getFileKey(), unlocked);
         data.save();
     }
 
@@ -185,7 +200,7 @@ public class PlayerData {
         if (data.areCosmeticsProfilesEnabled()) {
             enabledCosmetics = sql.getEquippedTable().getEquipped(uuid);
         }
-        if (data.getPlugin().getPermissionManager().isUsingSQL()) {
+        if (data.getPlugin().getPermissionManager().isUsingProfile()) {
             unlockedCosmetics = sql.getUnlockedTable().getAllUnlocked(uuid);
         }
     }

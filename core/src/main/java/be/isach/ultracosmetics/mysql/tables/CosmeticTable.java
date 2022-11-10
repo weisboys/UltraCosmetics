@@ -18,7 +18,7 @@ public class CosmeticTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new Column<>("id", "INTEGER AUTO_INCREMENT PRIMARY KEY", Integer.class));
         tableInfo.add(new StringColumn("category", 32, true));
         tableInfo.add(new StringColumn("type", 32, true));
@@ -27,7 +27,7 @@ public class CosmeticTable extends Table {
     }
 
     @Override
-    public void initialSetup() {
+    public void loadBaseData() {
         InsertQuery insert = insertIgnore("category", "type");
         for (Category cat : Category.values()) {
             InsertValue catItem = new InsertValue(cat.toString().toLowerCase());

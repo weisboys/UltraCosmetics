@@ -45,8 +45,20 @@ public class SqlCache extends CosmeticsProfile {
 
     @Override
     public void setEnabledCosmetic(Category cat, CosmeticType<?> type) {
+        // Primary use: if we're setting it to null and it's already null, skip
+        if (data.getEnabledCosmetics().get(cat) == type) return;
         super.setEnabledCosmetic(cat, type);
-        queueUpdate(() -> sql.getEquippedTable().setEquipped(uuid, type));
+        if (type == null) {
+            queueUpdate(() -> sql.getEquippedTable().unsetEquipped(uuid, cat));
+        } else {
+            queueUpdate(() -> sql.getEquippedTable().setEquipped(uuid, type));
+        }
+    }
+
+    @Override
+    public void clearAllEquipped() {
+        super.clearAllEquipped();
+        queueUpdate(() -> sql.getEquippedTable().clearAllEquipped(uuid));
     }
 
     @Override
@@ -106,13 +118,9 @@ public class SqlCache extends CosmeticsProfile {
     }
 
     /**
-     * This function optimizes multiple separate queries into
-     * a single update query, as well as properly handling any
-     * conflicting queries in the order they were actually
-     * received.
+     * This function runs SQl queries asynchronously
      *
-     * @param key
-     * @param value
+     * @param update The function to run
      */
     private void queueUpdate(Runnable update) {
         queue.add(update);

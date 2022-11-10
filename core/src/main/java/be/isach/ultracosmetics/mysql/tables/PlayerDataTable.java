@@ -19,7 +19,7 @@ public class PlayerDataTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new UUIDColumn("uuid", "BINARY(16) PRIMARY KEY"));
         tableInfo.add(new VirtualUUIDColumn());
         tableInfo.add(new Column<>("gadgetsEnabled", "BOOLEAN NOT NULL DEFAULT 1", Boolean.class));
@@ -39,27 +39,27 @@ public class PlayerDataTable extends Table {
             if (key.getSqlKey() == null) continue;
             columns.add(key.getSqlKey());
         }
-        return select(columns.toString())
-                .uuid(uuid).getResults(r -> {
-                    Map<String,Object> settings = new HashMap<>();
-                    for (ProfileKey key : ProfileKey.values()) {
-                        if (key.getSqlKey() == null) continue;
-                        if (key == ProfileKey.KEYS) {
-                            settings.put(key.getSqlKey(), r.getInt(key.getSqlKey()));
-                        }
-                        settings.put(key.getSqlKey(), r.getBoolean(key.getSqlKey()));
-                    }
+        return select(columns.toString()).uuid(uuid).getResults(r -> {
+            Map<String,Object> settings = new HashMap<>();
+            for (ProfileKey key : ProfileKey.values()) {
+                if (key.getSqlKey() == null) continue;
+                if (key == ProfileKey.KEYS) {
+                    settings.put(key.getSqlKey(), r.getInt(key.getSqlKey()));
+                    continue;
+                }
+                settings.put(key.getSqlKey(), r.getBoolean(key.getSqlKey()));
+            }
 
-                    return settings;
-                });
+            return settings;
+        }, false);
     }
 
     public boolean getSetting(UUID uuid, ProfileKey key) {
-        return select(key.getSqlKey()).asBool();
+        return select(key.getSqlKey()).uuid(uuid).asBool();
     }
 
     public void setSetting(UUID uuid, ProfileKey key, Object value) {
-        update().set(key.getSqlKey(), value).execute();
+        update().uuid(uuid).set(key.getSqlKey(), value).execute();
     }
 
     public int getKeys(UUID uuid) {
@@ -67,6 +67,6 @@ public class PlayerDataTable extends Table {
     }
 
     public void setKeys(UUID uuid, int keys) {
-        update().set("treasureKeys", keys).execute();
+        update().uuid(uuid).set("treasureKeys", keys).execute();
     }
 }

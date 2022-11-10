@@ -23,6 +23,7 @@ public class StandardQuery {
     protected final List<ClauseItem> setItems = new ArrayList<>();
     protected InnerJoin innerJoin;
     protected boolean or = false;
+    protected boolean unsafe = false;
 
     public StandardQuery(Table table, String command) {
         this.table = table;
@@ -39,7 +40,7 @@ public class StandardQuery {
     }
 
     public StandardQuery uuid(UUID uuid) {
-        return where(new ClauseItemLiteral("uuid", Table.hexUUID(uuid), true));
+        return where(new ClauseItemLiteral("uuid", Table.binaryUUID(uuid)));
     }
 
     public StandardQuery set(ClauseItem clauseItem) {
@@ -62,7 +63,7 @@ public class StandardQuery {
      *
      * WHERE uuid = x'...' AND (id = 1 OR id = 2 ... )
      *
-     * @return
+     * @return self
      */
     public StandardQuery andOr() {
         or = true;
@@ -70,17 +71,28 @@ public class StandardQuery {
     }
 
     /**
+     * Overrides the requirement that all queries have a WHERE clause.
+     *
+     * @return self
+     */
+    public StandardQuery unsafe() {
+        unsafe = true;
+        return this;
+    }
+
+    /**
      * Weird and janky because when a PreparedStatement is closed,
      * its ResultSet is also closed. To work around this, you must
-     * pass a Function as a parameter that returns whatever the
+     * pass a function as a parameter that returns whatever the
      * getResults() method as a whole should return (type parameters ensure same type)
      *
      * @param <T>           Return type, determined by function passed in.
      * @param processResult Function to process ResultSet.
+     * @param multiRow      If true, will not preemptively call next()
      * @return Whatever processResult() returns.
      */
-    public <T> T getResults(ResultGetter<T> processResult) {
-        if (whereItems.size() == 0) {
+    public <T> T getResults(ResultGetter<T> processResult, boolean multiRow) {
+        if (whereItems.size() == 0 && !unsafe) {
             throw new IllegalStateException("Should not execute non-INSERT query without WHERE clause");
         }
         StringBuilder sql = new StringBuilder(command);
@@ -97,13 +109,7 @@ public class StandardQuery {
             addClause(sql, "WHERE", " AND ", whereItems, objects);
         }
 
-        if (UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) {
-            String plaintext = sql.toString();
-            for (Object obj : objects) {
-                plaintext = plaintext.replaceFirst("\\?", obj == null ? "NULL" : obj.toString());
-            }
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Executing SQL: " + plaintext);
-        }
+        printStringified(sql, objects);
         try (Connection connection = table.getConnection(); PreparedStatement statement = connection.prepareStatement(sql.toString())) {
             for (int i = 0; i < objects.size(); i++) {
                 statement.setObject(i + 1, objects.get(i));
@@ -113,8 +119,10 @@ public class StandardQuery {
                 return null;
             }
             ResultSet result = statement.executeQuery();
-            // yes, this is required
-            result.next();
+            if (!multiRow) {
+                // yes, this is required if you want to be able to use getObject or whatever immediately
+                result.next();
+            }
             return processResult.process(result);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -123,26 +131,26 @@ public class StandardQuery {
     }
 
     public void execute() {
-        getResults(null);
+        getResults(null, false);
     }
 
     public boolean exists() {
-        return getResults(r -> r.next());
+        return getResults(r -> r.next(), false);
     }
 
     public int asInt() {
-        return getResults(r -> r.getInt(1));
+        return getResults(r -> r.getInt(1), false);
     }
 
     public boolean asBool() {
-        return getResults(r -> r.getBoolean(1));
+        return getResults(r -> r.getBoolean(1), false);
     }
 
     public String asString() {
-        return getResults(r -> r.getString(1));
+        return getResults(r -> r.getString(1), false);
     }
 
-    public Map<String,Object> getAll() {
+    public Map<String,Object> getWholeRow() {
         return getResults(r -> {
             Map<String,Object> values = new HashMap<>();
             for (TableInfo info : table.getTableInfo()) {
@@ -151,7 +159,7 @@ public class StandardQuery {
                 }
             }
             return values;
-        });
+        }, false);
     }
 
     private void addClause(StringBuilder sb, String clause, String joiner, List<ClauseItem> items, List<Object> objects) {
@@ -164,5 +172,26 @@ public class StandardQuery {
             sj.add(item.toSQL(objects));
         }
         sb.append(sj.toString());
+    }
+
+    public static void printStringified(StringBuilder sql, List<Object> objects) {
+        if (UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) {
+            String plaintext = sql.toString();
+            for (Object obj : objects) {
+                if (obj instanceof byte[]) {
+                    byte[] data = (byte[]) obj;
+                    StringBuilder hex = new StringBuilder("x'");
+                    for (int i = 0; i < data.length; i++) {
+                        // `byte & 0xFF` does magic to treat it as unsigned
+                        hex.append(Integer.toHexString(data[i] & 0xFF));
+                    }
+                    hex.append("'");
+                    plaintext = plaintext.replaceFirst("\\?", hex.toString());
+                    continue;
+                }
+                plaintext = plaintext.replaceFirst("\\?", obj == null ? "NULL" : obj.toString());
+            }
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Executing SQL: " + plaintext);
+        }
     }
 }

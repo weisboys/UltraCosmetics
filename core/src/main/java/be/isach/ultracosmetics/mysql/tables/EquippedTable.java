@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.mysql.column.StringColumn;
 import be.isach.ultracosmetics.mysql.column.UUIDColumn;
 import be.isach.ultracosmetics.mysql.column.UniqueConstraint;
 import be.isach.ultracosmetics.mysql.column.VirtualUUIDColumn;
+import be.isach.ultracosmetics.mysql.query.InnerJoin;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
@@ -29,7 +30,7 @@ public class EquippedTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new UUIDColumn());
         tableInfo.add(new VirtualUUIDColumn());
         tableInfo.add(new Column<>("id", "INTEGER NOT NULL", Integer.class));
@@ -41,15 +42,15 @@ public class EquippedTable extends Table {
     }
 
     public Map<Category,CosmeticType<?>> getEquipped(UUID uuid) {
-        return select("category, id").uuid(uuid).getResults(r -> {
+        return select(getWrappedName() + ".category, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Map<Category,CosmeticType<?>> equipped = new HashMap<>();
-            while (!r.isAfterLast()) {
-                Category cat = Category.valueOf(r.getString("category"));
-                CosmeticType<?> type = cat.valueOfType(r.getString("id"));
+            while (r.next()) {
+                Category cat = Category.valueOf(r.getString("category").toUpperCase());
+                CosmeticType<?> type = cat.valueOfType(r.getString("type"));
                 equipped.put(cat, type);
             }
             return equipped;
-        });
+        }, true);
     }
 
     public void setEquipped(UUID uuid, CosmeticType<?> type) {
@@ -57,7 +58,20 @@ public class EquippedTable extends Table {
                 .updateOnDuplicate().execute();
     }
 
+    public void unsetEquipped(UUID uuid, Category cat) {
+        delete().uuid(uuid).where("category", cleanCategoryName(cat)).execute();
+    }
+
+    public void clearAllEquipped(UUID uuid) {
+        delete().uuid(uuid).execute();
+    }
+
+    /*
+     * Only used for migration
+     */
     public void setAllEquipped(UUID uuid, Map<Category,CosmeticType<?>> equipped) {
+        clearAllEquipped(uuid);
+        if (equipped.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "category");
         InsertValue uuidVal = insertUUID(uuid);
         for (Entry<Category,CosmeticType<?>> entry : equipped.entrySet()) {

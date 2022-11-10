@@ -30,6 +30,12 @@ public class SubCommandPermission extends SubCommand {
         if (args[1].equalsIgnoreCase("add")) {
             unlock = true;
         } else if (args[1].equalsIgnoreCase("remove")) {
+            if (!ultraCosmetics.getPermissionManager().isUnsetSupported()) {
+                // ChatColor.RED to remove bold
+                error(sender, ChatColor.RED + "Removing cosmetic permissions through UC is only supported when UC is storing unlocked cosmetics.");
+                error(sender, ChatColor.RED + "Please use your permission plugin commands to remove cosmetic permissions instead.");
+                return;
+            }
             unlock = false;
         } else {
             error(sender, "Must provide 'add' or 'remove' for first arg");

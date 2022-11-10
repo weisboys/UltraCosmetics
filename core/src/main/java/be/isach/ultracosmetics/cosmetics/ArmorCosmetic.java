@@ -35,7 +35,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     protected boolean trySetSlot() {
         // Remove current equipped armor piece
-        getOwner().removeCosmetic(getArmorSlot().getSuitsCategory());
+        getOwner().removeCosmetic(Category.fromSlot(getArmorSlot()));
 
         if (getArmorSlot() == ArmorSlot.HELMET) {
             getOwner().removeCosmetic(Category.HATS);

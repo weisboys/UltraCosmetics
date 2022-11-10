@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.permissions;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
@@ -23,12 +22,12 @@ public class PermissionManager {
 
     public PermissionManager(UltraCosmetics ultraCosmetics) {
         CustomConfiguration config = SettingsManager.getConfig();
-        if (!UltraCosmeticsData.get().usingFileStorage() && config.getBoolean("MySQL.Unlocked-Cosmetics.Enabled")) {
-            ProfilePermissions mysql = new ProfilePermissions(ultraCosmetics);
-            cosmeticGetter = mysql;
-            cosmeticSetter = mysql;
-        }
-        if (config.getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
+        String pma = config.getString("TreasureChests.Permission-Add-Command", "");
+        if (pma.isEmpty()) {
+            ProfilePermissions profile = new ProfilePermissions(ultraCosmetics);
+            cosmeticGetter = profile;
+            cosmeticSetter = profile;
+        } else if (pma.startsWith("!lp-api")) {
             if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
                 LuckPermsHook lp = new LuckPermsHook(ultraCosmetics);
                 rawSetter = lp;
@@ -100,7 +99,11 @@ public class PermissionManager {
         rawSetter.setRawPermission(player, permission);
     }
 
-    public boolean isUsingSQL() {
+    public boolean isUsingProfile() {
         return cosmeticGetter instanceof ProfilePermissions;
+    }
+
+    public boolean isUnsetSupported() {
+        return cosmeticSetter.isUnsetSupported();
     }
 }

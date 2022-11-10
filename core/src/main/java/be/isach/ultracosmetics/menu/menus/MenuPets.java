@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.menu.menus;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
@@ -70,42 +71,17 @@ public class MenuPets extends CosmeticMenu<PetType> {
                 .text(MessageManager.getMessage("Menu.Rename-Pet.Placeholder"))
                 .title(MessageManager.getMessage("Menu.Rename-Pet.Title"))
                 .onComplete((Player player, String text) -> {
-                    String newName = text;
-                    StringBuilder pattern = new StringBuilder("&#");
-                    for (int i = 0; i < 6; i++) {
-                        pattern.append("([\\da-f])");
-                    }
-                    newName = newName.replaceAll(pattern.toString(), "&x&$1&$2&$3&$4&$5&$6");
-                    newName = ChatColor.translateAlternateColorCodes('&', newName);
-                    if (newName.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
+                    if (text.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
                         return AnvilGUI.Response.text(MessageManager.getMessage("Too-Long"));
                     }
-                    if (SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled") &&
-                            ultraCosmetics.getEconomyHandler().isUsingEconomy()) {
-                        return AnvilGUI.Response.openInventory(buyRenamePet(ultraPlayer, newName));
+                    if (!text.isEmpty() && ultraCosmetics.getEconomyHandler().isUsingEconomy()
+                            && SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled")) {
+                        return AnvilGUI.Response.openInventory(buyRenamePet(ultraPlayer, text, this));
                     } else {
-                        ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), newName);
+                        ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), text);
                         return AnvilGUI.Response.close();
                     }
                 }).open(ultraPlayer.getBukkitPlayer());
-    }
-
-    private Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name) {
-        final String formattedName = ChatColor.translateAlternateColorCodes('&', name);
-        ItemStack showcaseItem = ItemFactory.create(XMaterial.NAME_TAG, MessageManager.getMessage("Menu.Purchase-Rename.Button.Showcase")
-                .replace("%price%", "" + SettingsManager.getConfig().get("Pets-Rename.Requires-Money.Price")).replace("%name%", formattedName));
-
-        PurchaseData purchaseData = new PurchaseData();
-        purchaseData.setPrice(SettingsManager.getConfig().getInt("Pets-Rename.Requires-Money.Price"));
-        purchaseData.setShowcaseItem(showcaseItem);
-        purchaseData.setOnPurchase(() -> {
-            ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), formattedName);
-            this.open(ultraPlayer);
-        });
-        purchaseData.setOnCancel(() -> this.open(ultraPlayer));
-
-        MenuPurchase menu = new MenuPurchase(getUltraCosmetics(), MessageManager.getMessage("Menu.Purchase-Rename.Title"), purchaseData);
-        return menu.getInventory(ultraPlayer);
     }
 
     @Override
@@ -125,5 +101,28 @@ public class MenuPets extends CosmeticMenu<PetType> {
     @Override
     protected void toggleOn(UltraPlayer ultraPlayer, PetType petType, UltraCosmetics ultraCosmetics) {
         petType.equip(ultraPlayer, ultraCosmetics);
+    }
+
+    public static Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name, MenuPets returnMenu) {
+        final String formattedName = UltraPlayer.colorizePetName(name);
+        int price = SettingsManager.getConfig().getInt("Pets-Rename.Requires-Money.Price");
+        ItemStack showcaseItem = ItemFactory.create(XMaterial.NAME_TAG, MessageManager.getMessage("Menu.Purchase-Rename.Button.Showcase")
+                .replace("%price%", String.valueOf(price)).replace("%name%", formattedName));
+
+        PurchaseData purchaseData = new PurchaseData();
+        purchaseData.setPrice(price);
+        purchaseData.setShowcaseItem(showcaseItem);
+        purchaseData.setOnPurchase(() -> {
+            ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), name);
+            if (returnMenu != null) {
+                returnMenu.open(ultraPlayer);
+            }
+        });
+        if (returnMenu != null) {
+            purchaseData.setOnCancel(() -> returnMenu.open(ultraPlayer));
+        }
+
+        MenuPurchase menu = new MenuPurchase(UltraCosmeticsData.get().getPlugin(), MessageManager.getMessage("Menu.Purchase-Rename.Title"), purchaseData);
+        return menu.getInventory(ultraPlayer);
     }
 }

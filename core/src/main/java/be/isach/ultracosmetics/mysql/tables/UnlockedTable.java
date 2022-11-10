@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.mysql.column.Column;
 import be.isach.ultracosmetics.mysql.column.ForeignKeyConstraint;
 import be.isach.ultracosmetics.mysql.column.UUIDColumn;
 import be.isach.ultracosmetics.mysql.column.UniqueConstraint;
+import be.isach.ultracosmetics.mysql.column.VirtualUUIDColumn;
 import be.isach.ultracosmetics.mysql.query.InnerJoin;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
@@ -28,8 +29,9 @@ public class UnlockedTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new UUIDColumn());
+        tableInfo.add(new VirtualUUIDColumn());
         tableInfo.add(new Column<>("id", "INTEGER NOT NULL", Integer.class));
         tableInfo.add(new UniqueConstraint("uuid", "id"));
         tableInfo.add(new ForeignKeyConstraint("uuid", playerData.getWrappedName(), "uuid"));
@@ -43,17 +45,16 @@ public class UnlockedTable extends Table {
     public Set<CosmeticType<?>> getAllUnlocked(UUID uuid) {
         return select("category, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Set<CosmeticType<?>> unlocked = new HashSet<>();
-            while (!r.isAfterLast()) {
-                unlocked.add(Category.valueOf(r.getString("category")).valueOfType(r.getString("type")));
-                r.next();
+            while (r.next()) {
+                unlocked.add(Category.valueOf(r.getString("category").toUpperCase()).valueOfType(r.getString("type")));
             }
             return unlocked;
-        });
+        }, true);
     }
 
     public void setUnlocked(UUID uuid, Set<CosmeticType<?>> types) {
         InsertQuery query = insertIgnore("uuid", "id");
-        types.forEach(t -> query.insert(new InsertValue(hexUUID(uuid)), cosmeticTable.subqueryFor(t, true)));
+        types.forEach(t -> query.insert(insertUUID(uuid), cosmeticTable.subqueryFor(t, true)));
         query.execute();
     }
 
@@ -66,6 +67,7 @@ public class UnlockedTable extends Table {
     // Deletes all, then inserts all unlocked
     public void setAllUnlocked(UUID uuid, Set<CosmeticType<?>> unlocked) {
         delete().uuid(uuid).execute();
+        if (unlocked.size() == 0) return;
         InsertQuery query = insert("uuid", "id");
         InsertValue uuidValue = insertUUID(uuid);
         for (CosmeticType<?> type : unlocked) {

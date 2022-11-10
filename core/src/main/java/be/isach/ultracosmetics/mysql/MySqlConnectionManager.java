@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.mysql.tables.CosmeticTable;
 import be.isach.ultracosmetics.mysql.tables.EquippedTable;
 import be.isach.ultracosmetics.mysql.tables.PetNameTable;
 import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
+import be.isach.ultracosmetics.mysql.tables.Table;
 import be.isach.ultracosmetics.mysql.tables.UnlockedTable;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
@@ -15,6 +16,9 @@ import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import org.bukkit.configuration.ConfigurationSection;
 
 import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
@@ -97,10 +101,43 @@ public class MySqlConnectionManager {
 
         playerData = new PlayerDataTable(dataSource, section.getString("player-data-table"));
         cosTable = new CosmeticTable(dataSource, section.getString("cosmetics-table"));
-        unlockedTable = new UnlockedTable(dataSource, section.getString("unlocked-cosmetics-table"), playerData, cosTable);
-        ammoTable = new AmmoTable(dataSource, section.getString("ammo-table"), playerData, cosTable);
-        petNames = new PetNameTable(dataSource, section.getString("pet-names-table"), playerData, cosTable);
-        equippedTable = new EquippedTable(dataSource, section.getString("equipped-cosmetics-table"), playerData, cosTable);
+        if (UltraCosmeticsData.get().isAmmoEnabled()) {
+            ammoTable = new AmmoTable(dataSource, section.getString("ammo-table"), playerData, cosTable);
+        }
+        if (SettingsManager.getConfig().getBoolean("Pets-Rename.Enabled")) {
+            petNames = new PetNameTable(dataSource, section.getString("pet-names-table"), playerData, cosTable);
+        }
+        if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) {
+            equippedTable = new EquippedTable(dataSource, section.getString("equipped-cosmetics-table"), playerData, cosTable);
+        }
+
+        if (SettingsManager.getConfig().getString("TreasureChests.Permission-Add-Command").isEmpty()) {
+            unlockedTable = new UnlockedTable(dataSource, section.getString("unlocked-cosmetics-table"), playerData, cosTable);
+        }
+    }
+
+    public void start() {
+        try (Connection conn = dataSource.getConnection()) {
+            create(conn, playerData);
+            create(conn, cosTable);
+            create(conn, unlockedTable);
+            create(conn, ammoTable);
+            create(conn, petNames);
+            create(conn, equippedTable);
+        } catch (SQLException e) {
+            reportFailure(e);
+        }
+    }
+
+    private void create(Connection conn, Table table) throws SQLException {
+        if (table == null) return;
+        table.setupTableInfo();
+        String statement = table.getCreateTableStatement();
+        if (debug) {
+            ultraCosmetics.getSmartLogger().write("Executing create table: " + statement);
+        }
+        conn.createStatement().execute(statement);
+        table.loadBaseData();
     }
 
     private void reportFailure(Throwable e) {

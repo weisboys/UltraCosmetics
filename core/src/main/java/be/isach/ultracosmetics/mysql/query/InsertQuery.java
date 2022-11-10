@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.mysql.query;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.mysql.tables.Table;
 
 import java.sql.Connection;
@@ -71,20 +70,14 @@ public class InsertQuery {
 
         if (updateOnDuplicate) {
             sql.append(" ON DUPLICATE KEY UPDATE ");
-            StringJoiner update = new StringJoiner(" ");
+            StringJoiner update = new StringJoiner(", ");
             for (String col : this.columns) {
                 update.add(col + "=VALUES(" + col + ")");
             }
             sql.append(update.toString());
         }
 
-        if (UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) {
-            String plaintext = sql.toString();
-            for (Object obj : objects) {
-                plaintext = plaintext.replaceFirst("\\?", obj.toString());
-            }
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Executing SQL: " + plaintext);
-        }
+        StandardQuery.printStringified(sql, objects);
         try (Connection connection = table.getConnection(); PreparedStatement statement = connection.prepareStatement(sql.toString())) {
             for (int i = 0; i < objects.size(); i++) {
                 statement.setObject(i + 1, objects.get(i));

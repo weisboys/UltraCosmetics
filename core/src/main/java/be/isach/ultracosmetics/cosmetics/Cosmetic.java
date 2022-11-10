@@ -45,7 +45,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public final void equip() {
-        if (!owner.getBukkitPlayer().hasPermission(getType().getPermission())) {
+        if (!ultraCosmetics.getPermissionManager().hasPermission(getPlayer(), cosmeticType)) {
             getPlayer().sendMessage(MessageManager.getMessage("No-Permission"));
             return;
         }

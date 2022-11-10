@@ -10,6 +10,8 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.Bukkit;
+
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
@@ -25,10 +27,12 @@ public abstract class CosmeticsProfile {
         this.uuid = ultraPlayer.getUUID();
         this.ultraCosmetics = ultraCosmetics;
         this.data = new PlayerData(uuid);
-        load();
-        if (shouldLoadCosmetics()) {
-            equip();
-        }
+        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> {
+            load();
+            if (shouldLoadCosmetics()) {
+                Bukkit.getScheduler().runTask(ultraCosmetics, this::equip);
+            }
+        });
     }
 
     protected static boolean shouldLoadCosmetics() {
@@ -54,6 +58,10 @@ public abstract class CosmeticsProfile {
 
     public void setEnabledCosmetic(Category cat, CosmeticType<?> type) {
         data.getEnabledCosmetics().put(cat, type);
+    }
+
+    public void clearAllEquipped() {
+        data.getEnabledCosmetics().clear();
     }
 
     public int getAmmo(GadgetType gadget) {

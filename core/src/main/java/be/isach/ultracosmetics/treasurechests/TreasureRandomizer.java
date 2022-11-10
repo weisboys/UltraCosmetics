@@ -46,6 +46,7 @@ public class TreasureRandomizer {
     private Location loc;
     private final Player player;
     private final boolean forceMessageToOwner;
+    private final PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
     private ItemStack itemStack;
     private String name;
 
@@ -57,7 +58,7 @@ public class TreasureRandomizer {
         if (Category.GADGETS.isEnabled() && UltraCosmeticsData.get().isAmmoEnabled()
                 && SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Enabled")) {
             for (GadgetType type : GadgetType.values()) {
-                if (type.isEnabled() && type.requiresAmmo() && type.canBeFound() && player.hasPermission(type.getPermission())) {
+                if (type.isEnabled() && type.requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
                     cosmetics.computeIfAbsent(ResultType.AMMO, k -> new WeightedSet<>()).add(type, type.getChestWeight());
                 }
             }
@@ -97,7 +98,7 @@ public class TreasureRandomizer {
         if (!category.isEnabled()) return;
         ResultType result = ResultType.fromCategory(category);
         for (CosmeticType<?> type : category.getEnabled()) {
-            if (!type.isEnabled() || type.getChestWeight() < 1 || player.hasPermission(type.getPermission())) continue;
+            if (!type.isEnabled() || type.getChestWeight() < 1 || pm.hasPermission(player, type)) continue;
             cosmetics.computeIfAbsent(result, k -> new WeightedSet<>()).add(type, type.getChestWeight());
         }
     }

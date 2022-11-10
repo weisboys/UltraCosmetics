@@ -200,7 +200,7 @@ public class UltraPlayer {
     }
 
     public Suit getCurrentSuit(ArmorSlot slot) {
-        return (Suit) getCosmetic(slot.getSuitsCategory());
+        return (Suit) getCosmetic(Category.fromSlot(slot));
     }
 
     public boolean hasCosmetic(Category category) {
@@ -295,6 +295,9 @@ public class UltraPlayer {
      */
     public boolean clear() {
         boolean toReturn = hasCosmeticsEquipped();
+        if (!isQuitting()) {
+            cosmeticsProfile.clearAllEquipped();
+        }
         if (Category.MORPHS.isEnabled() && Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")
         // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
         // If player is "quitting", remove the disguise anyway. Player is marked as quitting
@@ -348,7 +351,7 @@ public class UltraPlayer {
      * @param name    The new name.
      */
     public void setPetName(PetType petType, String name) {
-        if (name.isEmpty()) {
+        if (name != null && name.isEmpty()) {
             name = null;
         }
         cosmeticsProfile.setPetName(petType, name);
@@ -364,7 +367,7 @@ public class UltraPlayer {
      * @return The pet name.
      */
     public String getPetName(PetType petType) {
-        return cosmeticsProfile.getPetName(petType);
+        return colorizePetName(cosmeticsProfile.getPetName(petType));
     }
 
     /**
@@ -571,11 +574,6 @@ public class UltraPlayer {
         return getBukkitPlayer().hasPermission("ultracosmetics.bypass.cooldown");
     }
 
-    public void equipProfile() {
-        // enabled check is in the equip method
-        cosmeticsProfile.equip();
-    }
-
     public boolean isFilteringByOwned() {
         return cosmeticsProfile.isFilterByOwned();
     }
@@ -631,5 +629,17 @@ public class UltraPlayer {
 
     public void profileSetLocked(Set<CosmeticType<?>> type) {
         cosmeticsProfile.setLocked(type);
+    }
+
+    public static String colorizePetName(String name) {
+        if (name == null) return null;
+        String newName = name;
+        StringBuilder pattern = new StringBuilder("&#");
+        for (int i = 0; i < 6; i++) {
+            pattern.append("([\\da-fA-F])");
+        }
+        newName = newName.replaceAll(pattern.toString(), "&x&$1&$2&$3&$4&$5&$6");
+        newName = ChatColor.translateAlternateColorCodes('&', newName);
+        return newName;
     }
 }

@@ -8,6 +8,7 @@ public enum ProfileKey {
     FILTER_OWNED("Filter-By-Owned", "filterByOwned"),
     PET_NAMES("Pet-Names", null),
     AMMO("Ammo", null),
+    UNLOCKED("Unlocked", null),
     ;
 
     private final String file;

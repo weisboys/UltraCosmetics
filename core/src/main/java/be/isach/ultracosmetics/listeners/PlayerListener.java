@@ -33,7 +33,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
 
@@ -53,42 +52,28 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(final PlayerJoinEvent event) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-                    Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> {
-                        UltraPlayer up = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
-                        if (up != null) {
-                            up.giveMenuItem();
-                        }
-                    }, 5);
-                }
-
-                if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
-                    if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
-                        event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getLastVersion());
-                        event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED.toString() + ChatColor.BOLD + " to install the update.");
-                    }
-                }
+        // Load UltraPlayer whether we use it or not so it's ready
+        UltraPlayer up = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+        if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
+            if (up != null) {
+                up.giveMenuItem();
             }
-        }.runTaskAsynchronously(ultraCosmetics);
+        }
+
+        if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
+            if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
+                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getLastVersion());
+                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED.toString() + ChatColor.BOLD + " to install the update.");
+            }
+        }
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onWorldChange(final PlayerChangedWorldEvent event) {
-        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
                 ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer()).giveMenuItem();
             }
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    // check is done in the method
-                    ultraPlayer.equipProfile();
-                }
-            }.runTaskLater(ultraCosmetics, 5);
         }
     }
 

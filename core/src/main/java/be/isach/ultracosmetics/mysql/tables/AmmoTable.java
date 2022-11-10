@@ -28,7 +28,7 @@ public class AmmoTable extends Table {
     }
 
     @Override
-    protected void setupTableInfo() {
+    public void setupTableInfo() {
         tableInfo.add(new UUIDColumn());
         tableInfo.add(new VirtualUUIDColumn());
         tableInfo.add(new Column<>("id", "INTEGER NOT NULL", Integer.class));
@@ -45,23 +45,25 @@ public class AmmoTable extends Table {
     public Map<GadgetType,Integer> getAllAmmo(UUID uuid) {
         return select("ammo, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Map<GadgetType,Integer> ammo = new HashMap<>();
-            while (!r.isAfterLast()) {
+            while (r.next()) {
                 ammo.put(GadgetType.valueOf(r.getString("type")), r.getInt("ammo"));
-                r.next();
             }
             return ammo;
-        });
+        }, true);
     }
 
     public void setAmmo(UUID uuid, GadgetType type, int amount) {
-        insert("uuid", "id", "ammo").insert(new InsertValue(hexUUID(uuid)), cosmeticTable.subqueryFor(type, true), new InsertValue(amount))
+        insert("uuid", "id", "ammo").insert(insertUUID(uuid), cosmeticTable.subqueryFor(type, true), new InsertValue(amount))
                 .updateOnDuplicate().execute();
     }
 
     public void setAllAmmo(UUID uuid, Map<GadgetType,Integer> ammo) {
+        delete().uuid(uuid).execute();
+        if (ammo.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "ammo");
         InsertValue uuidVal = insertUUID(uuid);
         for (Entry<GadgetType,Integer> entry : ammo.entrySet()) {
+            if (entry.getValue() == null || entry.getValue() == 0) continue;
             query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getKey(), true), new InsertValue(entry.getValue()));
         }
         query.updateOnDuplicate().execute();
