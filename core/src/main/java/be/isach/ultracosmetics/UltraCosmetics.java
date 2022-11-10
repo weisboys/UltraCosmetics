@@ -533,6 +533,7 @@ public class UltraCosmetics extends JavaPlugin {
             getSmartLogger().write(LogLevel.WARNING, "SQL config options have changed, please verify them");
             addProblem(Problem.SQL_MIGRATION_REQUIRED);
         }
+        config.addDefault("Ammo-System-For-Gadgets.Allow-Purchase", "Whether players should be allowed to purchase ammo");
         config.addDefault("MySQL.Enabled", false);
         config.addDefault("MySQL.hostname", "localhost");
         config.addDefault("MySQL.username", "root");

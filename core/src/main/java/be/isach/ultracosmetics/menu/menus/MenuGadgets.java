@@ -85,7 +85,7 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected void handleRightClick(UltraPlayer ultraPlayer, GadgetType type) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoEnabled() && type.requiresAmmo()) {
+        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled() && type.requiresAmmo()) {
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
             ultraCosmetics.getMenus().openAmmoPurchaseMenu(type, ultraPlayer);
         }
@@ -93,7 +93,8 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected boolean handleActivate(UltraPlayer ultraPlayer) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoEnabled() && ultraPlayer.getCurrentGadget().getType().requiresAmmo() && ultraPlayer.getAmmo(ultraPlayer.getCurrentGadget().getType()) < 1) {
+        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled()
+                && ultraPlayer.getCurrentGadget().getType().requiresAmmo() && ultraPlayer.getAmmo(ultraPlayer.getCurrentGadget().getType()) < 1) {
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
             ultraCosmetics.getMenus().openAmmoPurchaseMenu(ultraPlayer.getCurrentGadget().getType(), ultraPlayer);
             return false;
