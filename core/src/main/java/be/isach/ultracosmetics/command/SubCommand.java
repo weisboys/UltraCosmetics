@@ -50,7 +50,7 @@ public abstract class SubCommand {
 
     /**
      * Get the name of the command
-     * 
+     *
      * @return The name of the command
      */
     public String getName() {

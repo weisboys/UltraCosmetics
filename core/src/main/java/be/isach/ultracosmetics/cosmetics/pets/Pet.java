@@ -9,13 +9,12 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.PetPathfinder;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
-import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -23,9 +22,12 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -36,8 +38,12 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -83,15 +89,6 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
 
         entity = spawnEntity();
 
-        EntityBrain brain = BukkitBrain.getBrain(entity);
-        brain.getGoalAI().clear();
-        brain.getTargetAI().clear();
-        brain.getScheduleManager().clear();
-
-        // brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
-        // getPlayer().sendMessage(ChatColor.RED + "Pathfinders:");
-        // BukkitBrain.getBrain(entity).getGoalAI().stream().forEach(w -> getPlayer().sendMessage(w.getPathfinder().getName() + ":" + w.getPriority()));
-
         if (entity instanceof Ageable) {
             Ageable ageable = (Ageable) entity;
             if (SettingsManager.getConfig().getBoolean("Pets-Are-Babies")) {
@@ -120,15 +117,29 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             getEntity().setCustomNameVisible(true);
         }
 
+        // Must run AFTER setting the entity to a baby
+        clearPathfinders();
+
         updateName();
 
-        ((LivingEntity) entity).setRemoveWhenFarAway(false);
-        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent", false)) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSilent(entity, true);
+        entity.getEquipment().clear();
+        entity.setRemoveWhenFarAway(false);
+        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            entity.setSilent(true);
         }
 
         entity.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
         setupEntity();
+    }
+
+    private void clearPathfinders() {
+        EntityBrain brain = BukkitBrain.getBrain(entity);
+        brain.getGoalAI().clear();
+        brain.getTargetAI().clear();
+        brain.getScheduleManager().clear();
+
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        brain.getGoalAI().put(new PathfinderLookAtEntity<>(entity, Player.class), 1);
     }
 
     @Override
@@ -158,29 +169,6 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         }
 
         onUpdate();
-
-        if (entity.getWorld() != getPlayer().getWorld()
-                || entity.getLocation().distanceSquared(getPlayer().getLocation()) > 10 * 10) {
-            entity.teleport(getPlayer());
-            return;
-        }
-
-        double distanceSquared = getPlayer().getLocation().distanceSquared(entity.getLocation());
-        if (distanceSquared < 2 * 2) return;
-
-        EntityBrain brain = BukkitBrain.getBrain(entity);
-
-        double speed = 1.15;
-        if (entity.getType() == EntityType.ZOMBIE) {
-            speed *= 1.3;
-        }
-
-        move(brain, getPlayer().getEyeLocation(), speed);
-
-    }
-
-    protected void move(EntityBrain brain, Location loc, double speed) {
-        brain.getController().moveTo(loc, speed);
     }
 
     @Override
@@ -246,6 +234,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
     }
 
     @EventHandler
+    public void onInteract(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() == getEntity()) event.setCancelled(true);
+    }
+
+    @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() == getEntity()) event.setCancelled(true);
     }
@@ -253,6 +246,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getPlayer() == getPlayer()) getEntity().teleport(getPlayer());
+    }
+
+    @EventHandler
+    public void onCombust(EntityCombustEvent event) {
+        if (event.getEntity() == entity) event.setCancelled(true);
     }
 
     @Override
@@ -273,22 +271,50 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         return false;
     }
 
-    protected ItemStack parseCustomItem(String customization) {
+    /**
+     * Generics are confusing...
+     * This function accepts an enum and a string representing a key to the enum.
+     * If the arg is able to be parsed as a value of the enum, func will be called
+     * with the resulting value.
+     *
+     * @param <T>   an enum (i.e. Variant)
+     * @param types the enum class (i.e. Variant.class)
+     * @param arg   the key to search for in the enum
+     * @param func  the function to call upon success
+     * @return true if arg was able to be parsed
+     */
+    protected <T extends Enum<T>> boolean enumCustomize(Class<T> types, String arg, Consumer<T> func) {
+        return valueCustomize(s -> Enum.valueOf(types, s), arg, func);
+    }
+
+    protected <T> boolean valueCustomize(Function<String,T> valueFunc, String arg, Consumer<T> func) {
+        T value;
+        try {
+            value = valueFunc.apply(arg.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+        func.accept(value);
+        return true;
+    }
+
+    protected boolean customizeHeldItem(String customization) {
         String[] parts = customization.split(":", 2);
-        Material mat = Material.matchMaterial(parts[0]);
-        if (mat == null) return null;
-        ItemStack stack = new ItemStack(mat);
+        Optional<XMaterial> mat = XMaterial.matchXMaterial(parts[0]);
+        if (!mat.isPresent() || !mat.get().parseMaterial().isItem()) return false;
+        ItemStack stack = mat.get().parseItem();
         if (parts.length > 1) {
             int model;
             try {
                 model = Integer.parseInt(parts[1]);
             } catch (NumberFormatException e) {
-                return null;
+                return false;
             }
             ItemMeta meta = stack.getItemMeta();
             meta.setCustomModelData(model);
             stack.setItemMeta(meta);
         }
-        return stack;
+        entity.getEquipment().setItemInMainHand(stack);
+        return true;
     }
 }

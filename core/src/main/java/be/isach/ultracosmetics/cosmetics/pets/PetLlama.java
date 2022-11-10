@@ -31,7 +31,7 @@ public class PetLlama extends Pet {
             color = Color.valueOf(parts[0].toUpperCase());
             if (parts.length > 1) {
                 carpet = Material.matchMaterial(parts[1]);
-                if (carpet == null) return false;
+                if (carpet == null || !carpet.isItem()) return false;
             }
         } catch (IllegalArgumentException e) {
             return false;

@@ -15,7 +15,8 @@ public enum ArmorSlot {
     LEGGINGS(EquipmentSlot.LEGS),
     BOOTS(EquipmentSlot.FEET);
 
-    private EquipmentSlot bukkitSlot;
+    private final EquipmentSlot bukkitSlot;
+
     private ArmorSlot(EquipmentSlot bukkitSlot) {
         this.bukkitSlot = bukkitSlot;
     }
@@ -26,8 +27,7 @@ public enum ArmorSlot {
 
     public static ArmorSlot getByName(String s) {
         for (ArmorSlot a : ArmorSlot.values()) {
-            if (a.toString().equalsIgnoreCase(ChatColor.stripColor(s)))
-                return a;
+            if (a.toString().equalsIgnoreCase(ChatColor.stripColor(s))) return a;
         }
         return ArmorSlot.CHESTPLATE;
     }

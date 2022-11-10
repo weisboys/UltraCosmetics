@@ -15,12 +15,12 @@ import org.bukkit.potion.PotionEffectType;
 /**
  * Created by sacha on 10/08/15.
  */
-public class MountDruggedHorse extends MountHorse {
+public class MountDruggedHorse extends MountAbstractHorse {
 
     private Player effectPlayer;
 
     public MountDruggedHorse(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
-        super(owner, ultraCosmetics, type);
+        super(owner, type, ultraCosmetics);
     }
 
     @Override

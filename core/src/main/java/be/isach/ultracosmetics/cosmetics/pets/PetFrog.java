@@ -20,13 +20,6 @@ public class PetFrog extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Variant variant;
-        try {
-            variant = Variant.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Frog) entity).setVariant(variant);
-        return true;
+        return enumCustomize(Variant.class, customization, ((Frog) entity)::setVariant);
     }
 }

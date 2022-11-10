@@ -36,7 +36,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.permissions.Permission;
 import org.bukkit.util.Vector;
 
 import com.cryptomorin.xseries.XMaterial;
@@ -44,6 +43,7 @@ import com.cryptomorin.xseries.XMaterial;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -62,7 +62,6 @@ public class UltraPlayer {
      * all others are in `equipped`.
      */
     private final Map<Category,Cosmetic<?>> equipped = new HashMap<>();
-    private final Map<ArmorSlot,Suit> suitMap = new HashMap<>();
     private TreasureChest currentTreasureChest;
 
     /**
@@ -168,7 +167,6 @@ public class UltraPlayer {
     }
 
     public Cosmetic<?> getCosmetic(Category category) {
-        if (category == Category.SUITS) throw new IllegalArgumentException("Can't use generic getCosmetic for suit category!");
         return equipped.get(category);
     }
 
@@ -201,6 +199,10 @@ public class UltraPlayer {
         return (Pet) getCosmetic(Category.PETS);
     }
 
+    public Suit getCurrentSuit(ArmorSlot slot) {
+        return (Suit) getCosmetic(Category.fromSlot(slot));
+    }
+
     public boolean hasCosmetic(Category category) {
         return equipped.containsKey(category);
     }
@@ -211,8 +213,6 @@ public class UltraPlayer {
      * @return {@code true} if a cosmetic was actually unequipped
      */
     public boolean removeCosmetic(Category category) {
-        if (category == Category.SUITS) return removeSuit();
-
         if (!equipped.containsKey(category)) return false;
 
         unsetCosmetic(category).clear();
@@ -247,14 +247,6 @@ public class UltraPlayer {
      * @param cosmetic The cosmetic to set as equipped.
      */
     public void setCosmeticEquipped(Cosmetic<?> cosmetic) {
-        if (cosmetic instanceof Suit) {
-            Suit suit = (Suit) cosmetic;
-            if (hasSuitPartOn(suit.getArmorSlot())) {
-                removeSuit(suit.getArmorSlot());
-            }
-            setCurrentSuitPart(suit.getArmorSlot(), suit);
-            return;
-        }
         removeCosmetic(cosmetic.getCategory());
         equipped.put(cosmetic.getCategory(), cosmetic);
         if (!isQuitting()) {
@@ -291,84 +283,11 @@ public class UltraPlayer {
         cosmeticsProfile.save();
     }
 
-    public void setCurrentSuitPart(ArmorSlot armorSlot, Suit suit) {
-        if (suit == null) {
-            suitMap.remove(armorSlot);
-        } else {
-            suitMap.put(armorSlot, suit);
-        }
-        if (!isQuitting()) {
-            cosmeticsProfile.setEnabledSuitPart(armorSlot, suit == null ? null : suit.getType());
-        }
-    }
-
-    /**
-     * Removes the current suit of armorSlot.
-     *
-     * @param armorSlot The ArmorSlot to remove.
-     */
-    public boolean removeSuit(ArmorSlot armorSlot) {
-        if (!suitMap.containsKey(armorSlot)) return false;
-
-        getSuit(armorSlot).clear();
-        setCurrentSuitPart(armorSlot, null);
-        return true;
-    }
-
-    public double getBalance() {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy()) {
-            return ultraCosmetics.getEconomyHandler().balance(getBukkitPlayer());
-        }
-        return 0;
-    }
-
-    public boolean hasPermission(String permission) {
-        return getBukkitPlayer().hasPermission(permission);
-    }
-
-    public boolean hasPermission(Permission permission) {
-        return getBukkitPlayer().hasPermission(permission);
-    }
-
-    /**
-     * @param armorSlot The armorslot to get.
-     * @return The Suit from the armor slot.
-     */
-    public Suit getSuit(ArmorSlot armorSlot) {
-        return suitMap.get(armorSlot);
-    }
-
-    /**
-     * Checks if this player has any suit piece on.
-     *
-     * @return True if this player has any suit piece on, false otherwise.
-     */
-    public boolean hasSuitOn() {
-        return suitMap.size() > 0;
-    }
-
-    public boolean hasSuitPartOn(ArmorSlot slot) {
-        return suitMap.containsKey(slot);
-    }
-
-    /**
-     * Removes entire suit.
-     */
-    public boolean removeSuit() {
-        boolean removedSomething = false;
-        for (ArmorSlot armorSlot : ArmorSlot.values()) {
-            if (removeSuit(armorSlot)) {
-                removedSomething = true;
-            }
-        }
-        return removedSomething;
-    }
-
     /**
      * Returns true if the player has any cosmetics equipped
      */
     public boolean hasCosmeticsEquipped() {
-        return equipped.size() > 0 || suitMap.size() > 0;
+        return equipped.size() > 0;
     }
 
     /**
@@ -376,6 +295,9 @@ public class UltraPlayer {
      */
     public boolean clear() {
         boolean toReturn = hasCosmeticsEquipped();
+        if (!isQuitting()) {
+            cosmeticsProfile.clearAllEquipped();
+        }
         if (Category.MORPHS.isEnabled() && Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")
         // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
         // If player is "quitting", remove the disguise anyway. Player is marked as quitting
@@ -429,7 +351,7 @@ public class UltraPlayer {
      * @param name    The new name.
      */
     public void setPetName(PetType petType, String name) {
-        if (name.isEmpty()) {
+        if (name != null && name.isEmpty()) {
             name = null;
         }
         cosmeticsProfile.setPetName(petType, name);
@@ -445,7 +367,7 @@ public class UltraPlayer {
      * @return The pet name.
      */
     public String getPetName(PetType petType) {
-        return cosmeticsProfile.getPetName(petType);
+        return colorizePetName(cosmeticsProfile.getPetName(petType));
     }
 
     /**
@@ -652,11 +574,6 @@ public class UltraPlayer {
         return getBukkitPlayer().hasPermission("ultracosmetics.bypass.cooldown");
     }
 
-    public void equipProfile() {
-        // enabled check is in the equip method
-        cosmeticsProfile.equip();
-    }
-
     public boolean isFilteringByOwned() {
         return cosmeticsProfile.isFilterByOwned();
     }
@@ -697,5 +614,32 @@ public class UltraPlayer {
 
     public void setGadgetsPage(int gadgetsPage) {
         this.lastGadgetPage = gadgetsPage;
+    }
+
+    /*
+     * Internal use only
+     */
+    public boolean profileHasUnlocked(CosmeticType<?> type) {
+        return cosmeticsProfile.hasUnlocked(type);
+    }
+
+    public void profileSetUnlocked(Set<CosmeticType<?>> type) {
+        cosmeticsProfile.setUnlocked(type);
+    }
+
+    public void profileSetLocked(Set<CosmeticType<?>> type) {
+        cosmeticsProfile.setLocked(type);
+    }
+
+    public static String colorizePetName(String name) {
+        if (name == null) return null;
+        String newName = name;
+        StringBuilder pattern = new StringBuilder("&#");
+        for (int i = 0; i < 6; i++) {
+            pattern.append("([\\da-fA-F])");
+        }
+        newName = newName.replaceAll(pattern.toString(), "&x&$1&$2&$3&$4&$5&$6");
+        newName = ChatColor.translateAlternateColorCodes('&', newName);
+        return newName;
     }
 }

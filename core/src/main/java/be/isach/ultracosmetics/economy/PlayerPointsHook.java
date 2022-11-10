@@ -1,9 +1,9 @@
 package be.isach.ultracosmetics.economy;
 
-import be.isach.ultracosmetics.UltraCosmetics;
 import org.black_ixx.playerpoints.PlayerPoints;
+import org.black_ixx.playerpoints.PlayerPointsAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 /**
  * PlayerPoints economy hook.
@@ -12,62 +12,31 @@ import org.bukkit.plugin.Plugin;
  * @since 2.5
  */
 public class PlayerPointsHook implements EconomyHook {
-    private UltraCosmetics ultraCosmetics;
-    private PlayerPoints playerPoints;
-    private boolean economyEnabled;
+    private final PlayerPointsAPI playerPointsApi;
 
-    public PlayerPointsHook(UltraCosmetics ultraCosmetics) {
-        this.ultraCosmetics = ultraCosmetics;
-        if (!ultraCosmetics.getServer().getPluginManager().isPluginEnabled("PlayerPoints")) {
-            economyEnabled = false;
-            return;
+    public PlayerPointsHook() {
+        if (!Bukkit.getPluginManager().isPluginEnabled("PlayerPoints")) {
+            throw new IllegalArgumentException("PlayerPoints is not running.");
         }
-        if (hookPlayerPoints()) {
-            ultraCosmetics.getSmartLogger().write("");
-            ultraCosmetics.getSmartLogger().write("Hooked into PlayerPoints for economy.");
-            ultraCosmetics.getSmartLogger().write("");
-            economyEnabled = true;
-        } else {
-            ultraCosmetics.getSmartLogger().write("");
-            ultraCosmetics.getSmartLogger().write("Something happened while hooking into PlayerPoints for economy.");
-            ultraCosmetics.getSmartLogger().write("");
-            economyEnabled = false;
-        }
-    }
-
-    /**
-     * Validate that there's access to PlayerPoints.
-     *
-     * @return True if there is access to PlayerPoints, otherwise false.
-     */
-    private boolean hookPlayerPoints() {
-        final Plugin plugin = ultraCosmetics.getServer().getPluginManager().getPlugin("PlayerPoints");
-        playerPoints = (PlayerPoints) plugin;
-        return playerPoints != null;
+        playerPointsApi = ((PlayerPoints) Bukkit.getPluginManager().getPlugin("PlayerPoints")).getAPI();
     }
 
     @Override
-    public void withdraw(Player player, int amount) {
-        playerPoints.getAPI().take(player.getUniqueId(), amount);
+    public void withdraw(Player player, int amount, Runnable onSuccess, Runnable onFailure) {
+        if (playerPointsApi.take(player.getUniqueId(), amount)) {
+            onSuccess.run();
+        } else {
+            onFailure.run();
+        }
     }
 
     @Override
     public void deposit(Player player, int amount) {
-        playerPoints.getAPI().give(player.getUniqueId(), amount);
-    }
-
-    @Override
-    public double balance(Player player) {
-        return playerPoints.getAPI().look(player.getUniqueId());
+        playerPointsApi.give(player.getUniqueId(), amount);
     }
 
     @Override
     public String getName() {
         return "PlayerPoints";
-    }
-
-    @Override
-    public boolean economyEnabled() {
-        return economyEnabled;
     }
 }

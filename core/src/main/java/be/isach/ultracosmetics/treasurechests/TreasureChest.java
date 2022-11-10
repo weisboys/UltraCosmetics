@@ -15,6 +15,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.Lidded;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -177,7 +178,7 @@ public class TreasureChest implements Listener {
         }
 
         for (final Block b : chests) {
-            UltraCosmeticsData.get().getVersionManager().getEntityUtil().playChestAnimation(b, true, design);
+            openChest(b);
             randomGenerator.setLocation(b.getLocation().clone().add(0.0D, 1.0D, 0.0D));
             randomGenerator.giveRandomThing();
             ItemStack is = randomGenerator.getItemStack();
@@ -216,13 +217,24 @@ public class TreasureChest implements Listener {
         return items.contains(entity) || holograms.contains(entity);
     }
 
+    protected void openChest(Block block) {
+        // Lidded API didn't exist until 1.16,
+        // and EnderChest wasn't lidded until 1.19!
+        try {
+            Lidded state = (Lidded) block.getState();
+            state.open();
+            ((BlockState) state).update();
+        } catch (NoClassDefFoundError | ClassCastException ignored) {
+        }
+    }
+
     @EventHandler
     public void onInter(final PlayerInteractEvent event) {
         if (event.getClickedBlock() == null || !chests.contains(event.getClickedBlock())) return;
         event.setCancelled(true);
         if (event.getPlayer() != getPlayer() || cooldown) return;
 
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().playChestAnimation(event.getClickedBlock(), true, design);
+        openChest(event.getClickedBlock());
         randomGenerator.setLocation(event.getClickedBlock().getLocation().add(0.0D, 1.0D, 0.0D));
         randomGenerator.giveRandomThing();
 

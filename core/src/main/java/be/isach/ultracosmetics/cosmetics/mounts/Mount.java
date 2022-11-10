@@ -12,11 +12,14 @@ import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Block;
+import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -27,7 +30,6 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -65,7 +67,9 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
         entity = spawnEntity();
 
         if (entity instanceof LivingEntity) {
-            UltraCosmeticsData.get().getVersionManager().getAncientUtil().setSpeed((LivingEntity) entity, getType().getMovementSpeed());
+            if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+                ((LivingEntity) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(getType().getMovementSpeed());
+            }
             if (entity instanceof Ageable) {
                 ((Ageable) entity).setAdult();
             } else if (entity instanceof Slime) {
@@ -78,7 +82,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
         entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         setupEntity();
 
-        if (!getUltraCosmetics().worldGuardHooked()) return;
+        if (!getUltraCosmetics().getWorldGuardManager().isHooked()) return;
         // Horses trigger PlayerMoveEvent so the standard WG move handler will be sufficient
         if (isHorse(entity.getType())) return;
         mountRegionTask = new MountRegionChecker(getOwner(), getUltraCosmetics()).runTaskTimer(getUltraCosmetics(), 0, 1);
@@ -86,6 +90,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
 
     @Override
     protected void scheduleTask() {
+        if (getType().getRepeatDelay() == 0) return;
         runTaskTimer(getUltraCosmetics(), 0, getType().getRepeatDelay());
     }
 
@@ -150,23 +155,11 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
 
     @EventHandler
     public void onPlayerToggleSneakEvent(VehicleExitEvent event) {
-        if (event.getVehicle().getType() == EntityType.BOAT
-                || event.getVehicle().getType().toString().contains("MINECART")) {
+        if (event.getVehicle().getType() == EntityType.BOAT || event.getVehicle().getType() == EntityType.MINECART) {
             return;
         }
 
-        String name = getType().getName(getPlayer());
-
-        if (!beingRemoved
-                && name != null
-                && getOwner() != null
-                && getPlayer() != null
-                && getOwner() != null
-                && event.getVehicle() != null
-                && event.getExited() != null
-                && event.getVehicle().getCustomName() != null
-                && event.getVehicle().getCustomName().equals(name)
-                && event.getExited() == getPlayer()) {
+        if (!beingRemoved && event.getExited() == getPlayer() && event.getVehicle() == entity) {
             beingRemoved = true;
             clear();
         }
@@ -176,11 +169,10 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() == getEntity()) {
             event.setCancelled(true);
+            return;
         }
 
-        if (event.getEntity() == getPlayer()
-                && getOwner().getCurrentMount() != null
-                && getOwner().getCurrentMount().getType() == getType()
+        if (event.getEntity() == getPlayer() && getOwner().getCurrentMount() == this
                 && !getUltraCosmetics().getConfig().getBoolean("allow-damage-to-players-on-mounts")) {
             event.setCancelled(true);
         }
@@ -190,21 +182,6 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() == getEntity() || event.getDamager() == getEntity()) {
             event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void teleportEvent(PlayerTeleportEvent event) {
-        if (getOwner() != null
-                && getPlayer() != null
-                && getOwner().getCurrentMount() == this
-                && event.getPlayer() == getPlayer()) {
-            if ((event.getFrom().getBlockX() != event.getTo().getBlockX()
-                    || event.getFrom().getBlockY() != event.getTo().getBlockY()
-                    || event.getFrom().getBlockZ() != event.getTo().getBlockZ()
-                    || !event.getFrom().getWorld().getName().equalsIgnoreCase(event.getTo().getWorld().getName()))) {
-                // clear();
-            }
         }
     }
 
@@ -224,7 +201,10 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
     }
 
     private boolean isHorse(EntityType type) {
-        return UltraCosmeticsData.get().getVersionManager().getMounts().isAbstractHorse(type);
+        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
+            return type == EntityType.HORSE;
+        }
+        return AbstractHorse.class.isAssignableFrom(type.getEntityClass());
     }
 
     @EventHandler

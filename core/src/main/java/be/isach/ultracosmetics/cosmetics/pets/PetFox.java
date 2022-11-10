@@ -20,13 +20,6 @@ public class PetFox extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Type type;
-        try {
-            type = Type.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        ((Fox) entity).setFoxType(type);
-        return true;
+        return enumCustomize(Type.class, customization, ((Fox) entity)::setFoxType);
     }
 }

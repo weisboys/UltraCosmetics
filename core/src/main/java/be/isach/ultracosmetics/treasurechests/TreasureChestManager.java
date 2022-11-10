@@ -92,6 +92,11 @@ public class TreasureChestManager implements Listener {
             return;
         }
 
+        if (player.getVehicle() != null) {
+            player.sendMessage(MessageManager.getMessage("Chest-Location.Dismount-First"));
+            return;
+        }
+
         Location targetLoc = tpTo == null ? player.getLocation() : tpTo.toLocation(player);
 
         Area area = new Area(targetLoc, 2, 1);
@@ -122,7 +127,7 @@ public class TreasureChestManager implements Listener {
             tpTo.tpTo(player);
         }
 
-        if (!plugin.areChestsAllowedInRegion(player)) {
+        if (!plugin.getWorldGuardManager().areChestsAllowedHere(player)) {
             player.closeInventory();
             player.sendMessage(MessageManager.getMessage("Chest-Location.Region-Disabled"));
             if (preLoc != null) {

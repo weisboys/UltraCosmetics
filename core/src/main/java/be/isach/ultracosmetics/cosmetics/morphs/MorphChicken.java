@@ -2,11 +2,11 @@ package be.isach.ultracosmetics.cosmetics.morphs;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Updatable;
-import be.isach.ultracosmetics.cosmetics.pets.PetPathfinder;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.PetPathfinder;
 import be.isach.ultracosmetics.version.VersionManager;
 
 import org.bukkit.Bukkit;

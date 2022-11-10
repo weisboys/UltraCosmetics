@@ -3,8 +3,8 @@ package be.isach.ultracosmetics.command.subcommands;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -56,16 +56,6 @@ public class SubCommandClear extends SubCommand {
             error(sender, "Invalid cosmetic type.");
             return;
         }
-        if (cat == Category.SUITS) {
-            String[] parts = args[2].split(":");
-            if (parts.length < 2) {
-                up.removeSuit();
-                return;
-            }
-            up.removeSuit(ArmorSlot.getByName(parts[1]));
-            return;
-        }
-
         up.removeCosmetic(cat);
     }
 }

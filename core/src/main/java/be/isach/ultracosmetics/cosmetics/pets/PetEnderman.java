@@ -22,7 +22,7 @@ public class PetEnderman extends Pet {
     @Override
     public boolean customize(String customization) {
         Material mat = Material.matchMaterial(customization);
-        if (mat == null) {
+        if (mat == null || !mat.isBlock()) {
             return false;
         }
         ((Enderman) entity).setCarriedBlock(Bukkit.createBlockData(mat));

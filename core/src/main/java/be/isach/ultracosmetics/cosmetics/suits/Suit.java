@@ -28,24 +28,14 @@ public abstract class Suit extends ArmorCosmetic<SuitType> {
 
     @Override
     public void run() {
-        if (getPlayer() == null || getOwner().getSuit(getArmorSlot()) != this) {
+        if (getPlayer() == null || getOwner().getCurrentSuit(getArmorSlot()) != this) {
             return;
         }
-        ((Updatable)this).onUpdate();
+        ((Updatable) this).onUpdate();
     }
 
     protected void setupItemStack() {
         itemStack = ItemFactory.create(getType().getMaterial(), getType().getName(), "", MessageManager.getMessage("Suits.Suit-Part-Lore"));
-    }
-
-    @Override
-    protected void unsetCosmetic() {
-        getOwner().setCurrentSuitPart(getArmorSlot(), null);
-    }
-
-    @Override
-    protected void unequipLikeCosmetics() {
-        getOwner().removeSuit(getArmorSlot());
     }
 
     @Override

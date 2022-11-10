@@ -4,7 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import me.libraryaddict.disguise.DisguiseAPI;
+import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.MobDisguise;
 
@@ -30,7 +32,7 @@ public abstract class Morph extends Cosmetic<MorphType> {
     @Override
     protected void onEquip() {
 
-        disguise = new MobDisguise(getType().getDisguiseType());
+        disguise = new MobDisguise(DisguiseType.getType(getType().getDisguiseType()));
         FlagWatcher watcher = disguise.getWatcher();
         watcher.setCustomName(getPlayer().getName());
         watcher.setCustomNameVisible(true);

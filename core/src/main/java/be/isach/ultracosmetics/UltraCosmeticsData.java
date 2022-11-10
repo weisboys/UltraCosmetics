@@ -73,6 +73,11 @@ public class UltraCosmeticsData {
     private String language;
 
     /**
+     * If false, players will not be able to purchase ammo
+     */
+    private boolean ammoPurchase;
+
+    /**
      * Server NMS version.
      */
     private ServerVersion serverVersion;
@@ -109,7 +114,7 @@ public class UltraCosmeticsData {
 
     protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
-        logger.write("Initializing module " + serverVersion);
+        logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
 
         // mappings check is here so it's grouped with other NMS log messages
         // bigger message so server owners might see it
@@ -122,22 +127,21 @@ public class UltraCosmeticsData {
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
         }
 
-        versionManager = new VersionManager(serverVersion);
         try {
-            versionManager.load();
+            versionManager = new VersionManager(serverVersion);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             logger.write("No module found for " + serverVersion + "! UC will now be disabled.");
             ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
-        if (versionManager.getModule().enable()) {
-            logger.write("Module initialized");
-            return true;
+        if (!versionManager.getModule().enable()) {
+            logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
+            ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
+            return false;
         }
-        logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
-        ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
-        return false;
+        logger.write("Module initialized");
+        return true;
     }
 
     /**
@@ -207,6 +211,7 @@ public class UltraCosmeticsData {
         this.closeAfterSelect = ultraCosmetics.getConfig().getBoolean("Categories.Close-GUI-After-Select");
         this.cosmeticsProfilesEnabled = ultraCosmetics.getConfig().getBoolean("Auto-Equip-Cosmetics");
         this.language = SettingsManager.getConfig().getString("Language");
+        this.ammoPurchase = SettingsManager.getConfig().getBoolean("Ammo-System-For-Gadgets.Allow-Purchase");
     }
 
     public boolean isAmmoEnabled() {
@@ -247,6 +252,10 @@ public class UltraCosmeticsData {
 
     public String getLanguage() {
         return language;
+    }
+
+    public boolean isAmmoPurchaseEnabled() {
+        return ammoEnabled && ammoPurchase;
     }
 
     public VersionManager getVersionManager() {

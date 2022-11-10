@@ -24,7 +24,6 @@ public class PetPiglin extends Pet {
     public void setupEntity() {
         Piglin piglin = (Piglin) entity;
         piglin.setImmuneToZombification(true);
-        piglin.getEquipment().clear();
         for (Material interest : piglin.getInterestList()) {
             piglin.removeMaterialOfInterest(interest);
         }

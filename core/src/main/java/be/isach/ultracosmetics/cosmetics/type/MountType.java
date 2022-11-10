@@ -5,16 +5,22 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.mounts.Mount;
+import be.isach.ultracosmetics.cosmetics.mounts.MountDonkey;
 import be.isach.ultracosmetics.cosmetics.mounts.MountDragon;
 import be.isach.ultracosmetics.cosmetics.mounts.MountDruggedHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountEcologistHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountGlacialSteed;
+import be.isach.ultracosmetics.cosmetics.mounts.MountHorse;
 import be.isach.ultracosmetics.cosmetics.mounts.MountHypeCart;
+import be.isach.ultracosmetics.cosmetics.mounts.MountInfernalHorror;
 import be.isach.ultracosmetics.cosmetics.mounts.MountMoltenSnake;
+import be.isach.ultracosmetics.cosmetics.mounts.MountMule;
 import be.isach.ultracosmetics.cosmetics.mounts.MountNyanSheep;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfFire;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfWater;
+import be.isach.ultracosmetics.cosmetics.mounts.MountRudolph;
 import be.isach.ultracosmetics.cosmetics.mounts.MountSnake;
+import be.isach.ultracosmetics.cosmetics.mounts.MountWalkingDead;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 
@@ -116,14 +122,22 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA), 0.4, MountOfWater.class);
         new MountType("NyanSheep", XMaterial.CYAN_DYE, EntityType.SHEEP, 1, null, 0.4, MountNyanSheep.class);
         new MountType("EcologistHorse", XMaterial.GREEN_DYE, EntityType.HORSE, 2, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA), 0.4, MountEcologistHorse.class);
-        new MountType("Rudolph", XMaterial.DEAD_BUSH, vm.getMounts().getRudolphType(), 2, null, 0.4, vm.getMounts().getRudolphClass());
-        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, vm.getMounts().getWalkingDeadType(), 2, null, 0.4, vm.getMounts().getWalkingDeadClass());
-        new MountType("InfernalHorror", XMaterial.BONE, vm.getMounts().getHorrorType(), 2, null, 0.4, vm.getMounts().getHorrorClass());
+        new MountType("Rudolph", XMaterial.DEAD_BUSH, horseOrType("MULE", version), 1, null, 0.4, MountRudolph.class);
+        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, horseOrType("ZOMBIE_HORSE", version), 2, null, 0.4, MountWalkingDead.class);
+        new MountType("InfernalHorror", XMaterial.BONE, horseOrType("SKELETON_HORSE", version), 2, null, 0.4, MountInfernalHorror.class);
+        new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, null, 0.4, MountHorse.class);
+        new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, null, 0.4, MountDonkey.class);
+        new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, null, 0.4, MountMule.class);
 
         if (version.isNmsSupported()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, null, 0.8, vm.getModule().getSlimeClass());
             new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, null, 0.4, vm.getModule().getSpiderClass());
             new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, null, 0.7, MountDragon.class);
         }
+    }
+
+    private static EntityType horseOrType(String name, ServerVersion version) {
+        if (!version.isAtLeast(ServerVersion.v1_11)) return EntityType.HORSE;
+        return EntityType.valueOf(name);
     }
 }

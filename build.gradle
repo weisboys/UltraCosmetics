@@ -4,7 +4,7 @@ allprojects {
     apply plugin: 'idea'
 
     group = 'be.isach'
-    version = '2.9-RELEASE'
+    version = '3.0-DEV-b1'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
@@ -67,6 +67,13 @@ subprojects { subproj ->
         mavenLocal()
         mavenCentral()
 
+        // AnvilGUI
+        // MobChip
+        // Treasury
+        maven {
+            url "https://repo.codemc.io/repository/maven-snapshots/"
+        }
+
         // Lib's Disguises
         maven {
             url 'https://repo.md-5.net/content/groups/public/'
@@ -100,11 +107,6 @@ subprojects { subproj ->
         // WorldGuard
         maven {
             url "https://maven.enginehub.org/repo/"
-        }
-
-        // AnvilGUI
-        maven {
-            url "https://repo.codemc.io/repository/maven-snapshots/"
         }
 
         // Vault

@@ -109,4 +109,7 @@ public class WorldGuardManager {
         return categories == null || !categories.contains(category);
     }
 
+    public boolean isHooked() {
+        return flagManager != null;
+    }
 }

@@ -12,6 +12,7 @@ public enum Problem {
     SQL_INIT_FAILURE(false, "SQL failed to connect, using flatfile support instead."),
     WORLDGUARD_HOOK_FAILURE(false, "Failed to hook into WorldGuard."),
     PERMISSION_COMMAND_NOT_SET(false, "Permission-Add-Command needs to be set or treasure chests will not give cosmetics."),
+    SQL_MIGRATION_REQUIRED(false, "MySQL config settings have changed, please review them. SQL storage is disabled until then."),
     ;
 
     private final boolean severe;

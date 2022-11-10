@@ -16,8 +16,7 @@ public class PetZombie extends Pet {
     }
 
     @Override
-    public void onUpdate() {
-        super.onUpdate();
-        entity.setFireTicks(0);
+    public boolean customize(String customization) {
+        return customizeHeldItem(customization);
     }
 }

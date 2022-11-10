@@ -98,14 +98,12 @@ public final class PetType extends CosmeticEntType<Pet> {
     }
 
     public static void register(ServerVersion serverVersion) {
-
         new PetType("Piggy", XMaterial.PORKCHOP, EntityType.PIG, PetPiggy.class);
         new PetType("EasterBunny", XMaterial.CARROT, EntityType.RABBIT, PetEasterBunny.class);
         new PetType("Cow", XMaterial.MILK_BUCKET, EntityType.COW, PetCow.class);
         new PetType("Mooshroom", XMaterial.RED_MUSHROOM, EntityType.MUSHROOM_COW, PetMooshroom.class);
         new PetType("Dog", XMaterial.BONE, EntityType.WOLF, PetDog.class);
         new PetType("Chick", XMaterial.EGG, EntityType.CHICKEN, PetChick.class);
-        new PetType("Pumpling", XMaterial.PUMPKIN, EntityType.ZOMBIE, UltraCosmeticsData.get().getVersionManager().getModule().getPumplingClass());
         new PetType("ChristmasElf", XMaterial.BEACON, EntityType.VILLAGER, PetChristmasElf.class);
         new PetType("IronGolem", XMaterial.IRON_INGOT, EntityType.IRON_GOLEM, PetIronGolem.class);
         new PetType("Snowman", XMaterial.SNOWBALL, EntityType.SNOWMAN, PetSnowman.class);
@@ -121,6 +119,18 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Enderman", XMaterial.ENDER_PEARL, EntityType.ENDERMAN, PetEnderman.class);
         new PetType("Skeleton", XMaterial.BOW, EntityType.SKELETON, PetSkeleton.class);
         new PetType("Zombie", XMaterial.ROTTEN_FLESH, EntityType.ZOMBIE, PetZombie.class);
+        /* Squid disabled because its not moving at all, its just turning around all the time */
+        /* new PetType("Squid", XMaterial.INK_SAC, EntityType.SQUID, PetSquid.class); */
+        new PetType("CaveSpider", XMaterial.SPIDER_EYE, EntityType.CAVE_SPIDER, PetCaveSpider.class);
+        new PetType("Spider", XMaterial.STRING, EntityType.SPIDER, PetSpider.class);
+        new PetType("Endermite", XMaterial.ENDER_EYE, EntityType.ENDERMITE, PetEndermite.class);
+        /* Ghast disabled because its not moving at all (besides teleport) */
+        /* new PetType("Ghast", XMaterial.FIRE_CHARGE, EntityType.GHAST, PetGhast.class); */
+        new PetType("Guardian", XMaterial.PRISMARINE_SHARD, EntityType.GUARDIAN, PetGuardian.class);
+        /* Magma Cube disabled because its just constantly jumping in one direction instead of following the player */
+        /* new PetType("MagmaCube", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, PetMagmaCube.class); */
+        new PetType("Witch", XMaterial.POTION, EntityType.WITCH, PetWitch.class);
+        new PetType("Horse", XMaterial.LEATHER_HORSE_ARMOR.or(XMaterial.LEATHER), EntityType.HORSE, PetHorse.class);
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
@@ -128,35 +138,72 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Frog", XMaterial.LILY_PAD, EntityType.FROG, PetFrog.class);
             new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class);
             new PetType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, PetAllay.class);
-            new PetType("Goat", XMaterial.GOAT_HORN, EntityType.GOAT, PetGoat.class);
+            new PetType("Tadpole", XMaterial.TADPOLE_BUCKET, EntityType.TADPOLE, PetTadpole.class);
+        case v1_18:
+            new PetType("Goat", XMaterial.GOAT_HORN.or(XMaterial.WHEAT), EntityType.GOAT, PetGoat.class);
         case v1_17:
             new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class);
+            /* Glow Squid disabled because its not moving at all, its just turning around all the time */
+            /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, EntityType.GLOW_SQUID, PetGlowSquid.class); */
         case v1_16:
             new PetType("Piglin", XMaterial.GOLD_INGOT, EntityType.PIGLIN, PetPiglin.class);
+            new PetType("Strider", XMaterial.WARPED_FUNGUS, EntityType.STRIDER, PetStrider.class);
+            new PetType("Hoglin", XMaterial.COOKED_PORKCHOP, EntityType.HOGLIN, PetHoglin.class);
+            new PetType("PiglinBrute", XMaterial.GOLDEN_AXE, EntityType.PIGLIN_BRUTE, PetPiglinBrute.class);
+            new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, EntityType.ZOGLIN, PetZoglin.class);
+            new PetType("ZombifiedPiglin", XMaterial.GOLDEN_SWORD, EntityType.ZOMBIFIED_PIGLIN, PetZombifiedPiglin.class);
         case v1_15:
             new PetType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, PetBee.class);
         case v1_14:
             new PetType("Panda", XMaterial.BAMBOO, EntityType.PANDA, PetPanda.class);
             new PetType("Fox", XMaterial.SWEET_BERRIES, EntityType.FOX, PetFox.class);
             new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.CAT, PetKitty.class);
-            new PetType("Horse", XMaterial.LEATHER_HORSE_ARMOR, EntityType.HORSE, PetHorse.class);
+            new PetType("Ocelot", XMaterial.COD, EntityType.OCELOT, PetOcelot.class);
+            new PetType("WanderingTrader", XMaterial.WANDERING_TRADER_SPAWN_EGG, EntityType.WANDERING_TRADER, PetWanderingTrader.class);
+            new PetType("Pillager", XMaterial.CROSSBOW, EntityType.PILLAGER, PetPillager.class);
+            new PetType("Ravager", XMaterial.RAVAGER_SPAWN_EGG, EntityType.RAVAGER, PetRavager.class);
+        case v1_13:
+            new PetType("Cod", XMaterial.COD_BUCKET, EntityType.COD, PetCod.class);
+            new PetType("Pufferfish", XMaterial.PUFFERFISH, EntityType.PUFFERFISH, PetPufferfish.class);
+            new PetType("Salmon", XMaterial.SALMON_BUCKET, EntityType.SALMON, PetSalmon.class);
+            new PetType("TropicalFish", XMaterial.TROPICAL_FISH_BUCKET, EntityType.TROPICAL_FISH, PetTropicalFish.class);
+            new PetType("Turtle", XMaterial.TURTLE_HELMET, EntityType.TURTLE, PetTurtle.class);
+            new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, PetDolphin.class);
+            new PetType("Drowned", XMaterial.TRIDENT, EntityType.DROWNED, PetDrowned.class);
+            /* Phantom disabled because its just stuck flying down into the ground */
+            /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class); */
         case v1_12:
             new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
+            new PetType("Illusioner", XMaterial.COMMAND_BLOCK, EntityType.ILLUSIONER, PetIllusioner.class);
         case v1_11:
             new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
             new PetType("Vex", XMaterial.IRON_SWORD, EntityType.VEX, PetVex.class);
+            new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, PetEvoker.class);
+            new PetType("Vindicator", XMaterial.IRON_AXE, EntityType.VINDICATOR, PetVindicator.class);
+            // Some entities are here because they were split into different EntityTypes in 1.11
+            new PetType("Donkey", XMaterial.CHEST, EntityType.DONKEY, PetDonkey.class);
+            new PetType("Mule", XMaterial.SADDLE, EntityType.MULE, PetMule.class);
+            new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
+            new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, EntityType.ZOMBIE_HORSE, PetZombieHorse.class);
+            new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class);
+            new PetType("WitherSkeleton", XMaterial.STONE_SWORD, EntityType.WITHER_SKELETON, PetWitherSkeleton.class);
+            new PetType("ZombieVillager", XMaterial.GOLDEN_APPLE, EntityType.ZOMBIE_VILLAGER, PetZombieVillager.class);
+            new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
+            new PetType("Stray", XMaterial.ARROW, EntityType.STRAY, PetStray.class);
         case v1_10:
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
+        case v1_9:
+            new PetType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER, PetShulker.class);
         default:
             break;
         }
-        if (serverVersion == ServerVersion.v1_18) {
-            new PetType("Goat", XMaterial.WHEAT, EntityType.GOAT, PetGoat.class);
+
+        if (serverVersion.isNmsSupported()) {
+            new PetType("Pumpling", XMaterial.PUMPKIN, EntityType.ZOMBIE, UltraCosmeticsData.get().getVersionManager().getModule().getPumplingClass());
         }
 
         if (!serverVersion.isAtLeast(ServerVersion.v1_14)) {
             new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.OCELOT, PetKitty.class);
-            new PetType("Horse", XMaterial.LEATHER, EntityType.HORSE, PetHorse.class);
         }
 
         ConfigurationSection pets = getCustomConfig(Category.PETS);

@@ -45,7 +45,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public final void equip() {
-        if (!owner.getBukkitPlayer().hasPermission(getType().getPermission())) {
+        if (!ultraCosmetics.getPermissionManager().hasPermission(getPlayer(), cosmeticType)) {
             getPlayer().sendMessage(MessageManager.getMessage("No-Permission"));
             return;
         }
@@ -55,7 +55,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             getPlayer().sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
             return;
         }
-        CosmeticRegionState state = ultraCosmetics.cosmeticRegionState(getPlayer(), category);
+        CosmeticRegionState state = ultraCosmetics.getWorldGuardManager().allowedCosmeticsState(getPlayer(), category);
         if (state == CosmeticRegionState.BLOCKED_ALL) {
             getPlayer().sendMessage(MessageManager.getMessage("Region-Disabled"));
             return;
@@ -164,5 +164,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
 
     protected String filterPlaceholders(String message) {
         return message.replace(getCategory().getChatPlaceholder(), TextUtil.filterPlaceHolder(getTypeName()));
+    }
+
+    protected String getOptionPath(String key) {
+        return cosmeticType.getConfigPath() + "." + key;
     }
 }

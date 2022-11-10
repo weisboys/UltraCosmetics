@@ -1,10 +1,10 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
+
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Creature;
@@ -17,6 +17,8 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a snake mount.
@@ -77,7 +79,7 @@ public class MountSnake extends Mount {
                 tailEnt.teleport(tp);
             }
 
-            UltraCosmeticsData.get().getVersionManager().getEntityUtil().move(tailEnt, loc);
+            BukkitBrain.getBrain(tailEnt).getController().moveTo(loc);
 
             before = tailEnt;
         }

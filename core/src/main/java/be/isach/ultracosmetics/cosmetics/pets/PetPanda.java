@@ -20,15 +20,10 @@ public class PetPanda extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        Gene gene;
-        try {
-            gene = Gene.valueOf(customization.toUpperCase());
-        } catch (IllegalArgumentException e) {
-            return false;
-        }
-        Panda panda = (Panda) entity;
-        panda.setMainGene(gene);
-        panda.setHiddenGene(gene);
-        return true;
+        return enumCustomize(Gene.class, customization, gene -> {
+            Panda panda = (Panda) entity;
+            panda.setMainGene(gene);
+            panda.setHiddenGene(gene);
+        });
     }
 }
