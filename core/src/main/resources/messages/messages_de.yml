@@ -1381,7 +1381,7 @@ Emotes:
     Description: '&7&oOH MEIN GOTT!!!'
   Wink:
     Name: '&a&lZwinkern'
-    Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast.'
+    Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast!'
   Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
