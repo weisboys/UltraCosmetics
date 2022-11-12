@@ -1380,6 +1380,18 @@ Emotes:
   Wink:
     Name: '&a&lWink'
     Description: '&7&oHaving fun? Let someone know you are in on the joke!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
   Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
