@@ -198,7 +198,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* RAISE EYEBROWS END */
 
         /* SCARY CANDLE BEGIN */
-        EmoteType SCARY_CANDLE = new EmoteType("ScaryCandle", 3);
+        EmoteType SCARY_CANDLE = new EmoteType("ScaryCandle", 5);
         SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
         SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
         SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
@@ -213,7 +213,7 @@ public class EmoteType extends CosmeticType<Emote> {
         /* SCARY CANDLE END */
 
         /* GLOWING PUMPKIN BEGIN */
-        EmoteType GLOWING_PUMPKIN = new EmoteType("GlowingPumpkin", 3);
+        EmoteType GLOWING_PUMPKIN = new EmoteType("GlowingPumpkin", 5);
         GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
         GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
         GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
