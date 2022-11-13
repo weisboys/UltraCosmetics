@@ -65,11 +65,6 @@ public class MenuMorphs extends CosmeticMenu<MorphType> {
     }
 
     @Override
-    public List<MorphType> enabled() {
-        return MorphType.enabled();
-    }
-
-    @Override
     protected void toggleOn(UltraPlayer ultraPlayer, MorphType morphType, UltraCosmetics ultraCosmetics) {
         morphType.equip(ultraPlayer, ultraCosmetics);
     }

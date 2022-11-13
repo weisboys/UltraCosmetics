@@ -5,10 +5,9 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.HatType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 
 /**
  * Hat {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -20,11 +19,6 @@ public class MenuHats extends CosmeticMenu<HatType> {
 
     public MenuHats(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics, Category.HATS);
-    }
-
-    @Override
-    public List<HatType> enabled() {
-        return HatType.enabled();
     }
 
     @Override

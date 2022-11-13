@@ -1,10 +1,13 @@
- package be.isach.ultracosmetics.command.subcommands;
+package be.isach.ultracosmetics.command.subcommands;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.util.MathUtils;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -53,7 +56,7 @@ public class SubCommandGive extends SubCommand {
                 return;
             }
         }
-        
+
         if (givingKey) {
             int keys = 1;
             if (args.length > 2) { // if amount arg supplied
@@ -70,13 +73,13 @@ public class SubCommandGive extends SubCommand {
             sender.sendMessage(ChatColor.GREEN.toString() + keys + " treasure keys given to " + target.getName());
             return;
         }
-        
+
         // Giving ammo. /uc give ammo <type> <amount> [player]
         if (args.length < 4) {
             badUsage(sender, "/uc give ammo <gadget> <amount> [player]");
             return;
         }
-        GadgetType gadgetType = GadgetType.valueOf(args[2].toUpperCase());
+        GadgetType gadgetType = CosmeticType.valueOf(Category.GADGETS, args[2].toUpperCase());
         if (gadgetType == null) {
             sender.sendMessage(MessageManager.getMessage("Invalid-Gadget"));
             return;

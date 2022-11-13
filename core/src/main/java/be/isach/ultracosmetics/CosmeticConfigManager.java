@@ -13,7 +13,6 @@ import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
-import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.entity.LivingEntity;
@@ -59,12 +58,16 @@ public class CosmeticConfigManager {
         ParticleEffectType.register(version);
         PetType.register(version);
         HatType.register();
-        // SuitType uses a static block
+        for (SuitCategory sc : SuitCategory.values()) {
+            sc.initializeSuitParts();
+        }
         MorphType.register();
+        EmoteType.register();
 
-        for (GadgetType gadgetType : GadgetType.values()) {
+        for (CosmeticType<?> type : CosmeticType.valuesOf(Category.GADGETS)) {
+            GadgetType gadgetType = (GadgetType) type;
             setupCosmetic(config, gadgetType);
-            if (gadgetType == GadgetType.valueOf("paintballgun")) {
+            if (gadgetType.getConfigName().equalsIgnoreCase("paintballgun")) {
                 // default "" so we don't have to deal with null
                 if (config.getString("Gadgets." + gadgetType.getConfigName() + ".Block-Type", "").equals("STAINED_CLAY")) {
                     config.set("Gadgets." + gadgetType.getConfigName() + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
@@ -84,7 +87,8 @@ public class CosmeticConfigManager {
             }
         }
 
-        for (MountType mountType : MountType.values()) {
+        for (CosmeticType<?> type : CosmeticType.valuesOf(Category.MOUNTS)) {
+            MountType mountType = (MountType) type;
             setupCosmetic(config, mountType);
             // If the mount type has a movement speed (is LivingEntity)
             if (LivingEntity.class.isAssignableFrom(mountType.getEntityType().getEntityClass())) {
@@ -106,9 +110,9 @@ public class CosmeticConfigManager {
                 "Set to 1 or less to update every tick.");
 
         if (Category.MORPHS.isEnabled()) {
-            setupCategory(config, MorphType.values());
+            setupCategory(config, CosmeticType.valuesOf(Category.MORPHS));
         }
-        setupCategory(config, PetType.values());
+        setupCategory(config, CosmeticType.valuesOf(Category.PETS));
         config.addDefault("Pets.Axolotl.Fast", false, "https://imgur.com/a/EKWwQ6w");
         config.addDefault("Pets.Wither.Bossbar", "in range",
                 "Sets who the bossbar is visible for. (Has no effect on 1.8)",
@@ -123,24 +127,15 @@ public class CosmeticConfigManager {
                 "Whether the mining fatigue effect is blocked while this pet is equipped.",
                 "Please note that this will also block mining fatigue from real elder guardians,",
                 "due to Spigot API limitations.");
-        setupCategory(config, HatType.values());
-        setupCategory(config, EmoteType.values());
-        setupCategory(config, ParticleEffectType.values());
+        setupCategory(config, CosmeticType.valuesOf(Category.HATS));
+        setupCategory(config, CosmeticType.valuesOf(Category.EMOTES));
+        setupCategory(config, CosmeticType.valuesOf(Category.EFFECTS));
 
         try {
             config.save(ultraCosmetics.getConfigFile());
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        GadgetType.checkEnabled();
-        MountType.checkEnabled();
-        ParticleEffectType.checkEnabled();
-        PetType.checkEnabled();
-        HatType.checkEnabled();
-        SuitType.checkEnabled();
-        EmoteType.checkEnabled();
-        MorphType.checkEnabled();
 
         try {
             config.save(ultraCosmetics.getConfigFile());

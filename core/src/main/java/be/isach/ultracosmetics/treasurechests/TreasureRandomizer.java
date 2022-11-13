@@ -57,8 +57,8 @@ public class TreasureRandomizer {
         // add ammo.
         if (Category.GADGETS.isEnabled() && UltraCosmeticsData.get().isAmmoEnabled()
                 && SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Enabled")) {
-            for (GadgetType type : GadgetType.values()) {
-                if (type.isEnabled() && type.requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
+            for (CosmeticType<?> type : CosmeticType.valuesOf(Category.GADGETS)) {
+                if (type.isEnabled() && ((GadgetType) type).requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
                     cosmetics.computeIfAbsent(ResultType.AMMO, k -> new WeightedSet<>()).add(type, type.getChestWeight());
                 }
             }

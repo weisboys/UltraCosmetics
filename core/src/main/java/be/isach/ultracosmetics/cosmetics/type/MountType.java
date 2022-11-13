@@ -29,10 +29,8 @@ import org.bukkit.entity.Player;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A cosmetic type.
@@ -41,28 +39,6 @@ import java.util.stream.Collectors;
  * @since 12-18-2015
  */
 public class MountType extends CosmeticEntType<Mount> {
-
-    private final static List<MountType> ENABLED = new ArrayList<>();
-    private final static List<MountType> VALUES = new ArrayList<>();
-
-    public static List<MountType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<MountType> values() {
-        return VALUES;
-    }
-
-    public static MountType valueOf(String s) {
-        for (MountType mountType : VALUES) {
-            if (mountType.getConfigName().equalsIgnoreCase(s)) return mountType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(MountType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final int repeatDelay;
     private final List<XMaterial> defaultBlocks;
@@ -75,7 +51,6 @@ public class MountType extends CosmeticEntType<Mount> {
         this.defaultBlocks = defaultBlocks;
         this.defaultSpeed = defaultSpeed;
         this.movementSpeed = SettingsManager.getConfig().getDouble("Mounts." + configName + ".Speed", defaultSpeed);
-        VALUES.add(this);
     }
 
     public double getMovementSpeed() {

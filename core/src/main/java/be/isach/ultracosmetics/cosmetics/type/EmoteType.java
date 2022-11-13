@@ -15,7 +15,6 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Emote types.
@@ -25,29 +24,7 @@ import java.util.stream.Collectors;
  */
 public class EmoteType extends CosmeticType<Emote> {
 
-    private static final List<EmoteType> ENABLED = new ArrayList<>();
-    private static final List<EmoteType> VALUES = new ArrayList<>();
-
-    public static List<EmoteType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<EmoteType> values() {
-        return VALUES;
-    }
-
-    public static EmoteType valueOf(String s) {
-        for (EmoteType emoteType : VALUES) {
-            if (emoteType.getConfigName().equalsIgnoreCase(s)) return emoteType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
-
-    static {
+    public static void register() {
 
         /* CRY BEGIN */
         EmoteType CRY = new EmoteType("Cry", 1);
@@ -205,8 +182,6 @@ public class EmoteType extends CosmeticType<Emote> {
     private EmoteType(String configName, int ticksPerFrame) {
         super(Category.EMOTES, configName, XMaterial.PLAYER_HEAD, Emote.class);
         this.ticksPerFrame = ticksPerFrame;
-
-        VALUES.add(this);
     }
 
     public void appendTexture(String texture) {

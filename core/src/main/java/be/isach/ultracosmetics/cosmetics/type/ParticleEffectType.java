@@ -8,10 +8,6 @@ import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * Particle effect types.
  *
@@ -19,28 +15,6 @@ import java.util.stream.Collectors;
  * @since 12-18-2015
  */
 public class ParticleEffectType extends CosmeticType<ParticleEffect> {
-
-    private final static List<ParticleEffectType> ENABLED = new ArrayList<>();
-    private final static List<ParticleEffectType> VALUES = new ArrayList<>();
-
-    public static List<ParticleEffectType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<ParticleEffectType> values() {
-        return VALUES;
-    }
-
-    public static ParticleEffectType valueOf(String s) {
-        for (ParticleEffectType particleEffectType : VALUES) {
-            if (particleEffectType.getConfigName().equalsIgnoreCase(s)) return particleEffectType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final Particles effect;
     private final int repeatDelay;
@@ -62,8 +36,6 @@ public class ParticleEffectType extends CosmeticType<ParticleEffect> {
             // particleMultiplier is final so we have to assign it a value no matter what
             particleMultiplier = 1;
         }
-
-        VALUES.add(this);
     }
 
     public Particles getEffect() {

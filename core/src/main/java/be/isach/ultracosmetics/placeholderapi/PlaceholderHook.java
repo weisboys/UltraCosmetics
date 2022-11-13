@@ -1,7 +1,9 @@
 package be.isach.ultracosmetics.placeholderapi;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
@@ -28,7 +30,7 @@ public class PlaceholderHook extends PlaceholderExpansion {
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
         if (identifier.startsWith("ammo_")) {
             String gadget = identifier.substring(5);
-            GadgetType type = GadgetType.valueOf(gadget);
+            GadgetType type = CosmeticType.valueOf(Category.GADGETS, gadget);
             if (type == null) return null;
             return String.valueOf(ultraPlayer.getAmmo(type));
         }

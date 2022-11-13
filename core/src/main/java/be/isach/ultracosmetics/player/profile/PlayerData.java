@@ -108,12 +108,12 @@ public class PlayerData {
             cosmeticsFromFile(sm);
         }
 
-        for (PetType pet : PetType.enabled()) {
-            petNames.put(pet, sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName()));
+        for (CosmeticType<?> pet : CosmeticType.enabledOf(Category.PETS)) {
+            petNames.put((PetType) pet, sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName()));
         }
 
-        for (GadgetType gadget : GadgetType.enabled()) {
-            ammo.put(gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
+        for (CosmeticType<?> gadget : CosmeticType.enabledOf(Category.GADGETS)) {
+            ammo.put((GadgetType) gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
         }
 
         for (String value : sm.getStringList(ProfileKey.UNLOCKED.getFileKey())) {

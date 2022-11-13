@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.command;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
-import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -73,7 +72,7 @@ public class UCTabCompleter implements TabCompleter {
                     options.add(category.toString());
                 }
             } else if (args[0].equalsIgnoreCase("give") && args[1].equalsIgnoreCase("ammo")) {
-                for (GadgetType gadgetType : GadgetType.enabled()) {
+                for (CosmeticType<?> gadgetType : CosmeticType.enabledOf(Category.GADGETS)) {
                     options.add(gadgetType.getConfigName());
                 }
             }

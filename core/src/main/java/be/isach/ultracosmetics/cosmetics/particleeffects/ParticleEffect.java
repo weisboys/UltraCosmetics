@@ -46,23 +46,21 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
         try {
             if (Bukkit.getPlayer(getOwnerUniqueId()) != null
                     && getOwner().getCurrentParticleEffect() == this) {
-                if (getType() != ParticleEffectType.valueOf("frozenwalk")
-                        && getType() != ParticleEffectType.valueOf("enchanted")
-                        && getType() != ParticleEffectType.valueOf("music")
-                        && getType() != ParticleEffectType.valueOf("santahat")
-                        && getType() != ParticleEffectType.valueOf("flamefairy")
-                        && getType() != ParticleEffectType.valueOf("enderaura")) {
+                if (!getType().getConfigName().equals("FrozenWalk")
+                        && !getType().getConfigName().equals("Enchanted")
+                        && !getType().getConfigName().equals("Music")
+                        && !getType().getConfigName().equals("SantaHat")
+                        && !getType().getConfigName().equals("FlameFairy")
+                        && !getType().getConfigName().equals("EnderAura")) {
                     if (!isMoving() || ignoreMove) onUpdate();
                     if (isMoving()) {
-                        boolean c = getType() == ParticleEffectType.valueOf("angelwings");
                         if (getType().getEffect() == Particles.REDSTONE) {
                             if (!ignoreMove) {
+                                Particles.OrdinaryColor color = getType().getConfigName().equals("angelwings")
+                                        ? new Particles.OrdinaryColor(255, 255, 255)
+                                        : new Particles.OrdinaryColor(255, 0, 0);
                                 for (int i = 0; i < getModifiedAmount(15); i++) {
-                                    if (!c) {
-                                        getType().getEffect().display(new Particles.OrdinaryColor(255, 0, 0), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)), 128);
-                                    } else {
-                                        getType().getEffect().display(new Particles.OrdinaryColor(255, 255, 255), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)), 128);
-                                    }
+                                    getType().getEffect().display(color, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)), 128);
                                 }
                             }
                         } else if (getType().getEffect() == Particles.ITEM_CRACK) {

@@ -12,10 +12,6 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * Suit types.
  *
@@ -23,28 +19,6 @@ import java.util.stream.Collectors;
  * @since 12-20-2015
  */
 public class SuitType extends CosmeticType<Suit> {
-
-    private static final List<SuitType> ENABLED = new ArrayList<>();
-    private static final List<SuitType> VALUES = new ArrayList<>();
-
-    public static List<SuitType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<SuitType> values() {
-        return VALUES;
-    }
-
-    public static SuitType getSuitPart(String name, ArmorSlot slot) {
-        for (SuitType suitType : VALUES) {
-            if (suitType.getConfigName().equalsIgnoreCase(name) && suitType.getSlot() == slot) return suitType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final ArmorSlot slot;
     private final SuitCategory category;
@@ -60,7 +34,6 @@ public class SuitType extends CosmeticType<Suit> {
         this.category = category;
         // delay permission registration until we've loaded slot and category fields
         registerPermission();
-        VALUES.add(this);
     }
 
     @Override

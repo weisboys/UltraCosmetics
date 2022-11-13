@@ -74,11 +74,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    public List<SuitType> enabled() {
-        return SuitType.enabled();
-    }
-
-    @Override
     protected Map<Integer,SuitType> getSlots(int page, UltraPlayer player) {
         int from = (page - 1) * getItemsPerPage();
         int to = page * getItemsPerPage();

@@ -47,12 +47,10 @@ Categories:
 Economy: 'Vault'
 
 # Treasure Chests Settings.
-# /uc reload will not be enough to toggle them!
 #
 # NOTE: Money will be given
 #       to player even if disabled in case
 #       there is nothing to give!
-#
 #
 # About Treasure Chests designs:
 # For a list of effect: http://pastebin.com/CVKkufck
@@ -69,10 +67,6 @@ Economy: 'Vault'
 # barriers: the barrier.
 # chest-type: The chest type (NORMAL or ENDER)
 # effect: The effect (complete list: http://pastebin.com/CVKkufck)
-#
-# For permission command:
-# Change it to correspond to your Permissions plugin!
-# Default one is LuckPerms.
 #
 TreasureChests:
   Enabled: true
@@ -210,6 +204,8 @@ TreasureChests:
   # Alternatively, if you're using LuckPerms, you can use '!lp-api' to access the LuckPerms API directly rather than using commands.
   # If you want to apply LuckPerms contexts to the added permissions, simply add them after !lp-api, like: '!lp-api server=hub'
   # Adding nolog will suppress logging of added permissions
+  #
+  # [BETA] Set to '' to store unlocked cosmetics in data files or SQL
   Permission-Add-Command: '!lp-api'
 
 # This option will fill the blank slots of inventories
@@ -324,5 +320,6 @@ Remove-Gadget-With-Drop: false
 Auto-Equip-Cosmetics: false
 
 # Whether WorldGuard should be hooked when loading UC
-# Disable this if UC has trouble loading WorldGuard
+# Disable this if UC has trouble loading WorldGuard.
+# The server must be restarted to apply changes to this option.
 WorldGuard-Integration: true

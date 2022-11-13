@@ -67,7 +67,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
         Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), maxPages == 1 ? getName() : getName(page, player));
         boolean hasUnlockable = false;
-        for (T type : enabled()) {
+        for (CosmeticType<?> type : CosmeticType.enabledOf(category)) {
             if (!pm.hasPermission(player, type)) {
                 hasUnlockable = true;
                 break;
@@ -199,10 +199,11 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public T getCosmeticType(String name) {
-        for (T effectType : enabled()) {
+        for (CosmeticType<?> effectType : CosmeticType.enabledOf(category)) {
             if (effectType.getConfigName().replace(" ", "").equals(name.replace(" ", ""))) {
-                return effectType;
+                return (T) effectType;
             }
         }
         return null;
@@ -233,7 +234,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      */
     protected int getMaxPages(UltraPlayer player) {
         int i = 0;
-        for (CosmeticType<?> type : enabled()) {
+        for (CosmeticType<?> type : CosmeticType.enabledOf(category)) {
             if (!shouldHideItem(player, type)) {
                 i++;
             }
@@ -304,14 +305,14 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     protected void putItems(Inventory inventory, UltraPlayer ultraPlayer, int page) {
     }
 
-    public abstract List<T> enabled();
-
+    @SuppressWarnings("unchecked")
     protected Map<Integer,T> getSlots(int page, UltraPlayer player) {
         int start = 21 * (page - 1);
         int limit = 21;
         int current = 0;
         Map<Integer,T> slots = new HashMap<>();
-        List<T> enabled = new ArrayList<>(enabled());
+        List<T> enabled = new ArrayList<>();
+        CosmeticType.valuesOf(category).forEach(t -> enabled.add((T) t));
         enabled.removeIf(k -> shouldHideItem(player, k));
         for (int i = start; current < limit && i < enabled.size(); i++) {
             slots.put(COSMETICS_SLOTS[current++ % 21], enabled.get(i));

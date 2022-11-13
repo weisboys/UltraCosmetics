@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.config.TreasureManager;
 import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.economy.EconomyHandler;
 import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
@@ -40,6 +41,7 @@ import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -140,6 +142,8 @@ public class UltraCosmetics extends JavaPlugin {
      */
     private Set<Problem> activeProblems = new HashSet<>();
 
+    private Set<Problem> loadTimeProblems = new HashSet<>();
+
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
      */
@@ -163,6 +167,7 @@ public class UltraCosmetics extends JavaPlugin {
         if (worldGuardIntegration && getServer().getPluginManager().getPlugin("WorldGuard") != null) {
             worldGuardManager.register();
         }
+        loadTimeProblems = new HashSet<>(activeProblems);
     }
 
     /**
@@ -170,6 +175,13 @@ public class UltraCosmetics extends JavaPlugin {
      */
     @Override
     public void onEnable() {
+        start();
+    }
+
+    public void start() {
+        // If this is a reload, it's important to clear all enable-time problems
+        activeProblems = new HashSet<>(loadTimeProblems);
+
         // Enable command manager as early as possible
         // so we can print helpful error messages about
         // why the plugin didn't start correctly.
@@ -200,6 +212,7 @@ public class UltraCosmetics extends JavaPlugin {
             return;
         }
 
+        CosmeticType.loadCustomCosmetics();
         UltraCosmeticsData.get().initConfigFields();
 
         String langFileName = "messages_" + UltraCosmeticsData.get().getLanguage() + ".yml";
@@ -317,7 +330,7 @@ public class UltraCosmetics extends JavaPlugin {
         // Start up bStats
         setupMetrics();
 
-        reload();
+        this.menus = new Menus(this);
 
         try {
             config.save(file);
@@ -335,18 +348,18 @@ public class UltraCosmetics extends JavaPlugin {
     }
 
     /**
-     * Called on startup and when things need to be reloaded.
-     * Currently only some parts of the plugin are reloaded.
-     */
-    public void reload() {
-        this.menus = new Menus(this);
-    }
-
-    /**
      * Called when plugin disables.
      */
     @Override
     public void onDisable() {
+        shutdown();
+    }
+
+    public void shutdown() {
+        // Prepare for re-enable
+        HandlerList.unregisterAll(this);
+        Bukkit.getScheduler().cancelTasks(this);
+
         // when the plugin is disabled from onEnable, skip cleanup
         if (!enableFinished) return;
 
