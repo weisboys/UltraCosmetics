@@ -125,9 +125,9 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Rudolph", XMaterial.DEAD_BUSH, horseOrType("MULE", version), 1, null, 0.4, MountRudolph.class);
         new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, horseOrType("ZOMBIE_HORSE", version), 2, null, 0.4, MountWalkingDead.class);
         new MountType("InfernalHorror", XMaterial.BONE, horseOrType("SKELETON_HORSE", version), 2, null, 0.4, MountInfernalHorror.class);
-        new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, null, 0.4, MountHorse.class);
-        new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, null, 0.4, MountDonkey.class);
-        new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, null, 0.4, MountMule.class);
+        new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, null, 0.3, MountHorse.class);
+        new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, null, 0.25, MountDonkey.class);
+        new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, null, 0.25, MountMule.class);
 
         if (version.isNmsSupported()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, null, 0.8, vm.getModule().getSlimeClass());
