@@ -348,19 +348,19 @@ Mounts:
     menu-name: '&c&lStrider'
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
-      &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava.
+      &7&oUne créature mystérieuse en forme de cube
+      &7&ocapable de marcher directement au-dessus de la lave.
   Horse:
     menu-name: '&7&lCheval'
     entity-displayname: '&lCheval de %playername%'
     Description: '&7&oYour standard, everyday horse'
   Donkey:
-    menu-name: '&8&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
+    menu-name: '&8&lAne'
+    entity-displayname: '&lÂne de %playername%'
     Description: '&7&oYour standard, everyday donkey'
   Mule:
     menu-name: '&8&lMule'
-    entity-displayname: '&l%playername%''s Mule'
+    entity-displayname: '&lMule de %playername%'
     Description: '&7&oYour standard, everyday mule'
   Equip: '%prefix% &9Tu as fait apparaître %mountname%'
   Unequip: '%prefix% &9Tu as fait disparaître %mountname%'
@@ -629,15 +629,15 @@ Pets:
     Description: '&7&oWill grow into a Frog!'
   TropicalFish:
     menu-name: '&e&lTropical Fish'
-    entity-displayname: '&l%playername%''s Tropical Fish'
+    entity-displayname: '&lPoisson Tropical de %playername%'
     Description: '&7&oA colorful fish!'
   Turtle:
-    menu-name: '&2&lTurtle'
-    entity-displayname: '&l%playername%''s Turtle'
+    menu-name: '&2&lTortue'
+    entity-displayname: '&lTurtue de %playername%'
     Description: '&7&oSome of them get over 150 years old!'
   WanderingTrader:
-    menu-name: '&1&lWandering Trader'
-    entity-displayname: '&l%playername%''s Wandering Trader'
+    menu-name: '&1&lMarchand errant'
+    entity-displayname: '&lMarchand errant de %playername%'
     Description: '&7&oWanders around trying to sell his stuff!'
   CaveSpider:
     menu-name: '&2&lCave Spider'
@@ -648,8 +648,8 @@ Pets:
     entity-displayname: '&l%playername%''s Dolphin'
     Description: '&7&oThe happiest creature of the seas!'
   Spider:
-    menu-name: '&8&lSpider'
-    entity-displayname: '&l%playername%''s Spider'
+    menu-name: '&8&lAraignée'
+    entity-displayname: '&lAraignée de %playername%'
     Description: '&7&oYour friendly neighborhood Spider!'
   ZombifiedPiglin:
     menu-name: '&d&lZombified Piglin'
@@ -1383,12 +1383,12 @@ Emotes:
   Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
-Not-Allowed-From-Console: '&c&lThis can''t be executed from console!'
-World-Disabled: '%prefix% &c&lCosmetics are disabled in this world!'
-Region-Disabled: '%prefix% &c&lCosmetics are disabled in this area!'
-Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
+Enabled-Gadgets: '%prefix% &9Vous avez activé les gadgets !'
+Disabled-Gadgets: '%prefix% &9Vous avez désactivé les gadgets !'
+Not-Allowed-From-Console: '&c&lCeci ne peut pas être exécuté à partir de la console !'
+World-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans ce monde !'
+Region-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans cette zone !'
+Region-Disabled-Category: '%prefix% &c&lLes cosmétiques %category% sont désactivés dans cette zone !'
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
-Too-Long: Too long, try again
+Too-Long: Trop long, réessayez
