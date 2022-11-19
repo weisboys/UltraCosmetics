@@ -1357,16 +1357,16 @@ Emotes:
     Name: '&9&lCry'
     Description: '&7&oAre you really sad? :('
   Angry:
-    Name: '&c&lAngry'
+    Name: '&c&Furieux'
     Description: '&7&oShow your rage to the other players!'
   Happy:
-    Name: '&e&lHappy'
+    Name: '&e&lHeureux'
     Description: '&7&oDon''t worry, be happy!'
   Cheeky:
     Name: '&6&lCheeky'
     Description: '&7&oYou like being cheeky? Well, this emote is for you!'
   Love:
-    Name: '&4&lLove'
+    Name: '&4&lAmour'
     Description: '&7&oYou have beautiful eyes, do you know that?'
   DealWithIt:
     Name: '&7&lDeal With it'
@@ -1375,20 +1375,20 @@ Emotes:
     Name: '&9&lCool'
     Description: '&7&oKeep cool man!'
   Surprised:
-    Name: '&6&lSurprised'
+    Name: '&6&lSurprise'
     Description: '&7&oOH LORD!!!'
   Wink:
     Name: '&a&lWink'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke!'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
+    Description: '&7&oVous vous amusez ? Faites savoir à quelqu''un que vous êtes dans la plaisanterie !'
+  Must-Remove-Helmet: '%prefix% &c&lVous devez retirer votre casque pour équiper une emote !'
+Enabled-SelfMorphView: '%prefix% &9Vous avez activé l''auto-affichage pour les morphes !'
+Disabled-SelfMorphView: '%prefix% &9Vous avez désactivé l''auto-affichage pour les morphes !'
 Enabled-Gadgets: '%prefix% &9Vous avez activé les gadgets !'
 Disabled-Gadgets: '%prefix% &9Vous avez désactivé les gadgets !'
 Not-Allowed-From-Console: '&c&lCeci ne peut pas être exécuté à partir de la console !'
 World-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans ce monde !'
 Region-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans cette zone !'
 Region-Disabled-Category: '%prefix% &c&lLes cosmétiques %category% sont désactivés dans cette zone !'
-Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
-Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
+Disabled-Command-Message: '%prefix% &c&lVous ne pouvez pas utiliser cette commande lorsque les cosmétiques sont équipés !'
+Not-Allowed-In-Vanish: '%prefix% &c&lVous ne pouvez pas utiliser de cosmétiques lorsque vous êtes en vanish !'
 Too-Long: Trop long, réessayez
