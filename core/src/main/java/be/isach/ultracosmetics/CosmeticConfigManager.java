@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics;
 
 import be.isach.ultracosmetics.config.CustomConfiguration;
-import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
@@ -133,14 +132,6 @@ public class CosmeticConfigManager {
 
         try {
             config.save(ultraCosmetics.getConfigFile());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            config.save(ultraCosmetics.getConfigFile());
-            // for any default descriptions saved
-            MessageManager.save();
         } catch (IOException e) {
             e.printStackTrace();
         }

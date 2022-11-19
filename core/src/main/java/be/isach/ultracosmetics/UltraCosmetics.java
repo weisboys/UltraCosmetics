@@ -10,6 +10,8 @@ import be.isach.ultracosmetics.config.TreasureManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.economy.EconomyHandler;
+import be.isach.ultracosmetics.hook.DiscordSRVHook;
+import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
@@ -18,7 +20,6 @@ import be.isach.ultracosmetics.listeners.PriorityListener;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.permissions.PermissionManager;
-import be.isach.ultracosmetics.placeholderapi.PlaceholderHook;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
@@ -128,6 +129,8 @@ public class UltraCosmetics extends JavaPlugin {
     private EconomyHandler economyHandler;
 
     private PermissionManager permissionManager;
+
+    private DiscordSRVHook discordHook;
 
     /**
      * Manages WorldGuard flags.
@@ -326,6 +329,13 @@ public class UltraCosmetics extends JavaPlugin {
             new InvalidWorldChecker(this).runTaskTimerAsynchronously(this, 0, 5);
         }
         armorStandManager = new ArmorStandManager(this);
+
+        if (getServer().getPluginManager().isPluginEnabled("DiscordSRV")
+                && !SettingsManager.getConfig().getString("DiscordSRV-Loot-Channel").equals("0")) {
+            discordHook = new DiscordSRVHook();
+            getSmartLogger().write();
+            getSmartLogger().write("Hooked into DiscordSRV");
+        }
 
         // Start up bStats
         setupMetrics();
@@ -616,6 +626,7 @@ public class UltraCosmetics extends JavaPlugin {
         config.addDefault("Auto-Update", false, "Whether UltraCosmetics should automatically download and install new versions.", "Requires Check-For-Updates to be enabled.");
         config.addDefault("Prevent-Cosmetics-In-Vanish", false, "Whether UltraCosmetics should prevent vanished players from using cosmetics.", "Works with any vanish plugin that uses 'vanished' metdata.");
         config.addDefault("Max-Entity-Spawns-Per-Tick", 10, "Limits the number of entities that can be spawned by a single gadget per tick (default 10.)", "Set to 0 to spawn all entities instantly.");
+        config.addDefault("DiscordSRV-Loot-Channel", 0, "# Discord channel ID to send treasure chest loot messages to.", "Requires DiscordSRV. 0 to disable.");
 
         String pathPrefix = "messages/messages_";
         List<String> supportedLanguages = new ArrayList<>();
@@ -744,6 +755,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public WorldGuardManager getWorldGuardManager() {
         return worldGuardManager;
+    }
+
+    public DiscordSRVHook getDiscordHook() {
+        return discordHook;
     }
 
     public boolean loadConfiguration(File file) {

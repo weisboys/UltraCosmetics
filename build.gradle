@@ -112,6 +112,11 @@ subprojects { subproj ->
             url "https://maven.enginehub.org/repo/"
         }
 
+        // DiscordSRV
+        maven {
+            url "https://nexus.scarsz.me/content/groups/public/"
+        }
+
         // Vault
         maven {
             url 'https://jitpack.io'

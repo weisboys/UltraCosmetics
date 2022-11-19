@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.placeholderapi;
+package be.isach.ultracosmetics.hook;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;

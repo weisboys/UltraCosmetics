@@ -323,3 +323,7 @@ Auto-Equip-Cosmetics: false
 # Disable this if UC has trouble loading WorldGuard.
 # The server must be restarted to apply changes to this option.
 WorldGuard-Integration: true
+
+# Discord channel ID to send treasure chest loot messages to.
+# Requires DiscordSRV. 0 to disable.
+DiscordSRV-Loot-Channel: 0
