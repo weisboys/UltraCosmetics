@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lBersihkan topi saat ini'
   Suits: '&c&lBersihkan baju setelan saat ini'
   Emotes: '&c&lBersihkan emote saat ini'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lEmote'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lBeli Peluru'
   Misc:
@@ -1381,6 +1395,18 @@ Emotes:
     Name: '&a&lWink'
     Description: '&7&oHaving fun? Let someone know you are in on the joke!'
   Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
