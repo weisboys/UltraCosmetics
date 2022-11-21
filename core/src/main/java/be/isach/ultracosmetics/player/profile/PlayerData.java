@@ -193,14 +193,16 @@ public class PlayerData {
         treasureNotifications = (boolean) settings.get(ProfileKey.TREASURE_NOTIFICATION.getSqlKey());
         filterByOwned = (boolean) settings.get(ProfileKey.FILTER_OWNED.getSqlKey());
         keys = (int) settings.get(ProfileKey.KEYS.getSqlKey());
-        petNames = sql.getPetNames().getAllPetNames(uuid);
-        if (data.isAmmoEnabled()) {
+        if (sql.getPetNames() != null) {
+            petNames = sql.getPetNames().getAllPetNames(uuid);
+        }
+        if (sql.getAmmoTable() != null) {
             ammo = sql.getAmmoTable().getAllAmmo(uuid);
         }
-        if (data.areCosmeticsProfilesEnabled()) {
+        if (sql.getEquippedTable() != null) {
             enabledCosmetics = sql.getEquippedTable().getEquipped(uuid);
         }
-        if (data.getPlugin().getPermissionManager().isUsingProfile()) {
+        if (sql.getUnlockedTable() != null) {
             unlockedCosmetics = sql.getUnlockedTable().getAllUnlocked(uuid);
         }
     }

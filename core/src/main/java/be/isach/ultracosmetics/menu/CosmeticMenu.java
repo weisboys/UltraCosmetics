@@ -320,10 +320,12 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         return slots;
     }
 
-    protected abstract void toggleOn(UltraPlayer ultraPlayer, T type, UltraCosmetics ultraCosmetics);
+    protected void toggleOn(UltraPlayer ultraPlayer, T type, UltraCosmetics ultraCosmetics) {
+        type.equip(ultraPlayer, ultraCosmetics);
+    }
 
     protected void toggleOff(UltraPlayer ultraPlayer, T type) {
-        ultraPlayer.removeCosmetic(category);
+        ultraPlayer.removeCosmetic(type.getCategory());
     }
 
     protected void handleRightClick(UltraPlayer ultraPlayer, T type) {

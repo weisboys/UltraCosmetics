@@ -25,17 +25,19 @@ import java.util.stream.Collectors;
  */
 public enum Category {
 
-    PETS("Pets", "%petname%", "pets", "pe", () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
-    GADGETS("Gadgets", "%gadgetname%", "gadgets", "g"),
-    EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef"),
-    MOUNTS("Mounts", "%mountname%", "mounts", "mou"),
-    MORPHS("Morphs", "%morphname%", "morphs", "mor", () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
-    HATS("Hats", "%hatname%", "hats", "h"),
+    PETS("Pets", "%petname%", "pets", "pe", true, () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
+    GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", true),
+    EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", true),
+    MOUNTS("Mounts", "%mountname%", "mounts", "mou", true),
+    MORPHS("Morphs", "%morphname%", "morphs", "mor", true, () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
+    HATS("Hats", "%hatname%", "hats", "h", true),
     SUITS_HELMET(ArmorSlot.HELMET),
     SUITS_CHESTPLATE(ArmorSlot.CHESTPLATE),
     SUITS_LEGGINGS(ArmorSlot.LEGGINGS),
     SUITS_BOOTS(ArmorSlot.BOOTS),
-    EMOTES("Emotes", "%emotename%", "emotes", "e"),
+    EMOTES("Emotes", "%emotename%", "emotes", "e", true),
+    PROJECTILE_EFFECTS("Projectile-Effects", "%projectile-effectname%", "projectileeffects", "p", false),
+    DEATH_EFFECTS("Death-Effects", "%death-effectname%", "deatheffects", "d", false),
     ;
 
     // Avoids counting suit categories multiple times since they share settings
@@ -82,22 +84,24 @@ public enum Category {
     private final String chatPlaceholder;
     private final String permission;
     private final String prefix;
+    private final boolean clearOnDeath;
     private final BooleanSupplier enableCondition;
 
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix, BooleanSupplier enableCondition) {
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, boolean clearOnDeath, BooleanSupplier enableCondition) {
         this.configPath = configPath;
         this.chatPlaceholder = chatPlaceholder;
         this.permission = permission;
         this.prefix = prefix;
         this.enableCondition = enableCondition;
+        this.clearOnDeath = clearOnDeath;
     }
 
-    private Category(String configPath, String chatPlaceholder, String permission, String prefix) {
-        this(configPath, chatPlaceholder, permission, prefix, () -> true);
+    private Category(String configPath, String chatPlaceholder, String permission, String prefix, boolean clearOnDeath) {
+        this(configPath, chatPlaceholder, permission, prefix, clearOnDeath, () -> true);
     }
 
     private Category(ArmorSlot slot) {
-        this("Suits", "%suitname%", "suits", "suits_" + slot.toString().toLowerCase().charAt(0));
+        this("Suits", "%suitname%", "suits", "suits_" + slot.toString().toLowerCase().charAt(0), true);
     }
 
     /**
@@ -189,5 +193,9 @@ public enum Category {
 
     public boolean isSuits() {
         return name().startsWith("SUITS_");
+    }
+
+    public boolean isClearOnDeath() {
+        return clearOnDeath;
     }
 }

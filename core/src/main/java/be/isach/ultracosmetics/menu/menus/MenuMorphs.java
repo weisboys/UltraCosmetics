@@ -63,9 +63,4 @@ public class MenuMorphs extends CosmeticMenu<MorphType> {
         }
         itemStack.setItemMeta(itemMeta);
     }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, MorphType morphType, UltraCosmetics ultraCosmetics) {
-        morphType.equip(ultraPlayer, ultraCosmetics);
-    }
 }

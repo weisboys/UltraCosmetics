@@ -29,9 +29,4 @@ public class MenuEmotes extends CosmeticMenu<EmoteType> {
         emoteMeta.setLore(itemMeta.getLore());
         itemStack.setItemMeta(emoteMeta);
     }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, EmoteType emoteType, UltraCosmetics ultraCosmetics) {
-        emoteType.equip(ultraPlayer, ultraCosmetics);
-    }
 }

@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
-import be.isach.ultracosmetics.player.UltraPlayer;
 
 /**
  * Particle Effect {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -16,10 +15,5 @@ public class MenuParticleEffects extends CosmeticMenu<ParticleEffectType> {
 
     public MenuParticleEffects(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics, Category.EFFECTS);
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, ParticleEffectType particleEffectType, UltraCosmetics ultraCosmetics) {
-        particleEffectType.equip(ultraPlayer, ultraCosmetics);
     }
 }

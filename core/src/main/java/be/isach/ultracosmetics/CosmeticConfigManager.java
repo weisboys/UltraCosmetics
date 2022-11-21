@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.cosmetics.type.DeathEffectType;
 import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.HatType;
@@ -11,6 +12,7 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
+import be.isach.ultracosmetics.cosmetics.type.ProjectileEffectType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.util.ServerVersion;
 
@@ -62,6 +64,8 @@ public class CosmeticConfigManager {
         }
         MorphType.register();
         EmoteType.register();
+        ProjectileEffectType.register();
+        DeathEffectType.register();
 
         for (CosmeticType<?> type : CosmeticType.valuesOf(Category.GADGETS)) {
             GadgetType gadgetType = (GadgetType) type;
@@ -129,6 +133,8 @@ public class CosmeticConfigManager {
         setupCategory(config, CosmeticType.valuesOf(Category.HATS));
         setupCategory(config, CosmeticType.valuesOf(Category.EMOTES));
         setupCategory(config, CosmeticType.valuesOf(Category.EFFECTS));
+        setupCategory(config, CosmeticType.valuesOf(Category.PROJECTILE_EFFECTS));
+        setupCategory(config, CosmeticType.valuesOf(Category.DEATH_EFFECTS));
 
         try {
             config.save(ultraCosmetics.getConfigFile());

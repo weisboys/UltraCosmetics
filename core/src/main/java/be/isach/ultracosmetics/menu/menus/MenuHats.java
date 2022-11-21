@@ -29,9 +29,4 @@ public class MenuHats extends CosmeticMenu<HatType> {
         hatMeta.setLore(itemMeta.getLore());
         itemStack.setItemMeta(hatMeta);
     }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, HatType hatType, UltraCosmetics ultraCosmetics) {
-        hatType.equip(ultraPlayer, ultraCosmetics);
-    }
 }

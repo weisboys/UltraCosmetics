@@ -91,11 +91,6 @@ public class MenuPets extends CosmeticMenu<PetType> {
         }
     }
 
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, PetType petType, UltraCosmetics ultraCosmetics) {
-        petType.equip(ultraPlayer, ultraCosmetics);
-    }
-
     public static Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name, MenuPets returnMenu) {
         final String formattedName = UltraPlayer.colorizePetName(name);
         int price = SettingsManager.getConfig().getInt("Pets-Rename.Requires-Money.Price");

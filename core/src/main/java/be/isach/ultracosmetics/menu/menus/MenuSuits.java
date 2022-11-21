@@ -92,16 +92,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, SuitType suitType, UltraCosmetics ultraCosmetics) {
-        suitType.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    @Override
-    protected void toggleOff(UltraPlayer ultraPlayer, SuitType type) {
-        type.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    @Override
     protected int getItemsPerPage() {
         return 7;
     }

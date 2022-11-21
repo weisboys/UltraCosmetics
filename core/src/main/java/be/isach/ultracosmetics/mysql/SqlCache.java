@@ -48,6 +48,7 @@ public class SqlCache extends CosmeticsProfile {
         // Primary use: if we're setting it to null and it's already null, skip
         if (data.getEnabledCosmetics().get(cat) == type) return;
         super.setEnabledCosmetic(cat, type);
+        if (sql.getEquippedTable() == null) return;
         if (type == null) {
             queueUpdate(() -> sql.getEquippedTable().unsetEquipped(uuid, cat));
         } else {
@@ -58,18 +59,21 @@ public class SqlCache extends CosmeticsProfile {
     @Override
     public void clearAllEquipped() {
         super.clearAllEquipped();
+        if (sql.getEquippedTable() == null) return;
         queueUpdate(() -> sql.getEquippedTable().clearAllEquipped(uuid));
     }
 
     @Override
     public void setAmmo(GadgetType type, int amount) {
         super.setAmmo(type, amount);
+        if (sql.getAmmoTable() == null) return;
         queueUpdate(() -> sql.getAmmoTable().setAmmo(uuid, type, amount));
     }
 
     @Override
     public void setPetName(PetType type, String name) {
         super.setPetName(type, name);
+        if (sql.getPetNames() == null) return;
         queueUpdate(() -> sql.getPetNames().setPetName(uuid, type, name));
     }
 
@@ -108,12 +112,14 @@ public class SqlCache extends CosmeticsProfile {
     @Override
     public void setUnlocked(Set<CosmeticType<?>> types) {
         super.setUnlocked(types);
+        if (sql.getUnlockedTable() == null) return;
         queueUpdate(() -> sql.getUnlockedTable().setUnlocked(uuid, types));
     }
 
     @Override
     public void setLocked(Set<CosmeticType<?>> types) {
         super.setLocked(types);
+        if (sql.getUnlockedTable() == null) return;
         queueUpdate(() -> sql.getUnlockedTable().unsetUnlocked(uuid, types));
     }
 

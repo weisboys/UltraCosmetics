@@ -11,6 +11,8 @@ Categories-Enabled:
   Hats: true
   Suits: true
   Emotes: true
+  Projectile-Effects: true
+  Death-Effects: true
 
 # Other settings for categories:
 # - The Item in Main Menu.
@@ -40,6 +42,12 @@ Categories:
     Main-Menu-Item: LEATHER_CHESTPLATE
     Go-Back-Arrow: true
   Emotes:
+    Go-Back-Arrow: true
+  Projectile-Effects:
+    Main-Menu-Item: ARROW
+    Go-Back-Arrow: true
+  Death-Effects:
+    Main-Menu-Item: DIAMOND_SWORD
     Go-Back-Arrow: true
   Clear-Cosmetic-Item: REDSTONE_BLOCK
 
@@ -149,6 +157,18 @@ TreasureChests:
       Message:
         enabled: false
         message: '%prefix% &6&l%name% found rare %emote%'
+    Projectile-Effects:
+      Enabled: true
+      Chance: 5
+      Message:
+        enabled: false
+        message: '%prefix% &6&l%name% found rare %projectile-effect%'
+    Death-Effects:
+      Enabled: true
+      Chance: 5
+      Message:
+        enabled: false
+        message: '%prefix% &6&l%name% found rare %death-effect%'
     Commands:
       shoutout:
         Name: '&d&lShoutout'

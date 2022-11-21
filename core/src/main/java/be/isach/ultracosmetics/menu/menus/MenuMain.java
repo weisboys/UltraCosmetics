@@ -32,6 +32,12 @@ public class MenuMain extends Menu {
         super(ultraCosmetics);
 
         switch (Category.enabledSize()) {
+        case 10:
+            layout = new int[] { 9, 11, 13, 15, 17, 27, 29, 31, 33, 35 };
+            break;
+        case 9:
+            layout = new int[] { 9, 11, 13, 15, 17, 28, 30, 32, 34 };
+            break;
         case 8:
             layout = new int[] { 10, 12, 14, 16, 28, 30, 32, 34 };
             break;
