@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lQuitar sombrero activo'
   Suits: '&c&lQuitar traje activo'
   Emotes: '&c&lQuitar emoticon activo'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lEmoticones'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lComprar Municion'
   Misc:
@@ -1380,6 +1394,18 @@ Emotes:
     Name: '&a&lGuiño'
     Description: '&7&oTe diviertes? Hazle saber a alguien que estas en la broma'
   Must-Remove-Helmet: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
 Enabled-SelfMorphView: '%prefix% &9Activaste vista propia de las transformaciones!'
 Disabled-SelfMorphView: '%prefix% &9Desactivaste vista propia de las transformaciones!'
 Enabled-Gadgets: '%prefix% &9Activaste los gadgets!'
