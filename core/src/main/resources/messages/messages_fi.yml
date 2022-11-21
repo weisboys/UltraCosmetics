@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lPoista käytössä oleva hattu'
   Suits: '&c&lPoista käytössä oleva vaate'
   Emotes: '&c&lPoista käytössä oleva liike'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lLiikkeet'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lOsta ammuksia'
   Misc:
@@ -1381,6 +1395,18 @@ Emotes:
     Name: '&a&lWink'
     Description: '&7&oHaving fun? Let someone know you are in on the joke!'
   Must-Remove-Helmet: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: 'BOOM!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
