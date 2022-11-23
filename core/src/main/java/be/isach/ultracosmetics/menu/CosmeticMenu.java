@@ -43,7 +43,10 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             28, 29, 30, 31, 32, 33, 34
     };
 
-    protected Category category;
+    /**
+     * Accuracy not guaranteed, specifically for suits.
+     */
+    protected final Category category;
 
     public CosmeticMenu(UltraCosmetics ultraCosmetics, Category category) {
         super(ultraCosmetics);
@@ -66,13 +69,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
 
         Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), maxPages == 1 ? getName() : getName(page, player));
-        boolean hasUnlockable = false;
-        for (CosmeticType<?> type : CosmeticType.enabledOf(category)) {
-            if (!pm.hasPermission(player, type)) {
-                hasUnlockable = true;
-                break;
-            }
-        }
+        boolean hasUnlockable = hasUnlockable(player);
 
         // Cosmetic types.
         Map<Integer,T> slots = getSlots(page, player);
@@ -100,11 +97,11 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
                 continue;
             }
 
-            String toggle = category.getActivateTooltip();
-            boolean deactivate = player.hasCosmetic(category) && player.getCosmetic(category).getType() == cosmeticType;
+            String toggle = cosmeticType.getCategory().getActivateTooltip();
+            boolean deactivate = player.hasCosmetic(cosmeticType.getCategory()) && player.getCosmetic(cosmeticType.getCategory()).getType() == cosmeticType;
 
             if (deactivate) {
-                toggle = category.getDeactivateTooltip();
+                toggle = cosmeticType.getCategory().getDeactivateTooltip();
             }
 
             String typeName = getTypeName(cosmeticType, player);
@@ -269,7 +266,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @return The name of the menu with page detailed.
      */
     protected String getName(int page, UltraPlayer ultraPlayer) {
-        return MessageManager.getMessage("Menu." + category.getConfigPath() + ".Title") + " " + ChatColor.GRAY + "" + ChatColor.ITALIC + "(" + page + "/" + getMaxPages(ultraPlayer) + ")";
+        return getName() + " " + ChatColor.GRAY + "" + ChatColor.ITALIC + "(" + page + "/" + getMaxPages(ultraPlayer) + ")";
     }
 
     @Override
@@ -324,8 +321,9 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         type.equip(ultraPlayer, ultraCosmetics);
     }
 
-    protected void toggleOff(UltraPlayer ultraPlayer, T type) {
-        ultraPlayer.removeCosmetic(type.getCategory());
+    // `T cosmeticType` parameter required for MenuSuits implementation
+    protected void toggleOff(UltraPlayer ultraPlayer, T cosmeticType) {
+        ultraPlayer.removeCosmetic(category);
     }
 
     protected void handleRightClick(UltraPlayer ultraPlayer, T type) {
@@ -358,12 +356,12 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             }
         }
 
-        if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getDeactivateTooltip())) {
+        if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getDeactivateTooltip())) {
             toggleOff(ultraPlayer, cosmeticType);
             if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
                 open(ultraPlayer, currentPage);
             }
-        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), category.getActivateTooltip())) {
+        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getActivateTooltip())) {
             if (pm.hasPermission(ultraPlayer, cosmeticType)) {
                 toggleOn(ultraPlayer, cosmeticType, getUltraCosmetics());
                 if (hasEquipped(ultraPlayer, cosmeticType)) {
@@ -423,5 +421,15 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
     protected boolean hasEquipped(UltraPlayer ultraPlayer, T type) {
         return ultraPlayer.hasCosmetic(type.getCategory());
+    }
+
+    protected boolean hasUnlockable(UltraPlayer player) {
+        PermissionManager pm = ultraCosmetics.getPermissionManager();
+        for (CosmeticType<?> type : CosmeticType.enabledOf(category)) {
+            if (!pm.hasPermission(player, type)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

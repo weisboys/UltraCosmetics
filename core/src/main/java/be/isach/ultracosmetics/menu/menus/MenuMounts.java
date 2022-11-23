@@ -19,7 +19,7 @@ public class MenuMounts extends CosmeticMenu<MountType> {
     }
 
     @Override
-    protected void toggleOff(UltraPlayer ultraPlayer, MountType type) {
+    protected void toggleOff(UltraPlayer ultraPlayer, MountType cosmeticType) {
         if (ultraPlayer.getCurrentMount() == null) {
             return;
         }
