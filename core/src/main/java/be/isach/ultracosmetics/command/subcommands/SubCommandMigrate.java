@@ -108,4 +108,13 @@ public class SubCommandMigrate extends SubCommand {
             return uuids;
         }, true);
     }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.add("flatfile");
+            options.add("sql");
+        }
+
+    }
 }

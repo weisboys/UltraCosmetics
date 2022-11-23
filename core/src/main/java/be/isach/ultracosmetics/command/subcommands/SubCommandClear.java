@@ -9,6 +9,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 /**
  * Clear {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
  *
@@ -57,5 +59,14 @@ public class SubCommandClear extends SubCommand {
             return;
         }
         up.removeCosmetic(cat);
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            addPlayers(options);
+        } else if (args.length == 3) {
+            addCategories(options);
+        }
     }
 }

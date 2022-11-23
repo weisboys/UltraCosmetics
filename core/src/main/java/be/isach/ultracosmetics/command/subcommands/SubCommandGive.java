@@ -13,6 +13,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 /**
  * Give {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
  *
@@ -110,5 +112,20 @@ public class SubCommandGive extends SubCommand {
 
     private void addAmmo(GadgetType gadgetType, Player player, int ammo) {
         ultraCosmetics.getPlayerManager().getUltraPlayer(player).addAmmo(gadgetType, ammo);
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.add("ammo");
+            options.add("key");
+        } else if (args.length == 3 && args[1].equalsIgnoreCase("ammo")) {
+            for (CosmeticType<?> gadgetType : CosmeticType.enabledOf(Category.GADGETS)) {
+                options.add(gadgetType.getConfigName());
+            }
+        } else if ((args.length == 4 && args[1].equalsIgnoreCase("key"))
+                || (args.length == 5 && args[1].equalsIgnoreCase("ammo"))) {
+            addPlayers(options);
+        }
     }
 }
