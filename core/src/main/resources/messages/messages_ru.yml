@@ -1399,13 +1399,16 @@ Projectile-Effects:
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
   Explosion:
     name: '&4&lExplosion'
-    Description: 'BOOM!'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
   Explosion:
     name: '&4&lExplosion'
-    Description: 'BOOM!'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9Вы включили просмотр себя для превращений!'
 Disabled-SelfMorphView: '%prefix% &9Вы отключили просмотр себя для превращений!'
 Enabled-Gadgets: '%prefix% &9Вы включили гаджеты!'
