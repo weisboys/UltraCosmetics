@@ -18,8 +18,10 @@ import be.isach.ultracosmetics.cosmetics.mounts.MountMule;
 import be.isach.ultracosmetics.cosmetics.mounts.MountNyanSheep;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfFire;
 import be.isach.ultracosmetics.cosmetics.mounts.MountOfWater;
+import be.isach.ultracosmetics.cosmetics.mounts.MountPig;
 import be.isach.ultracosmetics.cosmetics.mounts.MountRudolph;
 import be.isach.ultracosmetics.cosmetics.mounts.MountSnake;
+import be.isach.ultracosmetics.cosmetics.mounts.MountStrider;
 import be.isach.ultracosmetics.cosmetics.mounts.MountWalkingDead;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
@@ -107,6 +109,11 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, 0.3, MountHorse.class);
         new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, 0.25, MountDonkey.class);
         new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, 0.25, MountMule.class);
+        new MountType("Pig", XMaterial.PORKCHOP, EntityType.PIG, 0, 0.35, MountPig.class);
+
+        if (version.isAtLeast(ServerVersion.v1_16)) {
+            new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
+        }
 
         if (version.isNmsSupported()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
