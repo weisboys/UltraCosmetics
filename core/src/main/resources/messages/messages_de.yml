@@ -378,6 +378,10 @@ Mounts:
     menu-name: '&8&lMaultier'
     entity-displayname: '&l%playername%''s Maultier'
     Description: '&7&oDein normales, alltägliches Maultier'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
@@ -1396,6 +1400,18 @@ Emotes:
   Wink:
     Name: '&a&lZwinkern'
     Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
   Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
