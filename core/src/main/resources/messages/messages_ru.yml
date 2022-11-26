@@ -375,6 +375,10 @@ Mounts:
     menu-name: '&8&lМул'
     entity-displayname: '&l%playername%'' Мул'
     Description: '&7&oВаш стандартный, повседневный мул'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9Вы заспавнили %mountname%'
   Unequip: '%prefix% &9Вы зареспавнили %mountname%'
   Cant-Spawn: '%prefix% &c&lМонстры не могут спавниться здесь!'
@@ -1393,6 +1397,18 @@ Emotes:
   Wink:
     Name: '&a&lПодмигивающий'
     Description: '&7&oВеселишься? Дайте кому-нибудь знать, что вы в курсе шутки!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
   Must-Remove-Helmet: '%prefix% &c&lВы должны снять шлем, чтобы экипировать эмоцию!'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
