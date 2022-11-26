@@ -376,6 +376,10 @@ Mounts:
     menu-name: '&8&l骡子'
     entity-displayname: '&l%playername%的骡子'
     Description: '&7&o你的第一匹国标骡子'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9你召唤了 %mountname%'
   Unequip: '%prefix% &9你收回了 %mountname%'
   Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
@@ -1394,6 +1398,18 @@ Emotes:
   Wink:
     Name: '&a&l眨眼'
     Description: '&7&o快乐吗？让别人知道你只是在开玩笑'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
   Must-Remove-Helmet: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
