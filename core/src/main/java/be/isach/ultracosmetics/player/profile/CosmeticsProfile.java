@@ -12,6 +12,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 
 import org.bukkit.Bukkit;
 
+import java.util.Collections;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
@@ -140,4 +141,7 @@ public abstract class CosmeticsProfile {
         data.getUnlockedCosmetics().removeAll(type);
     }
 
+    public Set<CosmeticType<?>> getAllUnlocked() {
+        return Collections.unmodifiableSet(data.getUnlockedCosmetics());
+    }
 }

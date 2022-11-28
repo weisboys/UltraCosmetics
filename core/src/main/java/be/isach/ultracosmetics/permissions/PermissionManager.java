@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.permissions;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Problem;
@@ -69,6 +70,14 @@ public class PermissionManager {
 
     public boolean hasRawPermission(Player player, String permission) {
         return rawGetter.hasRawPermission(player, permission);
+    }
+
+    public Set<CosmeticType<?>> getEnabledUnlocked(Player player) {
+        return cosmeticGetter.getEnabledUnlocked(player);
+    }
+
+    public Set<CosmeticType<?>> getEnabledUnlocked(Player player, Category cat) {
+        return cosmeticGetter.getEnabledUnlocked(player, cat);
     }
 
     public void setPermissions(Player player, Set<CosmeticType<?>> types) {

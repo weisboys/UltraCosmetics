@@ -455,6 +455,9 @@ public class UltraCosmetics extends JavaPlugin {
         config.set("Disabled-Items", null);
         config.addDefault("Economy", "Vault");
 
+        config.addDefault("Categories." + Category.DEATH_EFFECTS.getConfigPath() + ".Main-Menu-Item", XMaterial.DIAMOND_SWORD.name());
+        config.addDefault("Categories." + Category.PROJECTILE_EFFECTS.getConfigPath() + ".Main-Menu-Item", XMaterial.ARROW.name());
+
         // getInt() defaults to 0 if not found
         if (config.getInt("TreasureChests.Count") < 1 || config.getInt("TreasureChests.Count") > 4) {
             config.set("TreasureChests.Count", 4, "How many treasure chests should be opened per key? Min 1, max 4");

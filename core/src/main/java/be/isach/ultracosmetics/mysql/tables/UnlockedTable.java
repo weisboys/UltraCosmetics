@@ -45,8 +45,11 @@ public class UnlockedTable extends Table {
     public Set<CosmeticType<?>> getAllUnlocked(UUID uuid) {
         return select("category, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Set<CosmeticType<?>> unlocked = new HashSet<>();
+            CosmeticType<?> type;
             while (r.next()) {
-                unlocked.add(Category.valueOf(r.getString("category").toUpperCase()).valueOfType(r.getString("type")));
+                type = Category.valueOf(r.getString("category").toUpperCase()).valueOfType(r.getString("type"));
+                if (type == null) continue;
+                unlocked.add(type);
             }
             return unlocked;
         }, true);

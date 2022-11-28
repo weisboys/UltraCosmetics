@@ -43,7 +43,6 @@ import com.cryptomorin.xseries.XMaterial;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -619,16 +618,8 @@ public class UltraPlayer {
     /*
      * Internal use only
      */
-    public boolean profileHasUnlocked(CosmeticType<?> type) {
-        return cosmeticsProfile.hasUnlocked(type);
-    }
-
-    public void profileSetUnlocked(Set<CosmeticType<?>> type) {
-        cosmeticsProfile.setUnlocked(type);
-    }
-
-    public void profileSetLocked(Set<CosmeticType<?>> type) {
-        cosmeticsProfile.setLocked(type);
+    public CosmeticsProfile getProfile() {
+        return cosmeticsProfile;
     }
 
     public static String colorizePetName(String name) {

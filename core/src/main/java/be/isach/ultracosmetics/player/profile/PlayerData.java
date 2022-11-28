@@ -116,10 +116,13 @@ public class PlayerData {
             ammo.put((GadgetType) gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
         }
 
+        CosmeticType<?> type;
         for (String value : sm.getStringList(ProfileKey.UNLOCKED.getFileKey())) {
             String[] parts = value.split(":");
             Category cat = Category.valueOf(parts[0]);
-            unlockedCosmetics.add(cat.valueOfType(parts[1]));
+            type = cat.valueOfType(parts[1]);
+            if (type == null) continue;
+            unlockedCosmetics.add(type);
         }
 
         keys = sm.getInt(ProfileKey.KEYS.getFileKey());

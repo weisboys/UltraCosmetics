@@ -111,11 +111,10 @@ public enum Category {
      */
     public ItemStack getItemStack() {
         ItemStack is;
-        if (SettingsManager.getConfig().contains("Categories." + configPath + ".Main-Menu-Item")) {
-            is = ItemFactory.getItemStackFromConfig("Categories." + configPath + ".Main-Menu-Item");
-        } else {
-            // TODO: not sure when this is used?
+        if (this == EMOTES) {
             is = ItemFactory.createSkull("5059d59eb4e59c31eecf9ece2f9cf3934e45c0ec476fc86bfaef8ea913ea710", "");
+        } else {
+            is = ItemFactory.getItemStackFromConfig("Categories." + configPath + ".Main-Menu-Item");
         }
         ItemMeta itemMeta = is.getItemMeta();
         itemMeta.setDisplayName(MessageManager.getMessage("Menu." + configPath + ".Button.Name"));
