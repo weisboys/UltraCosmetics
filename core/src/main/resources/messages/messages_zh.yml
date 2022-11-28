@@ -16,7 +16,7 @@ Cancel: '&c&l取消'
 Buy-Ammo-Description: '&e&l购买 %amount% %gadgetname% 次使用次数 &e&l需要花费 $%price%'
 Buy-Cosmetic-Description: '&e&l购买 %gadgetname% &e&l需花费 $%price%'
 Right-Click-Buy-Ammo: '&7右键即可购买使用次数'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&e右键即可花费 $%price% &e来购买'
 Not-Enough-Money: '%prefix% &c&l你没有足够的金钱！'
 Successful-Purchase: '%prefix% &a&l购买成功！'
 Buy-Treasure-Key: '&l购买一把宝藏钥匙'
@@ -31,7 +31,7 @@ Your-Keys: '&7&o你的钥匙数: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1把 &7&l宝藏钥匙 &e&l需要花费 $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&l你赢得了: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&l所有宝藏点都已被占用，请稍等并重试。'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '%prefix% &c&l你没有在此小道具上可用的使用次数'
 Clear:
   Cosmetics: '&c&l清除所有装饰品'
   Gadgets: '&c&l清除当前使用的小道具'
@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&l清除当前头饰'
   Suits: '&c&l清除当前衣装'
   Emotes: '&c&l清除当前表情'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&l表情'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&l购买使用次数'
   Misc:
@@ -118,7 +132,7 @@ Chest-Location:
   In-Air: '%prefix% &c&l该地点不在地面上！'
   In-Ground: '%prefix% &c&l该地点在地下！'
   Suggestion: '%prefix% &a你指的是 %location%?'
-  Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Dismount-First: '%prefix% &c&l你必须先从载具上下来才能打开箱子'
 Active-Pet-Needed: '&c&l你需要召唤一只宠物才能重命名它'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% 使用次数'
@@ -335,8 +349,8 @@ Mounts:
     menu-name: '&f&l鲁道&4&l夫'
     entity-displayname: '&l%playername%的鲁道夫'
     Description: |-
-      &7&oWhat would Christmas be
-      &7&owithout Rudolph the Reindeer?
+      &7&o没有驯鹿鲁道夫的圣诞节
+      &7&o会是什么样的?
   MoltenSnake:
     menu-name: '&c&l熔蛇'
     entity-displayname: '&l%playername%的熔蛇'
@@ -345,23 +359,27 @@ Mounts:
       &7&o存在着一种神话般的熔蛇
       &7&o它将永远为你服务
   Strider:
-    menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
+    menu-name: '&c&l炽足兽'
+    entity-displayname: '&l%playername%的炽足兽'
     Description: |-
-      &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava.
+      &7&o神秘的立方体生物
+      &7&o可以直接在岩浆上行走
   Horse:
-    menu-name: '&7&lHorse'
-    entity-displayname: '&l%playername%''s Horse'
-    Description: '&7&oYour standard, everyday horse'
+    menu-name: '&7&l马'
+    entity-displayname: '&l%playername%的马'
+    Description: '&7&o你的第一匹标准马'
   Donkey:
-    menu-name: '&8&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
-    Description: '&7&oYour standard, everyday donkey'
+    menu-name: '&8&l驴'
+    entity-displayname: '&l%playername%的驴'
+    Description: '&7&o年轻人的第一个lv（驴）！'
   Mule:
-    menu-name: '&8&lMule'
-    entity-displayname: '&l%playername%''s Mule'
-    Description: '&7&oYour standard, everyday mule'
+    menu-name: '&8&l骡子'
+    entity-displayname: '&l%playername%的骡子'
+    Description: '&7&o你的第一匹国标骡子'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9你召唤了 %mountname%'
   Unequip: '%prefix% &9你收回了 %mountname%'
   Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
@@ -514,7 +532,7 @@ Pets:
   Vex:
     menu-name: '&7&l恼鬼'
     entity-displayname: '&l%playername%的恼鬼'
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: '&7&o吁~~~~~！'
   Panda:
     menu-name: '&a&l熊猫'
     entity-displayname: '&l%playername%的熊猫'
@@ -534,7 +552,7 @@ Pets:
   Slime:
     menu-name: '&a&l史莱姆'
     entity-displayname: '&l%playername%的史莱姆'
-    Description: '&7&oSquish...'
+    Description: '&7&o压扁...'
   Bee:
     menu-name: '&e&l蜜蜂'
     entity-displayname: '&l%playername%的蜜蜂'
@@ -584,69 +602,69 @@ Pets:
     entity-displayname: '&l%playername%的轻灵'
     Description: '&7&o一个新的朋友！'
   Cod:
-    menu-name: '&7&lCod'
-    entity-displayname: '&l%playername%''s Cod'
-    Description: '&7&oPrefers water over land!'
+    menu-name: '&7&l鳕鱼'
+    entity-displayname: '&l%playername%的鳕鱼'
+    Description: '&7&o它们不是陆地生物！'
   Donkey:
-    menu-name: '&7&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
-    Description: '&7&oCan carry all your Stuff!'
+    menu-name: '&7&l驴'
+    entity-displayname: '&l%playername%的驴'
+    Description: '&7&o可以帮你带着所有物品！'
   GlowSquid:
-    menu-name: '&3&lGlow Squid'
-    entity-displayname: '&l%playername%''s Glow Squid'
-    Description: '&7&oIt glows!'
+    menu-name: '&3&l发光鱿鱼'
+    entity-displayname: '&l%playername%的发光鱿鱼'
+    Description: '&7&o它会发光耶！'
   Mule:
-    menu-name: '&7&lMule'
-    entity-displayname: '&l%playername%''s Mule'
-    Description: '&7&oBasically a donkey!'
+    menu-name: '&7&l骡子'
+    entity-displayname: '&l%playername%的骡子'
+    Description: '&7&o差不多就是个驴！'
   Pufferfish:
-    menu-name: '&e&lPufferfish'
-    entity-displayname: '&l%playername%''s Pufferfish'
-    Description: '&7&oDoesn''t like to be touched!'
+    menu-name: '&e&l河豚'
+    entity-displayname: '&l%playername%的河豚'
+    Description: '&7&o这玩意可碰不得'
   Ocelot:
-    menu-name: '&e&lOcelot'
-    entity-displayname: '&l%playername%''s Ocelot'
-    Description: '&7&oWatch out...they''re pretty shy!'
+    menu-name: '&e&l豹猫'
+    entity-displayname: '&l%playername%的豹猫'
+    Description: '&7&o小心...它们很害羞哒！'
   Salmon:
-    menu-name: '&c&lSalmon'
-    entity-displayname: '&l%playername%''s Salmon'
-    Description: '&7&oThey''re very tasty!'
+    menu-name: '&c&l鲑鱼'
+    entity-displayname: '&l%playername%的鲑鱼'
+    Description: '&7&o这玩意可好吃了！'
   SkeletonHorse:
-    menu-name: '&f&lSkeleton Horse'
-    entity-displayname: '&l%playername%''s Skeleton Horse'
-    Description: '&7&oLook out for lightning strikes!'
+    menu-name: '&f&l骷髅马'
+    entity-displayname: '&l%playername%的骷髅马'
+    Description: '&7&o小心雷电骑士！'
   Squid:
-    menu-name: '&0&lSquid'
-    entity-displayname: '&l%playername%''s Squid'
-    Description: '&7&oDon''t scare it or the water turns black!'
+    menu-name: '&0&l鱿鱼'
+    entity-displayname: '&l%playername%的鱿鱼'
+    Description: '&7&o不要吓到它们，不然水要变黑！'
   Strider:
-    menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
-    Description: '&7&oWalks over Lava!'
+    menu-name: '&c&l炽足兽'
+    entity-displayname: '&l%playername%的炽足兽'
+    Description: '&7&o岩浆行者！'
   Tadpole:
-    menu-name: '&8&lTadpole'
-    entity-displayname: '&l%playername%''s Tadpole'
-    Description: '&7&oWill grow into a Frog!'
+    menu-name: '&8&l蝌蚪'
+    entity-displayname: '&l%playername%的蝌蚪'
+    Description: '&7&o它会长成大青蛙的！'
   TropicalFish:
-    menu-name: '&e&lTropical Fish'
-    entity-displayname: '&l%playername%''s Tropical Fish'
-    Description: '&7&oA colorful fish!'
+    menu-name: '&e&l热带鱼'
+    entity-displayname: '&l%playername%的热带鱼'
+    Description: '&7&o一个多彩的鱼！'
   Turtle:
-    menu-name: '&2&lTurtle'
-    entity-displayname: '&l%playername%''s Turtle'
-    Description: '&7&oSome of them get over 150 years old!'
+    menu-name: '&2&l海龟'
+    entity-displayname: '&l%playername%的海龟'
+    Description: '&7&o它们有些能活到150岁！'
   WanderingTrader:
-    menu-name: '&1&lWandering Trader'
-    entity-displayname: '&l%playername%''s Wandering Trader'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    menu-name: '&1&l流浪商人'
+    entity-displayname: '&l%playername%的流浪商人'
+    Description: '&7&o流浪并出售他的好东西！'
   CaveSpider:
-    menu-name: '&2&lCave Spider'
-    entity-displayname: '&l%playername%''s Cave Spider'
-    Description: '&7&oA Spider, but poisonous!'
+    menu-name: '&2&l洞穴蜘蛛'
+    entity-displayname: '&l%playername%的洞穴蜘蛛'
+    Description: '&7&o蜘蛛，但是带毒！'
   Dolphin:
-    menu-name: '&b&lDolphin'
-    entity-displayname: '&l%playername%''s Dolphin'
-    Description: '&7&oThe happiest creature of the seas!'
+    menu-name: '&b&l海豚'
+    entity-displayname: '&l%playername%的海豚'
+    Description: '&7&o海洋里最开心的生物！'
   Spider:
     menu-name: '&8&lSpider'
     entity-displayname: '&l%playername%''s Spider'
@@ -1300,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&o字母表中的第二十六个字母！'
-  Must-Remove-Hat: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
 Suits:
   Rave:
     whole-equip: '&f&l全 &b&l套&a&l狂&e&l欢&6&l服 &f&l衣装'
@@ -1345,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9你脱下了 %suitname%!'
   Suit-Part-Lore: '&9衣装部分'
   Whole-Equip-Lore: '&7&o穿上全套衣服'
-  Must-Remove:
-    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
-    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
-    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
-    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9你使用了 %emotename%'
   Unequip: '%prefix% &9你卸下了 %emotename%'
@@ -1380,7 +1393,33 @@ Emotes:
   Wink:
     Name: '&a&l眨眼'
     Description: '&7&o快乐吗？让别人知道你只是在开玩笑'
-  Must-Remove-Helmet: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9你启用了第一人称伪装视角'
 Disabled-SelfMorphView: '%prefix% &9你禁用了第一人称伪装视角'
 Enabled-Gadgets: '%prefix% &9您启用了小工具！'
@@ -1392,3 +1431,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域�
 Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
 Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
 Too-Long: Too long, try again
+Must-Remove:
+  Hats: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
+  Suits:
+    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
+    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
+    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
+    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
+  Emotes: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'

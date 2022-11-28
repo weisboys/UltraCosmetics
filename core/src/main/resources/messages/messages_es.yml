@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lQuitar sombrero activo'
   Suits: '&c&lQuitar traje activo'
   Emotes: '&c&lQuitar emoticon activo'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lEmoticones'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lComprar Municion'
   Misc:
@@ -361,6 +375,10 @@ Mounts:
     menu-name: '&8&lMula'
     entity-displayname: '&lMula de %playername%'
     Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
@@ -1299,7 +1317,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&9La vigesimasexta letra en el alfabeto!'
-  Must-Remove-Hat: '%prefix% &c&lDebes quitarte tu casco para equiparte un sombrero!'
 Suits:
   Rave:
     whole-equip: '&f&lTraje &b&lR&a&la&e&lv&6&le &f&lcompleto'
@@ -1344,11 +1361,7 @@ Suits:
   Unequip: '%prefix% &9Desequipaste %suitname%!'
   Suit-Part-Lore: '&9Partes del Traje'
   Whole-Equip-Lore: '&7&oTraje completo!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lDebes quitarte el casco para equipar este item!'
-    CHESTPLATE: '%prefix% &c&lDebes quitarte la pechera para equipar este item!'
-    LEGGINGS: '%prefix% &c&lDebes quitarte los pantalones para equipar este item!'
-    BOOTS: '%prefix% &c&lDebes quitarte las botas para equipar este item!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9Equipaste %emotename%'
   Unequip: '%prefix% &9Desequipaste %emotename%'
@@ -1379,7 +1392,33 @@ Emotes:
   Wink:
     Name: '&a&lGuiño'
     Description: '&7&oTe diviertes? Hazle saber a alguien que estas en la broma'
-  Must-Remove-Helmet: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9Activaste vista propia de las transformaciones!'
 Disabled-SelfMorphView: '%prefix% &9Desactivaste vista propia de las transformaciones!'
 Enabled-Gadgets: '%prefix% &9Activaste los gadgets!'
@@ -1391,3 +1430,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics estan desactivados 
 Disabled-Command-Message: '%prefix% &c&lNo puedes usar este comando cuando tienes ese cosmetics equipado!'
 Not-Allowed-In-Vanish: '%prefix% &c&lNo puedes usar ese comando mientras estes Vanish!'
 Too-Long: Demasiado largo, inténtelo de nuevo
+Must-Remove:
+  Hats: '%prefix% &c&lDebes quitarte tu casco para equiparte un sombrero!'
+  Suits:
+    HELMET: '%prefix% &c&lDebes quitarte el casco para equipar este item!'
+    CHESTPLATE: '%prefix% &c&lDebes quitarte la pechera para equipar este item!'
+    LEGGINGS: '%prefix% &c&lDebes quitarte los pantalones para equipar este item!'
+    BOOTS: '%prefix% &c&lDebes quitarte las botas para equipar este item!'
+  Emotes: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'

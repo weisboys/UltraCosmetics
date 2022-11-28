@@ -16,32 +16,34 @@ Cancel: '&c&lANULUJ'
 Buy-Ammo-Description: '&e&lKup %amount% do %gadgetname% &e&lza $%price%'
 Buy-Cosmetic-Description: '&e&las Kup %gadgetname% &e&lza $%price%'
 Right-Click-Buy-Ammo: '&7Kliknij prawym przyciskiem myszy, aby kupić amunicję'
-Click-To-Purchase: '&eClick to purchase for $%price%'
+Click-To-Purchase: '&eKliknij prawym przyciskiem myszy, aby kupić za $%price%'
 Not-Enough-Money: '%prefix% &c&lNie masz wystarczająco pieniędzy!'
 Successful-Purchase: '%prefix% &a&lUdany zakup!'
 Buy-Treasure-Key: '&lKup klucz do skrzyni skarbów'
 Treasure-Keys: '&7&lKlucze do Skrzyni skarbów'
 Treasure-Chests: '&6&lSkrzynie skarbów'
-Dont-Have-Key: '&4&lYou need a key!'
-Click-Open-Chest: '&aClick to open a chest'
-Click-Buy-Key: '&aClick to buy a key'
-Left-Click-Open-Chest: '&aLeft-click to open a chest'
-Right-Click-Simple: '&aRight-click to just get cosmetics'
-Your-Keys: '&7&oYour keys: &f&l%keys%'
-Buy-Treasure-Key-ItemName: '&e&l1 &7&lTreasure Key &e&lfor $%price%'
-You-Won-Treasure-Chests: '%prefix% &f&lYou won: %name%!'
-Treasure-Chest-Occupied: '%prefix% &c&lAll treasure locations are full, please wait and try again'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+Dont-Have-Key: '&4&lPotrzebujesz klucza!'
+Click-Open-Chest: '&aKliknij, aby otworzyć skrzynię'
+Click-Buy-Key: '&aKliknij, aby kupić klucz'
+Left-Click-Open-Chest: '&aKliknij, aby otworzyć skrzynię'
+Right-Click-Simple: '&aKliknij prawym przyciskiem myszy, aby otrzymać kosmetyki'
+Your-Keys: '&7&oTwoje klucze: &f&l%keys%'
+Buy-Treasure-Key-ItemName: '&e&l1 &7&lKlucz Skarbu &e&lfor $%price%'
+You-Won-Treasure-Chests: '%prefix% &f&lWygrałeś: %name%!'
+Treasure-Chest-Occupied: '%prefix% &c&miejsca skarbów są pełne, proszę poczekaj i spróbuj ponownie'
+No-Ammo: '%prefix% &c&lNie masz amunicji na ten gadżet!'
 Clear:
-  Cosmetics: '&c&lClear cosmetics'
-  Gadgets: '&c&lClear current gadget'
-  Pets: '&c&lClear current pet'
-  Mounts: '&c&lClear current mount'
-  Particle-Effects: '&c&lClear current effect'
-  Morphs: '&c&lClear current morph'
-  Hats: '&c&lClear current hat'
-  Suits: '&c&lClear current suit'
+  Cosmetics: '&c&lClear kosmetyków'
+  Gadgets: '&c&lClear bieżący gadżet'
+  Pets: '&c&lClear bieżący gadżet'
+  Mounts: '&c&lClear bieżący gadżet'
+  Particle-Effects: '&c&lClear bieżący gadżet'
+  Morphs: '&c&lClear bieżący gadżet'
+  Hats: '&c&lWyczyść bieżący gadżet'
+  Suits: '&c&lWyczyść bieżący gadżet'
   Emotes: '&c&lClear current emote'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -102,6 +104,18 @@ Menu:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
@@ -362,6 +376,10 @@ Mounts:
     menu-name: '&8&lMule'
     entity-displayname: '&l%playername%''s Mule'
     Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
@@ -1300,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oThe twenty-sixth letter in the alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
 Suits:
   Rave:
     whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
@@ -1345,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9You unequipped %suitname%!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oEquip the whole suit!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9You equipped %emotename%'
   Unequip: '%prefix% &9You unequipped %emotename%'
@@ -1380,7 +1393,33 @@ Emotes:
   Wink:
     Name: '&a&lWink'
     Description: '&7&oHaving fun? Let someone know you are in on the joke!'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
@@ -1392,3 +1431,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in thi
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
 Too-Long: Too long, try again
+Must-Remove:
+  Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
+  Suits:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Emotes: '%prefix% &c&lYou must remove your helmet to equip an emote!'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'

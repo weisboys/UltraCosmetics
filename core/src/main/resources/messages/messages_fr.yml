@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lRetirer le chapeau actuel'
   Suits: '&c&lRetirer les vetments actuels'
   Emotes: '&c&lRetirer l''emote actuel'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lÉmotes'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lAcheter des munitions'
   Misc:
@@ -348,20 +362,24 @@ Mounts:
     menu-name: '&c&lStrider'
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
-      &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava.
+      &7&oUne créature mystérieuse en forme de cube
+      &7&ocapable de marcher directement au-dessus de la lave.
   Horse:
     menu-name: '&7&lCheval'
     entity-displayname: '&lCheval de %playername%'
     Description: '&7&oYour standard, everyday horse'
   Donkey:
-    menu-name: '&8&lDonkey'
-    entity-displayname: '&l%playername%''s Donkey'
+    menu-name: '&8&lAne'
+    entity-displayname: '&lÂne de %playername%'
     Description: '&7&oYour standard, everyday donkey'
   Mule:
     menu-name: '&8&lMule'
-    entity-displayname: '&l%playername%''s Mule'
+    entity-displayname: '&lMule de %playername%'
     Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9Tu as fait apparaître %mountname%'
   Unequip: '%prefix% &9Tu as fait disparaître %mountname%'
   Cant-Spawn: '%prefix% &c&lLes monstres ne peuvent pas apparaître ici !'
@@ -629,15 +647,15 @@ Pets:
     Description: '&7&oWill grow into a Frog!'
   TropicalFish:
     menu-name: '&e&lTropical Fish'
-    entity-displayname: '&l%playername%''s Tropical Fish'
+    entity-displayname: '&lPoisson Tropical de %playername%'
     Description: '&7&oA colorful fish!'
   Turtle:
-    menu-name: '&2&lTurtle'
-    entity-displayname: '&l%playername%''s Turtle'
+    menu-name: '&2&lTortue'
+    entity-displayname: '&lTurtue de %playername%'
     Description: '&7&oSome of them get over 150 years old!'
   WanderingTrader:
-    menu-name: '&1&lWandering Trader'
-    entity-displayname: '&l%playername%''s Wandering Trader'
+    menu-name: '&1&lMarchand errant'
+    entity-displayname: '&lMarchand errant de %playername%'
     Description: '&7&oWanders around trying to sell his stuff!'
   CaveSpider:
     menu-name: '&2&lCave Spider'
@@ -648,8 +666,8 @@ Pets:
     entity-displayname: '&l%playername%''s Dolphin'
     Description: '&7&oThe happiest creature of the seas!'
   Spider:
-    menu-name: '&8&lSpider'
-    entity-displayname: '&l%playername%''s Spider'
+    menu-name: '&8&lAraignée'
+    entity-displayname: '&lAraignée de %playername%'
     Description: '&7&oYour friendly neighborhood Spider!'
   ZombifiedPiglin:
     menu-name: '&d&lZombified Piglin'
@@ -1300,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oThe twenty-sixth letter in the alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
 Suits:
   Rave:
     whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
@@ -1345,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9You unequipped %suitname%!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oEquip the whole suit!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9You equipped %emotename%'
   Unequip: '%prefix% &9You unequipped %emotename%'
@@ -1357,16 +1370,16 @@ Emotes:
     Name: '&9&lCry'
     Description: '&7&oAre you really sad? :('
   Angry:
-    Name: '&c&lAngry'
+    Name: '&c&Furieux'
     Description: '&7&oShow your rage to the other players!'
   Happy:
-    Name: '&e&lHappy'
+    Name: '&e&lHeureux'
     Description: '&7&oDon''t worry, be happy!'
   Cheeky:
     Name: '&6&lCheeky'
     Description: '&7&oYou like being cheeky? Well, this emote is for you!'
   Love:
-    Name: '&4&lLove'
+    Name: '&4&lAmour'
     Description: '&7&oYou have beautiful eyes, do you know that?'
   DealWithIt:
     Name: '&7&lDeal With it'
@@ -1375,20 +1388,56 @@ Emotes:
     Name: '&9&lCool'
     Description: '&7&oKeep cool man!'
   Surprised:
-    Name: '&6&lSurprised'
+    Name: '&6&lSurprise'
     Description: '&7&oOH LORD!!!'
   Wink:
     Name: '&a&lWink'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke!'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
-Not-Allowed-From-Console: '&c&lThis can''t be executed from console!'
-World-Disabled: '%prefix% &c&lCosmetics are disabled in this world!'
-Region-Disabled: '%prefix% &c&lCosmetics are disabled in this area!'
-Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
-Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
-Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
-Too-Long: Too long, try again
+    Description: '&7&oVous vous amusez ? Faites savoir à quelqu''un que vous êtes dans la plaisanterie !'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+Enabled-SelfMorphView: '%prefix% &9Vous avez activé l''auto-affichage pour les morphes !'
+Disabled-SelfMorphView: '%prefix% &9Vous avez désactivé l''auto-affichage pour les morphes !'
+Enabled-Gadgets: '%prefix% &9Vous avez activé les gadgets !'
+Disabled-Gadgets: '%prefix% &9Vous avez désactivé les gadgets !'
+Not-Allowed-From-Console: '&c&lCeci ne peut pas être exécuté à partir de la console !'
+World-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans ce monde !'
+Region-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans cette zone !'
+Region-Disabled-Category: '%prefix% &c&lLes cosmétiques %category% sont désactivés dans cette zone !'
+Disabled-Command-Message: '%prefix% &c&lVous ne pouvez pas utiliser cette commande lorsque les cosmétiques sont équipés !'
+Not-Allowed-In-Vanish: '%prefix% &c&lVous ne pouvez pas utiliser de cosmétiques lorsque vous êtes en vanish !'
+Too-Long: Trop long, réessayez
+Must-Remove:
+  Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
+  Suits:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Emotes: '%prefix% &c&lVous devez retirer votre casque pour équiper une emote !'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'

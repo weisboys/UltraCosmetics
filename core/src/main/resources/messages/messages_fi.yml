@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lPoista käytössä oleva hattu'
   Suits: '&c&lPoista käytössä oleva vaate'
   Emotes: '&c&lPoista käytössä oleva liike'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -104,6 +106,18 @@ Menu:
       Name: '&e&lLiikkeet'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lOsta ammuksia'
   Misc:
@@ -362,6 +376,10 @@ Mounts:
     menu-name: '&8&lMule'
     entity-displayname: '&l%playername%''s Mule'
     Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
@@ -1300,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oThe twenty-sixth letter in the alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi hattua!'
 Suits:
   Rave:
     whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lVaatetus'
@@ -1345,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9You unequipped %suitname%!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oEquip the whole suit!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9You equipped %emotename%'
   Unequip: '%prefix% &9You unequipped %emotename%'
@@ -1380,7 +1393,33 @@ Emotes:
   Wink:
     Name: '&a&lWink'
     Description: '&7&oHaving fun? Let someone know you are in on the joke!'
-  Must-Remove-Helmet: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
@@ -1392,3 +1431,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in thi
 Disabled-Command-Message: '%prefix% &c&lEt voi käyttää tuota komentoa kun käytät kosmetiikkaa!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
 Too-Long: Too long, try again
+Must-Remove:
+  Hats: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi hattua!'
+  Suits:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Emotes: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
