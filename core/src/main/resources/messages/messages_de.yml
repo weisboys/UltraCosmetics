@@ -1441,5 +1441,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
     BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
   Emotes: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
-  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'

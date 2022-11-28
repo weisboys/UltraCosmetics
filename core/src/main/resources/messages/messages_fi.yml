@@ -1439,5 +1439,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
     BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
   Emotes: '%prefix% &c&lSinun pitää poistaa kypärä käyttääksesi liikettä!'
-  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
