@@ -97,7 +97,7 @@ public class GadgetRocket extends Gadget implements Updatable {
             armorStand.setPassenger(getPlayer());
             playerVehicle = armorStand;
             activeTask = new RocketTask() {
-                private int i = 5;
+                private int countdown = 3;
 
                 @Override
                 public void run() {
@@ -110,10 +110,10 @@ public class GadgetRocket extends Gadget implements Updatable {
                         cancel();
                         return;
                     }
-                    if (i > 0) {
-                        sendTitle(ChatColor.RED.toString() + ChatColor.BOLD + i);
+                    if (countdown > 0) {
+                        sendTitle(ChatColor.RED.toString() + ChatColor.BOLD + countdown);
                         play(XSound.BLOCK_NOTE_BLOCK_BASS, getPlayer(), 1.0f, 1.0f);
-                        i--;
+                        countdown--;
                         return;
                     }
 
