@@ -1320,7 +1320,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oDer 26. Buchstabe im Alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Hut auszurüsten!'
 Suits:
   Rave:
     whole-equip: '&f&lKompletter &b&lR&a&la&e&lv&6&le&f&l-Anzug'
@@ -1365,11 +1364,7 @@ Suits:
   Unequip: '%prefix% &9Du hast %suitname% &9entfernt!'
   Suit-Part-Lore: '&9Anzug-Teil'
   Whole-Equip-Lore: '&7&oRüste den ganzen Anzug aus!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Anzug-Helm auszurüsten!'
-    CHESTPLATE: '%prefix% &c&lDu musst deinen Brustpanzer entfernen, um einen Anzug-Brustpanzer auszurüsten!'
-    LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
-    BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9Du hast %emotename% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %emotename% &9entfernt'
@@ -1412,7 +1407,6 @@ Emotes:
   LovestruckAllay:
     Name: '&b&lLovestruck Allay'
     Description: '&7&oAre we falling in love?'
-  Must-Remove-Helmet: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
@@ -1439,3 +1433,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region d
 Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
 Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
 Too-Long: Zu lang, versuche es erneut
+Must-Remove:
+  Hats: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Hut auszurüsten!'
+  Suits:
+    HELMET: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Anzug-Helm auszurüsten!'
+    CHESTPLATE: '%prefix% &c&lDu musst deinen Brustpanzer entfernen, um einen Anzug-Brustpanzer auszurüsten!'
+    LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
+    BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
+  Emotes: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
