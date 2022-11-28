@@ -1438,5 +1438,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&lВы должны снять свои штаны, чтобы надеть штаны костюма!'
     BOOTS: '%prefix% &c&lВы должны снять свои ботинки, чтобы надеть ботинки костюма!'
   Emotes: '%prefix% &c&lВы должны снять шлем, чтобы экипировать эмоцию!'
-  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
