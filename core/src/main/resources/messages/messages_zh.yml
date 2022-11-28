@@ -1439,5 +1439,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
     BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
   Emotes: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
-  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
