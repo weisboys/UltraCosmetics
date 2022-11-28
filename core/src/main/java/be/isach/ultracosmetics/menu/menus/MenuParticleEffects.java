@@ -4,8 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
-import be.isach.ultracosmetics.player.UltraPlayer;
-import java.util.List;
 
 /**
  * Particle Effect {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -17,15 +15,5 @@ public class MenuParticleEffects extends CosmeticMenu<ParticleEffectType> {
 
     public MenuParticleEffects(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics, Category.EFFECTS);
-    }
-
-    @Override
-    public List<ParticleEffectType> enabled() {
-        return ParticleEffectType.enabled();
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, ParticleEffectType particleEffectType, UltraCosmetics ultraCosmetics) {
-        particleEffectType.equip(ultraPlayer, ultraCosmetics);
     }
 }

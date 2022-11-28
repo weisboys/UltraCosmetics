@@ -2,13 +2,8 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.cosmetics.type.EmoteType;
-import be.isach.ultracosmetics.cosmetics.type.GadgetType;
-import be.isach.ultracosmetics.cosmetics.type.HatType;
-import be.isach.ultracosmetics.cosmetics.type.MorphType;
-import be.isach.ultracosmetics.cosmetics.type.MountType;
-import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
-import be.isach.ultracosmetics.cosmetics.type.PetType;
+import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 
@@ -73,41 +68,15 @@ public class PermissionPrinter {
         writer.println("Other:");
         writer.println("  - ultracosmetics.allcosmetics");
         writer.println("  - ultracosmetics.updatenotify");
-        writer.println();
-        writer.println("Gadgets:");
-        writer.println("  - ultracosmetics.gadgets.*");
-        for (GadgetType gadgetType : GadgetType.values()) {
-            writer.println("  - " + gadgetType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Pets:");
-        writer.println("  - ultracosmetics.pets.*");
-        for (PetType petType : PetType.values()) {
-            writer.println("  - " + petType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Mounts:");
-        writer.println("  - ultracosmetics.mounts.*");
-        for (MountType mountType : MountType.values()) {
-            writer.println("  - " + mountType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Morphs:");
-        writer.println("  - ultracosmetics.morphs.*");
-        for (MorphType morphType : MorphType.values()) {
-            writer.println("  - " + morphType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Hats:");
-        writer.println("  - ultracosmetics.hats.*");
-        for (HatType hat : HatType.values()) {
-            writer.println("  - " + hat.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Particle Effects:");
-        writer.println("  - ultracosmetics.particleeffects.*");
-        for (ParticleEffectType effect : ParticleEffectType.values()) {
-            writer.println("  - " + effect.getPermission().getName());
+
+        for (Category cat : Category.values()) {
+            if (cat.isSuits()) continue;
+            writer.println();
+            writer.println("Gadgets:");
+            writer.println("  - ultracosmetics.gadgets.*");
+            for (CosmeticType<?> type : cat.getValues()) {
+                writer.println("  - " + type.getPermission().getName());
+            }
         }
         writer.println();
         writer.println("Suits:");
@@ -117,12 +86,6 @@ public class PermissionPrinter {
             for (SuitType suitType : cat.getPieces()) {
                 writer.println("  - " + suitType.getPermission().getName());
             }
-        }
-        writer.println();
-        writer.println("Emotes:");
-        writer.println("  - ultracosmetics.emotes.*");
-        for (EmoteType emoteType : EmoteType.values()) {
-            writer.println("  - " + emoteType.getPermission().getName());
         }
         writer.println();
 

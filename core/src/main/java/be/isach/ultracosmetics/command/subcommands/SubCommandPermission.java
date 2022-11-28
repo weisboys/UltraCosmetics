@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class SubCommandPermission extends SubCommand {
@@ -89,6 +90,26 @@ public class SubCommandPermission extends SubCommand {
         }
 
         sender.sendMessage(ChatColor.GREEN + "Success!");
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.add("add");
+            options.add("remove");
+        } else if (args.length == 3) {
+            addCategories(options);
+            options.add("*");
+        } else if (args.length == 4) {
+            Category cat = Category.fromString(args[2]);
+            if (cat == null || !cat.isEnabled()) return;
+            for (CosmeticType<?> type : cat.getEnabled()) {
+                options.add(type.getConfigName());
+            }
+            options.add("*");
+        } else if (args.length == 5) {
+            addPlayers(options);
+        }
     }
 
 }

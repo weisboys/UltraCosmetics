@@ -13,10 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * Hat types.
  *
@@ -24,29 +20,6 @@ import java.util.stream.Collectors;
  * @since 10-15-2015
  */
 public class HatType extends CosmeticType<Hat> {
-
-    private static final List<HatType> ENABLED = new ArrayList<>();
-    private static final List<HatType> VALUES = new ArrayList<>();
-
-    public static List<HatType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<HatType> values() {
-        return VALUES;
-    }
-
-    public static HatType valueOf(String s) {
-        for (HatType hat : VALUES) {
-            if (hat.getConfigName().equalsIgnoreCase(s)) return hat;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
-
     /**
      * The HatType ItemStack
      */
@@ -55,8 +28,6 @@ public class HatType extends CosmeticType<Hat> {
     private HatType(String texture, String configName) {
         super(Category.HATS, configName, XMaterial.PLAYER_HEAD, Hat.class);
         this.itemStack = ItemFactory.createSkull(texture, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + "Hat");
-
-        VALUES.add(this);
     }
 
     /**

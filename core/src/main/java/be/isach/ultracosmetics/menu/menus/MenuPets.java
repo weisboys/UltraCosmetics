@@ -21,8 +21,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.List;
-
 import net.wesjd.anvilgui.AnvilGUI;
 
 /**
@@ -91,16 +89,6 @@ public class MenuPets extends CosmeticMenu<PetType> {
             itemMeta.setDisplayName(itemMeta.getDisplayName() + ChatColor.GRAY + " (" + player.getPetName(cosmeticType) + ChatColor.GRAY + ")");
             itemStack.setItemMeta(itemMeta);
         }
-    }
-
-    @Override
-    public List<PetType> enabled() {
-        return PetType.enabled();
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, PetType petType, UltraCosmetics ultraCosmetics) {
-        petType.equip(ultraPlayer, ultraCosmetics);
     }
 
     public static Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name, MenuPets returnMenu) {

@@ -5,10 +5,9 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.List;
 
 /**
  * Emote {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -29,15 +28,5 @@ public class MenuEmotes extends CosmeticMenu<EmoteType> {
         emoteMeta.setDisplayName(itemMeta.getDisplayName());
         emoteMeta.setLore(itemMeta.getLore());
         itemStack.setItemMeta(emoteMeta);
-    }
-
-    @Override
-    public List<EmoteType> enabled() {
-        return EmoteType.enabled();
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, EmoteType emoteType, UltraCosmetics ultraCosmetics) {
-        emoteType.equip(ultraPlayer, ultraCosmetics);
     }
 }

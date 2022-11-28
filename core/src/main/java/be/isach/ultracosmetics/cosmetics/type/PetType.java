@@ -17,12 +17,9 @@ import org.bukkit.entity.Player;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Pet types.
@@ -32,35 +29,7 @@ import java.util.stream.Collectors;
  */
 public final class PetType extends CosmeticEntType<Pet> {
 
-    private static final List<PetType> ENABLED = new ArrayList<>();
-    private static final List<PetType> VALUES = new ArrayList<>();
-
     private static final Map<EntityType,Class<? extends Pet>> PET_MAP = new HashMap<>();
-
-    public static List<PetType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<PetType> values() {
-        return VALUES;
-    }
-
-    public static PetType valueOf(String s) {
-        for (PetType petType : VALUES) {
-            if (petType.getConfigName().equalsIgnoreCase(s)) return petType;
-        }
-        return null;
-    }
-
-    public static PetType getByName(String s) {
-        Optional<PetType> optional = VALUES.stream().filter(value -> value.getConfigName().equalsIgnoreCase(s)).findFirst();
-        if (!optional.isPresent()) return null;
-        return optional.get();
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final String customization;
 
@@ -68,7 +37,6 @@ public final class PetType extends CosmeticEntType<Pet> {
         super(Category.PETS, configName, material, entityType, clazz);
         this.customization = customization;
 
-        VALUES.add(this);
         PET_MAP.putIfAbsent(entityType, clazz);
     }
 

@@ -16,34 +16,41 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum SuitCategory {
-    RAVE("Rave", "rave", "&7&oSuch amazing colors!", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class),
-    ASTRONAUT("Astronaut", "astronaut", "&7&oHouston?", XMaterial.GLASS, XMaterial.GOLDEN_CHESTPLATE, XMaterial.GOLDEN_LEGGINGS, XMaterial.GOLDEN_BOOTS, SuitAstronaut.class),
-    DIAMOND("Diamond", "diamond", "&7&oShow your Mining skills\n&7&owith this amazing outfit!", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, SuitDiamond.class),
-    SANTA("Santa", "santa", "&7&oBecome Santa and deliver presents!", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
-    FROZEN("Frozen", "frozen", "&7&oThis suit belongs to the\n&7&oLord of the Frozen Lands!", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitFrozen.class),
+    RAVE("Rave", "rave", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class),
+    ASTRONAUT("Astronaut", "astronaut", XMaterial.GLASS, XMaterial.GOLDEN_CHESTPLATE, XMaterial.GOLDEN_LEGGINGS, XMaterial.GOLDEN_BOOTS, SuitAstronaut.class),
+    DIAMOND("Diamond", "diamond", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, SuitDiamond.class),
+    SANTA("Santa", "santa", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
+    FROZEN("Frozen", "frozen", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitFrozen.class),
     ;
 
     private final String configName;
     private final String permissionSuffix;
-    private final String defaultDesc;
-    private final SuitType helmet;
-    private final SuitType chestplate;
-    private final SuitType leggings;
-    private final SuitType boots;
+    private final XMaterial helmetType;
+    private final XMaterial chestplateType;
+    private final XMaterial leggingsType;
+    private final XMaterial bootsType;
+    private SuitType helmet;
+    private SuitType chestplate;
+    private SuitType leggings;
+    private SuitType boots;
     private final Class<? extends Suit> clazz;
 
-    private SuitCategory(String configName, String permissionSuffix, String defaultDesc,
-            XMaterial helmet, XMaterial chestplate, XMaterial leggings, XMaterial boots, Class<? extends Suit> clazz) {
+    private SuitCategory(String configName, String permissionSuffix, XMaterial helmet,
+            XMaterial chestplate, XMaterial leggings, XMaterial boots, Class<? extends Suit> clazz) {
         this.configName = configName;
         this.permissionSuffix = permissionSuffix;
-        this.defaultDesc = defaultDesc;
         this.clazz = clazz;
+        this.helmetType = helmet;
+        this.chestplateType = chestplate;
+        this.leggingsType = leggings;
+        this.bootsType = boots;
+    }
 
-        // suit parts must be initialized last
-        this.helmet = new SuitType(helmet, ArmorSlot.HELMET, this);
-        this.chestplate = new SuitType(chestplate, ArmorSlot.CHESTPLATE, this);
-        this.leggings = new SuitType(leggings, ArmorSlot.LEGGINGS, this);
-        this.boots = new SuitType(boots, ArmorSlot.BOOTS, this);
+    public void initializeSuitParts() {
+        this.helmet = new SuitType(helmetType, ArmorSlot.HELMET, this);
+        this.chestplate = new SuitType(chestplateType, ArmorSlot.CHESTPLATE, this);
+        this.leggings = new SuitType(leggingsType, ArmorSlot.LEGGINGS, this);
+        this.boots = new SuitType(bootsType, ArmorSlot.BOOTS, this);
     }
 
     public String getConfigName() {
@@ -56,10 +63,6 @@ public enum SuitCategory {
 
     public String getPermissionSuffix() {
         return permissionSuffix;
-    }
-
-    public String getDefaultDesc() {
-        return defaultDesc;
     }
 
     public Class<? extends Suit> getSuitClass() {

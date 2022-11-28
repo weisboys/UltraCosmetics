@@ -48,7 +48,7 @@ public class CommandManager implements CommandExecutor {
         this.ultraCosmetics = ultraCosmetics;
         PluginCommand cmd = ultraCosmetics.getCommand("ultracosmetics");
         cmd.setExecutor(this);
-        cmd.setTabCompleter(new UCTabCompleter(ultraCosmetics));
+        cmd.setTabCompleter(new UCTabCompleter(this));
         registerCommands();
     }
 

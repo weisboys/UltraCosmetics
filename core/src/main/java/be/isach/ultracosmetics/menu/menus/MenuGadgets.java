@@ -74,16 +74,6 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
     }
 
     @Override
-    public List<GadgetType> enabled() {
-        return GadgetType.enabled();
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, GadgetType gadgetType, UltraCosmetics ultraCosmetics) {
-        gadgetType.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    @Override
     protected void handleRightClick(UltraPlayer ultraPlayer, GadgetType type) {
         if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled() && type.requiresAmmo()) {
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));

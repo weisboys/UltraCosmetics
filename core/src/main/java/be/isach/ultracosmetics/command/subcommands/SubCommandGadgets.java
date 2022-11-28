@@ -9,6 +9,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 /**
  * Gadgets {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
  *
@@ -43,5 +45,15 @@ public class SubCommandGadgets extends SubCommand {
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
         notAllowed(sender);
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.add("true");
+            options.add("false");
+            options.add("on");
+            options.add("off");
+        }
     }
 }

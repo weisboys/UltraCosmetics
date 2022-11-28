@@ -15,7 +15,6 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Emote types.
@@ -25,29 +24,7 @@ import java.util.stream.Collectors;
  */
 public class EmoteType extends CosmeticType<Emote> {
 
-    private static final List<EmoteType> ENABLED = new ArrayList<>();
-    private static final List<EmoteType> VALUES = new ArrayList<>();
-
-    public static List<EmoteType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<EmoteType> values() {
-        return VALUES;
-    }
-
-    public static EmoteType valueOf(String s) {
-        for (EmoteType emoteType : VALUES) {
-            if (emoteType.getConfigName().equalsIgnoreCase(s)) return emoteType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
-
-    static {
+    public static void register() {
 
         /* CRY BEGIN */
         EmoteType CRY = new EmoteType("Cry", 1);
@@ -182,6 +159,66 @@ public class EmoteType extends CosmeticType<Emote> {
 
         /* WINK END */
 
+        /* RAISE EYEBROWS BEGIN */
+        EmoteType RAISE_EYEBROWS = new EmoteType("RaiseEyebrows", 3);
+        RAISE_EYEBROWS.appendTexture("b69b3af7f829d1d9c18dd9c94c79cef49c54bffa16d4c334c20e4033baf244b7");
+        RAISE_EYEBROWS.appendTexture("75ce894bf9a1552810afd4a8419e7ec362dab414d88ae287f2a5a1b65033fc13");
+        RAISE_EYEBROWS.appendTexture("b69b3af7f829d1d9c18dd9c94c79cef49c54bffa16d4c334c20e4033baf244b7");
+        RAISE_EYEBROWS.appendTexture("75ce894bf9a1552810afd4a8419e7ec362dab414d88ae287f2a5a1b65033fc13");
+        RAISE_EYEBROWS.appendTexture("b69b3af7f829d1d9c18dd9c94c79cef49c54bffa16d4c334c20e4033baf244b7");
+        RAISE_EYEBROWS.appendTexture("75ce894bf9a1552810afd4a8419e7ec362dab414d88ae287f2a5a1b65033fc13");
+        RAISE_EYEBROWS.appendTexture("b69b3af7f829d1d9c18dd9c94c79cef49c54bffa16d4c334c20e4033baf244b7");
+        RAISE_EYEBROWS.appendTexture("75ce894bf9a1552810afd4a8419e7ec362dab414d88ae287f2a5a1b65033fc13");
+        RAISE_EYEBROWS.appendTexture("b69b3af7f829d1d9c18dd9c94c79cef49c54bffa16d4c334c20e4033baf244b7");
+        RAISE_EYEBROWS.appendTexture("75ce894bf9a1552810afd4a8419e7ec362dab414d88ae287f2a5a1b65033fc13");
+
+        /* RAISE EYEBROWS END */
+
+        /* SCARY CANDLE BEGIN */
+        EmoteType SCARY_CANDLE = new EmoteType("ScaryCandle", 4);
+        SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
+        SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
+        SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
+        SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
+        SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
+        SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
+        SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
+        SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
+        SCARY_CANDLE.appendTexture("8c54055ee8f9e7638830c79ff12de81e9c7c4e8f3ba3db555019a65872b9c6c");
+        SCARY_CANDLE.appendTexture("2efb5c198fe74feb988dcb9af890b69e8169f5714a7ab4fe8795bd1f66df637f");
+
+        /* SCARY CANDLE END */
+
+        /* GLOWING PUMPKIN BEGIN */
+        EmoteType GLOWING_PUMPKIN = new EmoteType("GlowingPumpkin", 4);
+        GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
+        GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
+        GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
+        GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
+        GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
+        GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
+        GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
+        GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
+        GLOWING_PUMPKIN.appendTexture("9512bb5c7813609fab6d6e71d365f20a967d7006e9c2fb1bffb29cabc90db456");
+        GLOWING_PUMPKIN.appendTexture("be4830033ad2a57838b6c98ba4d2bea6dda79d7a06e10cba2d4f4e0082f7278");
+
+        /* GLOWING PUMPKIN END */
+
+        /* LOVESTRUCK ALLAY BEGIN */
+        EmoteType LOVESTRUCK_ALLAY = new EmoteType("LovestruckAllay", 3);
+        LOVESTRUCK_ALLAY.appendTexture("9ea6f0cd31e6d6c9269b7035c707ff57037f0e2d6524756dddd063cc4567c8a2");
+        LOVESTRUCK_ALLAY.appendTexture("da82888584f0db1cc4f00226ae86ccce2c0f38d878f906b37fd6920e675b4a83");
+        LOVESTRUCK_ALLAY.appendTexture("9ea6f0cd31e6d6c9269b7035c707ff57037f0e2d6524756dddd063cc4567c8a2");
+        LOVESTRUCK_ALLAY.appendTexture("da82888584f0db1cc4f00226ae86ccce2c0f38d878f906b37fd6920e675b4a83");
+        LOVESTRUCK_ALLAY.appendTexture("9ea6f0cd31e6d6c9269b7035c707ff57037f0e2d6524756dddd063cc4567c8a2");
+        LOVESTRUCK_ALLAY.appendTexture("da82888584f0db1cc4f00226ae86ccce2c0f38d878f906b37fd6920e675b4a83");
+        LOVESTRUCK_ALLAY.appendTexture("9ea6f0cd31e6d6c9269b7035c707ff57037f0e2d6524756dddd063cc4567c8a2");
+        LOVESTRUCK_ALLAY.appendTexture("da82888584f0db1cc4f00226ae86ccce2c0f38d878f906b37fd6920e675b4a83");
+        LOVESTRUCK_ALLAY.appendTexture("9ea6f0cd31e6d6c9269b7035c707ff57037f0e2d6524756dddd063cc4567c8a2");
+        LOVESTRUCK_ALLAY.appendTexture("da82888584f0db1cc4f00226ae86ccce2c0f38d878f906b37fd6920e675b4a83");
+
+        /* LOVESTRUCK ALLAY END */
+
         ConfigurationSection emotes = getCustomConfig(Category.EMOTES);
         if (emotes != null) {
             for (String key : emotes.getKeys(false)) {
@@ -205,8 +242,6 @@ public class EmoteType extends CosmeticType<Emote> {
     private EmoteType(String configName, int ticksPerFrame) {
         super(Category.EMOTES, configName, XMaterial.PLAYER_HEAD, Emote.class);
         this.ticksPerFrame = ticksPerFrame;
-
-        VALUES.add(this);
     }
 
     public void appendTexture(String texture) {

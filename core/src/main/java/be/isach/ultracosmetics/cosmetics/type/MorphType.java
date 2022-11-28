@@ -27,10 +27,7 @@ import org.bukkit.entity.EntityType;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * Morph types.
@@ -39,28 +36,6 @@ import java.util.stream.Collectors;
  * @since 12-19-2015
  */
 public class MorphType extends CosmeticType<Morph> {
-
-    private final static List<MorphType> ENABLED = new ArrayList<>();
-    private final static List<MorphType> VALUES = new ArrayList<>();
-
-    public static List<MorphType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<MorphType> values() {
-        return VALUES;
-    }
-
-    public static MorphType valueOf(String s) {
-        for (MorphType morphType : VALUES) {
-            if (morphType.getConfigName().equalsIgnoreCase(s)) return morphType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     /**
      * Disguise Type of the morph.
@@ -76,8 +51,6 @@ public class MorphType extends CosmeticType<Morph> {
         super(Category.MORPHS, configName, material, clazz);
         this.disguiseType = disguiseType;
         this.canUseSkill = canUseSkill.test(UltraCosmeticsData.get().getServerVersion());
-
-        VALUES.add(this);
     }
 
     /**
@@ -96,7 +69,7 @@ public class MorphType extends CosmeticType<Morph> {
     /**
      * Get the morph Disguise Type.
      *
-     * @return
+     * @return disguise type
      */
     public EntityType getDisguiseType() {
         return disguiseType;

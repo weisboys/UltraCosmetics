@@ -21,8 +21,11 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A cosmetic type.
@@ -32,17 +35,20 @@ import java.util.List;
  */
 public abstract class CosmeticType<T extends Cosmetic<?>> {
     private static final Permission ALL_PERMISSION = new Permission("ultracosmetics.allcosmetics");
-    private static boolean PERMISSIONS_OK = true;
+    private static final Map<String,Permission> registeredPermissions = new HashMap<>();
+    private static final Map<Category,List<CosmeticType<?>>> VALUES = new HashMap<>();
+    private static final Map<Category,List<CosmeticType<?>>> ENABLED = new HashMap<>();
     private static YamlConfiguration customConfig = new YamlConfiguration();
 
     static {
         try {
             Bukkit.getPluginManager().addPermission(ALL_PERMISSION);
         } catch (IllegalArgumentException e) {
-            // Happens when permission is already registered, i.e. UltraCosmetics is being reloaded :(
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "It seems like you are attempting to reload UltraCosmetics. This is not recommended. If you experience issues, please fully restart the server.");
-            PERMISSIONS_OK = false;
+            // Happens when permission is already registered, i.e. UltraCosmetics is being reloaded externally...
         }
+    }
+
+    public static void loadCustomCosmetics() {
         try {
             File configFile = new File(UltraCosmeticsData.get().getPlugin().getDataFolder(), "custom_cosmetics.yml");
             if (!configFile.exists()) {
@@ -57,6 +63,29 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
 
     protected static ConfigurationSection getCustomConfig(Category cat) {
         return customConfig.getConfigurationSection(cat.getConfigPath());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <V extends CosmeticType<?>> V valueOf(Category cat, String name) {
+        for (CosmeticType<?> type : VALUES.get(cat)) {
+            if (type.getConfigName().equalsIgnoreCase(name)) {
+                return (V) type;
+            }
+        }
+        return null;
+    }
+
+    public static List<CosmeticType<?>> valuesOf(Category cat) {
+        return VALUES.getOrDefault(cat, new ArrayList<>());
+    }
+
+    public static List<CosmeticType<?>> enabledOf(Category cat) {
+        return ENABLED.getOrDefault(cat, new ArrayList<>());
+    }
+
+    public static void removeAllTypes() {
+        VALUES.clear();
+        ENABLED.clear();
     }
 
     private final String configName;
@@ -79,6 +108,10 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         description = MessageManager.getMessage(getCategory().getConfigPath() + "." + configName + ".Description");
         if (registerPerm) {
             registerPermission();
+        }
+        VALUES.computeIfAbsent(category, l -> new ArrayList<>()).add(this);
+        if (isEnabled()) {
+            ENABLED.computeIfAbsent(category, l -> new ArrayList<>()).add(this);
         }
     }
 
@@ -185,7 +218,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     /**
      * Override toString method to show Cosmetic name.
      *
-     * @return
+     * @return cosmetic name in uppercase
      */
     @Override
     public String toString() {
@@ -193,10 +226,15 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     protected void registerPermission() {
-        permission = new Permission(category.getPermission() + "." + getPermissionSuffix());
-        if (!PERMISSIONS_OK) return;
-        Bukkit.getPluginManager().addPermission(permission);
-        permission.addParent(ALL_PERMISSION, true);
+        permission = registeredPermissions.computeIfAbsent(category.getPermission() + "." + getPermissionSuffix(), s -> {
+            Permission perm = new Permission(s);
+            try {
+                Bukkit.getPluginManager().addPermission(perm);
+                perm.addParent(ALL_PERMISSION, true);
+            } catch (IllegalArgumentException ignored) {
+            }
+            return perm;
+        });
     }
 
     protected String getPermissionSuffix() {

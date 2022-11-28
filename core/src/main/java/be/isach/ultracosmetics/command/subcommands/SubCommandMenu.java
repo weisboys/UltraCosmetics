@@ -14,7 +14,8 @@ import be.isach.ultracosmetics.util.MathUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.StringJoiner;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Menu {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
@@ -69,7 +70,12 @@ public class SubCommandMenu extends SubCommand {
             ultraCosmetics.getPlayerManager().getUltraPlayer(sender).openKeyPurchaseMenu();
             return;
         }
-        Category cat = Category.fromString(s);
+        Category cat;
+        if (s.startsWith("s")) {
+            cat = Category.SUITS_HELMET;
+        } else {
+            cat = Category.fromString(s);
+        }
         if (cat == null) {
             sendMenuList(sender);
             return;
@@ -86,9 +92,8 @@ public class SubCommandMenu extends SubCommand {
         notAllowed(sender);
     }
 
-    private void sendMenuList(CommandSender sender) {
-        error(sender, "Invalid menu, available menus are:");
-        StringJoiner menuList = new StringJoiner(", ");
+    private List<String> getMenus() {
+        List<String> menuList = new ArrayList<>();
         menuList.add("main");
         if (UltraCosmeticsData.get().areTreasureChestsEnabled()) {
             menuList.add("buykey");
@@ -96,9 +101,29 @@ public class SubCommandMenu extends SubCommand {
         if (SettingsManager.getConfig().getBoolean("Pets-Rename.Enabled")) {
             menuList.add("renamepet");
         }
+        boolean suits = false;
         for (Category category : Category.enabled()) {
+            if (category.isSuits()) {
+                if (suits) continue;
+                suits = true;
+                menuList.add("suits");
+                continue;
+            }
             menuList.add(category.name().toLowerCase());
         }
-        error(sender, menuList.toString());
+        return menuList;
+    }
+
+    private void sendMenuList(CommandSender sender) {
+        error(sender, "Invalid menu, available menus are:");
+        error(sender, String.join(", ", getMenus()));
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.addAll(getMenus());
+        }
+
     }
 }

@@ -12,6 +12,7 @@ softdepend:
 - WorldGuard
 - Essentials
 - LuckPerms
+- DiscordSRV
 commands:
   ultracosmetics:
     aliases: [uc, cosmetics]

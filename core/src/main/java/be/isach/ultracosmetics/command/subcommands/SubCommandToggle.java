@@ -14,6 +14,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -89,5 +90,22 @@ public class SubCommandToggle extends SubCommand {
         }
 
         matchingType.get().equip(target, ultraCosmetics);
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            addCategories(options);
+        } else if (args.length == 3) {
+            Category cat = Category.fromString(args[1]);
+
+            if (cat == null || !cat.isEnabled()) return;
+
+            for (CosmeticType<?> cosm : cat.getEnabled()) {
+                options.add(cosm.toString());
+            }
+        } else if (args.length == 4) {
+            addPlayers(options);
+        }
     }
 }

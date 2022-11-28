@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.listeners;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -227,7 +228,13 @@ public class PlayerListener implements Listener {
             }
         });
         if (ultraPlayer.getCurrentEmote() != null) event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
-        ultraPlayer.clear();
+
+        for (Category cat : Category.values()) {
+            if (cat.isClearOnDeath()) {
+                ultraPlayer.removeCosmetic(cat);
+            }
+        }
+
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

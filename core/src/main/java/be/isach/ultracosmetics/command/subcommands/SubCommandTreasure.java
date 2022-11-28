@@ -20,6 +20,8 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 /**
  * Treasure {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
  *
@@ -47,8 +49,8 @@ public class SubCommandTreasure extends SubCommand {
         Player opener;
         // form: /uc treasure
         if (args.length == 1) {
-            opener = (Player)sender;
-        // form: /uc treasure (player) [...]
+            opener = (Player) sender;
+            // form: /uc treasure (player) [...]
         } else {
             opener = Bukkit.getPlayer(args[1]);
             if (opener == null) {
@@ -91,7 +93,7 @@ public class SubCommandTreasure extends SubCommand {
                 sender.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "World " + args[5] + " doesn't exist!");
                 return;
             }
-        // form: /uc treasure (player) (x) (y) (z)
+            // form: /uc treasure (player) (x) (y) (z)
         } else {
             world = opener.getWorld();
         }
@@ -143,5 +145,17 @@ public class SubCommandTreasure extends SubCommand {
 
     private boolean isAir(Block block) {
         return BlockUtils.isAir(block.getType());
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            addPlayers(options);
+        } else if (args.length == 6) {
+            for (World world : Bukkit.getWorlds()) {
+                options.add(world.getName());
+            }
+        }
+
     }
 }

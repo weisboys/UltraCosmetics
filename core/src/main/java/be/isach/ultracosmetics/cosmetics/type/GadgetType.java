@@ -7,12 +7,6 @@ import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 /**
  * Gadget types.
  *
@@ -20,45 +14,6 @@ import java.util.stream.Stream;
  * @since 12-01-2015
  */
 public class GadgetType extends CosmeticType<Gadget> {
-
-    private final static List<GadgetType> ENABLED = new ArrayList<>();
-    private final static List<GadgetType> VALUES = new ArrayList<>();
-
-    public static List<GadgetType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<GadgetType> values() {
-        return VALUES;
-    }
-
-    public static GadgetType valueOf(String s) {
-        return valueOf(s, false);
-    }
-
-    public static GadgetType valueOf(String s, boolean onlyEnabled) {
-        String finalS = s.toLowerCase();
-        Stream<GadgetType> stream = VALUES.stream().filter(gadgetType -> gadgetType.getConfigName().equalsIgnoreCase(finalS));
-        if (onlyEnabled) {
-            stream.filter(gadgetType -> gadgetType.isEnabled());
-        }
-        Optional<GadgetType> optionalType = stream.findFirst();
-        if (optionalType.isPresent()) {
-            return optionalType.get();
-        } else {
-            stream = VALUES.stream().filter(gadgetType -> gadgetType.getConfigName().toLowerCase().startsWith(finalS));
-            if (onlyEnabled) {
-                stream.filter(gadgetType -> gadgetType.isEnabled());
-            }
-            Optional<GadgetType> bestMatchOptional = stream.findFirst();
-            if (bestMatchOptional.isPresent()) return bestMatchOptional.get();
-            return null;
-        }
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final double cooldown;
     private final int runTime;
@@ -74,8 +29,6 @@ public class GadgetType extends CosmeticType<Gadget> {
         }
 
         this.runTime = runTime;
-
-        VALUES.add(this);
     }
 
     public boolean requiresAmmo() {

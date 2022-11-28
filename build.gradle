@@ -2,6 +2,9 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
+    
+    eclipse.classpath.downloadJavadoc = true
+    eclipse.classpath.downloadSources = true
 
     group = 'be.isach'
     version = '3.0-DEV-b1'
@@ -107,6 +110,11 @@ subprojects { subproj ->
         // WorldGuard
         maven {
             url "https://maven.enginehub.org/repo/"
+        }
+
+        // DiscordSRV
+        maven {
+            url "https://nexus.scarsz.me/content/groups/public/"
         }
 
         // Vault

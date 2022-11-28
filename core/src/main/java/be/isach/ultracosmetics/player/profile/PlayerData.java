@@ -108,12 +108,12 @@ public class PlayerData {
             cosmeticsFromFile(sm);
         }
 
-        for (PetType pet : PetType.enabled()) {
-            petNames.put(pet, sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName()));
+        for (CosmeticType<?> pet : CosmeticType.enabledOf(Category.PETS)) {
+            petNames.put((PetType) pet, sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName()));
         }
 
-        for (GadgetType gadget : GadgetType.enabled()) {
-            ammo.put(gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
+        for (CosmeticType<?> gadget : CosmeticType.enabledOf(Category.GADGETS)) {
+            ammo.put((GadgetType) gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
         }
 
         for (String value : sm.getStringList(ProfileKey.UNLOCKED.getFileKey())) {
@@ -193,14 +193,16 @@ public class PlayerData {
         treasureNotifications = (boolean) settings.get(ProfileKey.TREASURE_NOTIFICATION.getSqlKey());
         filterByOwned = (boolean) settings.get(ProfileKey.FILTER_OWNED.getSqlKey());
         keys = (int) settings.get(ProfileKey.KEYS.getSqlKey());
-        petNames = sql.getPetNames().getAllPetNames(uuid);
-        if (data.isAmmoEnabled()) {
+        if (sql.getPetNames() != null) {
+            petNames = sql.getPetNames().getAllPetNames(uuid);
+        }
+        if (sql.getAmmoTable() != null) {
             ammo = sql.getAmmoTable().getAllAmmo(uuid);
         }
-        if (data.areCosmeticsProfilesEnabled()) {
+        if (sql.getEquippedTable() != null) {
             enabledCosmetics = sql.getEquippedTable().getEquipped(uuid);
         }
-        if (data.getPlugin().getPermissionManager().isUsingProfile()) {
+        if (sql.getUnlockedTable() != null) {
             unlockedCosmetics = sql.getUnlockedTable().getAllUnlocked(uuid);
         }
     }

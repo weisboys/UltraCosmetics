@@ -74,11 +74,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    public List<SuitType> enabled() {
-        return SuitType.enabled();
-    }
-
-    @Override
     protected Map<Integer,SuitType> getSlots(int page, UltraPlayer player) {
         int from = (page - 1) * getItemsPerPage();
         int to = page * getItemsPerPage();
@@ -97,13 +92,15 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, SuitType suitType, UltraCosmetics ultraCosmetics) {
-        suitType.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    @Override
     protected void toggleOff(UltraPlayer ultraPlayer, SuitType type) {
-        type.equip(ultraPlayer, ultraCosmetics);
+        if (type != null) {
+            ultraPlayer.removeCosmetic(type.getCategory());
+            return;
+        }
+        ultraPlayer.removeCosmetic(Category.SUITS_HELMET);
+        ultraPlayer.removeCosmetic(Category.SUITS_CHESTPLATE);
+        ultraPlayer.removeCosmetic(Category.SUITS_LEGGINGS);
+        ultraPlayer.removeCosmetic(Category.SUITS_BOOTS);
     }
 
     @Override
@@ -124,5 +121,19 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             }
         }
         return Math.max(1, ((i - 1) / getItemsPerPage()) + 1);
+    }
+
+    @Override
+    protected boolean hasUnlockable(UltraPlayer player) {
+        PermissionManager pm = ultraCosmetics.getPermissionManager();
+        for (SuitCategory cat : SuitCategory.enabled()) {
+            if (!pm.hasPermission(player, cat.getHelmet())
+                    || !pm.hasPermission(player, cat.getChestplate())
+                    || !pm.hasPermission(player, cat.getLeggings())
+                    || !pm.hasPermission(player, cat.getBoots())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

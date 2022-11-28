@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.treasurechests;
 
+import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
@@ -57,8 +58,8 @@ public class TreasureRandomizer {
         // add ammo.
         if (Category.GADGETS.isEnabled() && UltraCosmeticsData.get().isAmmoEnabled()
                 && SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Enabled")) {
-            for (GadgetType type : GadgetType.values()) {
-                if (type.isEnabled() && type.requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
+            for (CosmeticType<?> type : CosmeticType.valuesOf(Category.GADGETS)) {
+                if (type.isEnabled() && ((GadgetType) type).requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
                     cosmetics.computeIfAbsent(ResultType.AMMO, k -> new WeightedSet<>()).add(type, type.getChestWeight());
                 }
             }
@@ -123,7 +124,7 @@ public class TreasureRandomizer {
         if (message == null) {
             return ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Error";
         }
-        return ChatColor.translateAlternateColorCodes('&', message.replace("%prefix%", MessageManager.getMessage("Prefix")));
+        return ChatColor.translateAlternateColorCodes('&', message);
     }
 
     public ItemStack getItemStack() {
@@ -226,6 +227,7 @@ public class TreasureRandomizer {
         }
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Money.Message.enabled");
         broadcast(getConfigMessage("TreasureChests.Loots.Money.Message.message").replace("%money%", String.valueOf(money)), toOthers);
+
     }
 
     public void giveAmmo() {
@@ -301,7 +303,12 @@ public class TreasureRandomizer {
     }
 
     private void broadcast(String message, boolean toOthers) {
+        UltraCosmetics ultraCosmetics = UltraCosmeticsData.get().getPlugin();
         message = message.replace("%name%", player.getName());
+        if (ultraCosmetics.getDiscordHook() != null) {
+            ultraCosmetics.getDiscordHook().sendLootMessage(player, message.replace("%prefix%", ""));
+        }
+        message = message.replace("%prefix%", MessageManager.getMessage("Prefix"));
         if (!toOthers) {
             if (forceMessageToOwner) {
                 player.sendMessage(message);
@@ -310,7 +317,7 @@ public class TreasureRandomizer {
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player == this.player || (SettingsManager.isAllowedWorld(player.getWorld())
-                    && UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player).isTreasureNotifying())) {
+                    && ultraCosmetics.getPlayerManager().getUltraPlayer(player).isTreasureNotifying())) {
                 player.sendMessage(message);
             }
         }

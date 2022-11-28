@@ -135,8 +135,8 @@ testserver
 
 hts*
 
-# Ignore custom MobChip build dependency
-!core/MobChip-*.jar
+# Ignore jar dependencies
+!core/*.jar
 
 # Don't ignore jars in tools
 !tooling/*/*.jar
