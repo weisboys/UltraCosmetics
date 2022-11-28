@@ -1317,7 +1317,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&9La vigesimasexta letra en el alfabeto!'
-  Must-Remove-Hat: '%prefix% &c&lDebes quitarte tu casco para equiparte un sombrero!'
 Suits:
   Rave:
     whole-equip: '&f&lTraje &b&lR&a&la&e&lv&6&le &f&lcompleto'
@@ -1362,11 +1361,7 @@ Suits:
   Unequip: '%prefix% &9Desequipaste %suitname%!'
   Suit-Part-Lore: '&9Partes del Traje'
   Whole-Equip-Lore: '&7&oTraje completo!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lDebes quitarte el casco para equipar este item!'
-    CHESTPLATE: '%prefix% &c&lDebes quitarte la pechera para equipar este item!'
-    LEGGINGS: '%prefix% &c&lDebes quitarte los pantalones para equipar este item!'
-    BOOTS: '%prefix% &c&lDebes quitarte las botas para equipar este item!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9Equipaste %emotename%'
   Unequip: '%prefix% &9Desequipaste %emotename%'
@@ -1409,7 +1404,6 @@ Emotes:
   LovestruckAllay:
     Name: '&b&lLovestruck Allay'
     Description: '&7&oAre we falling in love?'
-  Must-Remove-Helmet: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
@@ -1436,3 +1430,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics estan desactivados 
 Disabled-Command-Message: '%prefix% &c&lNo puedes usar este comando cuando tienes ese cosmetics equipado!'
 Not-Allowed-In-Vanish: '%prefix% &c&lNo puedes usar ese comando mientras estes Vanish!'
 Too-Long: Demasiado largo, inténtelo de nuevo
+Must-Remove:
+  Hats: '%prefix% &c&lDebes quitarte tu casco para equiparte un sombrero!'
+  Suits:
+    HELMET: '%prefix% &c&lDebes quitarte el casco para equipar este item!'
+    CHESTPLATE: '%prefix% &c&lDebes quitarte la pechera para equipar este item!'
+    LEGGINGS: '%prefix% &c&lDebes quitarte los pantalones para equipar este item!'
+    BOOTS: '%prefix% &c&lDebes quitarte las botas para equipar este item!'
+  Emotes: '%prefix% &c&lDebes quitarte el casco para equipar este emote!'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
