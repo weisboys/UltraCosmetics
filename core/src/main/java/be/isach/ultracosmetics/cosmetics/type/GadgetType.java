@@ -74,7 +74,7 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.IRON_AXE, 8, 0, "ThorHammer", GadgetThorHammer.class);
         new GadgetType(XMaterial.ENDER_EYE, 30, 12, "AntiGravity", GadgetAntiGravity.class);
         new GadgetType(XMaterial.FIREWORK_STAR, 15, 0, "SmashDown", GadgetSmashDown.class);
-        new GadgetType(XMaterial.FIREWORK_ROCKET, 60, 10, "Rocket", GadgetRocket.class);
+        new GadgetType(XMaterial.FIREWORK_ROCKET, 60, 4, "Rocket", GadgetRocket.class);
         new GadgetType(XMaterial.WATER_BUCKET, 12, 2, "Tsunami", GadgetTsunami.class);
         new GadgetType(XMaterial.TNT, 10, 0, "TNT", GadgetTNT.class);
         new GadgetType(XMaterial.BLAZE_ROD, 4, 0, "FunGun", GadgetFunGun.class);
