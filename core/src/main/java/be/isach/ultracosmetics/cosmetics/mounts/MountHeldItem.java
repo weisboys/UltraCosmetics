@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
@@ -38,9 +39,11 @@ public abstract class MountHeldItem extends Mount {
     @Override
     public boolean tryEquip() {
         getOwner().removeCosmetic(Category.GADGETS);
+        getOwner().removeCosmetic(Category.MOUNTS);
         int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
         if (getPlayer().getInventory().getItem(slot) != null) {
-            getPlayer().getWorld().dropItem(getPlayer().getLocation(), getPlayer().getInventory().getItem(slot));
+            getPlayer().sendMessage(MessageManager.getMessage("Must-Remove.Mounts").replace("%slot%", String.valueOf(slot + 1)));
+            return false;
         }
         getPlayer().getInventory().setItem(slot, getHeldItem());
         getPlayer().getInventory().setHeldItemSlot(slot);

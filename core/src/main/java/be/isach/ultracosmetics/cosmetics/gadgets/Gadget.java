@@ -93,21 +93,24 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     }
 
     @Override
-    protected void onEquip() {
+    public boolean tryEquip() {
         int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
         if (getPlayer().getInventory().getItem(slot) != null) {
-            getPlayer().getWorld().dropItem(getPlayer().getLocation(), getPlayer().getInventory().getItem(slot));
-            getPlayer().getInventory().setItem(slot, null);
+            getPlayer().sendMessage(MessageManager.getMessage("Must-Remove.Gadgets").replace("%slot%", String.valueOf(slot + 1)));
+            return false;
         }
-
         String ammo = "";
         if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
-            ammo = ChatColor.WHITE + "" + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
+            ammo = ChatColor.WHITE.toString() + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
         }
 
-        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getType().getName(),
-                MessageManager.getMessage("Gadgets.Lore"));
-        getPlayer().getInventory().setItem((int) SettingsManager.getConfig().get("Gadget-Slot"), itemStack);
+        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
+        getPlayer().getInventory().setItem(slot, itemStack);
+        return true;
+    }
+
+    @Override
+    public void onEquip() {
     }
 
     @Override

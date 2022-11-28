@@ -42,9 +42,4 @@ public class Emote extends ArmorCosmetic<EmoteType> {
     protected ArmorSlot getArmorSlot() {
         return ArmorSlot.HELMET;
     }
-
-    @Override
-    protected String getOccupiedSlotKey() {
-        return "Emotes.Must-Remove-Helmet";
-    }
 }

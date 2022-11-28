@@ -82,14 +82,17 @@ public class SubCommandToggle extends SubCommand {
             return;
         }
         Category category = categories.get();
-        target.removeCosmetic(category);
         Optional<? extends CosmeticType<?>> matchingType = category.getEnabled().stream().filter(cosmeticType -> cosmeticType.isEnabled() && cosmeticType.toString().toLowerCase().contains(cosm)).findFirst();
         if (!matchingType.isPresent()) {
             sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "Invalid cosmetic.");
             return;
         }
 
-        matchingType.get().equip(target, ultraCosmetics);
+        if (target.getCosmetic(category) != null && matchingType.get() == target.getCosmetic(category).getType()) {
+            target.removeCosmetic(category);
+        } else {
+            matchingType.get().equip(target, ultraCosmetics);
+        }
     }
 
     @Override

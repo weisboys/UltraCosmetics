@@ -1,5 +1,8 @@
 package be.isach.ultracosmetics.util;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.SettingsManager;
+
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -7,14 +10,12 @@ import org.bukkit.block.Block;
 
 import java.util.function.Function;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.SettingsManager;
-
 public class Area {
     private static final boolean DEBUG = SettingsManager.getConfig().getBoolean("Area-Debug");
     protected final World world;
     protected final int x1, y1, z1;
     protected final int x2, y2, z2;
+
     public Area(Location loc1, Location loc2) {
         if (loc1.getWorld() != loc2.getWorld()) {
             throw new IllegalArgumentException("Locations cannot be in different worlds");
@@ -32,15 +33,34 @@ public class Area {
         this(center.clone().add(-radius, 0, -radius), center.clone().add(radius, yUp, radius));
     }
 
+    public static int findMaxY(Location center, int radius) {
+        World world = center.getWorld();
+        int maxY = UltraCosmeticsData.get().getVersionManager().getWorldMaxHeight(world);
+        for (int y = center.getBlockY(); y <= maxY; y++) {
+            for (int x = center.getBlockX() - radius; x <= center.getBlockX() + radius; x++) {
+                for (int z = center.getBlockZ() - radius; z <= center.getBlockZ() + radius; z++) {
+                    if (!BlockUtils.isAir(world.getBlockAt(x, y, z).getType())) {
+                        return y - 1;
+                    }
+                }
+            }
+        }
+        return maxY;
+    }
+
+    public int getHeight() {
+        return y2 - y1;
+    }
+
     /**
      * Checks each material in the area against okMatFunc,
      * and returns true if every block is "ok" accordingly.
      *
      * Ignores the block at (badX, badY, badZ)
      *
-     * @param badX X coordinate of block to ignore
-     * @param badY Y coordinate of block to ignore
-     * @param badZ Z coordinate of block to ignore
+     * @param badX      X coordinate of block to ignore
+     * @param badY      Y coordinate of block to ignore
+     * @param badZ      Z coordinate of block to ignore
      * @param okMatFunc A function that decides if a Material is OK to be there
      * @return true if every block matches okMatFunc
      */

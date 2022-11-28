@@ -137,5 +137,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     protected abstract ArmorSlot getArmorSlot();
 
-    protected abstract String getOccupiedSlotKey();
+    protected String getOccupiedSlotKey() {
+        return "Must-Remove." + getCategory().getConfigPath();
+    }
 }

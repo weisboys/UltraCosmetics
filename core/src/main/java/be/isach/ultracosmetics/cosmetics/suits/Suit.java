@@ -54,6 +54,6 @@ public abstract class Suit extends ArmorCosmetic<SuitType> {
 
     @Override
     public String getOccupiedSlotKey() {
-        return "Suits.Must-Remove." + getArmorSlot().toString();
+        return "Must-Remove.Suits." + getArmorSlot().toString();
     }
 }
