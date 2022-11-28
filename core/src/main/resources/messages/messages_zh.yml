@@ -1318,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&o字母表中的第二十六个字母！'
-  Must-Remove-Hat: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
 Suits:
   Rave:
     whole-equip: '&f&l全 &b&l套&a&l狂&e&l欢&6&l服 &f&l衣装'
@@ -1363,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9你脱下了 %suitname%!'
   Suit-Part-Lore: '&9衣装部分'
   Whole-Equip-Lore: '&7&o穿上全套衣服'
-  Must-Remove:
-    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
-    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
-    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
-    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9你使用了 %emotename%'
   Unequip: '%prefix% &9你卸下了 %emotename%'
@@ -1410,7 +1405,6 @@ Emotes:
   LovestruckAllay:
     Name: '&b&lLovestruck Allay'
     Description: '&7&oAre we falling in love?'
-  Must-Remove-Helmet: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
@@ -1437,3 +1431,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域�
 Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
 Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
 Too-Long: Too long, try again
+Must-Remove:
+  Hats: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
+  Suits:
+    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
+    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
+    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
+    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
+  Emotes: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
+  Gadgets: '%prefix% &c&lYou must clear slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear slot %slot% to equip this mount!'
