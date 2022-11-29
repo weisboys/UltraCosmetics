@@ -62,60 +62,70 @@ Menu:
     Title: '&lLemmikit'
     Button:
       Name: '&a&lLemmikit'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lKäyttöön'
       Tooltip-Unequip: '&c&lPois käytöstä'
   Gadgets:
     Title: '&lLelut'
     Button:
       Name: '&9&lLelut'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAktivoi'
       Tooltip-Unequip: '&c&lOta pois käytöstä'
   Mounts:
     Title: '&lMounts'
     Button:
       Name: '&6&lRatsut'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lKäyttöön'
       Tooltip-Unequip: '&c&lPois käytöstä'
   Morphs:
     Title: '&lMorphs'
     Button:
       Name: '&2&lOlennot'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lMorph into'
       Tooltip-Unequip: '&c&lUnmorph from'
   Hats:
     Title: '&lHatut'
     Button:
       Name: '&b&lHatut'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
   Particle-Effects:
     Title: '&lPartikkelit'
     Button:
       Name: '&b&lPartikkelit'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&Ota käyttöön'
       Tooltip-Unequip: '&c&Pois käytöstä'
   Suits:
     Title: '&lVaatteet'
     Button:
       Name: '&c&lVaatteet'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
   Emotes:
     Title: '&lLiikkeet'
     Button:
       Name: '&e&lLiikkeet'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
