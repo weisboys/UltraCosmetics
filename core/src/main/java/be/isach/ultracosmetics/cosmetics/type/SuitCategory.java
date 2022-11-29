@@ -4,10 +4,12 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import be.isach.ultracosmetics.cosmetics.suits.SuitAstronaut;
+import be.isach.ultracosmetics.cosmetics.suits.SuitCursed;
 import be.isach.ultracosmetics.cosmetics.suits.SuitDiamond;
 import be.isach.ultracosmetics.cosmetics.suits.SuitFrozen;
 import be.isach.ultracosmetics.cosmetics.suits.SuitRave;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSanta;
+import be.isach.ultracosmetics.cosmetics.suits.SuitSlime;
 
 import com.cryptomorin.xseries.XMaterial;
 
@@ -21,6 +23,8 @@ public enum SuitCategory {
     DIAMOND("Diamond", "diamond", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, SuitDiamond.class),
     SANTA("Santa", "santa", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
     FROZEN("Frozen", "frozen", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitFrozen.class),
+    CURSED("Cursed", "cursed", XMaterial.JACK_O_LANTERN, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitCursed.class),
+    SLIME("Slime", "slime", XMaterial.SLIME_BLOCK, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSlime.class),
     ;
 
     private final String configName;
