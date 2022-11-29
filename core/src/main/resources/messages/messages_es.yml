@@ -62,60 +62,70 @@ Menu:
     Title: '&lMascotas'
     Button:
       Name: '&a&lMascotas'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnear'
       Tooltip-Unequip: '&c&lDespawnear'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lActivar'
       Tooltip-Unequip: '&c&lDesactivar'
   Mounts:
     Title: '&lMonturas'
     Button:
       Name: '&6&lMonturas'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnear'
       Tooltip-Unequip: '&c&lDespawnear'
   Morphs:
     Title: '&lTransformaciones'
     Button:
       Name: '&2&lTransformaciones'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lTransformar'
       Tooltip-Unequip: '&c&lRestaurar'
   Hats:
     Title: '&lSombreros'
     Button:
       Name: '&b&lSombreros'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Particle-Effects:
     Title: '&lEfectos (Particulas)'
     Button:
       Name: '&b&lEfectos (Particulas)'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lInvocar'
       Tooltip-Unequip: '&c&lQuitar'
   Suits:
     Title: '&lTrajes'
     Button:
       Name: '&c&lTrajes'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Emotes:
     Title: '&lEmoticones'
     Button:
       Name: '&e&lEmoticones'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
