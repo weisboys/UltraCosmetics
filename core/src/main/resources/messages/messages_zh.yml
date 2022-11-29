@@ -62,60 +62,70 @@ Menu:
     Title: '&l宠物'
     Button:
       Name: '&a&l宠物'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l生成'
       Tooltip-Unequip: '&c&l取消生成'
   Gadgets:
     Title: '&l小道具'
     Button:
       Name: '&9&l小道具'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l激活'
       Tooltip-Unequip: '&c&l取消激活'
   Mounts:
     Title: '&l载具'
     Button:
       Name: '&6&l载具'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l生成'
       Tooltip-Unequip: '&c&l取消生成'
   Morphs:
     Title: '&l伪装'
     Button:
       Name: '&2&l伪装'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l伪装成'
       Tooltip-Unequip: '&c&l取消伪装 从'
   Hats:
     Title: '&l头饰'
     Button:
       Name: '&b&l头饰'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
   Particle-Effects:
     Title: '&l粒子效果'
     Button:
       Name: '&b&l粒子效果'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l召唤'
       Tooltip-Unequip: '&c&l取消召唤'
   Suits:
     Title: '&l衣装'
     Button:
       Name: '&c&l衣装'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
   Emotes:
     Title: '&l表情'
     Button:
       Name: '&e&l表情'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
