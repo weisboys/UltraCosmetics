@@ -62,60 +62,70 @@ Menu:
     Title: '&lHewan Peliharaan'
     Button:
       Name: '&a&lHewan Peliharaan'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lMunculkan'
       Tooltip-Unequip: '&c&lHilangkan'
   Gadgets:
     Title: '&lPeralatan'
     Button:
       Name: '&9&lPeralatan'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAktif'
       Tooltip-Unequip: '&c&lNon-aktif'
   Mounts:
     Title: '&lKendaraan'
     Button:
       Name: '&6&lKendaraan'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lMunculkan'
       Tooltip-Unequip: '&c&lHilangkan'
   Morphs:
     Title: '&lTransformasi'
     Button:
       Name: '&2&lTransformasi'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lTransformasi menjadi'
       Tooltip-Unequip: '&c&lTransformasi kembali dari'
   Hats:
     Title: '&lTopi'
     Button:
       Name: '&b&lTopi'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
   Particle-Effects:
     Title: '&lEfek Partikel'
     Button:
       Name: '&b&lEfek Partikel'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPanggil'
       Tooltip-Unequip: '&c&lBatalkan'
   Suits:
     Title: '&lBaju Setelan'
     Button:
       Name: '&c&lBaju Setelan'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
   Emotes:
     Title: '&lEmote'
     Button:
       Name: '&e&lEmote'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
