@@ -62,60 +62,70 @@ Menu:
     Title: '&lПитомцы'
     Button:
       Name: '&a&lПитомцы'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lЗаспавнить'
       Tooltip-Unequip: '&c&lРеспавн'
   Gadgets:
     Title: '&lГаджеты'
     Button:
       Name: '&9&lГаджеты'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lАктивировать'
       Tooltip-Unequip: '&c&lДеактивировать'
   Mounts:
     Title: '&6&lТранспорт'
     Button:
       Name: '&6&lТранспорт'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lПолучить'
       Tooltip-Unequip: '&c&lУбрать'
   Morphs:
     Title: '&lПревращения'
     Button:
       Name: '&2&lПревращения'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lПревратиться в'
       Tooltip-Unequip: '&c&lПеревоплотиться из'
   Hats:
     Title: '&lШляпы'
     Button:
       Name: '&b&lШляпы'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lОдеть'
       Tooltip-Unequip: '&c&lСнять'
   Particle-Effects:
     Title: '&b&lЭффект частиц'
     Button:
       Name: '&b&lЭффекты частиц'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lПоказать'
       Tooltip-Unequip: '&c&lСкрыть'
   Suits:
     Title: '&lКостюмы'
     Button:
       Name: '&lКостюм'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lОдеть'
       Tooltip-Unequip: '&c&lСнять'
   Emotes:
     Title: '&lЭмоции'
     Button:
       Name: '&e&lЭмоции'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lПоказать'
       Tooltip-Unequip: '&c&lСкрыть'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
