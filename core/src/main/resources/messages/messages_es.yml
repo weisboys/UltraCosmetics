@@ -42,7 +42,7 @@ Clear:
   Hats: '&c&lQuitar sombrero activo'
   Suits: '&c&lQuitar traje activo'
   Emotes: '&c&lQuitar emoticon activo'
-  Projectile-Effects: '&c&lClear current projectile effect'
+  Projectile-Effects: '&c&lBorrar el proyectil actual'
   Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
