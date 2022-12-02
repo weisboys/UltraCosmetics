@@ -31,6 +31,7 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         new ProjectileEffectType("Snow", 1, Particles.SNOWBALL, XMaterial.SNOWBALL, ProjectileEffectBasicTrail.class, false);
         new ProjectileEffectType("Slime", 1, Particles.SLIME, XMaterial.SLIME_BALL, ProjectileEffectBasicTrail.class, false);
         new ProjectileEffectType("Love", 2, Particles.HEART, XMaterial.PINK_WOOL, ProjectileEffectBasicTrail.class, false);
+        new ProjectileEffectType("Cloud", 1, Particles.CLOUD, XMaterial.WHITE_WOOL, ProjectileEffectBasicTrail.class, false);
         new ProjectileEffectType("Portal", 1, Particles.PORTAL, XMaterial.OBSIDIAN, ProjectileEffectBasicTrail.class, false);
         // Helix Trails
         new ProjectileEffectType("RedstoneHelix", 1, Particles.REDSTONE, XMaterial.REDSTONE_BLOCK, ProjectileEffectHelix.class, false);

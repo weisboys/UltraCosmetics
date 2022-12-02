@@ -1463,6 +1463,9 @@ Projectile-Effects:
   Love:
     name: '&d&lLove'
     Description: '&7&oRed hearts'
+  Cloud:
+    name: '&f&lCloud'
+    Description: '&7&oWhite clouds'
   Portal:
     name: '&5&lPortal'
     Description: '&7&oSmall, purple clouds'
