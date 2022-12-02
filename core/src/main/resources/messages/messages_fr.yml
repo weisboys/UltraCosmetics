@@ -42,8 +42,8 @@ Clear:
   Hats: '&c&lRetirer le chapeau actuel'
   Suits: '&c&lRetirer les vetments actuels'
   Emotes: '&c&lRetirer l''emote actuel'
-  Projectile-Effects: '&c&lClear current projectile effect'
-  Death-Effects: '&c&lClear current death effect'
+  Projectile-Effects: '&c&lEffacer l''effet de projectile actuel'
+  Death-Effects: '&c&lEffacer l''effet de mort actuel'
 Menu:
   Purchase-Rename:
     Button:
@@ -62,63 +62,63 @@ Menu:
     Title: '&lFamiliers'
     Button:
       Name: '&a&lAFamiliers'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lActiver'
       Tooltip-Unequip: '&c&lDésactiver'
   Mounts:
     Title: '&lMontures'
     Button:
       Name: '&6&lMontures'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDisparaître'
   Morphs:
     Title: '&lTransformations'
     Button:
       Name: '&2&lTransformations'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lTransformer en'
       Tooltip-Unequip: '&c&lRetransformer depuis'
   Hats:
     Title: '&lChapeaux'
     Button:
       Name: '&b&lChapeaux'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&ll''Équiper'
       Tooltip-Unequip: '&c&lDéséquiper'
   Particle-Effects:
     Title: '&lEffets de particules'
     Button:
       Name: '&b&lEffets de particules'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lInvoquer'
       Tooltip-Unequip: '&c&lFaire disparaître'
   Suits:
     Title: '&lCostumes'
     Button:
       Name: '&c&lCostumes'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
   Emotes:
     Title: '&lÉmotes'
     Button:
       Name: '&e&lÉmotes'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lEffets de projectiles'
     Button:
-      Name: '&8&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&8&lEffets de projectiles'
+      Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
