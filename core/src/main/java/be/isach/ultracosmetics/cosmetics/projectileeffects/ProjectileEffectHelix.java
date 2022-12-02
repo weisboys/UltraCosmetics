@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.cosmetics.projectileeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ProjectileEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.entity.Projectile;
 import org.bukkit.util.Vector;
@@ -23,7 +22,7 @@ public class ProjectileEffectHelix extends ProjectileEffect {
         if (angle >= Math.PI * 2) angle %= Math.PI * 2;
         Vector vel = projectile.getVelocity();
         Vector particle = vel.getCrossProduct(Y_AXIS).normalize().rotateAroundAxis(vel, angle);
-        Particles.REDSTONE.display(projectile.getLocation().add(particle));
-        Particles.REDSTONE.display(projectile.getLocation().subtract(particle));
+        getType().getEffect().display(projectile.getLocation().add(particle));
+        getType().getEffect().display(projectile.getLocation().subtract(particle));
     }
 }
