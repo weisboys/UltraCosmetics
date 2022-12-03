@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
-import be.isach.ultracosmetics.util.MathUtils;
 
 import org.bukkit.Color;
 import org.bukkit.inventory.ItemStack;
@@ -59,22 +58,7 @@ public class SuitType extends CosmeticType<Suit> {
     @Override
     public ItemStack getItemStack() {
         ItemStack is = super.getItemStack();
-        Color color = null;
-        if (category == SuitCategory.RAVE) {
-            int r = MathUtils.random(255);
-            int g = MathUtils.random(255);
-            int b = MathUtils.random(255);
-
-            color = Color.fromRGB(r, g, b);
-        } else if (category == SuitCategory.SANTA) {
-            color = Color.RED;
-        } else if (category == SuitCategory.FROZEN && slot != ArmorSlot.HELMET) {
-            color = Color.AQUA;
-        } else if (category == SuitCategory.CURSED && slot != ArmorSlot.HELMET) {
-            color = Color.fromRGB(35, 30, 42);
-        } else if (category == SuitCategory.SLIME && slot != ArmorSlot.HELMET) {
-            color = Color.fromRGB(128, 241, 95);
-        }
+        Color color = category.getColor(slot);
         if (color != null) {
             LeatherArmorMeta meta = (LeatherArmorMeta) is.getItemMeta();
             meta.setColor(color);

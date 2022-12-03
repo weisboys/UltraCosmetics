@@ -11,15 +11,27 @@ import be.isach.ultracosmetics.cosmetics.suits.SuitFrozen;
 import be.isach.ultracosmetics.cosmetics.suits.SuitRave;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSanta;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSlime;
+import be.isach.ultracosmetics.util.MathUtils;
+
+import org.bukkit.Color;
 
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public enum SuitCategory {
-    RAVE("Rave", "rave", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class) {
+    RAVE(
+            "Rave",
+            "rave",
+            XMaterial.LEATHER_HELMET,
+            XMaterial.LEATHER_CHESTPLATE,
+            XMaterial.LEATHER_LEGGINGS,
+            XMaterial.LEATHER_BOOTS,
+            s -> Color.fromRGB(MathUtils.random(256), MathUtils.random(256), MathUtils.random(256)),
+            SuitRave.class) {
         @Override
         public void setupConfig(CustomConfiguration config, String path) {
             config.addDefault(path + ".Update-Delay-In-Creative", 10,
@@ -29,12 +41,12 @@ public enum SuitCategory {
                     "Set to 1 or less to update every tick.");
         }
     },
-    ASTRONAUT("Astronaut", "astronaut", XMaterial.GLASS, XMaterial.GOLDEN_CHESTPLATE, XMaterial.GOLDEN_LEGGINGS, XMaterial.GOLDEN_BOOTS, SuitAstronaut.class),
-    DIAMOND("Diamond", "diamond", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, SuitDiamond.class),
-    SANTA("Santa", "santa", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
-    FROZEN("Frozen", "frozen", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitFrozen.class),
-    CURSED("Cursed", "cursed", XMaterial.JACK_O_LANTERN, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitCursed.class),
-    SLIME("Slime", "slime", XMaterial.SLIME_BLOCK, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSlime.class),
+    ASTRONAUT("Astronaut", "astronaut", XMaterial.GLASS, XMaterial.GOLDEN_CHESTPLATE, XMaterial.GOLDEN_LEGGINGS, XMaterial.GOLDEN_BOOTS, s -> null, SuitAstronaut.class),
+    DIAMOND("Diamond", "diamond", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, s -> null, SuitDiamond.class),
+    SANTA("Santa", "santa", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, s -> Color.RED, SuitSanta.class),
+    FROZEN("Frozen", "frozen", XMaterial.PACKED_ICE, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, s -> (s == ArmorSlot.HELMET ? null : Color.AQUA), SuitFrozen.class),
+    CURSED("Cursed", "cursed", XMaterial.JACK_O_LANTERN, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, s -> (s == ArmorSlot.HELMET ? null : Color.fromRGB(35, 30, 42)), SuitCursed.class),
+    SLIME("Slime", "slime", XMaterial.SLIME_BLOCK, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, s -> (s == ArmorSlot.HELMET ? null : Color.fromRGB(128, 241, 95)), SuitSlime.class),
     ;
 
     private final String configName;
@@ -48,9 +60,10 @@ public enum SuitCategory {
     private SuitType leggings;
     private SuitType boots;
     private final Class<? extends Suit> clazz;
+    private final Function<ArmorSlot,Color> colorFunc;
 
-    private SuitCategory(String configName, String permissionSuffix, XMaterial helmet,
-            XMaterial chestplate, XMaterial leggings, XMaterial boots, Class<? extends Suit> clazz) {
+    private SuitCategory(String configName, String permissionSuffix, XMaterial helmet, XMaterial chestplate,
+            XMaterial leggings, XMaterial boots, Function<ArmorSlot,Color> colorFunc, Class<? extends Suit> clazz) {
         this.configName = configName;
         this.permissionSuffix = permissionSuffix;
         this.clazz = clazz;
@@ -58,6 +71,7 @@ public enum SuitCategory {
         this.chestplateType = chestplate;
         this.leggingsType = leggings;
         this.bootsType = boots;
+        this.colorFunc = colorFunc;
     }
 
     public void initializeSuitParts() {
@@ -119,6 +133,10 @@ public enum SuitCategory {
 
     public List<SuitType> getPieces() {
         return Arrays.asList(getHelmet(), getChestplate(), getLeggings(), getBoots());
+    }
+
+    public Color getColor(ArmorSlot slot) {
+        return colorFunc.apply(slot);
     }
 
     public void setupConfig(CustomConfiguration config, String path) {
