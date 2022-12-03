@@ -42,8 +42,8 @@ Clear:
   Hats: '&c&lRetirer le chapeau actuel'
   Suits: '&c&lRetirer les vetments actuels'
   Emotes: '&c&lRetirer l''emote actuel'
-  Projectile-Effects: '&c&lEffacer l''effet de projectile actuel'
-  Death-Effects: '&c&lEffacer l''effet de mort actuel'
+  Projectile-Effects: '&c&lRetirer l''effet de projectile actuel'
+  Death-Effects: '&c&lRetirer l''effet de mort actuel'
 Menu:
   Purchase-Rename:
     Button:
@@ -119,15 +119,15 @@ Menu:
     Button:
       Name: '&8&lEffets de projectiles'
       Lore: '&7Déverouillé: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Equip: '&b&lÉquiper'
+      Tooltip-Unequip: '&c&lDéséquiper'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lEffets de Mort'
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&lEffets de Mort'
+      Lore: '&7Déverouillé: &f%unlocked%'
+      Tooltip-Equip: '&b&lÉquiper'
+      Tooltip-Unequip: '&c&lDéséquiper'
   Buy-Ammo:
     Title: '&lAcheter des munitions'
   Misc:
@@ -369,8 +369,8 @@ Mounts:
       &7&oil existe une espèce mythique de serpents
       &7&oen fusion. Celui-ci te servira éternellement.
   Strider:
-    menu-name: '&c&lStrider'
-    entity-displayname: '&l%playername%''s Strider'
+    menu-name: '&c&lArpenteur'
+    entity-displayname: '&lArpenteur de %playername%'
     Description: |-
       &7&oUne créature mystérieuse en forme de cube
       &7&ocapable de marcher directement au-dessus de la lave.
@@ -387,9 +387,9 @@ Mounts:
     entity-displayname: '&lMule de %playername%'
     Description: '&7&oYour standard, everyday mule'
   Pig:
-    menu-name: '&d&lPig'
-    entity-displayname: '&l%playername%''s Pig'
-    Description: '&7&oOink!'
+    menu-name: '&d&lCochonnet'
+    entity-displayname: '&lCochonnet de %playername%'
+    Description: '&7&oOink !'
   Equip: '%prefix% &9Tu as fait apparaître %mountname%'
   Unequip: '%prefix% &9Tu as fait disparaître %mountname%'
   Cant-Spawn: '%prefix% &c&lLes monstres ne peuvent pas apparaître ici !'
@@ -653,12 +653,12 @@ Pets:
     Description: '&7&oMarche sur la lave !'
   Tadpole:
     menu-name: '&8&lTadpole'
-    entity-displayname: '&l%playername%''s Tadpole'
-    Description: '&7&oWill grow into a Frog!'
+    entity-displayname: '&lTurtue de %playername%'
+    Description: '&7&oSe transforme en grenouille !'
   TropicalFish:
-    menu-name: '&e&lTropical Fish'
+    menu-name: '&e&Poissons tropicaux'
     entity-displayname: '&lPoisson Tropical de %playername%'
-    Description: '&7&oA colorful fish!'
+    Description: '&7&oUne bombe colorée !'
   Turtle:
     menu-name: '&2&lTortue'
     entity-displayname: '&lTurtue de %playername%'
