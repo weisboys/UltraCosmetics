@@ -17,7 +17,6 @@ public class ProjectileEffectRainbow extends ProjectileEffect {
     @Override
     public void showParticles(Projectile projectile) {
         i++;
-        if (i > 7) i = 1;
 
         switch (i) {
             case 1:
@@ -40,9 +39,7 @@ public class ProjectileEffectRainbow extends ProjectileEffect {
                 break;
             case 7:
                 Particles.REDSTONE.display(44, 0, 156, projectile.getLocation());
-                break;
-            default:
-                Particles.REDSTONE.display(255, 255, 255, projectile.getLocation());
+                i = 0;
                 break;
         }
     }
