@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
@@ -34,6 +35,7 @@ public class SuitType extends CosmeticType<Suit> {
         this.category = category;
         // delay permission registration until we've loaded slot and category fields
         registerPermission();
+        category.setupConfig(SettingsManager.getConfig(), getConfigPath());
     }
 
     @Override

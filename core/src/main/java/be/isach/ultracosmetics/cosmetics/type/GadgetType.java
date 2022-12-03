@@ -1,11 +1,16 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.gadgets.*;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Gadget types.
@@ -62,6 +67,16 @@ public class GadgetType extends CosmeticType<Gadget> {
         return runTime;
     }
 
+    @Override
+    public void setupConfig(CustomConfiguration config, String path) {
+        super.setupConfig(config, path);
+        if (UltraCosmeticsData.get().isAmmoEnabled()) {
+            config.addDefault(path + ".Ammo.Enabled", true, "You want this gadget to need ammo?");
+            config.addDefault(path + ".Ammo.Price", 500, "What price for the ammo?");
+            config.addDefault(path + ".Ammo.Result-Amount", 20, "And how much ammo is given when bought?");
+        }
+    }
+
     public static void register(ServerVersion version) {
         new GadgetType(XMaterial.IRON_HORSE_ARMOR, 8, 3, "BatBlaster", GadgetBatBlaster.class);
         new GadgetType(XMaterial.COOKED_CHICKEN, 6, 3, "Chickenator", GadgetChickenator.class);
@@ -70,7 +85,22 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.TRIPWIRE_HOOK, 5, 0, "FleshHook", GadgetFleshHook.class);
         new GadgetType(XMaterial.MELON, 2, 0, "MelonThrower", GadgetMelonThrower.class);
         new GadgetType(XMaterial.COMPARATOR, 2, 0, "PortalGun", GadgetPortalGun.class);
-        new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class);
+        new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                // default "" so we don't have to deal with null
+                if (config.getString(path + ".Block-Type", "").equals("STAINED_CLAY")) {
+                    config.set(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
+                }
+                config.addDefault(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
+                config.addDefault(path + ".Particle.Enabled", false, "Should it display particles?");
+                config.addDefault(path + ".Particle.Effect", "FIREWORKS_SPARK", "what particles? (List: http://pastebin.com/CVKkufck)");
+                config.addDefault(path + ".Radius", 2, "The radius of painting.");
+                List<String> blackListedBlocks = new ArrayList<>();
+                blackListedBlocks.add("REDSTONE_BLOCK");
+                config.addDefault(path + ".BlackList", blackListedBlocks, "A list of the BLOCKS that", "can't be painted.");
+            }
+        };
         new GadgetType(XMaterial.IRON_AXE, 8, 0, "ThorHammer", GadgetThorHammer.class);
         new GadgetType(XMaterial.ENDER_EYE, 30, 12, "AntiGravity", GadgetAntiGravity.class);
         new GadgetType(XMaterial.FIREWORK_STAR, 15, 0, "SmashDown", GadgetSmashDown.class);

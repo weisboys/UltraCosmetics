@@ -243,8 +243,7 @@ public class UltraCosmetics extends JavaPlugin {
         // Beginning of boot log. basic informations.
         getSmartLogger().write("-------------------------------------------------------------------");
         getSmartLogger().write("Thanks for using UltraCosmetics!");
-        getSmartLogger().write("Plugin by Datatags.");
-        getSmartLogger().write("Original Author: iSach");
+        getSmartLogger().write("Plugin by Datatags. Original Author: iSach");
         getSmartLogger().write("Link: https://bit.ly/UltraCosmetics");
 
         // Initialize NMS Module
@@ -268,7 +267,7 @@ public class UltraCosmetics extends JavaPlugin {
         registerListeners();
 
         // Set up Cosmetics config.
-        new CosmeticConfigManager(this).setupCosmeticsConfigs();
+        CosmeticType.register();
 
         // Can't use Category.MORPHS.isEnabled() here because it checks whether LibsDisguises is enabled on its own
         if (SettingsManager.getConfig().getBoolean("Categories-Enabled." + Category.MORPHS.getConfigPath())) {
@@ -630,6 +629,17 @@ public class UltraCosmetics extends JavaPlugin {
         config.addDefault("Prevent-Cosmetics-In-Vanish", false, "Whether UltraCosmetics should prevent vanished players from using cosmetics.", "Works with any vanish plugin that uses 'vanished' metdata.");
         config.addDefault("Max-Entity-Spawns-Per-Tick", 10, "Limits the number of entities that can be spawned by a single gadget per tick (default 10.)", "Set to 0 to spawn all entities instantly.");
         config.addDefault("DiscordSRV-Loot-Channel", 0, "# Discord channel ID to send treasure chest loot messages to.", "Requires DiscordSRV. 0 to disable.");
+
+        for (Category category : Category.values()) {
+            config.addDefault("Categories-Enabled." + category.getConfigPath(), true);
+            config.addDefault("Categories." + category.getConfigPath() + ".Go-Back-Arrow", true, "Want Go back To Menu Item in that menu?");
+        }
+
+        config.addDefault("TreasureChests.Loots.Emotes.Enabled", true);
+        config.addDefault("TreasureChests.Loots.Emotes.Chance", 5);
+        config.addDefault("TreasureChests.Loots.Emotes.Message.enabled", true);
+        config.addDefault("TreasureChests.Loots.Emotes.Message.message", "%prefix% &6&l%name% found rare %emote%");
+        config.addDefault("Ammo-System-For-Gadgets.Show-Ammo-In-Menu-As-Item-Amount", true, "Do you want that in the gadgets menu", "each gadget item has an amount", "corresponding to your ammo.");
 
         String pathPrefix = "messages/messages_";
         List<String> supportedLanguages = new ArrayList<>();

@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.pets.*;
@@ -27,7 +28,7 @@ import java.util.Optional;
  * @author iSach
  * @since 12-20-2015
  */
-public final class PetType extends CosmeticEntType<Pet> {
+public class PetType extends CosmeticEntType<Pet> {
 
     private static final Map<EntityType,Class<? extends Pet>> PET_MAP = new HashMap<>();
 
@@ -78,7 +79,17 @@ public final class PetType extends CosmeticEntType<Pet> {
         new PetType("Villager", XMaterial.EMERALD, EntityType.VILLAGER, PetVillager.class);
         new PetType("Bat", XMaterial.COAL, EntityType.BAT, PetBat.class);
         new PetType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, PetSheep.class);
-        new PetType("Wither", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER, PetWither.class);
+        new PetType("Wither", XMaterial.WITHER_SKELETON_SKULL, EntityType.WITHER, PetWither.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
+                config.addDefault(path + ".Bossbar", "in range",
+                        "Sets who the bossbar is visible for. (Has no effect on 1.8)",
+                        "'in range': vanilla behavior, visible to all players in range.",
+                        "'owner': only visible to pet owner",
+                        "'none': not visible to any players");
+            }
+        };
         /* Slime disabled because its just constantly jumping in one direction instead of following the player */
         // new PetType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, PetSlime.class);
         new PetType("Silverfish", XMaterial.GRAY_DYE, EntityType.SILVERFISH, PetSilverfish.class);
@@ -104,13 +115,28 @@ public final class PetType extends CosmeticEntType<Pet> {
         switch (serverVersion) {
         case v1_19:
             new PetType("Frog", XMaterial.LILY_PAD, EntityType.FROG, PetFrog.class);
-            new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class);
+            new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class) {
+                @Override
+                public void setupConfig(CustomConfiguration config, String path) {
+                    super.setupConfig(config, path);
+                    config.addDefault(path + ".Block-Effect", true,
+                            "Whether the darkness effect is blocked while this pet is equipped.",
+                            "Please note that this will also block darkness from real wardens,",
+                            "due to Spigot API limitations.");
+                }
+            };
             new PetType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, PetAllay.class);
             new PetType("Tadpole", XMaterial.TADPOLE_BUCKET, EntityType.TADPOLE, PetTadpole.class);
         case v1_18:
             new PetType("Goat", XMaterial.GOAT_HORN.or(XMaterial.WHEAT), EntityType.GOAT, PetGoat.class);
         case v1_17:
-            new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class);
+            new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class) {
+                @Override
+                public void setupConfig(CustomConfiguration config, String path) {
+                    super.setupConfig(config, path);
+                    config.addDefault(path + ".Fast", false, "https://imgur.com/a/EKWwQ6w");
+                }
+            };
             /* Glow Squid disabled because its not moving at all, its just turning around all the time */
             /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, EntityType.GLOW_SQUID, PetGlowSquid.class); */
         case v1_16:
@@ -153,7 +179,16 @@ public final class PetType extends CosmeticEntType<Pet> {
             new PetType("Mule", XMaterial.SADDLE, EntityType.MULE, PetMule.class);
             new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
             new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, EntityType.ZOMBIE_HORSE, PetZombieHorse.class);
-            new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class);
+            new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class) {
+                @Override
+                public void setupConfig(CustomConfiguration config, String path) {
+                    super.setupConfig(config, path);
+                    config.addDefault(path + ".Block-Effect", true,
+                            "Whether the mining fatigue effect is blocked while this pet is equipped.",
+                            "Please note that this will also block mining fatigue from real elder guardians,",
+                            "due to Spigot API limitations.");
+                }
+            };
             new PetType("WitherSkeleton", XMaterial.STONE_SWORD, EntityType.WITHER_SKELETON, PetWitherSkeleton.class);
             new PetType("ZombieVillager", XMaterial.GOLDEN_APPLE, EntityType.ZOMBIE_VILLAGER, PetZombieVillager.class);
             new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);

@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
@@ -16,7 +17,16 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum SuitCategory {
-    RAVE("Rave", "rave", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class),
+    RAVE("Rave", "rave", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitRave.class) {
+        @Override
+        public void setupConfig(CustomConfiguration config, String path) {
+            config.addDefault(path + ".Update-Delay-In-Creative", 10,
+                    "How many ticks UC should wait between updating the rave suit for creative players.",
+                    "Setting this to a higher value allows more time between updates,",
+                    "meaning players shouldn't have their inventories close immediately after opening.",
+                    "Set to 1 or less to update every tick.");
+        }
+    },
     ASTRONAUT("Astronaut", "astronaut", XMaterial.GLASS, XMaterial.GOLDEN_CHESTPLATE, XMaterial.GOLDEN_LEGGINGS, XMaterial.GOLDEN_BOOTS, SuitAstronaut.class),
     DIAMOND("Diamond", "diamond", XMaterial.DIAMOND_HELMET, XMaterial.DIAMOND_CHESTPLATE, XMaterial.DIAMOND_LEGGINGS, XMaterial.DIAMOND_BOOTS, SuitDiamond.class),
     SANTA("Santa", "santa", XMaterial.LEATHER_HELMET, XMaterial.LEATHER_CHESTPLATE, XMaterial.LEATHER_LEGGINGS, XMaterial.LEATHER_BOOTS, SuitSanta.class),
@@ -105,6 +115,9 @@ public enum SuitCategory {
 
     public List<SuitType> getPieces() {
         return Arrays.asList(getHelmet(), getChestplate(), getLeggings(), getBoots());
+    }
+
+    public void setupConfig(CustomConfiguration config, String path) {
     }
 
     public static List<SuitCategory> enabled() {

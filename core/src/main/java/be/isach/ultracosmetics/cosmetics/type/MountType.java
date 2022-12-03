@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
@@ -27,12 +28,14 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * A cosmetic type.
@@ -53,6 +56,7 @@ public class MountType extends CosmeticEntType<Mount> {
         this.defaultBlocks = defaultBlocks;
         this.defaultSpeed = defaultSpeed;
         this.movementSpeed = SettingsManager.getConfig().getDouble("Mounts." + configName + ".Speed", defaultSpeed);
+        setupConfigLate(SettingsManager.getConfig(), getConfigPath());
     }
 
     private MountType(String configName, XMaterial material, EntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass) {
@@ -92,6 +96,16 @@ public class MountType extends CosmeticEntType<Mount> {
         return defaultBlocks != null;
     }
 
+    public void setupConfigLate(CustomConfiguration config, String path) {
+        if (LivingEntity.class.isAssignableFrom(getEntityType().getEntityClass())) {
+            config.addDefault(path + ".Speed", getDefaultMovementSpeed(), "The movement speed of the mount, see:", "https://minecraft.fandom.com/wiki/Attribute#Attributes_available_on_all_living_entities");
+        }
+        if (doesPlaceBlocks()) {
+            // Don't use Stream#toList(), it doesn't exist in Java 8
+            config.addDefault(path + ".Blocks-To-Place", getDefaultBlocks().stream().map(m -> m.name()).collect(Collectors.toList()), "Blocks to choose from as this mount walks.");
+        }
+    }
+
     public static void register(ServerVersion version) {
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
         new MountType("DruggedHorse", XMaterial.SUGAR, EntityType.HORSE, 2, 1.1, MountDruggedHorse.class);
@@ -118,7 +132,13 @@ public class MountType extends CosmeticEntType<Mount> {
         if (version.isNmsSupported()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
             new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
-            new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class);
+            new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
+                @Override
+                public void setupConfig(CustomConfiguration config, String path) {
+                    super.setupConfig(config, path);
+                    config.addDefault("Mounts.Dragon.Stationary", false, "If true, the dragon will not move.");
+                }
+            };
         }
     }
 
