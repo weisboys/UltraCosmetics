@@ -1478,6 +1478,12 @@ Projectile-Effects:
   CursedHelix:
     name: '&5&lCursed Helix'
     Description: '&7&oRotating, purple particles'
+  Christmas:
+    name: '&4&lChrist&f&lmas'
+    Description: '&7&oMerry Christmas!'
+  Rainbow:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    Description: '&7&oTODO'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
