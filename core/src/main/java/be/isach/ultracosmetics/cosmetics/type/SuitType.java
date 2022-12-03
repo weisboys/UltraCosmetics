@@ -70,6 +70,10 @@ public class SuitType extends CosmeticType<Suit> {
             color = Color.RED;
         } else if (category == SuitCategory.FROZEN && slot != ArmorSlot.HELMET) {
             color = Color.AQUA;
+        } else if (category == SuitCategory.CURSED && slot != ArmorSlot.HELMET) {
+            color = Color.fromRGB(35, 30, 42);
+        } else if (category == SuitCategory.SLIME && slot != ArmorSlot.HELMET) {
+            color = Color.fromRGB(128, 241, 95);
         }
         if (color != null) {
             LeatherArmorMeta meta = (LeatherArmorMeta) is.getItemMeta();
