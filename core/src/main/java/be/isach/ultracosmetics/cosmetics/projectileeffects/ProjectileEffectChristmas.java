@@ -23,7 +23,9 @@ public class ProjectileEffectChristmas extends ProjectileEffect {
         if (angle >= Math.PI * 2) angle %= Math.PI * 2;
         Vector vel = projectile.getVelocity();
         Vector particle = vel.getCrossProduct(Y_AXIS).normalize().rotateAroundAxis(vel, angle);
+
+        Particles.CLOUD.display(projectile.getLocation());
         Particles.REDSTONE.display(211, 47, 47, projectile.getLocation().add(particle));
-        Particles.REDSTONE.display(255, 255, 255, projectile.getLocation().subtract(particle));
+        Particles.REDSTONE.display(52, 168, 83, projectile.getLocation().subtract(particle));
     }
 }
