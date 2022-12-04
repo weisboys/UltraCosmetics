@@ -1367,6 +1367,22 @@ Suits:
     Description: |-
       &7&oEste traje perteneces al
       &7&oLord de las Tierras Congeladas!
+  Cursed:
+    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
+    helmet-name: '&5&lCursed &f&lHelmet'
+    chestplate-name: '&5&lCursed &f&lChestplate'
+    leggings-name: '&5&lCursed &f&lLeggings'
+    boots-name: '&5&lCursed &f&lBoots'
+    Description: '&7&oMysterious and spooky.'
+  Slime:
+    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
+    helmet-name: '&a&lSlime &f&lHelmet'
+    chestplate-name: '&a&lSlime &f&lChestplate'
+    leggings-name: '&a&lSlime &f&lLeggings'
+    boots-name: '&a&lSlime &f&lBoots'
+    Description: |-
+      &7&oSlimy green suit.
+      &7&oThe slimes will love it!
   Equip: '%prefix% &9Equipaste %suitname%!'
   Unequip: '%prefix% &9Desequipaste %suitname%!'
   Suit-Part-Lore: '&9Partes del Traje'
