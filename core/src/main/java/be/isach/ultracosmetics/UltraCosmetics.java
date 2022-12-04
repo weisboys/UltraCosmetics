@@ -17,6 +17,7 @@ import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
+import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.permissions.PermissionManager;
@@ -42,6 +43,7 @@ import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -372,6 +374,12 @@ public class UltraCosmetics extends JavaPlugin {
         // when the plugin is disabled from onEnable, skip cleanup
         if (!enableFinished) return;
 
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getOpenInventory().getTopInventory().getHolder() instanceof CosmeticsInventoryHolder) {
+                player.closeInventory();
+            }
+        }
+
         if (mySqlConnectionManager != null && mySqlConnectionManager.success()) {
             mySqlConnectionManager.shutdown();
         }
@@ -558,7 +566,7 @@ public class UltraCosmetics extends JavaPlugin {
             getSmartLogger().write(LogLevel.WARNING, "SQL config options have changed, please verify them");
             addProblem(Problem.SQL_MIGRATION_REQUIRED);
         }
-        config.addDefault("Ammo-System-For-Gadgets.Allow-Purchase", "Whether players should be allowed to purchase ammo");
+        config.addDefault("Ammo-System-For-Gadgets.Allow-Purchase", true, "Whether players should be allowed to purchase ammo");
         config.addDefault("MySQL.Enabled", false);
         config.addDefault("MySQL.hostname", "localhost");
         config.addDefault("MySQL.username", "root");

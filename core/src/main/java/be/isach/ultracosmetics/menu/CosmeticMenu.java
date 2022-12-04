@@ -117,12 +117,12 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             if (cosmeticType.showsDescription()) {
                 loreList.add("");
                 loreList.addAll(cosmeticType.getDescription());
-                loreList.add("");
             }
 
             if (SettingsManager.getConfig().getBoolean("No-Permission.Show-In-Lore")) {
                 String yesOrNo = pm.hasPermission(player, cosmeticType) ? "Yes" : "No";
                 String s = SettingsManager.getConfig().getString("No-Permission.Lore-Message-" + yesOrNo);
+                loreList.add("");
                 loreList.add(ChatColor.translateAlternateColorCodes('&', s));
             }
 
@@ -309,7 +309,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         int current = 0;
         Map<Integer,T> slots = new HashMap<>();
         List<T> enabled = new ArrayList<>();
-        CosmeticType.valuesOf(category).forEach(t -> enabled.add((T) t));
+        CosmeticType.enabledOf(category).forEach(t -> enabled.add((T) t));
         enabled.removeIf(k -> shouldHideItem(player, k));
         for (int i = start; current < limit && i < enabled.size(); i++) {
             slots.put(COSMETICS_SLOTS[current++ % 21], enabled.get(i));
