@@ -11,8 +11,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
  * Created by Sacha on 24/12/15.
@@ -36,12 +37,11 @@ public class PermissionPrinter {
             return;
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
+        String dateString = date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
 
-        writer.println();
         writer.println("UltraCosmetics v" + ultraCosmetics.getDescription().getVersion() + " permissions.");
-        writer.println("Generated automatically on " + dateFormat.format(date));
+        writer.println("Generated automatically on " + dateString);
         writer.println();
         writer.println();
         writer.println("General permissions, enabled by default:");
@@ -72,7 +72,7 @@ public class PermissionPrinter {
         for (Category cat : Category.values()) {
             if (cat.isSuits()) continue;
             writer.println();
-            writer.println("Gadgets:");
+            writer.println(cat.getConfigPath() + ":");
             writer.println("  - ultracosmetics.gadgets.*");
             for (CosmeticType<?> type : cat.getValues()) {
                 writer.println("  - " + type.getPermission().getName());
