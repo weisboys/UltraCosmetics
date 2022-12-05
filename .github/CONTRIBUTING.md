@@ -22,6 +22,6 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 - When submitting a pull request, please make sure you're using the [pull request template](PULL_REQUEST_TEMPLATE.md).
 - Do not submit pull requests that fix typos in the messages files.
-  Typos in translations or source strings should be fixed/reported on our [Crowdin page](https://crowdin.com/project/ultracosmetics).
+  Typos in source strings or translations should be reported/fixed on our [Crowdin page](https://crowdin.com/project/ultracosmetics).
 - Do not submit pull requests that add translations.
   Please submit translations through [Crowdin](https://crowdin.com/project/ultracosmetics).
