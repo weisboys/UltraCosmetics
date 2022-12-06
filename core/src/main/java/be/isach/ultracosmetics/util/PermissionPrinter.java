@@ -73,7 +73,7 @@ public class PermissionPrinter {
             if (cat.isSuits()) continue;
             writer.println();
             writer.println(cat.getConfigPath() + ":");
-            writer.println("  - ultracosmetics.gadgets.*");
+            writer.println("  - " + cat.getPermission() + ".*");
             for (CosmeticType<?> type : cat.getValues()) {
                 writer.println("  - " + type.getPermission().getName());
             }
@@ -84,7 +84,7 @@ public class PermissionPrinter {
         for (SuitCategory cat : SuitCategory.values()) {
             writer.println("  - ultracosmetics.suits." + cat.getConfigName().toLowerCase() + ".*");
             for (SuitType suitType : cat.getPieces()) {
-                writer.println("  - " + suitType.getPermission().getName());
+                writer.println("    - " + suitType.getPermission().getName());
             }
         }
         writer.println();
