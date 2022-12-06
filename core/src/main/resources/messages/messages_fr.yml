@@ -377,7 +377,7 @@ Mounts:
   Horse:
     menu-name: '&7&lCheval'
     entity-displayname: '&lCheval de %playername%'
-    Description: '&7&oYour standard, everyday horse'
+    Description: '&7&oVotre cheval, tous les jours'
   Donkey:
     menu-name: '&8&lAne'
     entity-displayname: '&lÂne de %playername%'
