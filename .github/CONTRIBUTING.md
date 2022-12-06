@@ -25,3 +25,4 @@ Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
   Typos in source strings or translations should be reported/fixed on our [Crowdin page](https://crowdin.com/project/ultracosmetics).
 - Do not submit pull requests that add translations.
   Please submit translations through [Crowdin](https://crowdin.com/project/ultracosmetics).
+- Adding, modifying or deleting strings in the messages_en.yml file is allowed.
