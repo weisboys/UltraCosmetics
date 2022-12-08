@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ProjectileEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Projectile;
 import org.bukkit.util.Vector;
 
@@ -22,7 +23,11 @@ public class ProjectileEffectHelix extends ProjectileEffect {
         if (angle >= Math.PI * 2) angle %= Math.PI * 2;
         Vector vel = projectile.getVelocity();
         Vector particle = vel.getCrossProduct(Y_AXIS).normalize().rotateAroundAxis(vel, angle);
-        getType().getEffect().display(projectile.getLocation().add(particle));
-        getType().getEffect().display(projectile.getLocation().subtract(particle));
+        showHelix(projectile, projectile.getLocation().add(particle), projectile.getLocation().subtract(particle));
+    }
+
+    public void showHelix(Projectile projectile, Location a, Location b) {
+        getType().getEffect().display(a);
+        getType().getEffect().display(b);
     }
 }

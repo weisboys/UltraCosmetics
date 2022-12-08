@@ -387,7 +387,7 @@ public enum Particles {
      */
     MOB_APPEARANCE("mobappearance", 41, 8);
 
-    private final static int DEF_RADIUS = 128; // for convenience functions by iSach
+    public static final int DEF_RADIUS = 128; // for convenience functions by iSach
     private static final Map<String,Particles> NAME_MAP = new HashMap<>();
     private static final Map<Integer,Particles> ID_MAP = new HashMap<>();
     private final String name;
@@ -925,9 +925,9 @@ public enum Particles {
             step++;
             loc.add(v);
             if (this == Particles.REDSTONE) {
-                display(new Particles.OrdinaryColor(r, g, b), loc, 128);
+                display(new Particles.OrdinaryColor(r, g, b), loc, DEF_RADIUS);
             } else {
-                display(0, 0, 0, 0, 1, loc, 128);
+                display(0, 0, 0, 0, 1, loc, DEF_RADIUS);
             }
         }
     }
@@ -963,11 +963,11 @@ public enum Particles {
     }
 
     public void display(Location location, int amount, float speed) {
-        display(0, 0, 0, speed, amount, location, 128);
+        display(0, 0, 0, speed, amount, location, DEF_RADIUS);
     }
 
     public void display(Location location, int amount) {
-        display(0, 0, 0, 0, amount, location, 128);
+        display(0, 0, 0, 0, amount, location, DEF_RADIUS);
     }
 
     public void display(Location location) {
@@ -975,7 +975,7 @@ public enum Particles {
     }
 
     public void display(double x, double y, double z, Location location, int amount) {
-        display((float) x, (float) y, (float) z, 0f, amount, location, 128);
+        display((float) x, (float) y, (float) z, 0f, amount, location, DEF_RADIUS);
     }
 
     public void display(int red, int green, int blue, Location location, int amount) {

@@ -60,10 +60,14 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
 
     @Override
     public void onClear() {
+        projectiles.keySet().forEach(this::projectileLanded);
         projectiles.clear();
     }
 
     public void showParticles(Projectile projectile) {
         getType().getEffect().display(projectile.getLocation());
+    }
+
+    public void projectileLanded(Projectile projectile) {
     }
 }
