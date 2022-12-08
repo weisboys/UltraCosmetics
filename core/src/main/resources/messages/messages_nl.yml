@@ -1434,12 +1434,72 @@ Emotes:
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Rainbow:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    Description: '&7&oRainbow-colored particles'
+  Christmas:
+    name: '&4&lChrist&f&lmas'
+    Description: '&7&oMerry Christmas!'
+  RedstoneHelix:
+    name: '&4&lRedstone Helix'
+    Description: '&7&oRotating, red particles'
+  FlameHelix:
+    name: '&c&lFlame Helix'
+    Description: '&7&oRotating flames'
+  CursedHelix:
+    name: '&5&lCursed Helix'
+    Description: '&7&oRotating, purple particles'
+  Spark:
+    name: '&f&lSpark'
+    Description: '&7&oSparkling, white stars'
+  Redstone:
+    name: '&4&lRedstone'
+    Description: '&7&oSmall, red clouds'
+  Flame:
+    name: '&c&lFlame'
+    Description: '&7&oSmall flames'
+  Water:
+    name: '&9&lWater'
+    Description: '&7&oBlue waterdrops'
+  Witch:
+    name: '&5&lWitch'
+    Description: '&7&oPurple crosses'
+  Emerald:
+    name: '&2&lEmerald'
+    Description: '&7&oGreen stars'
+  Note:
+    name: '&e&lNote'
+    Description: '&7&oColorful notes'
+  Love:
+    name: '&d&lLove'
+    Description: '&7&oRed hearts'
+  Lava:
+    name: '&4&lLava'
+    Description: '&7&oLava bubbles'
+  Snow:
+    name: '&f&lSnow'
+    Description: '&7&oSnowball particles'
+  Slime:
+    name: '&a&lSlime'
+    Description: '&7&oSlimeball particles'
+  Crit:
+    name: '&7&lCrit'
+    Description: '&7&oLight brown crosses'
+  MagicCrit:
+    name: '&3&lMagic Crit'
+    Description: '&7&oCyan stars'
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
-  Helix:
-    name: '&4&lHelix'
-    Description: '&7&oRotating particles!'
+  Cloud:
+    name: '&f&lCloud'
+    Description: '&7&oWhite clouds'
+  Smoke:
+    name: '&7&lSmoke'
+    Description: '&7&oSmall, gray clouds'
+  Portal:
+    name: '&5&lPortal'
+    Description: '&7&oSmall, purple clouds'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
