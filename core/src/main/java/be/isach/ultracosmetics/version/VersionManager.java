@@ -20,12 +20,14 @@ public class VersionManager {
     private static final Map<UUID,Integer> WORLD_MAX_HEIGHTS = new HashMap<>();
 
     private final ServerVersion serverVersion;
+    private final boolean useNMS;
     private final IModule module;
     private final IEntityUtil entityUtil;
 
-    public VersionManager(ServerVersion serverVersion) throws ReflectiveOperationException {
+    public VersionManager(ServerVersion serverVersion, boolean useNMS) throws ReflectiveOperationException {
         this.serverVersion = serverVersion;
-        if (serverVersion.isNmsSupported()) {
+        this.useNMS = useNMS;
+        if (useNMS) {
             module = loadModule("VersionModule");
             entityUtil = loadModule("EntityUtil");
         } else {
@@ -45,6 +47,10 @@ public class VersionManager {
 
     public IModule getModule() {
         return module;
+    }
+
+    public boolean isUsingNMS() {
+        return useNMS;
     }
 
     public int getWorldMinHeight(World world) {

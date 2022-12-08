@@ -129,7 +129,7 @@ public class MountType extends CosmeticEntType<Mount> {
             new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
         }
 
-        if (version.isNmsSupported()) {
+        if (vm.isUsingNMS()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
             new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
             new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {

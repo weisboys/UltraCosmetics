@@ -118,17 +118,26 @@ public class UltraCosmeticsData {
 
         // mappings check is here so it's grouped with other NMS log messages
         // bigger message so server owners might see it
+        boolean useNMS = serverVersion.isNmsSupported();
         if (!checkMappingsVersion(serverVersion)) {
-            logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!! HEY YOU !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            logger.write(LogLevel.WARNING, "Server internals seem to have changed since this build was created.");
-            logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
-            logger.write(LogLevel.WARNING, "UltraCosmetics will continue running but you will likely experience issues!");
-            logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
+            if (SettingsManager.getConfig().getBoolean("Force-NMS")) {
+                logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!! HEY YOU !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                logger.write(LogLevel.WARNING, "Server internals seem to have changed since this build was created,");
+                logger.write(LogLevel.WARNING, "but you have chosen to override version checking!");
+                logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
+                logger.write(LogLevel.WARNING, "UltraCosmetics will continue running but you will likely experience issues!");
+                logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            } else {
+                logger.write(LogLevel.WARNING, "Server internals have changed since this build was created, so");
+                logger.write(LogLevel.WARNING, "NMS support will be disabled. If you're sure you know what you're doing,");
+                logger.write(LogLevel.WARNING, "you can override this in the config.");
+                useNMS = false;
+            }
         }
 
         try {
-            versionManager = new VersionManager(serverVersion);
+            versionManager = new VersionManager(serverVersion, useNMS);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
             logger.write("No module found for " + serverVersion + "! UC will now be disabled.");

@@ -419,7 +419,7 @@ public class UltraCosmetics extends JavaPlugin {
         Metrics metrics = new Metrics(this, 2629);
         String nms;
         ServerVersion sv = UltraCosmeticsData.get().getServerVersion();
-        if (sv.isNmsSupported()) {
+        if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             nms = sv.getNmsVersion();
         } else {
             nms = "NMS-less " + (sv.isAtLeast(ServerVersion.v1_13) ? "flattening" : "legacy");
@@ -637,6 +637,7 @@ public class UltraCosmetics extends JavaPlugin {
         config.addDefault("Prevent-Cosmetics-In-Vanish", false, "Whether UltraCosmetics should prevent vanished players from using cosmetics.", "Works with any vanish plugin that uses 'vanished' metdata.");
         config.addDefault("Max-Entity-Spawns-Per-Tick", 10, "Limits the number of entities that can be spawned by a single gadget per tick (default 10.)", "Set to 0 to spawn all entities instantly.");
         config.addDefault("DiscordSRV-Loot-Channel", 0, "# Discord channel ID to send treasure chest loot messages to.", "Requires DiscordSRV. 0 to disable.");
+        config.addDefault("Force-NMS", false, "Overrides minor version checking and enables NMS");
 
         for (Category category : Category.values()) {
             config.addDefault("Categories-Enabled." + category.getConfigPath(), true);

@@ -347,3 +347,6 @@ WorldGuard-Integration: true
 # Discord channel ID to send treasure chest loot messages to.
 # Requires DiscordSRV. 0 to disable.
 DiscordSRV-Loot-Channel: 0
+
+# Overrides minor version checking and enables NMS
+Force-NMS: false

@@ -201,7 +201,7 @@ public class PetType extends CosmeticEntType<Pet> {
             break;
         }
 
-        if (serverVersion.isNmsSupported()) {
+        if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             new PetType("Pumpling", XMaterial.PUMPKIN, EntityType.ZOMBIE, UltraCosmeticsData.get().getVersionManager().getModule().getPumplingClass());
         }
 

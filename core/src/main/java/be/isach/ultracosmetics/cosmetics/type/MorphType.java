@@ -22,12 +22,11 @@ import be.isach.ultracosmetics.cosmetics.morphs.MorphVillager;
 import be.isach.ultracosmetics.cosmetics.morphs.MorphWitch;
 import be.isach.ultracosmetics.cosmetics.morphs.MorphWitherSkeleton;
 import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.version.VersionManager;
 
 import org.bukkit.entity.EntityType;
 
 import com.cryptomorin.xseries.XMaterial;
-
-import java.util.function.Predicate;
 
 /**
  * Morph types.
@@ -44,13 +43,13 @@ public class MorphType extends CosmeticType<Morph> {
     private final boolean canUseSkill;
 
     private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz) {
-        this(configName, material, disguiseType, clazz, v -> true);
+        this(configName, material, disguiseType, clazz, true);
     }
 
-    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz, Predicate<ServerVersion> canUseSkill) {
+    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz, boolean canUseSkill) {
         super(Category.MORPHS, configName, material, clazz);
         this.disguiseType = disguiseType;
-        this.canUseSkill = canUseSkill.test(UltraCosmeticsData.get().getServerVersion());
+        this.canUseSkill = canUseSkill;
     }
 
     /**
@@ -77,6 +76,7 @@ public class MorphType extends CosmeticType<Morph> {
 
     public static void register() {
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
+        VersionManager vm = UltraCosmeticsData.get().getVersionManager();
 
         new MorphType("Bat", XMaterial.COAL, EntityType.BAT, MorphBat.class);
         new MorphType("Blaze", XMaterial.BLAZE_POWDER, EntityType.BLAZE, MorphBlaze.class);
@@ -92,7 +92,7 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Witch", XMaterial.POISONOUS_POTATO, EntityType.WITCH, MorphWitch.class);
 
         if (version.isAtLeast(ServerVersion.v1_10)) {
-            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, ServerVersion::isNmsSupported);
+            new MorphType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, MorphPolarBear.class, vm.isUsingNMS());
         }
 
         if (version.isAtLeast(ServerVersion.v1_11)) {
@@ -105,8 +105,8 @@ public class MorphType extends CosmeticType<Morph> {
         }
 
         new MorphType("Sheep", XMaterial.WHITE_WOOL, EntityType.SHEEP, MorphSheep.class);
-        if (version.isNmsSupported()) {
-            new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass(), ServerVersion::isNmsSupported);
+        if (vm.isUsingNMS()) {
+            new MorphType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, UltraCosmeticsData.get().getVersionManager().getModule().getElderGuardianClass());
         }
     }
 }

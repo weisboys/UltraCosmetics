@@ -123,7 +123,7 @@ public class GadgetType extends CosmeticType<Gadget> {
             new GadgetType(XMaterial.SHEARS, 25, 11, "ExplosiveSheep", GadgetExplosiveSheep.class);
         }
 
-        if (version.isNmsSupported()) {
+        if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             new GadgetType(XMaterial.PACKED_ICE, 12, 2, "BlizzardBlaster", GadgetBlizzardBlaster.class);
             new GadgetType(XMaterial.DIAMOND_HOE, 3, 0, "QuakeGun", GadgetQuakeGun.class);
         }
