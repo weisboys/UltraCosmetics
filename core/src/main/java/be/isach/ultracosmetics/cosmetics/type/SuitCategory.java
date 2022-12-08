@@ -30,7 +30,8 @@ public enum SuitCategory {
             XMaterial.LEATHER_CHESTPLATE,
             XMaterial.LEATHER_LEGGINGS,
             XMaterial.LEATHER_BOOTS,
-            s -> Color.fromRGB(MathUtils.random(256), MathUtils.random(256), MathUtils.random(256)),
+            // MathUtils.random(int) is inclusive
+            s -> Color.fromRGB(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255)),
             SuitRave.class) {
         @Override
         public void setupConfig(CustomConfiguration config, String path) {
