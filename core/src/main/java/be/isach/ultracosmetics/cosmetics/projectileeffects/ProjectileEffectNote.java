@@ -24,7 +24,7 @@ public class ProjectileEffectNote extends ProjectileEffectBasicTrail {
 
     @Override
     public void showParticles(Projectile projectile) {
-        int color = colors.computeIfAbsent(projectile, p -> 0);
+        int color = colors.getOrDefault(projectile, 0);
         getType().getEffect().display(new NoteColor(color), projectile.getLocation(), Particles.DEF_RADIUS);
         // Magic function source: https://minecraft.fandom.com/wiki/Note_Block#Notes
         // I know there is an API for playing note block sounds,
