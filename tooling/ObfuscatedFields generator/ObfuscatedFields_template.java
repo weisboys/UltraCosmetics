@@ -18,7 +18,7 @@ public class ObfuscatedFields {
     public static final String DISABLED_FLAGS = "%placeholder%";
     // corresponds to net.minecraft.core.MappedRegistry#frozen
     public static final String FROZEN = "%placeholder%";
-    // corresponds to net.minecraft.core.MappedRegistry#intrusiveHolderCache
+    // corresponds to net.minecraft.core.MappedRegistry#unregisteredIntrusiveHolders
     public static final String INTRUSIVE_HOLDER_CACHE = "%placeholder%";
 
     private ObfuscatedFields() {

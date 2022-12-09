@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.Set;
 
 import net.minecraft.SharedConstants;
-import net.minecraft.core.DefaultedRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
@@ -46,9 +45,8 @@ public class CustomEntities {
         @SuppressWarnings("deprecation")
         Map<String,Type<?>> types = (Map<String,Type<?>>) DataFixers.getDataFixer().getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().getWorldVersion())).findChoiceType(References.ENTITY).types();
 
-        // true if the registry present is a vanilla registry and not a custom one like
-        // Citizens provides
-        boolean isRealRegistry = BuiltInRegistries.ENTITY_TYPE.getClass().equals(DefaultedRegistry.class);
+        // true if the registry present is a vanilla registry and not a custom one like Citizens provides
+        boolean isRealRegistry = BuiltInRegistries.ENTITY_TYPE.getClass().getName().startsWith("net.minecraft.");
         if (isRealRegistry) {
             unfreezeRegistry();
         } else {
