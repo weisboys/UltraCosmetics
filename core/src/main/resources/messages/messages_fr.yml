@@ -672,8 +672,8 @@ Pets:
     entity-displayname: '&l%playername%''s Cave Spider'
     Description: '&7&oA Spider, but poisonous!'
   Dolphin:
-    menu-name: '&b&lDolphin'
-    entity-displayname: '&l%playername%''s Dolphin'
+    menu-name: '&b&Dauphin'
+    entity-displayname: '&l%playername% Dauphin'
     Description: '&7&oThe happiest creature of the seas!'
   Spider:
     menu-name: '&8&lAraignée'
