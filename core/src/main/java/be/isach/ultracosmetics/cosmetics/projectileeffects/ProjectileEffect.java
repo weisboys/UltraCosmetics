@@ -1,26 +1,37 @@
 package be.isach.ultracosmetics.cosmetics.projectileeffects;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.ProjectileEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
 import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> implements Updatable {
     private final Map<Projectile,Location> projectiles = new HashMap<>();
+    private Set<EntityType> types = new HashSet<>();
 
     public ProjectileEffect(UltraPlayer owner, ProjectileEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        for (String entity : SettingsManager.getConfig().getStringList("Projectile-Types")) {
+            try {
+                types.add(EntityType.valueOf(entity.toUpperCase()));
+            } catch (IllegalArgumentException e) {
+            }
+        }
     }
 
     @Override
@@ -36,6 +47,7 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
     @EventHandler
     public void onShoot(ProjectileLaunchEvent event) {
         if (event.getEntity().getShooter() != getPlayer()) return;
+        if (!types.contains(event.getEntityType())) return;
         projectiles.put(event.getEntity(), null);
     }
 

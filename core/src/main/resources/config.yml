@@ -427,7 +427,6 @@ Force-NMS: false
 # For hints on what a Projectile is, see: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Projectile.html
 Projectile-Types:
 - ARROW
-- EGG
 - SNOWBALL
 - SPECTRAL_ARROW
 - TRIDENT
