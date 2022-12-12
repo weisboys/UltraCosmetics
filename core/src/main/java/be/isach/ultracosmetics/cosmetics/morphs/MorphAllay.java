@@ -12,15 +12,15 @@ import org.bukkit.util.Vector;
 import com.cryptomorin.xseries.XSound;
 
 /**
- * Represents an instance of a bat morph summoned by a player.
+ * Represents an instance of a allay morph summoned by a player.
  *
- * @author iSach
- * @since 08-26-2015
+ * @author Chris6ix
+ * @since 25-10-2022
  */
-public class MorphBat extends Morph {
-    public MorphBat(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
+public class MorphAllay extends Morph {
+    public MorphAllay(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-    }
+   }
 
     @Override
     protected void onEquip() {
@@ -38,7 +38,7 @@ public class MorphBat extends Morph {
             MathUtils.applyVelocity(getPlayer(), v);
             event.getPlayer().setFlying(false);
             event.setCancelled(true);
-            XSound.ENTITY_BAT_LOOP.play(getPlayer(), 0.4f, 1.0f);
+            XSound.ENTITY_ALLAY_AMBIENT_WITH_ITEM.play(getPlayer(), 0.4f, 1.0f);
         }
     }
 
