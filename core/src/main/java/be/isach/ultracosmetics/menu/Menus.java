@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.menu.menus.MenuDeathEffects;
 import be.isach.ultracosmetics.menu.menus.MenuEmotes;
 import be.isach.ultracosmetics.menu.menus.MenuGadgets;
 import be.isach.ultracosmetics.menu.menus.MenuHats;
@@ -12,6 +13,7 @@ import be.isach.ultracosmetics.menu.menus.MenuMorphs;
 import be.isach.ultracosmetics.menu.menus.MenuMounts;
 import be.isach.ultracosmetics.menu.menus.MenuParticleEffects;
 import be.isach.ultracosmetics.menu.menus.MenuPets;
+import be.isach.ultracosmetics.menu.menus.MenuProjectileEffects;
 import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.menu.menus.MenuSuits;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -43,7 +45,13 @@ public class Menus {
         categoryMenus.put(Category.MORPHS, new MenuMorphs(ultraCosmetics));
         categoryMenus.put(Category.MOUNTS, new MenuMounts(ultraCosmetics));
         categoryMenus.put(Category.PETS, new MenuPets(ultraCosmetics));
-        categoryMenus.put(Category.SUITS, new MenuSuits(ultraCosmetics));
+        categoryMenus.put(Category.PROJECTILE_EFFECTS, new MenuProjectileEffects(ultraCosmetics));
+        categoryMenus.put(Category.DEATH_EFFECTS, new MenuDeathEffects(ultraCosmetics));
+        MenuSuits ms = new MenuSuits(ultraCosmetics);
+        categoryMenus.put(Category.SUITS_HELMET, ms);
+        categoryMenus.put(Category.SUITS_CHESTPLATE, ms);
+        categoryMenus.put(Category.SUITS_LEGGINGS, ms);
+        categoryMenus.put(Category.SUITS_BOOTS, ms);
         this.mainMenu = new MenuMain(ultraCosmetics);
     }
 

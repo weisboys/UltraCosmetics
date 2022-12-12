@@ -3,23 +3,25 @@ package be.isach.ultracosmetics;
 import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.AutoCommentConfiguration;
 import be.isach.ultracosmetics.config.CustomConfiguration;
+import be.isach.ultracosmetics.config.FunctionalConfigLoader;
 import be.isach.ultracosmetics.config.ManualCommentConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.config.TreasureManager;
 import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.economy.EconomyHandler;
+import be.isach.ultracosmetics.hook.DiscordSRVHook;
+import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
+import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
-import be.isach.ultracosmetics.permissions.LuckPermsHook;
-import be.isach.ultracosmetics.permissions.PermissionCommand;
-import be.isach.ultracosmetics.permissions.PermissionProvider;
-import be.isach.ultracosmetics.placeholderapi.PlaceholderHook;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
@@ -42,6 +44,8 @@ import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -127,7 +131,9 @@ public class UltraCosmetics extends JavaPlugin {
 
     private EconomyHandler economyHandler;
 
-    private PermissionProvider permissionProvider;
+    private PermissionManager permissionManager;
+
+    private DiscordSRVHook discordHook;
 
     /**
      * Manages WorldGuard flags.
@@ -141,6 +147,8 @@ public class UltraCosmetics extends JavaPlugin {
      * Problems with the configuration of UC, severe (aka fatal) or otherwise
      */
     private Set<Problem> activeProblems = new HashSet<>();
+
+    private Set<Problem> loadTimeProblems = new HashSet<>();
 
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
@@ -165,6 +173,7 @@ public class UltraCosmetics extends JavaPlugin {
         if (worldGuardIntegration && getServer().getPluginManager().getPlugin("WorldGuard") != null) {
             worldGuardManager.register();
         }
+        loadTimeProblems = new HashSet<>(activeProblems);
     }
 
     /**
@@ -172,6 +181,13 @@ public class UltraCosmetics extends JavaPlugin {
      */
     @Override
     public void onEnable() {
+        start();
+    }
+
+    public void start() {
+        // If this is a reload, it's important to clear all enable-time problems
+        activeProblems = new HashSet<>(loadTimeProblems);
+
         // Enable command manager as early as possible
         // so we can print helpful error messages about
         // why the plugin didn't start correctly.
@@ -202,6 +218,7 @@ public class UltraCosmetics extends JavaPlugin {
             return;
         }
 
+        CosmeticType.loadCustomCosmetics();
         UltraCosmeticsData.get().initConfigFields();
 
         String langFileName = "messages_" + UltraCosmeticsData.get().getLanguage() + ".yml";
@@ -229,8 +246,7 @@ public class UltraCosmetics extends JavaPlugin {
         // Beginning of boot log. basic informations.
         getSmartLogger().write("-------------------------------------------------------------------");
         getSmartLogger().write("Thanks for using UltraCosmetics!");
-        getSmartLogger().write("Plugin by Datatags.");
-        getSmartLogger().write("Original Author: iSach");
+        getSmartLogger().write("Plugin by Datatags. Original Author: iSach");
         getSmartLogger().write("Link: https://bit.ly/UltraCosmetics");
 
         // Initialize NMS Module
@@ -254,7 +270,7 @@ public class UltraCosmetics extends JavaPlugin {
         registerListeners();
 
         // Set up Cosmetics config.
-        new CosmeticConfigManager(this).setupCosmeticsConfigs();
+        CosmeticType.register();
 
         // Can't use Category.MORPHS.isEnabled() here because it checks whether LibsDisguises is enabled on its own
         if (SettingsManager.getConfig().getBoolean("Categories-Enabled." + Category.MORPHS.getConfigPath())) {
@@ -287,14 +303,13 @@ public class UltraCosmetics extends JavaPlugin {
         // Set up economy if needed.
         setupEconomy();
 
-        setupPermissionProvider();
-
         if (!UltraCosmeticsData.get().usingFileStorage()) {
             getSmartLogger().write();
             getSmartLogger().write("Connecting to MySQL database...");
 
             // Start MySQL. May forcefully switch to file storage if it fails to connect.
             mySqlConnectionManager = new MySqlConnectionManager(this);
+            mySqlConnectionManager.start();
             if (mySqlConnectionManager.success()) {
                 getSmartLogger().write("Connected to MySQL database.");
             } else {
@@ -302,6 +317,9 @@ public class UltraCosmetics extends JavaPlugin {
                 activeProblems.add(Problem.SQL_INIT_FAILURE);
             }
         }
+
+        permissionManager = new PermissionManager(this);
+
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
@@ -314,10 +332,17 @@ public class UltraCosmetics extends JavaPlugin {
         }
         armorStandManager = new ArmorStandManager(this);
 
+        if (getServer().getPluginManager().isPluginEnabled("DiscordSRV")
+                && !SettingsManager.getConfig().getString("DiscordSRV-Loot-Channel").equals("0")) {
+            discordHook = new DiscordSRVHook();
+            getSmartLogger().write();
+            getSmartLogger().write("Hooked into DiscordSRV");
+        }
+
         // Start up bStats
         setupMetrics();
 
-        reload();
+        this.menus = new Menus(this);
 
         try {
             config.save(file);
@@ -335,20 +360,26 @@ public class UltraCosmetics extends JavaPlugin {
     }
 
     /**
-     * Called on startup and when things need to be reloaded.
-     * Currently only some parts of the plugin are reloaded.
-     */
-    public void reload() {
-        this.menus = new Menus(this);
-    }
-
-    /**
      * Called when plugin disables.
      */
     @Override
     public void onDisable() {
+        shutdown();
+    }
+
+    public void shutdown() {
+        // Prepare for re-enable
+        HandlerList.unregisterAll(this);
+        Bukkit.getScheduler().cancelTasks(this);
+
         // when the plugin is disabled from onEnable, skip cleanup
         if (!enableFinished) return;
+
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getOpenInventory().getTopInventory().getHolder() instanceof CosmeticsInventoryHolder) {
+                player.closeInventory();
+            }
+        }
 
         if (mySqlConnectionManager != null && mySqlConnectionManager.success()) {
             mySqlConnectionManager.shutdown();
@@ -385,27 +416,11 @@ public class UltraCosmetics extends JavaPlugin {
         UltraCosmeticsData.get().checkTreasureChests();
     }
 
-    private void setupPermissionProvider() {
-        CustomConfiguration config = SettingsManager.getConfig();
-        if (config.getString("TreasureChests.Permission-Add-Command", "").startsWith("!lp-api")) {
-            if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
-                permissionProvider = new LuckPermsHook(this);
-                return;
-            }
-            getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present. Please change it manually.");
-            config.set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
-        }
-        if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
-            activeProblems.add(Problem.PERMISSION_COMMAND_NOT_SET);
-        }
-        permissionProvider = new PermissionCommand();
-    }
-
     private void setupMetrics() {
         Metrics metrics = new Metrics(this, 2629);
         String nms;
         ServerVersion sv = UltraCosmeticsData.get().getServerVersion();
-        if (sv.isNmsSupported()) {
+        if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             nms = sv.getNmsVersion();
         } else {
             nms = "NMS-less " + (sv.isAtLeast(ServerVersion.v1_13) ? "flattening" : "legacy");
@@ -435,78 +450,21 @@ public class UltraCosmetics extends JavaPlugin {
         if (!file.exists()) {
             saveResource("config.yml", false);
         }
-        if (!loadConfiguration(file)) return false;
+        config = loadConfiguration(c -> c.load(file));
+        if (config == null) return false;
 
-        List<String> disabledCommands = new ArrayList<>();
-        disabledCommands.add("hat");
-        config.addDefault("Disabled-Commands", disabledCommands, "List of commands that won't work when cosmetics are equipped.", "Command arguments are ignored, commands are blocked when base command matches.");
+        Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("config.yml");
+        CustomConfiguration defaults = loadConfiguration(c -> c.load(reader));
+        if (defaults == null) return false;
 
-        List<String> enabledWorlds = new ArrayList<>();
-        enabledWorlds.add("*");
-        config.addDefault("Enabled-Worlds", enabledWorlds, "List of the worlds where cosmetics are enabled!", "If list contains '*', all worlds will be allowed.");
+        configMigration();
 
+        for (String key : defaults.getKeys(true)) {
+            if (key.startsWith("TreasureChests.Loots.Commands.")) continue;
+            config.addDefault(key, defaults.get(key), defaults.comments(key));
+        }
         config.set("Disabled-Items", null);
-        config.addDefault("Economy", "Vault");
-
-        // getInt() defaults to 0 if not found
-        if (config.getInt("TreasureChests.Count") < 1 || config.getInt("TreasureChests.Count") > 4) {
-            config.set("TreasureChests.Count", 4, "How many treasure chests should be opened per key? Min 1, max 4");
-        }
-        String mode = config.getString("TreasureChests.Mode", "");
-        if (!mode.equalsIgnoreCase("structure") && !mode.equalsIgnoreCase("simple") && !mode.equalsIgnoreCase("both")) {
-            config.set("TreasureChests.Mode", "structure", "The treasure chest mode. Options:", "- structure: places blocks and chests (default)", "- simple: only gives <Count> cosmetics, no blocks are placed", "- both: players can choose either mode through the GUI");
-        }
-        // Add default values people may not have because of an old version of UC.
-        if (config.isConfigurationSection("TreasureChests.Location")) {
-            config.set("TreasureChests.Locations.Enabled", config.getBoolean("TreasureChests.Location.Enabled"));
-            config.set("TreasureChests.Location.Enabled", null);
-            ConfigurationSection section = config.getConfigurationSection("TreasureChests.Location");
-            config.set("TreasureChests.Location", null);
-            config.set("TreasureChests.Locations.default", section);
-        }
-        if (!config.isConfigurationSection("TreasureChests.Locations")) {
-            ConfigurationSection section = config.createSection("TreasureChests.Locations.default");
-            config.set("TreasureChests.Locations.default.Enabled", false, "Whether players should be moved to a certain", "location before opening a treasure chest.", "Does not override /uc treasure with position args.");
-            config.set("TreasureChests.Location.default.X", 0, "The location players should be moved to.", "Block coordinates only, like 104, not 103.63", "To use the world the player is in, set World to 'none'");
-            section.set("Y", 63);
-            section.set("Z", 0);
-            section.set("World", Bukkit.getWorlds().get(0).getName());
-        }
-
-        config.addDefault("TreasureChests.Locations.default.World", Bukkit.getWorlds().get(0).getName());
-
-        if (!config.isInt("TreasureChests.Loots.Money.Min")) {
-            int min = 15;
-            int max = config.getInt("TreasureChests.Loots.Money.Max");
-            if (max < 5) {
-                min = 0;
-            } else if (max < 15) {
-                min = 5;
-            }
-            config.set("TreasureChests.Loots.Money.Min", min);
-        }
-
-        if (!config.isConfigurationSection("TreasureChests.Loots.Gadgets")) {
-            ConfigurationSection section = config.createSection("TreasureChests.Loots.Gadgets", "Chance of getting a GADGET", "This is different from ammo!");
-            section.set("Enabled", true);
-            section.set("Chance", 20);
-            section.set("Message.enabled", false);
-            section.set("Message.message", "%prefix% &6&l%name% found gadget %gadget%");
-        }
-
-        if (!config.isConfigurationSection("TreasureChests.Loots.Suits")) {
-            config.createSection("TreasureChests.Loots.Suits");
-            config.set("TreasureChests.Loots.Suits.Enabled", true);
-            config.set("TreasureChests.Loots.Suits.Chance", 10);
-            config.set("TreasureChests.Loots.Suits.Message.enabled", false);
-            config.set("TreasureChests.Loots.Suits.Message.message", "%prefix% &6&l%name% found suit part: %suitw%");
-        }
-
-        if (!config.isConfigurationSection("Categories.Suits")) {
-            ConfigurationSection suits = config.createSection("Categories.Suits");
-            suits.set("Main-Menu-Item", XMaterial.LEATHER_CHESTPLATE.parseMaterial().toString());
-            suits.set("Go-Back-Arrow", true);
-        }
+        config.set("Menu-Item.Data", null);
 
         if (!config.isConfigurationSection("TreasureChests.Loots.Commands")) {
             ConfigurationSection section = config.createSection("TreasureChests.Loots.Commands.shoutout");
@@ -530,81 +488,6 @@ public class UltraCosmetics extends JavaPlugin {
             section.set("Commands", Arrays.asList("give %name% yellow_flower 1", "lp user %name% permission set example.yellowflower true"));
         }
 
-        ConfigurationSection oldSQL = SettingsManager.getConfig().getConfigurationSection("Ammo-System-For-Gadgets.MySQL");
-        if (oldSQL != null) {
-            SettingsManager.getConfig().set("MySQL", oldSQL);
-            SettingsManager.getConfig().set("Ammo-System-For-Gadgets.MySQL", null);
-        }
-        String oldMysqlKey = "Ammo-System-For-Gadgets.System";
-        if (config.isString(oldMysqlKey)) {
-            config.set("MySQL.Enabled", !config.getString(oldMysqlKey).equalsIgnoreCase("file"));
-            config.set(oldMysqlKey, null);
-        }
-        config.addDefault("MySQL.Enabled", false);
-        config.addDefault("MySQL.hostname", "localhost");
-        config.addDefault("MySQL.username", "root");
-        config.addDefault("MySQL.password", "password");
-        config.addDefault("MySQL.port", "3306");
-        config.addDefault("MySQL.database", "database");
-        config.addDefault("MySQL.table", "UltraCosmeticsData");
-
-        config.addDefault("Categories.Clear-Cosmetic-Item", XMaterial.REDSTONE_BLOCK.parseMaterial().toString(), "Item where user click to clear a cosmetic.");
-        config.addDefault("Categories.Previous-Page-Item", XMaterial.ENDER_PEARL.parseMaterial().toString(), "Previous Page Item");
-        config.addDefault("Categories.Next-Page-Item", XMaterial.ENDER_EYE.parseMaterial().toString(), "Next Page Item");
-        config.addDefault("Categories.Back-Main-Menu-Item", XMaterial.ARROW.parseMaterial().toString(), "Back to Main Menu Item");
-        config.addDefault("Categories.Self-View-Item.When-Enabled", XMaterial.ENDER_EYE.parseMaterial().toString(), "Item in Morphs Menu when Self View enabled.");
-        config.addDefault("Categories.Self-View-Item.When-Disabled", XMaterial.ENDER_PEARL.parseMaterial().toString(), "Item in Morphs Menu when Self View disabled.");
-        config.addDefault("Categories.Gadgets-Item.When-Enabled", XMaterial.LIGHT_GRAY_DYE.parseMaterial().toString(), "Item in Gadgets Menu when Gadgets enabled.");
-        config.addDefault("Categories.Gadgets-Item.When-Disabled", XMaterial.GRAY_DYE.parseMaterial().toString(), "Item in Gadgets Menu when Gadgets disabled.");
-        config.addDefault("Categories.Rename-Pet-Item", XMaterial.NAME_TAG.parseMaterial().toString(), "Item in Pets Menu to rename current pet.");
-        config.addDefault("Categories.Close-GUI-After-Select", true, "Should GUI close after selecting a cosmetic?");
-        config.addDefault("No-Permission.Custom-Item.Lore", Arrays.asList("", "&c&lYou do not have permission for this!", ""));
-        config.addDefault("No-Permission.Allow-Purchase", false, "Requires Dont-Show-Item to be false");
-        config.addDefault("Categories.Back-To-Main-Menu-Custom-Command.Enabled", false);
-        config.addDefault("Categories.Back-To-Main-Menu-Custom-Command.Command", "cc open custommenu.yml {player}");
-
-        config.addDefault("Categories-Enabled.Suits", true, "Do you want to enable Suits category?");
-
-        config.addDefault("Categories.Gadgets.Cooldown-In-ActionBar", true, "You wanna show the cooldown of", "current gadget in action bar?");
-
-        // Remove enabled field, replace by is-enabled (to replace to false by def)
-        if (config.contains("Auto-Equip-Cosmetics.enabled")) {
-            config.set("Auto-Equip-Cosmetics.enabled", null);
-            config.set("Auto-Equip-Cosmetics.is-enabled", false);
-        }
-
-        if (config.isBoolean("Auto-Equip-Cosmetics.is-enabled")) {
-            boolean autoEquip = config.getBoolean("Auto-Equip-Cosmetics.is-enabled");
-            config.set("Auto-Equip-Cosmetics", autoEquip, "Allows for players to auto-equip on join cosmetics they had before disconnecting.", "Supports both flatfile and SQL, choosing SQL when possible.");
-        }
-
-        if (!config.contains("allow-damage-to-players-on-mounts")) {
-            config.set("allow-damage-to-players-on-mounts", false);
-        }
-
-        config.addDefault("WorldGuard-Integration", true, "Whether WorldGuard should be hooked when loading UC", "Disable this if UC has trouble loading WorldGuard");
-        config.addDefault("Pets-Are-Silent", false, "Are pets prevented from making sounds?");
-        config.addDefault("Gadgets-Are-Silent", false, "Are gadgets prevented from making sounds?");
-
-        if (config.isBoolean("Menu-Item.Give-On-Join")) {
-            boolean enabled = config.getBoolean("Menu-Item.Give-On-Join");
-            config.set("Menu-Item.Enabled", enabled);
-            config.set("Menu-Item.Give-On-Join", null);
-            config.set("Menu-Item.Give-On-Respawn", null);
-        }
-        config.addDefault("Menu-Item.Custom-Model-Data", 0, "Custom model data for the menu item. Only supported on MC >= 1.14.4 (when it was added)");
-        config.addDefault("Menu-Item.Open-Menu-On-Inventory-Click", false, "Whether to open cosmetics menu when the menu item is clicked from the player's inventory");
-        config.set("Menu-Item.Data", null);
-        config.addDefault("Menu-Item.Lore", "&aRight-click with this\n&ato open the menu", "Lore to apply to the menu item. Set to '' to disable");
-        config.addDefault("Auto-Equip-Cosmetics", true, "Allows for players to auto-equip on join cosmetics they had before disconnecting.", "Supports both flatfile and SQL, choosing SQL when possible.");
-        config.addDefault("Area-Debug", false, "When enabled, prints why area checks failed to the console");
-        List<String> airMaterials = new ArrayList<>();
-        Arrays.asList(XMaterial.AIR, XMaterial.CAVE_AIR, XMaterial.VOID_AIR, XMaterial.LIGHT).forEach(k -> airMaterials.add(k.name()));
-        config.addDefault("Air-Materials", airMaterials, "Materials that are treated as air. Changing these is not recommended.");
-        config.addDefault("Auto-Update", false, "Whether UltraCosmetics should automatically download and install new versions.", "Requires Check-For-Updates to be enabled.");
-        config.addDefault("Prevent-Cosmetics-In-Vanish", false, "Whether UltraCosmetics should prevent vanished players from using cosmetics.", "Works with any vanish plugin that uses 'vanished' metdata.");
-        config.addDefault("Max-Entity-Spawns-Per-Tick", 10, "Limits the number of entities that can be spawned by a single gadget per tick (default 10.)", "Set to 0 to spawn all entities instantly.");
-
         String pathPrefix = "messages/messages_";
         List<String> supportedLanguages = new ArrayList<>();
         try {
@@ -624,9 +507,6 @@ public class UltraCosmetics extends JavaPlugin {
         }
 
         config.set("Supported-Languages", supportedLanguages, "Languages supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
-        config.addDefault("Language", "en", "The language to use. Can be set to any language listed above.");
-
-        upgradeIdsToMaterials();
 
         try {
             config.save(file);
@@ -635,6 +515,44 @@ public class UltraCosmetics extends JavaPlugin {
             return false;
         }
         return true;
+    }
+
+    private void configMigration() {
+        ConfigurationSection oldSQL = SettingsManager.getConfig().getConfigurationSection("Ammo-System-For-Gadgets.MySQL");
+        if (oldSQL != null) {
+            SettingsManager.getConfig().set("MySQL", oldSQL);
+            SettingsManager.getConfig().set("Ammo-System-For-Gadgets.MySQL", null);
+        }
+        String oldMysqlKey = "Ammo-System-For-Gadgets.System";
+        if (config.isString(oldMysqlKey)) {
+            config.set("MySQL.Enabled", false);
+            config.set(oldMysqlKey, null);
+        }
+        if (config.isString("MySQL.table")) {
+            config.set("MySQL.table", null);
+            if (config.getBoolean("MySQL.Enabled")) {
+                config.set("MySQL.Enabled", false);
+                config.set("MySQL.Legacy", true, "To remove the warning about how the SQL config options", "have changed, delete this key.");
+            }
+        }
+        if (config.getBoolean("MySQL.Legacy")) {
+            getSmartLogger().write(LogLevel.WARNING, "SQL config options have changed, please check they are correct.");
+            getSmartLogger().write(LogLevel.WARNING, "Remove the 'Legacy' key in the MySQL block to remove this message.");
+            addProblem(Problem.SQL_MIGRATION_REQUIRED);
+        }
+
+        if (config.isBoolean("Auto-Equip-Cosmetics.is-enabled")) {
+            boolean autoEquip = config.getBoolean("Auto-Equip-Cosmetics.is-enabled");
+            config.set("Auto-Equip-Cosmetics", autoEquip, "Allows for players to auto-equip on join cosmetics they had before disconnecting.", "Supports both flatfile and SQL, choosing SQL when possible.");
+        }
+
+        if (config.isBoolean("Menu-Item.Give-On-Join")) {
+            boolean enabled = config.getBoolean("Menu-Item.Give-On-Join");
+            config.set("Menu-Item.Enabled", enabled);
+            config.set("Menu-Item.Give-On-Join", null);
+            config.set("Menu-Item.Give-On-Respawn", null);
+        }
+        upgradeIdsToMaterials();
     }
 
     /**
@@ -726,15 +644,20 @@ public class UltraCosmetics extends JavaPlugin {
         return economyHandler;
     }
 
-    public PermissionProvider getPermissionProvider() {
-        return permissionProvider;
+    public PermissionManager getPermissionManager() {
+        return permissionManager;
     }
 
     public WorldGuardManager getWorldGuardManager() {
         return worldGuardManager;
     }
 
-    public boolean loadConfiguration(File file) {
+    public DiscordSRVHook getDiscordHook() {
+        return discordHook;
+    }
+
+    public CustomConfiguration loadConfiguration(FunctionalConfigLoader loaderFunc) {
+        CustomConfiguration config;
         // In 1.18.1 and later, Spigot supports comment preservation and
         // writing comments programmatically, so use built-in methods if we can.
         // Check if the method exists before we load AutoCommentConfig
@@ -747,17 +670,17 @@ public class UltraCosmetics extends JavaPlugin {
         } catch (SecurityException e) {
             // ???
             e.printStackTrace();
-            return false;
+            return null;
         }
 
         try {
-            config.load(file);
+            loaderFunc.load(config);
         } catch (FileNotFoundException ignored) {
         } catch (IOException | InvalidConfigurationException ex) {
             getSmartLogger().write(LogLevel.ERROR, "Cannot load " + file, ex);
-            return false;
+            return null;
         }
-        return true;
+        return config;
     }
 
     private void upgradeIdsToMaterials() {

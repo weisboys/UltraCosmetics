@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.command;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.cosmetics.Category;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -9,6 +10,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
+
+import java.util.List;
 
 /**
  * A subcommand.
@@ -50,7 +53,7 @@ public abstract class SubCommand {
 
     /**
      * Get the name of the command
-     * 
+     *
      * @return The name of the command
      */
     public String getName() {
@@ -118,6 +121,26 @@ public abstract class SubCommand {
      * @param args   The args of the command. (Includes the subcommand alias).
      */
     protected abstract void onExeAnyone(CommandSender sender, String[] args);
+
+    /**
+     * Called when a CommandSender attempts to tab-complete a command.
+     *
+     * @param sender  The CommandSender attempting the tab-complete
+     * @param args    The current args in the chat window
+     * @param options The options that should be displayed to the player. Modify this. Options will be lowercased and filtered by caller.
+     */
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+    }
+
+    protected void addCategories(List<String> options) {
+        for (Category category : Category.enabled()) {
+            options.add(category.toString());
+        }
+    }
+
+    protected void addPlayers(List<String> options) {
+        Bukkit.getOnlinePlayers().forEach(p -> options.add(p.getName()));
+    }
 
     /**
      * Called when a command is used from console but only works on players

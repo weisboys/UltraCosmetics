@@ -6,7 +6,9 @@ import be.isach.ultracosmetics.command.subcommands.SubCommandGadgets;
 import be.isach.ultracosmetics.command.subcommands.SubCommandGive;
 import be.isach.ultracosmetics.command.subcommands.SubCommandMenu;
 import be.isach.ultracosmetics.command.subcommands.SubCommandMigrate;
+import be.isach.ultracosmetics.command.subcommands.SubCommandPermission;
 import be.isach.ultracosmetics.command.subcommands.SubCommandReload;
+import be.isach.ultracosmetics.command.subcommands.SubCommandRename;
 import be.isach.ultracosmetics.command.subcommands.SubCommandReward;
 import be.isach.ultracosmetics.command.subcommands.SubCommandSelfView;
 import be.isach.ultracosmetics.command.subcommands.SubCommandToggle;
@@ -46,7 +48,7 @@ public class CommandManager implements CommandExecutor {
         this.ultraCosmetics = ultraCosmetics;
         PluginCommand cmd = ultraCosmetics.getCommand("ultracosmetics");
         cmd.setExecutor(this);
-        cmd.setTabCompleter(new UCTabCompleter(ultraCosmetics));
+        cmd.setTabCompleter(new UCTabCompleter(this));
         registerCommands();
     }
 
@@ -158,5 +160,7 @@ public class CommandManager implements CommandExecutor {
         registerCommand(new SubCommandReload(ultraCosmetics));
         registerCommand(new SubCommandUpdate(ultraCosmetics));
         registerCommand(new SubCommandTroubleshoot(ultraCosmetics));
+        registerCommand(new SubCommandPermission(ultraCosmetics));
+        registerCommand(new SubCommandRename(ultraCosmetics));
     }
 }

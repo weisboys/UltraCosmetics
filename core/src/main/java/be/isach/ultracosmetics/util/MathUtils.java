@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.run.FallDamageManager;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -446,7 +447,6 @@ public class MathUtils {
     public static double randomDouble(double min, double max) {
         return Math.random() < 0.5 ? ((1 - Math.random()) * (max - min) + min) : (Math.random() * (max - min) + min);
     }
-
 
     public static float randomRangeFloat(float min, float max) {
         return (float) (Math.random() < 0.5 ? ((1 - Math.random()) * (max - min) + min) : (Math.random() * (max - min) + min));

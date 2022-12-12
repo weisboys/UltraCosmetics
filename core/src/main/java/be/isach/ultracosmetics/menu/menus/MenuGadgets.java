@@ -52,7 +52,8 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected void filterItem(ItemStack itemStack, GadgetType gadgetType, UltraPlayer player) {
-        if (!UltraCosmeticsData.get().isAmmoEnabled() || !gadgetType.requiresAmmo() || !player.hasPermission(gadgetType.getPermission())) return;
+        if (!UltraCosmeticsData.get().isAmmoEnabled() || !gadgetType.requiresAmmo()
+                || !ultraCosmetics.getPermissionManager().hasPermission(player, gadgetType)) return;
         ItemMeta itemMeta = itemStack.getItemMeta();
         List<String> loreList = itemMeta.getLore();
 
@@ -73,18 +74,8 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
     }
 
     @Override
-    public List<GadgetType> enabled() {
-        return GadgetType.enabled();
-    }
-
-    @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, GadgetType gadgetType, UltraCosmetics ultraCosmetics) {
-        gadgetType.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    @Override
     protected void handleRightClick(UltraPlayer ultraPlayer, GadgetType type) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoEnabled() && type.requiresAmmo()) {
+        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled() && type.requiresAmmo()) {
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
             ultraCosmetics.getMenus().openAmmoPurchaseMenu(type, ultraPlayer);
         }
@@ -92,7 +83,8 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected boolean handleActivate(UltraPlayer ultraPlayer) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoEnabled() && ultraPlayer.getCurrentGadget().getType().requiresAmmo() && ultraPlayer.getAmmo(ultraPlayer.getCurrentGadget().getType()) < 1) {
+        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled()
+                && ultraPlayer.getCurrentGadget().getType().requiresAmmo() && ultraPlayer.getAmmo(ultraPlayer.getCurrentGadget().getType()) < 1) {
             ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
             ultraCosmetics.getMenus().openAmmoPurchaseMenu(ultraPlayer.getCurrentGadget().getType(), ultraPlayer);
             return false;

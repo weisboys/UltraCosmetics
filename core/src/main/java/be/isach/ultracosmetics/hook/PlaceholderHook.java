@@ -1,7 +1,9 @@
-package be.isach.ultracosmetics.placeholderapi;
+package be.isach.ultracosmetics.hook;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
@@ -28,7 +30,7 @@ public class PlaceholderHook extends PlaceholderExpansion {
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
         if (identifier.startsWith("ammo_")) {
             String gadget = identifier.substring(5);
-            GadgetType type = GadgetType.valueOf(gadget);
+            GadgetType type = CosmeticType.valueOf(Category.GADGETS, gadget);
             if (type == null) return null;
             return String.valueOf(ultraPlayer.getAmmo(type));
         }
@@ -49,13 +51,13 @@ public class PlaceholderHook extends PlaceholderExpansion {
         case "current_emote":
             return ultraPlayer.getCurrentEmote() == null ? "None" : ultraPlayer.getCurrentEmote().getType().getName();
         case "current_suit_helmet":
-            return ultraPlayer.getSuit(ArmorSlot.HELMET) == null ? "None" : ultraPlayer.getSuit(ArmorSlot.HELMET).getType().getName();
+            return ultraPlayer.getCurrentSuit(ArmorSlot.HELMET) == null ? "None" : ultraPlayer.getCurrentSuit(ArmorSlot.HELMET).getType().getName();
         case "current_suit_chestplate":
-            return ultraPlayer.getSuit(ArmorSlot.CHESTPLATE) == null ? "None" : ultraPlayer.getSuit(ArmorSlot.CHESTPLATE).getType().getName();
+            return ultraPlayer.getCurrentSuit(ArmorSlot.CHESTPLATE) == null ? "None" : ultraPlayer.getCurrentSuit(ArmorSlot.CHESTPLATE).getType().getName();
         case "current_suit_leggings":
-            return ultraPlayer.getSuit(ArmorSlot.LEGGINGS) == null ? "None" : ultraPlayer.getSuit(ArmorSlot.LEGGINGS).getType().getName();
+            return ultraPlayer.getCurrentSuit(ArmorSlot.LEGGINGS) == null ? "None" : ultraPlayer.getCurrentSuit(ArmorSlot.LEGGINGS).getType().getName();
         case "current_suit_boots":
-            return ultraPlayer.getSuit(ArmorSlot.BOOTS) == null ? "None" : ultraPlayer.getSuit(ArmorSlot.BOOTS).getType().getName();
+            return ultraPlayer.getCurrentSuit(ArmorSlot.BOOTS) == null ? "None" : ultraPlayer.getCurrentSuit(ArmorSlot.BOOTS).getType().getName();
 
         // Keys, and user-specific settings
         case "keys":

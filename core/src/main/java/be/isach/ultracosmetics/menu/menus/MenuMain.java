@@ -5,18 +5,25 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.menu.Menu;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Main {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -32,6 +39,12 @@ public class MenuMain extends Menu {
         super(ultraCosmetics);
 
         switch (Category.enabledSize()) {
+        case 10:
+            layout = new int[] { 9, 11, 13, 15, 17, 27, 29, 31, 33, 35 };
+            break;
+        case 9:
+            layout = new int[] { 9, 11, 13, 15, 17, 28, 30, 32, 34 };
+            break;
         case 8:
             layout = new int[] { 10, 12, 14, 16, 28, 30, 32, 34 };
             break;
@@ -67,8 +80,7 @@ public class MenuMain extends Menu {
 
     @Override
     public void open(UltraPlayer player) {
-        if (!UltraCosmeticsData.get().areTreasureChestsEnabled()
-                && Category.enabledSize() == 1) {
+        if (!UltraCosmeticsData.get().areTreasureChestsEnabled() && Category.enabledSize() == 1) {
             getUltraCosmetics().getMenus().getCategoryMenu(Category.enabled().get(0)).open(player);
             return;
         }
@@ -78,10 +90,30 @@ public class MenuMain extends Menu {
     @Override
     protected void putItems(Inventory inventory, UltraPlayer player) {
         if (Category.enabledSize() > 0) {
-            for (int i = 0; i < Category.enabledSize(); i++) {
-                int slot = layout[i];
-                Category category = Category.enabled().get(i);
-                putItem(inventory, slot, category.getItemStack(), data -> {
+            int i = 0;
+            boolean foundSuits = false;
+            PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
+            Player bukkitPlayer = player.getBukkitPlayer();
+            for (Category category : Category.enabled()) {
+                // Avoid counting suits categories as different menu items
+                if (category.isSuits()) {
+                    if (foundSuits) continue;
+                    foundSuits = true;
+                }
+                ItemStack stack = category.getItemStack();
+                String lore = MessageManager.getMessage("Menu." + category.getConfigPath() + ".Button.Lore");
+                if (lore.contains("%unlocked%")) {
+                    lore = lore.replace("%unlocked%", calculateUnlocked(bukkitPlayer, category, pm));
+                }
+                List<String> loreList = new ArrayList<>();
+                loreList.add("");
+                for (String line : lore.split("\n")) {
+                    loreList.add(line);
+                }
+                ItemMeta meta = stack.getItemMeta();
+                meta.setLore(loreList);
+                stack.setItemMeta(meta);
+                putItem(inventory, layout[i++], stack, data -> {
                     getUltraCosmetics().getMenus().getCategoryMenu(category).open(player);
                 });
             }
@@ -155,6 +187,22 @@ public class MenuMain extends Menu {
             });
 
         }
+    }
+
+    private String calculateUnlocked(Player player, Category category, PermissionManager pm) {
+        int unlocked = 0;
+        int total = 0;
+        if (category.isSuits()) {
+            for (Category cat : Category.enabled()) {
+                if (!cat.isSuits()) continue;
+                unlocked += pm.getEnabledUnlocked(player, cat).size();
+            }
+            total = SuitCategory.enabled().size() * 4;
+        } else {
+            unlocked = pm.getEnabledUnlocked(player, category).size();
+            total = category.getEnabled().size();
+        }
+        return unlocked + "/" + total;
     }
 
     @Override

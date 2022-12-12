@@ -42,6 +42,8 @@ Clear:
   Hats: '&c&lClear current hat'
   Suits: '&c&lClear current suit'
   Emotes: '&c&lClear current emote'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -60,48 +62,70 @@ Menu:
     Title: '&lPets'
     Button:
       Name: '&a&lPets'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lActivate'
       Tooltip-Unequip: '&c&lDeactivate'
   Mounts:
     Title: '&lMounts'
     Button:
       Name: '&6&lMounts'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Morphs:
     Title: '&lMorphs'
     Button:
       Name: '&2&lMorphs'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lMorph into'
       Tooltip-Unequip: '&c&lUnmorph from'
   Hats:
     Title: '&lHats'
     Button:
       Name: '&b&lHats'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Particle-Effects:
     Title: '&lParticle Effects'
     Button:
       Name: '&b&lParticle Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSummon'
       Tooltip-Unequip: '&c&lUnsummon'
   Suits:
     Title: '&lSuits'
     Button:
       Name: '&c&lSuits'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Emotes:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
+      Lore: '&7Unlocked: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
@@ -349,7 +373,7 @@ Mounts:
     entity-displayname: '&l%playername%''s Strider'
     Description: |-
       &7&oA mysterious cube-shaped mob
-      &7&ocapable of walking straight over lava
+      &7&ocapable of walking straight over lava.
   Horse:
     menu-name: '&7&lHorse'
     entity-displayname: '&l%playername%''s Horse'
@@ -362,6 +386,10 @@ Mounts:
     menu-name: '&8&lMule'
     entity-displayname: '&l%playername%''s Mule'
     Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'
@@ -1364,7 +1392,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oThe twenty-sixth letter in the alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
 Suits:
   Rave:
     whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
@@ -1405,15 +1432,27 @@ Suits:
     Description: |-
       &7&oThis suit belongs to the
       &7&oLord of the Frozen Lands!
+  Cursed:
+    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
+    helmet-name: '&5&lCursed &f&lHelmet'
+    chestplate-name: '&5&lCursed &f&lChestplate'
+    leggings-name: '&5&lCursed &f&lLeggings'
+    boots-name: '&5&lCursed &f&lBoots'
+    Description: '&7&oMysterious and spooky.'
+  Slime:
+    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
+    helmet-name: '&a&lSlime &f&lHelmet'
+    chestplate-name: '&a&lSlime &f&lChestplate'
+    leggings-name: '&a&lSlime &f&lLeggings'
+    boots-name: '&a&lSlime &f&lBoots'
+    Description: |-
+      &7&oSlimy green suit.
+      &7&oThe slimes will love it!
   Equip: '%prefix% &9You equipped %suitname%!'
   Unequip: '%prefix% &9You unequipped %suitname%!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oEquip the whole suit!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9You equipped %emotename%'
   Unequip: '%prefix% &9You unequipped %emotename%'
@@ -1443,8 +1482,94 @@ Emotes:
     Description: '&7&oOH LORD!!!'
   Wink:
     Name: '&a&lWink'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
+    Description: '&7&oHaving fun? Let someone know you are in on the joke!'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Rainbow:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    Description: '&7&oRainbow-colored particles'
+  Christmas:
+    name: '&4&lChrist&f&lmas'
+    Description: '&7&oMerry Christmas!'
+  RedstoneHelix:
+    name: '&4&lRedstone Helix'
+    Description: '&7&oRotating, red particles'
+  FlameHelix:
+    name: '&c&lFlame Helix'
+    Description: '&7&oRotating flames'
+  CursedHelix:
+    name: '&5&lCursed Helix'
+    Description: '&7&oRotating, purple particles'
+  Spark:
+    name: '&f&lSpark'
+    Description: '&7&oSparkling, white stars'
+  Redstone:
+    name: '&4&lRedstone'
+    Description: '&7&oSmall, red clouds'
+  Flame:
+    name: '&c&lFlame'
+    Description: '&7&oSmall flames'
+  Water:
+    name: '&9&lWater'
+    Description: '&7&oBlue waterdrops'
+  Witch:
+    name: '&5&lWitch'
+    Description: '&7&oPurple crosses'
+  Emerald:
+    name: '&2&lEmerald'
+    Description: '&7&oGreen stars'
+  Note:
+    name: '&e&lNote'
+    Description: '&7&oColorful notes'
+  Love:
+    name: '&d&lLove'
+    Description: '&7&oRed hearts'
+  Lava:
+    name: '&4&lLava'
+    Description: '&7&oLava bubbles'
+  Snow:
+    name: '&f&lSnow'
+    Description: '&7&oSnowball particles'
+  Slime:
+    name: '&a&lSlime'
+    Description: '&7&oSlimeball particles'
+  Crit:
+    name: '&7&lCrit'
+    Description: '&7&oLight brown crosses'
+  MagicCrit:
+    name: '&3&lMagic Crit'
+    Description: '&7&oCyan stars'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Cloud:
+    name: '&f&lCloud'
+    Description: '&7&oWhite clouds'
+  Smoke:
+    name: '&7&lSmoke'
+    Description: '&7&oSmall, gray clouds'
+  Portal:
+    name: '&5&lPortal'
+    Description: '&7&oSmall, purple clouds'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
@@ -1456,3 +1581,13 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in thi
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
 Too-Long: Too long, try again
+Must-Remove:
+  Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
+  Suits:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Emotes: '%prefix% &c&lYou must remove your helmet to equip an emote!'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'

@@ -2,13 +2,8 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.cosmetics.type.EmoteType;
-import be.isach.ultracosmetics.cosmetics.type.GadgetType;
-import be.isach.ultracosmetics.cosmetics.type.HatType;
-import be.isach.ultracosmetics.cosmetics.type.MorphType;
-import be.isach.ultracosmetics.cosmetics.type.MountType;
-import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
-import be.isach.ultracosmetics.cosmetics.type.PetType;
+import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 
@@ -16,8 +11,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 /**
  * Created by Sacha on 24/12/15.
@@ -41,12 +37,11 @@ public class PermissionPrinter {
             return;
         }
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date();
+        LocalDate date = LocalDate.now();
+        String dateString = date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
 
-        writer.println();
         writer.println("UltraCosmetics v" + ultraCosmetics.getDescription().getVersion() + " permissions.");
-        writer.println("Generated automatically on " + dateFormat.format(date));
+        writer.println("Generated automatically on " + dateString);
         writer.println();
         writer.println();
         writer.println("General permissions, enabled by default:");
@@ -73,41 +68,15 @@ public class PermissionPrinter {
         writer.println("Other:");
         writer.println("  - ultracosmetics.allcosmetics");
         writer.println("  - ultracosmetics.updatenotify");
-        writer.println();
-        writer.println("Gadgets:");
-        writer.println("  - ultracosmetics.gadgets.*");
-        for (GadgetType gadgetType : GadgetType.values()) {
-            writer.println("  - " + gadgetType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Pets:");
-        writer.println("  - ultracosmetics.pets.*");
-        for (PetType petType : PetType.values()) {
-            writer.println("  - " + petType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Mounts:");
-        writer.println("  - ultracosmetics.mounts.*");
-        for (MountType mountType : MountType.values()) {
-            writer.println("  - " + mountType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Morphs:");
-        writer.println("  - ultracosmetics.morphs.*");
-        for (MorphType morphType : MorphType.values()) {
-            writer.println("  - " + morphType.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Hats:");
-        writer.println("  - ultracosmetics.hats.*");
-        for (HatType hat : HatType.values()) {
-            writer.println("  - " + hat.getPermission().getName());
-        }
-        writer.println();
-        writer.println("Particle Effects:");
-        writer.println("  - ultracosmetics.particleeffects.*");
-        for (ParticleEffectType effect : ParticleEffectType.values()) {
-            writer.println("  - " + effect.getPermission().getName());
+
+        for (Category cat : Category.values()) {
+            if (cat.isSuits()) continue;
+            writer.println();
+            writer.println(cat.getConfigPath() + ":");
+            writer.println("  - " + cat.getPermission() + ".*");
+            for (CosmeticType<?> type : cat.getValues()) {
+                writer.println("  - " + type.getPermission().getName());
+            }
         }
         writer.println();
         writer.println("Suits:");
@@ -115,14 +84,8 @@ public class PermissionPrinter {
         for (SuitCategory cat : SuitCategory.values()) {
             writer.println("  - ultracosmetics.suits." + cat.getConfigName().toLowerCase() + ".*");
             for (SuitType suitType : cat.getPieces()) {
-                writer.println("  - " + suitType.getPermission().getName());
+                writer.println("    - " + suitType.getPermission().getName());
             }
-        }
-        writer.println();
-        writer.println("Emotes:");
-        writer.println("  - ultracosmetics.emotes.*");
-        for (EmoteType emoteType : EmoteType.values()) {
-            writer.println("  - " + emoteType.getPermission().getName());
         }
         writer.println();
 

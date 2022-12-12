@@ -28,9 +28,4 @@ public class Hat extends ArmorCosmetic<HatType> {
     protected ArmorSlot getArmorSlot() {
         return ArmorSlot.HELMET;
     }
-
-    @Override
-    protected String getOccupiedSlotKey() {
-        return "Hats.Must-Remove-Hat";
-    }
 }

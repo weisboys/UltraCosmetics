@@ -23,7 +23,7 @@ public class PetElderGuardian extends Pet {
 
     @EventHandler
     public void onFatigue(EntityPotionEffectEvent event) {
-        if (event.getEntity() == getPlayer() && event.getCause() == Cause.ATTACK && event.getNewEffect().getType() == PotionEffectType.SLOW_DIGGING
+        if (event.getEntity() == getPlayer() && event.getCause() == Cause.ATTACK && event.getNewEffect().getType().equals(PotionEffectType.SLOW_DIGGING)
                 && SettingsManager.getConfig().getBoolean(getOptionPath("Block-Effect"))) {
             event.setCancelled(true);
         }

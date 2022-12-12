@@ -17,7 +17,7 @@ import java.util.Map;
 // to be used in 1.17.1 and below, before Spigot supported comment preservation
 public class ManualCommentConfiguration extends CustomConfiguration {
 
-    private Map<String, List<String>> comments = null;
+    private Map<String,List<String>> comments = null;
     private boolean newLineAfterHeader = false;
     private boolean newLinePerKey = false;
 
@@ -68,8 +68,7 @@ public class ManualCommentConfiguration extends CustomConfiguration {
                             if (spacesBeforeCurrentLine < spacesBeforeKey) {
                                 if (currentLine.contains(":")) {
                                     if (spacesBeforeCurrentLine > 0 || !atZeroSpaces) {
-                                        if (spacesBeforeCurrentLine == 0)
-                                            atZeroSpaces = true;
+                                        if (spacesBeforeCurrentLine == 0) atZeroSpaces = true;
                                         if (previousSpacesBeforeCurrentLine == -1 || spacesBeforeCurrentLine < previousSpacesBeforeCurrentLine) {
                                             previousSpacesBeforeCurrentLine = spacesBeforeCurrentLine;
                                             key = trimPrefixSpaces(currentLine.substring(0, currentLine.indexOf(":"))) + "." + key;
@@ -92,8 +91,10 @@ public class ManualCommentConfiguration extends CustomConfiguration {
         int spaceCount = 0;
         if (aString != null && aString.contains(" ")) {
             for (char aCharacter : aString.toCharArray()) {
-                if (aCharacter == ' ') spaceCount++;
-                else break;
+                if (aCharacter == ' ')
+                    spaceCount++;
+                else
+                    break;
             }
         }
         return spaceCount;
@@ -105,7 +106,8 @@ public class ManualCommentConfiguration extends CustomConfiguration {
 
     private static String trimPrefixSpaces(String aString) {
         if (aString != null) {
-            while (aString.startsWith(" ")) aString = aString.substring(1);
+            while (aString.startsWith(" "))
+                aString = aString.substring(1);
         }
         return aString;
     }
@@ -115,8 +117,10 @@ public class ManualCommentConfiguration extends CustomConfiguration {
         if (path != null && comments != null && comments.length > 0) {
             List<String> commentsList = new ArrayList<>();
             for (String comment : comments) {
-                if (comment != null) commentsList.add(comment);
-                else commentsList.add("");
+                if (comment != null)
+                    commentsList.add(comment);
+                else
+                    commentsList.add("");
             }
             this.comments.put(path, commentsList);
         }
@@ -140,7 +144,7 @@ public class ManualCommentConfiguration extends CustomConfiguration {
 
         boolean hasHeader = configLines.size() < 2 || !trim(configLines.get(1)).isEmpty();
 
-        Map<String, List<String>> configComments = new LinkedHashMap<>();
+        Map<String,List<String>> configComments = new LinkedHashMap<>();
         for (int lineIndex = 0; lineIndex < configLines.size(); lineIndex++) {
             String configLine = configLines.get(lineIndex);
             String trimmedLine = trimPrefixSpaces(configLine);
@@ -179,12 +183,12 @@ public class ManualCommentConfiguration extends CustomConfiguration {
             for (int lineIndex = 0; lineIndex < configContent.size(); lineIndex++) {
                 String configLine = configContent.get(lineIndex);
                 String configKey = null;
-                if (!configLine.startsWith("#") && configLine.contains(":"))
-                    configKey = getPathToKey(configContent, lineIndex, configLine);
+                if (!configLine.startsWith("#") && configLine.contains(":")) configKey = getPathToKey(configContent, lineIndex, configLine);
                 if (configKey != null && this.comments.containsKey(configKey)) {
                     int numOfSpaces = getPrefixSpaceCount(configLine);
                     String spacePrefix = "";
-                    for (int i = 0; i < numOfSpaces; i++) spacePrefix += " ";
+                    for (int i = 0; i < numOfSpaces; i++)
+                        spacePrefix += " ";
                     List<String> configComments = this.comments.get(configKey);
                     if (configComments != null) {
                         for (String comment : configComments) {
@@ -201,8 +205,7 @@ public class ManualCommentConfiguration extends CustomConfiguration {
                 } else if (this.newLinePerKey && lineIndex < configContent.size() - 1 && !isComment) {
                     String nextConfigLine = configContent.get(lineIndex + 1);
                     if (nextConfigLine != null && !nextConfigLine.startsWith(" ")) {
-                        if (!nextConfigLine.startsWith("'") && !nextConfigLine.startsWith("-"))
-                            configWriter.newLine();
+                        if (!nextConfigLine.startsWith("'") && !nextConfigLine.startsWith("-")) configWriter.newLine();
                     }
                 }
             }
@@ -212,26 +215,17 @@ public class ManualCommentConfiguration extends CustomConfiguration {
     }
 
     @Override
-    public void set(String key, Object value, String... comments) {
-        if (value != null) {
-            if (comments != null) {
-                if (comments.length > 0) {
-                    List<String> commentsList = new ArrayList<>();
-                    for (String comment : comments) {
-                        if (comment != null) {
-                            commentsList.add(comment);
-                        } else {
-                            commentsList.add("");
-                        }
-                    }
-                    this.comments.put(key, commentsList);
-                } else {
-                    this.comments.remove(key);
-                }
-            }
-        } else {
-            this.comments.remove(key);
-        }
+    public void set(String key, Object value, List<String> comments) {
         super.set(key, value);
+        if (value == null || comments == null || comments.size() == 0) {
+            this.comments.remove(key);
+            return;
+        }
+        this.comments.put(key, comments);
+    }
+
+    @Override
+    public List<String> comments(String path) {
+        return comments.getOrDefault(path, new ArrayList<>());
     }
 }

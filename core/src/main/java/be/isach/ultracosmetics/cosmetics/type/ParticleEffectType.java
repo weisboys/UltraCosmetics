@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.particleeffects.*;
 import be.isach.ultracosmetics.util.Particles;
@@ -8,74 +7,16 @@ import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 /**
  * Particle effect types.
  *
  * @author iSach
  * @since 12-18-2015
  */
-public class ParticleEffectType extends CosmeticType<ParticleEffect> {
-
-    private final static List<ParticleEffectType> ENABLED = new ArrayList<>();
-    private final static List<ParticleEffectType> VALUES = new ArrayList<>();
-
-    public static List<ParticleEffectType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<ParticleEffectType> values() {
-        return VALUES;
-    }
-
-    public static ParticleEffectType valueOf(String s) {
-        for (ParticleEffectType particleEffectType : VALUES) {
-            if (particleEffectType.getConfigName().equalsIgnoreCase(s)) return particleEffectType;
-        }
-        return null;
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
-
-    private final Particles effect;
-    private final int repeatDelay;
-    private final double particleMultiplier;
+public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
 
     private ParticleEffectType(String configName, int repeatDelay, Particles effect, XMaterial material, Class<? extends ParticleEffect> clazz, boolean supportsParticleMultiplier) {
-        super(Category.EFFECTS, configName, material, clazz);
-        this.repeatDelay = repeatDelay;
-        this.effect = effect;
-        if (supportsParticleMultiplier) {
-            String path = getCategory().getConfigPath() + "." + configName + ".Particle-Multiplier";
-            if (!SettingsManager.getConfig().isDouble(path)) {
-                particleMultiplier = 1;
-                SettingsManager.getConfig().set(getCategory().getConfigPath() + "." + configName + ".Particle-Multiplier", 1.0, "A multiplier applied to the number", "of particles displayed. 1.0 is 100%");
-            } else {
-                particleMultiplier = SettingsManager.getConfig().getDouble(path);
-            }
-        } else {
-            // particleMultiplier is final so we have to assign it a value no matter what
-            particleMultiplier = 1;
-        }
-
-        VALUES.add(this);
-    }
-
-    public Particles getEffect() {
-        return effect;
-    }
-
-    public int getRepeatDelay() {
-        return repeatDelay;
-    }
-
-    public double getParticleMultiplier() {
-        return particleMultiplier;
+        super(Category.EFFECTS, configName, repeatDelay, effect, material, clazz, supportsParticleMultiplier);
     }
 
     public static void register(ServerVersion version) {

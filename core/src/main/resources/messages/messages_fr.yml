@@ -31,6 +31,7 @@ Your-Keys: '&7&oVos clés : &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lClé de Coffre &e&lpour %price%$'
 You-Won-Treasure-Chests: '%prefix% &f&lTu as gagné : %name% !'
 Treasure-Chest-Occupied: '%prefix% &c&lPas d''endroits disponibles pour ouvrir un coffre, patiente un peu puis réessaye'
+No-Ammo: '%prefix% &c&lVous n''avez pas de munitions pour ce gadget!'
 Clear:
   Cosmetics: '&c&lRetirer les cosmétiques'
   Gadgets: '&c&lRetirer le gadget actuel'
@@ -41,6 +42,8 @@ Clear:
   Hats: '&c&lRetirer le chapeau actuel'
   Suits: '&c&lRetirer les vetments actuels'
   Emotes: '&c&lRetirer l''emote actuel'
+  Projectile-Effects: '&c&lClear current projectile effect'
+  Death-Effects: '&c&lClear current death effect'
 Menu:
   Purchase-Rename:
     Button:
@@ -103,6 +106,18 @@ Menu:
       Name: '&e&lÉmotes'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
+  Projectile-Effects:
+    Title: '&lProjectile Effects'
+    Button:
+      Name: '&8&lProjectile Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
+  Death-Effects:
+    Title: '&lDeath Effects'
+    Button:
+      Name: '&c&lDeath Effects'
+      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lAcheter des munitions'
   Misc:
@@ -117,6 +132,7 @@ Chest-Location:
   In-Air: '%prefix% &c&lCet emplacement n''est pas au sol !'
   In-Ground: '%prefix% &c&lCet emplacement est au sol !'
   Suggestion: '%prefix% &aTu voulais peut-être dire %location% ?'
+  Dismount-First: '%prefix% &c&lVous devez démonter votre véhicule avant d''ouvrir un coffre.'
 Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
   Ammo: '%ammo% %name% munition'
@@ -315,7 +331,6 @@ Mounts:
     menu-name: '&5&lDragon'
     entity-displayname: '&lDragon de %playername%'
     Description: '&7&oDeviens un chevaucheur de dragon !'
-  SkySquid: [ ]
   HypeCart:
     menu-name: '&7&lHypeCart'
     entity-displayname: '&lHypeCart de %playername%'
@@ -343,7 +358,28 @@ Mounts:
       &7&oEn profondeur, sous la surface de la Terre,
       &7&oil existe une espèce mythique de serpents
       &7&oen fusion. Celui-ci te servira éternellement.
-  FlyingShip: [ ]
+  Strider:
+    menu-name: '&c&lStrider'
+    entity-displayname: '&l%playername%''s Strider'
+    Description: |-
+      &7&oUne créature mystérieuse en forme de cube
+      &7&ocapable de marcher directement au-dessus de la lave.
+  Horse:
+    menu-name: '&7&lCheval'
+    entity-displayname: '&lCheval de %playername%'
+    Description: '&7&oYour standard, everyday horse'
+  Donkey:
+    menu-name: '&8&lAne'
+    entity-displayname: '&lÂne de %playername%'
+    Description: '&7&oYour standard, everyday donkey'
+  Mule:
+    menu-name: '&8&lMule'
+    entity-displayname: '&lMule de %playername%'
+    Description: '&7&oYour standard, everyday mule'
+  Pig:
+    menu-name: '&d&lPig'
+    entity-displayname: '&l%playername%''s Pig'
+    Description: '&7&oOink!'
   Equip: '%prefix% &9Tu as fait apparaître %mountname%'
   Unequip: '%prefix% &9Tu as fait disparaître %mountname%'
   Cant-Spawn: '%prefix% &c&lLes monstres ne peuvent pas apparaître ici !'
@@ -454,9 +490,9 @@ Pets:
     entity-displayname: '&lWither de %playername%'
     Description: '&7&oFaites attention à moi...'
   Pumpling:
-    menu-name: '&6&lPumpling'
-    entity-displayname: '&l%playername%''s Pumpling'
-    Description: '&7&oJust a little floating pumpkin'
+    menu-name: '&6&lCitrouille'
+    entity-displayname: '&lCitrouille de %playername%'
+    Description: '&7&oUne petite citrouille flottante'
   ChristmasElf:
     menu-name: '&a&lElfe de Noël'
     entity-displayname: '&lElfe de Noël de %playername%'
@@ -516,7 +552,7 @@ Pets:
   Slime:
     menu-name: '&a&lSlime'
     entity-displayname: '&lSlime de %playername%'
-    Description: '&7&oSquish...'
+    Description: '&7&oPlop...'
   Bee:
     menu-name: '&e&lAbeille'
     entity-displayname: '&lAbeille de %playername%'
@@ -565,6 +601,166 @@ Pets:
     menu-name: '&a&lAllay'
     entity-displayname: '&lAllay de %playername%'
     Description: '&7&oUn nouvel ami !'
+  Cod:
+    menu-name: '&7&lMorue'
+    entity-displayname: '&lMorue de %playername%'
+    Description: '&7&oPréfère l''eau à la terre!'
+  Donkey:
+    menu-name: '&7&lÂne'
+    entity-displayname: '&lÂne de %playername%'
+    Description: '&7&oPeut transporter toutes vos affaires!'
+  GlowSquid:
+    menu-name: '&3&lCalamar Lumineux'
+    entity-displayname: '&l Calamar Lumineux de %playername%'
+    Description: '&7&oC''est lumineux!'
+  Mule:
+    menu-name: '&7&lMule'
+    entity-displayname: '&lMule de %playername%'
+    Description: '&7&oFondamentalement un âne!'
+  Pufferfish:
+    menu-name: '&e&lPoisson-globe'
+    entity-displayname: '&lPoisson-globe de %playername%'
+    Description: '&7&oN''aime pas être touché !'
+  Ocelot:
+    menu-name: '&e&lOcelot'
+    entity-displayname: '&lOcelot de %playername%'
+    Description: '&7&oAttention ! Il est vraiment mignon !'
+  Salmon:
+    menu-name: '&c&lSaumon'
+    entity-displayname: '&lSaumon de %playername%'
+    Description: '&7&oIls ont l''air vraiment bon !'
+  SkeletonHorse:
+    menu-name: '&f&lCheval Squelette'
+    entity-displayname: '&lCheval Squelette de %playername%'
+    Description: '&7&oAttention aux coups de foudre !'
+  Squid:
+    menu-name: '&0&lCalamar'
+    entity-displayname: '&lCalamar de %playername%'
+    Description: '&7&oNe l''effrayez pas ou l''eau devient noire!'
+  Strider:
+    menu-name: '&c&lArpenteur'
+    entity-displayname: '&lArpenteur de %playername%'
+    Description: '&7&oMarche sur la lave !'
+  Tadpole:
+    menu-name: '&8&lTadpole'
+    entity-displayname: '&l%playername%''s Tadpole'
+    Description: '&7&oWill grow into a Frog!'
+  TropicalFish:
+    menu-name: '&e&lTropical Fish'
+    entity-displayname: '&lPoisson Tropical de %playername%'
+    Description: '&7&oA colorful fish!'
+  Turtle:
+    menu-name: '&2&lTortue'
+    entity-displayname: '&lTurtue de %playername%'
+    Description: '&7&oSome of them get over 150 years old!'
+  WanderingTrader:
+    menu-name: '&1&lMarchand errant'
+    entity-displayname: '&lMarchand errant de %playername%'
+    Description: '&7&oWanders around trying to sell his stuff!'
+  CaveSpider:
+    menu-name: '&2&lCave Spider'
+    entity-displayname: '&l%playername%''s Cave Spider'
+    Description: '&7&oA Spider, but poisonous!'
+  Dolphin:
+    menu-name: '&b&lDolphin'
+    entity-displayname: '&l%playername%''s Dolphin'
+    Description: '&7&oThe happiest creature of the seas!'
+  Spider:
+    menu-name: '&8&lAraignée'
+    entity-displayname: '&lAraignée de %playername%'
+    Description: '&7&oYour friendly neighborhood Spider!'
+  ZombifiedPiglin:
+    menu-name: '&d&lZombified Piglin'
+    entity-displayname: '&l%playername%''s Zombified Piglin'
+    Description: '&7&oAttack it and all of them will be after you!'
+  Drowned:
+    menu-name: '&3&lDrowned'
+    entity-displayname: '&l%playername%''s Drowned'
+    Description: '&7&oAn underwater Zombie!'
+  ElderGuardian:
+    menu-name: '&3&lElder Guardian'
+    entity-displayname: '&l%playername%''s Elder Guardian'
+    Description: '&7&oGuards ancient Temples!'
+  Endermite:
+    menu-name: '&5&lEndermite'
+    entity-displayname: '&l%playername%''s Endermite'
+    Description: '&7&oAttracts Endermen!'
+  Evoker:
+    menu-name: '&7&lEvoker'
+    entity-displayname: '&l%playername%''s Evoker'
+    Description: '&7&oSummons Vexes for a living!'
+  Ghast:
+    menu-name: '&f&lGhast'
+    entity-displayname: '&l%playername%''s Ghast'
+    Description: '&7&o*Demonic screaming*'
+  Guardian:
+    menu-name: '&3&lGuardian'
+    entity-displayname: '&l%playername%''s Guardian'
+    Description: '&7&oHates Squids!'
+  Hoglin:
+    menu-name: '&c&lHoglin'
+    entity-displayname: '&l%playername%''s Hoglin'
+    Description: '&7&oA pig, but in angry.'
+  Husk:
+    menu-name: '&e&lHusk'
+    entity-displayname: '&l%playername%''s Husk'
+    Description: '&7&oA Zombie, but sandy.'
+  MagmaCube:
+    menu-name: '&4&lMagma Cube'
+    entity-displayname: '&l%playername%''s Magma Cube'
+    Description: '&7&oA very hot cube!'
+  Phantom:
+    menu-name: '&1&lPhantom'
+    entity-displayname: '&l%playername%''s Phantom'
+    Description: '&7&oHates players that don''t sleep!'
+  PiglinBrute:
+    menu-name: '&6&lPiglin Brute'
+    entity-displayname: '&l%playername%''s Piglin Brute'
+    Description: '&7&oA pretty buff Piglin!'
+  Pillager:
+    menu-name: '&7&lPilleur'
+    entity-displayname: '&l%playername%''s Pillager'
+    Description: '&7&oLikes to pillage Villages!'
+  Ravager:
+    menu-name: '&8&lRavager'
+    entity-displayname: '&l%playername%''s Ravager'
+    Description: '&7&oA Pillager''s favorite Companion!'
+  Shulker:
+    menu-name: '&5&lShulker'
+    entity-displayname: '&l%playername%''s Shulker'
+    Description: '&7&oLikes to hide!'
+  Stray:
+    menu-name: '&8&lStray'
+    entity-displayname: '&l%playername%''s Stray'
+    Description: '&7&oA freezing cold Skeleton!'
+  Vindicator:
+    menu-name: '&7&lVindicator'
+    entity-displayname: '&l%playername%''s Vindicator'
+    Description: '&7&oDon''t underestimate their strength!'
+  Witch:
+    menu-name: '&5&lWitch'
+    entity-displayname: '&l%playername%''s Witch'
+    Description: '&7&oLoves black Cats!'
+  WitherSkeleton:
+    menu-name: '&8&lWither Skeleton'
+    entity-displayname: '&l%playername%''s Wither Skeleton'
+    Description: '&7&oThe reason why Looting exists.'
+  Zoglin:
+    menu-name: '&c&lZoglin'
+    entity-displayname: '&l%playername%''s Zoglin'
+    Description: '&7&oA zombified Hoglin!'
+  ZombieVillager:
+    menu-name: '&2&lZombie Villager'
+    entity-displayname: '&l%playername%''s Zombie Villager'
+    Description: '&7&oA Villager Trader''s dream!'
+  ZombieHorse:
+    menu-name: '&2&lZombie Horse'
+    entity-displayname: '&l%playername%''s Zombie Horse'
+    Description: '&7&oThe rarest Horse in Minecraft!'
+  Illusioner:
+    menu-name: '&1&lIllusioner'
+    entity-displayname: '&l%playername%''s Illusioner'
+    Description: '&7&oOnly spawnable with commands!'
   Equip: '%prefix% &9Tu as fait apparaître %petname%'
   Unequip: '%prefix% &9Tu as fait disparaître %petname%'
 Morphs:
@@ -689,7 +885,7 @@ Hats:
     Description: '&7&oYou know what I mean ;)'
   Derp:
     Name: '&3&lDerp'
-    Description: '&7&oDerp Derp Derping all around'
+    Description: '&7&oDerp Derp Derp'
   Smile:
     Name: '&e&lSmile'
     Description: '&7&oBecause I''m happy'
@@ -711,6 +907,9 @@ Hats:
   Squid:
     Name: '&3&lSquid'
     Description: '&7&oBloop Bloop!'
+  GlowSquid:
+    Name: '&b&lGlow Squid'
+    Description: '&7&oLight up the ocean!'
   Chicken:
     Name: '&f&lChicken'
     Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
@@ -735,9 +934,18 @@ Hats:
   BrownMooshroom:
     Name: '&b&lBrown Mooshroom'
     Description: '&7&oMoooo!'
+  Moobloom:
+    Name: '&e&lMoobloom'
+    Description: '&7&oVery rare cow!'
+  ChestnutHorse:
+    Name: '&2&lChestnut Horse'
+    Description: '&7&oDon''t forget the saddle!'
   Golem:
     Name: '&7&lGolem'
     Description: '&7&oI''m your guard.'
+  CopperGolem:
+    Name: '&6&lCopper Golem'
+    Description: '&7&oMade out of 100% copper.'
   Enderman:
     Name: '&5&lEnderman'
     Description: '&7&oNow I''m here, now I''m there!'
@@ -756,6 +964,9 @@ Hats:
   Zombie:
     Name: '&2&lZombie'
     Description: '&7&oBrains!!!'
+  Drowned:
+    Name: '&3&lDrowned'
+    Description: '&7&oUnderwater zombie'
   Strider:
     Name: '&c&lStrider'
     Description: '&7&oI hate water!'
@@ -771,6 +982,12 @@ Hats:
   Witch:
     Name: '&5&lWitch'
     Description: '&7&oPlease try my potion!'
+  Guardian:
+    Name: '&3&lGuardian'
+    Description: '&7&oProtect the ocean monuments!'
+  ShepherdVillager:
+    Name: '&e&lShepherd Villager'
+    Description: '&7&oThe Lonely Shepherd'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
     Description: '&7&oI make arrows.'
@@ -792,6 +1009,9 @@ Hats:
   Frog:
     Name: '&2&lFrog'
     Description: '&7&oEats whatever bugs him.'
+  AxolotlPink:
+    Name: '&d&lPink Axolotl'
+    Description: '&7&oThe cutest predator'
   AxolotlBlue:
     Name: '&9&lBlue Axolotl'
     Description: '&7&oThe cutest predator'
@@ -810,6 +1030,12 @@ Hats:
   Bat:
     Name: '&5&lBat'
     Description: '&7&oEnjoy the nightlife.'
+  Glare:
+    Name: '&2&lGlare'
+    Description: '&7&oIt hates the darkness.'
+  Rana:
+    Name: '&a&lRana'
+    Description: '&7&oFroggy hat!'
   MCD-Steve:
     Name: '&9&lSteve'
     Description: '&7&oThe best skin'
@@ -828,6 +1054,24 @@ Hats:
   MCD-NamelessOne:
     Name: '&2&lNameless One'
     Description: '&7&oPowerful necromancer'
+  MCD-StrayKnight:
+    Name: '&7&lStray Knight'
+    Description: '&7&oA lonely knight...'
+  MCD-AncientGuardian:
+    Name: '&5&lAncient Guardian'
+    Description: '&7&oThe oldest guardian'
+  MCD-KeyGolem:
+    Name: '&6&lKey Golem'
+    Description: '&7&oUnlock every door!'
+  MCD-ArchIllager:
+    Name: '&3&lArch Illager'
+    Description: '&7&oLeader of the Illagers'
+  MCD-SunkenSkeleton:
+    Name: '&2&lSunken Skeleton'
+    Description: '&7&oUnderwater skeleton'
+  MCD-TheWildfire:
+    Name: '&4&lThe Wildfire'
+    Description: '&7&oHovering inferno'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -927,6 +1171,9 @@ Hats:
   GigaChad:
     Name: '&7&lGigaChad'
     Description: '&7&oEmbrace masculinity!'
+  Anubis:
+    Name: '&6&lAnubis'
+    Description: '&7&oAncient Egyptian god'
   Bread:
     Name: '&f&lBread'
     Description: '&7&oFreshly baked'
@@ -1071,7 +1318,6 @@ Hats:
   Z:
     Name: '&4&lZ'
     Description: '&7&oThe twenty-sixth letter in the alphabet!'
-  Must-Remove-Hat: '%prefix% &c&lYou must remove your helmet to equip a hat!'
 Suits:
   Rave:
     whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
@@ -1116,11 +1362,7 @@ Suits:
   Unequip: '%prefix% &9You unequipped %suitname%!'
   Suit-Part-Lore: '&9Suits Part'
   Whole-Equip-Lore: '&7&oEquip the whole suit!'
-  Must-Remove:
-    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
-    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
-    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
-    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Must-Remove: [ ]
 Emotes:
   Equip: '%prefix% &9You equipped %emotename%'
   Unequip: '%prefix% &9You unequipped %emotename%'
@@ -1128,16 +1370,16 @@ Emotes:
     Name: '&9&lCry'
     Description: '&7&oAre you really sad? :('
   Angry:
-    Name: '&c&lAngry'
+    Name: '&c&Furieux'
     Description: '&7&oShow your rage to the other players!'
   Happy:
-    Name: '&e&lHappy'
+    Name: '&e&lHeureux'
     Description: '&7&oDon''t worry, be happy!'
   Cheeky:
     Name: '&6&lCheeky'
     Description: '&7&oYou like being cheeky? Well, this emote is for you!'
   Love:
-    Name: '&4&lLove'
+    Name: '&4&lAmour'
     Description: '&7&oYou have beautiful eyes, do you know that?'
   DealWithIt:
     Name: '&7&lDeal With it'
@@ -1146,20 +1388,56 @@ Emotes:
     Name: '&9&lCool'
     Description: '&7&oKeep cool man!'
   Surprised:
-    Name: '&6&lSurprised'
+    Name: '&6&lSurprise'
     Description: '&7&oOH LORD!!!'
   Wink:
     Name: '&a&lWink'
-    Description: '&7&oHaving fun? Let someone know you are in on the joke'
-  Must-Remove-Helmet: '%prefix% &c&lYou must remove your helmet to equip an emote!'
-Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
-Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
-Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
-Disabled-Gadgets: '%prefix% &9You disabled gadgets!'
-Not-Allowed-From-Console: '&c&lThis can''t be executed from console!'
-World-Disabled: '%prefix% &c&lCosmetics are disabled in this world!'
-Region-Disabled: '%prefix% &c&lCosmetics are disabled in this area!'
-Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in this area!'
-Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
-Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
-Too-Long: Too long, try again
+    Description: '&7&oVous vous amusez ? Faites savoir à quelqu''un que vous êtes dans la plaisanterie !'
+  RaiseEyebrows:
+    Name: '&3&lRaise Eyebrows'
+    Description: '&7&oSurprised?'
+  ScaryCandle:
+    Name: '&5&lScary Candle'
+    Description: '&7&oHappy Halloween!'
+  GlowingPumpkin:
+    Name: '&6&lGlowing Pumpkin'
+    Description: '&7&oJack O''Slime'
+  LovestruckAllay:
+    Name: '&b&lLovestruck Allay'
+    Description: '&7&oAre we falling in love?'
+Projectile-Effects:
+  Equip: '%prefix% &9You equipped %projectile-effectname%'
+  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+  Helix:
+    name: '&4&lHelix'
+    Description: '&7&oRotating particles!'
+Death-Effects:
+  Equip: '%prefix% &9You equipped %death-effectname%'
+  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Explosion:
+    name: '&4&lExplosion'
+    Description: '&7&oBOOM!'
+Enabled-SelfMorphView: '%prefix% &9Vous avez activé l''auto-affichage pour les morphes !'
+Disabled-SelfMorphView: '%prefix% &9Vous avez désactivé l''auto-affichage pour les morphes !'
+Enabled-Gadgets: '%prefix% &9Vous avez activé les gadgets !'
+Disabled-Gadgets: '%prefix% &9Vous avez désactivé les gadgets !'
+Not-Allowed-From-Console: '&c&lCeci ne peut pas être exécuté à partir de la console !'
+World-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans ce monde !'
+Region-Disabled: '%prefix% &c&lLes cosmétiques sont désactivés dans cette zone !'
+Region-Disabled-Category: '%prefix% &c&lLes cosmétiques %category% sont désactivés dans cette zone !'
+Disabled-Command-Message: '%prefix% &c&lVous ne pouvez pas utiliser cette commande lorsque les cosmétiques sont équipés !'
+Not-Allowed-In-Vanish: '%prefix% &c&lVous ne pouvez pas utiliser de cosmétiques lorsque vous êtes en vanish !'
+Too-Long: Trop long, réessayez
+Must-Remove:
+  Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
+  Suits:
+    HELMET: '%prefix% &c&lYou must remove your helmet to equip a suit helmet!'
+    CHESTPLATE: '%prefix% &c&lYou must remove your chestplate to equip a suit chestplate!'
+    LEGGINGS: '%prefix% &c&lYou must remove your leggings to equip suit leggings!'
+    BOOTS: '%prefix% &c&lYou must remove your boots to equip suit boots!'
+  Emotes: '%prefix% &c&lVous devez retirer votre casque pour équiper une emote !'
+  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
+  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'

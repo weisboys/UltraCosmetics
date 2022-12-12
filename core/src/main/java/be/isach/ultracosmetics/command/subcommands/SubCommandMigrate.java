@@ -1,23 +1,20 @@
 package be.isach.ultracosmetics.command.subcommands;
 
-import java.io.File;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.command.SubCommand;
+import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
+import be.isach.ultracosmetics.player.profile.PlayerData;
+import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
-import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.mysql.Table;
-import be.isach.ultracosmetics.player.profile.PlayerData;
-import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class SubCommandMigrate extends SubCommand {
 
@@ -62,9 +59,9 @@ public class SubCommandMigrate extends SubCommand {
         ultraCosmetics.getSmartLogger().write("Loading UUIDs to migrate...");
         List<UUID> uuids;
         if (flatfile) {
-            uuids = getFlatfileUUIDs();
+            uuids = getUUIDsFromSql();
         } else {
-            uuids = getSqlUUIDs();
+            uuids = getUUIDsFromFlatfile();
         }
         if (uuids == null) return; // error already printed
         ultraCosmetics.getSmartLogger().write("Found " + uuids.size() + " UUIDs, starting migration");
@@ -81,9 +78,12 @@ public class SubCommandMigrate extends SubCommand {
             ultraCosmetics.getSmartLogger().write("Successfully migrated " + uuid.toString());
         }
         ultraCosmetics.getSmartLogger().write(uuids.size() + " UUIDs successfully migrated!");
+        if (flatfile) {
+            ultraCosmetics.getSmartLogger().write("Set `MySQL.Enabled` to `false` in the config to complete the switch to flatfile storage.");
+        }
     }
 
-    private List<UUID> getSqlUUIDs() {
+    private List<UUID> getUUIDsFromFlatfile() {
         List<UUID> uuids = new ArrayList<>();
         File dataFolder = new File(ultraCosmetics.getDataFolder(), "data");
         for (File file : dataFolder.listFiles()) {
@@ -98,22 +98,23 @@ public class SubCommandMigrate extends SubCommand {
         return uuids;
     }
 
-    private List<UUID> getFlatfileUUIDs() {
-        Table table = ultraCosmetics.getMySqlConnectionManager().getTable();
-        List<UUID> uuids;
-        try (Connection co = ultraCosmetics.getMySqlConnectionManager().getDataSource().getConnection()) {
-            PreparedStatement statement = co.prepareStatement("SELECT uuid FROM " + table.getWrappedName());
-            ResultSet set = statement.executeQuery();
-            uuids = new ArrayList<>();
-            while (set.next()) {
-                uuids.add(UUID.fromString(set.getString(1)));
+    private List<UUID> getUUIDsFromSql() {
+        PlayerDataTable table = ultraCosmetics.getMySqlConnectionManager().getPlayerData();
+        return table.select("uuid_text").unsafe().getResults(r -> {
+            List<UUID> uuids = new ArrayList<>();
+            while (r.next()) {
+                uuids.add(UUID.fromString(r.getString("uuid_text")));
             }
-            statement.close(); // ResultSet auto closed
-        } catch (SQLException e) {
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Failed to fetch UUIDs from database, aborting migration");
-            e.printStackTrace();
-            return null;
+            return uuids;
+        }, true);
+    }
+
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            options.add("flatfile");
+            options.add("sql");
         }
-        return uuids;
+
     }
 }

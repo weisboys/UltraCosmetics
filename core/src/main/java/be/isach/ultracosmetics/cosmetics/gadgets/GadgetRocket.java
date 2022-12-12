@@ -9,7 +9,6 @@ import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.version.VersionManager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +24,6 @@ import org.bukkit.entity.FallingBlock;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
@@ -47,8 +45,6 @@ import java.util.Set;
  */
 public class GadgetRocket extends Gadget implements Updatable {
 
-    // EntityDismountEvent has existed at least since 1.8, but wasn't cancellable until 1.13
-    private static final boolean DISMOUNT_CANCELLABLE = VersionManager.IS_VERSION_1_13;
     private static final BlockFace[] CARDINAL = new BlockFace[] { BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST };
     private static final Material FENCE = XMaterial.OAK_FENCE.parseMaterial();
     public static final Set<GadgetRocket> ROCKETS_WITH_BLOCKS = new HashSet<>();
@@ -60,7 +56,8 @@ public class GadgetRocket extends Gadget implements Updatable {
     private Map<Block,BlockState> blocks = new HashMap<>();
     private List<FallingBlock> fallingBlocks = new ArrayList<>();
     private Entity playerVehicle = null;
-    private BukkitTask currentTask = null;
+    private int height;
+    private RocketTask activeTask = null;
 
     public GadgetRocket(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -99,8 +96,8 @@ public class GadgetRocket extends Gadget implements Updatable {
             playerVehicle = null;
             armorStand.setPassenger(getPlayer());
             playerVehicle = armorStand;
-            new BukkitRunnable() {
-                int i = 5;
+            activeTask = new RocketTask() {
+                private int countdown = 3;
 
                 @Override
                 public void run() {
@@ -113,33 +110,17 @@ public class GadgetRocket extends Gadget implements Updatable {
                         cancel();
                         return;
                     }
-                    if (i > 0) {
-                        sendTitle(ChatColor.RED + "" + ChatColor.BOLD + i);
+                    if (countdown > 0) {
+                        sendTitle(ChatColor.RED.toString() + ChatColor.BOLD + countdown);
                         play(XSound.BLOCK_NOTE_BLOCK_BASS, getPlayer(), 1.0f, 1.0f);
-                        i--;
+                        countdown--;
                         return;
                     }
 
-                    if (isTaskRunning()) {
-                        // if the player is refusing to be on the rocket (by holding sneak), abort the launch
-                        onClear();
-                        sendTitle(MessageManager.getMessage("Gadgets.Rocket.LaunchAborted"));
-                        cancel();
-                        return;
+                    stop();
 
-                    }
                     sendTitle(MessageManager.getMessage("Gadgets.Rocket.Takeoff"));
                     play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
-                    playerVehicle = null;
-                    armorStand.remove();
-                    armorStand = null;
-
-                    for (BlockState state : blocks.values()) {
-                        state.update(true);
-                    }
-
-                    blocks.clear();
-                    ROCKETS_WITH_BLOCKS.remove(GadgetRocket.this);
 
                     final FallingBlock top = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 3, 0), Material.QUARTZ_BLOCK);
                     FallingBlock base = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 2, 0), Material.QUARTZ_BLOCK);
@@ -158,31 +139,59 @@ public class GadgetRocket extends Gadget implements Updatable {
                     top.setPassenger(getPlayer());
                     playerVehicle = top;
                     launching = true;
-                    Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-                        playerVehicle = null;
-                        if (!isStillCurrentGadget()) {
-                            cancel();
-                            return;
+                    activeTask = new RocketTask() {
+                        @Override
+                        public void run() {
+                            if (getPlayer().getLocation().getBlockY() < height - 10) return;
+                            playerVehicle = null;
+                            if (!isStillCurrentGadget()) {
+                                cancel();
+                                activeTask = null;
+                                return;
+                            }
+                            stop();
+                            activeTask = null;
                         }
-                        fallingBlocks.forEach(Entity::remove);
-                        fallingBlocks.clear();
-                        FallDamageManager.addNoFall(getPlayer());
-                        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
-                        Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
-                        disableFlight();
-                        launching = false;
-                    }, 80);
+
+                        @Override
+                        public void stop() {
+                            fallingBlocks.forEach(Entity::remove);
+                            fallingBlocks.clear();
+                            FallDamageManager.addNoFall(getPlayer());
+                            play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
+                            Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
+                            disableFlight();
+                            launching = false;
+                            cancel();
+                        }
+                    }.schedule(getUltraCosmetics(), 5, 5);
+                }
+
+                @Override
+                public void stop() {
+                    playerVehicle = null;
+                    armorStand.remove();
+                    armorStand = null;
+
+                    for (BlockState state : blocks.values()) {
+                        state.update(true);
+                    }
+
+                    blocks.clear();
+                    ROCKETS_WITH_BLOCKS.remove(GadgetRocket.this);
+                    sendTitle(" ");
                     cancel();
                 }
-            }.runTaskTimer(getUltraCosmetics(), 0, 20);
+            }.schedule(getUltraCosmetics(), 0, 20);
         }, 12);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
-        Area area = new Area(getPlayer().getLocation(), 1, 75);
-        if (!area.isEmpty()) {
+        if (activeTask != null) return false;
+        height = Area.findMaxY(getPlayer().getLocation(), 1);
+        if (height < 25) {
             getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-Enough-Space"));
             return false;
         }
@@ -200,7 +209,7 @@ public class GadgetRocket extends Gadget implements Updatable {
     @Override
     public void onUpdate() {
         for (FallingBlock fallingBlock : fallingBlocks) {
-            fallingBlock.setVelocity(new Vector(0, 0.8, 0));
+            fallingBlock.setVelocity(new Vector(0, 0.9, 0));
         }
 
         if (launching && !fallingBlocks.isEmpty()) {
@@ -211,9 +220,7 @@ public class GadgetRocket extends Gadget implements Updatable {
         }
     }
 
-    @Override
-    public void onClear() {
-        stillEquipped = false;
+    protected void cleanup() {
         for (BlockState state : blocks.values()) {
             state.update(true);
         }
@@ -232,6 +239,15 @@ public class GadgetRocket extends Gadget implements Updatable {
         if (getPlayer() != null) {
             sendTitle(" ");
         }
+        if (activeTask != null) {
+            activeTask.cancel();
+        }
+    }
+
+    @Override
+    public void onClear() {
+        stillEquipped = false;
+        cleanup();
     }
 
     public boolean containsBlock(Block block) {
@@ -242,36 +258,12 @@ public class GadgetRocket extends Gadget implements Updatable {
     public void onDismount(EntityDismountEvent event) {
         if (event.getEntity() != getPlayer()) return;
         if (event.getDismounted() != playerVehicle) return;
-        if (isTaskRunning()) return;
-        if (DISMOUNT_CANCELLABLE) {
-            event.setCancelled(true);
-            return;
-        }
         disableFlight();
-        currentTask = new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (getPlayer() == null) return;
-                // happens if player sneaks 1 tick rocket end?
-                if (playerVehicle == null) return;
-
-                Entity vehicle = playerVehicle;
-                playerVehicle = null;
-                // can fail if player is holding sneak
-                @SuppressWarnings("deprecation")
-                boolean success = vehicle.setPassenger(getPlayer());
-                playerVehicle = vehicle;
-                if (!success) return;
-
-                cancel();
-                enableFlight();
-                if (vehicle instanceof ArmorStand) {
-                    Particles.SMOKE_LARGE.display(0.3f, 0.2f, 0.3f, armorStand.getLocation().add(0, -3, 0), 10);
-                    play(XSound.BLOCK_FIRE_EXTINGUISH, armorStand.getLocation().clone().add(0, -3, 0), 0.025f, 1.0f);
-                }
-            }
-            // doesn't seem to work as well if you only wait one tick before trying to remount the player
-        }.runTaskTimer(getUltraCosmetics(), 2, 1);
+        cancel();
+        if (activeTask != null) {
+            activeTask.stop();
+            activeTask = null;
+        }
     }
 
     private void enableFlight() {
@@ -284,12 +276,17 @@ public class GadgetRocket extends Gadget implements Updatable {
         }
     }
 
-    private boolean isTaskRunning() {
-        return currentTask != null && Bukkit.getScheduler().isQueued(currentTask.getTaskId());
-    }
-
     @SuppressWarnings("deprecation")
     private void sendTitle(String title) {
         getPlayer().sendTitle(title, "");
+    }
+
+    private abstract class RocketTask extends BukkitRunnable {
+        public abstract void stop();
+
+        public RocketTask schedule(UltraCosmetics ultraCosmetics, long delay, long period) {
+            runTaskTimer(ultraCosmetics, delay, period);
+            return this;
+        }
     }
 }

@@ -1,5 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.gadgets.*;
@@ -9,9 +11,6 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Gadget types.
@@ -20,45 +19,6 @@ import java.util.stream.Stream;
  * @since 12-01-2015
  */
 public class GadgetType extends CosmeticType<Gadget> {
-
-    private final static List<GadgetType> ENABLED = new ArrayList<>();
-    private final static List<GadgetType> VALUES = new ArrayList<>();
-
-    public static List<GadgetType> enabled() {
-        return ENABLED;
-    }
-
-    public static List<GadgetType> values() {
-        return VALUES;
-    }
-
-    public static GadgetType valueOf(String s) {
-        return valueOf(s, false);
-    }
-
-    public static GadgetType valueOf(String s, boolean onlyEnabled) {
-        String finalS = s.toLowerCase();
-        Stream<GadgetType> stream = VALUES.stream().filter(gadgetType -> gadgetType.getConfigName().equalsIgnoreCase(finalS));
-        if (onlyEnabled) {
-            stream.filter(gadgetType -> gadgetType.isEnabled());
-        }
-        Optional<GadgetType> optionalType = stream.findFirst();
-        if (optionalType.isPresent()) {
-            return optionalType.get();
-        } else {
-            stream = VALUES.stream().filter(gadgetType -> gadgetType.getConfigName().toLowerCase().startsWith(finalS));
-            if (onlyEnabled) {
-                stream.filter(gadgetType -> gadgetType.isEnabled());
-            }
-            Optional<GadgetType> bestMatchOptional = stream.findFirst();
-            if (bestMatchOptional.isPresent()) return bestMatchOptional.get();
-            return null;
-        }
-    }
-
-    public static void checkEnabled() {
-        ENABLED.addAll(values().stream().filter(CosmeticType::isEnabled).collect(Collectors.toList()));
-    }
 
     private final double cooldown;
     private final int runTime;
@@ -74,8 +34,6 @@ public class GadgetType extends CosmeticType<Gadget> {
         }
 
         this.runTime = runTime;
-
-        VALUES.add(this);
     }
 
     public boolean requiresAmmo() {
@@ -109,6 +67,16 @@ public class GadgetType extends CosmeticType<Gadget> {
         return runTime;
     }
 
+    @Override
+    public void setupConfig(CustomConfiguration config, String path) {
+        super.setupConfig(config, path);
+        if (UltraCosmeticsData.get().isAmmoEnabled()) {
+            config.addDefault(path + ".Ammo.Enabled", true, "You want this gadget to need ammo?");
+            config.addDefault(path + ".Ammo.Price", 500, "What price for the ammo?");
+            config.addDefault(path + ".Ammo.Result-Amount", 20, "And how much ammo is given when bought?");
+        }
+    }
+
     public static void register(ServerVersion version) {
         new GadgetType(XMaterial.IRON_HORSE_ARMOR, 8, 3, "BatBlaster", GadgetBatBlaster.class);
         new GadgetType(XMaterial.COOKED_CHICKEN, 6, 3, "Chickenator", GadgetChickenator.class);
@@ -117,11 +85,26 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.TRIPWIRE_HOOK, 5, 0, "FleshHook", GadgetFleshHook.class);
         new GadgetType(XMaterial.MELON, 2, 0, "MelonThrower", GadgetMelonThrower.class);
         new GadgetType(XMaterial.COMPARATOR, 2, 0, "PortalGun", GadgetPortalGun.class);
-        new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class);
+        new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                // default "" so we don't have to deal with null
+                if (config.getString(path + ".Block-Type", "").equals("STAINED_CLAY")) {
+                    config.set(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
+                }
+                config.addDefault(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
+                config.addDefault(path + ".Particle.Enabled", false, "Should it display particles?");
+                config.addDefault(path + ".Particle.Effect", "FIREWORKS_SPARK", "what particles? (List: http://pastebin.com/CVKkufck)");
+                config.addDefault(path + ".Radius", 2, "The radius of painting.");
+                List<String> blackListedBlocks = new ArrayList<>();
+                blackListedBlocks.add("REDSTONE_BLOCK");
+                config.addDefault(path + ".BlackList", blackListedBlocks, "A list of the BLOCKS that", "can't be painted.");
+            }
+        };
         new GadgetType(XMaterial.IRON_AXE, 8, 0, "ThorHammer", GadgetThorHammer.class);
         new GadgetType(XMaterial.ENDER_EYE, 30, 12, "AntiGravity", GadgetAntiGravity.class);
         new GadgetType(XMaterial.FIREWORK_STAR, 15, 0, "SmashDown", GadgetSmashDown.class);
-        new GadgetType(XMaterial.FIREWORK_ROCKET, 60, 10, "Rocket", GadgetRocket.class);
+        new GadgetType(XMaterial.FIREWORK_ROCKET, 60, 4, "Rocket", GadgetRocket.class);
         new GadgetType(XMaterial.WATER_BUCKET, 12, 2, "Tsunami", GadgetTsunami.class);
         new GadgetType(XMaterial.TNT, 10, 0, "TNT", GadgetTNT.class);
         new GadgetType(XMaterial.BLAZE_ROD, 4, 0, "FunGun", GadgetFunGun.class);
@@ -140,7 +123,7 @@ public class GadgetType extends CosmeticType<Gadget> {
             new GadgetType(XMaterial.SHEARS, 25, 11, "ExplosiveSheep", GadgetExplosiveSheep.class);
         }
 
-        if (version.isNmsSupported()) {
+        if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             new GadgetType(XMaterial.PACKED_ICE, 12, 2, "BlizzardBlaster", GadgetBlizzardBlaster.class);
             new GadgetType(XMaterial.DIAMOND_HOE, 3, 0, "QuakeGun", GadgetQuakeGun.class);
         }

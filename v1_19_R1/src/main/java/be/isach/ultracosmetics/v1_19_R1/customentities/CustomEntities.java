@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.v1_19_R1.customentities;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.v1_19_R1.EntityBase;
 import be.isach.ultracosmetics.v1_19_R1.ObfuscatedFields;
 import be.isach.ultracosmetics.v1_19_R1.nms.EntityWrapper;
@@ -44,7 +43,7 @@ public class CustomEntities {
     @SuppressWarnings("unchecked")
     public static void registerEntities() {
         @SuppressWarnings("deprecation")
-        Map<String, Type<?>> types = (Map<String, Type<?>>) DataFixers.getDataFixer().getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().getWorldVersion())).findChoiceType(References.ENTITY).types();
+        Map<String,Type<?>> types = (Map<String,Type<?>>) DataFixers.getDataFixer().getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().getWorldVersion())).findChoiceType(References.ENTITY).types();
 
         // true if the registry present is a vanilla registry and not a custom one like
         // Citizens provides
@@ -73,7 +72,7 @@ public class CustomEntities {
          * refuse to add entries, so we just have to fix both of those things and it'll
          * let us add entries again. The registry being frozen may be vital to how the
          * registry works (idk), so it is refrozen after adding our entries.
-         * 
+         *
          * Partial stack trace produced when trying to add entities when the registry is
          * frozen: [Server thread/ERROR]: Registry is already frozen initializing
          * UltraCosmetics v2.6.1-DEV-b5 (Is it up to date?)
@@ -91,7 +90,7 @@ public class CustomEntities {
         try {
             Field intrusiveHolderCache = registryClass.getDeclaredField(ObfuscatedFields.INTRUSIVE_HOLDER_CACHE);
             intrusiveHolderCache.setAccessible(true);
-            intrusiveHolderCache.set(Registry.ENTITY_TYPE, new IdentityHashMap<EntityType<?>, Holder.Reference<EntityType<?>>>());
+            intrusiveHolderCache.set(Registry.ENTITY_TYPE, new IdentityHashMap<EntityType<?>,Holder.Reference<EntityType<?>>>());
             Field frozen = registryClass.getDeclaredField(ObfuscatedFields.FROZEN);
             frozen.setAccessible(true);
             frozen.set(Registry.ENTITY_TYPE, false);
@@ -101,12 +100,11 @@ public class CustomEntities {
         }
     }
 
-    private static void registerEntity(String type, @SuppressWarnings("rawtypes") EntityFactory customMob, Map<String, Type<?>> types) {
+    private static void registerEntity(String type, @SuppressWarnings("rawtypes") EntityFactory customMob, Map<String,Type<?>> types) {
         String customName = "minecraft:ultracosmetics_" + type;
         ResourceLocation key = new ResourceLocation(customName);
         if (Registry.ENTITY_TYPE.containsKey(key)) {
             // Happens when UltraCosmetics is reloaded.
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "Skipping registration of " + customName + " because it is already registered.");
             return;
         }
         types.put(customName, types.get("minecraft:" + type));
@@ -169,8 +167,7 @@ public class CustomEntities {
 
         float f4 = Mth.sqrt((float) (dx * dx + dz * dz)) * 4;
 
-        if (f4 > 1)
-            f4 = 1;
+        if (f4 > 1) f4 = 1;
 
         wEntity.setLimbSwingAmount(wEntity.getLimbSwingAmount() + (f4 - wEntity.getLimbSwingAmount()) * 0.4f);
         wEntity.setLimbSwing(wEntity.getLimbSwing() + wEntity.getLimbSwingAmount());

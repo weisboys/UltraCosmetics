@@ -109,7 +109,7 @@ public class MessageManager {
         addButton(buttons, menuBlock, Category.MOUNTS, "Spawn", "Despawn");
         addButton(buttons, menuBlock, Category.MORPHS, "Morph", "Unmorph");
         addButton(buttons, menuBlock, Category.HATS, "Equip", "Unequip");
-        addButton(buttons, menuBlock, Category.SUITS, "Equip", "Unequip");
+        addButton(buttons, menuBlock, Category.SUITS_HELMET, "Equip", "Unequip");
         addButton(buttons, menuBlock, Category.EMOTES, "Equip", "Unequip");
         for (Entry<Category,Map<String,String>> catMap : buttons.entrySet()) {
             messagesConfig.set("Menu." + catMap.getKey().getConfigPath() + ".Title", menuNames.get(catMap.getKey()));

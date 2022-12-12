@@ -80,7 +80,7 @@ public class MountRudolph extends MountAbstractHorse {
         noseLocation.setY(y + 0.127);
         Particles.REDSTONE.display(255, 0, 0, noseLocation);
         // Improves update time for antlers, but not a critical feature
-        if (!UltraCosmeticsData.get().getServerVersion().isNmsSupported()) return;
+        if (!UltraCosmeticsData.get().getVersionManager().isUsingNMS()) return;
         new Thread(() -> {
             for (Player player : getPlayer().getWorld().getPlayers()) {
                 if (noseLocation.distanceSquared(player.getLocation()) > 32 * 32) continue;

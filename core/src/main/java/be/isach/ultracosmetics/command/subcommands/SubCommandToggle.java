@@ -5,16 +5,16 @@ import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
-import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -82,37 +82,33 @@ public class SubCommandToggle extends SubCommand {
             return;
         }
         Category category = categories.get();
-        boolean suits = category == Category.SUITS; 
-        ArmorSlot slot = null;
-        if (suits) {
-            try {
-                slot = ArmorSlot.getByName(cosm.split(":")[1].toUpperCase());
-            } catch (ArrayIndexOutOfBoundsException | IllegalArgumentException e) {
-                sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "/uc toggle suit <suit type:suit piece> <player>.");
-                return;
-            }
-            target.removeSuit(slot);
-        } else {
-            target.removeCosmetic(category);
-        }
-        Optional<? extends CosmeticType<?>> matchingType = category.getEnabled().stream().filter(cosmeticType -> cosmeticType.isEnabled() && cosmeticType.toString().toLowerCase().contains(cosm.split(":")[0])).findFirst();
+        Optional<? extends CosmeticType<?>> matchingType = category.getEnabled().stream().filter(cosmeticType -> cosmeticType.isEnabled() && cosmeticType.toString().toLowerCase().contains(cosm)).findFirst();
         if (!matchingType.isPresent()) {
             sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "Invalid cosmetic.");
             return;
         }
 
-        if (!suits) {
+        if (target.getCosmetic(category) != null && matchingType.get() == target.getCosmetic(category).getType()) {
+            target.removeCosmetic(category);
+        } else {
             matchingType.get().equip(target, ultraCosmetics);
-            return;
         }
+    }
 
-        SuitType suitType;
-        try {
-            suitType = SuitType.getSuitPart(cosm.split(":")[0], slot);
-        } catch (IllegalArgumentException e) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "/uc toggle suit <suit type:suit piece> <player>.");
-            return;
+    @Override
+    protected void tabComplete(CommandSender sender, String[] args, List<String> options) {
+        if (args.length == 2) {
+            addCategories(options);
+        } else if (args.length == 3) {
+            Category cat = Category.fromString(args[1]);
+
+            if (cat == null || !cat.isEnabled()) return;
+
+            for (CosmeticType<?> cosm : cat.getEnabled()) {
+                options.add(cosm.toString());
+            }
+        } else if (args.length == 4) {
+            addPlayers(options);
         }
-        suitType.equip(target, ultraCosmetics);
     }
 }

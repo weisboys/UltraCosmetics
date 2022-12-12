@@ -8,11 +8,15 @@ import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
+import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import com.cryptomorin.xseries.XMaterial;
+
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import com.cryptomorin.xseries.XMaterial;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,10 +30,10 @@ import java.util.Map;
  */
 public final class MenuSuits extends CosmeticMenu<SuitType> {
 
-    private static final int[] SLOTS = new int[] {10, 11, 12, 13, 14, 15, 16};
+    private static final int[] SLOTS = new int[] { 10, 11, 12, 13, 14, 15, 16 };
 
     public MenuSuits(UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics, Category.SUITS);
+        super(ultraCosmetics, Category.SUITS_HELMET);
     }
 
     @Override
@@ -46,15 +50,15 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             SuitCategory cat = enabled.get(i);
             ItemStack wholeEquipStack = XMaterial.HOPPER.parseItem();
             ItemMeta wholeEquipMeta = wholeEquipStack.getItemMeta();
-            wholeEquipMeta.setDisplayName(Category.SUITS.getActivateTooltip() + " " + MessageManager.getMessage("Suits." + cat.getConfigName() + ".whole-equip"));
+            wholeEquipMeta.setDisplayName(Category.SUITS_HELMET.getActivateTooltip() + " " + MessageManager.getMessage("Suits." + cat.getConfigName() + ".whole-equip"));
             wholeEquipMeta.setLore(Arrays.asList("", MessageManager.getMessage("Suits.Whole-Equip-Lore"), ""));
             wholeEquipStack.setItemMeta(wholeEquipMeta);
             putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, wholeEquipStack, clickData -> {
                 for (ArmorSlot armorSlot : ArmorSlot.values()) {
                     SuitType type = cat.getPiece(armorSlot);
-                    if (player.hasPermission(type.getPermission())) {
-                        if (player.getSuit(armorSlot) != null
-                                && player.getSuit(armorSlot).getType() == type) {
+                    if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
+                        if (player.getCosmetic(type.getCategory()) != null
+                                && player.getCosmetic(type.getCategory()).getType() == type) {
                             continue;
                         }
                         toggleOn(clickData.getClicker(), type, getUltraCosmetics());
@@ -67,11 +71,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
                 }
             });
         }
-    }
-
-    @Override
-    public List<SuitType> enabled() {
-        return SuitType.enabled();
     }
 
     @Override
@@ -93,21 +92,15 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    protected void toggleOn(UltraPlayer ultraPlayer, SuitType suitType, UltraCosmetics ultraCosmetics) {
-        suitType.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    protected void toggleOff(UltraPlayer ultraPlayer, ArmorSlot armorSlot) {
-        ultraPlayer.removeSuit(armorSlot);
-    }
-
-    @Override
     protected void toggleOff(UltraPlayer ultraPlayer, SuitType type) {
-        if (type == null) {
-            ultraPlayer.removeSuit();
+        if (type != null) {
+            ultraPlayer.removeCosmetic(type.getCategory());
             return;
         }
-        toggleOff(ultraPlayer, type.getSlot());
+        ultraPlayer.removeCosmetic(Category.SUITS_HELMET);
+        ultraPlayer.removeCosmetic(Category.SUITS_CHESTPLATE);
+        ultraPlayer.removeCosmetic(Category.SUITS_LEGGINGS);
+        ultraPlayer.removeCosmetic(Category.SUITS_BOOTS);
     }
 
     @Override
@@ -117,12 +110,13 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
 
     @Override
     protected int getMaxPages(UltraPlayer player) {
+        PermissionManager pm = ultraCosmetics.getPermissionManager();
         int i = 0;
         for (SuitCategory cat : SuitCategory.enabled()) {
-            if (player.hasPermission(cat.getHelmet().getPermission())
-                    || player.hasPermission(cat.getChestplate().getPermission())
-                    || player.hasPermission(cat.getLeggings().getPermission())
-                    || player.hasPermission(cat.getBoots().getPermission())) {
+            if (pm.hasPermission(player, cat.getHelmet())
+                    || pm.hasPermission(player, cat.getChestplate())
+                    || pm.hasPermission(player, cat.getLeggings())
+                    || pm.hasPermission(player, cat.getBoots())) {
                 i++;
             }
         }
@@ -130,7 +124,16 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     }
 
     @Override
-    public boolean hasEquipped(UltraPlayer ultraPlayer, SuitType type) {
-        return ultraPlayer.hasSuitPartOn(type.getSlot());
+    protected boolean hasUnlockable(UltraPlayer player) {
+        PermissionManager pm = ultraCosmetics.getPermissionManager();
+        for (SuitCategory cat : SuitCategory.enabled()) {
+            if (!pm.hasPermission(player, cat.getHelmet())
+                    || !pm.hasPermission(player, cat.getChestplate())
+                    || !pm.hasPermission(player, cat.getLeggings())
+                    || !pm.hasPermission(player, cat.getBoots())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
