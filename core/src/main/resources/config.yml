@@ -101,17 +101,18 @@ TreasureChests:
   Key-Price: 1000
   # How many treasure chests should be opened per key? Min 1, max 4
   Count: 4
-  Location:
+  Locations:
     # Whether players should be moved to a certain
     # location before opening a treasure chest.
     # Does not override /uc treasure with position args.
     Enabled: false
-    # The location players should be moved to.
-    # Block coordinates only, like 104, not 103.63
-    X: 0
-    Y: 63
-    Z: 0
-    World: world
+    default:
+      # The location players should be moved to.
+      # Block coordinates only, like 104, not 103.63
+      X: 0
+      Y: 63
+      Z: 0
+      World: world
   Loots:
     Money:
       Enabled: true
