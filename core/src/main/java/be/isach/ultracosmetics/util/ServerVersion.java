@@ -17,8 +17,11 @@ public enum ServerVersion {
     v1_16("1.16.5", null, 0),
     v1_17("1.17.1", null, 0),
     v1_18("1.18.2", "eaeedbff51b16ead3170906872fda334", 2),
-    v1_19("1.19.2", "69c84c88aeb92ce9fa9525438b93f4fe", 1);
+    v1_19("1.19.2", "69c84c88aeb92ce9fa9525438b93f4fe", 1),
+    NEW("???", null, 0),
+    ;
 
+    private final int id;
     private final String name;
     // mappingsVersion is a random string that is changed whenever NMS changes
     // which is more often than actual NMS revisions happen. You can find this
@@ -34,6 +37,11 @@ public enum ServerVersion {
         this.name = name;
         this.mappingsVersion = mappingsVersion;
         this.nmsRevision = nmsRevision;
+        if (name.equals("???")) {
+            id = 0;
+        } else {
+            id = Integer.parseInt(name.substring(name.indexOf('.') + 1, name.lastIndexOf('.')));
+        }
     }
 
     public String getName() {
@@ -49,7 +57,16 @@ public enum ServerVersion {
     }
 
     public static ServerVersion latest() {
-        return values()[values().length - 1];
+        return values()[values().length - 2];
+    }
+
+    public static ServerVersion byId(int id) {
+        for (ServerVersion version : values()) {
+            if (id == version.id) {
+                return version;
+            }
+        }
+        return null;
     }
 
     public boolean isAtLeast(ServerVersion version) {
@@ -61,7 +78,7 @@ public enum ServerVersion {
     }
 
     public boolean isMobChipAvailable() {
-        return isAtLeast(v1_13);
+        return isAtLeast(v1_13) && this != NEW;
     }
 
     public boolean isNmsSupported() {

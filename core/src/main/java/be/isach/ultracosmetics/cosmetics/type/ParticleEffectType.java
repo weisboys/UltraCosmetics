@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.particleeffects.*;
 import be.isach.ultracosmetics.util.Particles;
@@ -17,6 +18,9 @@ public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
 
     private ParticleEffectType(String configName, int repeatDelay, Particles effect, XMaterial material, Class<? extends ParticleEffect> clazz, boolean supportsParticleMultiplier) {
         super(Category.EFFECTS, configName, repeatDelay, effect, material, clazz, supportsParticleMultiplier);
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".name", configName);
+        }
     }
 
     public static void register(ServerVersion version) {

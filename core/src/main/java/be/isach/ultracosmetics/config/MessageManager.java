@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.config;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -70,7 +71,9 @@ public class MessageManager {
      * @param message The config value.
      */
     public static void addMessage(String path, String message) {
-        messagesConfig.addDefault(path, message);
+        if (messagesConfig.addDefault(path, message) && CosmeticType.GENERATE_MISSING_MESSAGES) {
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Adding message " + path);
+        }
     }
 
     public static void save() {

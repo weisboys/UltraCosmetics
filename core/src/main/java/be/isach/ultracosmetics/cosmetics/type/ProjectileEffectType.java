@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffect;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectBasicTrail;
@@ -19,6 +20,9 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
 
     public ProjectileEffectType(String configName, int repeatDelay, Particles effect, XMaterial material, Class<? extends ProjectileEffect> clazz) {
         super(Category.PROJECTILE_EFFECTS, configName, repeatDelay, effect, material, clazz, false);
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".name", configName);
+        }
     }
 
     public static void register() {

@@ -28,6 +28,9 @@ public class HatType extends CosmeticType<Hat> {
     private HatType(String texture, String configName) {
         super(Category.HATS, configName, XMaterial.PLAYER_HEAD, Hat.class);
         this.itemStack = ItemFactory.createSkull(texture, ChatColor.DARK_GRAY.toString() + ChatColor.ITALIC + "Hat");
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".Name", configName);
+        }
     }
 
     /**

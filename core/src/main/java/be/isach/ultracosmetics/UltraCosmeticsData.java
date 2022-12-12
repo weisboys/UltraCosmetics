@@ -10,7 +10,6 @@ import be.isach.ultracosmetics.version.VersionManager;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.Method;
-import java.util.StringJoiner;
 
 /**
  * This class is only for cleaning main class a bit.
@@ -159,37 +158,27 @@ public class UltraCosmeticsData {
      * @return the reason the check failed, or null if it succeeded.
      */
     protected Problem checkServerVersion() {
-        String versionString = Bukkit.getServer().getClass().getPackage().getName();
-        String mcVersion;
+        int versionNum;
+        String nmsVersion = "???";
         try {
-            mcVersion = versionString.split("\\.")[3];
-            mcVersion = mcVersion.substring(0, mcVersion.lastIndexOf('_'));
+            nmsVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+            String mcVersion = nmsVersion.substring(nmsVersion.indexOf('_') + 1, nmsVersion.lastIndexOf('_'));
+            versionNum = Integer.parseInt(mcVersion);
         } catch (ArrayIndexOutOfBoundsException e) {
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Unable to determine server version. Please report this error.");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Version string: " + versionString);
+            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Server package: " + Bukkit.getServer().getClass().getPackage().getName());
             return Problem.UNKNOWN_MC_VERSION;
         }
 
-        ServerVersion serverVersion;
+        ServerVersion serverVersion = ServerVersion.byId(versionNum);
 
-        try {
-            serverVersion = ServerVersion.valueOf(mcVersion);
-        } catch (IllegalArgumentException exc) {
-            ultraCosmetics.getSmartLogger().write("This NMS version isn't supported. (" + mcVersion + ")!");
-            StringJoiner sj = new StringJoiner(", ");
-            for (ServerVersion version : ServerVersion.values()) {
-                if (version == ServerVersion.latest()) continue;
-                sj.add(version.getName());
-            }
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "----------------------------");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "ULTRACOSMETICS CAN ONLY RUN ON " + sj.toString() + ", OR " + ServerVersion.latest().getName() + "!");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "----------------------------");
-            return Problem.BAD_MC_VERSION;
+        if (serverVersion == null) {
+            ultraCosmetics.getSmartLogger().write("This NMS version is unknown (" + nmsVersion + "), but UltraCosmetics will try to continue running.");
+            ultraCosmetics.getSmartLogger().write("As UltraCosmetics was not built for this version, some features will be disabled. Please check for an update.");
+            serverVersion = ServerVersion.NEW;
         }
 
-        setServerVersion(serverVersion);
+        this.serverVersion = serverVersion;
 
         return null;
     }
@@ -273,10 +262,6 @@ public class UltraCosmeticsData {
 
     public ServerVersion getServerVersion() {
         return serverVersion;
-    }
-
-    public void setServerVersion(ServerVersion serverVersion) {
-        this.serverVersion = serverVersion;
     }
 
     /**

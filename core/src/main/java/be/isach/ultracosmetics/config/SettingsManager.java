@@ -176,10 +176,12 @@ public class SettingsManager {
      * @param path  The fileConfiguration path.
      * @param value The value for this path.
      */
-    public void addDefault(String path, Object value) {
+    public boolean addDefault(String path, Object value) {
         if (!fileConfiguration.contains(path)) {
             set(path, value);
+            return true;
         }
+        return false;
     }
 
     /**

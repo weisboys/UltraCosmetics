@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.gadgets.*;
@@ -34,6 +35,9 @@ public class GadgetType extends CosmeticType<Gadget> {
         }
 
         this.runTime = runTime;
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".name", configName);
+        }
     }
 
     public boolean requiresAmmo() {

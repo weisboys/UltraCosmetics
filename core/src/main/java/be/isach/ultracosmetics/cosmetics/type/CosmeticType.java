@@ -37,6 +37,8 @@ import java.util.Map;
  * @since 07-05-2016
  */
 public abstract class CosmeticType<T extends Cosmetic<?>> {
+    // For use when adding new cosmetics
+    public static final boolean GENERATE_MISSING_MESSAGES = false;
     private static final Permission ALL_PERMISSION = new Permission("ultracosmetics.allcosmetics");
     private static final Map<String,Permission> registeredPermissions = new HashMap<>();
     private static final Map<Category,List<CosmeticType<?>>> VALUES = new HashMap<>();
@@ -105,6 +107,9 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         EmoteType.register();
         ProjectileEffectType.register();
         DeathEffectType.register();
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.save();
+        }
     }
 
     private final String configName;
@@ -124,6 +129,9 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         this.material = material;
         this.clazz = clazz;
 
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".Description", "Description");
+        }
         description = MessageManager.getMessage(getCategory().getConfigPath() + "." + configName + ".Description");
         if (registerPerm) {
             registerPermission();

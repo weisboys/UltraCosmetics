@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffect;
 import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectExplosion;
@@ -11,6 +12,9 @@ public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
 
     public DeathEffectType(String configName, Particles effect, XMaterial material, Class<? extends DeathEffect> clazz, boolean supportsParticleMultiplier) {
         super(Category.DEATH_EFFECTS, configName, 0, effect, material, clazz, supportsParticleMultiplier);
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".name", configName);
+        }
     }
 
     public static void register() {

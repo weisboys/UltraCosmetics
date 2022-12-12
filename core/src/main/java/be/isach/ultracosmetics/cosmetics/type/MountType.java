@@ -57,6 +57,10 @@ public class MountType extends CosmeticEntType<Mount> {
         this.defaultSpeed = defaultSpeed;
         this.movementSpeed = SettingsManager.getConfig().getDouble("Mounts." + configName + ".Speed", defaultSpeed);
         setupConfigLate(SettingsManager.getConfig(), getConfigPath());
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".menu-name", configName);
+            MessageManager.addMessage(getConfigPath() + ".entity-displayname", "&l%playername%'s " + configName);
+        }
     }
 
     private MountType(String configName, XMaterial material, EntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass) {

@@ -39,6 +39,11 @@ public class PetType extends CosmeticEntType<Pet> {
         this.customization = customization;
 
         PET_MAP.putIfAbsent(entityType, clazz);
+
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".menu-name", configName);
+            MessageManager.addMessage(getConfigPath() + ".entity-displayname", "&l%playername%'s " + configName);
+        }
     }
 
     private PetType(String configName, XMaterial material, EntityType entityType, Class<? extends Pet> clazz) {

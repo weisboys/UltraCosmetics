@@ -242,6 +242,9 @@ public class EmoteType extends CosmeticType<Emote> {
     private EmoteType(String configName, int ticksPerFrame) {
         super(Category.EMOTES, configName, XMaterial.PLAYER_HEAD, Emote.class);
         this.ticksPerFrame = ticksPerFrame;
+        if (GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".Name", configName);
+        }
     }
 
     public void appendTexture(String texture) {

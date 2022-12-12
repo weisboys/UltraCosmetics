@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.config.CustomConfiguration;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
@@ -80,6 +81,13 @@ public enum SuitCategory {
         this.chestplate = new SuitType(chestplateType, ArmorSlot.CHESTPLATE, this);
         this.leggings = new SuitType(leggingsType, ArmorSlot.LEGGINGS, this);
         this.boots = new SuitType(bootsType, ArmorSlot.BOOTS, this);
+        if (CosmeticType.GENERATE_MISSING_MESSAGES) {
+            MessageManager.addMessage(getConfigPath() + ".whole-equip", "&f&lwhole " + configName + " &f&lsuit");
+            MessageManager.addMessage(getConfigPath() + ".helmet-name", configName + " &f&Helmet");
+            MessageManager.addMessage(getConfigPath() + ".chestplate-name", configName + " &f&lChestplate");
+            MessageManager.addMessage(getConfigPath() + ".leggings-name", configName + " &f&lLeggings");
+            MessageManager.addMessage(getConfigPath() + ".boots-name", configName + " &f&lBoots");
+        }
     }
 
     public String getConfigName() {
