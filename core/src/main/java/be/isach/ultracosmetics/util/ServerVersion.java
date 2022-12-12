@@ -52,15 +52,16 @@ public enum ServerVersion {
         return mappingsVersion;
     }
 
+    public int getNMSRevision() {
+        return nmsRevision;
+    }
+
     public static ServerVersion earliest() {
         return values()[0];
     }
 
-    public static ServerVersion latest() {
-        return values()[values().length - 2];
-    }
-
     public static ServerVersion byId(int id) {
+        if (id == 0) return null;
         for (ServerVersion version : values()) {
             if (id == version.id) {
                 return version;

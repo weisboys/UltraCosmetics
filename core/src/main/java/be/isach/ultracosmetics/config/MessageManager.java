@@ -71,8 +71,11 @@ public class MessageManager {
      * @param message The config value.
      */
     public static void addMessage(String path, String message) {
-        if (messagesConfig.addDefault(path, message) && CosmeticType.GENERATE_MISSING_MESSAGES) {
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Adding message " + path);
+        if (messagesConfig.addDefault(path, message)) {
+            // Has its own if-block to avoid the dead code warning
+            if (CosmeticType.GENERATE_MISSING_MESSAGES) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Adding message " + path);
+            }
         }
     }
 

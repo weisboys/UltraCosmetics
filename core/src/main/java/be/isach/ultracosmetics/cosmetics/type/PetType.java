@@ -118,6 +118,7 @@ public class PetType extends CosmeticEntType<Pet> {
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
         switch (serverVersion) {
+        case NEW:
         case v1_19:
             new PetType("Frog", XMaterial.LILY_PAD, EntityType.FROG, PetFrog.class);
             new PetType("Warden", XMaterial.SCULK_SHRIEKER, EntityType.WARDEN, PetWarden.class) {
@@ -202,7 +203,7 @@ public class PetType extends CosmeticEntType<Pet> {
             new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
         case v1_9:
             new PetType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER, PetShulker.class);
-        default:
+        case v1_8:
             break;
         }
 

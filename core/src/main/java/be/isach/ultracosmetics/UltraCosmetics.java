@@ -162,8 +162,11 @@ public class UltraCosmetics extends JavaPlugin {
 
         Problem problem = UltraCosmeticsData.get().checkServerVersion();
         if (problem != null) {
+            if (problem.isSevere()) {
+                loadTimeProblems.add(problem);
+                return;
+            }
             activeProblems.add(problem);
-            return;
         }
 
         // Use super.getConfig() because CustomConfiguration doesn't load until onEnable
@@ -248,6 +251,12 @@ public class UltraCosmetics extends JavaPlugin {
         getSmartLogger().write("Thanks for using UltraCosmetics!");
         getSmartLogger().write("Plugin by Datatags. Original Author: iSach");
         getSmartLogger().write("Link: https://bit.ly/UltraCosmetics");
+
+        if (activeProblems.contains(Problem.BAD_MC_VERSION)) {
+            getSmartLogger().write();
+            getSmartLogger().write(LogLevel.WARNING, "This NMS version is unknown (" + UltraCosmeticsData.get().getRawNMSVersion() + "), but UltraCosmetics will try to continue running.");
+            getSmartLogger().write(LogLevel.WARNING, "As UltraCosmetics was not built for this version, some features will be disabled. Please check for an update.");
+        }
 
         // Initialize NMS Module
         if (!UltraCosmeticsData.get().initModule()) {
@@ -740,10 +749,6 @@ public class UltraCosmetics extends JavaPlugin {
 
     public void addProblem(Problem problem) {
         activeProblems.add(problem);
-    }
-
-    public void removeProblem(Problem problem) {
-        activeProblems.remove(problem);
     }
 
     public Set<Problem> getProblems() {

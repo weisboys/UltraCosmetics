@@ -99,6 +99,7 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Horse", XMaterial.SADDLE, EntityType.HORSE);
 
         switch (version) {
+        case NEW:
         case v1_19:
             new MorphType("Allay", XMaterial.ALLAY_SPAWN_EGG, EntityType.ALLAY, MorphAllay.class);
             new MorphType("Frog", XMaterial.FROG_SPAWN_EGG, EntityType.FROG, MorphFrog.class, false);
@@ -156,7 +157,6 @@ public class MorphType extends CosmeticType<Morph> {
         case v1_9:
             new MorphType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER);
         case v1_8:
-        default:
             break;
         }
     }

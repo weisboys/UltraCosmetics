@@ -81,6 +81,8 @@ public class UltraCosmeticsData {
      */
     private ServerVersion serverVersion;
 
+    private String nmsVersion = "???";
+
     /**
      * NMS Version Manager.
      */
@@ -159,11 +161,12 @@ public class UltraCosmeticsData {
      */
     protected Problem checkServerVersion() {
         int versionNum;
-        String nmsVersion = "???";
+        int nmsRev = -1;
         try {
             nmsVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
             String mcVersion = nmsVersion.substring(nmsVersion.indexOf('_') + 1, nmsVersion.lastIndexOf('_'));
             versionNum = Integer.parseInt(mcVersion);
+            nmsRev = Integer.parseInt(nmsVersion.substring(nmsVersion.lastIndexOf('R') + 1));
         } catch (ArrayIndexOutOfBoundsException e) {
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Unable to determine server version. Please report this error.");
             ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Server package: " + Bukkit.getServer().getClass().getPackage().getName());
@@ -172,10 +175,10 @@ public class UltraCosmeticsData {
 
         ServerVersion serverVersion = ServerVersion.byId(versionNum);
 
-        if (serverVersion == null) {
-            ultraCosmetics.getSmartLogger().write("This NMS version is unknown (" + nmsVersion + "), but UltraCosmetics will try to continue running.");
-            ultraCosmetics.getSmartLogger().write("As UltraCosmetics was not built for this version, some features will be disabled. Please check for an update.");
-            serverVersion = ServerVersion.NEW;
+        if (serverVersion == null || serverVersion.getNMSRevision() != nmsRev) {
+            // Error message printed in onEnable so it's more visible
+            this.serverVersion = ServerVersion.NEW;
+            return Problem.BAD_MC_VERSION;
         }
 
         this.serverVersion = serverVersion;
@@ -184,6 +187,7 @@ public class UltraCosmeticsData {
     }
 
     protected boolean checkMappingsVersion(ServerVersion version) {
+        if (version.getMappingsVersion() == null) return true;
         String currentMappingsVersion = null;
         @SuppressWarnings("deprecation")
         Object magicNumbers = Bukkit.getUnsafe();
@@ -192,9 +196,6 @@ public class UltraCosmeticsData {
             Method mappingsVersionMethod = magicNumbersClass.getDeclaredMethod("getMappingsVersion");
             currentMappingsVersion = (String) mappingsVersionMethod.invoke(magicNumbers);
         } catch (ReflectiveOperationException ignored) {
-        }
-        if (currentMappingsVersion == null) {
-            return version.getMappingsVersion() == null;
         }
         return currentMappingsVersion.equals(version.getMappingsVersion());
     }
@@ -265,8 +266,6 @@ public class UltraCosmeticsData {
     }
 
     /**
-     * Should be only used for running Bukkit Runnables.
-     *
      * @return UltraCosmetics instance. (As Plugin)
      */
     public UltraCosmetics getPlugin() {
@@ -279,5 +278,9 @@ public class UltraCosmeticsData {
 
     public void setFileStorage(boolean fileStorage) {
         this.fileStorage = fileStorage;
+    }
+
+    public String getRawNMSVersion() {
+        return nmsVersion;
     }
 }
