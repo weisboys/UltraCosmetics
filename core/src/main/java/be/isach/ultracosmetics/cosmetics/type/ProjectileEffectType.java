@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectHelix
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectNote;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRainbow;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.ServerVersion;
 
 import com.cryptomorin.xseries.XMaterial;
 
@@ -25,7 +26,7 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         }
     }
 
-    public static void register() {
+    public static void register(ServerVersion version) {
         // Rainbow Trail
         new ProjectileEffectType("Rainbow", 1, Particles.REDSTONE, XMaterial.LIME_WOOL, ProjectileEffectRainbow.class);
 
@@ -36,6 +37,9 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         new ProjectileEffectType("RedstoneHelix", 1, Particles.REDSTONE, XMaterial.REDSTONE_BLOCK, ProjectileEffectHelix.class);
         new ProjectileEffectType("FlameHelix", 1, Particles.FLAME, XMaterial.FIRE_CHARGE, ProjectileEffectHelix.class);
         new ProjectileEffectType("CursedHelix", 1, Particles.SPELL_WITCH, XMaterial.PURPLE_WOOL, ProjectileEffectHelix.class);
+        if (version.isAtLeast(ServerVersion.v1_16)) {
+            new ProjectileEffectType("SoulFireHelix", 1, Particles.SOUL_FIRE_FLAME, XMaterial.SOUL_CAMPFIRE, ProjectileEffectHelix.class);
+        }
 
         // Basic Trails
         new ProjectileEffectType("Spark", 1, Particles.FIREWORKS_SPARK, XMaterial.FIREWORK_ROCKET, ProjectileEffectBasicTrail.class);
@@ -55,5 +59,26 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         new ProjectileEffectType("Cloud", 1, Particles.CLOUD, XMaterial.WHITE_WOOL, ProjectileEffectBasicTrail.class);
         new ProjectileEffectType("Smoke", 1, Particles.SMOKE_NORMAL, XMaterial.GRAY_WOOL, ProjectileEffectBasicTrail.class);
         new ProjectileEffectType("Portal", 1, Particles.PORTAL, XMaterial.OBSIDIAN, ProjectileEffectBasicTrail.class);
+        if (version.isAtLeast(ServerVersion.v1_9)) {
+            new ProjectileEffectType("DragonBreath", 1, Particles.DRAGON_BREATH, XMaterial.DRAGON_BREATH, ProjectileEffectBasicTrail.class);
+        }
+        if (version.isAtLeast(ServerVersion.v1_13)) {
+            new ProjectileEffectType("SquidInk", 1, Particles.SQUID_INK, XMaterial.INK_SAC, ProjectileEffectBasicTrail.class);
+        }
+        if (version.isAtLeast(ServerVersion.v1_16)) {
+            new ProjectileEffectType("SoulFireFlame", 1, Particles.SOUL_FIRE_FLAME, XMaterial.SOUL_TORCH, ProjectileEffectBasicTrail.class);
+        }
+        if (version.isAtLeast(ServerVersion.v1_17)) {
+            new ProjectileEffectType("Snowflake", 1, Particles.SNOWFLAKE, XMaterial.POWDER_SNOW_BUCKET, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("SculkSensor", 1, Particles.DUST_COLOR_TRANSITION, XMaterial.SCULK_SENSOR, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("Glow", 1, Particles.GLOW, XMaterial.GLOW_SQUID_SPAWN_EGG, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("GlowSquidInk", 1, Particles.GLOW_SQUID_INK, XMaterial.GLOW_INK_SAC, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("Scrape", 1, Particles.SCRAPE, XMaterial.OXIDIZED_COPPER, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("WaxOff", 1, Particles.WAX_OFF, XMaterial.WAXED_COPPER_BLOCK, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("WaxOn", 1, Particles.WAX_ON, XMaterial.HONEYCOMB, ProjectileEffectBasicTrail.class);
+        }
+        if (version.isAtLeast(ServerVersion.v1_19)) {
+            new ProjectileEffectType("SculkSoul", 1, Particles.SCULK_SOUL, XMaterial.SCULK_CATALYST, ProjectileEffectBasicTrail.class);
+        }
     }
 }

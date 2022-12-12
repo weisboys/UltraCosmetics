@@ -385,7 +385,84 @@ public enum Particles {
      * <li>The offset values have no influence on this particle effect
      * </ul>
      */
-    MOB_APPEARANCE("mobappearance", 41, 8);
+    MOB_APPEARANCE("mobappearance", 41, 8),
+    /**
+     * A particle effect which is displayed by ender dragons:
+     * <ul>
+     * <li>It looks like a purple cloud
+     * </ul>
+     */
+    DRAGON_BREATH("dragonbreath", 42, 9),
+    /**
+     * A particle effect which is displayed by squids:
+     * <ul>
+     * <li>It looks like a black cloud
+     * </ul>
+     */
+    SQUID_INK("squidink", 43, 13),
+    /**
+     * A particle effect which is displayed by soul torches:
+     * <ul>
+     * <li>It looks like a cyan flame
+     * </ul>
+     */
+    SOUL_FIRE_FLAME("soulfireflame", 44, 16),
+    /**
+     * A particle effect which is displayed by powder snow:
+     * <ul>
+     * <li>It looks like a small, white cloud
+     * </ul>
+     */
+    SNOWFLAKE("snowflake", 45, 17),
+    /**
+     * A particle effect which is displayed by sculk sensors:
+     * <ul>
+     * <li>It looks like a cloud, which changes its color from blue to red
+     * </ul>
+     */
+    DUST_COLOR_TRANSITION("dustcolortransition", 46, 17),
+    /**
+     * A particle effect which is displayed by glow squids:
+     * <ul>
+     * <li>It looks like a teal star
+     * </ul>
+     */
+    GLOW("glow", 47, 17),
+    /**
+     * A particle effect which is displayed by glow squids:
+     * <ul>
+     * <li>It looks like an aquamarine cloud
+     * </ul>
+     */
+    GLOW_SQUID_INK("glowsquidink", 48, 17),
+    /**
+     * A particle effect which is displayed by copper blocks:
+     * <ul>
+     * <li>It looks like a green star
+     * </ul>
+     */
+    SCRAPE("scrape", 49, 17),
+    /**
+     * A particle effect which is displayed by copper blocks:
+     * <ul>
+     * <li>It looks like a white star
+     * </ul>
+     */
+    WAX_OFF("waxoff", 50, 17),
+    /**
+     * A particle effect which is displayed by copper blocks:
+     * <ul>
+     * <li>It looks like an orange star
+     * </ul>
+     */
+    WAX_ON("waxon", 51, 17),
+    /**
+     * A particle effect which is displayed by skulk catalysts:
+     * <ul>
+     * <li>It looks like a cyan soul
+     * </ul>
+     */
+    SCULK_SOUL("sculksoul", 52, 19);
 
     public static final int DEF_RADIUS = 128; // for convenience functions by iSach
     private static final Map<String,Particles> NAME_MAP = new HashMap<>();

@@ -1618,6 +1618,9 @@ Projectile-Effects:
   CursedHelix:
     name: '&5&lCursed Helix'
     Description: '&7&oRotating, purple particles'
+  SoulFireHelix:
+    name: '&b&lSoul Fire Helix'
+    Description: '&7&oRotating, cyan flames'
   Spark:
     name: '&f&lSpark'
     Description: '&7&oSparkling, white stars'
@@ -1669,6 +1672,39 @@ Projectile-Effects:
   Portal:
     name: '&5&lPortal'
     Description: '&7&oSmall, purple clouds'
+  DragonBreath:
+    name: '&d&lDragon Breath'
+    Description: '&7&oSmall, purple clouds'
+  SquidInk:
+    name: '&9&lSquid Ink'
+    Description: '&7&oBlack clouds'
+  SoulFireFlame:
+    name: '&b&lSoul Fire Flame'
+    Description: '&7&oSmall, cyan flames'
+  Snowflake:
+    name: '&f&lSnowflake'
+    Description: '&7&oSmall, white clouds'
+  SculkSensor:
+    name: '&3&lSculk Sensor'
+    Description: '&7&oBlue/red clouds'
+  Glow:
+    name: '&e&lGlow'
+    Description: '&7&oTeal stars'
+  GlowSquidInk:
+    name: '&3&lGlow Squid Ink'
+    Description: '&7&oAquamarine clouds'
+  Scrape:
+    name: '&2&lScrape'
+    Description: '&7&oGreen stars'
+  WaxOff:
+    name: '&f&lWax Off'
+    Description: '&7&oWhite stars'
+  WaxOn:
+    name: '&6&lWax On'
+    Description: '&7&oOrange stars'
+  SculkSoul:
+    name: '&b&lSculk Soul'
+    Description: '&7&oCyan souls'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
