@@ -39,9 +39,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.messages.ActionBar;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
@@ -77,11 +81,11 @@ public class UltraPlayer {
     private boolean canBeHitByOtherGadgets = true;
 
     /**
-     * Cooldown map storing all the current cooldowns for gadgets.
-     * The value is the currentTimeMillis when the player should
-     * regain access to the gadget.
+     * Cooldown map storing all the current cooldowns for cosmetics.
+     * The values are the currentTimeMillis when the player should
+     * regain access to the cosmetics.
      */
-    private final Map<GadgetType,Long> gadgetCooldowns = new HashMap<>();
+    private final Map<CosmeticType<?>,Long> cooldowns = new HashMap<>();
 
     private volatile boolean moving;
     private volatile Location lastPos;
@@ -130,8 +134,8 @@ public class UltraPlayer {
      * @param gadget The gadget type.
      * @return 0 if player can use, otherwise the time left (in seconds).
      */
-    public double getCooldown(GadgetType gadget) {
-        Long count = gadgetCooldowns.get(gadget);
+    public double getCooldown(CosmeticType<?> type) {
+        Long count = cooldowns.get(type);
 
         if (count == null || System.currentTimeMillis() > count) return 0;
 
@@ -139,21 +143,48 @@ public class UltraPlayer {
         return valueMillis / 1000d;
     }
 
-    public boolean canUse(GadgetType gadget) {
-        return getCooldown(gadget) == 0;
+    public boolean canUse(CosmeticType<?> type) {
+        return getCooldown(type) == 0;
     }
 
     /**
      * Sets the cooldown of a gadget.
      *
-     * @param gadget The gadget.
+     * @param gadget   The gadget.
+     * @param cooldown The standard cooldown of the cosmetic in seconds
+     * @param runTime  The runtime of the cosmetic (i.e. minimum possible cooldown) in seconds.
      */
-    public void setCoolDown(GadgetType gadget) {
-        double cooldown = gadget.getCountdown();
-        if (isBypassingCooldown()) {
-            cooldown = gadget.getRunTime();
+    public void setCoolDown(CosmeticType<?> type, double cooldown, double runTime) {
+        double time = isBypassingCooldown() ? runTime : cooldown;
+        cooldowns.put(type, (long) (time * 1000 + System.currentTimeMillis()));
+    }
+
+    /**
+     * Sends the current cooldown in action bar.
+     */
+
+    public void sendCooldownBar(CosmeticType<?> type, double cooldown, double runTime) {
+        StringBuilder stringBuilder = new StringBuilder(ChatColor.GREEN.toString());
+
+        double currentCooldown = getCooldown(type);
+        double maxCooldown = isBypassingCooldown() ? runTime : cooldown;
+
+        int res = (int) (currentCooldown / maxCooldown * 50);
+        for (int i = 0; i < 50; i++) {
+            if (i == 50 - res) {
+                stringBuilder.append(ChatColor.RED);
+            }
+            stringBuilder.append("|");
         }
-        gadgetCooldowns.put(gadget, (long) (cooldown * 1000 + System.currentTimeMillis()));
+
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
+        otherSymbols.setDecimalSeparator('.');
+        otherSymbols.setGroupingSeparator('.');
+        otherSymbols.setPatternSeparator('.');
+        final DecimalFormat decimalFormat = new DecimalFormat("0.0", otherSymbols);
+        String timeLeft = decimalFormat.format(currentCooldown) + "s";
+
+        ActionBar.sendActionBar(getBukkitPlayer(), type.getName() + ChatColor.WHITE + " " + stringBuilder.toString() + ChatColor.WHITE + " " + timeLeft);
     }
 
     /**
