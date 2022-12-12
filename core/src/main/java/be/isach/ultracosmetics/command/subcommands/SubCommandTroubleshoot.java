@@ -8,10 +8,19 @@ import be.isach.ultracosmetics.util.Problem;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.io.Reader;
 import java.util.Set;
 
 public class SubCommandTroubleshoot extends SubCommand {
+    private static final String GIT_HASH;
+
+    static {
+        Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("build_info.yml");
+        YamlConfiguration buildInfo = YamlConfiguration.loadConfiguration(reader);
+        GIT_HASH = buildInfo.getString("git-hash");
+    }
 
     public SubCommandTroubleshoot(UltraCosmetics ultraCosmetics) {
         super("troubleshoot", "Identifies issues with UltraCosmetics", "", ultraCosmetics);
@@ -33,6 +42,6 @@ public class SubCommandTroubleshoot extends SubCommand {
         sender.sendMessage("");
         sender.sendMessage(ChatColor.GREEN + "If you need help, join the Discord for support: https://discord.gg/mDSbzGPykk");
         sender.sendMessage(ChatColor.GREEN + "When you join, mention the above error(s) and that you are running UC "
-                + UltraCosmeticsData.get().getPlugin().getDescription().getVersion() + " on " + Bukkit.getName() + " " + Bukkit.getVersion());
+                + UltraCosmeticsData.get().getPlugin().getDescription().getVersion() + " (commit " + GIT_HASH + ") on " + Bukkit.getName() + " " + Bukkit.getVersion());
     }
 }

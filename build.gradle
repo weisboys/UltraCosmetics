@@ -26,11 +26,21 @@ allprojects {
         compile.extendsFrom shaded
     }
 
+    def getGitHash = { ->
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'rev-parse', '--short', 'HEAD'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+
     processResources {
         inputs.property("version", project.version)
 
         filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
-                'VERSION': project.version
+                'VERSION': project.version,
+                'GIT-HASH': getGitHash()
         ]
     }
 
