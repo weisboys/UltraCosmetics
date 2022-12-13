@@ -62,60 +62,70 @@ Menu:
     Title: '&lHaustiere'
     Button:
       Name: '&a&lHaustiere'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnen:'
       Tooltip-Unequip: '&c&lDespawnen:'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAktivieren:'
       Tooltip-Unequip: '&c&lDeaktivieren:'
   Mounts:
     Title: '&lReittiere'
     Button:
       Name: '&6&lReittiere'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnen:'
       Tooltip-Unequip: '&c&lDespawnen:'
   Morphs:
     Title: '&lVerwandlungen'
     Button:
       Name: '&2&lVerwandlungen'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lVerwandeln in:'
       Tooltip-Unequip: '&c&lDeaktivieren:'
   Hats:
     Title: '&lHüte'
     Button:
       Name: '&b&lHüte'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Particle-Effects:
     Title: '&lPartikeleffekte'
     Button:
       Name: '&b&lPartikeleffekte'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Suits:
     Title: '&lAnzüge'
     Button:
       Name: '&c&lAnzüge'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Emotes:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
       Name: '&8&lProjectile Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
+      Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
@@ -846,6 +856,175 @@ Morphs:
     name: '&a&lPapagei'
     skill: '&eDoppelsprung&7: &afliegen'
     Description: '&7&oPolly will einen Keks?'
+  Allay:
+    name: '&a&lAllay'
+    skill: '&eDouble Jump&7 to: &aFlap'
+    Description: '&7&oA new Friend!'
+  Axolotl:
+    name: '&5&lAxolotl'
+    skill: '&eLeft-Click&7 for cute sounds'
+    Description: '&7&oSooo Cute!'
+  Bee:
+    name: '&e&lBee'
+    skill: '&eDouble Jump&7 to: &aFlap'
+    Description: '&7&o*bzzzz* *bzzzz*'
+  Cat:
+    name: '&e&lCat'
+    skill: '&eLeft-Click&7 to: &aMeow'
+    Description: '&7&oBasically a tiny Tiger'
+  CaveSpider:
+    name: '&e&lCaveSpider'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oA Spider, but poisonous!'
+  Cod:
+    name: '&e&lCod'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oPrefers water over land!'
+  Dolphin:
+    name: '&e&lDolphin'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oThe happiest creature of the seas!'
+  Donkey:
+    name: '&7&lDonkey'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oCan carry all your Stuff!'
+  Drowned:
+    name: '&3&lDrowned'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oAn underwater Zombie!'
+  Endermite:
+    name: '&5&lEndermite'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oAttracts Endermen!'
+  Evoker:
+    name: '&7&lEvoker'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oSummons Vexes for a living!'
+  Frog:
+    name: '&2&lFrog'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oDoesn''t like Fireflies!'
+  Fox:
+    name: '&d&lFox'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oWhat does the fox say?'
+  GlowSquid:
+    name: '&3&lGlow Squid'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oIt glows!'
+  Goat:
+    name: '&f&lGoat'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oBAAAA!'
+  Guardian:
+    name: '&3&lGuardian'
+    skill: '&eLeft-Click&7 to: &aTODO'
+    Description: '&7&oHates Squids!'
+  Wolf:
+    name: '&7&lWolf'
+    Description: '&7&oWoof!'
+  IronGolem:
+    name: '&7&lIron Golem'
+    Description: '&7&oHates zombies!'
+  Wither:
+    name: '&8&lWither'
+    Description: '&7&oWatch out for me...'
+  Skeleton:
+    name: '&7&lSkeleton'
+    Description: '&7&oVery good archer!'
+  Zombie:
+    name: '&2&lZombie'
+    Description: '&7&oBrains!!!'
+  Squid:
+    name: '&d&lSquid'
+    Description: '&7&oBloop Bloop!'
+  Spider:
+    name: '&8&lSpider'
+    Description: '&7&oHISS...'
+  Ghast:
+    name: '&f&lGhast'
+    Description: '&7&o*high-pitched scream*'
+  MagmaCube:
+    name: '&c&lMagma Cube'
+    Description: '&7&oA very hot cube!'
+  Horse:
+    name: '&a&lHorse'
+    Description: '&7&o*fhrrrrhh*'
+  Warden:
+    name: '&3&lWarden'
+    Description: '&7&oBe quiet...'
+  Tadpole:
+    name: '&8&lTadpole'
+    Description: '&7&oWill grow into a Frog!'
+  Piglin:
+    name: '&6&lPiglin'
+    Description: '&7&oDeals with Gold!'
+  Strider:
+    name: '&c&lStrider'
+    Description: '&7&oI hate water!'
+  Hoglin:
+    name: '&c&lHoglin'
+    Description: '&7&oA pig, but in angry.'
+  PiglinBrute:
+    name: '&6&lPiglin Brute'
+    Description: '&7&oA pretty buff Piglin!'
+  Zoglin:
+    name: '&c&lZoglin'
+    Description: '&7&oA zombified Hoglin!'
+  ZombifiedPiglin:
+    name: '&d&lZombified Piglin'
+    Description: '&7&oAttack it and all of them will be after you!'
+  Panda:
+    name: '&a&lPanda'
+    Description: '&7&oLikes Bamboo!'
+  Ocelot:
+    name: '&e&lOcelot'
+    Description: '&7&oKing of the jungle'
+  WanderingTrader:
+    name: '&1&lWandering Trader'
+    Description: '&7&oWanders around trying to sell his stuff!'
+  Pillager:
+    name: '&7&lPillager'
+    Description: '&7&oLikes to pillage Villages!'
+  Ravager:
+    name: '&8&lRavager'
+    Description: '&7&oA Pillager''s favorite Companion!'
+  Pufferfish:
+    name: '&e&lPufferfish'
+    Description: '&7&oDoesn''t like to be touched!'
+  Salmon:
+    name: '&c&lSalmon'
+    Description: '&7&oThey''re very tasty!'
+  TropicalFish:
+    name: '&e&lTropical Fish'
+    Description: '&7&oA colorful fish!'
+  Turtle:
+    name: '&a&lTurtle'
+    Description: '&7&oTake your time.'
+  Phantom:
+    name: '&1&lPhantom'
+    Description: '&7&oHates players that don''t sleep!'
+  Illusioner:
+    name: '&1&lIllusioner'
+    Description: '&7&oOnly spawnable with commands!'
+  Vex:
+    name: '&7&lVex'
+    Description: '&7&oYAAHH Ehehhehe!'
+  Vindicator:
+    name: '&7&lVindicator'
+    Description: '&7&oDon''t underestimate their strength!'
+  Mule:
+    name: '&8&lMule'
+    Description: '&7&oYour standard, everyday mule'
+  SkeletonHorse:
+    name: '&f&lSkeleton Horse'
+    Description: '&7&oLook out for lightning strikes!'
+  ZombieHorse:
+    name: '&2&lZombie Horse'
+    Description: '&7&oThe rarest Horse in Minecraft!'
+  Shulker:
+    name: '&5&lShulker'
+    Description: '&7&oLikes to hide!'
 Hats:
   Equip: '%prefix% &9Du hast %hatname% &9Hut ausgerüstet!'
   Unequip: '%prefix% &9Du hast %hatname% &9Hut entfernt!'
@@ -1360,6 +1539,22 @@ Suits:
     Description: |-
       &7&oDieser Anzug gehört dem
       &7&oLord der gefrorenen Lande!
+  Cursed:
+    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
+    helmet-name: '&5&lCursed &f&lHelmet'
+    chestplate-name: '&5&lCursed &f&lChestplate'
+    leggings-name: '&5&lCursed &f&lLeggings'
+    boots-name: '&5&lCursed &f&lBoots'
+    Description: '&7&oMysterious and spooky.'
+  Slime:
+    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
+    helmet-name: '&a&lSlime &f&lHelmet'
+    chestplate-name: '&a&lSlime &f&lChestplate'
+    leggings-name: '&a&lSlime &f&lLeggings'
+    boots-name: '&a&lSlime &f&lBoots'
+    Description: |-
+      &7&oSlimy green suit.
+      &7&oThe slimes will love it!
   Equip: '%prefix% &9Du hast %suitname% &9ausgerüstet!'
   Unequip: '%prefix% &9Du hast %suitname% &9entfernt!'
   Suit-Part-Lore: '&9Anzug-Teil'
@@ -1410,12 +1605,72 @@ Emotes:
 Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Rainbow:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    Description: '&7&oRainbow-colored particles'
+  Christmas:
+    name: '&4&lChrist&f&lmas'
+    Description: '&7&oMerry Christmas!'
+  RedstoneHelix:
+    name: '&4&lRedstone Helix'
+    Description: '&7&oRotating, red particles'
+  FlameHelix:
+    name: '&c&lFlame Helix'
+    Description: '&7&oRotating flames'
+  CursedHelix:
+    name: '&5&lCursed Helix'
+    Description: '&7&oRotating, purple particles'
+  Spark:
+    name: '&f&lSpark'
+    Description: '&7&oSparkling, white stars'
+  Redstone:
+    name: '&4&lRedstone'
+    Description: '&7&oSmall, red clouds'
+  Flame:
+    name: '&c&lFlame'
+    Description: '&7&oSmall flames'
+  Water:
+    name: '&9&lWater'
+    Description: '&7&oBlue waterdrops'
+  Witch:
+    name: '&5&lWitch'
+    Description: '&7&oPurple crosses'
+  Emerald:
+    name: '&2&lEmerald'
+    Description: '&7&oGreen stars'
+  Note:
+    name: '&e&lNote'
+    Description: '&7&oColorful notes'
+  Love:
+    name: '&d&lLove'
+    Description: '&7&oRed hearts'
+  Lava:
+    name: '&4&lLava'
+    Description: '&7&oLava bubbles'
+  Snow:
+    name: '&f&lSnow'
+    Description: '&7&oSnowball particles'
+  Slime:
+    name: '&a&lSlime'
+    Description: '&7&oSlimeball particles'
+  Crit:
+    name: '&7&lCrit'
+    Description: '&7&oLight brown crosses'
+  MagicCrit:
+    name: '&3&lMagic Crit'
+    Description: '&7&oCyan stars'
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
-  Helix:
-    name: '&4&lHelix'
-    Description: '&7&oRotating particles!'
+  Cloud:
+    name: '&f&lCloud'
+    Description: '&7&oWhite clouds'
+  Smoke:
+    name: '&7&lSmoke'
+    Description: '&7&oSmall, gray clouds'
+  Portal:
+    name: '&5&lPortal'
+    Description: '&7&oSmall, purple clouds'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
