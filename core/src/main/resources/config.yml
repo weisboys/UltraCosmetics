@@ -239,6 +239,54 @@ TreasureChests:
       barriers: NETHER_BRICK_FENCE
       chest-type: NORMAL
       effect: SMOKE_NORMAL
+    End:
+      center-block: GLOWSTONE
+      around-center: END_STONE
+      third-blocks: END_STONE
+      below-chests: END_STONE
+      barriers: END_PORTAL_FRAME
+      chest-type: ENDER
+      effect: PORTAL
+    Winter:
+      center-block: GLOWSTONE
+      around-center: SNOW_BLOCK
+      third-blocks: PACKED_ICE
+      below-chests: SNOW_BLOCK
+      barriers: SPRUCE_FENCE
+      chest-type: NORMAL
+      effect: SNOWBALL
+    Jungle:
+      center-block: GLOWSTONE
+      around-center: GRASS_BLOCK
+      third-blocks: JUNGLE_LOG
+      below-chests: MOSSY_COBBLESTONE
+      barriers: JUNGLE_LEAVES
+      chest-type: NORMAL
+      effect: VILLAGER_HAPPY
+    Desert:
+      center-block: GLOWSTONE
+      around-center: SAND
+      third-blocks: SANDSTONE
+      below-chests: ORANGE_TERRACOTTA
+      barriers: SANDSTONE_SLAB
+      chest-type: NORMAL
+      effect: CRIT
+    Ocean:
+      center-block: SEA_LANTERN
+      around-center: PRISMARINE_BRICKS
+      third-blocks: DARK_PRISMARINE
+      below-chests: PRISMARINE
+      barriers: BLUE_STAINED_GLASS_PANE
+      chest-type: ENDER
+      effect: DRIP_WATER
+    Halloween:
+      center-block: JACK_O_LANTERN
+      around-center: MYCELIUM
+      third-blocks: PODZOL
+      below-chests: MOSSY_COBBLESTONE
+      barriers: MOSSY_COBBLESTONE_WALL
+      chest-type: ENDER
+      effect: SPELL_WITCH
   # This should be set to a command that sets permissions so UC can give cosmetics from treasure chests.
   # %name% will be replaced with the player's name, and %permission% will be replaced with the permission to add.
   #
