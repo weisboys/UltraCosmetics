@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lTopi'
     Button:
-      Name: '&b&lTopi'
+      Name: '&d&lHats'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lBaju Setelan'
     Button:
-      Name: '&c&lBaju Setelan'
+      Name: '&3&lSuits'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
@@ -117,7 +117,7 @@ Menu:
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
-      Name: '&8&lProjectile Effects'
+      Name: '&5&lProjectile Effects'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
@@ -1675,6 +1675,11 @@ Death-Effects:
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
+  Firework:
+    name: '&7&lFirework Rocket'
+    Description: |-
+      &7&oCongratulations!
+      &7&oYou... died?
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
