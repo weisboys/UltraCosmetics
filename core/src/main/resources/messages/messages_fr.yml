@@ -124,7 +124,7 @@ Menu:
   Death-Effects:
     Title: '&lEffets de Mort'
     Button:
-      Name: '&lEffets de Mort'
+      Name: '&c&lEffets de Mort'
       Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
