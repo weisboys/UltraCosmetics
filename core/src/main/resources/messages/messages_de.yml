@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lHüte'
     Button:
-      Name: '&b&lHüte'
+      Name: '&d&lHüte'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lAnzüge'
     Button:
-      Name: '&c&lAnzüge'
+      Name: '&3&lAnzüge'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
@@ -117,7 +117,7 @@ Menu:
   Projectile-Effects:
     Title: '&lProjectile Effects'
     Button:
-      Name: '&8&lProjectile Effects'
+      Name: '&5&lProjectile Effects'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
@@ -1677,6 +1677,11 @@ Death-Effects:
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
+  Firework:
+    name: '&7&lFirework Rocket'
+    Description: |-
+      &7&oCongratulations!
+      &7&oYou... died?
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
