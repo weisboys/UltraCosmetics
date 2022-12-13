@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lChapeaux'
     Button:
-      Name: '&d&lHats'
+      Name: '&d&lChapeaux'
       Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&ll''Équiper'
       Tooltip-Unequip: '&c&lDéséquiper'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lCostumes'
     Button:
-      Name: '&3&lSuits'
+      Name: '&3&lCostumes'
       Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
@@ -117,7 +117,7 @@ Menu:
   Projectile-Effects:
     Title: '&lEffets de projectiles'
     Button:
-      Name: '&5&lProjectile Effects'
+      Name: '&5&lEffets de projectiles'
       Lore: '&7Déverouillé: &f%unlocked%'
       Tooltip-Equip: '&b&lÉquiper'
       Tooltip-Unequip: '&c&lDéséquiper'
