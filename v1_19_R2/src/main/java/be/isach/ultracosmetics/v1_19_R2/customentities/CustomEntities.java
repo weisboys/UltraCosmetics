@@ -45,13 +45,7 @@ public class CustomEntities {
         @SuppressWarnings("deprecation")
         Map<String,Type<?>> types = (Map<String,Type<?>>) DataFixers.getDataFixer().getSchema(DataFixUtils.makeKey(SharedConstants.getCurrentVersion().getWorldVersion())).findChoiceType(References.ENTITY).types();
 
-        // true if the registry present is a vanilla registry and not a custom one like Citizens provides
-        boolean isRealRegistry = BuiltInRegistries.ENTITY_TYPE.getClass().getName().startsWith("net.minecraft.");
-        if (isRealRegistry) {
-            unfreezeRegistry();
-        } else {
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Entity registry is not vanilla, skipping unfreeze and refreeze");
-        }
+        boolean isRealRegistry = enableIntrusiveHolders();
         registerEntity("zombie", Pumpling::new, types);
         registerEntity("slime", CustomSlime::new, types);
         registerEntity("spider", RideableSpider::new, types);
@@ -61,7 +55,7 @@ public class CustomEntities {
         }
     }
 
-    private static void unfreezeRegistry() {
+    private static boolean enableIntrusiveHolders() {
         /*
          * As of 1.18.2, registries are frozen once NMS is done adding to them, so we
          * have to do some super hacky things to add custom entities now. Basically,
@@ -81,17 +75,27 @@ public class CustomEntities {
          * at be.isach.ultracosmetics.v1_19_R1.customentities.CustomEntities.registerEntity(CustomEntities.java:78) ~[?:?]
          */
         Class<?> registryClass = MappedRegistry.class;
+        // true if the registry present is a vanilla registry and not a custom one like Citizens provides
+        boolean isRealRegistry = BuiltInRegistries.ENTITY_TYPE.getClass().getName().startsWith("net.minecraft.");
         try {
             Field intrusiveHolderCache = registryClass.getDeclaredField(ObfuscatedFields.INTRUSIVE_HOLDER_CACHE);
             intrusiveHolderCache.setAccessible(true);
             intrusiveHolderCache.set(BuiltInRegistries.ENTITY_TYPE, new IdentityHashMap<EntityType<?>,Holder.Reference<EntityType<?>>>());
-            Field frozen = registryClass.getDeclaredField(ObfuscatedFields.FROZEN);
-            frozen.setAccessible(true);
-            frozen.set(BuiltInRegistries.ENTITY_TYPE, false);
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+            if (isRealRegistry) {
+                unfreezeRegistry(registryClass);
+            } else {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Entity registry is not vanilla, skipping unfreeze and refreeze");
+            }
+        } catch (ReflectiveOperationException e) {
             e.printStackTrace();
-            return;
         }
+        return isRealRegistry;
+    }
+
+    private static void unfreezeRegistry(Class<?> registryClass) throws ReflectiveOperationException {
+        Field frozen = registryClass.getDeclaredField(ObfuscatedFields.FROZEN);
+        frozen.setAccessible(true);
+        frozen.set(BuiltInRegistries.ENTITY_TYPE, false);
     }
 
     private static void registerEntity(String type, @SuppressWarnings("rawtypes") EntityFactory customMob, Map<String,Type<?>> types) {
