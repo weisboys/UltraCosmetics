@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lTopi'
     Button:
-      Name: '&d&lHats'
+      Name: '&d&lTopi'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lBaju Setelan'
     Button:
-      Name: '&3&lSuits'
+      Name: '&3&lBaju Setelan'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lPakai'
       Tooltip-Unequip: '&c&lLepas'
