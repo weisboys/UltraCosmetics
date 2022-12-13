@@ -24,9 +24,6 @@ public abstract class DeathEffect extends Cosmetic<DeathEffectType> {
         if (event.getEntity() == getPlayer()) {
             displayParticles(event.getEntity());
         }
-        if (event.getEntity().getKiller() != null) {
-            displayParticles(event.getEntity().getKiller());
-        }
     }
 
     public void displayParticles(Player player) {
