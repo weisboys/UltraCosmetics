@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lSombreros'
     Button:
-      Name: '&d&lHats'
+      Name: '&d&lSombreros'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lTrajes'
     Button:
-      Name: '&3&lSuits'
+      Name: '&3&lTrajes'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
