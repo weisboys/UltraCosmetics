@@ -17,12 +17,12 @@ public class SubCommandReload extends SubCommand {
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
         sender.sendMessage(ChatColor.RED + "Warning: this may cause bad bugs to occur. If you experience issues, please restart the server.");
-        MessageManager.reload();
         ultraCosmetics.getLogger().info("Shutting down...");
         ultraCosmetics.shutdown();
         CosmeticType.removeAllTypes();
         ultraCosmetics.getLogger().info("Starting up...");
         ultraCosmetics.start();
+        MessageManager.reload();
     }
 
 }
