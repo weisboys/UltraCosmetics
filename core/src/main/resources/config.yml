@@ -267,7 +267,7 @@ TreasureChests:
       center-block: GLOWSTONE
       around-center: SAND
       third-blocks: SANDSTONE
-      below-chests: YELLOW_TERRACOTTA
+      below-chests: ORANGE_TERRACOTTA
       barriers: SANDSTONE_SLAB
       chest-type: NORMAL
       effect: CRIT
