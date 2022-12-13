@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&l头饰'
     Button:
-      Name: '&d&lHats'
+      Name: '&d&l头饰'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&l衣装'
     Button:
-      Name: '&3&lSuits'
+      Name: '&3&l衣装'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&l装备'
       Tooltip-Unequip: '&c&l取消装备'
