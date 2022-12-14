@@ -279,7 +279,7 @@ public class UltraCosmetics extends JavaPlugin {
         registerListeners();
 
         // Set up Cosmetics config.
-        CosmeticType.register();
+        CosmeticType.registerAll();
 
         // Can't use Category.MORPHS.isEnabled() here because it checks whether LibsDisguises is enabled on its own
         if (SettingsManager.getConfig().getBoolean("Categories-Enabled." + Category.MORPHS.getConfigPath())) {
