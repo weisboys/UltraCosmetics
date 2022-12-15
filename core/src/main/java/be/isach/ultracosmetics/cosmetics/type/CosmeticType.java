@@ -93,7 +93,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         ENABLED.clear();
     }
 
-    public static void register() {
+    public static void registerAll() {
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
         GadgetType.register(version);
         MountType.register(version);
@@ -105,7 +105,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         }
         MorphType.register();
         EmoteType.register();
-        ProjectileEffectType.register();
+        ProjectileEffectType.register(version);
         DeathEffectType.register();
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.save();
