@@ -1684,18 +1684,15 @@ Projectile-Effects:
   Snowflake:
     name: '&f&lSnowflake'
     Description: '&7&oSmall, white clouds'
-  SculkSensor:
-    name: '&3&lSculk Sensor'
-    Description: '&7&oBlue/red clouds'
-  Glow:
-    name: '&e&lGlow'
+  GlowSquid:
+    name: '&3&lGlow Squid'
     Description: '&7&oTeal stars'
   GlowSquidInk:
     name: '&3&lGlow Squid Ink'
     Description: '&7&oAquamarine clouds'
   Scrape:
     name: '&2&lScrape'
-    Description: '&7&oGreen stars'
+    Description: '&7&oTeal stars'
   WaxOff:
     name: '&f&lWax Off'
     Description: '&7&oWhite stars'

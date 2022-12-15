@@ -70,8 +70,7 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         }
         if (version.isAtLeast(ServerVersion.v1_17)) {
             new ProjectileEffectType("Snowflake", 1, Particles.SNOWFLAKE, XMaterial.POWDER_SNOW_BUCKET, ProjectileEffectBasicTrail.class);
-            new ProjectileEffectType("SculkSensor", 1, Particles.DUST_COLOR_TRANSITION, XMaterial.SCULK_SENSOR, ProjectileEffectBasicTrail.class);
-            new ProjectileEffectType("Glow", 1, Particles.GLOW, XMaterial.GLOW_SQUID_SPAWN_EGG, ProjectileEffectBasicTrail.class);
+            new ProjectileEffectType("GlowSquid", 1, Particles.GLOW, XMaterial.GLOW_SQUID_SPAWN_EGG, ProjectileEffectBasicTrail.class);
             new ProjectileEffectType("GlowSquidInk", 1, Particles.GLOW_SQUID_INK, XMaterial.GLOW_INK_SAC, ProjectileEffectBasicTrail.class);
             new ProjectileEffectType("Scrape", 1, Particles.SCRAPE, XMaterial.OXIDIZED_COPPER, ProjectileEffectBasicTrail.class);
             new ProjectileEffectType("WaxOff", 1, Particles.WAX_OFF, XMaterial.WAXED_COPPER_BLOCK, ProjectileEffectBasicTrail.class);

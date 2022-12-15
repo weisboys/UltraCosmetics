@@ -420,7 +420,7 @@ public enum Particles {
      * <li>It looks like a cloud, which changes its color from blue to red
      * </ul>
      */
-    DUST_COLOR_TRANSITION("dustcolortransition", 46, 17),
+    DUST_COLOR_TRANSITION("dustcolortransition", 46, 17, ParticleProperty.REQUIRES_DATA),
     /**
      * A particle effect which is displayed by glow squids:
      * <ul>
@@ -438,7 +438,7 @@ public enum Particles {
     /**
      * A particle effect which is displayed by copper blocks:
      * <ul>
-     * <li>It looks like a green star
+     * <li>It looks like a teal star
      * </ul>
      */
     SCRAPE("scrape", 49, 17),
