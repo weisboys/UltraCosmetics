@@ -117,9 +117,24 @@ public class UltraCosmeticsData {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
 
-        // mappings check is here so it's grouped with other NMS log messages
-        // bigger message so server owners might see it
-        boolean useNMS = serverVersion.isNmsSupported();
+        if (serverVersion.isNmsSupported()) {
+            if (startNMS()) return true;
+        }
+        try {
+            versionManager = new VersionManager(serverVersion, false);
+        } catch (ReflectiveOperationException e) {
+            e.printStackTrace();
+            logger.write(LogLevel.ERROR, "Failed to start NMS-less module, please report this error.");
+            return false;
+        }
+        return true;
+    }
+
+    /*
+     * Returns false if UC should use NMS-less mode, or true if no further setup is needed.
+     */
+    protected boolean startNMS() {
+        SmartLogger logger = ultraCosmetics.getSmartLogger();
         if (!checkMappingsVersion(serverVersion)) {
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
             if (SettingsManager.getConfig().getBoolean("Force-NMS")) {
@@ -133,24 +148,25 @@ public class UltraCosmeticsData {
                 logger.write(LogLevel.WARNING, "Server internals have changed since this build was created, so");
                 logger.write(LogLevel.WARNING, "NMS support will be disabled. If you're sure you know what you're doing,");
                 logger.write(LogLevel.WARNING, "you can override this in the config.");
-                useNMS = false;
+                return false;
             }
         }
 
         try {
-            versionManager = new VersionManager(serverVersion, useNMS);
+            versionManager = new VersionManager(serverVersion, true);
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();
-            logger.write("No module found for " + serverVersion + "! UC will now be disabled.");
+            logger.write(LogLevel.ERROR, "Couldn't find module for " + serverVersion + ", please report this issue.");
+            logger.write("UC will try to continue in NMS-less mode.");
             ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
         if (!versionManager.getModule().enable()) {
-            logger.write(LogLevel.ERROR, "Failed to start NMS module, UC will now be disabled.");
+            logger.write(LogLevel.ERROR, "Failed to start NMS module, please report this issue.");
+            logger.write("UC will try to continue in NMS-less mode.");
             ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
-        logger.write("Module initialized");
         return true;
     }
 

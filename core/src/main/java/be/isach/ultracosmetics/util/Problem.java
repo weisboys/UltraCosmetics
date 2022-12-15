@@ -5,10 +5,11 @@ public enum Problem {
     UNKNOWN_MC_VERSION(true, "Could not parse Minecraft version, please report this issue."),
     BAD_CONFIG(true, "config.yml is invalid, please run it through a YAML checker."),
     BAD_MESSAGES(true, "Messages file is invalid, please run it through a YAML checker."),
-    NMS_LOAD_FAILURE(true, "Couldn't load support for this MC version, please report this issue."),
+    NMSLESS_LOAD_FAILURE(true, "Could not load NMS-less module."),
 
     // Non-fatal
     BAD_MC_VERSION(false, "This version of Minecraft is not fully supported, please check for an update."),
+    NMS_LOAD_FAILURE(false, "Couldn't load support for this MC version, please report this issue."),
     BAD_MAPPINGS_VERSION(false, "Server internals seem to have changed since this build was created, you will likely experience issues."),
     TALL_DISGUISES_DISABLED(false, "TallSelfDisguises is disabled in LibsDisguises players.yml. This may cause morph self view to not behave as intended."),
     SQL_INIT_FAILURE(false, "SQL failed to connect, using flatfile support instead."),
