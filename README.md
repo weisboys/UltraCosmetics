@@ -29,13 +29,14 @@ For more information please check out the [Supported Configurations page](https:
 
 ## 📥 Download
 
-You can download the latest stable release of UltraCosmetics from our official link:
+You can download the latest stable release of UltraCosmetics from our official links:
 
 - [SpigotMC][spigotmc-link]
+- [GitHub][github-releases-link]
 
 ### Development Builds
 
-You can find development builds in the **#beta-testing** channel on our [Discord server][discord-invite].
+You can find development builds on [Discord][discord-invite] or [GitHub][github-releases-link].
 
 > **Warning**
 > Do not use any unofficial downloads/mirrors!
@@ -100,3 +101,4 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 [wiki-link]: https://github.com/datatags/UltraCosmetics/wiki
 [spigotmc-link]: https://www.spigotmc.org/resources/10905/
 [crowdin-link]: https://crowdin.com/project/ultracosmetics
+[github-releases-link]: https://github.com/datatags/UltraCosmetics/releases
