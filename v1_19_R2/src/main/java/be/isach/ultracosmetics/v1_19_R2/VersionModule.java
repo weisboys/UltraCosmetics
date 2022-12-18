@@ -37,7 +37,7 @@ public class VersionModule implements IModule {
             SmartLogger logger = UltraCosmeticsData.get().getPlugin().getSmartLogger();
             logger.write(LogLevel.ERROR, "Failed to initialize NMS module.");
             if (Bukkit.getPluginManager().getPlugin("Citizens") != null) {
-                logger.write(LogLevel.ERROR, "It looks like you have Citizens installed, this may have something to do with it.");
+                logger.write(LogLevel.ERROR, "It looks like you have Citizens installed, please make sure you're running build 2817 or higher.");
             }
             return false;
         }
