@@ -169,12 +169,12 @@ public class TreasureChest implements Listener {
     }
 
     public void forceOpen(int delay) {
-        int i;
+        final String[] name = randomGenerator.getName();
         if (delay == 0) {
             stopping = true;
-            for (i = 0; i < chestsLeft; i++) {
+            for (int i = 0; i < chestsLeft; i++) {
                 randomGenerator.giveRandomThing();
-                getPlayer().sendMessage(MessageManager.getMessage("You-Won-Treasure-Chests").replace("%name%", randomGenerator.getName()));
+                getPlayer().sendMessage(MessageManager.getMessage("You-Won-Treasure-Chests").replace("%name%", name[name.length - 1]));
             }
             return;
         }
@@ -186,8 +186,7 @@ public class TreasureChest implements Listener {
             ItemStack is = randomGenerator.getItemStack();
 
             items.add(spawnItem(is, b.getLocation()));
-            final String name = randomGenerator.getName();
-            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> spawnHologram(b.getLocation().clone().add(0.5D, 0.3D, 0.5D), name), 15L);
+            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation()), 15L);
 
             chestsLeft -= 1;
             chestsToRemove.add(b);
@@ -204,15 +203,26 @@ public class TreasureChest implements Listener {
         }
     }
 
-    private void spawnHologram(Location location, String s) {
+    private void makeHolograms(Location location) {
+        String[] names = randomGenerator.getName();
+        Location loc = location.clone().add(0.5, 0.3, 0.5);
+        for (int i = names.length - 1; i >= 0; i--) {
+            spawnHologram(loc, names[i]);
+            loc.add(0, 0.25, 0);
+        }
+    }
+
+    private ArmorStand spawnHologram(Location location, String s) {
         ArmorStand armorStand = (ArmorStand) location.getWorld().spawnEntity(location, EntityType.ARMOR_STAND);
         armorStand.setSmall(true);
+        armorStand.setGravity(false);
         armorStand.setVisible(false);
         armorStand.setBasePlate(false);
         armorStand.setCustomName(s);
         armorStand.setCustomNameVisible(true);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "C_AD_ArmorStand"));
         holograms.add(armorStand);
+        return armorStand;
     }
 
     public boolean isSpecialEntity(Entity entity) {
@@ -246,8 +256,7 @@ public class TreasureChest implements Listener {
         ItemStack is = randomGenerator.getItemStack();
 
         items.add(spawnItem(is, event.getClickedBlock().getLocation()));
-        final String name = randomGenerator.getName();
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> spawnHologram(event.getClickedBlock().getLocation().add(0.5D, 0.3D, 0.5D), name), 15L);
+        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(event.getClickedBlock().getLocation()), 15L);
 
         chestsLeft -= 1;
         chests.remove(event.getClickedBlock());

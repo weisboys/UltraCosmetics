@@ -49,7 +49,7 @@ public class TreasureRandomizer {
     private final boolean forceMessageToOwner;
     private final PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
     private ItemStack itemStack;
-    private String name;
+    private String[] name;
 
     public TreasureRandomizer(final Player player, Location location, boolean forceMessageToOwner) {
         this.loc = location.add(0.5, 0, 0.5);
@@ -191,7 +191,7 @@ public class TreasureRandomizer {
         }
     }
 
-    public String getName() {
+    public String[] getName() {
         return name;
     }
 
@@ -204,7 +204,7 @@ public class TreasureRandomizer {
     }
 
     public void giveNothing() {
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Nothing");
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Nothing").split("\n");
         itemStack = new ItemStack(Material.BARRIER);
     }
 
@@ -219,7 +219,7 @@ public class TreasureRandomizer {
         int min = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Min");
         int max = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max");
         int money = randomInRange(min, max);
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "");
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "").split("\n");
         UltraCosmeticsData.get().getPlugin().getEconomyHandler().getHook().deposit(player, money);
         itemStack = XMaterial.SUNFLOWER.parseItem();
         if (money > 3 * SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max") / 4) {
@@ -235,7 +235,7 @@ public class TreasureRandomizer {
         int ammoMin = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Min");
         int ammoMax = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Max");
         int ammo = randomInRange(ammoMin, ammoMax);
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%name%", g.getName()).replace("%ammo%", String.valueOf(ammo));
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%name%", g.getName()).replace("%ammo%", String.valueOf(ammo)).split("\n");
 
         UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player).addAmmo(g, ammo);
         itemStack = g.getMaterial().parseItem();
@@ -257,7 +257,7 @@ public class TreasureRandomizer {
 
     public void giveRandomCosmetic(ResultType result, String lang, String configName) {
         CosmeticType<?> cosmetic = getRandomCosmetic(result);
-        name = MessageManager.getMessage("Treasure-Chests-Loot." + lang).replace("%" + lang.toLowerCase() + "%", cosmetic.getName());
+        name = MessageManager.getMessage("Treasure-Chests-Loot." + lang).replace("%" + lang.toLowerCase() + "%", cosmetic.getName()).split("\n");
         permissionManager.setPermission(player, cosmetic);
         spawnRandomFirework(loc);
         itemStack = cosmetic.getItemStack();
@@ -277,7 +277,7 @@ public class TreasureRandomizer {
         for (String command : reward.getCommands()) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%name%", player.getName()));
         }
-        name = reward.getName().replace("%name%", player.getName());
+        name = new String[] { reward.getName().replace("%name%", player.getName()) };
         itemStack = reward.getItemStack();
         spawnRandomFirework(loc);
 
