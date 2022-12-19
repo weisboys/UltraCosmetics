@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&l你必须先从载具上下来才能打开箱子'
 Active-Pet-Needed: '&c&l你需要召唤一只宠物才能重命名它'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% 使用次数'
-  Pet: '%pet% 宠物'
-  Mount: '%mount% 载具'
-  Effect: '%effect% 效果'
-  Morph: '%morph% 伪装'
-  Hat: '%hat% 头饰'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% 小道具'
-  Suit: '%suit%'
-  Emote: '%emote% 表情'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: '&c&l空'
 Disable-Gadgets: '&c&l关闭小道具'
 Disable-Gadgets-Lore: '&c禁用小工具及它们的效果对您的影响'
