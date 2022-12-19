@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lТы должен призвать транспорт для взаимодействия инвентаря.'
 Active-Pet-Needed: '&c&lВам нужно создать питомца, чтобы переименовать его.'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% использования'
-  Pet: '%pet% питомец'
-  Mount: '%mount% транспорт'
-  Effect: '%effect% эффект'
-  Morph: '%morph% перевоплощение'
-  Hat: '%hat% шляпа'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% гаджет'
-  Suit: '%suit% костюм'
-  Emote: '%emote% эмоция'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: "&c&lНичего\n"
 Disable-Gadgets: '&c&lОтключить гаджеты'
 Disable-Gadgets-Lore: '&cВозможности использования гаджетов и их влияние на вас'
