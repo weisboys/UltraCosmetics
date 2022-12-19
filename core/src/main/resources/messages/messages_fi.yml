@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
 Active-Pet-Needed: '&c&lSinun pitää spawnata lemmikki, jotta voit uudelleen nimetä niitä'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% luoti'
-  Pet: '%pet% lemmikki'
-  Mount: '%mount% mount'
-  Effect: '%effect% lumous'
-  Morph: '%morph% ratsu'
-  Hat: '%hat% hattu'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% lelu'
-  Suit: '%suit% vaate'
-  Emote: '%emote% liike'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: '&c&ltyhjä'
 Disable-Gadgets: '&c&lPoista lelut käytöstä'
 Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
