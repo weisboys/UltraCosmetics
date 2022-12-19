@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lVous devez démonter votre véhicule avant d''ouvrir un coffre.'
 Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% munition'
-  Pet: 'Familier %pet%'
-  Mount: 'Monture %mount%'
-  Effect: 'Effet %effect%'
-  Morph: '%morph% transformation'
-  Hat: '%hat% Chapeau'
-  Money: '&e&l%money% €'
-  Gadget: 'Gadget %gadget%'
-  Suit: '%suit%'
-  Emote: 'Émote %emote%'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: '&c&lRien'
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
