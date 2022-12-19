@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% Munition'
-  Pet: '%pet% Haustier'
-  Mount: '%mount% Reittier'
-  Effect: '%effect% Effekt'
-  Morph: '%morph% Verwandlung'
-  Hat: '%hat% Hut'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% Gadget'
-  Suit: '%suit%'
-  Emote: '%emote% Emote'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: '&c&lNichts'
 Disable-Gadgets: '&c&lGadgets deaktivieren'
 Disable-Gadgets-Lore: '&cGadgets und dessen Effekte auf dich deaktivieren'
