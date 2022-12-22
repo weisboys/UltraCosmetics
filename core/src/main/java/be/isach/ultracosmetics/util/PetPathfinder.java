@@ -25,6 +25,8 @@ public class PetPathfinder extends CustomPathfinder {
         if (mob.getType() == EntityType.VEX) {
             speed = 0.75;
             useEyeLocation = true;
+        } else if (mob instanceof Slime) {
+            speed = 2.5;
         }
         this.speed = speed;
         this.useEyeLocation = useEyeLocation;
@@ -55,10 +57,11 @@ public class PetPathfinder extends CustomPathfinder {
         }
 
         // Slime or magma cube
-        // This doesn't work, look at modifying Slime move controller
         if (entity instanceof Slime) {
-            Location deltaLoc = loc.subtract(entity.getLocation());
-            brain.getBody().setYaw((float) Math.atan2(deltaLoc.getX(), deltaLoc.getZ()));
+            Location deltaLoc = entity.getLocation().subtract(loc);
+            double direction = -Math.atan2(deltaLoc.getX(), deltaLoc.getZ());
+            float degrees = (float) (Math.toDegrees(direction) + 180);
+            brain.getBody().setRotation(degrees, 0);
         }
 
         if (loc.distanceSquared(entity.getLocation()) > 3 * 3) {
