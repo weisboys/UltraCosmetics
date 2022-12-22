@@ -15,6 +15,8 @@ public class ParticleEffectRainCloud extends ParticleEffect {
 
     public ParticleEffectRainCloud(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override
