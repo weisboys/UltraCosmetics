@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.BlockUtils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -52,8 +53,9 @@ public class MorphEnderman extends Morph {
             event.setCancelled(true);
             return;
         }
-        getOwner().setCoolDown(cosmeticType, COOLDOWN, COOLDOWN);
         Location loc = fast ? fast(player) : slow(player);
+        if (loc == null) return;
+        getOwner().setCoolDown(cosmeticType, COOLDOWN, COOLDOWN);
         player.teleport(loc);
         spawnRandomFirework(loc.add(0.5, 0, 0.5));
         player.setFlying(false);
@@ -72,7 +74,9 @@ public class MorphEnderman extends Morph {
         Vector v = player.getLocation().getDirection();
         v.setY(0);
         v.normalize().multiply(16);
-        return player.getLocation().add(v);
+        Location loc = player.getLocation().add(v);
+        if (!BlockUtils.isAir(loc.getBlock().getType())) return null;
+        return loc;
     }
 
     @EventHandler
