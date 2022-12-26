@@ -56,9 +56,12 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
                     if (isMoving()) {
                         if (getType().getEffect() == Particles.REDSTONE) {
                             if (!ignoreMove) {
-                                Particles.OrdinaryColor color = getType().getConfigName().equals("angelwings")
-                                        ? new Particles.OrdinaryColor(255, 255, 255)
-                                        : new Particles.OrdinaryColor(255, 0, 0);
+                                Particles.OrdinaryColor color = new Particles.OrdinaryColor(255, 0, 0);
+                                if (getType().getConfigName().equals("AngelWings")) {
+                                    color = new Particles.OrdinaryColor(255, 255, 255);
+                                } else if (getType().getConfigName().equals("RainbowWings")) {
+                                    color = ParticleEffectRainbowWings.getColor();
+                                }
                                 for (int i = 0; i < getModifiedAmount(15); i++) {
                                     getType().getEffect().display(color, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)), 128);
                                 }
