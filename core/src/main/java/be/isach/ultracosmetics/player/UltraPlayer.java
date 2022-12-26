@@ -143,6 +143,12 @@ public class UltraPlayer {
         return valueMillis / 1000d;
     }
 
+    /**
+     * Checks whether the cooldown for this cosmetic has elapsed
+     *
+     * @param type The cosmetic type to check
+     * @return true if the cooldown has elapsed
+     */
     public boolean canUse(CosmeticType<?> type) {
         return getCooldown(type) == 0;
     }
