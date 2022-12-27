@@ -135,7 +135,6 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
             blue = 255 - currentRotatingRgbValue;
         }
 
-        Bukkit.getServer().getLogger().warning("currentSeconds: " + currentEpochSeconds);
         return new Particles.OrdinaryColor(red, green, blue);
     }
 }
