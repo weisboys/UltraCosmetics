@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ColorUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
@@ -60,7 +61,7 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
                                 if (getType().getConfigName().equals("AngelWings")) {
                                     color = new Particles.OrdinaryColor(255, 255, 255);
                                 } else if (getType().getConfigName().equals("RainbowWings")) {
-                                    color = ParticleEffectRainbowWings.getColor();
+                                    color = new Particles.OrdinaryColor(ColorUtils.getRainbowColor());
                                 }
                                 for (int i = 0; i < getModifiedAmount(15); i++) {
                                     getType().getEffect().display(color, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)), 128);
