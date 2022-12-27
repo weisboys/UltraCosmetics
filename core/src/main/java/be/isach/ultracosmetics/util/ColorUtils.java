@@ -26,9 +26,7 @@ public class ColorUtils {
         long currentEpochMilliseconds = System.currentTimeMillis();
         long currentEpochSeconds = currentEpochMilliseconds / 1000L;
 
-        double phase = currentEpochSeconds % (6 * secondsPerPhase);
-        phase = phase / secondsPerPhase;
-
+        int phase = (int) ((currentEpochSeconds % (6 * secondsPerPhase)) / secondsPerPhase);
         double millisecondsToAdjustBy = currentEpochMilliseconds % (secondsPerPhase * 1000);
 
         // There's a change of a specific number of rgb values in a single tick. This calculation is basically the
@@ -40,22 +38,22 @@ public class ColorUtils {
         int blue = 0;
 
         // There are six phases in a rainbow when adjusting rgb values. This if-else encapsulates those six phases.
-        if (phase >= 0 && phase < 1) { // Red is at 255, Green goes to 255
+        if (phase == 0) { // Red is at 255, Green goes to 255
             red = 255;
             green = currentRotatingRgbValue;
-        } else if (phase >= 1 && phase < 2) { // Red goes to 0
+        } else if (phase == 1) { // Red goes to 0
             red = 255 - currentRotatingRgbValue;
             green = 255;
-        } else if (phase >= 2 && phase < 3) { // Blue goes to 255
+        } else if (phase == 2) { // Blue goes to 255
             green = 255;
             blue = currentRotatingRgbValue;
-        } else if (phase >= 3 && phase < 4) { // Green goes to 0
+        } else if (phase == 3) { // Green goes to 0
             green = 255 - currentRotatingRgbValue;
             blue = 255;
-        } else if (phase >= 4 && phase < 5) { // Red goes to 255
+        } else if (phase == 4) { // Red goes to 255
             red = currentRotatingRgbValue;
             blue = 255;
-        } else if (phase >= 5 && phase < 6) { // Blue goes to 0
+        } else if (phase == 5) { // Blue goes to 0
             red = 255;
             blue = 255 - currentRotatingRgbValue;
         }
