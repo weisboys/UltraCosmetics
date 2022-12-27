@@ -460,6 +460,9 @@ Particle-Effects:
   AngelWings:
     name: '&f&lEnkelin siivet'
     Description: '&7&oBecome an angel!'
+  RainbowWings:
+    name: '&l&cR&6a&ei&an&9b&1o&dw&f Wings'
+    Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuper Sankari'
     Description: '&7&oBecome Superman!'
