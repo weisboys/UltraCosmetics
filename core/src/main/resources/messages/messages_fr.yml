@@ -460,6 +460,9 @@ Particle-Effects:
   AngelWings:
     name: '&f&lAiles d''Ange'
     Description: '&7&oDeviens un ange !'
+  RainbowWings:
+    name: '&l&cR&6a&ei&an&9b&1o&dw&f Wings'
+    Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuper Héros'
     Description: '&7&oDeviens Superman !'
