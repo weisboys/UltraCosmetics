@@ -48,9 +48,9 @@ public class MorphEnderman extends Morph {
         if (player != getPlayer() || player.getGameMode() == GameMode.CREATIVE || event.getPlayer().isFlying()) {
             return;
         }
+        player.setFlying(false);
+        event.setCancelled(true);
         if (!getOwner().canUse(cosmeticType)) {
-            event.getPlayer().setFlying(false);
-            event.setCancelled(true);
             return;
         }
         Location loc = fast ? fast(player) : slow(player);
@@ -58,8 +58,6 @@ public class MorphEnderman extends Morph {
         getOwner().setCoolDown(cosmeticType, COOLDOWN, COOLDOWN);
         player.teleport(loc);
         spawnRandomFirework(loc.add(0.5, 0, 0.5));
-        player.setFlying(false);
-        event.setCancelled(true);
     }
 
     private Location slow(Player player) {
