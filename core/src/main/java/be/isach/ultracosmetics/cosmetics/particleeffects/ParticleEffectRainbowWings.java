@@ -100,7 +100,7 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
         long currentEpochMilliseconds = System.currentTimeMillis();
         long currentEpochSeconds = currentEpochMilliseconds / 1000L;
 
-        double secondsPerPhase = 5;
+        double secondsPerPhase = 2;
         double phase = currentEpochSeconds % (6 * secondsPerPhase);
         phase = phase / secondsPerPhase;
 
