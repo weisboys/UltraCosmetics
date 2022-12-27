@@ -101,6 +101,11 @@ TreasureChests:
   Key-Price: 1000
   # How many treasure chests should be opened per key? Min 1, max 4
   Count: 4
+  # The treasure chest mode. Options:
+  # - structure: places blocks and chests (default)
+  # - simple: only gives <Count> cosmetics, no blocks are placed
+  # - both: players can choose either mode through the GUI
+  Mode: structure
   Locations:
     # Whether players should be moved to a certain
     # location before opening a treasure chest.
