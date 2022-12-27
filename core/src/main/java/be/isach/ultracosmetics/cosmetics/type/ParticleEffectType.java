@@ -34,6 +34,7 @@ public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
         new ParticleEffectType("Enchanted", 1, Particles.ENCHANTMENT_TABLE, XMaterial.BOOK, ParticleEffectEnchanted.class, true);
         new ParticleEffectType("Inferno", 1, Particles.FLAME, XMaterial.NETHER_WART, ParticleEffectInferno.class, true);
         new ParticleEffectType("AngelWings", 2, Particles.REDSTONE, XMaterial.FEATHER, ParticleEffectAngelWings.class, true);
+        new ParticleEffectType("RainbowWings", 2, Particles.REDSTONE, XMaterial.YELLOW_DYE, ParticleEffectRainbowWings.class, true);
         new ParticleEffectType("SuperHero", 2, Particles.REDSTONE, XMaterial.GLOWSTONE_DUST, ParticleEffectSuperHero.class, true);
         new ParticleEffectType("SantaHat", 2, Particles.REDSTONE, XMaterial.BEACON, ParticleEffectSantaHat.class, true);
         new ParticleEffectType("EnderAura", 1, Particles.PORTAL, XMaterial.ENDER_EYE, ParticleEffectEnderAura.class, true);
