@@ -146,26 +146,26 @@ Chest-Location:
 Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
   Ammo: |-
-    &9Ammo
+    &9Munitions
     %ammo% %name%
   Pet: |-
-    &aPet:
+    &aAnimal de compagnie:
     %pet%
   Mount: |-
-    &6Mount
+    &6Le Mont
     %mount%
   Effect: |-
-    &bParticle Effect
+    &bEffet des particules
     %effect%
   Morph: |-
     &2Morph
     %morph%
   Hat: |-
-    &dHat
+    &dChapeau
     %hat%
   Money: |-
-    &eMoney
-    &e&l$%money%
+    &eArgents
+    &e&l%money%$
   Gadget: |-
     &9Gadget
     %gadget%
