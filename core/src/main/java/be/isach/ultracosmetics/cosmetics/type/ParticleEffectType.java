@@ -43,5 +43,21 @@ public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
         new ParticleEffectType("InLove", 1, Particles.HEART, XMaterial.RED_DYE, ParticleEffectInLove.class, true);
         new ParticleEffectType("MagicalRods", 3, Particles.REDSTONE, XMaterial.BLAZE_ROD, ParticleEffectMagicalRods.class, true);
         new ParticleEffectType("FireWaves", 4, Particles.FLAME, XMaterial.GOLD_NUGGET, ParticleEffectFireWaves.class, true);
+        new ParticleEffectType("CursedHalo", 2, Particles.SPELL_WITCH, XMaterial.PURPLE_DYE, ParticleEffectCursedHalo.class, false);
+        new ParticleEffectType("VolcanicHalo", 2, Particles.FLAME, XMaterial.MAGMA_CREAM, ParticleEffectHalo.class, false);
+        new ParticleEffectType("BalefulFootprints", 1, Particles.SPELL_WITCH, XMaterial.JACK_O_LANTERN, ParticleEffectFootprints.class, false);
+        new ParticleEffectType("SpringFootprints", 1, Particles.VILLAGER_HAPPY, XMaterial.POPPY, ParticleEffectFootprints.class, false);
+        new ParticleEffectType("Notes", 6, Particles.NOTE, XMaterial.NOTE_BLOCK, ParticleEffectAboveHead.class, false);
+        new ParticleEffectType("Hearts", 6, Particles.HEART, XMaterial.RED_WOOL, ParticleEffectAboveHead.class, false);
+        if (version.isAtLeast(ServerVersion.v1_9)) {
+            new ParticleEffectType("EnderFootprints", 1, Particles.DRAGON_BREATH, XMaterial.DRAGON_BREATH, ParticleEffectFootprints.class, false);
+        }
+        if (version.isAtLeast(ServerVersion.v1_16)) {
+            new ParticleEffectType("ArcaneFlame", 3, Particles.SOUL_FIRE_FLAME, XMaterial.SOUL_TORCH, ParticleEffectAboveHead.class, false);
+        }
+        if (version.isAtLeast(ServerVersion.v1_17)) {
+            new ParticleEffectType("DivineHalo", 2, Particles.WAX_OFF, XMaterial.GLOWSTONE, ParticleEffectHalo.class, false);
+            new ParticleEffectType("SnowFootprints", 1, Particles.SNOWFLAKE, XMaterial.POWDER_SNOW_BUCKET, ParticleEffectFootprints.class, false);
+        }
     }
 }
