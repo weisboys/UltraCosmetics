@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ColorUtils;
+import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.Location;
@@ -16,6 +17,8 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
 
     public ParticleEffectRainbowWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     private boolean[][] shape = {
@@ -33,6 +36,15 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
     @Override
     public void onUpdate() {
         drawParticles(getPlayer().getLocation());
+    }
+
+    @Override
+    public void showAlternativeEffect() {
+        Particles.OrdinaryColor color = new Particles.OrdinaryColor(ColorUtils.getRainbowColor());
+
+        for (int i = 0; i < getModifiedAmount(7); i++) {
+            getType().getEffect().display(color, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
+        }
     }
 
     private void drawParticles(Location location) {
@@ -92,4 +104,3 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
         return new Vector(newX - loc.getX(), 0, newZ - loc.getZ());
     }
 }
-
