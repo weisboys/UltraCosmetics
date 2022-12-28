@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
@@ -94,6 +95,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
 
     @Override
     public boolean tryEquip() {
+        getOwner().removeCosmetic(Category.GADGETS);
         int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
         if (getPlayer().getInventory().getItem(slot) != null) {
             getPlayer().sendMessage(MessageManager.getMessage("Must-Remove.Gadgets").replace("%slot%", String.valueOf(slot + 1)));

@@ -145,16 +145,36 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
 Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% ammo'
-  Pet: '%pet% pet'
-  Mount: '%mount% mount'
-  Effect: '%effect% effect'
-  Morph: '%morph% morph'
-  Hat: '%hat% hat'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% gadget'
-  Suit: '%suit%'
-  Emote: '%emote% emote'
+  Ammo: |-
+    &9Ammo
+    %ammo% %name%
+  Pet: |-
+    &aPet:
+    %pet%
+  Mount: |-
+    &6Mount
+    %mount%
+  Effect: |-
+    &bParticle Effect
+    %effect%
+  Morph: |-
+    &2Morph
+    %morph%
+  Hat: |-
+    &dHat
+    %hat%
+  Money: |-
+    &eMoney
+    &e&l$%money%
+  Gadget: |-
+    &9Gadget
+    %gadget%
+  Suit: |-
+    &3Suit
+    %suit%
+  Emote: |-
+    &eEmote
+    %emote%
   Nothing: '&c&lNothing'
 Disable-Gadgets: '&c&lDisable Gadgets'
 Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
@@ -440,6 +460,9 @@ Particle-Effects:
   AngelWings:
     name: '&f&lAngel Wings'
     Description: '&7&oBecome an angel!'
+  RainbowWings:
+    name: '&l&cR&6a&ei&an&9b&1o&dw&f Wings'
+    Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuper Hero'
     Description: '&7&oBecome Superman!'

@@ -191,7 +191,7 @@ public class UltraCosmeticsData {
 
         ServerVersion serverVersion = ServerVersion.byId(versionNum);
 
-        if (serverVersion == null || serverVersion.getNMSRevision() != nmsRev) {
+        if (serverVersion == null || (serverVersion.getNMSRevision() > 0 && serverVersion.getNMSRevision() != nmsRev)) {
             // Error message printed in onEnable so it's more visible
             this.serverVersion = ServerVersion.NEW;
             return Problem.BAD_MC_VERSION;

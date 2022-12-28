@@ -20,7 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UltraPlayerManager {
 
-    private Map<UUID, UltraPlayer> playerCache;
+    private Map<UUID,UltraPlayer> playerCache;
     private UltraCosmetics ultraCosmetics;
 
     public UltraPlayerManager(UltraCosmetics ultraCosmetics) {
@@ -47,8 +47,9 @@ public class UltraPlayerManager {
      */
     public void initPlayers() {
         for (Player p : Bukkit.getOnlinePlayers()) {
+            UltraPlayer up = getUltraPlayer(p);
             if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && SettingsManager.isAllowedWorld(p.getWorld())) {
-                getUltraPlayer(p).giveMenuItem();
+                up.giveMenuItem();
             }
         }
         Bukkit.getMessenger().registerIncomingPluginChannel(ultraCosmetics, "minecraft:brand", new ClientBrandListener(ultraCosmetics));
@@ -67,6 +68,5 @@ public class UltraPlayerManager {
         }
 
         playerCache.clear();
-        playerCache = null;
     }
 }
