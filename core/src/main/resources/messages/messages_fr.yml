@@ -158,7 +158,7 @@ Treasure-Chests-Loot:
     &bEffet des particules
     %effect%
   Morph: |-
-    &2Morph
+    &2Métamorphose
     %morph%
   Hat: |-
     &dChapeau
@@ -167,13 +167,13 @@ Treasure-Chests-Loot:
     &eArgents
     &e&l%money%$
   Gadget: |-
-    &9Gadget
+    &9Gadget 
     %gadget%
   Suit: |-
-    &3Suit
+    &3Costume
     %suit%
   Emote: |-
-    &eEmote
+    &eÉmote
     %emote%
   Nothing: '&c&lRien'
 Disable-Gadgets: '&c&lDésactiver les gadgets'
@@ -401,11 +401,11 @@ Mounts:
   Donkey:
     menu-name: '&8&lAne'
     entity-displayname: '&lÂne de %playername%'
-    Description: '&7&oYour standard, everyday donkey'
+    Description: '&7&oVotre banale, âne de toujours'
   Mule:
     menu-name: '&8&lMule'
     entity-displayname: '&lMule de %playername%'
-    Description: '&7&oYour standard, everyday mule'
+    Description: '&7&oVotre banal, mulet de toujours'
   Pig:
     menu-name: '&d&lCochonnet'
     entity-displayname: '&lCochonnet de %playername%'
@@ -461,8 +461,8 @@ Particle-Effects:
     name: '&f&lAiles d''Ange'
     Description: '&7&oDeviens un ange !'
   RainbowWings:
-    name: '&l&cR&6a&ei&an&9b&1o&dw&f Wings'
-    Description: '&7&oWings, but full of color!'
+    name: 'Ailes &l&cMu&6l&eti&c&9ol&1o&dre&f'
+    Description: '&7&oDes ailes, mais de pleins de couleurs!'
   SuperHero:
     name: '&4&lSuper Héros'
     Description: '&7&oDeviens Superman !'
@@ -685,7 +685,7 @@ Pets:
   Turtle:
     menu-name: '&2&lTortue'
     entity-displayname: '&lTurtue de %playername%'
-    Description: '&7&oSome of them get over 150 years old!'
+    Description: '&7&oLa plupart d''entre eux ont plus de 150 ans !'
   WanderingTrader:
     menu-name: '&1&lMarchand errant'
     entity-displayname: '&lMarchand errant de %playername%'
