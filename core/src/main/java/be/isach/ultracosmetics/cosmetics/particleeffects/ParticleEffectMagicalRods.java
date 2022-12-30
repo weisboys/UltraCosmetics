@@ -48,7 +48,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     public ParticleEffectMagicalRods(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.displayIfPlayerMoves = false;
+        this.displayIfMoving = false;
     }
 
     @Override

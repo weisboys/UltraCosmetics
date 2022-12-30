@@ -11,6 +11,8 @@ public class ParticleEffectFootprints extends ParticleEffect {
 
     public ParticleEffectFootprints(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.displayIfStanding = false;
     }
 
     @Override

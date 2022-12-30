@@ -17,9 +17,13 @@ import org.bukkit.Bukkit;
 public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implements Updatable {
 
     /**
+     * If false, no particle effects will appear when the player is standing.
+     */
+    protected boolean displayIfStanding = true;
+    /**
      * If false, no particle effects will appear when the player is moving.
      */
-    protected boolean displayIfPlayerMoves = true;
+    protected boolean displayIfMoving = true;
     /**
      * If true, display an alternative effect when the player is moving.
      */
@@ -44,10 +48,12 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
             if (Bukkit.getPlayer(getOwnerUniqueId()) != null && getOwner().getCurrentParticleEffect() == this) {
                 // If the player is not moving, display the default particle effect.
                 if (!isMoving()) {
-                    onUpdate();
+                    if (displayIfStanding) {
+                        onUpdate();
+                    }
                 } else {
                     // If the player is moving:
-                    if (displayIfPlayerMoves) {
+                    if (displayIfMoving) {
                         if (!alternativeEffect) {
                             // Display default particle effect.
                             onUpdate();
