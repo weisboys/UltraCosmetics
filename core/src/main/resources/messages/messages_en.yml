@@ -509,6 +509,11 @@ Particle-Effects:
     Description: |-
       &7&oLeaves a trail of
       &7&ogreen particles behind.
+  ShadowFootprints:
+    name: '&7&lShadow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osmoke behind.
   Notes:
     name: '&6&lNotes'
     Description: '&7&oNotes above your head.'

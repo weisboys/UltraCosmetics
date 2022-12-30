@@ -48,6 +48,7 @@ public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
         new ParticleEffectType("VolcanicHalo", 2, Particles.FLAME, XMaterial.MAGMA_CREAM, ParticleEffectHalo.class, false);
         new ParticleEffectType("BalefulFootprints", 1, Particles.SPELL_WITCH, XMaterial.JACK_O_LANTERN, ParticleEffectFootprints.class, false);
         new ParticleEffectType("SpringFootprints", 1, Particles.VILLAGER_HAPPY, XMaterial.POPPY, ParticleEffectFootprints.class, false);
+        new ParticleEffectType("ShadowFootprints", 2, Particles.SMOKE_LARGE, XMaterial.BLACK_WOOL, ParticleEffectFootprints.class, false);
         new ParticleEffectType("Notes", 6, Particles.NOTE, XMaterial.NOTE_BLOCK, ParticleEffectAboveHead.class, false);
         new ParticleEffectType("Hearts", 6, Particles.HEART, XMaterial.RED_WOOL, ParticleEffectAboveHead.class, false);
         if (version.isAtLeast(ServerVersion.v1_9)) {
