@@ -11,6 +11,8 @@ public class ParticleEffectHalo extends ParticleEffect {
 
     public ParticleEffectHalo(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override
