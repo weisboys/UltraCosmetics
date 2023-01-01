@@ -162,6 +162,7 @@ public class UltraPlayer {
      */
     public void setCoolDown(CosmeticType<?> type, double cooldown, double runTime) {
         double time = isBypassingCooldown() ? runTime : cooldown;
+        if (time == 0) return;
         cooldowns.put(type, (long) (time * 1000 + System.currentTimeMillis()));
     }
 

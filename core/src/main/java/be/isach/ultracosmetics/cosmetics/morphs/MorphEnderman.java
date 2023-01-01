@@ -12,10 +12,10 @@ import org.bukkit.FireworkEffect;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
@@ -28,9 +28,9 @@ import java.util.ArrayList;
  * @author iSach
  * @since 08-26-2015
  */
-public class MorphEnderman extends Morph {
+public class MorphEnderman extends MorphNoFall {
     private static double COOLDOWN = 3.5;
-    private boolean fast = SettingsManager.getConfig().getBoolean(getOptionPath("Fast"));
+    private final String mode = SettingsManager.getConfig().getString(getOptionPath("Mode"), "Ray trace");
 
     public MorphEnderman(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -53,36 +53,36 @@ public class MorphEnderman extends Morph {
         if (!getOwner().canUse(cosmeticType)) {
             return;
         }
-        Location loc = fast ? fast(player) : slow(player);
-        if (loc == null) return;
-        getOwner().setCoolDown(cosmeticType, COOLDOWN, COOLDOWN);
-        player.teleport(loc);
-        spawnRandomFirework(loc.add(0.5, 0, 0.5));
+        if (mode.equalsIgnoreCase("Fast")) {
+            if (!fast(player)) return;
+        } else if (mode.equalsIgnoreCase("Enderpearl")) {
+            player.launchProjectile(EnderPearl.class, player.getLocation().getDirection());
+        } else { // Ray trace
+            rayTrace(player);
+        }
+        getOwner().setCoolDown(cosmeticType, COOLDOWN, 0);
     }
 
-    private Location slow(Player player) {
+    private void rayTrace(Player player) {
         Block b = player.getTargetBlock(null, 17);
         Location loc = b.getLocation();
         loc.setPitch(player.getLocation().getPitch());
         loc.setYaw(player.getLocation().getYaw());
-        return loc;
+        player.teleport(loc);
+        spawnRandomFirework(loc.add(0.5, 0, 0.5));
     }
 
-    private Location fast(Player player) {
+    private boolean fast(Player player) {
         Vector v = player.getLocation().getDirection();
         v.setY(0);
         v.normalize().multiply(16);
         Location loc = player.getLocation().add(v);
-        if (!BlockUtils.isAir(loc.getBlock().getType())) return null;
-        return loc;
-    }
-
-    @EventHandler
-    public void onEntityDamage(EntityDamageEvent event) {
-        if (event.getEntity() == getPlayer()
-                && getOwner().getCurrentMorph() == this) {
-            event.setCancelled(true);
+        if (!BlockUtils.isAir(loc.getBlock().getType())) {
+            player.teleport(loc);
+            spawnRandomFirework(loc.add(0.5, 0, 0.5));
+            return true;
         }
+        return false;
     }
 
     public static FireworkEffect getRandomFireworkEffect() {

@@ -68,6 +68,15 @@ public class MorphType extends CosmeticType<Morph> {
         return disguiseType;
     }
 
+    @Override
+    public void setupConfig(CustomConfiguration config, String path) {
+        if (MorphNoFall.class.isAssignableFrom(getClazz())) {
+            config.addDefault(path + ".No-Fall-Damage", true,
+                    "Whether to disable fall damage while this morph is equipped.",
+                    "(Normal use of the morph may cause fall damage otherwise.)");
+        }
+    }
+
     public static void register() {
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
@@ -80,10 +89,13 @@ public class MorphType extends CosmeticType<Morph> {
             @Override
             public void setupConfig(CustomConfiguration config, String path) {
                 super.setupConfig(config, path);
-                config.addDefault(path + ".Fast", false,
-                        "When false, teleports player to block they are looking at.",
-                        "When true, teleports player 16 blocks in the direction they are looking,",
-                        "while trying to avoid suffocation. Players will be able to teleport through walls.");
+                config.addDefault(path + ".Mode", "Ray trace",
+                        "Changes how the enderman morph teleports.",
+                        "'Ray trace' (default) teleports a player to the block they're looking at,",
+                        "up to 16 blocks away. Doesn't perform as well as the other options.",
+                        "'Fast', teleports player 16 blocks in the direction they are looking,",
+                        "while trying to avoid suffocation. Players will be able to teleport through walls.",
+                        "'Enderpearl' simply launches an ender pearl in the direction the player is looking.");
             }
         };
         new MorphType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, MorphSlime.class);
