@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
@@ -28,7 +29,8 @@ import org.spigotmc.event.entity.EntityDismountEvent;
  * @since 08-03-2015
  */
 public class GadgetEtherealPearl extends Gadget implements Updatable {
-
+    private static final Color PRIMARY_EFFECT = Color.fromRGB(100, 0, 100);
+    private static final Color SECONDARY_EFFECT = Color.fromRGB(30, 0, 30);
     private EnderPearl pearl;
     private boolean running;
     private boolean handledThisTick = false;
@@ -126,7 +128,7 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         if (lastLoc != null) {
             getPlayer().teleport(lastLoc.add(0, 1, 0));
         }
-        spawnRandomFirework(getPlayer().getLocation(), Color.fromRGB(100, 0, 100), Color.fromRGB(30, 0, 30));
+        EntitySpawner.spawnFireworks(getPlayer().getLocation(), PRIMARY_EFFECT, SECONDARY_EFFECT);
         running = false;
     }
 

@@ -5,22 +5,17 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
+import be.isach.ultracosmetics.util.EntitySpawner;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
-
-import java.util.ArrayList;
 
 /**
  * Represents an instance of an enderman morph summoned by a player.
@@ -29,7 +24,7 @@ import java.util.ArrayList;
  * @since 08-26-2015
  */
 public class MorphEnderman extends MorphNoFall {
-    private static double COOLDOWN = 3.5;
+    private static final double COOLDOWN = 3.5;
     private final String mode = SettingsManager.getConfig().getString(getOptionPath("Mode"), "Ray trace");
 
     public MorphEnderman(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
@@ -69,7 +64,11 @@ public class MorphEnderman extends MorphNoFall {
         loc.setPitch(player.getLocation().getPitch());
         loc.setYaw(player.getLocation().getYaw());
         player.teleport(loc);
-        spawnRandomFirework(loc.add(0.5, 0, 0.5));
+        spawnFireworks(loc);
+    }
+
+    private void spawnFireworks(Location loc) {
+        EntitySpawner.spawnFireworks(loc.add(0.5, 0, 0.5), Color.BLACK, Color.BLACK);
     }
 
     private boolean fast(Player player) {
@@ -79,31 +78,10 @@ public class MorphEnderman extends MorphNoFall {
         Location loc = player.getLocation().add(v);
         if (!BlockUtils.isAir(loc.getBlock().getType())) {
             player.teleport(loc);
-            spawnRandomFirework(loc.add(0.5, 0, 0.5));
+            spawnFireworks(loc.add(0.5, 0, 0.5));
             return true;
         }
         return false;
-    }
-
-    public static FireworkEffect getRandomFireworkEffect() {
-        FireworkEffect.Builder builder = FireworkEffect.builder();
-        return builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL_LARGE).withColor(Color.fromRGB(0, 0, 0)).withFade(Color.fromRGB(0, 0, 0)).build();
-    }
-
-    public void spawnRandomFirework(Location location) {
-        final ArrayList<Firework> fireworks = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            final Firework f = getPlayer().getWorld().spawn(location, Firework.class);
-
-            FireworkMeta fm = f.getFireworkMeta();
-            fm.addEffect(getRandomFireworkEffect());
-            f.setFireworkMeta(fm);
-            fireworks.add(f);
-        }
-        Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-            for (Firework f : fireworks)
-                f.detonate();
-        }, 2);
     }
 
     @Override

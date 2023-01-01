@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ItemFactory;
 
 import org.bukkit.Bukkit;
@@ -39,7 +40,7 @@ public class GadgetChickenator extends Gadget {
         play(XSound.ENTITY_CHICKEN_AMBIENT, getPlayer(), 1.4f, 1.5f);
         play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer(), 0.3f, 1.5f);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-            spawnRandomFirework(chicken.getLocation(), Color.WHITE, Color.WHITE);
+            EntitySpawner.spawnFireworks(chicken.getLocation(), Color.WHITE, Color.WHITE);
             play(XSound.ENTITY_CHICKEN_HURT, getPlayer(), 1.4f, 1.5f);
             chicken.remove();
             for (int i = 0; i < 30; i++) {

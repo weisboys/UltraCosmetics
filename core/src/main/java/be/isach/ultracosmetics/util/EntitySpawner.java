@@ -1,11 +1,18 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashSet;
@@ -99,5 +106,34 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
 
     public static <K extends Entity> EntitySpawner<K> empty() {
         return new EntitySpawner<>(null, null, 0, null);
+    }
+
+    /**
+     * Spawns 4 fireworks at the location given. The fireworks do not damage entities.
+     *
+     * @param location The location to spawn at
+     * @param main     The primary color the firework should be
+     * @param fade     The secondary color the firework should be
+     */
+    public static void spawnFireworks(Location location, Color main, Color fade) {
+        // EntitySpawner doesn't work well here, so just spawning manually
+        Set<Firework> fireworks = new HashSet<>();
+        FireworkMeta meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(Material.FIREWORK_ROCKET);
+        meta.addEffect(buildFireworkEffect(main, fade));
+        meta.setDisplayName("uc_firework");
+        for (int i = 0; i < 4; i++) {
+            Firework f = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
+            f.setFireworkMeta(meta);
+        }
+        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
+            for (Firework f : fireworks) {
+                f.detonate();
+            }
+        }, 2);
+    }
+
+    private static FireworkEffect buildFireworkEffect(Color main, Color fade) {
+        FireworkEffect.Builder builder = FireworkEffect.builder();
+        return builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL_LARGE).withColor(main).withFade(fade).build();
     }
 }
