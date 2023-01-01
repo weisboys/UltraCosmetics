@@ -18,7 +18,6 @@ public class ParticleEffectSantaHat extends ParticleEffect {
 
     public ParticleEffectSantaHat(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        this.ignoreMove = true;
     }
 
     @Override

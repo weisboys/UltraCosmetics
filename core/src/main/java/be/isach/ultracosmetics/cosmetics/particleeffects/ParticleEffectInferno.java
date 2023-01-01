@@ -20,6 +20,8 @@ public class ParticleEffectInferno extends ParticleEffect {
 
     public ParticleEffectInferno(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override

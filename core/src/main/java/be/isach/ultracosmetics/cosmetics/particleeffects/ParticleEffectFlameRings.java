@@ -19,8 +19,9 @@ public class ParticleEffectFlameRings extends ParticleEffect {
 
     public ParticleEffectFlameRings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-    }
 
+        this.alternativeEffect = true;
+    }
 
     @Override
     public void onUpdate() {
