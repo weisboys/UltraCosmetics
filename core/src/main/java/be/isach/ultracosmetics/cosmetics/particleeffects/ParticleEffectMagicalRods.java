@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.Location;
@@ -48,7 +49,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     public ParticleEffectMagicalRods(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.displayIfMoving = false;
+        this.alternativeEffect = true;
     }
 
     @Override
@@ -71,6 +72,13 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
         drawColumns(height, angle);
 
         angle += Math.toRadians(1);
+    }
+
+    @Override
+    public void showAlternativeEffect() {
+        for (Color color : COLORS) {
+            Particles.REDSTONE.display(new Particles.OrdinaryColor(color), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
+        }
     }
 
     /**
