@@ -461,7 +461,7 @@ Particle-Effects:
     name: '&f&lEnkelin siivet'
     Description: '&7&oBecome an angel!'
   RainbowWings:
-    name: '&l&cR&6a&ei&an&9b&1o&dw&f Wings'
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
     Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuper Sankari'
@@ -1627,7 +1627,7 @@ Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
   Rainbow:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
     Description: '&7&oRainbow-colored particles'
   Christmas:
     name: '&4&lChrist&f&lmas'
