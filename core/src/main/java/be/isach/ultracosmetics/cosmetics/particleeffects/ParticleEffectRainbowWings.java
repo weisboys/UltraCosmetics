@@ -40,10 +40,8 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        Particles.OrdinaryColor color = new Particles.OrdinaryColor(ColorUtils.getRainbowColor());
-
         for (int i = 0; i < getModifiedAmount(7); i++) {
-            getType().getEffect().display(color, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
+            Particles.REDSTONE.display(new Particles.OrdinaryColor(ColorUtils.getRainbowColor()), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
         }
     }
 

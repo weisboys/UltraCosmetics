@@ -46,7 +46,7 @@ public class ParticleEffectAngelWings extends ParticleEffect {
     @Override
     public void showAlternativeEffect() {
         for (int i = 0; i < getModifiedAmount(7); i++) {
-            getType().getEffect().display(255, 255, 255, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
+            Particles.REDSTONE.display(255, 255, 255, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
         }
     }
 
