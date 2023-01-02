@@ -489,6 +489,55 @@ Particle-Effects:
   FireWaves:
     name: '&e&l火浪'
     Description: '&7&o有人说这些火浪起到了保护作用...'
+  CursedHalo:
+    name: '&5&lCursed Halo'
+    Description: |-
+      &7&oIt brings great misfortune to
+      &7&oanyone who dares to wear it.
+  VolcanicHalo:
+    name: '&c&lVolcanic Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oeternal flames.
+  CursedFootprints:
+    name: '&5&lCursed Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odark energy behind.
+  SpringFootprints:
+    name: '&a&lSpring Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&ogreen particles behind.
+  ShadowFootprints:
+    name: '&7&lShadow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osmoke behind.
+  Notes:
+    name: '&6&lNotes'
+    Description: '&7&oNotes above your head.'
+  Hearts:
+    name: '&c&lHearts'
+    Description: '&7&oHearts above your head.'
+  EnderFootprints:
+    name: '&d&lEnder Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odragon breath behind.
+  ArcaneFlame:
+    name: '&b&lArcane Flame'
+    Description: '&7&oBlue flame above your head.'
+  DivineHalo:
+    name: '&e&lDivine Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oglowing light.
+  SnowFootprints:
+    name: '&f&lSnow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osnow behind.
 Pets:
   Piggy:
     menu-name: '&d&l猪仔'
@@ -1747,6 +1796,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域�
 Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
 Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
 Too-Long: Too long, try again
+Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
 Must-Remove:
   Hats: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
   Suits:
