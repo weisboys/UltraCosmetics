@@ -1796,6 +1796,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in thi
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
 Too-Long: Too long, try again
+Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
 Must-Remove:
   Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
   Suits:

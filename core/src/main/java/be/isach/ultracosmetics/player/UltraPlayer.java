@@ -72,6 +72,8 @@ public class UltraPlayer {
      */
     private final CosmeticsProfile cosmeticsProfile;
 
+    private final boolean allowDisableGadgets = SettingsManager.getConfig().getBoolean("Categories.Gadgets.Allow-Disable-Gadgets", true);
+
     /**
      * Specifies if the player can currently be hit by any other gadget.
      * Exemple: Get hit by a flesh hook.
@@ -448,7 +450,7 @@ public class UltraPlayer {
      * @return if the player has gadgets enabled or not.
      */
     public boolean hasGadgetsEnabled() {
-        return cosmeticsProfile.hasGadgetsEnabled();
+        return !allowDisableGadgets || cosmeticsProfile.hasGadgetsEnabled();
     }
 
     /**
