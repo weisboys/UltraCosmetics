@@ -488,6 +488,55 @@ Particle-Effects:
   FireWaves:
     name: '&e&lОгненные волны'
     Description: '&7&oНекоторые говорят, что эти волны огня действуют как щит...'
+  CursedHalo:
+    name: '&5&lCursed Halo'
+    Description: |-
+      &7&oIt brings great misfortune to
+      &7&oanyone who dares to wear it.
+  VolcanicHalo:
+    name: '&c&lVolcanic Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oeternal flames.
+  CursedFootprints:
+    name: '&5&lCursed Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odark energy behind.
+  SpringFootprints:
+    name: '&a&lSpring Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&ogreen particles behind.
+  ShadowFootprints:
+    name: '&7&lShadow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osmoke behind.
+  Notes:
+    name: '&6&lNotes'
+    Description: '&7&oNotes above your head.'
+  Hearts:
+    name: '&c&lHearts'
+    Description: '&7&oHearts above your head.'
+  EnderFootprints:
+    name: '&d&lEnder Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odragon breath behind.
+  ArcaneFlame:
+    name: '&b&lArcane Flame'
+    Description: '&7&oBlue flame above your head.'
+  DivineHalo:
+    name: '&e&lDivine Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oglowing light.
+  SnowFootprints:
+    name: '&f&lSnow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osnow behind.
 Pets:
   Piggy:
     menu-name: '&d&lПоросенок'
@@ -1746,6 +1795,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% косметика в это�
 Disabled-Command-Message: '%prefix% &c&lВы не можете использовать эту команду, пока косметика укомплектована!'
 Not-Allowed-In-Vanish: '%prefix% &c&lВы не можете пользоваться косметикой, находясь в невидимости!'
 Too-Long: Слишком долго, попробуйте еще раз
+Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
 Must-Remove:
   Hats: '%prefix% &c&lВы должны снять головной убор, чтобы надеть шляпу!'
   Suits:
