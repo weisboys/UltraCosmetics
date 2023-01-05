@@ -149,7 +149,7 @@ Treasure-Chests-Loot:
     &9Ammo
     %ammo% %name%
   Pet: |-
-    &aPet:
+    &aPet
     %pet%
   Mount: |-
     &6Mount
