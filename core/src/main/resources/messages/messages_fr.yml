@@ -147,35 +147,19 @@ Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
   Ammo: |-
     &9Munitions
-    %ammo% %name%
-  Pet: |-
-    &aAnimal de compagnie:
-    %pet%
-  Mount: |-
-    &6Le Mont
-    %mount%
-  Effect: |-
-    &bEffet des particules
-    %effect%
-  Morph: |-
-    &2Métamorphose
-    %morph%
-  Hat: |-
-    &dChapeau
-    %hat%
+    %ammo% %cosmetic%
   Money: |-
     &eArgents
     &e&l%money%$
-  Gadget: |-
-    &9Gadget 
-    %gadget%
-  Suit: |-
-    &3Costume
-    %suit%
-  Emote: |-
-    &eÉmote
-    %emote%
   Nothing: '&c&lRien'
+  Pets: "&aAnimal de compagnie:\n%cosmetic%"
+  Mounts: "&6Le Mont\n%cosmetic%"
+  Particle-Effects: "&bEffet des particules\n%cosmetic%"
+  Morphs: "&2Métamorphose\n%cosmetic%"
+  Hats: "&dChapeau\n%cosmetic%"
+  Gadgets: "&9Gadget \n%cosmetic%"
+  Suits: "&3Costume\n%cosmetic%"
+  Emotes: "&eÉmote\n%cosmetic%"
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
 Enable-Gadgets: '&a&lActiver les gadgets'
