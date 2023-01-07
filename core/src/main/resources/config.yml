@@ -23,6 +23,11 @@ Categories:
     Go-Back-Arrow: true
     # You wanna show the cooldown of current gadget in actionbar?
     Cooldown-In-ActionBar: true
+    # Whether a player can disable gadgets for themself using `/uc gadgets` or the menu button.
+    # When gadgets are disabled for a player, they cannot use gadgets or be affected by others' gadgets.
+    # When set to false, gadgets are always per-player enabled for all players.
+    # Disabling the gadgets category entirely will work regardless of this setting.
+    Allow-Disable-Gadgets: true
   Particle-Effects:
     Main-Menu-Item: BLAZE_POWDER
     Go-Back-Arrow: true
@@ -101,6 +106,11 @@ TreasureChests:
   Key-Price: 1000
   # How many treasure chests should be opened per key? Min 1, max 4
   Count: 4
+  # The treasure chest mode. Options:
+  # - structure: places blocks and chests (default)
+  # - simple: only gives <Count> cosmetics, no blocks are placed
+  # - both: players can choose either mode through the GUI
+  Mode: structure
   Locations:
     # Whether players should be moved to a certain
     # location before opening a treasure chest.

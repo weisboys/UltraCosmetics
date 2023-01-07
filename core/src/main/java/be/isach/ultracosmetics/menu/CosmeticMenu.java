@@ -164,7 +164,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
         // Go Back to Main Menu Arrow.
         if (getCategory().hasGoBackArrow()) {
-            ItemStack item = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Back-Main-Menu-Item"), MessageManager.getMessage("Menu.Main.Title"));
+            ItemStack item = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Back-Main-Menu-Item"), MessageManager.getMessage("Menu.Main.Button.Name"));
             putItem(inventory, inventory.getSize() - 6, item, (data) -> MenuMain.openMainMenu(player));
         }
 

@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.permissions.PermissionManager;
+import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.WeightedSet;
 
 import org.bukkit.Bukkit;
@@ -17,11 +18,8 @@ import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
@@ -49,7 +47,7 @@ public class TreasureRandomizer {
     private final boolean forceMessageToOwner;
     private final PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
     private ItemStack itemStack;
-    private String name;
+    private String[] name;
 
     public TreasureRandomizer(final Player player, Location location, boolean forceMessageToOwner) {
         this.loc = location.add(0.5, 0, 0.5);
@@ -106,12 +104,6 @@ public class TreasureRandomizer {
 
     private void addWeightedResult(int weight, ResultType type) {
         basicResultTypes.add(type, weight);
-    }
-
-    private FireworkEffect getRandomFireworkEffect() {
-        if (!UltraCosmeticsData.get().getPlugin().isEnabled()) return null;
-        FireworkEffect.Builder builder = FireworkEffect.builder();
-        return builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL).withColor(randomColor()).withFade(randomColor()).build();
     }
 
     private static Color randomColor() {
@@ -191,7 +183,7 @@ public class TreasureRandomizer {
         }
     }
 
-    public String getName() {
+    public String[] getName() {
         return name;
     }
 
@@ -204,7 +196,7 @@ public class TreasureRandomizer {
     }
 
     public void giveNothing() {
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Nothing");
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Nothing").split("\n");
         itemStack = new ItemStack(Material.BARRIER);
     }
 
@@ -219,7 +211,7 @@ public class TreasureRandomizer {
         int min = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Min");
         int max = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max");
         int money = randomInRange(min, max);
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "");
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "").split("\n");
         UltraCosmeticsData.get().getPlugin().getEconomyHandler().getHook().deposit(player, money);
         itemStack = XMaterial.SUNFLOWER.parseItem();
         if (money > 3 * SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max") / 4) {
@@ -235,7 +227,7 @@ public class TreasureRandomizer {
         int ammoMin = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Min");
         int ammoMax = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Max");
         int ammo = randomInRange(ammoMin, ammoMax);
-        name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%name%", g.getName()).replace("%ammo%", String.valueOf(ammo));
+        name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%name%", g.getName()).replace("%ammo%", String.valueOf(ammo)).split("\n");
 
         UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player).addAmmo(g, ammo);
         itemStack = g.getMaterial().parseItem();
@@ -257,7 +249,7 @@ public class TreasureRandomizer {
 
     public void giveRandomCosmetic(ResultType result, String lang, String configName) {
         CosmeticType<?> cosmetic = getRandomCosmetic(result);
-        name = MessageManager.getMessage("Treasure-Chests-Loot." + lang).replace("%" + lang.toLowerCase() + "%", cosmetic.getName());
+        name = MessageManager.getMessage("Treasure-Chests-Loot." + lang).replace("%" + lang.toLowerCase() + "%", cosmetic.getName()).split("\n");
         permissionManager.setPermission(player, cosmetic);
         spawnRandomFirework(loc);
         itemStack = cosmetic.getItemStack();
@@ -277,7 +269,7 @@ public class TreasureRandomizer {
         for (String command : reward.getCommands()) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%name%", player.getName()));
         }
-        name = reward.getName().replace("%name%", player.getName());
+        name = new String[] { reward.getName().replace("%name%", player.getName()) };
         itemStack = reward.getItemStack();
         spawnRandomFirework(loc);
 
@@ -285,21 +277,7 @@ public class TreasureRandomizer {
     }
 
     public void spawnRandomFirework(Location location) {
-        if (!UltraCosmeticsData.get().getPlugin().isEnabled()) return;
-        final List<Firework> fireworks = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            final Firework f = player.getWorld().spawn(location.clone().add(0.5, 0, 0.5), Firework.class);
-
-            FireworkMeta fm = f.getFireworkMeta();
-            fm.addEffect(getRandomFireworkEffect());
-            f.setFireworkMeta(fm);
-            fireworks.add(f);
-            f.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), 1));
-        }
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
-            for (Firework f : fireworks)
-                f.detonate();
-        }, 2);
+        EntitySpawner.spawnFireworks(location.clone().add(0.5, 0, 0.5), randomColor(), randomColor(), FireworkEffect.Type.BALL);
     }
 
     private void broadcast(String message, boolean toOthers) {

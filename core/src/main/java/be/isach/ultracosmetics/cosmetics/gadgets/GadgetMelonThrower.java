@@ -62,7 +62,7 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
         // Check if the current melon has finished exploding.
-        if (melon != null) {
+        if (melon != null && melon.isValid()) {
             event.getPlayer().sendMessage(MessageManager.getMessage("Gadgets.MelonThrower.Wait-For-Finish"));
             return false;
         }
@@ -78,6 +78,7 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
     @Override
     public void onUpdate() {
         if (melon == null || !melon.isValid()) {
+            melon = null;
             return;
         }
         if (melon.isOnGround()) {

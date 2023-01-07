@@ -24,6 +24,8 @@ public class ParticleEffectCrushedCandyCane extends ParticleEffect {
 
     public ParticleEffectCrushedCandyCane(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override
@@ -47,6 +49,19 @@ public class ParticleEffectCrushedCandyCane extends ParticleEffect {
                 Particles.ITEM_CRACK.display(new Particles.ItemData(XMaterial.INK_SAC.parseMaterial(), getRandomColor()), 0.2f, 0.2f, 0.2f, 0, 1, center, 128);
         }
         step++;
+    }
+
+    @Override
+    public void showAlternativeEffect() {
+        if (VersionManager.IS_VERSION_1_13) {
+            for (int i = 0; i < getModifiedAmount(15); i++) {
+                getPlayer().getLocation().getWorld().spawnParticle(Particle.ITEM_CRACK, getPlayer().getLocation(), 1, 0.2, 0.2, 0.2, 0, ItemFactory.getRandomDye());
+            }
+        } else {
+            for (int i = 0; i < getModifiedAmount(15); i++) {
+                Particles.ITEM_CRACK.display(new Particles.ItemData(XMaterial.INK_SAC.parseMaterial(), ParticleEffectCrushedCandyCane.getRandomColor()), 0.2f, 0.2f, 0.2f, 0, 1, getPlayer().getLocation(), 128);
+            }
+        }
     }
 
     public static byte getRandomColor() {

@@ -25,6 +25,11 @@ public class SubCommandGadgets extends SubCommand {
 
     @Override
     protected void onExePlayer(Player sender, String[] args) {
+        if (!SettingsManager.getConfig().getBoolean("Categories.Gadgets.Allow-Disable-Gadgets", true)) {
+            sender.sendMessage(MessageManager.getMessage("Cannot-Disable-Gadgets"));
+            return;
+        }
+
         if (!SettingsManager.isAllowedWorld(sender.getWorld())) {
             sender.sendMessage(MessageManager.getMessage("World-Disabled"));
             return;

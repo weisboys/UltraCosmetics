@@ -40,7 +40,7 @@ public class SubCommandReward extends SubCommand {
         } else {
             target = (Player) sender;
         }
-        TreasureRandomizer tr = new TreasureRandomizer(target, target.getLocation(), true);
+        TreasureRandomizer tr = new TreasureRandomizer(target, target.getLocation().subtract(1, 0, 1), true);
         for (int i = 0; i < n; i++) {
             tr.giveRandomThing();
         }

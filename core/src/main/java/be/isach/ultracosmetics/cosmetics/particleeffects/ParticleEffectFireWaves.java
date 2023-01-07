@@ -24,6 +24,8 @@ public class ParticleEffectFireWaves extends ParticleEffect {
 
     public ParticleEffectFireWaves(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override

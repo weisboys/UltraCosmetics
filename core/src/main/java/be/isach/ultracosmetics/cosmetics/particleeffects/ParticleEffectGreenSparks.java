@@ -20,6 +20,8 @@ public class ParticleEffectGreenSparks extends ParticleEffect {
 
     public ParticleEffectGreenSparks(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override

@@ -106,7 +106,14 @@ public class CustomEntities {
         }
         types.put(customName, types.get("minecraft:" + type));
         EntityType.Builder<Entity> a = EntityType.Builder.of(customMob, MobCategory.AMBIENT);
-        Registry.register(Registry.ENTITY_TYPE, customName, a.build(customName));
+        try {
+            Registry.register(Registry.ENTITY_TYPE, customName, a.build(customName));
+        } catch (IllegalStateException e) {
+            // Citizens causes this despite us checking to see if the key already exists
+            if (!e.getMessage().startsWith("Invalid holder present for key ResourceKey[minecraft:entity_type / minecraft:ultracosmetics_")) {
+                throw e;
+            }
+        }
     }
 
     public static void ride(float sideMot, float forMot, Player passenger, Mob mob) {

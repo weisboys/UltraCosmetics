@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.util.Particles;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.Sheep;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
@@ -23,7 +24,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.behavior.CreatureBehavior;
+import me.gamercoder215.mobchip.ai.goal.PathfinderPanic;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
@@ -116,6 +117,7 @@ public class GadgetExplosiveSheep extends Gadget {
             sheeps.remove(s);
             s.remove();
             DyeColor[] colors = DyeColor.values();
+            Player player = getPlayer();
             EntitySpawner<Sheep> sheeps = new EntitySpawner<>(EntityType.SHEEP, s.getLocation(), 50, sheep -> {
                 sheep.setColor(colors[RANDOM.nextInt(colors.length)]);
                 MathUtils.applyVelocity(sheep, new Vector(RANDOM.nextDouble() - 0.5, RANDOM.nextDouble() / 2, RANDOM.nextDouble() - 0.5).multiply(2).add(new Vector(0, 0.8, 0)));
@@ -125,7 +127,9 @@ public class GadgetExplosiveSheep extends Gadget {
                 EntityBrain brain = BukkitBrain.getBrain(sheep);
                 brain.getGoalAI().clear();
                 brain.getTargetAI().clear();
-                ((CreatureBehavior) brain.getBehaviors()).panic();
+                // Pathfinder requires the entity has been damaged by another entity
+                sheep.damage(1, player);
+                brain.getGoalAI().put(new PathfinderPanic(sheep, 2), 0);
             }, getUltraCosmetics());
             sheepExplosionRunnable = new BukkitRunnable() {
                 @Override

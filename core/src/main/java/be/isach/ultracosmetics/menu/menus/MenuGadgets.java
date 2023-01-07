@@ -31,12 +31,14 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected void putItems(Inventory inventory, UltraPlayer player, int page) {
-        putToggleGadgetsItems(inventory, player);
+        if (SettingsManager.getConfig().getBoolean("Categories.Gadgets.Allow-Disable-Gadgets", true)) {
+            putToggleGadgetsItems(inventory, player);
+        }
     }
 
     private void putToggleGadgetsItems(Inventory inventory, UltraPlayer player) {
         int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
-        String configPath = "Categories.Gadgets-Item.When-" + (player.hasGadgetsEnabled() ? "En" : "Dis") + "abled";
+        String configPath = "Categories.Gadgets-Item.When-" + (player.hasGadgetsEnabled() ? "Enabled" : "Disabled");
         String key = (player.hasGadgetsEnabled() ? "Dis" : "En") + "able-Gadgets";
         String msg = MessageManager.getMessage(key);
         String[] lore = MessageManager.getMessage(key + "-Lore").split("\n");

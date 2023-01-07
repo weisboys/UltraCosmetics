@@ -4,13 +4,14 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import me.libraryaddict.disguise.disguisetypes.watchers.SlimeWatcher;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.util.Vector;
+
+import me.libraryaddict.disguise.disguisetypes.watchers.SlimeWatcher;
 
 /**
  * Represents an instance of a slime morph summoned by a player.
@@ -18,7 +19,7 @@ import org.bukkit.util.Vector;
  * @author iSach
  * @since 08-26-2015
  */
-public class MorphSlime extends Morph {
+public class MorphSlime extends MorphNoFall {
     private boolean cooldown;
 
     public MorphSlime(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
@@ -27,8 +28,7 @@ public class MorphSlime extends Morph {
 
     @EventHandler
     public void onKick(PlayerKickEvent event) {
-        if (event.getPlayer() == getPlayer() && getOwner().getCurrentMorph() == this && event.getReason().equalsIgnoreCase("Flying is not enabled on this server"))
-            event.setCancelled(true);
+        if (event.getPlayer() == getPlayer() && getOwner().getCurrentMorph() == this && event.getReason().equalsIgnoreCase("Flying is not enabled on this server")) event.setCancelled(true);
     }
 
     @EventHandler
@@ -38,12 +38,6 @@ public class MorphSlime extends Morph {
             cooldown = true;
             Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> cooldown = false, 80);
         }
-    }
-
-    @EventHandler
-    public void onDamage(EntityDamageEvent event) {
-        if (event.getEntity() == getPlayer() && getOwner().getCurrentMorph() == this && event.getCause() == EntityDamageEvent.DamageCause.FALL)
-            event.setCancelled(true);
     }
 
     @Override

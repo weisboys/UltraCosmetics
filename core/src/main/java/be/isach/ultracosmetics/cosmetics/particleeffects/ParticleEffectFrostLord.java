@@ -22,6 +22,8 @@ public class ParticleEffectFrostLord extends ParticleEffect {
 
     public ParticleEffectFrostLord(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.morphs.*;
@@ -67,6 +68,16 @@ public class MorphType extends CosmeticType<Morph> {
         return disguiseType;
     }
 
+    @Override
+    public void setupConfig(CustomConfiguration config, String path) {
+        super.setupConfig(config, path);
+        if (MorphNoFall.class.isAssignableFrom(getClazz())) {
+            config.addDefault(path + ".No-Fall-Damage", true,
+                    "Whether to disable fall damage while this morph is equipped.",
+                    "(Normal use of the morph may cause fall damage otherwise.)");
+        }
+    }
+
     public static void register() {
         ServerVersion version = UltraCosmeticsData.get().getServerVersion();
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
@@ -75,7 +86,19 @@ public class MorphType extends CosmeticType<Morph> {
         new MorphType("Blaze", XMaterial.BLAZE_POWDER, EntityType.BLAZE, MorphBlaze.class);
         new MorphType("Chicken", XMaterial.EGG, EntityType.CHICKEN, MorphChicken.class);
         new MorphType("Pig", XMaterial.PORKCHOP, EntityType.PIG, MorphPig.class);
-        new MorphType("Enderman", XMaterial.ENDER_PEARL, EntityType.ENDERMAN, MorphEnderman.class);
+        new MorphType("Enderman", XMaterial.ENDER_PEARL, EntityType.ENDERMAN, MorphEnderman.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
+                config.addDefault(path + ".Mode", "Ray trace",
+                        "Changes how the enderman morph teleports.",
+                        "'Ray trace' (default) teleports a player to the block they're looking at,",
+                        "up to 16 blocks away. Doesn't perform as well as the other options.",
+                        "'Fast', teleports player 16 blocks in the direction they are looking,",
+                        "while trying to avoid suffocation. Players will be able to teleport through walls.",
+                        "'Enderpearl' simply launches an ender pearl in the direction the player is looking.");
+            }
+        };
         new MorphType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, MorphSlime.class);
         new MorphType("Creeper", XMaterial.GUNPOWDER, EntityType.CREEPER, MorphCreeper.class);
         new MorphType("Snowman", XMaterial.SNOWBALL, EntityType.SNOWMAN, MorphSnowman.class);

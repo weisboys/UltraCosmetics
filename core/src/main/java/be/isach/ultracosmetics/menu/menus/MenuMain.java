@@ -159,8 +159,9 @@ public class MenuMain extends Menu {
 
             ItemStack chest = ItemFactory.create(XMaterial.CHEST, msgChests, chestLore);
             putItem(inventory, 3, chest, (data) -> {
+                Player p = player.getBukkitPlayer();
                 if (!canBuyKeys && player.getKeys() < 1) {
-                    XSound.BLOCK_ANVIL_LAND.play(player.getBukkitPlayer().getLocation(), 0.2f, 1.2f);
+                    XSound.BLOCK_ANVIL_LAND.play(p.getLocation(), 0.2f, 1.2f);
                     return;
                 }
                 String mode = SettingsManager.getConfig().getString("TreasureChests.Mode", "structure");
@@ -174,7 +175,7 @@ public class MenuMain extends Menu {
                 if (player.getKeys() > 0 && mode.equalsIgnoreCase("simple")) {
                     player.removeKey();
                     int count = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
-                    TreasureRandomizer tr = new TreasureRandomizer(player.getBukkitPlayer(), player.getBukkitPlayer().getLocation(), true);
+                    TreasureRandomizer tr = new TreasureRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
                     for (int i = 0; i < count; i++) {
                         tr.giveRandomThing();
                     }
@@ -182,7 +183,7 @@ public class MenuMain extends Menu {
                     open(player);
                 } else {
                     // Opens the buy-a-key menu if the player doesn't have enough keys
-                    TreasureChestManager.tryOpenChest(player.getBukkitPlayer());
+                    TreasureChestManager.tryOpenChest(p);
                 }
             });
 

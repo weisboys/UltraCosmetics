@@ -95,8 +95,7 @@ public class PetType extends CosmeticEntType<Pet> {
                         "'none': not visible to any players");
             }
         };
-        /* Slime disabled because its just constantly jumping in one direction instead of following the player */
-        // new PetType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, PetSlime.class);
+        new PetType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, PetSlime.class);
         new PetType("Silverfish", XMaterial.GRAY_DYE, EntityType.SILVERFISH, PetSilverfish.class);
         new PetType("Blaze", XMaterial.BLAZE_ROD, EntityType.BLAZE, PetBlaze.class);
         new PetType("Creeper", XMaterial.GUNPOWDER, EntityType.CREEPER, PetCreeper.class);
@@ -111,8 +110,7 @@ public class PetType extends CosmeticEntType<Pet> {
         /* Ghast disabled because its not moving at all (besides teleport) */
         /* new PetType("Ghast", XMaterial.FIRE_CHARGE, EntityType.GHAST, PetGhast.class); */
         new PetType("Guardian", XMaterial.PRISMARINE_SHARD, EntityType.GUARDIAN, PetGuardian.class);
-        /* Magma Cube disabled because its just constantly jumping in one direction instead of following the player */
-        /* new PetType("MagmaCube", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, PetMagmaCube.class); */
+        new PetType("MagmaCube", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, PetMagmaCube.class);
         new PetType("Witch", XMaterial.POTION, EntityType.WITCH, PetWitch.class);
         new PetType("Horse", XMaterial.LEATHER_HORSE_ARMOR.or(XMaterial.LEATHER), EntityType.HORSE, PetHorse.class);
 
