@@ -160,6 +160,8 @@ Treasure-Chests-Loot:
   Gadgets: "&9Gadget \n%cosmetic%"
   Suits: "&3Costume\n%cosmetic%"
   Emotes: "&eÉmote\n%cosmetic%"
+  Death-Effects: "&cDeath Effect\n%cosmetic%"
+  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
 Enable-Gadgets: '&a&lActiver les gadgets'
