@@ -474,6 +474,12 @@ public class UltraCosmetics extends JavaPlugin {
             if (key.startsWith("TreasureChests.Loots.Commands.")) continue;
             config.addDefault(key, defaults.get(key), defaults.comments(key));
         }
+        for (String key : defaults.getConfigurationSection("TreasureChests.Loots").getKeys(false)) {
+            String path = "TreasureChests.Loots." + key + ".Message.message";
+            if (!config.isString(path)) continue;
+            String msg = config.getString(path);
+            config.set(path, msg.replaceAll("%(?!ammo|name|prefix|money)[\\w-]+%", "%cosmetic%"));
+        }
         config.set("Disabled-Items", null);
         config.set("Menu-Item.Data", null);
 
@@ -563,6 +569,13 @@ public class UltraCosmetics extends JavaPlugin {
             config.set("Menu-Item.Give-On-Join", null);
             config.set("Menu-Item.Give-On-Respawn", null);
         }
+
+        String oldEffects = "Treasure-Chests-Loot.Effects";
+        if (config.isConfigurationSection(oldEffects)) {
+            config.set("Treasure-Chests-Loot.Particle-Effects", config.getConfigurationSection(oldEffects));
+            config.set(oldEffects, null);
+        }
+
         upgradeIdsToMaterials();
     }
 

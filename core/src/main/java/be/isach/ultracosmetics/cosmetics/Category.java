@@ -149,8 +149,9 @@ public enum Category {
     }
 
     public String getMessagesName() {
+        if (isSuits()) return "Suits";
         // Like configPath but value is different for Category.EFFECTS
-        return name().substring(0, 1) + name().substring(1).toLowerCase();
+        return name().substring(0, 1) + name().substring(1).toLowerCase().replace("_", "-");
     }
 
     public String getActivateTooltip() {

@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
+import be.isach.ultracosmetics.treasurechests.loot.LootReward;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
@@ -169,12 +170,12 @@ public class TreasureChest implements Listener {
     }
 
     public void forceOpen(int delay) {
-        final String[] name = randomGenerator.getName();
         if (delay == 0) {
             stopping = true;
             for (int i = 0; i < chestsLeft; i++) {
-                randomGenerator.giveRandomThing();
-                getPlayer().sendMessage(MessageManager.getMessage("You-Won-Treasure-Chests").replace("%name%", name[name.length - 1]));
+                LootReward reward = randomGenerator.giveRandomThing();
+                String[] names = reward.getName();
+                getPlayer().sendMessage(MessageManager.getMessage("You-Won-Treasure-Chests").replace("%name%", names[names.length - 1]));
             }
             return;
         }
@@ -182,11 +183,10 @@ public class TreasureChest implements Listener {
         for (final Block b : chests) {
             openChest(b);
             randomGenerator.setLocation(b.getLocation().clone().add(0.0D, 1.0D, 0.0D));
-            randomGenerator.giveRandomThing();
-            ItemStack is = randomGenerator.getItemStack();
+            LootReward reward = randomGenerator.giveRandomThing();
 
-            items.add(spawnItem(is, b.getLocation()));
-            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation()), 15L);
+            items.add(spawnItem(reward.getStack(), b.getLocation()));
+            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation(), reward), 15L);
 
             chestsLeft -= 1;
             chestsToRemove.add(b);
@@ -203,8 +203,8 @@ public class TreasureChest implements Listener {
         }
     }
 
-    private void makeHolograms(Location location) {
-        String[] names = randomGenerator.getName();
+    private void makeHolograms(Location location, LootReward reward) {
+        String[] names = reward.getName();
         Location loc = location.clone().add(0.5, 0.3, 0.5);
         for (int i = names.length - 1; i >= 0; i--) {
             spawnHologram(loc, names[i]);
@@ -248,15 +248,15 @@ public class TreasureChest implements Listener {
 
         openChest(event.getClickedBlock());
         randomGenerator.setLocation(event.getClickedBlock().getLocation().add(0.0D, 1.0D, 0.0D));
-        randomGenerator.giveRandomThing();
+        LootReward reward = randomGenerator.giveRandomThing();
 
         cooldown = true;
         Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> cooldown = false, 3L);
 
-        ItemStack is = randomGenerator.getItemStack();
+        ItemStack is = reward.getStack();
 
         items.add(spawnItem(is, event.getClickedBlock().getLocation()));
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(event.getClickedBlock().getLocation()), 15L);
+        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(event.getClickedBlock().getLocation(), reward), 15L);
 
         chestsLeft -= 1;
         chests.remove(event.getClickedBlock());

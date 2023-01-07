@@ -131,7 +131,7 @@ TreasureChests:
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found %money%$'
+        message: '%prefix% &6&l%name% found $%money%'
     Gadgets-Ammo:
       Enabled: true
       Min: 20
@@ -139,67 +139,67 @@ TreasureChests:
       Chance: 60
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found %ammo% %gadget% ammo'
+        message: '%prefix% &6&l%name% found %ammo% %cosmetic% ammo'
     Gadgets:
       Enabled: true
       Chance: 20
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found gadget %gadget%'
+        message: '%prefix% &6&l%name% found gadget %cosmetic%'
     Mounts:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %mount%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Pets:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %pet%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Morphs:
       Enabled: true
       Chance: 4
       Message:
         enabled: true
-        message: '%prefix% &6&l%name% found legendary %morph%'
-    Effects:
+        message: '%prefix% &6&l%name% found legendary %cosmetic%'
+    Particle-Effects:
       Enabled: true
       Chance: 4
       Message:
         enabled: true
-        message: '%prefix% &6&l%name% found legendary %effect%'
+        message: '%prefix% &6&l%name% found legendary %cosmetic%'
     Hats:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %hat%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Suits:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %suit%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Emotes:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %emote%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Projectile-Effects:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %projectile-effect%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Death-Effects:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %death-effect%'
+        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Commands:
       shoutout:
         Name: '&d&lShoutout'

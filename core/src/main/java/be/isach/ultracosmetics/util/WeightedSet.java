@@ -9,7 +9,10 @@ import java.util.stream.Collectors;
 
 public class WeightedSet<T> {
     private Map<T,Integer> map = new HashMap<>();
-    public WeightedSet() {}
+
+    public WeightedSet() {
+    }
+
     public WeightedSet(WeightedSet<T> copy) {
         this.map = new HashMap<>(copy.map);
     }
@@ -44,6 +47,10 @@ public class WeightedSet<T> {
 
     public void filter(Function<T,Boolean> filterFunc) {
         map.keySet().removeIf(k -> filterFunc.apply(k));
+    }
+
+    public boolean contains(T key) {
+        return map.containsKey(key);
     }
 
     public void remove(T key) {
