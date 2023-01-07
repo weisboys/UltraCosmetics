@@ -147,35 +147,19 @@ Active-Pet-Needed: '&c&lNecesitas spawnear una mascota para renombrarla'
 Treasure-Chests-Loot:
   Ammo: |-
     &9Ammo
-    %ammo% %name%
-  Pet: |-
-    &aPet
-    %pet%
-  Mount: |-
-    &6Mount
-    %mount%
-  Effect: |-
-    &bParticle Effect
-    %effect%
-  Morph: |-
-    &2Morph
-    %morph%
-  Hat: |-
-    &dHat
-    %hat%
+    %ammo% %cosmetic%
   Money: |-
     &eMoney
     &e&l$%money%
-  Gadget: |-
-    &9Gadget
-    %gadget%
-  Suit: |-
-    &3Suit
-    %suit%
-  Emote: |-
-    &eEmote
-    %emote%
   Nothing: '&c&lNada'
+  Pets: "&aPet\n%cosmetic%"
+  Mounts: "&6Mount\n%cosmetic%"
+  Particle-Effects: "&bParticle Effect\n%cosmetic%"
+  Morphs: "&2Morph\n%cosmetic%"
+  Hats: "&dHat\n%cosmetic%"
+  Gadgets: "&9Gadget\n%cosmetic%"
+  Suits: "&3Suit\n%cosmetic%"
+  Emotes: "&eEmote\n%cosmetic%"
 Disable-Gadgets: '&c&lDeshabilitar Gadgets'
 Disable-Gadgets-Lore: '&cDeshabilita el uso de gadgets y efectos en ti'
 Enable-Gadgets: '&a&lHabilitar Gadgets'
