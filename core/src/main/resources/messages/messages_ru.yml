@@ -145,17 +145,21 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lТы должен призвать транспорт для взаимодействия инвентаря.'
 Active-Pet-Needed: '&c&lВам нужно создать питомца, чтобы переименовать его.'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% использования'
-  Pet: '%pet% питомец'
-  Mount: '%mount% транспорт'
-  Effect: '%effect% эффект'
-  Morph: '%morph% перевоплощение'
-  Hat: '%hat% шляпа'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% гаджет'
-  Suit: '%suit% костюм'
-  Emote: '%emote% эмоция'
+  Ammo: |-
+    &9Ammo
+    %ammo% %cosmetic%
+  Money: |-
+    &eMoney
+    &e&l$%money%
   Nothing: "&c&lНичего\n"
+  Pets: "&aPet\n%cosmetic%"
+  Mounts: "&6Mount\n%cosmetic%"
+  Particle-Effects: "&bParticle Effect\n%cosmetic%"
+  Morphs: "&2Morph\n%cosmetic%"
+  Hats: "&dHat\n%cosmetic%"
+  Gadgets: "&9Gadget\n%cosmetic%"
+  Suits: "&3Suit\n%cosmetic%"
+  Emotes: "&eEmote\n%cosmetic%"
 Disable-Gadgets: '&c&lОтключить гаджеты'
 Disable-Gadgets-Lore: '&cВозможности использования гаджетов и их влияние на вас'
 Enable-Gadgets: '&a&lВключить гаджеты'
@@ -439,6 +443,9 @@ Particle-Effects:
   AngelWings:
     name: '&f&lАнгельские крылья'
     Description: '&7&oСтаньте ангелом!'
+  RainbowWings:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
+    Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lСупер герой'
     Description: '&7&oСтань Суперменом!'
@@ -465,6 +472,55 @@ Particle-Effects:
   FireWaves:
     name: '&e&lОгненные волны'
     Description: '&7&oНекоторые говорят, что эти волны огня действуют как щит...'
+  CursedHalo:
+    name: '&5&lCursed Halo'
+    Description: |-
+      &7&oIt brings great misfortune to
+      &7&oanyone who dares to wear it.
+  VolcanicHalo:
+    name: '&c&lVolcanic Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oeternal flames.
+  CursedFootprints:
+    name: '&5&lCursed Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odark energy behind.
+  SpringFootprints:
+    name: '&a&lSpring Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&ogreen particles behind.
+  ShadowFootprints:
+    name: '&7&lShadow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osmoke behind.
+  Notes:
+    name: '&6&lNotes'
+    Description: '&7&oNotes above your head.'
+  Hearts:
+    name: '&c&lHearts'
+    Description: '&7&oHearts above your head.'
+  EnderFootprints:
+    name: '&d&lEnder Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odragon breath behind.
+  ArcaneFlame:
+    name: '&b&lArcane Flame'
+    Description: '&7&oBlue flame above your head.'
+  DivineHalo:
+    name: '&e&lDivine Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oglowing light.
+  SnowFootprints:
+    name: '&f&lSnow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osnow behind.
 Pets:
   Piggy:
     menu-name: '&d&lПоросенок'
@@ -1603,7 +1659,7 @@ Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
   Rainbow:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
     Description: '&7&oRainbow-colored particles'
   Christmas:
     name: '&4&lChrist&f&lmas'
@@ -1617,6 +1673,9 @@ Projectile-Effects:
   CursedHelix:
     name: '&5&lCursed Helix'
     Description: '&7&oRotating, purple particles'
+  SoulFireHelix:
+    name: '&b&lSoul Fire Helix'
+    Description: '&7&oRotating, cyan flames'
   Spark:
     name: '&f&lSpark'
     Description: '&7&oSparkling, white stars'
@@ -1668,6 +1727,36 @@ Projectile-Effects:
   Portal:
     name: '&5&lPortal'
     Description: '&7&oSmall, purple clouds'
+  DragonBreath:
+    name: '&d&lDragon Breath'
+    Description: '&7&oSmall, purple clouds'
+  SquidInk:
+    name: '&9&lSquid Ink'
+    Description: '&7&oBlack clouds'
+  SoulFireFlame:
+    name: '&b&lSoul Fire Flame'
+    Description: '&7&oSmall, cyan flames'
+  Snowflake:
+    name: '&f&lSnowflake'
+    Description: '&7&oSmall, white clouds'
+  GlowSquid:
+    name: '&3&lGlow Squid'
+    Description: '&7&oTeal stars'
+  GlowSquidInk:
+    name: '&3&lGlow Squid Ink'
+    Description: '&7&oAquamarine clouds'
+  Scrape:
+    name: '&2&lScrape'
+    Description: '&7&oTeal stars'
+  WaxOff:
+    name: '&f&lWax Off'
+    Description: '&7&oWhite stars'
+  WaxOn:
+    name: '&6&lWax On'
+    Description: '&7&oOrange stars'
+  SculkSoul:
+    name: '&b&lSculk Soul'
+    Description: '&7&oCyan souls'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
@@ -1690,6 +1779,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% косметика в это�
 Disabled-Command-Message: '%prefix% &c&lВы не можете использовать эту команду, пока косметика укомплектована!'
 Not-Allowed-In-Vanish: '%prefix% &c&lВы не можете пользоваться косметикой, находясь в невидимости!'
 Too-Long: Слишком долго, попробуйте еще раз
+Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
 Must-Remove:
   Hats: '%prefix% &c&lВы должны снять головной убор, чтобы надеть шляпу!'
   Suits:

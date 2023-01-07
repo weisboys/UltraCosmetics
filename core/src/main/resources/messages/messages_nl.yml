@@ -3,17 +3,17 @@ No-Permission: 'J%prefix%&c&lJe hebt geen permissie!'
 Cosmetic-Disabled: '%prefix%&c&lDeze cosmetica is uitgeschakeld!'
 Invalid-Gadget: '%prefix%&c&lOngeldige Gadget!'
 Invalid-Pet: '%prefix%&c&lOngeldig Huisdier!'
-Invalid-Mount: '%prefix% &c&lInvalid Mount!'
-Invalid-Effect: '%prefix% &c&lInvalid Effect!'
-Invalid-Morph: '%prefix% &c&lInvalid Morph!'
-Invalid-Hat: '%prefix% &c&lInvalid Hat!'
-Invalid-Suit: '%prefix% &c&lInvalid Suit!'
-Invalid-Emote: '%prefix% &c&lInvalid Emote!'
-Invalid-Menu: '%prefix% &c&lInvalid Menu!'
-Ammo: '&7Your ammo: &e%ammo%'
-Purchase: '&a&lPURCHASE'
-Cancel: '&c&lCANCEL'
-Buy-Ammo-Description: '&e&lBuy %amount% %gadgetname% ammo &e&lfor $%price%'
+Invalid-Mount: '%prefix% &c&|Ongeldig Rijdier!'
+Invalid-Effect: '%prefix% &c&lOngeldig Effect!'
+Invalid-Morph: '%prefix% &c&|Ongeldige Morf!'
+Invalid-Hat: '%prefix%&c&lOngeldige Hoed!'
+Invalid-Suit: '%prefix% &c&|Ongeldig Pak!'
+Invalid-Emote: '%prefix% &c&lOngeldige Emotie!'
+Invalid-Menu: '%prefix% &c&lOngeldig Menu!'
+Ammo: 'jouw munitie: &e%ammo%'
+Purchase: '&a&Laankoop'
+Cancel: '&c&lANNULEREN'
+Buy-Ammo-Description: '&e&lKoop %amount% %gadgetname% munitie &e&lvoor $%price%'
 Buy-Cosmetic-Description: '&e&lBuy %gadgetname% &e&lfor $%price%'
 Right-Click-Buy-Ammo: '&7Right Click to Buy Ammo'
 Click-To-Purchase: '&eClick to purchase for $%price%'
@@ -145,17 +145,21 @@ Chest-Location:
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
 Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
 Treasure-Chests-Loot:
-  Ammo: '%ammo% %name% ammo'
-  Pet: '%pet% pet'
-  Mount: '%mount% mount'
-  Effect: '%effect% effect'
-  Morph: '%morph% morph'
-  Hat: '%hat% hat'
-  Money: '&e&l%money%$'
-  Gadget: '%gadget% gadget'
-  Suit: '%suit%'
-  Emote: '%emote% emote'
+  Ammo: |-
+    &9Ammo
+    %ammo% %cosmetic%
+  Money: |-
+    &eMoney
+    &e&l$%money%
   Nothing: '&c&lNothing'
+  Pets: "&aPet\n%cosmetic%"
+  Mounts: "&6Mount\n%cosmetic%"
+  Particle-Effects: "&bParticle Effect\n%cosmetic%"
+  Morphs: "&2Morph\n%cosmetic%"
+  Hats: "&dHat\n%cosmetic%"
+  Gadgets: "&9Gadget\n%cosmetic%"
+  Suits: "&3Suit\n%cosmetic%"
+  Emotes: "&eEmote\n%cosmetic%"
 Disable-Gadgets: '&c&lDisable Gadgets'
 Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
 Enable-Gadgets: '&a&lEnable Gadgets'
@@ -440,6 +444,9 @@ Particle-Effects:
   AngelWings:
     name: '&f&lAngel Wings'
     Description: '&7&oBecome an angel!'
+  RainbowWings:
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
+    Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuper Hero'
     Description: '&7&oBecome Superman!'
@@ -466,6 +473,55 @@ Particle-Effects:
   FireWaves:
     name: '&e&lFire Waves'
     Description: '&7&oSome say these waves of fire act as a shield...'
+  CursedHalo:
+    name: '&5&lCursed Halo'
+    Description: |-
+      &7&oIt brings great misfortune to
+      &7&oanyone who dares to wear it.
+  VolcanicHalo:
+    name: '&c&lVolcanic Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oeternal flames.
+  CursedFootprints:
+    name: '&5&lCursed Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odark energy behind.
+  SpringFootprints:
+    name: '&a&lSpring Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&ogreen particles behind.
+  ShadowFootprints:
+    name: '&7&lShadow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osmoke behind.
+  Notes:
+    name: '&6&lNotes'
+    Description: '&7&oNotes above your head.'
+  Hearts:
+    name: '&c&lHearts'
+    Description: '&7&oHearts above your head.'
+  EnderFootprints:
+    name: '&d&lEnder Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&odragon breath behind.
+  ArcaneFlame:
+    name: '&b&lArcane Flame'
+    Description: '&7&oBlue flame above your head.'
+  DivineHalo:
+    name: '&e&lDivine Halo'
+    Description: |-
+      &7&oA halo composed of
+      &7&oglowing light.
+  SnowFootprints:
+    name: '&f&lSnow Footprints'
+    Description: |-
+      &7&oLeaves a trail of
+      &7&osnow behind.
 Pets:
   Piggy:
     menu-name: '&d&lPiggy'
@@ -1604,7 +1660,7 @@ Projectile-Effects:
   Equip: '%prefix% &9You equipped %projectile-effectname%'
   Unequip: '%prefix% &9You unequipped %projectile-effectname%'
   Rainbow:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&1&lo&5&lw'
+    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
     Description: '&7&oRainbow-colored particles'
   Christmas:
     name: '&4&lChrist&f&lmas'
@@ -1618,6 +1674,9 @@ Projectile-Effects:
   CursedHelix:
     name: '&5&lCursed Helix'
     Description: '&7&oRotating, purple particles'
+  SoulFireHelix:
+    name: '&b&lSoul Fire Helix'
+    Description: '&7&oRotating, cyan flames'
   Spark:
     name: '&f&lSpark'
     Description: '&7&oSparkling, white stars'
@@ -1669,6 +1728,36 @@ Projectile-Effects:
   Portal:
     name: '&5&lPortal'
     Description: '&7&oSmall, purple clouds'
+  DragonBreath:
+    name: '&d&lDragon Breath'
+    Description: '&7&oSmall, purple clouds'
+  SquidInk:
+    name: '&9&lSquid Ink'
+    Description: '&7&oBlack clouds'
+  SoulFireFlame:
+    name: '&b&lSoul Fire Flame'
+    Description: '&7&oSmall, cyan flames'
+  Snowflake:
+    name: '&f&lSnowflake'
+    Description: '&7&oSmall, white clouds'
+  GlowSquid:
+    name: '&3&lGlow Squid'
+    Description: '&7&oTeal stars'
+  GlowSquidInk:
+    name: '&3&lGlow Squid Ink'
+    Description: '&7&oAquamarine clouds'
+  Scrape:
+    name: '&2&lScrape'
+    Description: '&7&oTeal stars'
+  WaxOff:
+    name: '&f&lWax Off'
+    Description: '&7&oWhite stars'
+  WaxOn:
+    name: '&6&lWax On'
+    Description: '&7&oOrange stars'
+  SculkSoul:
+    name: '&b&lSculk Soul'
+    Description: '&7&oCyan souls'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
@@ -1691,6 +1780,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% cosmetics are disabled in thi
 Disabled-Command-Message: '%prefix% &c&lYou can''t use this command while cosmetics are equipped!'
 Not-Allowed-In-Vanish: '%prefix% &c&lYou can''t use cosmetics while in vanish!'
 Too-Long: Too long, try again
+Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
 Must-Remove:
   Hats: '%prefix% &c&lYou must remove your helmet to equip a hat!'
   Suits:
