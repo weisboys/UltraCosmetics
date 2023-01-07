@@ -114,16 +114,18 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
      * @param location The location to spawn at
      * @param main     The primary color the firework should be
      * @param fade     The secondary color the firework should be
+     * @param type     The firework effect type to use
      */
-    public static void spawnFireworks(Location location, Color main, Color fade) {
+    public static void spawnFireworks(Location location, Color main, Color fade, FireworkEffect.Type type) {
         // EntitySpawner doesn't work well here, so just spawning manually
         Set<Firework> fireworks = new HashSet<>();
         FireworkMeta meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(Material.FIREWORK_ROCKET);
-        meta.addEffect(buildFireworkEffect(main, fade));
+        meta.addEffect(buildFireworkEffect(main, fade, type));
         meta.setDisplayName("uc_firework");
         for (int i = 0; i < 4; i++) {
             Firework f = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
             f.setFireworkMeta(meta);
+            fireworks.add(f);
         }
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
             for (Firework f : fireworks) {
@@ -132,8 +134,12 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
         }, 2);
     }
 
-    private static FireworkEffect buildFireworkEffect(Color main, Color fade) {
+    public static void spawnFireworks(Location location, Color main, Color fade) {
+        spawnFireworks(location, main, fade, FireworkEffect.Type.BALL_LARGE);
+    }
+
+    private static FireworkEffect buildFireworkEffect(Color main, Color fade, FireworkEffect.Type type) {
         FireworkEffect.Builder builder = FireworkEffect.builder();
-        return builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL_LARGE).withColor(main).withFade(fade).build();
+        return builder.flicker(false).trail(false).with(type).withColor(main).withFade(fade).build();
     }
 }

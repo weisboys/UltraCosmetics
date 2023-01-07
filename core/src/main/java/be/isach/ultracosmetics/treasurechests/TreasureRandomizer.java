@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.permissions.PermissionManager;
+import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.WeightedSet;
 
 import org.bukkit.Bukkit;
@@ -17,11 +18,8 @@ import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
@@ -106,12 +104,6 @@ public class TreasureRandomizer {
 
     private void addWeightedResult(int weight, ResultType type) {
         basicResultTypes.add(type, weight);
-    }
-
-    private FireworkEffect getRandomFireworkEffect() {
-        if (!UltraCosmeticsData.get().getPlugin().isEnabled()) return null;
-        FireworkEffect.Builder builder = FireworkEffect.builder();
-        return builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL).withColor(randomColor()).withFade(randomColor()).build();
     }
 
     private static Color randomColor() {
@@ -285,21 +277,7 @@ public class TreasureRandomizer {
     }
 
     public void spawnRandomFirework(Location location) {
-        if (!UltraCosmeticsData.get().getPlugin().isEnabled()) return;
-        final List<Firework> fireworks = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            final Firework f = player.getWorld().spawn(location.clone().add(0.5, 0, 0.5), Firework.class);
-
-            FireworkMeta fm = f.getFireworkMeta();
-            fm.addEffect(getRandomFireworkEffect());
-            f.setFireworkMeta(fm);
-            fireworks.add(f);
-            f.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), 1));
-        }
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
-            for (Firework f : fireworks)
-                f.detonate();
-        }, 2);
+        EntitySpawner.spawnFireworks(location.clone().add(0.5, 0, 0.5), randomColor(), randomColor(), FireworkEffect.Type.BALL);
     }
 
     private void broadcast(String message, boolean toOthers) {
