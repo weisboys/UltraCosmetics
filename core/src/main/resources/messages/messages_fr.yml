@@ -154,12 +154,14 @@ Treasure-Chests-Loot:
   Nothing: '&c&lRien'
   Pets: "&aAnimal de compagnie:\n%cosmetic%"
   Mounts: "&6Le Mont\n%cosmetic%"
-  Particle-Effects: "&bEffet des particules\n%cosmetic%"
+  Particle-Effects: "&bParticle Effect\n%cosmetic%"
   Morphs: "&2Métamorphose\n%cosmetic%"
   Hats: "&dChapeau\n%cosmetic%"
   Gadgets: "&9Gadget \n%cosmetic%"
   Suits: "&3Costume\n%cosmetic%"
   Emotes: "&eÉmote\n%cosmetic%"
+  Death-Effects: "&c&lDeath Effects\n%cosmetic%"
+  Projectile-Effects: "&5&lProjectile Effects\n%cosmetic%"
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
 Enable-Gadgets: '&a&lActiver les gadgets'
