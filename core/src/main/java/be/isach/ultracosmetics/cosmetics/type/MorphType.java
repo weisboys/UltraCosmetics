@@ -70,6 +70,7 @@ public class MorphType extends CosmeticType<Morph> {
 
     @Override
     public void setupConfig(CustomConfiguration config, String path) {
+        super.setupConfig(config, path);
         if (MorphNoFall.class.isAssignableFrom(getClazz())) {
             config.addDefault(path + ".No-Fall-Damage", true,
                     "Whether to disable fall damage while this morph is equipped.",
