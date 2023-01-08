@@ -983,10 +983,14 @@ public enum Particles {
 
     // Start convenience functions originally by iSach
     public void drawParticleLine(Location from, Location to, int particles, Color color) {
-        drawParticleLine(from, to, particles, color.getRed(), color.getGreen(), color.getBlue());
+        drawParticleLine(from, to, particles, new OrdinaryColor(color));
     }
 
     public void drawParticleLine(Location from, Location to, int particles, int r, int g, int b) {
+        drawParticleLine(from, to, particles, new OrdinaryColor(r, g, b));
+    }
+
+    public void drawParticleLine(Location from, Location to, int particles, OrdinaryColor color) {
         Location location = from.clone();
         Location target = to.clone();
         Vector link = target.toVector().subtract(location.toVector());
@@ -1002,7 +1006,7 @@ public enum Particles {
             step++;
             loc.add(v);
             if (this == Particles.REDSTONE) {
-                display(new Particles.OrdinaryColor(r, g, b), loc, DEF_RADIUS);
+                display(color, loc, DEF_RADIUS);
             } else {
                 display(0, 0, 0, 0, 1, loc, DEF_RADIUS);
             }

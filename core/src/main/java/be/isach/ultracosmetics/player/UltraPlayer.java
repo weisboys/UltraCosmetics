@@ -31,7 +31,6 @@ import be.isach.ultracosmetics.util.ServerVersion;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -88,9 +87,6 @@ public class UltraPlayer {
      * regain access to the cosmetics.
      */
     private final Map<CosmeticType<?>,Long> cooldowns = new HashMap<>();
-
-    private volatile boolean moving;
-    private volatile Location lastPos;
 
     /**
      * Indicates if the player is leaving the server or switching worlds.
@@ -571,22 +567,6 @@ public class UltraPlayer {
 
     public void setCurrentTreasureChest(TreasureChest currentTreasureChest) {
         this.currentTreasureChest = currentTreasureChest;
-    }
-
-    public boolean isMoving() {
-        return moving;
-    }
-
-    public void setMoving(boolean moving) {
-        this.moving = moving;
-    }
-
-    public Location getLastPos() {
-        return lastPos;
-    }
-
-    public void setLastPos(Location lastPos) {
-        this.lastPos = lastPos;
     }
 
     public void setCanBeHitByOtherGadgets(boolean canBeHitByOtherGadgets) {

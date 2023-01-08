@@ -25,7 +25,6 @@ import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
-import be.isach.ultracosmetics.run.MovingChecker;
 import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
@@ -334,9 +333,7 @@ public class UltraCosmetics extends JavaPlugin {
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
-
         new FallDamageManager().runTaskTimerAsynchronously(this, 0, 1);
-        new MovingChecker(this).runTaskTimerAsynchronously(this, 0, 1);
         // No need to worry about the invalid world checker if all worlds are allowed
         if (!config.getStringList("Enabled-Worlds").contains("*")) {
             new InvalidWorldChecker(this).runTaskTimerAsynchronously(this, 0, 5);

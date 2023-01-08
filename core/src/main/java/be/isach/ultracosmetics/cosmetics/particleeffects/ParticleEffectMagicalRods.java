@@ -3,8 +3,8 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.Particles.OrdinaryColor;
 
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
@@ -21,13 +21,13 @@ import java.util.List;
  */
 public class ParticleEffectMagicalRods extends ParticleEffect {
 
-    private static final List<Color> COLORS = new ArrayList<>();
+    private static final List<OrdinaryColor> COLORS = new ArrayList<>();
 
     static {
-        COLORS.add(Color.GREEN);
-        COLORS.add(new Color(0, 128, 0));
-        COLORS.add(new Color(0, 74, 0));
-        COLORS.add(new Color(0, 36, 0));
+        COLORS.add(new OrdinaryColor(Color.GREEN));
+        COLORS.add(new OrdinaryColor(0, 128, 0));
+        COLORS.add(new OrdinaryColor(0, 74, 0));
+        COLORS.add(new OrdinaryColor(0, 36, 0));
     }
 
     private final double RADIUS = 1.1; // radius between player and rods
@@ -55,18 +55,26 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     @Override
     public void onUpdate() {
         if (heightDirectionUp) {
-            if (height < MAX_HEIGHT) height += HEIGHT_STEP;
-            else heightDirectionUp = false;
+            if (height < MAX_HEIGHT)
+                height += HEIGHT_STEP;
+            else
+                heightDirectionUp = false;
         } else {
-            if (height > MIN_HEIGHT) height -= HEIGHT_STEP;
-            else heightDirectionUp = true;
+            if (height > MIN_HEIGHT)
+                height -= HEIGHT_STEP;
+            else
+                heightDirectionUp = true;
         }
         if (hoveringDirectionUp) {
-            if (heightDiffFactor < MAX_HEIGHT_DIFF) heightDiffFactor += HEIGHT_DIFF_STEP;
-            else hoveringDirectionUp = false;
+            if (heightDiffFactor < MAX_HEIGHT_DIFF)
+                heightDiffFactor += HEIGHT_DIFF_STEP;
+            else
+                hoveringDirectionUp = false;
         } else {
-            if (heightDiffFactor > -MAX_HEIGHT_DIFF) heightDiffFactor -= HEIGHT_DIFF_STEP;
-            else hoveringDirectionUp = true;
+            if (heightDiffFactor > -MAX_HEIGHT_DIFF)
+                heightDiffFactor -= HEIGHT_DIFF_STEP;
+            else
+                hoveringDirectionUp = true;
         }
 
         drawColumns(height, angle);
@@ -76,8 +84,11 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        for (Color color : COLORS) {
-            Particles.REDSTONE.display(new Particles.OrdinaryColor(color), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
+        Vector left = getPlayer().getLocation().getDirection().setY(0).getCrossProduct(new Vector(0, 1, 0));
+        double multiplier = 0.3;
+        for (OrdinaryColor color : COLORS) {
+            Particles.REDSTONE.display(color, getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));
+            multiplier -= 0.2;
         }
     }
 

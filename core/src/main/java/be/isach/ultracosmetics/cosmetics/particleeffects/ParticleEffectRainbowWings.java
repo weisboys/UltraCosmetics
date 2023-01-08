@@ -4,11 +4,12 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ColorUtils;
-import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
+
+import java.awt.Color;
 
 public class ParticleEffectRainbowWings extends ParticleEffect {
 
@@ -22,15 +23,15 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
     }
 
     private boolean[][] shape = {
-            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
-            {o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o},
-            {o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o},
-            {o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
-            {o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o},
-            {o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o},
-            {o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o},
-            {o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o},
-            {o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o}
+            { o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o },
+            { o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o },
+            { o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o },
+            { o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o },
+            { o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o },
+            { o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o },
+            { o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o },
+            { o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o },
+            { o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o }
     };
 
     @Override
@@ -40,9 +41,8 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        for (int i = 0; i < getModifiedAmount(7); i++) {
-            Particles.REDSTONE.display(new Particles.OrdinaryColor(ColorUtils.getRainbowColor()), getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
-        }
+        Color color = ColorUtils.getRainbowColor();
+        showColoredAlternativeEffect(color.getRed(), color.getGreen(), color.getBlue());
     }
 
     private void drawParticles(Location location) {
@@ -70,12 +70,7 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
                     location.add(v);
                     location.add(v2);
                     for (int k = 0; k < getModifiedAmount(3); k++) {
-                        Particles.REDSTONE.display(
-                                nextColor.getRed(),
-                                nextColor.getGreen(),
-                                nextColor.getBlue(),
-                                location
-                        );
+                        Particles.REDSTONE.display(nextColor.getRed(), nextColor.getGreen(), nextColor.getBlue(), location);
                     }
                     location.subtract(v2);
                     location.subtract(v);

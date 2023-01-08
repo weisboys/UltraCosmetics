@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.Location;
@@ -49,8 +48,6 @@ public class ParticleEffectBloodHelix extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        for (int i = 0; i < getModifiedAmount(7); i++) {
-            Particles.REDSTONE.display(255, 0, 0, getPlayer().getLocation().add(MathUtils.randomDouble(-0.8, 0.8), 1 + MathUtils.randomDouble(-0.8, 0.8), MathUtils.randomDouble(-0.8, 0.8)));
-        }
+        showColoredAlternativeEffect(255, 0, 0);
     }
 }
