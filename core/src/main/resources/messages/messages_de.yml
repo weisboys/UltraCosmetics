@@ -118,15 +118,15 @@ Menu:
     Title: '&lProjectile Effects'
     Button:
       Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
+      Lore: '&7Freigeschaltet: &f%unlocked%'
+      Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
       Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
     Title: '&lMunition kaufen'
@@ -945,7 +945,7 @@ Morphs:
   Donkey:
     name: '&7&lDonkey'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oCan carry all your Stuff!'
+    Description: '&7&oKann alle deine Sachen tragen!'
   Drowned:
     name: '&3&lDrowned'
     skill: '&eLeft-Click&7 to: &aTODO'
