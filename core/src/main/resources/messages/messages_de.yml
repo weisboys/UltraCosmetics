@@ -734,7 +734,7 @@ Pets:
   Dolphin:
     menu-name: '&b&lDelfin'
     entity-displayname: '&l%playername%''s Delfin'
-    Description: '&7&oDie glücklichste Kreatur der Meere!'
+    Description: '&7&oDas glücklichste Lebewesen der Meere!'
   Spider:
     menu-name: '&8&lSpinne'
     entity-displayname: '&l%playername%''s Spinne'
@@ -814,7 +814,7 @@ Pets:
   WitherSkeleton:
     menu-name: '&8&lWitherskelett'
     entity-displayname: '&l%playername%''s Witherskelett'
-    Description: '&7&oDer Grund, warum Plünderungen existieren.'
+    Description: '&7&oDer Grund, warum Plünderung existiert.'
   Zoglin:
     menu-name: '&c&lZoglin'
     entity-displayname: '&l%playername%''s Zoglin'
@@ -917,11 +917,11 @@ Morphs:
   Allay:
     name: '&a&lAllay'
     skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oA new Friend!'
+    Description: '&7&oEin neuer Freund!'
   Axolotl:
     name: '&5&lAxolotl'
     skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo Cute!'
+    Description: '&7&oSooo niedlich!'
   Bee:
     name: '&e&lBee'
     skill: '&eDouble Jump&7 to: &aFlap'
@@ -929,11 +929,11 @@ Morphs:
   Cat:
     name: '&e&lCat'
     skill: '&eLeft-Click&7 to: &aMeow'
-    Description: '&7&oBasically a tiny Tiger'
+    Description: '&7&oBasically a tiny tiger'
   CaveSpider:
-    name: '&e&lCaveSpider'
+    name: '&e&lCave Spider'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oA Spider, but poisonous!'
+    Description: '&7&oA spider, but poisonous!'
   Cod:
     name: '&e&lCod'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -941,7 +941,7 @@ Morphs:
   Dolphin:
     name: '&e&lDolphin'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oThe happiest creature of the seas!'
+    Description: '&7&oDas glücklichste Lebewesen der Meere!'
   Donkey:
     name: '&7&lDonkey'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -949,7 +949,7 @@ Morphs:
   Drowned:
     name: '&3&lDrowned'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAn underwater Zombie!'
+    Description: '&7&oEin Unterwasser-Zombie!'
   Endermite:
     name: '&5&lEndermite'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -961,7 +961,7 @@ Morphs:
   Frog:
     name: '&2&lFrog'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like Fireflies!'
+    Description: '&7&oDoesn''t like fireflies!'
   Fox:
     name: '&d&lFox'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -969,7 +969,7 @@ Morphs:
   GlowSquid:
     name: '&3&lGlow Squid'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oIt glows!'
+    Description: '&7&oEs leuchtet!'
   Goat:
     name: '&f&lGoat'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -977,7 +977,7 @@ Morphs:
   Guardian:
     name: '&3&lGuardian'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates Squids!'
+    Description: '&7&oHates squids!'
   Wolf:
     name: '&7&lWolf'
     Description: '&7&oWoof!'
@@ -1013,10 +1013,10 @@ Morphs:
     Description: '&7&oBe quiet...'
   Tadpole:
     name: '&8&lTadpole'
-    Description: '&7&oWill grow into a Frog!'
+    Description: '&7&oWill grow into a frog!'
   Piglin:
     name: '&6&lPiglin'
-    Description: '&7&oDeals with Gold!'
+    Description: '&7&oDeals with gold!'
   Strider:
     name: '&c&lStrider'
     Description: '&7&oI hate water!'
@@ -1034,7 +1034,7 @@ Morphs:
     Description: '&7&oAttack it and all of them will be after you!'
   Panda:
     name: '&a&lPanda'
-    Description: '&7&oLikes Bamboo!'
+    Description: '&7&oLikes bamboo!'
   Ocelot:
     name: '&e&lOcelot'
     Description: '&7&oKing of the jungle'
@@ -1043,10 +1043,10 @@ Morphs:
     Description: '&7&oWanders around trying to sell his stuff!'
   Pillager:
     name: '&7&lPillager'
-    Description: '&7&oLikes to pillage Villages!'
+    Description: '&7&oLikes to pillage villages!'
   Ravager:
     name: '&8&lRavager'
-    Description: '&7&oA Pillager''s favorite Companion!'
+    Description: '&7&oA Pillager''s favorite companion!'
   Pufferfish:
     name: '&e&lPufferfish'
     Description: '&7&oDoesn''t like to be touched!'
@@ -1079,7 +1079,7 @@ Morphs:
     Description: '&7&oLook out for lightning strikes!'
   ZombieHorse:
     name: '&2&lZombie Horse'
-    Description: '&7&oThe rarest Horse in Minecraft!'
+    Description: '&7&oThe rarest horse in Minecraft!'
   Shulker:
     name: '&5&lShulker'
     Description: '&7&oLikes to hide!'
