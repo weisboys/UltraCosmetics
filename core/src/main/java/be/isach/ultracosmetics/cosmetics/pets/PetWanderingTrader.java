@@ -21,4 +21,17 @@ public class PetWanderingTrader extends Pet {
     public void setupEntity() {
         ((WanderingTrader) entity).setDespawnDelay(0);
     }
+
+    @Override
+    public boolean useArmorStandNameTag() {
+        return true;
+    }
+
+    @Override
+    public boolean useMarkerArmorStand() {
+        // See https://github.com/datatags/UltraCosmetics/issues/88
+        // Wandering trader hitbox is messed up I guess?
+        // I couldn't find a related bug on the MC Java issue tracker.
+        return false;
+    }
 }

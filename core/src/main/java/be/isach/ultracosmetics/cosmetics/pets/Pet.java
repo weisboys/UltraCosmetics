@@ -103,12 +103,11 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             ((Tameable) entity).setTamed(true);
         }
 
-        // setCustomNameVisible(true) doesn't seem to work on 1.8, so we'll just use armor stands in that case
-        if (isCustomEntity() || UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
+        if (useArmorStandNameTag()) {
             armorStand = (ArmorStand) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.ARMOR_STAND);
             armorStand.setVisible(false);
             armorStand.setSmall(true);
-            armorStand.setMarker(true);
+            armorStand.setMarker(useMarkerArmorStand());
             armorStand.setCustomNameVisible(true);
             FixedMetadataValue metadataValue = new FixedMetadataValue(getUltraCosmetics(), "C_AD_ArmorStand");
             armorStand.setMetadata("C_AD_ArmorStand", metadataValue);
@@ -153,6 +152,15 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
             getOwner().sendMessage(MessageManager.getMessage("Mounts.Cant-Spawn"));
             return false;
         }
+        return true;
+    }
+
+    public boolean useArmorStandNameTag() {
+        // setCustomNameVisible(true) doesn't seem to work on 1.8, so we'll just use armor stands in that case
+        return isCustomEntity() || UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8;
+    }
+
+    public boolean useMarkerArmorStand() {
         return true;
     }
 
