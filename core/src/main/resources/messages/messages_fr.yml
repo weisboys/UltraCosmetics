@@ -728,7 +728,7 @@ Pets:
   CaveSpider:
     menu-name: '&2&lCave Spider'
     entity-displayname: '&l%playername%''s Cave Spider'
-    Description: '&7&oA Spider, but poisonous!'
+    Description: '&7&oA spider, but poisonous!'
   Dolphin:
     menu-name: '&b&Dauphin'
     entity-displayname: '&l%playername% Dauphin'
@@ -736,7 +736,7 @@ Pets:
   Spider:
     menu-name: '&8&lAraignée'
     entity-displayname: '&lAraignée de %playername%'
-    Description: '&7&oYour friendly neighborhood Spider!'
+    Description: '&7&oYour friendly neighborhood spider!'
   ZombifiedPiglin:
     menu-name: '&d&lZombified Piglin'
     entity-displayname: '&l%playername%''s Zombified Piglin'
@@ -744,11 +744,11 @@ Pets:
   Drowned:
     menu-name: '&3&lDrowned'
     entity-displayname: '&l%playername%''s Drowned'
-    Description: '&7&oAn underwater Zombie!'
+    Description: '&7&oAn underwater zombie!'
   ElderGuardian:
     menu-name: '&3&lElder Guardian'
     entity-displayname: '&l%playername%''s Elder Guardian'
-    Description: '&7&oGuards ancient Temples!'
+    Description: '&7&oGuards ancient temples!'
   Endermite:
     menu-name: '&5&lEndermite'
     entity-displayname: '&l%playername%''s Endermite'
@@ -764,7 +764,7 @@ Pets:
   Guardian:
     menu-name: '&3&lGuardian'
     entity-displayname: '&l%playername%''s Guardian'
-    Description: '&7&oHates Squids!'
+    Description: '&7&oHates squids!'
   Hoglin:
     menu-name: '&c&lHoglin'
     entity-displayname: '&l%playername%''s Hoglin'
@@ -772,7 +772,7 @@ Pets:
   Husk:
     menu-name: '&e&lHusk'
     entity-displayname: '&l%playername%''s Husk'
-    Description: '&7&oA Zombie, but sandy.'
+    Description: '&7&oA zombie, but sandy.'
   MagmaCube:
     menu-name: '&4&lMagma Cube'
     entity-displayname: '&l%playername%''s Magma Cube'
@@ -788,11 +788,11 @@ Pets:
   Pillager:
     menu-name: '&7&lPilleur'
     entity-displayname: '&l%playername%''s Pillager'
-    Description: '&7&oLikes to pillage Villages!'
+    Description: '&7&oLikes to pillage villages!'
   Ravager:
     menu-name: '&8&lRavager'
     entity-displayname: '&l%playername%''s Ravager'
-    Description: '&7&oA Pillager''s favorite Companion!'
+    Description: '&7&oA Pillager''s favorite companion!'
   Shulker:
     menu-name: '&5&lShulker'
     entity-displayname: '&l%playername%''s Shulker'
@@ -800,7 +800,7 @@ Pets:
   Stray:
     menu-name: '&8&lStray'
     entity-displayname: '&l%playername%''s Stray'
-    Description: '&7&oA freezing cold Skeleton!'
+    Description: '&7&oA freezing cold skeleton!'
   Vindicator:
     menu-name: '&7&lVindicator'
     entity-displayname: '&l%playername%''s Vindicator'
@@ -808,7 +808,7 @@ Pets:
   Witch:
     menu-name: '&5&lWitch'
     entity-displayname: '&l%playername%''s Witch'
-    Description: '&7&oLoves black Cats!'
+    Description: '&7&oLoves black cats!'
   WitherSkeleton:
     menu-name: '&8&lWither Skeleton'
     entity-displayname: '&l%playername%''s Wither Skeleton'
@@ -824,7 +824,7 @@ Pets:
   ZombieHorse:
     menu-name: '&2&lZombie Horse'
     entity-displayname: '&l%playername%''s Zombie Horse'
-    Description: '&7&oThe rarest Horse in Minecraft!'
+    Description: '&7&oThe rarest horse in Minecraft!'
   Illusioner:
     menu-name: '&1&lIllusioner'
     entity-displayname: '&l%playername%''s Illusioner'
@@ -915,11 +915,11 @@ Morphs:
   Allay:
     name: '&a&lAllay'
     skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oA new Friend!'
+    Description: '&7&oA new friend!'
   Axolotl:
     name: '&5&lAxolotl'
     skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo Cute!'
+    Description: '&7&oSooo cute!'
   Bee:
     name: '&e&lBee'
     skill: '&eDouble Jump&7 to: &aFlap'
@@ -927,11 +927,11 @@ Morphs:
   Cat:
     name: '&e&lCat'
     skill: '&eLeft-Click&7 to: &aMeow'
-    Description: '&7&oBasically a tiny Tiger'
+    Description: '&7&oBasically a tiny tiger'
   CaveSpider:
-    name: '&e&lCaveSpider'
+    name: '&e&lCave Spider'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oA Spider, but poisonous!'
+    Description: '&7&oA spider, but poisonous!'
   Cod:
     name: '&e&lCod'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -943,11 +943,11 @@ Morphs:
   Donkey:
     name: '&7&lDonkey'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oCan carry all your Stuff!'
+    Description: '&7&oCan carry all your stuff!'
   Drowned:
     name: '&3&lDrowned'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAn underwater Zombie!'
+    Description: '&7&oAn underwater zombie!'
   Endermite:
     name: '&5&lEndermite'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -959,7 +959,7 @@ Morphs:
   Frog:
     name: '&2&lFrog'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like Fireflies!'
+    Description: '&7&oDoesn''t like fireflies!'
   Fox:
     name: '&d&lFox'
     skill: '&eLeft-Click&7 to: &aTODO'
@@ -975,7 +975,7 @@ Morphs:
   Guardian:
     name: '&3&lGuardian'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates Squids!'
+    Description: '&7&oHates squids!'
   Wolf:
     name: '&7&lWolf'
     Description: '&7&oWoof!'
@@ -1011,10 +1011,10 @@ Morphs:
     Description: '&7&oBe quiet...'
   Tadpole:
     name: '&8&lTadpole'
-    Description: '&7&oWill grow into a Frog!'
+    Description: '&7&oWill grow into a frog!'
   Piglin:
     name: '&6&lPiglin'
-    Description: '&7&oDeals with Gold!'
+    Description: '&7&oDeals with gold!'
   Strider:
     name: '&c&lStrider'
     Description: '&7&oI hate water!'
@@ -1032,7 +1032,7 @@ Morphs:
     Description: '&7&oAttack it and all of them will be after you!'
   Panda:
     name: '&a&lPanda'
-    Description: '&7&oLikes Bamboo!'
+    Description: '&7&oLikes bamboo!'
   Ocelot:
     name: '&e&lOcelot'
     Description: '&7&oKing of the jungle'
@@ -1041,10 +1041,10 @@ Morphs:
     Description: '&7&oWanders around trying to sell his stuff!'
   Pillager:
     name: '&7&lPillager'
-    Description: '&7&oLikes to pillage Villages!'
+    Description: '&7&oLikes to pillage villages!'
   Ravager:
     name: '&8&lRavager'
-    Description: '&7&oA Pillager''s favorite Companion!'
+    Description: '&7&oA Pillager''s favorite companion!'
   Pufferfish:
     name: '&e&lPufferfish'
     Description: '&7&oDoesn''t like to be touched!'
@@ -1077,7 +1077,7 @@ Morphs:
     Description: '&7&oLook out for lightning strikes!'
   ZombieHorse:
     name: '&2&lZombie Horse'
-    Description: '&7&oThe rarest Horse in Minecraft!'
+    Description: '&7&oThe rarest horse in Minecraft!'
   Shulker:
     name: '&5&lShulker'
     Description: '&7&oLikes to hide!'
