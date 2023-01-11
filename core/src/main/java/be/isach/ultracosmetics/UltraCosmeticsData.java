@@ -83,6 +83,8 @@ public class UltraCosmeticsData {
 
     private String nmsVersion = "???";
 
+    private int nmsRev = -1;
+
     /**
      * NMS Version Manager.
      */
@@ -117,7 +119,7 @@ public class UltraCosmeticsData {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
 
-        if (serverVersion.isNmsSupported()) {
+        if (serverVersion.isNmsSupported() && serverVersion.getNMSRevision() == nmsRev) {
             if (startNMS()) return true;
         }
         try {
@@ -138,12 +140,10 @@ public class UltraCosmeticsData {
         if (!checkMappingsVersion(serverVersion)) {
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
             if (SettingsManager.getConfig().getBoolean("Force-NMS")) {
-                logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!! HEY YOU !!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 logger.write(LogLevel.WARNING, "Server internals seem to have changed since this build was created,");
                 logger.write(LogLevel.WARNING, "but you have chosen to override version checking!");
                 logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
                 logger.write(LogLevel.WARNING, "UltraCosmetics will continue running but you will likely experience issues!");
-                logger.write(LogLevel.WARNING, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             } else {
                 logger.write(LogLevel.WARNING, "Server internals have changed since this build was created, so");
                 logger.write(LogLevel.WARNING, "NMS support will be disabled. If you're sure you know what you're doing,");
@@ -177,7 +177,6 @@ public class UltraCosmeticsData {
      */
     protected Problem checkServerVersion() {
         int versionNum;
-        int nmsRev = -1;
         try {
             nmsVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
             String mcVersion = nmsVersion.substring(nmsVersion.indexOf('_') + 1, nmsVersion.lastIndexOf('_'));
@@ -191,7 +190,9 @@ public class UltraCosmeticsData {
 
         ServerVersion serverVersion = ServerVersion.byId(versionNum);
 
-        if (serverVersion == null || (serverVersion.getNMSRevision() > 0 && serverVersion.getNMSRevision() != nmsRev)) {
+        // If we don't know the server version, or if the server version is a
+        // newer revision of one we know, use NEW.
+        if (serverVersion == null || (serverVersion.getNMSRevision() > 0 && serverVersion.getNMSRevision() < nmsRev)) {
             // Error message printed in onEnable so it's more visible
             this.serverVersion = ServerVersion.NEW;
             return Problem.BAD_MC_VERSION;
