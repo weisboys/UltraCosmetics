@@ -210,7 +210,7 @@ Gadgets:
     Description: '&7&oEine bunte Bombe!'
   Chickenator:
     name: '&f&lChickenator'
-    Description: '&7&o1.Schieß! 2.Boom! 3.KFC!'
+    Description: '&7&o1.Schieß! 2.Bumm! 3.KFC!'
   PortalGun:
     name: '&c&lPortal &9&lGun'
     No-Block-Range: '%prefix% &c&lKeine BLÖCKE in Reichweite!'
@@ -255,7 +255,7 @@ Gadgets:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
       &7&oSpreng ein paar Leute in die Luft!
-      &7&oKABOOM!
+      &7&oKABUMM!
   FunGun:
     name: '&6&lSpaßkanone'
     Description: '&7&oWoow! Zweifelsohne die beste Kanone!'
@@ -396,7 +396,7 @@ Mounts:
     Description: '&7&oDein normales, alltägliches Maultier'
   Pig:
     menu-name: '&d&lSchwein'
-    entity-displayname: '&l%playername%''s Pig'
+    entity-displayname: '&l%playername%''s Schwein'
     Description: '&7&oOink!'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
@@ -915,8 +915,8 @@ Morphs:
     skill: '&eDoppelsprung&7: &afliegen'
     Description: '&7&oPolly will einen Keks?'
   Allay:
-    name: '&a&lAllay'
-    skill: '&eDouble Jump&7 to: &aFlap'
+    name: '&a&lHilfsgeist'
+    skill: '&eDoppelsprung&7: &afliegen'
     Description: '&7&oEin neuer Freund!'
   Axolotl:
     name: '&5&lAxolotl'
@@ -924,108 +924,108 @@ Morphs:
     Description: '&7&oSooo niedlich!'
   Bee:
     name: '&e&lBiene'
-    skill: '&eDouble Jump&7 to: &aFlap'
+    skill: '&eDoppelsprung&7: &afliegen'
     Description: '&7&o*bzzzz* *bzzzz*'
   Cat:
-    name: '&e&lCat'
+    name: '&e&lKatze'
     skill: '&eLeft-Click&7 to: &aMeow'
     Description: '&7&oBasically a tiny tiger'
   CaveSpider:
-    name: '&e&lCave Spider'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oA spider, but poisonous!'
+    name: '&e&lHöhlenspinne'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oEine Spinne, aber giftig!'
   Cod:
-    name: '&e&lCod'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oPrefers water over land!'
+    name: '&e&lKabeljau'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oBevorzugt Wasser gegenüber Land!'
   Dolphin:
-    name: '&e&lDolphin'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    name: '&e&lDelfin'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oDas glücklichste Lebewesen der Meere!'
   Donkey:
     name: '&7&lEsel'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oKann alle deine Sachen tragen!'
   Drowned:
     name: '&3&lErtrunkener'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oEin Unterwasser-Zombie!'
   Endermite:
     name: '&5&lEndermite'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oZieht Endermen an!'
   Evoker:
     name: '&7&lEvoker'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oSummons Vexes for a living!'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oBeschwört beruflich Plagegeister!'
   Frog:
-    name: '&2&lFrog'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like fireflies!'
+    name: '&2&lFrosch'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oMag keine Glühwürmchen!'
   Fox:
-    name: '&d&lFox'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oWhat does the fox say?'
+    name: '&d&lFuchs'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oWas sagt der Fuchs?'
   GlowSquid:
     name: '&3&lGlow Squid'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oEs leuchtet!'
   Goat:
     name: '&f&lGoat'
-    skill: '&eLeft-Click&7 to: &aTODO'
+    skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oBAAAA!'
   Guardian:
     name: '&3&lGuardian'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates squids!'
+    skill: '&eLinksklick&7: &aTODO'
+    Description: '&7&oHasst Tintenfische!'
   Wolf:
     name: '&7&lWolf'
-    Description: '&7&oWoof!'
+    Description: '&7&oWuff!'
   IronGolem:
     name: '&7&lIron Golem'
     Description: '&7&oHates zombies!'
   Wither:
     name: '&8&lWither'
-    Description: '&7&oWatch out for me...'
+    Description: '&7&oNimm dich vor mir in Acht...'
   Skeleton:
-    name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    name: '&7&lSkelett'
+    Description: '&7&oSehr guter Bogenschütze!'
   Zombie:
     name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Description: '&7&oGehirne!!!'
   Squid:
     name: '&d&lSquid'
-    Description: '&7&oBloop Bloop!'
+    Description: '&7&oBlub Blub!'
   Spider:
-    name: '&8&lSpider'
-    Description: '&7&oHISS...'
+    name: '&8&lSpinne'
+    Description: '&7&oZISCH...'
   Ghast:
     name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Description: '&7&o*schriller Schrei*'
   MagmaCube:
     name: '&c&lMagma Cube'
-    Description: '&7&oA very hot cube!'
+    Description: '&7&oEin sehr heißer Würfel!'
   Horse:
     name: '&a&lHorse'
     Description: '&7&o*fhrrrrhh*'
   Warden:
-    name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    name: '&3&lWärter'
+    Description: '&7&oSei leise...'
   Tadpole:
-    name: '&8&lTadpole'
-    Description: '&7&oWill grow into a frog!'
+    name: '&8&lKaulquappe'
+    Description: '&7&oWird zu einem Frosch werden!'
   Piglin:
     name: '&6&lPiglin'
-    Description: '&7&oDeals with gold!'
+    Description: '&7&oHandelt mit Gold!'
   Strider:
-    name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    name: '&c&lSchreiter'
+    Description: '&7&oIch hasse Wasser!'
   Hoglin:
     name: '&c&lHoglin'
-    Description: '&7&oA pig, but in angry.'
+    Description: '&7&oEin Schwein, aber wütend.'
   PiglinBrute:
-    name: '&6&lPiglin Brute'
-    Description: '&7&oA pretty buff Piglin!'
+    name: '&6&lPiglin-Barbar'
+    Description: '&7&oEin ziemlich muskulöser Piglin!'
   Zoglin:
     name: '&c&lZoglin'
     Description: '&7&oA zombified Hoglin!'
@@ -1042,47 +1042,47 @@ Morphs:
     name: '&1&lWandering Trader'
     Description: '&7&oWanders around trying to sell his stuff!'
   Pillager:
-    name: '&7&lPillager'
-    Description: '&7&oLikes to pillage villages!'
+    name: '&7&lPlünderer'
+    Description: '&7&oPlündert gerne Dörfer!'
   Ravager:
-    name: '&8&lRavager'
-    Description: '&7&oA Pillager''s favorite companion!'
+    name: '&8&lVerwüster'
+    Description: '&7&oLieblingsbegleiter des Plünderers!'
   Pufferfish:
-    name: '&e&lPufferfish'
-    Description: '&7&oDoesn''t like to be touched!'
+    name: '&e&lKugelfisch'
+    Description: '&7&oMag es nicht, berührt zu werden!'
   Salmon:
-    name: '&c&lSalmon'
-    Description: '&7&oThey''re very tasty!'
+    name: '&c&lLachs'
+    Description: '&7&oSie sind sehr lecker!'
   TropicalFish:
-    name: '&e&lTropical Fish'
-    Description: '&7&oA colorful fish!'
+    name: '&e&lTropenfisch'
+    Description: '&7&oEin bunter Fisch!'
   Turtle:
-    name: '&a&lTurtle'
-    Description: '&7&oTake your time.'
+    name: '&a&lSchildkröte'
+    Description: '&7&oLass dir Zeit.'
   Phantom:
     name: '&1&lPhantom'
-    Description: '&7&oHates players that don''t sleep!'
+    Description: '&7&oHasst Spieler, die nicht schlafen!'
   Illusioner:
-    name: '&1&lIllusioner'
-    Description: '&7&oOnly spawnable with commands!'
+    name: '&1&lIllusionist'
+    Description: '&7&oNur mit Befehlen spawnbar!'
   Vex:
-    name: '&7&lVex'
+    name: '&7&lPlagegeist'
     Description: '&7&oYAAHH Ehehhehe!'
   Vindicator:
-    name: '&7&lVindicator'
-    Description: '&7&oDon''t underestimate their strength!'
+    name: '&7&lDiener'
+    Description: '&7&oUnterschätze nicht ihre Stärke!'
   Mule:
-    name: '&8&lMule'
-    Description: '&7&oYour standard, everyday mule'
+    name: '&8&lMaultier'
+    Description: '&7&oDein normales, alltägliches Maultier'
   SkeletonHorse:
-    name: '&f&lSkeleton Horse'
-    Description: '&7&oLook out for lightning strikes!'
+    name: '&f&lSkelettpferd'
+    Description: '&7&oPass auf Blitzeinschläge auf!'
   ZombieHorse:
-    name: '&2&lZombie Horse'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    name: '&2&lZombiepferd'
+    Description: '&7&oDas seltenste Pferd in Minecraft!'
   Shulker:
     name: '&5&lShulker'
-    Description: '&7&oLikes to hide!'
+    Description: '&7&oVersteckt sich gerne!'
 Hats:
   Equip: '%prefix% &9Du hast %hatname% &9Hut ausgerüstet!'
   Unequip: '%prefix% &9Du hast %hatname% &9Hut entfernt!'
@@ -1722,7 +1722,7 @@ Projectile-Effects:
     Description: '&7&oCyan stars'
   Explosion:
     name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    Description: '&7&oBUMM!'
   Cloud:
     name: '&f&lCloud'
     Description: '&7&oWhite clouds'
@@ -1767,7 +1767,7 @@ Death-Effects:
   Unequip: '%prefix% &9You unequipped %death-effectname%'
   Explosion:
     name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    Description: '&7&oBUMM!'
   Firework:
     name: '&7&lFirework Rocket'
     Description: |-
