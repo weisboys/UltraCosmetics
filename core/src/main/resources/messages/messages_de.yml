@@ -120,14 +120,14 @@ Menu:
       Name: '&5&lProjectile Effects'
       Lore: '&7Freigeschaltet: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Death-Effects:
     Title: '&lDeath Effects'
     Button:
       Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Freigeschaltet: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Unequip: '&c&lEntfernen:'
   Buy-Ammo:
     Title: '&lMunition kaufen'
   Misc:
@@ -503,11 +503,11 @@ Particle-Effects:
       &7&oLeaves a trail of
       &7&osmoke behind.
   Notes:
-    name: '&6&lNotes'
-    Description: '&7&oNotes above your head.'
+    name: '&6&lNoten'
+    Description: '&7&oNoten über deinem Kopf.'
   Hearts:
-    name: '&c&lHearts'
-    Description: '&7&oHearts above your head.'
+    name: '&c&lHerzen'
+    Description: '&7&oHerzen über deinem Kopf.'
   EnderFootprints:
     name: '&d&lEnder Footprints'
     Description: |-
@@ -928,8 +928,8 @@ Morphs:
     Description: '&7&o*bzzzz* *bzzzz*'
   Cat:
     name: '&e&lKatze'
-    skill: '&eLeft-Click&7 to: &aMeow'
-    Description: '&7&oBasically a tiny tiger'
+    skill: '&eLinksklick&7: &aMiau'
+    Description: '&7&oIm Grunde ein winziger Tiger'
   CaveSpider:
     name: '&e&lHöhlenspinne'
     skill: '&eLinksklick&7: &aTODO'
@@ -955,7 +955,7 @@ Morphs:
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oZieht Endermen an!'
   Evoker:
-    name: '&7&lEvoker'
+    name: '&7&lMagier'
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oBeschwört beruflich Plagegeister!'
   Frog:
@@ -967,23 +967,23 @@ Morphs:
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oWas sagt der Fuchs?'
   GlowSquid:
-    name: '&3&lGlow Squid'
+    name: '&3&lLeuchttintenfisch'
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oEs leuchtet!'
   Goat:
-    name: '&f&lGoat'
+    name: '&f&lZiege'
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oBAAAA!'
   Guardian:
-    name: '&3&lGuardian'
+    name: '&3&lWächter'
     skill: '&eLinksklick&7: &aTODO'
     Description: '&7&oHasst Tintenfische!'
   Wolf:
     name: '&7&lWolf'
     Description: '&7&oWuff!'
   IronGolem:
-    name: '&7&lIron Golem'
-    Description: '&7&oHates zombies!'
+    name: '&7&lEisengolem'
+    Description: '&7&oHasst Zombies!'
   Wither:
     name: '&8&lWither'
     Description: '&7&oNimm dich vor mir in Acht...'
@@ -994,7 +994,7 @@ Morphs:
     name: '&2&lZombie'
     Description: '&7&oGehirne!!!'
   Squid:
-    name: '&d&lSquid'
+    name: '&d&lTintenfisch'
     Description: '&7&oBlub Blub!'
   Spider:
     name: '&8&lSpinne'
@@ -1003,10 +1003,10 @@ Morphs:
     name: '&f&lGhast'
     Description: '&7&o*schriller Schrei*'
   MagmaCube:
-    name: '&c&lMagma Cube'
+    name: '&c&lMagmawürfel'
     Description: '&7&oEin sehr heißer Würfel!'
   Horse:
-    name: '&a&lHorse'
+    name: '&a&lPferd'
     Description: '&7&o*fhrrrrhh*'
   Warden:
     name: '&3&lWärter'
@@ -1028,19 +1028,19 @@ Morphs:
     Description: '&7&oEin ziemlich muskulöser Piglin!'
   Zoglin:
     name: '&c&lZoglin'
-    Description: '&7&oA zombified Hoglin!'
+    Description: '&7&oEin zombifizierter Hoglin!'
   ZombifiedPiglin:
-    name: '&d&lZombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    name: '&d&lZombifizierter Piglin'
+    Description: '&7&oGreife es an und alle werden hinter dir her sein!'
   Panda:
     name: '&a&lPanda'
-    Description: '&7&oLikes bamboo!'
+    Description: '&7&oMag Bambus!'
   Ocelot:
-    name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    name: '&e&lOzelot'
+    Description: '&7&oKönig des Dschungels'
   WanderingTrader:
-    name: '&1&lWandering Trader'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    name: '&1&lFahrender Händler'
+    Description: '&7&oWandert umher und versucht, seine Sachen zu verkaufen!'
   Pillager:
     name: '&7&lPlünderer'
     Description: '&7&oPlündert gerne Dörfer!'
@@ -1561,30 +1561,30 @@ Suits:
   Rave:
     whole-equip: '&f&lKompletter &b&lR&a&la&e&lv&6&le&f&l-Anzug'
     helmet-name: '&b&lR&a&la&e&lv&6&le&f&l-Helm'
-    chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Jacke'
+    chestplate-name: '&b&lR&a&la&e&lv&6&le&f&l-Brustpanzer'
     leggings-name: '&b&lR&a&la&e&lv&6&le&f&l-Hose'
     boots-name: '&b&lR&a&la&e&lv&6&le&f&l-Stiefel'
     Description: '&7&oSo tolle Farben!'
   Astronaut:
     whole-equip: '&f&lKompletter &f&lAstronauten&f&l-Anzug'
     helmet-name: '&f&lAstronauten&f&l-Helm'
-    chestplate-name: '&f&lAstronauten&f&l-Jacke'
+    chestplate-name: '&f&lAstronauten&f&l-Brustpanzer'
     leggings-name: '&f&lAstronauten&f&l-Hose'
     boots-name: '&f&lAstronauten&f&l-Stiefel'
     Description: '&7&oHouston?'
   Diamond:
     whole-equip: '&f&lKompletter &b&lDiamant&f&l-Anzug'
-    helmet-name: '&b&lDiamant&f&lhelm'
-    chestplate-name: '&b&lDiamant&f&lbrustpanzer'
-    leggings-name: '&b&lDiamant&f&lhose'
-    boots-name: '&b&lDiamant&f&lstiefel'
+    helmet-name: '&b&lDiamant&f&l-Helm'
+    chestplate-name: '&b&lDiamant&f&l-Brustpanzer'
+    leggings-name: '&b&lDiamant&f&l-Hose'
+    boots-name: '&b&lDiamant&f&l-Stiefel'
     Description: |-
       &7&oZeig deine Bergbaufähigkeiten
       &7&omit diesem tollen Outfit!
   Santa:
     whole-equip: '&f&lKompletter &4&lWeihnachtsmann&f&l-Anzug'
-    helmet-name: '&4&lWeihnachtsmann&f&l-Mütze'
-    chestplate-name: '&4&lWeihnachtsmann&f&l-Mantel'
+    helmet-name: '&4&lWeihnachtsmann&f&l-Helm'
+    chestplate-name: '&4&lWeihnachtsmann&f&l-Brustpanzer'
     leggings-name: '&4&lWeihnachtsmann&f&l-Hose'
     boots-name: '&4&lWeihnachtsmann&f&l-Stiefel'
     Description: '&7&oWerde zum Weihnachtsmann und liefere Geschenke!'
@@ -1771,8 +1771,8 @@ Death-Effects:
   Firework:
     name: '&7&lFirework Rocket'
     Description: |-
-      &7&oCongratulations!
-      &7&oYou... died?
+      &7&oGlückwunsch!
+      &7&oDu bist... gestorben?
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
