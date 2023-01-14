@@ -26,14 +26,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerChangedWorldEvent;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
@@ -226,7 +219,7 @@ public class PlayerListener implements Listener {
             event.getEntity().getInventory().setItem(slot, null);
         }
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getEntity());
-        if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(event.getEntity().getInventory().getItem((Integer) SettingsManager.getConfig().get("Gadget-Slot")));
+        if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(ultraPlayer.getCurrentGadget().getItemStack());
         if (ultraPlayer.getCurrentHat() != null) event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
         Arrays.asList(ArmorSlot.values()).forEach(armorSlot -> {
             if (ultraPlayer.getCurrentSuit(armorSlot) != null) {
@@ -283,6 +276,23 @@ public class PlayerListener implements Listener {
         if (player.hasCosmeticsEquipped()) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(MessageManager.getMessage("Disabled-Command-Message"));
+        }
+    }
+
+    @EventHandler
+    public void onItemDamage(PlayerItemDamageEvent event) {
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
+        if (ultraPlayer.getCurrentGadget() != null && ultraPlayer.getCurrentGadget().getItemStack().equals(event.getItem())) {
+            event.setCancelled(true);
+            return;
+        }
+        for (ArmorSlot armorSlot : ArmorSlot.values()) {
+            if (ultraPlayer.getCurrentSuit(armorSlot) != null) {
+                if (event.getItem().equals(ultraPlayer.getCurrentSuit(armorSlot).getItemStack())) {
+                    event.setCancelled(true);
+                    return;
+                }
+            }
         }
     }
 
