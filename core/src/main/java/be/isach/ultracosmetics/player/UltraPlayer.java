@@ -549,6 +549,7 @@ public class UltraPlayer {
     }
 
     public void sendMessage(Object message) {
+        if (message.toString().isEmpty()) return;
         getBukkitPlayer().sendMessage(message.toString());
     }
 

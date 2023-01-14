@@ -80,7 +80,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
 
         this.equipped = true;
 
-        getPlayer().sendMessage(filterPlaceholders(getCategory().getActivateMessage()));
+        owner.sendMessage(filterPlaceholders(getCategory().getActivateMessage()));
 
         if (this instanceof Updatable) {
             scheduleTask();
@@ -92,7 +92,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public /* final */ void clear() {
-        getPlayer().sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
+        owner.sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
 
         HandlerList.unregisterAll(this);
 
