@@ -1598,18 +1598,18 @@ Suits:
       &7&oDieser Anzug gehört dem
       &7&oLord der gefrorenen Lande!
   Cursed:
-    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
-    helmet-name: '&5&lCursed &f&lHelmet'
-    chestplate-name: '&5&lCursed &f&lChestplate'
-    leggings-name: '&5&lCursed &f&lLeggings'
-    boots-name: '&5&lCursed &f&lBoots'
+    whole-equip: '&f&lKompletter &5&lverfluchter &f&lAnzug'
+    helmet-name: '&5&lVerfluchter &f&lHelm'
+    chestplate-name: '&5&lVerfluchter &f&lBrustpanzer'
+    leggings-name: '&5&lVerfluchte &f&lHose'
+    boots-name: '&5&lVerfluchte &f&lStiefel'
     Description: '&7&oMysterious and spooky.'
   Slime:
-    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
-    helmet-name: '&a&lSlime &f&lHelmet'
-    chestplate-name: '&a&lSlime &f&lChestplate'
-    leggings-name: '&a&lSlime &f&lLeggings'
-    boots-name: '&a&lSlime &f&lBoots'
+    whole-equip: '&f&lKompletter &a&lSchleim&f&l-Anzug'
+    helmet-name: '&a&lSchleim&f&l-Helm'
+    chestplate-name: '&a&lSchleim&f&l-Brustpanzer'
+    leggings-name: '&a&lSchleim&f&l-Hose'
+    boots-name: '&a&lSchleim&f&l-Stiefel'
     Description: |-
       &7&oSlimy green suit.
       &7&oThe slimes will love it!
