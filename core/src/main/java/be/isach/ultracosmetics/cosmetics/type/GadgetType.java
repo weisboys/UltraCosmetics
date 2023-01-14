@@ -92,6 +92,7 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.DIAMOND_HORSE_ARMOR, 0.5, 0, "PaintballGun", GadgetPaintballGun.class) {
             @Override
             public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
                 // default "" so we don't have to deal with null
                 if (config.getString(path + ".Block-Type", "").equals("STAINED_CLAY")) {
                     config.set(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
