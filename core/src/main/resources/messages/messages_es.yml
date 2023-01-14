@@ -43,7 +43,7 @@ Clear:
   Suits: '&c&lQuitar traje activo'
   Emotes: '&c&lQuitar emoticon activo'
   Projectile-Effects: '&c&lBorrar el proyectil actual'
-  Death-Effects: '&c&lClear current death effect'
+  Death-Effects: '&c&Quitar efecto de muerte actual'
 Menu:
   Purchase-Rename:
     Button:
@@ -119,7 +119,7 @@ Menu:
     Button:
       Name: '&5&lProjectile Effects'
       Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
+      Tooltip-Equip: '&b&lequipar'
       Tooltip-Unequip: '&c&lUnequip'
   Death-Effects:
     Title: '&lDeath Effects'
