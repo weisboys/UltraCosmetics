@@ -63,8 +63,8 @@ public class PlayerListener implements Listener {
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
             if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
-                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getLastVersion());
-                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED.toString() + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED.toString() + ChatColor.BOLD + " to install the update.");
+                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getLastVersion());
+                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED + ChatColor.BOLD + " to install the update.");
             }
         }
     }
@@ -129,7 +129,6 @@ public class PlayerListener implements Listener {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryClickEvent event) {
@@ -151,7 +150,6 @@ public class PlayerListener implements Listener {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryCreativeEvent event) {
@@ -169,7 +167,6 @@ public class PlayerListener implements Listener {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryDragEvent event) {

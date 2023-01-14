@@ -39,7 +39,7 @@ public class SelectSubquery implements ClauseItem, InsertItem {
             clause.add(entry.getKey() + " = ?");
             objects.add(entry.getValue());
         }
-        sb.append(clause.toString()).append(")");
+        sb.append(clause).append(")");
         return sb.toString();
     }
 }

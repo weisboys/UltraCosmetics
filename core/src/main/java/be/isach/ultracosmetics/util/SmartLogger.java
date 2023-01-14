@@ -15,7 +15,7 @@ public class SmartLogger {
         INFO(Level.INFO),
         WARNING(Level.WARNING),
         ERROR(Level.SEVERE);
-        private Level level;
+        private final Level level;
         private LogLevel(Level level) {
             this.level = level;
         }

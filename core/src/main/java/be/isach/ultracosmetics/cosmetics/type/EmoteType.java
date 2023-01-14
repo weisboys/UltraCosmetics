@@ -236,8 +236,8 @@ public class EmoteType extends CosmeticType<Emote> {
         }
     }
 
-    private List<ItemStack> frames = new ArrayList<>();
-    private int ticksPerFrame;
+    private final List<ItemStack> frames = new ArrayList<>();
+    private final int ticksPerFrame;
 
     private EmoteType(String configName, int ticksPerFrame) {
         super(Category.EMOTES, configName, XMaterial.PLAYER_HEAD, Emote.class);

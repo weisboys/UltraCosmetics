@@ -17,7 +17,7 @@ import org.bukkit.entity.Bat;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -63,9 +63,8 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     }
 
     @EventHandler
-    public void onPlayerInteractGhost(PlayerInteractAtEntityEvent event) {
-        if (event.getRightClicked() != null && event.getRightClicked().getVehicle() != null
-                && bats.contains(event.getRightClicked().getVehicle())) {
+    public void onPlayerInteractGhost(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked().getVehicle() != null && bats.contains(event.getRightClicked().getVehicle())) {
             event.setCancelled(true);
         }
     }

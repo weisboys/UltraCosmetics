@@ -98,7 +98,7 @@ public class PlayerData {
 
     /**
      * Loads the profile from the player file.
-     *
+     * <p>
      * These methods are here for the migrate command,
      * because PlayerData need not be attached to an online player.
      */

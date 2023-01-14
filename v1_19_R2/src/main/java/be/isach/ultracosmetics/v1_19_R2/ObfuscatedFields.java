@@ -22,5 +22,5 @@ public class ObfuscatedFields {
     public static final String INTRUSIVE_HOLDER_CACHE = "m";
 
     private ObfuscatedFields() {
-    };
+    }
 }

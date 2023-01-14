@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class FallDamageManager extends BukkitRunnable {
 
-    public static List<Entity> noFallDamage = Collections.synchronizedList(new ArrayList<Entity>());
-    public static List<Entity> queue = Collections.synchronizedList(new ArrayList<Entity>());
+    public static List<Entity> noFallDamage = Collections.synchronizedList(new ArrayList<>());
+    public static List<Entity> queue = Collections.synchronizedList(new ArrayList<>());
 
     public static void addNoFall(Entity entity) {
         if (!queue.contains(entity)
@@ -38,9 +38,7 @@ public class FallDamageManager extends BukkitRunnable {
                 }
             }
         }
-        Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> {
-            noFallDamage.removeAll(toRemove);
-        }, 5);
+        Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> noFallDamage.removeAll(toRemove), 5);
         noFallDamage.addAll(queue);
         queue.clear();
     }

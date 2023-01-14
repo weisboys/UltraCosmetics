@@ -83,10 +83,6 @@ public abstract class Menu implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (event.getInventory() == null) {
-            return;
-        }
-
         if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta() || !event.getCurrentItem().getItemMeta().hasDisplayName()) {
             return;
         }

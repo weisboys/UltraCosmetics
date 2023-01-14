@@ -24,7 +24,7 @@ public class PetTropicalFish extends Pet {
         Pattern pattern;
         DyeColor bodyColor;
         DyeColor patternColor;
-        String parts[] = customization.toUpperCase().split(":");
+        String[] parts = customization.toUpperCase().split(":");
         if (parts.length != 3) return false;
         try {
             pattern = Pattern.valueOf(parts[0]);

@@ -43,7 +43,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     private static final Map<String,Permission> registeredPermissions = new HashMap<>();
     private static final Map<Category,List<CosmeticType<?>>> VALUES = new HashMap<>();
     private static final Map<Category,List<CosmeticType<?>>> ENABLED = new HashMap<>();
-    private static YamlConfiguration customConfig = new YamlConfiguration();
+    private static final YamlConfiguration customConfig = new YamlConfiguration();
 
     static {
         try {

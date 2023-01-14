@@ -10,7 +10,7 @@ public enum ChestType {
     NORMAL(Material.CHEST),
     ENDER(Material.ENDER_CHEST);
 
-    private Material type;
+    private final Material type;
 
     private ChestType(Material type) {
         this.type = type;

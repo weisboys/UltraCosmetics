@@ -37,7 +37,7 @@ import java.util.Map.Entry;
  */
 public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
-    public final static int[] COSMETICS_SLOTS = {
+    public static final int[] COSMETICS_SLOTS = {
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
             28, 29, 30, 31, 32, 33, 34

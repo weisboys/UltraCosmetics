@@ -18,7 +18,7 @@ import net.minecraft.world.phys.Vec3;
 public class CustomPathFinderGoalPanic extends Goal {
 
     // NMS Entity
-    private PathfinderMob entity;
+    private final PathfinderMob entity;
 
     public CustomPathFinderGoalPanic(PathfinderMob entitycreature) {
         this.entity = entitycreature;

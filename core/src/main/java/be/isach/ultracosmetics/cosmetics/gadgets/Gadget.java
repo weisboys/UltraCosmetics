@@ -124,7 +124,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
                 @SuppressWarnings("deprecation")
                 ItemStack hand = getPlayer().getItemInHand();
                 // TODO: this is ugly
-                if (hand != null && itemStack != null && hand.hasItemMeta() && hand.getType() == getItemStack().getType()
+                if (itemStack != null && hand.hasItemMeta() && hand.getType() == getItemStack().getType()
                         && hand.getItemMeta().hasDisplayName() && hand.getItemMeta().getDisplayName().endsWith(getType().getName())
                         && !owner.canUse(getType())) {
                     owner.sendCooldownBar(getType(), getType().getCountdown(), getType().getRunTime());
@@ -133,7 +133,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         } catch (NullPointerException ignored) {
             // Caused by rapid item switching in inventory.
         }
-        if (getOwner() == null || getPlayer() == null) return;
 
         double left = owner.getCooldown(getType());
         if (left > 0) {
@@ -291,7 +290,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler(priority = EventPriority.LOWEST)
     public void cancelMove(InventoryClickEvent event) {
@@ -307,7 +305,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler
     public void cancelMove(InventoryDragEvent event) {
@@ -326,7 +323,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     /**
      * Cancel players from removing, picking the item in their inventory.
      *
-     * @param event
      */
     @EventHandler
     public void cancelMove(InventoryCreativeEvent event) {

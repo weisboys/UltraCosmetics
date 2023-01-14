@@ -11,7 +11,7 @@ public class ArmorStandManager {
 
     private static final String META_TEXT = "UCArmorStand";
 
-    private UltraCosmetics ultraCosmetics;
+    private final UltraCosmetics ultraCosmetics;
 
     public ArmorStandManager(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;

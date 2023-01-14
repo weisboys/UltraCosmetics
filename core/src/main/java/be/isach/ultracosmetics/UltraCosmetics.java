@@ -52,12 +52,12 @@ import com.cryptomorin.xseries.XMaterial;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -229,7 +229,7 @@ public class UltraCosmetics extends JavaPlugin {
             try {
                 // Copied from JavaPlugin#saveResource
                 InputStream in = getResource("messages/" + langFileName);
-                OutputStream out = new FileOutputStream(langFile);
+                OutputStream out = Files.newOutputStream(langFile.toPath());
                 byte[] buf = new byte[1024];
                 int len;
                 while ((len = in.read(buf)) > 0) {

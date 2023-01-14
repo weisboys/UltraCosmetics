@@ -16,16 +16,9 @@ import org.bukkit.util.Vector;
  */
 public class ParticleEffectAngelWings extends ParticleEffect {
 
-    boolean x = true;
-    boolean o = false;
-
-    public ParticleEffectAngelWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics);
-
-        this.alternativeEffect = true;
-    }
-
-    private boolean[][] shape = {
+    private static final boolean x = true;
+    private static final boolean o = false;
+    private static final boolean[][] shape = {
             { o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o },
             { o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o },
             { o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o },
@@ -36,6 +29,12 @@ public class ParticleEffectAngelWings extends ParticleEffect {
             { o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o },
             { o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o }
     };
+
+    public ParticleEffectAngelWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
+        super(owner, type, ultraCosmetics);
+
+        this.alternativeEffect = true;
+    }
 
     @Override
     public void onUpdate() {

@@ -14,10 +14,10 @@ import org.bukkit.util.Vector;
  */
 public class ParticleEffectFireWaves extends ParticleEffect {
 
-    private final double RADIUS = 1.1; // radius between player and rods
-    private final int U_PER_WAVE = 4; // Amount of "U's" per wave.
-    private final double MAX_HEIGHT_DIFF = 0.5; // Max height diff between columns
-    private final double HEIGHT_DIFF_STEP = 0.05; // Height diff step...
+    private static final double RADIUS = 1.1; // radius between player and rods
+    private static final int U_PER_WAVE = 4; // Amount of "U's" per wave.
+    private static final double MAX_HEIGHT_DIFF = 0.5; // Max height diff between columns
+    private static final double HEIGHT_DIFF_STEP = 0.05; // Height diff step...
 
     private boolean heightFactorDir; // Indicates whether the height diff between columns is going up or down (gives dynamism)
     private double heightFactor = MAX_HEIGHT_DIFF; // Height diff between columns. Variates over time with hoveringDirectionUp.

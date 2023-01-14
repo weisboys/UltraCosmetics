@@ -15,12 +15,12 @@ import java.util.List;
  * @since 10-21-2017
  */
 public class CommandReward {
-    private String name;
-    private ItemStack stack;
-    private int chance;
-    private boolean messageEnabled;
-    private String message;
-    private List<String> commands;
+    private final String name;
+    private final ItemStack stack;
+    private final int chance;
+    private final boolean messageEnabled;
+    private final String message;
+    private final List<String> commands;
 
     public CommandReward(String path) {
         CustomConfiguration config = UltraCosmeticsData.get().getPlugin().getConfig();

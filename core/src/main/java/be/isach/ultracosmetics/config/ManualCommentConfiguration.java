@@ -18,8 +18,8 @@ import java.util.Map;
 public class ManualCommentConfiguration extends CustomConfiguration {
 
     private Map<String,List<String>> comments = null;
-    private boolean newLineAfterHeader = false;
-    private boolean newLinePerKey = false;
+    private static final boolean newLineAfterHeader = false;
+    private static final boolean newLinePerKey = false;
 
     public ManualCommentConfiguration() {
         this.comments = new LinkedHashMap<>();
@@ -166,33 +166,28 @@ public class ManualCommentConfiguration extends CustomConfiguration {
         super.save(file);
 
         List<String> configContent = new ArrayList<>();
-        BufferedReader configReader = null;
-        try {
-            configReader = new BufferedReader(new FileReader(file));
+        try (BufferedReader configReader = new BufferedReader(new FileReader(file))) {
             String configReadLine;
             while ((configReadLine = configReader.readLine()) != null)
                 configContent.add(configReadLine);
-        } finally {
-            if (configReader != null) configReader.close();
         }
 
-        BufferedWriter configWriter = null;
-        try {
-            configWriter = new BufferedWriter(new FileWriter(file));
+        try (BufferedWriter configWriter = new BufferedWriter(new FileWriter(file))) {
             configWriter.write("");
             for (int lineIndex = 0; lineIndex < configContent.size(); lineIndex++) {
                 String configLine = configContent.get(lineIndex);
                 String configKey = null;
-                if (!configLine.startsWith("#") && configLine.contains(":")) configKey = getPathToKey(configContent, lineIndex, configLine);
+                if (!configLine.startsWith("#") && configLine.contains(":"))
+                    configKey = getPathToKey(configContent, lineIndex, configLine);
                 if (configKey != null && this.comments.containsKey(configKey)) {
                     int numOfSpaces = getPrefixSpaceCount(configLine);
-                    String spacePrefix = "";
+                    StringBuilder spacePrefix = new StringBuilder();
                     for (int i = 0; i < numOfSpaces; i++)
-                        spacePrefix += " ";
+                        spacePrefix.append(" ");
                     List<String> configComments = this.comments.get(configKey);
                     if (configComments != null) {
                         for (String comment : configComments) {
-                            configWriter.append(spacePrefix).append("# ").append(comment);
+                            configWriter.append(spacePrefix.toString()).append("# ").append(comment);
                             configWriter.newLine();
                         }
                     }
@@ -200,17 +195,15 @@ public class ManualCommentConfiguration extends CustomConfiguration {
                 configWriter.append(configLine);
                 configWriter.newLine();
                 boolean isComment = configLine.startsWith("#");
-                if (this.newLineAfterHeader && lineIndex == 0 && isComment) {
+                if (newLineAfterHeader && lineIndex == 0 && isComment) {
                     configWriter.newLine();
-                } else if (this.newLinePerKey && lineIndex < configContent.size() - 1 && !isComment) {
+                } else if (newLinePerKey && lineIndex < configContent.size() - 1 && !isComment) {
                     String nextConfigLine = configContent.get(lineIndex + 1);
                     if (nextConfigLine != null && !nextConfigLine.startsWith(" ")) {
                         if (!nextConfigLine.startsWith("'") && !nextConfigLine.startsWith("-")) configWriter.newLine();
                     }
                 }
             }
-        } finally {
-            if (configWriter != null) configWriter.close();
         }
     }
 

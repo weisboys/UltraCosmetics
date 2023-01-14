@@ -40,7 +40,8 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
 
 /**
- * @authors RadBuilder, iSach
+ * @author RadBuilder
+ * @author iSach
  */
 public class EntityUtil implements IEntityUtil {
 

@@ -66,7 +66,7 @@ public class ChestParticleRunnable extends BukkitRunnable {
     public void propogateCancel() {
         cancel();
         if (chestRunnable != null) {
-            chestRunnable.cancel();;
+            chestRunnable.cancel();
         }
     }
 }

@@ -29,7 +29,7 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
         for (String entity : SettingsManager.getConfig().getStringList("Projectile-Types")) {
             try {
                 types.add(EntityType.valueOf(entity.toUpperCase()));
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ignored) {
             }
         }
     }

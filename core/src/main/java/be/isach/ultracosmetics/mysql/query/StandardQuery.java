@@ -60,7 +60,7 @@ public class StandardQuery {
     /**
      * Joins conditions by OR instead of AND,
      * not including the first condition, like:
-     *
+     * <p>
      * WHERE uuid = x'...' AND (id = 1 OR id = 2 ... )
      *
      * @return self
@@ -135,7 +135,7 @@ public class StandardQuery {
     }
 
     public boolean exists() {
-        return getResults(r -> r.next(), false);
+        return getResults(ResultSet::next, false);
     }
 
     public int asInt() {
@@ -165,13 +165,13 @@ public class StandardQuery {
     private void addClause(StringBuilder sb, String clause, String joiner, List<ClauseItem> items, List<Object> objects) {
         if (items.size() == 0) return;
         if (clause != null) {
-            sb.append(" " + clause + " ");
+            sb.append(" ").append(clause).append(" ");
         }
         StringJoiner sj = new StringJoiner(joiner);
         for (ClauseItem item : items) {
             sj.add(item.toSQL(objects));
         }
-        sb.append(sj.toString());
+        sb.append(sj);
     }
 
     public static void printStringified(StringBuilder sql, List<Object> objects) {
@@ -181,9 +181,9 @@ public class StandardQuery {
                 if (obj instanceof byte[]) {
                     byte[] data = (byte[]) obj;
                     StringBuilder hex = new StringBuilder("x'");
-                    for (int i = 0; i < data.length; i++) {
+                    for (byte datum : data) {
                         // `byte & 0xFF` does magic to treat it as unsigned
-                        hex.append(Integer.toHexString(data[i] & 0xFF));
+                        hex.append(Integer.toHexString(datum & 0xFF));
                     }
                     hex.append("'");
                     plaintext = plaintext.replaceFirst("\\?", hex.toString());

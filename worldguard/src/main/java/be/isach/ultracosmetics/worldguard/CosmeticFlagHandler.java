@@ -21,15 +21,14 @@ import com.sk89q.worldguard.session.MoveType;
 import com.sk89q.worldguard.session.Session;
 import com.sk89q.worldguard.session.handler.Handler;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
 public class CosmeticFlagHandler extends Handler {
     private static final Set<Category> ALL_CATEGORIES = new HashSet<>();
     static {
-        for (Category cat : Category.values()) {
-            ALL_CATEGORIES.add(cat);
-        }
+        ALL_CATEGORIES.addAll(Arrays.asList(Category.values()));
     }
     private final UltraPlayerManager pm;
     private final StateFlag cosmeticsFlag;
@@ -83,7 +82,7 @@ public class CosmeticFlagHandler extends Handler {
      * or an empty set if no comparison is required.
      *
      * @param currentSet  The active set of categories
-     * @param previousSet The last known active set of categories
+     * @param lastSet The last known active set of categories
      * @return a set containing any Categories not present in previousSet
      */
     private Set<Category> compareSets(Set<Category> currentSet, Set<Category> lastSet) {

@@ -87,6 +87,7 @@ public enum ServerVersion {
     }
 
     public String getNmsVersion() {
+        //noinspection UnnecessaryToStringCall
         return toString() + "_R" + nmsRevision;
     }
 }

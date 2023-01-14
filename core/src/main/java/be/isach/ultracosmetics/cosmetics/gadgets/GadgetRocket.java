@@ -281,7 +281,7 @@ public class GadgetRocket extends Gadget implements Updatable {
         getPlayer().sendTitle(title, "");
     }
 
-    private abstract class RocketTask extends BukkitRunnable {
+    private abstract static class RocketTask extends BukkitRunnable {
         public abstract void stop();
 
         public RocketTask schedule(UltraCosmetics ultraCosmetics, long delay, long period) {

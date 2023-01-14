@@ -76,7 +76,7 @@ public class UltraPlayer {
     /**
      * Specifies if the player can currently be hit by any other gadget.
      * Exemple: Get hit by a flesh hook.
-     *
+     * <p>
      * TODO: this is only used in one place, is that a problem?
      */
     private boolean canBeHitByOtherGadgets = true;
@@ -129,7 +129,7 @@ public class UltraPlayer {
     /**
      * Checks if a player can use a given gadget type.
      *
-     * @param gadget The gadget type.
+     * @param type The gadget type.
      * @return 0 if player can use, otherwise the time left (in seconds).
      */
     public double getCooldown(CosmeticType<?> type) {
@@ -154,7 +154,7 @@ public class UltraPlayer {
     /**
      * Sets the cooldown of a gadget.
      *
-     * @param gadget   The gadget.
+     * @param type   The gadget.
      * @param cooldown The standard cooldown of the cosmetic in seconds
      * @param runTime  The runtime of the cosmetic (i.e. minimum possible cooldown) in seconds.
      */
@@ -189,7 +189,7 @@ public class UltraPlayer {
         final DecimalFormat decimalFormat = new DecimalFormat("0.0", otherSymbols);
         String timeLeft = decimalFormat.format(currentCooldown) + "s";
 
-        ActionBar.sendActionBar(getBukkitPlayer(), type.getName() + ChatColor.WHITE + " " + stringBuilder.toString() + ChatColor.WHITE + " " + timeLeft);
+        ActionBar.sendActionBar(getBukkitPlayer(), type.getName() + ChatColor.WHITE + " " + stringBuilder + ChatColor.WHITE + " " + timeLeft);
     }
 
     /**
@@ -272,10 +272,10 @@ public class UltraPlayer {
     /**
      * Sets a cosmetic as equipped, unequipping any cosmetic
      * of the same category that is already equipped.
-     *
+     * <p>
      * Note that this does not actually call equip() on the cosmetic,
      * equipping should be done before this method is called.
-     *
+     * <p>
      * Category of the cosmetic is automatically determined.
      * For equipping a Suit part, please use setCurrentSuitPart(ArmorSlot, Suit)
      *

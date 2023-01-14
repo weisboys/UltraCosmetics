@@ -20,7 +20,7 @@ public interface Loot {
     default String getConfigMessage(String s) {
         String message = SettingsManager.getConfig().getString(s);
         if (message == null) {
-            return ChatColor.RED.toString() + ChatColor.BOLD.toString() + "Error";
+            return ChatColor.RED.toString() + ChatColor.BOLD + "Error";
         }
         return ChatColor.translateAlternateColorCodes('&', message);
     }

@@ -19,12 +19,12 @@ public class WeightedSet<T> {
 
     public void add(T key, int value) {
         // add to existing value if present, otherwise store value as-is
-        map.merge(key, value, (a, b) -> a + b);
+        map.merge(key, value, Integer::sum);
     }
 
     public T getRandom() {
         // sums all values in map
-        int sum = map.values().stream().collect(Collectors.summingInt(k -> k));
+        int sum = map.values().stream().mapToInt(k -> k).sum();
         if (sum < 1) return null;
         int index = ThreadLocalRandom.current().nextInt(sum);
         for (Entry<T,Integer> entry : map.entrySet()) {
@@ -46,7 +46,7 @@ public class WeightedSet<T> {
     }
 
     public void filter(Function<T,Boolean> filterFunc) {
-        map.keySet().removeIf(k -> filterFunc.apply(k));
+        map.keySet().removeIf(filterFunc::apply);
     }
 
     public boolean contains(T key) {

@@ -152,10 +152,7 @@ public enum SuitCategory {
     }
 
     public static List<SuitCategory> enabled() {
-        List<SuitCategory> enabled = new ArrayList<>();
-        for (SuitCategory cat : values()) {
-            enabled.add(cat);
-        }
+        List<SuitCategory> enabled = new ArrayList<>(Arrays.asList(values()));
         return enabled;
     }
 }

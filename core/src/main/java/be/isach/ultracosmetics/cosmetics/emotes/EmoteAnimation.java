@@ -12,8 +12,11 @@ class EmoteAnimation extends BukkitRunnable {
 
     private static final int INTERVAL_BETWEEN_REPLAY = 20;
 
-    private int ticks, ticksPerFrame, currentFrame, intervalTick;
-    private Emote emote;
+    private int ticks;
+    private final int ticksPerFrame;
+    private int currentFrame;
+    private int intervalTick;
+    private final Emote emote;
     private boolean running, up = true;
 
     EmoteAnimation(int ticksPerFrame, Emote emote) {

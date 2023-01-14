@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class Emote extends ArmorCosmetic<EmoteType> {
 
-    private EmoteAnimation animation;
+    private final EmoteAnimation animation;
 
     public Emote(UltraPlayer owner, EmoteType emoteType, UltraCosmetics ultraCosmetics) {
         super(owner, emoteType, ultraCosmetics);

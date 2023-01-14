@@ -55,7 +55,7 @@ public class Area {
     /**
      * Checks each material in the area against okMatFunc,
      * and returns true if every block is "ok" accordingly.
-     *
+     * <p>
      * Ignores the block at (badX, badY, badZ)
      *
      * @param badX      X coordinate of block to ignore
@@ -86,19 +86,19 @@ public class Area {
     }
 
     public boolean isEmptyExcept(Location loc) {
-        return isEmptyExcept(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), m -> BlockUtils.isAir(m));
+        return isEmptyExcept(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ(), BlockUtils::isAir);
     }
 
     public boolean isEmpty() {
         // no special meaning, but the loop will never make it that far
-        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, m -> BlockUtils.isAir(m));
+        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, BlockUtils::isAir);
     }
 
     // It's deprecated because it "does not have an implementation which is well linked to the underlying server,"
     // but that doesn't really matter for our purposes.
     @SuppressWarnings("deprecation")
     public boolean isTransparent() {
-        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, m -> m.isTransparent());
+        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Material::isTransparent);
     }
 
     public boolean contains(Block block) {

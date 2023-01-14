@@ -21,7 +21,7 @@ public class PetPufferfish extends Pet {
     public boolean customize(String customization) {
         int value = -1;
         try {
-            value = Integer.valueOf(customization);
+            value = Integer.parseInt(customization);
         } catch (NumberFormatException ignored) {
         }
         if (value < 0 || value > 2) return false;

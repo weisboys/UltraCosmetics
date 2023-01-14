@@ -125,7 +125,7 @@ public class TreasureChest implements Listener {
         if (stopping) {
             cleanup();
         } else {
-            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> cleanup(), 30L);
+            Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::cleanup, 30L);
         }
     }
 
@@ -318,7 +318,6 @@ public class TreasureChest implements Listener {
     /**
      * Cancel eggs from merging
      *
-     * @param event
      */
     @EventHandler
     public void onItemMerge(ItemMergeEvent event) {

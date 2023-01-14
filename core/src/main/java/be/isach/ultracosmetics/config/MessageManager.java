@@ -24,8 +24,8 @@ public class MessageManager {
     // should be set to true by the time anybody else can read this
     private static boolean success = false;
 
-    /**
-     * Load the messages config
+    /*
+      Load the messages config
      */
     static {
         String langFile = "messages_" + UltraCosmeticsData.get().getLanguage();

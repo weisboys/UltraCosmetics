@@ -14,7 +14,7 @@ import com.cryptomorin.xseries.XBlock;
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PlaceBlocksRunnable extends BukkitRunnable {
@@ -47,7 +47,7 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
         if (i == 5) {
             lampBlock = player.getLocation().add(0.0D, -1.0D, 0.0D).getBlock();
             chest.setCenter(lampBlock.getLocation().add(0.5D, 1.0D, 0.5D));
-            doChestStage(Arrays.asList(lampBlock), design.getCenter());
+            doChestStage(Collections.singletonList(lampBlock), design.getCenter());
         } else if (i == 4) {
             doChestStage(getSurroundingBlocks(chest.getCenter().clone().add(0.0D, -1.0D, 0.0D).getBlock()), design.getBlocks2());
         } else if (i == 3) {
@@ -110,7 +110,7 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
     public void propogateCancel() {
         cancel();
         if (particleRunnable != null) {
-            particleRunnable.propogateCancel();;
+            particleRunnable.propogateCancel();
         }
     }
 }

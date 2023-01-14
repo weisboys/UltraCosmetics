@@ -32,7 +32,6 @@ public class SettingsManager {
     /**
      * Creates a new file and defines fileConfiguration and file.
      *
-     * @param fileName
      */
     protected SettingsManager(String fileName) {
         File folder = new File(UltraCosmeticsData.get().getPlugin().getDataFolder(), "/data");
@@ -79,7 +78,7 @@ public class SettingsManager {
      * @return the data settings manager of a player.
      */
     public static SettingsManager getData(Player p) {
-        return new SettingsManager("/data/" + p.getUniqueId().toString());
+        return new SettingsManager("/data/" + p.getUniqueId());
     }
 
     /**
@@ -108,8 +107,6 @@ public class SettingsManager {
     /**
      * Sets the value of a given path.
      *
-     * @param path
-     * @param value
      */
     public void set(String path, Object value, boolean autosave) {
         fileConfiguration.set(path, value);
@@ -187,7 +184,6 @@ public class SettingsManager {
     /**
      * Create and get a configuration section for a given path.
      *
-     * @param path
      * @return the configuration section created for the given path.
      */
     public ConfigurationSection createConfigurationSection(String path) {
@@ -199,7 +195,6 @@ public class SettingsManager {
     }
 
     /**
-     * @param path
      * @return {@code true} if the fileConfiguration contains the path, {@code false} otherwise.
      */
     public boolean contains(String path) {

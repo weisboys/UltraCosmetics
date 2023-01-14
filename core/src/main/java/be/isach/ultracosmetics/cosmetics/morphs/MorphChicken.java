@@ -99,7 +99,6 @@ public class MorphChicken extends Morph implements Updatable {
     /**
      * Cancel eggs from merging
      *
-     * @param event
      */
     @EventHandler
     public void onItemMerge(ItemMergeEvent event) {

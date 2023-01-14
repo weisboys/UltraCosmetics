@@ -26,7 +26,7 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
     private final Location loc;
     private final boolean spread;
     private int remaining;
-    private Set<T> entities = new HashSet<>();
+    private final Set<T> entities = new HashSet<>();
     private boolean scheduled = false;
 
     public EntitySpawner(EntityType type, Location loc, int amount, boolean spread, Consumer<T> func, UltraCosmetics ultraCosmetics) {
@@ -65,6 +65,7 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
             // TODO: make this dynamic? Currently used for parachute gadget
             Location spawnLoc = loc.clone();
             if (spread) {
+                //noinspection IntegerDivisionInFloatingPointContext
                 spawnLoc.add(remaining % 5 - 2, 0, remaining / 4 - 2);
             }
 

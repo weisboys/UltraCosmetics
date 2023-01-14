@@ -122,6 +122,7 @@ public class CustomEntities {
         }
 
         EntityBase entityBase = (EntityBase) mob;
+        // Upcasting required because otherwise SpecialSource doesn't pick it up
         Entity entity = mob;
 
         EntityWrapper wEntity = new EntityWrapper(mob);

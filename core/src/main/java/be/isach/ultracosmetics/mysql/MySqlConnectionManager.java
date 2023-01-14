@@ -30,7 +30,6 @@ import javax.sql.DataSource;
  */
 public class MySqlConnectionManager {
     public static final int MAX_NAME_SIZE = 256;
-    private final String database;
     /**
      * UltraCosmetics instance.
      */
@@ -80,7 +79,7 @@ public class MySqlConnectionManager {
         this.debug = section.getBoolean("debug", false);
         String hostname = section.getString("hostname");
         String port = section.getString("port");
-        database = section.getString("database");
+        String database = section.getString("database");
         String username = section.getString("username");
         String password = section.getString("password");
         HikariHook hook;

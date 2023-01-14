@@ -66,7 +66,7 @@ public class InsertQuery {
             }
             values.add(sj.toString());
         }
-        sql.append(columns.toString()).append(" VALUES ").append(values.toString());
+        sql.append(columns).append(" VALUES ").append(values);
 
         if (updateOnDuplicate) {
             sql.append(" ON DUPLICATE KEY UPDATE ");
@@ -74,7 +74,7 @@ public class InsertQuery {
             for (String col : this.columns) {
                 update.add(col + "=VALUES(" + col + ")");
             }
-            sql.append(update.toString());
+            sql.append(update);
         }
 
         StandardQuery.printStringified(sql, objects);

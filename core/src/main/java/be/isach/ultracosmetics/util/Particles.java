@@ -46,6 +46,7 @@ import java.util.Map.Entry;
  * @author DarkBlade12
  * @version 1.7
  */
+@SuppressWarnings("DanglingJavadoc")
 public enum Particles {
     /**
      * A particle effect which is displayed by exploding tnt and creepers:
@@ -1105,7 +1106,7 @@ public enum Particles {
      * @author DarkBlade12
      * @since 1.6
      */
-    public static abstract class ParticleData {
+    public abstract static class ParticleData {
         private final Material material;
         private final byte data;
         private final int[] packetData;
@@ -1214,7 +1215,7 @@ public enum Particles {
      * @author DarkBlade12
      * @since 1.7
      */
-    public static abstract class ParticleColor {
+    public abstract static class ParticleColor {
         /**
          * Returns the value for the offsetX field
          *
@@ -1521,7 +1522,7 @@ public enum Particles {
          * @param longDistance Indicates whether the maximum distance is increased from 256 to 65536
          * @param data         Data of the effect
          * @throws IllegalArgumentException If the speed is lower than 0
-         * @see #ParticleEffect(Particles, float, float, float, float, int, boolean, ParticleData)
+         * @see #ParticlePacket(Particles, float, float, float, float, int, boolean, ParticleData)
          */
         public ParticlePacket(Particles effect, Vector direction, float speed, boolean longDistance, ParticleData data) throws IllegalArgumentException {
             this(effect, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, 0, longDistance, data);
@@ -1533,7 +1534,7 @@ public enum Particles {
          * @param effect       Particle effect
          * @param color        Color of the particle
          * @param longDistance Indicates whether the maximum distance is increased from 256 to 65536
-         * @see #ParticleEffect(Particles, float, float, float, float, int, boolean, ParticleData)
+         * @see #ParticlePacket(Particles, float, float, float, float, int, boolean, ParticleData)
          */
         public ParticlePacket(Particles effect, ParticleColor color, boolean longDistance) {
             this(effect, color.getValueX(), color.getValueY(), color.getValueZ(), 1, 0, longDistance, null);

@@ -64,7 +64,7 @@ public class BlockUtils {
         badXMaterials.add(XMaterial.DARK_OAK_WALL_SIGN);
         badXMaterials.add(XMaterial.JUNGLE_WALL_SIGN);
         badXMaterials.add(XMaterial.OAK_WALL_SIGN);
-        badXMaterials.add(XMaterial.DARK_OAK_WALL_SIGN);
+        badXMaterials.add(XMaterial.SPRUCE_WALL_SIGN);
         badXMaterials.add(XMaterial.WHEAT);
         badXMaterials.add(XMaterial.GRASS);
         badXMaterials.add(XMaterial.DEAD_BUSH);

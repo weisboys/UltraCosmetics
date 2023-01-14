@@ -59,8 +59,7 @@ public class TreasureChestManager implements Listener {
 
     private static String getRandomDesign() {
         Set<String> set = UltraCosmeticsData.get().getPlugin().getConfig().getConfigurationSection("TreasureChests.Designs").getKeys(false);
-        List<String> list = new ArrayList<>();
-        list.addAll(set);
+        List<String> list = new ArrayList<>(set);
         return list.get(random.nextInt(set.size()));
     }
 

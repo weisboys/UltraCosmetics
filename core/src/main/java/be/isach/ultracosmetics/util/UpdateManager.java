@@ -143,8 +143,8 @@ public class UpdateManager extends BukkitRunnable {
 
     /**
      * Downloads the file
-     *
-     * Borrowed from https://github.com/Stipess1/AutoUpdater/blob/master/src/main/java/com/stipess1/updater/Updater.java
+     * <p>
+     * Borrowed f<a href="rom">https://github.com/Stipess1/AutoUpdater/blob/master/src/main/java/com/stipess1/updater/Updater.</a>java
      */
     private boolean download() {
         BufferedInputStream in = null;

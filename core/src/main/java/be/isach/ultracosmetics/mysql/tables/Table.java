@@ -33,7 +33,7 @@ public abstract class Table {
         for (TableInfo info : tableInfo) {
             infoJoiner.add(info.toSQL());
         }
-        return "CREATE TABLE IF NOT EXISTS `" + name + "` " + infoJoiner.toString() + " ROW_FORMAT=DYNAMIC";
+        return "CREATE TABLE IF NOT EXISTS `" + name + "` " + infoJoiner + " ROW_FORMAT=DYNAMIC";
     }
 
     public void loadBaseData() {
@@ -107,7 +107,7 @@ public abstract class Table {
     }
 
     /**
-     * https://stackoverflow.com/a/140861
+     * <a href="https://stackoverflow.com/a/140861">...</a>
      *
      * @param s Hex to convert to bytes
      * @return byte array

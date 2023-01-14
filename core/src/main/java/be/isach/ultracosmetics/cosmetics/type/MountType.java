@@ -34,6 +34,7 @@ import org.bukkit.entity.Player;
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -106,14 +107,14 @@ public class MountType extends CosmeticEntType<Mount> {
         }
         if (doesPlaceBlocks()) {
             // Don't use Stream#toList(), it doesn't exist in Java 8
-            config.addDefault(path + ".Blocks-To-Place", getDefaultBlocks().stream().map(m -> m.name()).collect(Collectors.toList()), "Blocks to choose from as this mount walks.");
+            config.addDefault(path + ".Blocks-To-Place", getDefaultBlocks().stream().map(Enum::name).collect(Collectors.toList()), "Blocks to choose from as this mount walks.");
         }
     }
 
     public static void register(ServerVersion version) {
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
         new MountType("DruggedHorse", XMaterial.SUGAR, EntityType.HORSE, 2, 1.1, MountDruggedHorse.class);
-        new MountType("GlacialSteed", XMaterial.PACKED_ICE, EntityType.HORSE, 2, 0.4, MountGlacialSteed.class, Arrays.asList(XMaterial.SNOW_BLOCK));
+        new MountType("GlacialSteed", XMaterial.PACKED_ICE, EntityType.HORSE, 2, 0.4, MountGlacialSteed.class, Collections.singletonList(XMaterial.SNOW_BLOCK));
         new MountType("MountOfFire", XMaterial.BLAZE_POWDER, EntityType.HORSE, 2, 0.4, MountOfFire.class, Arrays.asList(XMaterial.ORANGE_TERRACOTTA, XMaterial.YELLOW_TERRACOTTA, XMaterial.RED_TERRACOTTA));
         new MountType("Snake", XMaterial.WHEAT_SEEDS, EntityType.SHEEP, 2, 0.3, MountSnake.class);
         new MountType("HypeCart", XMaterial.MINECART, EntityType.MINECART, 1, 0, MountHypeCart.class);

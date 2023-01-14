@@ -23,6 +23,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -107,9 +108,7 @@ public class MenuMain extends Menu {
                 }
                 List<String> loreList = new ArrayList<>();
                 loreList.add("");
-                for (String line : lore.split("\n")) {
-                    loreList.add(line);
-                }
+                loreList.addAll(Arrays.asList(lore.split("\n")));
                 ItemMeta meta = stack.getItemMeta();
                 meta.setLore(loreList);
                 stack.setItemMeta(meta);

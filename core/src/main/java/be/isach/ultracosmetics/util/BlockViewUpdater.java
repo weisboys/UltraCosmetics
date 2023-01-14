@@ -11,7 +11,7 @@ import be.isach.ultracosmetics.version.VersionManager;
 
 public class BlockViewUpdater extends BukkitRunnable {
     private static final Set<Block> blocksUpdating = ConcurrentHashMap.newKeySet();
-    private Set<Block> blocks;
+    private final Set<Block> blocks;
     public BlockViewUpdater(Set<Block> blocks) {
         this.blocks = blocks;
         addForProcessing(blocks);

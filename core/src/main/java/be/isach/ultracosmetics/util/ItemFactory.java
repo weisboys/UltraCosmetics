@@ -129,7 +129,7 @@ public class ItemFactory {
         List<XMaterial> mats = new ArrayList<>();
         CustomConfiguration cc = UltraCosmeticsData.get().getPlugin().getConfig();
         for (String matString : cc.getStringList(path)) {
-            XMaterial.matchXMaterial(matString).ifPresent(m -> mats.add(m));
+            XMaterial.matchXMaterial(matString).ifPresent(mats::add);
         }
         return mats;
     }

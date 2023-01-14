@@ -14,10 +14,10 @@ import org.bukkit.entity.Player;
 
 public class AmmoLoot implements Loot {
     private final WeightedSet<CosmeticType<?>> types = new WeightedSet<>();
-    private final PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
 
     public AmmoLoot(Player player) {
         for (CosmeticType<?> type : CosmeticType.enabledOf(Category.GADGETS)) {
+            PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
             if (type.isEnabled() && ((GadgetType) type).requiresAmmo() && type.canBeFound() && pm.hasPermission(player, type)) {
                 types.add(type, type.getChestWeight());
             }
