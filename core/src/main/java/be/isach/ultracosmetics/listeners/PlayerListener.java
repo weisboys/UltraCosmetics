@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 
@@ -46,15 +47,17 @@ import java.util.Arrays;
 public class PlayerListener implements Listener {
 
     private final UltraCosmetics ultraCosmetics;
+    private final UltraPlayerManager pm;
 
     public PlayerListener(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
+        this.pm = ultraCosmetics.getPlayerManager();
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(final PlayerJoinEvent event) {
         // Load UltraPlayer whether we use it or not so it's ready
-        UltraPlayer up = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+        UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
         if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             if (up != null) {
                 up.giveMenuItem();
@@ -72,8 +75,13 @@ public class PlayerListener implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onWorldChange(final PlayerChangedWorldEvent event) {
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
+            UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
             if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
-                ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer()).giveMenuItem();
+                up.giveMenuItem();
+            }
+            // If the player joined an allowed world from a non-allowed world, re-equip their cosmetics.
+            if (!SettingsManager.isAllowedWorld(event.getFrom())) {
+                up.getProfile().equip();
             }
         }
     }
@@ -81,7 +89,7 @@ public class PlayerListener implements Listener {
     // run this as early as possible for compatibility with MV-inventories
     @EventHandler(priority = EventPriority.LOWEST)
     public void onWorldChangeEarly(final PlayerChangedWorldEvent event) {
-        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             // Disable cosmetics when joining a bad world.
             ultraPlayer.removeMenuItem();
@@ -108,7 +116,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onInteract(final PlayerInteractEvent event) {
-        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         // apparently can happen if a player disconnected while on a pressure plate
         if (ultraPlayer == null) return;
         // Avoid triggering this when clicking in the inventory
@@ -142,7 +150,7 @@ public class PlayerListener implements Listener {
             player.updateInventory();
             if (isMenuItem && SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
                 // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player)), 1);
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
             }
         }
     }
@@ -159,7 +167,7 @@ public class PlayerListener implements Listener {
             event.setCancelled(true);
             player.closeInventory(); // Close the inventory because clicking again results in the event being handled client side
             if (SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(ultraCosmetics.getPlayerManager().getUltraPlayer(player)), 1);
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
             }
         }
     }
@@ -191,32 +199,33 @@ public class PlayerListener implements Listener {
             ItemStack stack = ItemFactory.getItemStackFromConfig("Menu-Item.Type");
             event.getPlayer().getInventory().setItem(slot, ItemFactory.rename(stack, name));
         }
+        pm.getUltraPlayer(event.getPlayer()).getProfile().equip();
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onQuit(PlayerQuitEvent event) {
-        if (ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer()).getCurrentTreasureChest() != null) {
-            ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer()).getCurrentTreasureChest().forceOpen(0);
+        UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
+        if (up.getCurrentTreasureChest() != null) {
+            up.getCurrentTreasureChest().forceOpen(0);
         }
-        UltraPlayer up = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
         up.setQuitting(true);
         up.saveCosmeticsProfile();
         up.clear();
         up.removeMenuItem();
         // workaround plugins calling events after player quit
-        Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getPlayerManager().remove(event.getPlayer()), 1);
+        Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> pm.remove(event.getPlayer()), 1);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onDeath(PlayerDeathEvent event) {
-        // Ignore NPC deaths as per #467
+        // Ignore NPC deaths as per iSach#467
         if (Bukkit.getPlayer(event.getEntity().getUniqueId()) == null) return;
         int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
         if (isMenuItem(event.getEntity().getInventory().getItem(slot))) {
             event.getDrops().remove(event.getEntity().getInventory().getItem(slot));
             event.getEntity().getInventory().setItem(slot, null);
         }
-        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getEntity());
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getEntity());
         if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(event.getEntity().getInventory().getItem((Integer) SettingsManager.getConfig().get("Gadget-Slot")));
         if (ultraPlayer.getCurrentHat() != null) event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
         Arrays.asList(ArmorSlot.values()).forEach(armorSlot -> {
@@ -226,11 +235,13 @@ public class PlayerListener implements Listener {
         });
         if (ultraPlayer.getCurrentEmote() != null) event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
 
+        ultraPlayer.setQuitting(true);
         for (Category cat : Category.values()) {
             if (cat.isClearOnDeath()) {
                 ultraPlayer.removeCosmetic(cat);
             }
         }
+        ultraPlayer.setQuitting(false);
 
     }
 
@@ -268,7 +279,7 @@ public class PlayerListener implements Listener {
         if (event.getPlayer().hasPermission("ultracosmetics.bypass.disabledcommands")) return;
         String strippedCommand = event.getMessage().split(" ")[0].replace("/", "").toLowerCase();
         if (!SettingsManager.getConfig().getList("Disabled-Commands").contains(strippedCommand)) return;
-        UltraPlayer player = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
+        UltraPlayer player = pm.getUltraPlayer(event.getPlayer());
         if (player.hasCosmeticsEquipped()) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(MessageManager.getMessage("Disabled-Command-Message"));

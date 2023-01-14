@@ -581,10 +581,21 @@ public class UltraPlayer {
         return Bukkit.getServer().getPlayer(uuid) != null;
     }
 
+    /**
+     * Marks whether the player is doing something (like leaving the server)
+     * where cosmetics need to be removed but should still be stored in
+     * their profile (equipped cosmetics list.)
+     *
+     * @return true if equipped cosmetics should be retained
+     */
     public boolean isQuitting() {
         return quitting;
     }
 
+    /**
+     * @see #isQuitting()
+     * @param quitting Whether equipped cosmetics should be retained
+     */
     public void setQuitting(boolean quitting) {
         this.quitting = quitting;
     }
