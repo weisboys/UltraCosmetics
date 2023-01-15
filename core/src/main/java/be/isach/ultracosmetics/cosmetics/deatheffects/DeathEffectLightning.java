@@ -7,12 +7,13 @@ import org.bukkit.entity.Player;
 
 public class DeathEffectLightning extends DeathEffect {
 
+    private final boolean silent = SettingsManager.getConfig().getString(getOptionPath("Silent"));
     public DeathEffectLightning(UltraPlayer owner, DeathEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
 
     @Override
     public void displayParticles(Player player) {
-        player.getWorld().strikeLightningEffect(player.getLocation());
+        player.getWorld().spigot().strikeLightningEffect(player.getLocation(), silent);
     }
 }
