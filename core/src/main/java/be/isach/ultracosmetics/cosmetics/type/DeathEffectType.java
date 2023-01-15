@@ -20,12 +20,6 @@ public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
     public static void register() {
         new DeathEffectType("Explosion", Particles.EXPLOSION_HUGE, XMaterial.TNT, DeathEffectExplosion.class, false);
         new DeathEffectType("Firework", Particles.FIREWORKS_SPARK, XMaterial.FIREWORK_ROCKET, DeathEffectFirework.class, false);
-        new DeathEffectType("Lightning", Particles.CRIT, XMaterial.DAYLIGHT_DETECTOR, DeathEffectLightning.class, false) {
-            @Override
-            public void setupConfig(CustomConfiguration config, String path) {
-                super.setupConfig(config, path);
-                config.addDefault(path + ".Silent", false, "Should the lightning strike be silent?");
-            }
-        };
+        new DeathEffectType("Lightning", Particles.CRIT, XMaterial.DAYLIGHT_DETECTOR, DeathEffectLightning.class, false);
     }
 }
