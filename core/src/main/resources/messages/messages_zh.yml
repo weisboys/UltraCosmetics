@@ -612,7 +612,7 @@ Pets:
   Axolotl:
     menu-name: '&5&l美西螈'
     entity-displayname: '&l%playername%的美西螈'
-    Description: '&7&oSooo cute!'
+    Description: '&7&o好可爱！'
   Piglin:
     menu-name: '&6&l黄金商人'
     entity-displayname: '&l%playername%的黄金商人'
@@ -644,7 +644,7 @@ Pets:
   Creeper:
     menu-name: '&a&l苦力怕'
     entity-displayname: '&l%playername%的苦力怕'
-    Description: '&7&oLikes blowing up your favorite stuff...'
+    Description: '&7&o喜欢炸掉你最爱的东西...'
   Enderman:
     menu-name: '&5&l末影人'
     entity-displayname: '&l%playername%的末影人'
@@ -660,7 +660,7 @@ Pets:
   Frog:
     menu-name: '&2&l青蛙'
     entity-displayname: '&l%playername%的青蛙'
-    Description: '&7&oDoesn''t like fireflies!'
+    Description: '&7&o不喜欢萤火虫'
   Warden:
     menu-name: '&3&l坚守者'
     entity-displayname: '&l%playername%的坚守者'
@@ -668,7 +668,7 @@ Pets:
   Allay:
     menu-name: '&a&l轻灵'
     entity-displayname: '&l%playername%的轻灵'
-    Description: '&7&oA new friend!'
+    Description: '&7&o一个新的朋友！'
   Cod:
     menu-name: '&7&l鳕鱼'
     entity-displayname: '&l%playername%的鳕鱼'
@@ -676,7 +676,7 @@ Pets:
   Donkey:
     menu-name: '&7&l驴'
     entity-displayname: '&l%playername%的驴'
-    Description: '&7&oCan carry all your stuff!'
+    Description: '&7&o可以帮你带着所有物品！'
   GlowSquid:
     menu-name: '&3&l发光鱿鱼'
     entity-displayname: '&l%playername%的发光鱿鱼'
@@ -708,11 +708,11 @@ Pets:
   Strider:
     menu-name: '&c&l炽足兽'
     entity-displayname: '&l%playername%的炽足兽'
-    Description: '&7&oWalks over lava!'
+    Description: '&7&o岩浆行者！'
   Tadpole:
     menu-name: '&8&l蝌蚪'
     entity-displayname: '&l%playername%的蝌蚪'
-    Description: '&7&oWill grow into a frog!'
+    Description: '&7&o它会长成大青蛙的！'
   TropicalFish:
     menu-name: '&e&l热带鱼'
     entity-displayname: '&l%playername%的热带鱼'
@@ -728,7 +728,7 @@ Pets:
   CaveSpider:
     menu-name: '&2&l洞穴蜘蛛'
     entity-displayname: '&l%playername%的洞穴蜘蛛'
-    Description: '&7&oA spider, but poisonous!'
+    Description: '&7&o蜘蛛，但是带毒！'
   Dolphin:
     menu-name: '&b&l海豚'
     entity-displayname: '&l%playername%的海豚'
