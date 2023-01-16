@@ -614,7 +614,7 @@ Pets:
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&l%playername%''s Axolotl'
-    Description: '&7&oSooo niedlich!'
+    Description: '&7&oSooo cute!'
   Piglin:
     menu-name: '&6&lGoldhändler'
     entity-displayname: '&l%playername%''s Goldhändler'
@@ -646,7 +646,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&l%playername%''s Creeper'
-    Description: '&7&oMag es, Sachen in die Luft zu sprengen...'
+    Description: '&7&oLikes blowing up your favorite stuff...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&l%playername%''s Enderman'
@@ -662,7 +662,7 @@ Pets:
   Frog:
     menu-name: '&2&lFrosch'
     entity-displayname: '&l%playername%''s Frosch'
-    Description: '&7&oMag keine Glühwürmchen!'
+    Description: '&7&oDoesn''t like fireflies!'
   Warden:
     menu-name: '&3&lWärter'
     entity-displayname: '&l%playername%''s Wärter'
@@ -670,7 +670,7 @@ Pets:
   Allay:
     menu-name: '&a&lHilfsgeist'
     entity-displayname: '&l%playername%''s Hilfsgeist'
-    Description: '&7&oEin neuer Freund!'
+    Description: '&7&oA new friend!'
   Cod:
     menu-name: '&7&lKabeljau'
     entity-displayname: '&l%playername%''s Kabeljau'
@@ -678,7 +678,7 @@ Pets:
   Donkey:
     menu-name: '&7&lEsel'
     entity-displayname: '&l%playername%''s Esel'
-    Description: '&7&oKann alle deine Sachen tragen!'
+    Description: '&7&oCan carry all your stuff!'
   GlowSquid:
     menu-name: '&3&lLeuchttintenfisch'
     entity-displayname: '&l%playername%''s Leuchttintenfisch'
@@ -710,11 +710,11 @@ Pets:
   Strider:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
-    Description: '&7&oLäuft über Lava!'
+    Description: '&7&oWalks over lava!'
   Tadpole:
     menu-name: '&8&lKaulquappe'
     entity-displayname: '&l%playername%''s Kaulquappe'
-    Description: '&7&oWird zu einem Frosch werden!'
+    Description: '&7&oWill grow into a frog!'
   TropicalFish:
     menu-name: '&e&lTropenfisch'
     entity-displayname: '&l%playername%''s Tropenfisch'
@@ -730,7 +730,7 @@ Pets:
   CaveSpider:
     menu-name: '&2&lHöhlenspinne'
     entity-displayname: '&l%playername%''s Höhlenspinne'
-    Description: '&7&oEine Spinne, aber giftig!'
+    Description: '&7&oA spider, but poisonous!'
   Dolphin:
     menu-name: '&b&lDelfin'
     entity-displayname: '&l%playername%''s Delfin'
@@ -738,7 +738,7 @@ Pets:
   Spider:
     menu-name: '&8&lSpinne'
     entity-displayname: '&l%playername%''s Spinne'
-    Description: '&7&oDeine freundliche Nachbarschaftsspinne!'
+    Description: '&7&oYour friendly neighborhood spider!'
   ZombifiedPiglin:
     menu-name: '&d&lZombifizierter Piglin'
     entity-displayname: '&l%playername%''s Zombifizierter Piglin'
@@ -746,11 +746,11 @@ Pets:
   Drowned:
     menu-name: '&3&lErtrunkener'
     entity-displayname: '&l%playername%''s Ertrunkener'
-    Description: '&7&oEin Unterwasser-Zombie!'
+    Description: '&7&oAn underwater zombie!'
   ElderGuardian:
     menu-name: '&3&lGroßer Wächter'
     entity-displayname: '&l%playername%''s Großer Wächter'
-    Description: '&7&oBewacht antike Tempel!'
+    Description: '&7&oGuards ancient temples!'
   Endermite:
     menu-name: '&5&lEndermite'
     entity-displayname: '&l%playername%''s Endermite'
@@ -766,7 +766,7 @@ Pets:
   Guardian:
     menu-name: '&3&lWächter'
     entity-displayname: '&l%playername%''s Wächter'
-    Description: '&7&oHasst Tintenfische!'
+    Description: '&7&oHates squids!'
   Hoglin:
     menu-name: '&c&lHoglin'
     entity-displayname: '&l%playername%''s Hoglin'
@@ -774,7 +774,7 @@ Pets:
   Husk:
     menu-name: '&e&lWüstenzombie'
     entity-displayname: '&l%playername%''s Wüstenzombie'
-    Description: '&7&oEin Zombie, aber sandig.'
+    Description: '&7&oA zombie, but sandy.'
   MagmaCube:
     menu-name: '&4&lMagmawürfel'
     entity-displayname: '&l%playername%''s Magmawürfel'
@@ -790,11 +790,11 @@ Pets:
   Pillager:
     menu-name: '&7&lPlünderer'
     entity-displayname: '&l%playername%''s Plünderer'
-    Description: '&7&oPlündert gerne Dörfer!'
+    Description: '&7&oLikes to pillage villages!'
   Ravager:
     menu-name: '&8&lVerwüster'
     entity-displayname: '&l%playername%''s Verwüster'
-    Description: '&7&oLieblingsbegleiter des Plünderers!'
+    Description: '&7&oA Pillager''s favorite companion!'
   Shulker:
     menu-name: '&5&lShulker'
     entity-displayname: '&l%playername%''s Shulker'
@@ -802,7 +802,7 @@ Pets:
   Stray:
     menu-name: '&8&lEiswanderer'
     entity-displayname: '&l%playername%''s Eiswanderer'
-    Description: '&7&oEin eiskaltes Skelett!'
+    Description: '&7&oA freezing cold skeleton!'
   Vindicator:
     menu-name: '&7&lDiener'
     entity-displayname: '&l%playername%''s Diener'
@@ -810,7 +810,7 @@ Pets:
   Witch:
     menu-name: '&5&lHexe'
     entity-displayname: '&l%playername%''s Hexe'
-    Description: '&7&oLiebt schwarze Katzen!'
+    Description: '&7&oLoves black cats!'
   WitherSkeleton:
     menu-name: '&8&lWitherskelett'
     entity-displayname: '&l%playername%''s Witherskelett'
@@ -826,7 +826,7 @@ Pets:
   ZombieHorse:
     menu-name: '&2&lZombiepferd'
     entity-displayname: '&l%playername%''s Zombiepferd'
-    Description: '&7&oDas seltenste Pferd in Minecraft!'
+    Description: '&7&oThe rarest horse in Minecraft!'
   Illusioner:
     menu-name: '&1&lIllusionist'
     entity-displayname: '&l%playername%''s Illusionist'
@@ -917,11 +917,11 @@ Morphs:
   Allay:
     name: '&a&lHilfsgeist'
     skill: '&eDoppelsprung&7: &afliegen'
-    Description: '&7&oEin neuer Freund!'
+    Description: '&7&oA new friend!'
   Axolotl:
     name: '&5&lAxolotl'
     skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo niedlich!'
+    Description: '&7&oSooo cute!'
   Bee:
     name: '&e&lBiene'
     skill: '&eDoppelsprung&7: &afliegen'
@@ -929,11 +929,11 @@ Morphs:
   Cat:
     name: '&e&lKatze'
     skill: '&eLinksklick&7: &aMiau'
-    Description: '&7&oIm Grunde ein winziger Tiger'
+    Description: '&7&oBasically a tiny tiger'
   CaveSpider:
-    name: '&e&lHöhlenspinne'
+    name: '&e&lCave Spider'
     skill: '&eLinksklick&7: &aTODO'
-    Description: '&7&oEine Spinne, aber giftig!'
+    Description: '&7&oA spider, but poisonous!'
   Cod:
     name: '&e&lKabeljau'
     skill: '&eLinksklick&7: &aTODO'
@@ -945,11 +945,11 @@ Morphs:
   Donkey:
     name: '&7&lEsel'
     skill: '&eLinksklick&7: &aTODO'
-    Description: '&7&oKann alle deine Sachen tragen!'
+    Description: '&7&oCan carry all your stuff!'
   Drowned:
     name: '&3&lErtrunkener'
     skill: '&eLinksklick&7: &aTODO'
-    Description: '&7&oEin Unterwasser-Zombie!'
+    Description: '&7&oAn underwater zombie!'
   Endermite:
     name: '&5&lEndermite'
     skill: '&eLinksklick&7: &aTODO'
@@ -961,7 +961,7 @@ Morphs:
   Frog:
     name: '&2&lFrosch'
     skill: '&eLinksklick&7: &aTODO'
-    Description: '&7&oMag keine Glühwürmchen!'
+    Description: '&7&oDoesn''t like fireflies!'
   Fox:
     name: '&d&lFuchs'
     skill: '&eLinksklick&7: &aTODO'
@@ -977,7 +977,7 @@ Morphs:
   Guardian:
     name: '&3&lWächter'
     skill: '&eLinksklick&7: &aTODO'
-    Description: '&7&oHasst Tintenfische!'
+    Description: '&7&oHates squids!'
   Wolf:
     name: '&7&lWolf'
     Description: '&7&oWuff!'
@@ -1013,10 +1013,10 @@ Morphs:
     Description: '&7&oSei leise...'
   Tadpole:
     name: '&8&lKaulquappe'
-    Description: '&7&oWird zu einem Frosch werden!'
+    Description: '&7&oWill grow into a frog!'
   Piglin:
     name: '&6&lPiglin'
-    Description: '&7&oHandelt mit Gold!'
+    Description: '&7&oDeals with gold!'
   Strider:
     name: '&c&lSchreiter'
     Description: '&7&oIch hasse Wasser!'
@@ -1034,7 +1034,7 @@ Morphs:
     Description: '&7&oGreife es an und alle werden hinter dir her sein!'
   Panda:
     name: '&a&lPanda'
-    Description: '&7&oMag Bambus!'
+    Description: '&7&oLikes bamboo!'
   Ocelot:
     name: '&e&lOzelot'
     Description: '&7&oKönig des Dschungels'
@@ -1043,10 +1043,10 @@ Morphs:
     Description: '&7&oWandert umher und versucht, seine Sachen zu verkaufen!'
   Pillager:
     name: '&7&lPlünderer'
-    Description: '&7&oPlündert gerne Dörfer!'
+    Description: '&7&oLikes to pillage villages!'
   Ravager:
     name: '&8&lVerwüster'
-    Description: '&7&oLieblingsbegleiter des Plünderers!'
+    Description: '&7&oA Pillager''s favorite companion!'
   Pufferfish:
     name: '&e&lKugelfisch'
     Description: '&7&oMag es nicht, berührt zu werden!'
@@ -1079,7 +1079,7 @@ Morphs:
     Description: '&7&oPass auf Blitzeinschläge auf!'
   ZombieHorse:
     name: '&2&lZombiepferd'
-    Description: '&7&oDas seltenste Pferd in Minecraft!'
+    Description: '&7&oThe rarest horse in Minecraft!'
   Shulker:
     name: '&5&lShulker'
     Description: '&7&oVersteckt sich gerne!'
@@ -1661,8 +1661,8 @@ Emotes:
     Name: '&b&lLovestruck Allay'
     Description: '&7&oAre we falling in love?'
 Projectile-Effects:
-  Equip: '%prefix% &9You equipped %projectile-effectname%'
-  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Equip: '%prefix% &9Du hast %projectile-effectname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %projectile-effectname% &9entfernt'
   Rainbow:
     name: '&4&lR&6&le&e&lg&a&le&b&ln&9&lb&5&lo&4&lg&6&le&e&ln'
     Description: '&7&oRegenbogenfarbige Partikel'
@@ -1763,8 +1763,8 @@ Projectile-Effects:
     name: '&b&lSculk-Seele'
     Description: '&7&oTürkise Seelen'
 Death-Effects:
-  Equip: '%prefix% &9You equipped %death-effectname%'
-  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Equip: '%prefix% &9Du hast %death-effectname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %death-effectname% &9entfernt'
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBUMM!'
@@ -1773,6 +1773,9 @@ Death-Effects:
     Description: |-
       &7&oGlückwunsch!
       &7&oDu bist... gestorben?
+  Lightning:
+    name: '&f&lLightning'
+    Description: '&7&o⚡ ZAP!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
@@ -1784,7 +1787,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region d
 Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
 Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
 Too-Long: Zu lang, versuche es erneut
-Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
+Cannot-Disable-Gadgets: '%prefix% &c&lDu kannst Gadgets nicht deaktivieren.'
 Must-Remove:
   Hats: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Hut auszurüsten!'
   Suits:
@@ -1793,5 +1796,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
     BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
   Emotes: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
-  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lDu musst Slot %slot% in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!'
+  Mounts: '%prefix% &c&lDu musst Slot %slot% in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!'
