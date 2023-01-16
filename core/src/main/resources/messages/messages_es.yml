@@ -611,7 +611,7 @@ Pets:
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&lAxolotl de %playername%'
-    Description: '&7&oSooo cute!'
+    Description: '&7&oMuy Lindo!'
   Piglin:
     menu-name: '&6&lDealer de Oro'
     entity-displayname: '&lDealer de Oro de %playername%'
@@ -643,7 +643,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&lCreeper de %playername%'
-    Description: '&7&oLikes blowing up your favorite stuff...'
+    Description: '&7&oLe encanta explotar tus cosas favoritas...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&lEnderman de %playername%'
@@ -659,7 +659,7 @@ Pets:
   Frog:
     menu-name: '&2&lRana'
     entity-displayname: '&lRana de %playername%'
-    Description: '&7&oDoesn''t like fireflies!'
+    Description: '&7&oNo le gusta las luciernagas!'
   Warden:
     menu-name: '&3&lWarden'
     entity-displayname: '&lWarden de %playername%'
@@ -667,7 +667,7 @@ Pets:
   Allay:
     menu-name: '&a&lAllay'
     entity-displayname: '&lAllay de %playername%'
-    Description: '&7&oA new friend!'
+    Description: '&7&oUn nuevo amigo!'
   Cod:
     menu-name: '&7&lBacalao'
     entity-displayname: '&lBacalao de %playername%'
@@ -675,7 +675,7 @@ Pets:
   Donkey:
     menu-name: '&7&lBurro'
     entity-displayname: '&lDoggy de %playername%'
-    Description: '&7&oCan carry all your stuff!'
+    Description: '&7&o¡Puedes llevar todas tus cosas!'
   GlowSquid:
     menu-name: '&3&lCalamar Brillante'
     entity-displayname: '&lCalamar Brillante de %playername%'
@@ -707,11 +707,11 @@ Pets:
   Strider:
     menu-name: '&c&lCaminante'
     entity-displayname: '&lCaminante de lava de %playername%'
-    Description: '&7&oWalks over lava!'
+    Description: '&7&oCaminar sobre Lava!'
   Tadpole:
     menu-name: '&8&lRenacuajo'
     entity-displayname: '&lRenacuajo de %playername%'
-    Description: '&7&oWill grow into a frog!'
+    Description: '&7&o¡Crecerá en una Rana!'
   TropicalFish:
     menu-name: '&e&Pez Tropical'
     entity-displayname: '&lPez Tropical de %playername%'
@@ -727,7 +727,7 @@ Pets:
   CaveSpider:
     menu-name: '&2&lAraña de Cueva'
     entity-displayname: '&lAraña de Cueva de %playername%'
-    Description: '&7&oA spider, but poisonous!'
+    Description: '&7&oA Araña, pero venenosa!'
   Dolphin:
     menu-name: '&b&lDelfin'
     entity-displayname: '&lDelfin de %playername%'
@@ -735,7 +735,7 @@ Pets:
   Spider:
     menu-name: '&8&lAraña'
     entity-displayname: '&lAraña de %playername%'
-    Description: '&7&oYour friendly neighborhood spider!'
+    Description: '&7&oTu amiga y vecina araña!'
   ZombifiedPiglin:
     menu-name: '&d&lPiglin Zombificado'
     entity-displayname: '&lPiglin Zombificado de %playername%'
@@ -743,11 +743,11 @@ Pets:
   Drowned:
     menu-name: '&3&lAhogado'
     entity-displayname: '&lAhogado de %playername%'
-    Description: '&7&oAn underwater zombie!'
+    Description: '&7&oUn Zombie subacuatico!'
   ElderGuardian:
     menu-name: '&3&lGuardián Mayor'
     entity-displayname: '&lElder Guardian de %playername%'
-    Description: '&7&oGuards ancient temples!'
+    Description: '&7&oGuardianes de templos antiguos!'
   Endermite:
     menu-name: '&5&lEndermite'
     entity-displayname: '&lEndermita de %playername%'
@@ -763,7 +763,7 @@ Pets:
   Guardian:
     menu-name: '&3&lGuardián'
     entity-displayname: '&lGuardián de %playername%'
-    Description: '&7&oHates squids!'
+    Description: '&7&oOdia a los Calamares!'
   Hoglin:
     menu-name: '&c&lHoglin'
     entity-displayname: '&lHoglin de %playername%'
@@ -771,7 +771,7 @@ Pets:
   Husk:
     menu-name: '&e&lHusk'
     entity-displayname: '&lHusk de %playername%'
-    Description: '&7&oA zombie, but sandy.'
+    Description: '&7&oUn Zombie, pero de la arena.'
   MagmaCube:
     menu-name: '&4&lCubo de Magma'
     entity-displayname: '&lCubo de Magma de %playername%'
@@ -787,11 +787,11 @@ Pets:
   Pillager:
     menu-name: '&7&lPillager'
     entity-displayname: '&lPillager de %playername%'
-    Description: '&7&oLikes to pillage villages!'
+    Description: '&7&oLe encanta saquear Aldeas!'
   Ravager:
     menu-name: '&8&lRavager'
     entity-displayname: '&lRavager de %playername%'
-    Description: '&7&oA Pillager''s favorite companion!'
+    Description: '&7&oEl acompañante favorito de los Pillagers!'
   Shulker:
     menu-name: '&5&lShulker'
     entity-displayname: '&lShulker de %playername%'
@@ -799,7 +799,7 @@ Pets:
   Stray:
     menu-name: '&8&lStray'
     entity-displayname: '&lStray de %playername%'
-    Description: '&7&oA freezing cold skeleton!'
+    Description: '&7&oUn esqueleto congeladamente frio!'
   Vindicator:
     menu-name: '&7&lVindicador'
     entity-displayname: '&lVindicador de %playername%'
@@ -807,7 +807,7 @@ Pets:
   Witch:
     menu-name: '&5&lBruja'
     entity-displayname: '&lBruja de %playername%'
-    Description: '&7&oLoves black cats!'
+    Description: '&7&oAma los gatos negros!'
   WitherSkeleton:
     menu-name: '&8&lEsqueleto Wither'
     entity-displayname: '&lEsqueleto Wither de %playername%'
@@ -823,7 +823,7 @@ Pets:
   ZombieHorse:
     menu-name: '&2&lCaballo Zombie'
     entity-displayname: '&lCaballo Zombie de %playername%'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    Description: '&7&o¡El caballo más raro de Minecraft!'
   Illusioner:
     menu-name: '&1&lIllusioner'
     entity-displayname: '&lIllusioner de %playername%'
