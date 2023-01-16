@@ -643,7 +643,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&lCreeper de %playername%'
-    Description: '&7&oLe encanta explotar tus cosas favoritas!'
+    Description: '&7&oLe encanta explotar tus cosas favoritas...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&lEnderman de %playername%'
@@ -1770,6 +1770,9 @@ Death-Effects:
     Description: |-
       &7&oCongratulations!
       &7&oYou... died?
+  Lightning:
+    name: '&f&lLightning'
+    Description: '&7&o⚡ ZAP!'
 Enabled-SelfMorphView: '%prefix% &9Activaste vista propia de las transformaciones!'
 Disabled-SelfMorphView: '%prefix% &9Desactivaste vista propia de las transformaciones!'
 Enabled-Gadgets: '%prefix% &9Activaste los gadgets!'

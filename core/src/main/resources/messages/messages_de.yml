@@ -1661,8 +1661,8 @@ Emotes:
     Name: '&b&lLovestruck Allay'
     Description: '&7&oAre we falling in love?'
 Projectile-Effects:
-  Equip: '%prefix% &9You equipped %projectile-effectname%'
-  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Equip: '%prefix% &9Du hast %projectile-effectname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %projectile-effectname% &9entfernt'
   Rainbow:
     name: '&4&lR&6&le&e&lg&a&le&b&ln&9&lb&5&lo&4&lg&6&le&e&ln'
     Description: '&7&oRegenbogenfarbige Partikel'
@@ -1763,8 +1763,8 @@ Projectile-Effects:
     name: '&b&lSculk-Seele'
     Description: '&7&oTürkise Seelen'
 Death-Effects:
-  Equip: '%prefix% &9You equipped %death-effectname%'
-  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Equip: '%prefix% &9Du hast %death-effectname% &9ausgerüstet'
+  Unequip: '%prefix% &9Du hast %death-effectname% &9entfernt'
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBUMM!'
@@ -1773,6 +1773,9 @@ Death-Effects:
     Description: |-
       &7&oGlückwunsch!
       &7&oDu bist... gestorben?
+  Lightning:
+    name: '&f&lLightning'
+    Description: '&7&o⚡ ZAP!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'
@@ -1784,7 +1787,7 @@ Region-Disabled-Category: '%prefix% &c&l%category% Items sind in dieser Region d
 Disabled-Command-Message: '%prefix% &c&lDu kannst diesen Befehl nicht benutzen, während du kosmetische Items ausgerüstet hast!'
 Not-Allowed-In-Vanish: '%prefix% &c&lDu kannst keine Items benutzen, während du verschwunden bist!'
 Too-Long: Zu lang, versuche es erneut
-Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
+Cannot-Disable-Gadgets: '%prefix% &c&lDu kannst Gadgets nicht deaktivieren.'
 Must-Remove:
   Hats: '%prefix% &c&lDu musst deinen Helm entfernen, um einen Hut auszurüsten!'
   Suits:
@@ -1793,5 +1796,5 @@ Must-Remove:
     LEGGINGS: '%prefix% &c&lDu musst deine Hose entfernen, um eine Anzug-Hose auszurüsten!'
     BOOTS: '%prefix% &c&lDu musst deine Stiefel entfernen, um Anzug-Stiefel auszurüsten!'
   Emotes: '%prefix% &c&lDu musst deinen Helm entfernen, um ein Emote auszurüsten!'
-  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
+  Gadgets: '%prefix% &c&lDu musst Slot %slot% in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!'
+  Mounts: '%prefix% &c&lDu musst Slot %slot% in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!'

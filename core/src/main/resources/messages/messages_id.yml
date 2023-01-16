@@ -1771,6 +1771,9 @@ Death-Effects:
     Description: |-
       &7&oCongratulations!
       &7&oYou... died?
+  Lightning:
+    name: '&f&lLightning'
+    Description: '&7&o⚡ ZAP!'
 Enabled-SelfMorphView: '%prefix% &9You enabled self view for morphs!'
 Disabled-SelfMorphView: '%prefix% &9You disabled self view for morphs!'
 Enabled-Gadgets: '%prefix% &9You enabled gadgets!'
