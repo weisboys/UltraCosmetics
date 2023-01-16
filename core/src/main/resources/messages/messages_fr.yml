@@ -612,7 +612,7 @@ Pets:
   Axolotl:
     menu-name: '&5&lAxolotl'
     entity-displayname: '&lAxolotl de %playername%'
-    Description: '&7&oSooo cute!'
+    Description: '&7&oSiii mignon !'
   Piglin:
     menu-name: '&6&lMarchand d''or'
     entity-displayname: '&lMarchand d''or de %playername%'
@@ -644,7 +644,7 @@ Pets:
   Creeper:
     menu-name: '&a&lCreeper'
     entity-displayname: '&lCreeper de %playername%'
-    Description: '&7&oLikes blowing up your favorite stuff...'
+    Description: '&7&oIl aime exploser ton stuff préféré...'
   Enderman:
     menu-name: '&5&lEnderman'
     entity-displayname: '&lEnderman de %playername%'
@@ -660,7 +660,7 @@ Pets:
   Frog:
     menu-name: '&2&lGrenouille'
     entity-displayname: '&lGrenouille de %playername%'
-    Description: '&7&oDoesn''t like fireflies!'
+    Description: '&7&oN''aime pas les lucioles !'
   Warden:
     menu-name: '&3&lWarden'
     entity-displayname: '&lCWarden de %playername%'
@@ -668,7 +668,7 @@ Pets:
   Allay:
     menu-name: '&a&lAllay'
     entity-displayname: '&lAllay de %playername%'
-    Description: '&7&oA new friend!'
+    Description: '&7&oUn nouvel ami !'
   Cod:
     menu-name: '&7&lMorue'
     entity-displayname: '&lMorue de %playername%'
@@ -676,7 +676,7 @@ Pets:
   Donkey:
     menu-name: '&7&lÂne'
     entity-displayname: '&lÂne de %playername%'
-    Description: '&7&oCan carry all your stuff!'
+    Description: '&7&oPeut transporter toutes vos affaires!'
   GlowSquid:
     menu-name: '&3&lCalamar Lumineux'
     entity-displayname: '&l Calamar Lumineux de %playername%'
@@ -708,11 +708,11 @@ Pets:
   Strider:
     menu-name: '&c&lArpenteur'
     entity-displayname: '&lArpenteur de %playername%'
-    Description: '&7&oWalks over lava!'
+    Description: '&7&oMarche sur la lave !'
   Tadpole:
     menu-name: '&8&lTadpole'
     entity-displayname: '&lTurtue de %playername%'
-    Description: '&7&oWill grow into a frog!'
+    Description: '&7&oSe transforme en grenouille !'
   TropicalFish:
     menu-name: '&e&Poissons tropicaux'
     entity-displayname: '&lPoisson Tropical de %playername%'
