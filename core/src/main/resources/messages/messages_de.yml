@@ -42,8 +42,8 @@ Clear:
   Hats: '&c&lAktuellen Hut entfernen'
   Suits: '&c&lAktuellen Anzug entfernen'
   Emotes: '&c&lAktuelles Emote entfernen'
-  Projectile-Effects: '&c&lClear current projectile effect'
-  Death-Effects: '&c&lClear current death effect'
+  Projectile-Effects: '&c&lAktuellen Projektileffekt entfernen'
+  Death-Effects: '&c&lAktuellen Todeseffekt entfernen'
 Menu:
   Purchase-Rename:
     Button:
@@ -115,16 +115,16 @@ Menu:
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lProjektileffekte'
     Button:
-      Name: '&5&lProjectile Effects'
+      Name: '&5&lProjektileffekte'
       Lore: '&7Freigeschaltet: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lTodeseffekte'
     Button:
-      Name: '&c&lDeath Effects'
+      Name: '&c&lTodeseffekte'
       Lore: '&7Freigeschaltet: &f%unlocked%'
       Tooltip-Equip: '&b&lAusrüsten:'
       Tooltip-Unequip: '&c&lEntfernen:'
@@ -146,22 +146,22 @@ Chest-Location:
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: |-
-    &9Ammo
+    &9Munition
     %ammo% %cosmetic%
   Money: |-
-    &eMoney
+    &eGeld
     &e&l$%money%
   Nothing: '&c&lNichts'
-  Pets: "&aPet\n%cosmetic%"
-  Mounts: "&6Mount\n%cosmetic%"
-  Particle-Effects: "&bParticle Effect\n%cosmetic%"
-  Morphs: "&2Morph\n%cosmetic%"
-  Hats: "&dHat\n%cosmetic%"
+  Pets: "&aHaustier\n%cosmetic%"
+  Mounts: "&6Reittier\n%cosmetic%"
+  Particle-Effects: "&bPartikeleffekt\n%cosmetic%"
+  Morphs: "&2Verwandlung\n%cosmetic%"
+  Hats: "&dHut\n%cosmetic%"
   Gadgets: "&9Gadget\n%cosmetic%"
-  Suits: "&3Suit\n%cosmetic%"
+  Suits: "&3Anzug\n%cosmetic%"
   Emotes: "&eEmote\n%cosmetic%"
-  Death-Effects: "&cDeath Effect\n%cosmetic%"
-  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
+  Death-Effects: "&cTodeseffekt\n%cosmetic%"
+  Projectile-Effects: "&5Projektileffekt\n%cosmetic%"
 Disable-Gadgets: '&c&lGadgets deaktivieren'
 Disable-Gadgets-Lore: '&cGadgets und dessen Effekte auf dich deaktivieren'
 Enable-Gadgets: '&a&lGadgets aktivieren'
@@ -449,7 +449,7 @@ Particle-Effects:
     name: '&f&lEngelsflügel'
     Description: '&7&oWerde ein Engel!'
   RainbowWings:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
+    name: '&4&lR&6&le&e&lg&a&le&b&ln&9&lb&5&lo&4&lg&6&le&e&ln&f&lflügel'
     Description: '&7&oWings, but full of color!'
   SuperHero:
     name: '&4&lSuperheld'
@@ -1734,34 +1734,34 @@ Projectile-Effects:
     Description: '&7&oKleine, lila Wolken'
   DragonBreath:
     name: '&d&lDrachenatem'
-    Description: '&7&oSmall, purple clouds'
+    Description: '&7&oKleine, lila Wolken'
   SquidInk:
-    name: '&9&lSquid Ink'
-    Description: '&7&oBlack clouds'
+    name: '&9&lTintenfischtinte'
+    Description: '&7&oSchwarze Wolken'
   SoulFireFlame:
-    name: '&b&lSoul Fire Flame'
-    Description: '&7&oSmall, cyan flames'
+    name: '&b&lSeelenfeuer-Flamme'
+    Description: '&7&oKleine, türkise Flammen'
   Snowflake:
-    name: '&f&lSnowflake'
-    Description: '&7&oSmall, white clouds'
+    name: '&f&lSchneeflocke'
+    Description: '&7&oKleine, weiße Wolken'
   GlowSquid:
-    name: '&3&lGlow Squid'
-    Description: '&7&oTeal stars'
+    name: '&3&lLeuchttintenfisch'
+    Description: '&7&oBlaugrüne Sterne'
   GlowSquidInk:
-    name: '&3&lGlow Squid Ink'
-    Description: '&7&oAquamarine clouds'
+    name: '&3&lLeuchttintenfischtinte'
+    Description: '&7&oAquamarine Wolken'
   Scrape:
-    name: '&2&lScrape'
-    Description: '&7&oTeal stars'
+    name: '&2&lSchaben'
+    Description: '&7&oBlaugrüne Sterne'
   WaxOff:
-    name: '&f&lWax Off'
-    Description: '&7&oWhite stars'
+    name: '&f&lUngewachst'
+    Description: '&7&oWeiße Sterne'
   WaxOn:
-    name: '&6&lWax On'
-    Description: '&7&oOrange stars'
+    name: '&6&lGewachst'
+    Description: '&7&oOrangene Sterne'
   SculkSoul:
-    name: '&b&lSculk Soul'
-    Description: '&7&oCyan souls'
+    name: '&b&lSculk-Seele'
+    Description: '&7&oTürkise Seelen'
 Death-Effects:
   Equip: '%prefix% &9You equipped %death-effectname%'
   Unequip: '%prefix% &9You unequipped %death-effectname%'
