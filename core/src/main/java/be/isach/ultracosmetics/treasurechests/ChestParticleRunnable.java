@@ -2,9 +2,7 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Particles;
-
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
@@ -15,15 +13,15 @@ public class ChestParticleRunnable extends BukkitRunnable {
     private static final Vector Y_AXIS = new Vector(0, 1, 0);
     private final TreasureChest chest;
     private final UltraCosmetics uc;
-    private final boolean isLarge;
+    private final boolean large;
     private final int totalChests;
     private int i;
     private PlaceChestRunnable chestRunnable = null;
     public ChestParticleRunnable(TreasureChest chest) {
         this.chest = chest;
         this.uc = UltraCosmeticsData.get().getPlugin();
-        isLarge = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
-        if (!isLarge && chest.getChestsLeft() > 4) {
+        large = chest.isLarge();
+        if (!large && chest.getChestsLeft() > 4) {
             totalChests = 4;
         } else {
             totalChests = chest.getChestsLeft();
@@ -75,7 +73,7 @@ public class ChestParticleRunnable extends BukkitRunnable {
         BlockFace face = getDirection(i);
         Vector v = new Vector(face.getModX(), face.getModY(), face.getModZ());
         Vector perpendicular = v.getCrossProduct(Y_AXIS).multiply(horizontalOffset);
-        v.multiply(isLarge ? 3 : 2).add(perpendicular);
+        v.multiply(large ? 3 : 2).add(perpendicular);
 
         return chestLocation.add(v);
     }

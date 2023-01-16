@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.deatheffects;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.DeathEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 
@@ -12,6 +13,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 
 public class DeathEffectFirework extends DeathEffect {
     private final FireworkMeta meta;
@@ -26,6 +28,7 @@ public class DeathEffectFirework extends DeathEffect {
     public void displayParticles(Player player) {
         Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
         firework.setFireworkMeta(meta);
+        firework.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true));
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), firework::detonate, 5);
     }
 }

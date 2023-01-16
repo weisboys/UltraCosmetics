@@ -61,6 +61,7 @@ public class TreasureChest implements Listener {
     private final TreasureChestDesign design;
     private final Location preLoc;
     private final TreasureLocation treasureLoc;
+    private final boolean large;
     private final PlaceBlocksRunnable blocksRunnable;
 
     public TreasureChest(UUID owner, final TreasureChestDesign design, Location preLoc, TreasureLocation destLoc) {
@@ -69,7 +70,7 @@ public class TreasureChest implements Listener {
         this.owner = owner;
         this.preLoc = preLoc;
         this.treasureLoc = destLoc;
-        boolean large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+        large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
         if (chestsLeft > 4) {
             if (large && chestsLeft > 12) {
                 chestsLeft = 12;
@@ -327,5 +328,9 @@ public class TreasureChest implements Listener {
         if (items.contains(event.getEntity()) || items.contains(event.getTarget())) {
             event.setCancelled(true);
         }
+    }
+
+    public boolean isLarge() {
+        return large;
     }
 }

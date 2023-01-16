@@ -23,6 +23,7 @@ public class SubCommandReload extends SubCommand {
         ultraCosmetics.getLogger().info("Starting up...");
         ultraCosmetics.start();
         MessageManager.reload();
+        sender.sendMessage(ChatColor.GREEN + "Reload complete.");
     }
 
 }

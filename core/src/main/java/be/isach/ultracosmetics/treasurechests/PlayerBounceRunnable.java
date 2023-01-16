@@ -13,8 +13,10 @@ import org.bukkit.util.Vector;
 
 public class PlayerBounceRunnable extends BukkitRunnable {
     private final TreasureChest chest;
+    private final int searchDistance;
     public PlayerBounceRunnable(TreasureChest chest) {
         this.chest = chest;
+        searchDistance = chest.isLarge() ? 4 : 2;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class PlayerBounceRunnable extends BukkitRunnable {
         if (player.getLocation().distanceSquared(center) > 2.25) {
             player.teleport(center);
         }
-        for (Entity ent : player.getNearbyEntities(2, 2, 2)) {
+        for (Entity ent : player.getNearbyEntities(searchDistance, searchDistance, searchDistance)) {
             if (ent == player) continue;
             if (chest.isSpecialEntity(ent)) continue;
             UltraPlayer up = pm.getUltraPlayer(player);

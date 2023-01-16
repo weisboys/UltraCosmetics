@@ -13,6 +13,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashSet;
@@ -122,10 +123,10 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
         Set<Firework> fireworks = new HashSet<>();
         FireworkMeta meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(Material.FIREWORK_ROCKET);
         meta.addEffect(buildFireworkEffect(main, fade, type));
-        meta.setDisplayName("uc_firework");
         for (int i = 0; i < 4; i++) {
             Firework f = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
             f.setFireworkMeta(meta);
+            f.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true));
             fireworks.add(f);
         }
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {

@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.util.BlockUtils;
 import com.cryptomorin.xseries.XBlock;
@@ -15,13 +14,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 public class PlaceBlocksRunnable extends BukkitRunnable {
     private final TreasureChest chest;
     private final TreasureChestDesign design;
-    private final boolean isLarge = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+    private final boolean large;
     private final UltraCosmetics uc = UltraCosmeticsData.get().getPlugin();
     private int i = 6;
     private ChestParticleRunnable particleRunnable = null;
     public PlaceBlocksRunnable(TreasureChest chest) {
         this.chest = chest;
         this.design = chest.getDesign();
+        this.large = chest.isLarge();
     }
 
     @Override
@@ -44,15 +44,15 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
             doChestStage(player.getLocation().subtract(0, 1, 0), ChestBlockPattern.CENTER_BLOCK, design.getCenter());
         } else if (i == 5) {
             doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), ChestBlockPattern.AROUND_CENTER, design.getBlocks2());
-            if (!isLarge) i--;
+            if (!large) i--;
         } else if (i == 4) {
             doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), ChestBlockPattern.LARGE_AROUND_AROUND, design.getBlocks2());
         } else if (i == 3) {
-            doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), isLarge ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBlocks3());
+            doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), large ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBlocks3());
         } else if (i == 2) {
-            doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), isLarge ? ChestBlockPattern.LARGE_BELOW_CHEST : ChestBlockPattern.BELOW_CHEST, design.getBelowChests());
+            doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), large ? ChestBlockPattern.LARGE_BELOW_CHEST : ChestBlockPattern.BELOW_CHEST, design.getBelowChests());
         } else if (i == 1) {
-            doChestStage(chest.getCenter(), isLarge ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBarriers());
+            doChestStage(chest.getCenter(), large ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBarriers());
         }
         i--;
     }
