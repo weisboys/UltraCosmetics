@@ -2,26 +2,38 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Particles;
 
 import org.bukkit.Location;
+import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 public class ChestParticleRunnable extends BukkitRunnable {
+    private static final Vector Y_AXIS = new Vector(0, 1, 0);
     private final TreasureChest chest;
     private final UltraCosmetics uc;
+    private final boolean isLarge;
+    private final int totalChests;
     private int i;
     private PlaceChestRunnable chestRunnable = null;
     public ChestParticleRunnable(TreasureChest chest) {
         this.chest = chest;
         this.uc = UltraCosmeticsData.get().getPlugin();
-        i = chest.getChestsLeft();
+        isLarge = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+        if (!isLarge && chest.getChestsLeft() > 4) {
+            totalChests = 4;
+        } else {
+            totalChests = chest.getChestsLeft();
+        }
+        i = totalChests - 1;
     }
 
     @Override
     public void run() {
-        if (i <= 0) {
+        if (i < 0) {
             cancel();
             return;
         }
@@ -32,35 +44,54 @@ public class ChestParticleRunnable extends BukkitRunnable {
         }
         int animationTime = 0;
         Particles particleEffect = chest.getParticleEffect();
+        Location chestLocation = getChestLocation();
         if (particleEffect != null) {
-            particleEffect.playHelix(getChestLocation(), 0.0F);
-            particleEffect.playHelix(getChestLocation(), 3.5F);
+            particleEffect.playHelix(chestLocation, 0.0F);
+            particleEffect.playHelix(chestLocation, 3.5F);
             animationTime = 30;
         }
-        chestRunnable = new PlaceChestRunnable(chest, getChestLocation(), i--);
+        chestRunnable = new PlaceChestRunnable(chest, chestLocation.getBlock(), i--);
         chestRunnable.runTaskLater(uc, animationTime);
     }
 
     private Location getChestLocation() {
-        Location chestLocation = chest.getCenter();
-        chestLocation.setX(chestLocation.getBlockX() + 0.5D);
-        chestLocation.setY(chestLocation.getBlockY());
-        chestLocation.setZ(chestLocation.getBlockZ() + 0.5D);
-        switch (i) {
-            case 1:
-                chestLocation.add(2.0D, 0.0D, 0.0D);
-                break;
-            case 2:
-                chestLocation.add(-2.0D, 0.0D, 0.0D);
-                break;
-            case 3:
-                chestLocation.add(0.0D, 0.0D, 2.0D);
-                break;
-            case 4:
-                chestLocation.add(0.0D, 0.0D, -2.0D);
+        Location chestLocation = chest.getCenter().clone().add(0.5, 0, 0.5);
+        double horizontalOffset = 0;
+        // If the chests need to be evenly distributed
+        if (totalChests > 4 && totalChests < 9) {
+            if (i < 4) {
+                horizontalOffset = 1;
+            } else {
+                horizontalOffset = -1;
+            }
+        } else if (totalChests > 8) {
+            if (i > 7) {
+                horizontalOffset = 1;
+            } else if (i > 3) {
+                horizontalOffset = -1;
+            }
         }
 
-        return chestLocation;
+        BlockFace face = getDirection(i);
+        Vector v = new Vector(face.getModX(), face.getModY(), face.getModZ());
+        Vector perpendicular = v.getCrossProduct(Y_AXIS).multiply(horizontalOffset);
+        v.multiply(isLarge ? 3 : 2).add(perpendicular);
+
+        return chestLocation.add(v);
+    }
+
+    public static BlockFace getDirection(int direction) {
+        switch (direction % 4) {
+            case 3:
+            default:
+                return BlockFace.SOUTH;
+            case 2:
+                return BlockFace.NORTH;
+            case 1:
+                return BlockFace.EAST;
+            case 0:
+                return BlockFace.WEST;
+        }
     }
 
     public void propogateCancel() {

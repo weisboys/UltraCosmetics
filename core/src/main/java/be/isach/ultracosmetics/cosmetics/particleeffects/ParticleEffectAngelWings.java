@@ -15,9 +15,8 @@ import org.bukkit.util.Vector;
  * @since 11-11-2015
  */
 public class ParticleEffectAngelWings extends ParticleEffect {
-
-    private static final boolean x = true;
-    private static final boolean o = false;
+    public static final boolean x = true;
+    public static final boolean o = false;
     private static final boolean[][] shape = {
             { o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o },
             { o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o },

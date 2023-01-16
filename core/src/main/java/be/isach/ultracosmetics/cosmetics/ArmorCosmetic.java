@@ -15,7 +15,6 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<T> {
-    protected boolean success = false;
     protected ItemStack itemStack;
 
     public ArmorCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
@@ -49,7 +48,6 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
             return false;
         }
         setArmorItem(itemStack);
-        success = true;
         return true;
     }
 

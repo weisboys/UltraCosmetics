@@ -12,16 +12,14 @@ import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
+import com.cryptomorin.xseries.XMaterial;
+import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import com.cryptomorin.xseries.XMaterial;
-
-import net.wesjd.anvilgui.AnvilGUI;
+import java.util.Collections;
 
 /**
  * Pet {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -68,16 +66,17 @@ public class MenuPets extends CosmeticMenu<PetType> {
                 .itemLeft(XMaterial.PAPER.parseItem())
                 .text(MessageManager.getMessage("Menu.Rename-Pet.Placeholder"))
                 .title(MessageManager.getMessage("Menu.Rename-Pet.Title"))
-                .onComplete((Player player, String text) -> {
+                .onComplete(completion -> {
+                    String text = completion.getText();
                     if (text.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
-                        return AnvilGUI.Response.text(MessageManager.getMessage("Too-Long"));
+                        return Collections.singletonList(AnvilGUI.ResponseAction.replaceInputText(MessageManager.getMessage("Too-Long")));
                     }
                     if (!text.isEmpty() && ultraCosmetics.getEconomyHandler().isUsingEconomy()
                             && SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled")) {
-                        return AnvilGUI.Response.openInventory(buyRenamePet(ultraPlayer, text, this));
+                        return Collections.singletonList(AnvilGUI.ResponseAction.openInventory(buyRenamePet(ultraPlayer, text, this)));
                     } else {
                         ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), text);
-                        return AnvilGUI.Response.close();
+                        return Collections.singletonList(AnvilGUI.ResponseAction.close());
                     }
                 }).open(ultraPlayer.getBukkitPlayer());
     }

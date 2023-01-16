@@ -69,7 +69,14 @@ public class TreasureChest implements Listener {
         this.owner = owner;
         this.preLoc = preLoc;
         this.treasureLoc = destLoc;
-        if (chestsLeft > 4) chestsLeft = 4;
+        boolean large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+        if (chestsLeft > 4) {
+            if (large && chestsLeft > 12) {
+                chestsLeft = 12;
+            } else if (!large) {
+                chestsLeft = 4;
+            }
+        }
         if (chestsLeft < 1) chestsLeft = 1;
 
         UltraCosmetics uc = UltraCosmeticsData.get().getPlugin();
@@ -79,8 +86,8 @@ public class TreasureChest implements Listener {
 
         this.player = getPlayer();
 
-        Location loc = getPlayer().getLocation().getBlock().getLocation();
-        Block centerPossibleBlock = loc.getBlock();
+        center = getPlayer().getLocation().getBlock().getLocation();
+        Block centerPossibleBlock = center.getBlock();
         if (!BlockUtils.isAir(centerPossibleBlock.getType())) {
             // Save the block
             blocksToRestore.put(centerPossibleBlock, centerPossibleBlock.getState());
@@ -285,10 +292,6 @@ public class TreasureChest implements Listener {
 
     public Particles getParticleEffect() {
         return particleEffect;
-    }
-
-    protected void setCenter(Location loc) {
-        center = loc;
     }
 
     public Location getCenter() {

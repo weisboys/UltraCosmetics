@@ -34,23 +34,25 @@ public class TreasureChestManager implements Listener {
     private static final List<TreasureLocation> TREASURE_LOCATIONS = new ArrayList<>();
 
     static {
-        Set<String> locationNames = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations").getKeys(false);
-        for (String locationName : locationNames) {
-            if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) continue;
-            ConfigurationSection location = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations." + locationName);
-            String worldName = location.getString("World", "none");
-            World world = null;
-            if (!worldName.equals("none")) {
-                world = Bukkit.getWorld(worldName);
-                if (world == null) {
-                    UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "Invalid world set for location " + locationName + ", using player world");
+        if (SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
+            Set<String> locationNames = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations").getKeys(false);
+            for (String locationName : locationNames) {
+                if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) continue;
+                ConfigurationSection location = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations." + locationName);
+                String worldName = location.getString("World", "none");
+                World world = null;
+                if (!worldName.equals("none")) {
+                    world = Bukkit.getWorld(worldName);
+                    if (world == null) {
+                        UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "Invalid world set for location " + locationName + ", using player world");
+                    }
                 }
+                TreasureLocation tloc = new TreasureLocation(world, location.getInt("X", 0), location.getInt("Y", 63), location.getInt("Z", 0));
+                TREASURE_LOCATIONS.add(tloc);
             }
-            TreasureLocation tloc = new TreasureLocation(world, location.getInt("X", 0), location.getInt("Y", 63), location.getInt("Z", 0));
-            TREASURE_LOCATIONS.add(tloc);
-        }
-        if (TREASURE_LOCATIONS.size() == 0 && SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "No treasure chest locations are defined, the setting will be ignored");
+            if (TREASURE_LOCATIONS.size() == 0 && SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "No treasure chest locations are defined, the setting will be ignored");
+            }
         }
     }
 
@@ -98,7 +100,7 @@ public class TreasureChestManager implements Listener {
 
         Location targetLoc = tpTo == null ? player.getLocation() : tpTo.toLocation(player);
 
-        Area area = new Area(targetLoc, 2, 1);
+        Area area = new Area(targetLoc, SettingsManager.getConfig().getBoolean("TreasureChests.Large") ? 3 : 2, 1);
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
             player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));

@@ -5,6 +5,7 @@ import org.bukkit.Material;
 /**
  * Created by Sacha on 11/11/15.
  */
+@SuppressWarnings("unused")
 public enum ChestType {
 
     NORMAL(Material.CHEST),
