@@ -7,7 +7,7 @@ allprojects {
     eclipse.classpath.downloadSources = true
 
     group = 'be.isach'
-    version = '3.0-DEV-b4'
+    version = '3.0-DEV-b5'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
