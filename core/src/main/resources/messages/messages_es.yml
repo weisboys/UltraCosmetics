@@ -62,72 +62,72 @@ Menu:
     Title: '&lMascotas'
     Button:
       Name: '&a&lMascotas'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnear'
       Tooltip-Unequip: '&c&lDespawnear'
   Gadgets:
     Title: '&lGadgets'
     Button:
       Name: '&9&lGadgets'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lActivar'
       Tooltip-Unequip: '&c&lDesactivar'
   Mounts:
     Title: '&lMonturas'
     Button:
       Name: '&6&lMonturas'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnear'
       Tooltip-Unequip: '&c&lDespawnear'
   Morphs:
     Title: '&lTransformaciones'
     Button:
       Name: '&2&lTransformaciones'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lTransformar'
       Tooltip-Unequip: '&c&lRestaurar'
   Hats:
     Title: '&lSombreros'
     Button:
       Name: '&d&lSombreros'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Particle-Effects:
     Title: '&lEfectos (Particulas)'
     Button:
       Name: '&b&lEfectos (Particulas)'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lInvocar'
       Tooltip-Unequip: '&c&lQuitar'
   Suits:
     Title: '&lTrajes'
     Button:
       Name: '&3&lTrajes'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Emotes:
     Title: '&lEmoticones'
     Button:
       Name: '&e&lEmoticones'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lEfectos de Projectiles'
     Button:
-      Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&5&lEfectos de Proyectiles'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
       Tooltip-Equip: '&b&lequipar'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Unequip: '&c&lDesequipar'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lEfectos al morir'
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&c&lEfectos al Morir'
+      Lore: '&7Desbloqueaste: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Buy-Ammo:
     Title: '&lComprar Municion'
   Misc:
@@ -146,22 +146,22 @@ Chest-Location:
 Active-Pet-Needed: '&c&lNecesitas spawnear una mascota para renombrarla'
 Treasure-Chests-Loot:
   Ammo: |-
-    &9Ammo
+    &9Municion
     %ammo% %cosmetic%
   Money: |-
-    &eMoney
+    &eDinero
     &e&l$%money%
   Nothing: '&c&lNada'
-  Pets: "&aPet\n%cosmetic%"
-  Mounts: "&6Mount\n%cosmetic%"
-  Particle-Effects: "&bParticle Effect\n%cosmetic%"
-  Morphs: "&2Morph\n%cosmetic%"
-  Hats: "&dHat\n%cosmetic%"
+  Pets: "&aMascota\n%cosmetic%"
+  Mounts: "&6Montura\n%cosmetic%"
+  Particle-Effects: "&bEfecto de Particulas\n%cosmetic%"
+  Morphs: "&2Transformacion\n%cosmetic%"
+  Hats: "&dSombrero\n%cosmetic%"
   Gadgets: "&9Gadget\n%cosmetic%"
-  Suits: "&3Suit\n%cosmetic%"
-  Emotes: "&eEmote\n%cosmetic%"
-  Death-Effects: "&cDeath Effect\n%cosmetic%"
-  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
+  Suits: "&3Traje\n%cosmetic%"
+  Emotes: "&eEmoticon\n%cosmetic%"
+  Death-Effects: "&cEfecto de Muerte\n%cosmetic%"
+  Projectile-Effects: "&5Efecto de Proyectil\n%cosmetic%"
 Disable-Gadgets: '&c&lDeshabilitar Gadgets'
 Disable-Gadgets-Lore: '&cDeshabilita el uso de gadgets y efectos en ti'
 Enable-Gadgets: '&a&lHabilitar Gadgets'
@@ -390,10 +390,10 @@ Mounts:
   Mule:
     menu-name: '&8&lMula'
     entity-displayname: '&lMula de %playername%'
-    Description: '&7&oYour standard, everyday mule'
+    Description: '&7&oTu Mula de siempre, estes donde estes'
   Pig:
-    menu-name: '&d&lPig'
-    entity-displayname: '&l%playername%''s Pig'
+    menu-name: '&d&lCerdo'
+    entity-displayname: 'Cerdo de &l%playername%'
     Description: '&7&oOink!'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
@@ -446,8 +446,8 @@ Particle-Effects:
     name: '&f&lAlas de Angel'
     Description: '&7&oConviertete en un angel!'
   RainbowWings:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
-    Description: '&7&oWings, but full of color!'
+    name: '&f&lAlas &4&lA&6&lr&e&lc&a&lo&b&li&9&lr&5&li&4&ls'
+    Description: '&7&oAlas, pero cargadas de color!'
   SuperHero:
     name: '&4&lSuperheroe'
     Description: '&7&oConviertete en Superman!'
@@ -914,72 +914,72 @@ Morphs:
   Allay:
     name: '&a&lAllay'
     skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oA new friend!'
+    Description: '&7&oUn nuevo amigo!'
   Axolotl:
     name: '&5&lAxolotl'
-    skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo cute!'
+    skill: '&eClick izquierdo&7 para sonidos lindos'
+    Description: '&7&oMuy Lindo!'
   Bee:
-    name: '&e&lBee'
+    name: '&e&lAbeja'
     skill: '&eDouble Jump&7 to: &aFlap'
     Description: '&7&o*bzzzz* *bzzzz*'
   Cat:
-    name: '&e&lCat'
-    skill: '&eLeft-Click&7 to: &aMeow'
-    Description: '&7&oBasically a tiny tiger'
+    name: '&e&lGato'
+    skill: '&eClick izquierdo&7 para: &aMeow'
+    Description: '&7&oBasicamente un tigre pequeño'
   CaveSpider:
-    name: '&e&lCave Spider'
+    name: '&e&lAraña de cueva'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oA spider, but poisonous!'
+    Description: '&7&oUna araña, pero venenosa!'
   Cod:
-    name: '&e&lCod'
+    name: '&e&lBacalao'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oPrefers water over land!'
+    Description: '&7&oPrefiere agua por sobre tierra!'
   Dolphin:
-    name: '&e&lDolphin'
+    name: '&e&lDelfin'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oThe happiest creature of the seas!'
+    Description: '&7&oLa criatura mas feliz de los mares!'
   Donkey:
-    name: '&7&lDonkey'
+    name: '&7&lBurro'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oCan carry all your stuff!'
+    Description: '&7&oPuede llevar todas tus cosas!'
   Drowned:
-    name: '&3&lDrowned'
+    name: '&3&lAhogado'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAn underwater zombie!'
+    Description: '&7&oUn zombie subacuatico!'
   Endermite:
     name: '&5&lEndermite'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAttracts Endermen!'
+    Description: '&7&oAtrae a los Enderman!'
   Evoker:
     name: '&7&lEvoker'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oSummons Vexes for a living!'
+    Description: '&7&oInvoca Vexes por instinto!'
   Frog:
-    name: '&2&lFrog'
+    name: '&2&lRano'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like fireflies!'
+    Description: '&7&oNo le gusta las luciernagas!'
   Fox:
-    name: '&d&lFox'
+    name: '&d&lZorro'
     skill: '&eLeft-Click&7 to: &aTODO'
     Description: '&7&oWhat does the fox say?'
   GlowSquid:
-    name: '&3&lGlow Squid'
+    name: '&3&lCalamar Brillante'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oIt glows!'
+    Description: '&7&o¡Brilla!'
   Goat:
-    name: '&f&lGoat'
+    name: '&f&lCabra'
     skill: '&eLeft-Click&7 to: &aTODO'
     Description: '&7&oBAAAA!'
   Guardian:
-    name: '&3&lGuardian'
+    name: '&3&lGuardián'
     skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates squids!'
+    Description: '&7&oOdia a los Calamares!'
   Wolf:
-    name: '&7&lWolf'
+    name: '&7&lLobo'
     Description: '&7&oWoof!'
   IronGolem:
-    name: '&7&lIron Golem'
+    name: '&7&lGolem de Hierro'
     Description: '&7&oHates zombies!'
   Wither:
     name: '&8&lWither'
