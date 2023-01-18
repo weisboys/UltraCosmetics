@@ -475,12 +475,12 @@ Particle-Effects:
     name: '&e&lOndas de Fuego'
     Description: '&7&oAlgunos dicen que estas ondas de fuego actuan como un escudo...'
   CursedHalo:
-    name: '&5&lCursed Halo'
+    name: '&5&lHalo Maldito'
     Description: |-
-      &7&oIt brings great misfortune to
-      &7&oanyone who dares to wear it.
+      &7&oTrae un gran misfortuna a
+      &7&ocualquiera que se atreve a usarlo.
   VolcanicHalo:
-    name: '&c&lVolcanic Halo'
+    name: '&c&Halo Volcánico'
     Description: |-
       &7&oA halo composed of
       &7&oeternal flames.
