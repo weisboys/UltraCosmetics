@@ -450,7 +450,7 @@ Particle-Effects:
     Description: '&7&oWerde ein Engel!'
   RainbowWings:
     name: '&4&lR&6&le&e&lg&a&le&b&ln&9&lb&5&lo&4&lg&6&le&e&ln&f&lflügel'
-    Description: '&7&oWings, but full of color!'
+    Description: '&7&oFlügel, aber voller Farbe!'
   SuperHero:
     name: '&4&lSuperheld'
     Description: '&7&oWerde zu Superman!'
@@ -478,27 +478,27 @@ Particle-Effects:
     name: '&e&lFeuerwellen'
     Description: '&7&oMan sagt, dass diese Feuerwellen ein Schild sind...'
   CursedHalo:
-    name: '&5&lCursed Halo'
+    name: '&5&lVerfluchter Heiligenschein'
     Description: |-
       &7&oIt brings great misfortune to
       &7&oanyone who dares to wear it.
   VolcanicHalo:
-    name: '&c&lVolcanic Halo'
+    name: '&c&lVulkanischer Heiligenschein'
     Description: |-
       &7&oA halo composed of
       &7&oeternal flames.
   CursedFootprints:
-    name: '&5&lCursed Footprints'
+    name: '&5&lVerfluchte Fußspuren'
     Description: |-
       &7&oLeaves a trail of
       &7&odark energy behind.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: '&a&lFrühlings-Fußspuren'
     Description: |-
       &7&oLeaves a trail of
       &7&ogreen particles behind.
   ShadowFootprints:
-    name: '&7&lShadow Footprints'
+    name: '&7&lSchatten-Fußspuren'
     Description: |-
       &7&oLeaves a trail of
       &7&osmoke behind.
@@ -509,20 +509,20 @@ Particle-Effects:
     name: '&c&lHerzen'
     Description: '&7&oHerzen über deinem Kopf.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: '&d&lEnder-Fußspuren'
     Description: |-
       &7&oLeaves a trail of
       &7&odragon breath behind.
   ArcaneFlame:
-    name: '&b&lArcane Flame'
-    Description: '&7&oBlue flame above your head.'
+    name: '&b&lGeheimnisvolle Flamme'
+    Description: '&7&oBlaue Flamme über deinem Kopf.'
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: '&e&lGöttlicher Heiligenschein'
     Description: |-
       &7&oA halo composed of
       &7&oglowing light.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: '&f&lSchnee-Fußspuren'
     Description: |-
       &7&oLeaves a trail of
       &7&osnow behind.
