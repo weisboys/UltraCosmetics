@@ -480,28 +480,28 @@ Particle-Effects:
   CursedHalo:
     name: '&5&lVerfluchter Heiligenschein'
     Description: |-
-      &7&oIt brings great misfortune to
-      &7&oanyone who dares to wear it.
+      &7&oEs bringt jedem, der es wagt
+      &7&oes zu tragen, großes Unglück.
   VolcanicHalo:
     name: '&c&lVulkanischer Heiligenschein'
     Description: |-
-      &7&oA halo composed of
-      &7&oeternal flames.
+      &7&oEin Heiligenschein bestehend
+      &7&oaus ewigen Flammen.
   CursedFootprints:
     name: '&5&lVerfluchte Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odark energy behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus dunkler Energie.
   SpringFootprints:
     name: '&a&lFrühlings-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&ogreen particles behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus grünen Partikeln.
   ShadowFootprints:
     name: '&7&lSchatten-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osmoke behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Rauch.
   Notes:
     name: '&6&lNoten'
     Description: '&7&oNoten über deinem Kopf.'
@@ -511,21 +511,21 @@ Particle-Effects:
   EnderFootprints:
     name: '&d&lEnder-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odragon breath behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Drachenatem.
   ArcaneFlame:
     name: '&b&lGeheimnisvolle Flamme'
     Description: '&7&oBlaue Flamme über deinem Kopf.'
   DivineHalo:
     name: '&e&lGöttlicher Heiligenschein'
     Description: |-
-      &7&oA halo composed of
-      &7&oglowing light.
+      &7&oEin Heiligenschein bestehend
+      &7&oaus glühendem Licht.
   SnowFootprints:
     name: '&f&lSchnee-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osnow behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Schnee.
 Pets:
   Piggy:
     menu-name: '&d&lSchwein'
