@@ -41,10 +41,12 @@ public class PlayerListener implements Listener {
 
     private final UltraCosmetics ultraCosmetics;
     private final UltraPlayerManager pm;
+    private final ItemStack menuItem;
 
     public PlayerListener(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
         this.pm = ultraCosmetics.getPlayerManager();
+        this.menuItem = ItemFactory.createMenuItem();
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -297,9 +299,6 @@ public class PlayerListener implements Listener {
     }
 
     private boolean isMenuItem(ItemStack item) {
-        return item != null
-                && item.hasItemMeta()
-                && item.getItemMeta().hasDisplayName()
-                && item.getItemMeta().getDisplayName().equals(ChatColor.translateAlternateColorCodes('&', String.valueOf(SettingsManager.getConfig().get("Menu-Item.Displayname"))));
+        return menuItem.equals(item);
     }
 }

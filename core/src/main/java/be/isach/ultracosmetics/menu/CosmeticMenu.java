@@ -68,7 +68,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             page = 1;
         }
 
-        Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), maxPages == 1 ? getName() : getName(page, player));
+        Inventory inventory = createInventory(getSize(), maxPages == 1 ? getName() : getName(page, player));
         boolean hasUnlockable = hasUnlockable(player);
 
         // Cosmetic types.

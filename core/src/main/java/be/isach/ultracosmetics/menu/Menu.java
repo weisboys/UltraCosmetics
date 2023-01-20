@@ -1,11 +1,8 @@
 package be.isach.ultracosmetics.menu;
 
-import static be.isach.ultracosmetics.util.ItemFactory.fillerItem;
-
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -21,6 +18,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import static be.isach.ultracosmetics.util.ItemFactory.fillerItem;
 
 /**
  * Represents a Menu. A menu can have multiple pages in case of cosmetics.
@@ -54,8 +53,18 @@ public abstract class Menu implements Listener {
         player.getBukkitPlayer().openInventory(getInventory(player));
     }
 
-    public Inventory getInventory(UltraPlayer player) {
+    protected Inventory createInventory(int size, String name) {
         Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), getName());
+        if (ultraCosmetics.getChestSortHook() != null) {
+            // ChestSort by default knows that this inventory shouldn't be sorted anyway,
+            // because it contains "menu" in the package name. But because it can be disabled...
+            ultraCosmetics.getChestSortHook().setUnsortable(inventory);
+        }
+        return inventory;
+    }
+
+    public Inventory getInventory(UltraPlayer player) {
+        Inventory inventory = createInventory(getSize(), getName());
         putItems(inventory, player);
         ItemFactory.fillInventory(inventory);
         return inventory;

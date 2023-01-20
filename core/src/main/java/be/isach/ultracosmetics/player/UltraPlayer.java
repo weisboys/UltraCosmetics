@@ -27,22 +27,17 @@ import be.isach.ultracosmetics.player.profile.FileCosmeticsProfile;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.util.ServerVersion;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.messages.ActionBar;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.messages.ActionBar;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -512,27 +507,12 @@ public class UltraPlayer {
         int slot = section.getInt("Slot");
         ItemStack slotItem = getBukkitPlayer().getInventory().getItem(slot);
         if (slotItem != null) {
-            if (slotItem.hasItemMeta() && slotItem.getItemMeta().hasDisplayName()
-                    && slotItem.getItemMeta().getDisplayName().equalsIgnoreCase(section.getString("Displayname"))) {
-                getBukkitPlayer().getInventory().setItem(slot, null);
+            if (!slotItem.hasItemMeta() || !slotItem.getItemMeta().hasDisplayName()
+                    || !slotItem.getItemMeta().getDisplayName().equalsIgnoreCase(section.getString("Displayname"))) {
+                getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
             }
-            getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
-            getBukkitPlayer().getInventory().setItem(slot, null);
         }
-        String name = ChatColor.translateAlternateColorCodes('&', section.getString("Displayname"));
-        int model = section.getInt("Custom-Model-Data");
-        ItemStack stack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Menu-Item.Type"), name);
-        ItemMeta meta = stack.getItemMeta();
-        String lore = ChatColor.translateAlternateColorCodes('&', section.getString("Lore"));
-        meta.setLore(Arrays.asList(lore.split("\n")));
-
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && model != 0) {
-            meta.setCustomModelData(model);
-        }
-
-        stack.setItemMeta(meta);
-
-        getBukkitPlayer().getInventory().setItem(slot, stack);
+        getBukkitPlayer().getInventory().setItem(slot, ItemFactory.createMenuItem());
     }
 
     /**

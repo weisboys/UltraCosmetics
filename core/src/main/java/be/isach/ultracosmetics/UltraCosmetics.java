@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.config.TreasureManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.economy.EconomyHandler;
+import be.isach.ultracosmetics.hook.ChestSortHook;
 import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.listeners.Listener113;
@@ -25,7 +26,6 @@ import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
-import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
@@ -36,7 +36,8 @@ import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
 import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.WorldGuardManager;
-
+import com.cryptomorin.xseries.XMaterial;
+import me.libraryaddict.disguise.DisguiseConfig;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
@@ -47,8 +48,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import com.cryptomorin.xseries.XMaterial;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -68,8 +67,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-
-import me.libraryaddict.disguise.DisguiseConfig;
 
 /**
  * Main class of the plugin.
@@ -114,11 +111,6 @@ public class UltraCosmetics extends JavaPlugin {
     private UpdateManager updateChecker;
 
     /**
-     * Treasure Chests Manager;
-     */
-    private TreasureChestManager treasureChestManager;
-
-    /**
      * Menus.
      */
     private Menus menus;
@@ -133,6 +125,8 @@ public class UltraCosmetics extends JavaPlugin {
     private PermissionManager permissionManager;
 
     private DiscordSRVHook discordHook;
+
+    private ChestSortHook chestSortHook;
 
     /**
      * Manages WorldGuard flags.
@@ -345,6 +339,14 @@ public class UltraCosmetics extends JavaPlugin {
             discordHook = new DiscordSRVHook();
             getSmartLogger().write();
             getSmartLogger().write("Hooked into DiscordSRV");
+        }
+
+        if (getServer().getPluginManager().isPluginEnabled("ChestSort")
+                && SettingsManager.getConfig().getBoolean("ChestSort-Hook", true)) {
+            chestSortHook = new ChestSortHook();
+            getServer().getPluginManager().registerEvents(chestSortHook, this);
+            getSmartLogger().write();
+            getSmartLogger().write("Hooked into ChestSort");
         }
 
         // Start up bStats
@@ -637,13 +639,6 @@ public class UltraCosmetics extends JavaPlugin {
     }
 
     /**
-     * @return The Treasure Chest Manager.
-     */
-    public TreasureChestManager getTreasureChestManager() {
-        return treasureChestManager;
-    }
-
-    /**
      * @return The menus.
      */
     public Menus getMenus() {
@@ -675,6 +670,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public DiscordSRVHook getDiscordHook() {
         return discordHook;
+    }
+
+    public ChestSortHook getChestSortHook() {
+        return chestSortHook;
     }
 
     public CustomConfiguration loadConfiguration(FunctionalConfigLoader loaderFunc) {

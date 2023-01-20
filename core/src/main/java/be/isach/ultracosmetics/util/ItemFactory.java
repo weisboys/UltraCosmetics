@@ -9,6 +9,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -25,6 +26,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -52,6 +54,8 @@ public class ItemFactory {
         itemStack.setItemMeta(itemMeta);
         fillerItem = itemStack;
     }
+
+    private ItemFactory(){}
 
     private static boolean noticePrinted = false;
     public static final ItemStack fillerItem;
@@ -148,6 +152,24 @@ public class ItemFactory {
         // null if not found
         return XMaterial.matchXMaterial(fromConfig).orElse(null);
     }
+
+    public static ItemStack createMenuItem() {
+        ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Menu-Item");
+        String name = ChatColor.translateAlternateColorCodes('&', section.getString("Displayname"));
+        int model = section.getInt("Custom-Model-Data");
+        ItemStack stack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Menu-Item.Type"), name);
+        ItemMeta meta = stack.getItemMeta();
+        String lore = ChatColor.translateAlternateColorCodes('&', section.getString("Lore"));
+        meta.setLore(Arrays.asList(lore.split("\n")));
+
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && model != 0) {
+            meta.setCustomModelData(model);
+        }
+
+        stack.setItemMeta(meta);
+        return stack;
+    }
+
 
     public static ItemStack createSkull(String str, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);

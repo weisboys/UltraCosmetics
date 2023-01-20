@@ -13,6 +13,7 @@ softdepend:
 - Essentials
 - LuckPerms
 - DiscordSRV
+- ChestSort
 commands:
   ultracosmetics:
     aliases: [uc, cosmetics]

@@ -492,3 +492,7 @@ Projectile-Types:
 - SNOWBALL
 - SPECTRAL_ARROW
 - TRIDENT
+
+# If ChestSort is detected, hooks it to prevent moving the menu item.
+# If ChestSort is not installed, this has no effect.
+ChestSort-Hook: true
