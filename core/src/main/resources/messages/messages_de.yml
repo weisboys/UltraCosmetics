@@ -380,7 +380,7 @@ Mounts:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
     Description: |-
-      &7&oEine mysteriöse würfelförmige Kreatur,
+      &7&oEine mysteriöse, würfelförmige Kreatur,
       &7&odie direkt über Lava laufen kann.
   Horse:
     menu-name: '&7&lPferd'
