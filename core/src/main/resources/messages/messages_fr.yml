@@ -160,8 +160,8 @@ Treasure-Chests-Loot:
   Gadgets: "&9Gadget \n%cosmetic%"
   Suits: "&3Costume\n%cosmetic%"
   Emotes: "&eÉmote\n%cosmetic%"
-  Death-Effects: "&cDeath Effect\n%cosmetic%"
-  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
+  Death-Effects: "&cEffet de mort %cosmetic%"
+  Projectile-Effects: "&5Effet de projectile %cosmetic%"
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
 Enable-Gadgets: '&a&lActiver les gadgets'
@@ -447,7 +447,7 @@ Particle-Effects:
     name: '&f&lAiles d''Ange'
     Description: '&7&oDeviens un ange !'
   RainbowWings:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
+    name: 'Ailes arc-en-ciel'
     Description: '&7&oDes ailes, mais de pleins de couleurs!'
   SuperHero:
     name: '&4&lSuper Héros'
@@ -476,54 +476,54 @@ Particle-Effects:
     name: '&e&lVagues de feu'
     Description: '&7&oCertains disent que ces vagues de feu agissent comme un bouclier...'
   CursedHalo:
-    name: '&5&lCursed Halo'
+    name: '&5&lHalo maudit'
     Description: |-
-      &7&oIt brings great misfortune to
-      &7&oanyone who dares to wear it.
+      &7&oIl apporte un grand malheur à
+      &7&otoute personne qui ose le porter.
   VolcanicHalo:
-    name: '&c&lVolcanic Halo'
+    name: '&c&Halo volcanique'
     Description: |-
-      &7&oA halo composed of
-      &7&oeternal flames.
+      &7&oUn halo composé de
+      &7&oflammes eternal.
   CursedFootprints:
-    name: '&5&lCursed Footprints'
+    name: '&5&lEmpreintes maudites'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odark energy behind.
+      &7&oLaisse une trace de
+      &7&oénergie sombre derrière.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: '&5&lEmpreintes maudites'
     Description: |-
-      &7&oLeaves a trail of
-      &7&ogreen particles behind.
+      &7&oLaisse une trace de
+      &7&oparticules vertes derrière.
   ShadowFootprints:
-    name: '&7&lShadow Footprints'
+    name: '&7&lEmpreintes fantômes'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osmoke behind.
+      &7&oLaisse une trace de
+      &7&ofumée derrière.
   Notes:
     name: '&6&lNotes'
-    Description: '&7&oNotes above your head.'
+    Description: '&7&oNotes au-dessus de votre tête.'
   Hearts:
-    name: '&c&lHearts'
-    Description: '&7&oHearts above your head.'
+    name: '&c&lCoeurs'
+    Description: '&7&oCœurs au-dessus de votre tête.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: '&d&lEmpreintes de L''end'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odragon breath behind.
+      &7&oLaisse une trace de
+      &7&oSouffle de dragon derrière.
   ArcaneFlame:
-    name: '&b&lArcane Flame'
-    Description: '&7&oBlue flame above your head.'
+    name: '&b&lFlamme arcanique'
+    Description: '&7&oFlamme bleue au-dessus de votre tête.'
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: '&e&lHalo Divin'
     Description: |-
-      &7&oA halo composed of
-      &7&oglowing light.
+      &7&oUn halo composé de
+      &7&olumiere.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: '&f&lEmpreintes de neige'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osnow behind.
+      &7&oLaisse une trace de
+      &7&osnow derrière.
 Pets:
   Piggy:
     menu-name: '&d&lCochonnet'
@@ -724,23 +724,23 @@ Pets:
   WanderingTrader:
     menu-name: '&1&lMarchand errant'
     entity-displayname: '&lMarchand errant de %playername%'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    Description: '&7&oIl se balade partout en essayant de vendre ses affaires !'
   CaveSpider:
-    menu-name: '&2&lCave Spider'
-    entity-displayname: '&l%playername%''s Cave Spider'
-    Description: '&7&oA spider, but poisonous!'
+    menu-name: '&2&lAraignée des cavernes'
+    entity-displayname: '&l%playername% Araignée des cavernes'
+    Description: '&7&oUne araignée, mais toxique!'
   Dolphin:
     menu-name: '&b&Dauphin'
     entity-displayname: '&l%playername% Dauphin'
-    Description: '&7&oThe happiest creature of the seas!'
+    Description: '&7&oLa créature la plus heureuse de la mer!'
   Spider:
     menu-name: '&8&lAraignée'
     entity-displayname: '&lAraignée de %playername%'
-    Description: '&7&oYour friendly neighborhood spider!'
+    Description: '&7&oVotre araignée de quartier amicale !'
   ZombifiedPiglin:
-    menu-name: '&d&lZombified Piglin'
+    menu-name: '&d&lPorcelet Zombifié'
     entity-displayname: '&l%playername%''s Zombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    Description: '&7&oAttaquez-le et tous seront après vous !'
   Drowned:
     menu-name: '&3&lDrowned'
     entity-displayname: '&l%playername%''s Drowned'
