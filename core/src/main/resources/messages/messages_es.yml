@@ -1713,7 +1713,7 @@ Projectile-Effects:
     Description: '&7&oPartículas de Slime'
   Crit:
     name: '&7&lCrit'
-    Description: '&7&oLight brown crosses'
+    Description: '&7&oCruces marrón claro'
   MagicCrit:
     name: '&3&lMagic Crit'
     Description: '&7&oEstrellas cian'
@@ -1736,7 +1736,7 @@ Projectile-Effects:
     name: '&9&lTinta de Calamar'
     Description: '&7&oNubes Negras'
   SoulFireFlame:
-    name: '&b&lSoul Fire Flame'
+    name: '&b&Llamas de Almas'
     Description: '&7&oLlamas cian, pequeñas'
   Snowflake:
     name: '&f&lSnowflake'
@@ -1745,14 +1745,14 @@ Projectile-Effects:
     name: '&3&lCalamar Brillante'
     Description: '&7&oTeal stars'
   GlowSquidInk:
-    name: '&3&lGlow Squid Ink'
-    Description: '&7&oAquamarine clouds'
+    name: '&3&lTinta de calamar brillante'
+    Description: '&7&oNubes de Aquamarina'
   Scrape:
     name: '&2&lScrape'
     Description: '&7&oTeal stars'
   WaxOff:
     name: '&f&lWax Off'
-    Description: '&7&oWhite stars'
+    Description: '&7&oEstrellas Blancas'
   WaxOn:
     name: '&6&lWax On'
     Description: '&7&oEstrellas naranja'
