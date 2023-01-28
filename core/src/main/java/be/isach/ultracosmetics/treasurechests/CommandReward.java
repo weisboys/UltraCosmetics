@@ -18,8 +18,8 @@ public class CommandReward {
     private final String name;
     private final ItemStack stack;
     private final int chance;
-    private final boolean messageEnabled;
-    private final String message;
+    private boolean messageEnabled;
+    private String message;
     private final List<String> commands;
 
     public CommandReward(String path) {
@@ -32,26 +32,74 @@ public class CommandReward {
         name = ChatColor.translateAlternateColorCodes('&', config.getString(path + ".Name"));
     }
 
+    /**
+     * The weight this CommandReward has. Weights for
+     * CommandRewards determine how likely it is to be picked
+     * over a different command or a category of cosmetics.
+     *
+     * @return the weight this reward has
+     */
     public int getChance() {
         return chance;
     }
 
-    public boolean getMessageEnabled() {
+    /**
+     * @return true if the message from {@link #getMessage()} will be sent
+     */
+    public boolean isMessageEnabled() {
         return messageEnabled;
     }
 
+    /**
+     * @param messageEnabled if true, the message from {@link #getMessage()} will be sent
+     * @see #isMessageEnabled()
+     */
+    public void setMessageEnabled(boolean messageEnabled) {
+        this.messageEnabled = messageEnabled;
+    }
+
+    /**
+     * Returns the message that should be sent when the
+     * chest is opened. Will not be sent if {@link #isMessageEnabled()}
+     * is false.
+     *
+     * @return the message to be sent
+     */
     public String getMessage() {
         return message;
     }
 
+    /**
+     * Sets the message to be sent when the chest is opened.
+     *
+     * @param message the message to be sent
+     * @see #getMessage()
+     */
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    /**
+     * Returns the commands that will be executed when
+     * the chest is opened. Changing this list will
+     * change the commands that are executed.
+     *
+     * @return the list of commands
+     */
     public List<String> getCommands() {
         return commands;
     }
 
+    /**
+     * @return the name of this CommandReward
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return a copy of this CommandReward's display item
+     */
     public ItemStack getItemStack() {
         return stack.clone();
     }

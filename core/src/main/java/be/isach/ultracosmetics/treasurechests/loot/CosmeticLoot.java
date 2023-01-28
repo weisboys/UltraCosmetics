@@ -5,9 +5,12 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.events.UCCosmeticRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
+import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.WeightedSet;
-
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -29,8 +32,12 @@ public class CosmeticLoot implements Loot {
     }
 
     @Override
-    public LootReward giveToPlayer(Player player) {
+    public LootReward giveToPlayer(UltraPlayer player, TreasureChest chest) {
         CosmeticType<?> cosmetic = types.removeRandom();
+
+        UCCosmeticRewardEvent event = new UCCosmeticRewardEvent(player, chest, this, cosmetic);
+        Bukkit.getPluginManager().callEvent(event);
+
         String catName = category.getConfigPath();
         String[] name = MessageManager.getMessage("Treasure-Chests-Loot." + catName).replace("%cosmetic%", cosmetic.getName()).split("\n");
         pm.setPermission(player, cosmetic);

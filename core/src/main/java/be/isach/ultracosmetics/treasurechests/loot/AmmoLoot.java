@@ -6,9 +6,12 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.events.UCAmmoRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
+import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.WeightedSet;
-
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -34,14 +37,19 @@ public class AmmoLoot implements Loot {
     }
 
     @Override
-    public LootReward giveToPlayer(Player player) {
+    public LootReward giveToPlayer(UltraPlayer player, TreasureChest chest) {
         GadgetType g = (GadgetType) types.getRandom();
         int ammoMin = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Min");
         int ammoMax = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Max");
         int ammo = randomInRange(ammoMin, ammoMax);
+
+        UCAmmoRewardEvent event = new UCAmmoRewardEvent(player, chest, this, g, ammo);
+        Bukkit.getPluginManager().callEvent(event);
+        ammo = event.getAmmo();
+
         String[] name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%cosmetic%", g.getName()).replace("%ammo%", String.valueOf(ammo)).split("\n");
 
-        UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player).addAmmo(g, ammo);
+        player.addAmmo(g, ammo);
         // if the player received more than half of what they could have, send a firework
         boolean firework = ammo > (ammoMax - ammoMin) / 2 + ammoMin;
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Message.enabled");

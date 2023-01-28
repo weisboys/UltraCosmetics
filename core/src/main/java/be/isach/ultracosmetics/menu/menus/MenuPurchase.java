@@ -8,11 +8,9 @@ import be.isach.ultracosmetics.menu.Menu;
 import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
-import com.cryptomorin.xseries.XMaterial;
 
 /**
  * Created by sacha on 04/04/2017.
@@ -38,9 +36,10 @@ public class MenuPurchase extends Menu {
         ClickRunnable purchaseClickRunnable = data -> {
             player.getBukkitPlayer().closeInventory();
             EconomyHandler eh = getUltraCosmetics().getEconomyHandler();
+            if (!purchaseData.canPurchase()) return;
             eh.getHook().withdraw(player.getBukkitPlayer(), purchaseData.getPrice(), () -> {
                 player.sendMessage(MessageManager.getMessage("Successful-Purchase"));
-                purchaseData.getOnPurchase().run();
+                purchaseData.runOnPurchase();
             }, () -> {
                 player.sendMessage(MessageManager.getMessage("Not-Enough-Money"));
             });
@@ -54,7 +53,7 @@ public class MenuPurchase extends Menu {
 
         // Cancel Item
         ItemStack cancelItem = ItemFactory.create(XMaterial.REDSTONE_BLOCK, MessageManager.getMessage("Cancel"));
-        ClickRunnable cancelClickRunnable = data -> purchaseData.getOnCancel().run();
+        ClickRunnable cancelClickRunnable = data -> purchaseData.runOnCancel();
         for (int i = 33; i < 36; i++) {
             for (int j = i; j <= i + 18; j += 9) {
                 putItem(inventory, j, cancelItem, cancelClickRunnable);

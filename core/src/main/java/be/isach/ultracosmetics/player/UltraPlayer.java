@@ -18,6 +18,7 @@ import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
+import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
 import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.menu.menus.MenuMain;
 import be.isach.ultracosmetics.menu.menus.MenuPurchase;
@@ -58,7 +59,7 @@ public class UltraPlayer {
      * Equipped suit cosmetics are stored in `suitMap`,
      * all others are in `equipped`.
      */
-    private final Map<Category,Cosmetic<?>> equipped = new HashMap<>();
+    private final Map<Category, Cosmetic<?>> equipped = new HashMap<>();
     private TreasureChest currentTreasureChest;
 
     /**
@@ -81,7 +82,7 @@ public class UltraPlayer {
      * The values are the currentTimeMillis when the player should
      * regain access to the cosmetics.
      */
-    private final Map<CosmeticType<?>,Long> cooldowns = new HashMap<>();
+    private final Map<CosmeticType<?>, Long> cooldowns = new HashMap<>();
 
     /**
      * Indicates if the player is leaving the server or switching worlds.
@@ -149,7 +150,7 @@ public class UltraPlayer {
     /**
      * Sets the cooldown of a gadget.
      *
-     * @param type   The gadget.
+     * @param type     The gadget.
      * @param cooldown The standard cooldown of the cosmetic in seconds
      * @param runTime  The runtime of the cosmetic (i.e. minimum possible cooldown) in seconds.
      */
@@ -329,9 +330,9 @@ public class UltraPlayer {
             cosmeticsProfile.clearAllEquipped();
         }
         if (Category.MORPHS.isEnabled() && Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")
-        // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
-        // If player is "quitting", remove the disguise anyway. Player is marked as quitting
-        // when changing worlds, making sure morphs get correctly unset.
+                // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
+                // If player is "quitting", remove the disguise anyway. Player is marked as quitting
+                // when changing worlds, making sure morphs get correctly unset.
                 && (isQuitting() || SettingsManager.isAllowedWorld(getBukkitPlayer().getWorld()))) {
             removeCosmetic(Category.MORPHS);
         }
@@ -365,6 +366,13 @@ public class UltraPlayer {
         PurchaseData pd = new PurchaseData();
         pd.setPrice(price);
         pd.setShowcaseItem(itemStack);
+        pd.setCanPurchase(() -> {
+            UCKeyPurchaseEvent event = new UCKeyPurchaseEvent(this, price);
+            Bukkit.getPluginManager().callEvent(event);
+            if (event.isCancelled()) return false;
+            pd.setPrice(event.getPrice());
+            return true;
+        });
         pd.setOnPurchase(() -> {
             addKey();
             MenuMain.openMainMenu(this);
@@ -574,8 +582,8 @@ public class UltraPlayer {
     }
 
     /**
-     * @see #isQuitting()
      * @param quitting Whether equipped cosmetics should be retained
+     * @see #isQuitting()
      */
     public void setQuitting(boolean quitting) {
         this.quitting = quitting;

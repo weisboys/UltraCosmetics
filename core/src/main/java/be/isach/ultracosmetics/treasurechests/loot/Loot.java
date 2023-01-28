@@ -1,14 +1,14 @@
 package be.isach.ultracosmetics.treasurechests.loot;
 
 import be.isach.ultracosmetics.config.SettingsManager;
-
+import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 public interface Loot {
-    public LootReward giveToPlayer(Player player);
+    public LootReward giveToPlayer(UltraPlayer player, TreasureChest chest);
 
     default int randomInRange(int min, int max) {
         if (min < max) {

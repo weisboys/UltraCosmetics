@@ -12,15 +12,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,36 +38,36 @@ public class MenuMain extends Menu {
         super(ultraCosmetics);
 
         switch (Category.enabledSize()) {
-        case 10:
-            layout = new int[] { 9, 11, 13, 15, 17, 27, 29, 31, 33, 35 };
-            break;
-        case 9:
-            layout = new int[] { 9, 11, 13, 15, 17, 28, 30, 32, 34 };
-            break;
-        case 8:
-            layout = new int[] { 10, 12, 14, 16, 28, 30, 32, 34 };
-            break;
-        case 7:
-            layout = new int[] { 10, 13, 16, 28, 30, 32, 34 };
-            break;
-        case 6:
-            layout = new int[] { 10, 13, 16, 28, 31, 34 };
-            break;
-        case 5:
-            layout = new int[] { 10, 16, 22, 29, 33 };
-            break;
-        case 4:
-            layout = new int[] { 19, 21, 23, 25 };
-            break;
-        case 3:
-            layout = new int[] { 20, 22, 24 };
-            break;
-        case 2:
-            layout = new int[] { 21, 23 };
-            break;
-        case 1:
-            layout = new int[] { 22 };
-            break;
+            case 10:
+                layout = new int[] {9, 11, 13, 15, 17, 27, 29, 31, 33, 35};
+                break;
+            case 9:
+                layout = new int[] {9, 11, 13, 15, 17, 28, 30, 32, 34};
+                break;
+            case 8:
+                layout = new int[] {10, 12, 14, 16, 28, 30, 32, 34};
+                break;
+            case 7:
+                layout = new int[] {10, 13, 16, 28, 30, 32, 34};
+                break;
+            case 6:
+                layout = new int[] {10, 13, 16, 28, 31, 34};
+                break;
+            case 5:
+                layout = new int[] {10, 16, 22, 29, 33};
+                break;
+            case 4:
+                layout = new int[] {19, 21, 23, 25};
+                break;
+            case 3:
+                layout = new int[] {20, 22, 24};
+                break;
+            case 2:
+                layout = new int[] {21, 23};
+                break;
+            case 1:
+                layout = new int[] {22};
+                break;
         }
 
         if (UltraCosmeticsData.get().areTreasureChestsEnabled() && layout != null) {
@@ -136,12 +134,12 @@ public class MenuMain extends Menu {
             }
             String[] chestLore;
             if (player.getKeys() < 1) {
-                chestLore = new String[] { "", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage };
+                chestLore = new String[] {"", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage};
             } else {
                 if (SettingsManager.getConfig().getString("TreasureChests.Mode", "").equalsIgnoreCase("both")) {
-                    chestLore = new String[] { "", MessageManager.getMessage("Left-Click-Open-Chest"), MessageManager.getMessage("Right-Click-Simple"), "" };
+                    chestLore = new String[] {"", MessageManager.getMessage("Left-Click-Open-Chest"), MessageManager.getMessage("Right-Click-Simple"), ""};
                 } else {
-                    chestLore = new String[] { "", MessageManager.getMessage("Click-Open-Chest"), "" };
+                    chestLore = new String[] {"", MessageManager.getMessage("Click-Open-Chest"), ""};
                 }
             }
             ItemStack keys = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getMessage("Treasure-Keys"), "",
@@ -176,7 +174,7 @@ public class MenuMain extends Menu {
                     int count = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
                     TreasureRandomizer tr = new TreasureRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
                     for (int i = 0; i < count; i++) {
-                        tr.giveRandomThing();
+                        tr.giveRandomThing(null);
                     }
                     // Refresh with new key count
                     open(player);
@@ -191,7 +189,7 @@ public class MenuMain extends Menu {
 
     private String calculateUnlocked(Player player, Category category, PermissionManager pm) {
         int unlocked = 0;
-        int total = 0;
+        int total;
         if (category.isSuits()) {
             for (Category cat : Category.enabled()) {
                 if (!cat.isSuits()) continue;

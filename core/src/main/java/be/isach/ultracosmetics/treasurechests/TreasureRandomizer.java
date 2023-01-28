@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.loot.AmmoLoot;
 import be.isach.ultracosmetics.treasurechests.loot.CommandLoot;
 import be.isach.ultracosmetics.treasurechests.loot.CosmeticLoot;
@@ -16,14 +17,12 @@ import be.isach.ultracosmetics.treasurechests.loot.MoneyLoot;
 import be.isach.ultracosmetics.treasurechests.loot.NothingLoot;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.WeightedSet;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -96,13 +95,14 @@ public class TreasureRandomizer {
         return Color.fromRGB(r.nextInt(256), r.nextInt(256), r.nextInt(256));
     }
 
-    public LootReward giveRandomThing() {
+    public LootReward giveRandomThing(TreasureChest chest) {
+        UltraPlayer ultraPlayer = UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player);
         XSound.BLOCK_CHEST_OPEN.play(loc, 1.4f, 1.5f);
         if (lootTypes.size() == 0) {
-            return giveFallback();
+            return giveFallback(ultraPlayer, chest);
         }
         Loot loot = lootTypes.getRandom();
-        LootReward reward = loot.giveToPlayer(player);
+        LootReward reward = loot.giveToPlayer(ultraPlayer, chest);
         broadcast(reward.getMessage(), reward.isBroadcast());
         if (reward.isFirework()) {
             spawnFirework();
@@ -120,11 +120,11 @@ public class TreasureRandomizer {
         return reward;
     }
 
-    private LootReward giveFallback() {
+    private LootReward giveFallback(UltraPlayer player, TreasureChest chest) {
         if (UltraCosmeticsData.get().getPlugin().getEconomyHandler().isUsingEconomy()) {
-            return money.giveToPlayer(player);
+            return money.giveToPlayer(player, chest);
         }
-        return nothing.giveToPlayer(player);
+        return nothing.giveToPlayer(player, chest);
     }
 
     public void spawnFirework() {

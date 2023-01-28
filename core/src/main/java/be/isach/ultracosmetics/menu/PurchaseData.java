@@ -2,12 +2,15 @@ package be.isach.ultracosmetics.menu;
 
 import org.bukkit.inventory.ItemStack;
 
+import java.util.function.BooleanSupplier;
+
 /**
  * Created by sacha on 04/04/2017.
  */
 public class PurchaseData {
 
     private int price;
+    private BooleanSupplier canPurchase;
     private Runnable onPurchase;
     private Runnable onCancel;
     private ItemStack showcaseItem;
@@ -20,16 +23,25 @@ public class PurchaseData {
         return showcaseItem;
     }
 
-    public Runnable getOnPurchase() {
-        return onPurchase;
+    public boolean canPurchase() {
+        if (canPurchase != null) return canPurchase.getAsBoolean();
+        return true;
     }
 
-    public Runnable getOnCancel() {
-        return onCancel;
+    public void runOnPurchase() {
+        onPurchase.run();
+    }
+
+    public void runOnCancel() {
+        if (onCancel != null) onCancel.run();
     }
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public void setCanPurchase(BooleanSupplier canPurchase) {
+        this.canPurchase = canPurchase;
     }
 
     public void setOnPurchase(Runnable onPurchase) {
