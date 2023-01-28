@@ -10,7 +10,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Firework;
@@ -26,7 +25,15 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemDamageEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
@@ -88,11 +95,11 @@ public class PlayerListener implements Listener {
         if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             // Disable cosmetics when joining a bad world.
             ultraPlayer.removeMenuItem();
-            ultraPlayer.setQuitting(true);
+            ultraPlayer.setPreserveEquipped(true);
             if (ultraPlayer.clear()) {
                 ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
             }
-            ultraPlayer.setQuitting(false);
+            ultraPlayer.setPreserveEquipped(false);
         }
     }
 
@@ -131,7 +138,6 @@ public class PlayerListener implements Listener {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryClickEvent event) {
@@ -152,7 +158,6 @@ public class PlayerListener implements Listener {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryCreativeEvent event) {
@@ -169,7 +174,6 @@ public class PlayerListener implements Listener {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler(priority = EventPriority.HIGHEST)
     public void cancelMove(InventoryDragEvent event) {
@@ -203,7 +207,7 @@ public class PlayerListener implements Listener {
         if (up.getCurrentTreasureChest() != null) {
             up.getCurrentTreasureChest().forceOpen(0);
         }
-        up.setQuitting(true);
+        up.setPreserveEquipped(true);
         up.saveCosmeticsProfile();
         up.clear();
         up.removeMenuItem();
@@ -221,22 +225,26 @@ public class PlayerListener implements Listener {
             event.getEntity().getInventory().setItem(slot, null);
         }
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getEntity());
-        if (ultraPlayer.getCurrentGadget() != null) event.getDrops().remove(ultraPlayer.getCurrentGadget().getItemStack());
+        if (ultraPlayer.getCurrentGadget() != null) {
+            event.getDrops().remove(ultraPlayer.getCurrentGadget().getItemStack());
+        }
         if (ultraPlayer.getCurrentHat() != null) event.getDrops().remove(ultraPlayer.getCurrentHat().getItemStack());
         Arrays.asList(ArmorSlot.values()).forEach(armorSlot -> {
             if (ultraPlayer.getCurrentSuit(armorSlot) != null) {
                 event.getDrops().remove(ultraPlayer.getCurrentSuit(armorSlot).getItemStack());
             }
         });
-        if (ultraPlayer.getCurrentEmote() != null) event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
+        if (ultraPlayer.getCurrentEmote() != null) {
+            event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
+        }
 
-        ultraPlayer.setQuitting(true);
+        ultraPlayer.setPreserveEquipped(true);
         for (Category cat : Category.values()) {
             if (cat.isClearOnDeath()) {
                 ultraPlayer.removeCosmetic(cat);
             }
         }
-        ultraPlayer.setQuitting(false);
+        ultraPlayer.setPreserveEquipped(false);
 
     }
 

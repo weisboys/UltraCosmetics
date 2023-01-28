@@ -30,11 +30,11 @@ public class InvalidWorldChecker extends BukkitRunnable {
             // https://mcpaste.io/1bbcbf856c5e503b
             if (p != null && !SettingsManager.isAllowedWorld(p.getWorld())) {
                 ultraPlayer.removeMenuItem();
-                ultraPlayer.setQuitting(true);
+                ultraPlayer.setPreserveEquipped(true);
                 if (ultraPlayer.clear()) {
                     ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
                 }
-                ultraPlayer.setQuitting(false);
+                ultraPlayer.setPreserveEquipped(false);
             }
         }
     }

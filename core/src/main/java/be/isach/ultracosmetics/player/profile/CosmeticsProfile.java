@@ -9,7 +9,6 @@ import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.Bukkit;
 
 import java.util.Collections;
@@ -47,10 +46,12 @@ public abstract class CosmeticsProfile {
     public void equip() {
         if (!ultraPlayer.isOnline()) return;
         if (!SettingsManager.isAllowedWorld(ultraPlayer.getBukkitPlayer().getWorld())) return;
-        for (Entry<Category,CosmeticType<?>> type : data.getEnabledCosmetics().entrySet()) {
+        ultraPlayer.setPreserveEquipped(true);
+        for (Entry<Category, CosmeticType<?>> type : data.getEnabledCosmetics().entrySet()) {
             if (type.getValue() == null || !type.getKey().isEnabled() || !type.getValue().isEnabled()) continue;
             type.getValue().equip(ultraPlayer, ultraCosmetics);
         }
+        ultraPlayer.setPreserveEquipped(false);
     }
 
     public void setEnabledCosmetic(Category cat, Cosmetic<?> cosmetic) {

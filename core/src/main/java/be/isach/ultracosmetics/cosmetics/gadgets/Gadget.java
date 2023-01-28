@@ -12,7 +12,8 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.TextUtil;
-
+import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.messages.ActionBar;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -33,9 +34,6 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-
-import com.cryptomorin.xseries.XSound;
-import com.cryptomorin.xseries.messages.ActionBar;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -77,14 +75,19 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     /**
      * If Gadget interaction should tick asynchronously.
      */
-    private boolean asynchronous = false;
+    private final boolean asynchronous;
 
     // Cache the actual material value so we don't have to keep calling parseMaterial
     private final Material material;
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
+        this(owner, type, ultraCosmetics, false);
+    }
+
+    public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics, boolean asynchronous) {
         super(owner, type, ultraCosmetics);
         material = type.getMaterial().parseMaterial();
+        this.asynchronous = asynchronous;
     }
 
     @Override
@@ -194,7 +197,9 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
                 || !(event.getRightClicked() instanceof ItemFrame) || getItemStack() == null
                 || itemStack == null || !itemStack.hasItemMeta()
                 || itemStack.getType() != getItemStack().getType()
-                || !itemStack.getItemMeta().getDisplayName().endsWith(getType().getName())) return;
+                || !itemStack.getItemMeta().getDisplayName().endsWith(getType().getName())) {
+            return;
+        }
 
         event.setCancelled(true);
     }
@@ -290,7 +295,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler(priority = EventPriority.LOWEST)
     public void cancelMove(InventoryClickEvent event) {
@@ -305,7 +309,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler
     public void cancelMove(InventoryDragEvent event) {
@@ -323,7 +326,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
 
     /**
      * Cancel players from removing, picking the item in their inventory.
-     *
      */
     @EventHandler
     public void cancelMove(InventoryCreativeEvent event) {
@@ -332,16 +334,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         if (item != null && player == getPlayer() && item.equals(itemStack)) {
             event.setCancelled(true);
             player.closeInventory(); // Close the inventory because clicking again results in the event being handled
-                                     // client side
+            // client side
         }
-    }
-
-    protected void setAsynchronous(boolean asynchronous) {
-        this.asynchronous = asynchronous;
-    }
-
-    public boolean isAsynchronous() {
-        return asynchronous;
     }
 
     /**

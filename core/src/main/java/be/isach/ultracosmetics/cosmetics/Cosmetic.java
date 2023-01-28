@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -80,7 +79,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
 
         this.equipped = true;
 
-        owner.sendMessage(filterPlaceholders(getCategory().getActivateMessage()));
+        if (!owner.isPreserveEquipped()) {
+            owner.sendMessage(filterPlaceholders(getCategory().getActivateMessage()));
+        }
 
         if (this instanceof Updatable) {
             scheduleTask();
@@ -92,7 +93,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public /* final */ void clear() {
-        owner.sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
+        if (!owner.isPreserveEquipped()) {
+            owner.sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
+        }
 
         HandlerList.unregisterAll(this);
 

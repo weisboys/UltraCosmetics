@@ -89,7 +89,7 @@ public class UltraPlayer {
      * Useful to differentiate for example when a player deactivates
      * a cosmetic on purpose or because they are leaving.
      */
-    private boolean quitting = false;
+    private boolean preserveEquipped = false;
 
     /**
      * Stores the client brand string.
@@ -259,7 +259,7 @@ public class UltraPlayer {
      * @return the cosmetic that was removed, or null if no cosmetic was removed.
      */
     public Cosmetic<?> unsetCosmetic(Category category) {
-        if (!isQuitting()) {
+        if (!isPreserveEquipped()) {
             cosmeticsProfile.setEnabledCosmetic(category, (CosmeticType<?>) null);
         }
         return equipped.remove(category);
@@ -280,7 +280,7 @@ public class UltraPlayer {
     public void setCosmeticEquipped(Cosmetic<?> cosmetic) {
         removeCosmetic(cosmetic.getCategory());
         equipped.put(cosmetic.getCategory(), cosmetic);
-        if (!isQuitting()) {
+        if (!isPreserveEquipped()) {
             cosmeticsProfile.setEnabledCosmetic(cosmetic.getCategory(), cosmetic);
         }
     }
@@ -326,14 +326,14 @@ public class UltraPlayer {
      */
     public boolean clear() {
         boolean toReturn = hasCosmeticsEquipped();
-        if (!isQuitting()) {
+        if (!isPreserveEquipped()) {
             cosmeticsProfile.clearAllEquipped();
         }
         if (Category.MORPHS.isEnabled() && Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")
                 // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
                 // If player is "quitting", remove the disguise anyway. Player is marked as quitting
                 // when changing worlds, making sure morphs get correctly unset.
-                && (isQuitting() || SettingsManager.isAllowedWorld(getBukkitPlayer().getWorld()))) {
+                && (isPreserveEquipped() || SettingsManager.isAllowedWorld(getBukkitPlayer().getWorld()))) {
             removeCosmetic(Category.MORPHS);
         }
         for (Category cat : Category.values()) {
@@ -574,19 +574,20 @@ public class UltraPlayer {
      * Marks whether the player is doing something (like leaving the server)
      * where cosmetics need to be removed but should still be stored in
      * their profile (equipped cosmetics list.)
+     * Also, if true, equip and unequip messages will not be sent.
      *
      * @return true if equipped cosmetics should be retained
      */
-    public boolean isQuitting() {
-        return quitting;
+    public boolean isPreserveEquipped() {
+        return preserveEquipped;
     }
 
     /**
-     * @param quitting Whether equipped cosmetics should be retained
-     * @see #isQuitting()
+     * @param preserveEquipped Whether equipped cosmetics should be retained
+     * @see #isPreserveEquipped()
      */
-    public void setQuitting(boolean quitting) {
-        this.quitting = quitting;
+    public void setPreserveEquipped(boolean preserveEquipped) {
+        this.preserveEquipped = preserveEquipped;
     }
 
     public boolean isBypassingCooldown() {

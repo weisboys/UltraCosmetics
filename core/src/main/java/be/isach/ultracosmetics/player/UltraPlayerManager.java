@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.player;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.listeners.ClientBrandListener;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -20,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UltraPlayerManager {
 
-    private Map<UUID,UltraPlayer> playerCache;
+    private Map<UUID, UltraPlayer> playerCache;
     private UltraCosmetics ultraCosmetics;
 
     public UltraPlayerManager(UltraCosmetics ultraCosmetics) {
@@ -58,7 +57,7 @@ public class UltraPlayerManager {
     public void dispose() {
         Collection<UltraPlayer> set = playerCache.values();
         for (UltraPlayer cp : set) {
-            cp.setQuitting(true);
+            cp.setPreserveEquipped(true);
             if (cp.getCurrentTreasureChest() != null) {
                 cp.getCurrentTreasureChest().forceOpen(0);
             }

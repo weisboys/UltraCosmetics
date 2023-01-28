@@ -6,12 +6,10 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.version.VersionManager;
-
-import org.bukkit.Particle;
-import org.bukkit.util.Vector;
-
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import org.bukkit.Particle;
+import org.bukkit.util.Vector;
 
 /**
  * Represents an instance of a party popper gadget summoned by a player.
@@ -22,9 +20,7 @@ import com.cryptomorin.xseries.XSound;
 public class GadgetPartyPopper extends Gadget {
 
     public GadgetPartyPopper(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics);
-
-        setAsynchronous(true);
+        super(owner, type, ultraCosmetics, true);
     }
 
     @Override
