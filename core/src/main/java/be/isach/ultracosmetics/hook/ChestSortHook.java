@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.hook;
 
+import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.util.ItemFactory;
 import de.jeff_media.chestsort.api.ChestSortAPI;
 import de.jeff_media.chestsort.api.ChestSortEvent;
@@ -17,6 +18,10 @@ public class ChestSortHook implements Listener {
 
     @EventHandler
     public void onChestSort(ChestSortEvent event) {
+        if (event.getInventory().getHolder() instanceof CosmeticsInventoryHolder) {
+            event.setCancelled(true);
+            return;
+        }
         event.setUnmovable(menuItem);
     }
 }

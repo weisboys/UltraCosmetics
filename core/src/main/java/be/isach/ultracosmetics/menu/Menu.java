@@ -55,11 +55,7 @@ public abstract class Menu implements Listener {
 
     protected Inventory createInventory(int size, String name) {
         Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), getName());
-        if (ultraCosmetics.getChestSortHook() != null) {
-            // ChestSort by default knows that this inventory shouldn't be sorted anyway,
-            // because it contains "menu" in the package name. But because it can be disabled...
-            ultraCosmetics.getChestSortHook().setUnsortable(inventory);
-        }
+        ((CosmeticsInventoryHolder)inventory.getHolder()).setInventory(inventory);
         return inventory;
     }
 
