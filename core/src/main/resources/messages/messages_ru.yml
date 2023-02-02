@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lСледующая страница'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lНедостаточно места в инвентаре для сундука с сокровищами!'
-  Too-Close: '%prefix% &c&lТы слишком близко к другому сундуку с сокровищами!'
   Region-Disabled: '%prefix% &c&lТы не можешь открыть сундук с сокровищами в данном месте'
   Invalid: '%prefix% &c&lМистический сундук не может быть расположен в данном месте.'
   In-Air: '%prefix% &c&lМестоположение магического сундука находится в воздухе, расположите его на земле.'
   In-Ground: '%prefix% &c&lМестоположение магического сундука находится в воздухе, расположите его на земле.'
   Suggestion: '%prefix% &aМожет быть, ты имел в виду %location%?'
   Dismount-First: '%prefix% &c&lТы должен призвать транспорт для взаимодействия инвентаря.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lВам нужно создать питомца, чтобы переименовать его.'
 Treasure-Chests-Loot:
   Ammo: |-

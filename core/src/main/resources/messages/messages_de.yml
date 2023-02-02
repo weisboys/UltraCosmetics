@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lNächste Seite'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lHier ist nicht genug Platz für eine Schatztruhe!'
-  Too-Close: '%prefix% &c&lDu bist zu nah an einer anderen Schatztruhe!'
   Region-Disabled: '%prefix% &c&lDu kannst hier keine Truhe öffnen!'
   Invalid: '%prefix% &c&lDas ist keine gültige Position.'
   In-Air: '%prefix% &c&lDiese Position ist nicht am Boden!'
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
   Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: |-
@@ -380,7 +380,7 @@ Mounts:
     menu-name: '&c&lSchreiter'
     entity-displayname: '&l%playername%''s Schreiter'
     Description: |-
-      &7&oEine mysteriöse würfelförmige Kreatur,
+      &7&oEine mysteriöse, würfelförmige Kreatur,
       &7&odie direkt über Lava laufen kann.
   Horse:
     menu-name: '&7&lPferd'
@@ -450,7 +450,7 @@ Particle-Effects:
     Description: '&7&oWerde ein Engel!'
   RainbowWings:
     name: '&4&lR&6&le&e&lg&a&le&b&ln&9&lb&5&lo&4&lg&6&le&e&ln&f&lflügel'
-    Description: '&7&oWings, but full of color!'
+    Description: '&7&oFlügel, aber voller Farbe!'
   SuperHero:
     name: '&4&lSuperheld'
     Description: '&7&oWerde zu Superman!'
@@ -478,30 +478,30 @@ Particle-Effects:
     name: '&e&lFeuerwellen'
     Description: '&7&oMan sagt, dass diese Feuerwellen ein Schild sind...'
   CursedHalo:
-    name: '&5&lCursed Halo'
+    name: '&5&lVerfluchter Heiligenschein'
     Description: |-
-      &7&oIt brings great misfortune to
-      &7&oanyone who dares to wear it.
+      &7&oEs bringt jedem, der es wagt
+      &7&oes zu tragen, großes Unglück.
   VolcanicHalo:
-    name: '&c&lVolcanic Halo'
+    name: '&c&lVulkanischer Heiligenschein'
     Description: |-
-      &7&oA halo composed of
-      &7&oeternal flames.
+      &7&oEin Heiligenschein bestehend
+      &7&oaus ewigen Flammen.
   CursedFootprints:
-    name: '&5&lCursed Footprints'
+    name: '&5&lVerfluchte Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odark energy behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus dunkler Energie.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: '&a&lFrühlings-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&ogreen particles behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus grünen Partikeln.
   ShadowFootprints:
-    name: '&7&lShadow Footprints'
+    name: '&7&lSchatten-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osmoke behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Rauch.
   Notes:
     name: '&6&lNoten'
     Description: '&7&oNoten über deinem Kopf.'
@@ -509,23 +509,23 @@ Particle-Effects:
     name: '&c&lHerzen'
     Description: '&7&oHerzen über deinem Kopf.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: '&d&lEnder-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&odragon breath behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Drachenatem.
   ArcaneFlame:
-    name: '&b&lArcane Flame'
-    Description: '&7&oBlue flame above your head.'
+    name: '&b&lGeheimnisvolle Flamme'
+    Description: '&7&oBlaue Flamme über deinem Kopf.'
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: '&e&lGöttlicher Heiligenschein'
     Description: |-
-      &7&oA halo composed of
-      &7&oglowing light.
+      &7&oEin Heiligenschein bestehend
+      &7&oaus glühendem Licht.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: '&f&lSchnee-Fußspuren'
     Description: |-
-      &7&oLeaves a trail of
-      &7&osnow behind.
+      &7&oHinterlässt eine Spur
+      &7&oaus Schnee.
 Pets:
   Piggy:
     menu-name: '&d&lSchwein'
@@ -920,7 +920,7 @@ Morphs:
     Description: '&7&oEin neuer Freund!'
   Axolotl:
     name: '&5&lAxolotl'
-    skill: '&eLeft-Click&7 for cute sounds'
+    skill: '&eLinksklick&7: &aniedliche Geräusche'
     Description: '&7&oSooo niedlich!'
   Bee:
     name: '&e&lBiene'
@@ -1603,7 +1603,7 @@ Suits:
     chestplate-name: '&5&lVerfluchter &f&lBrustpanzer'
     leggings-name: '&5&lVerfluchte &f&lHose'
     boots-name: '&5&lVerfluchte &f&lStiefel'
-    Description: '&7&oMysterious and spooky.'
+    Description: '&7&oGeheimnisvoll und gruselig.'
   Slime:
     whole-equip: '&f&lKompletter &a&lSchleim&f&l-Anzug'
     helmet-name: '&a&lSchleim&f&l-Helm'
@@ -1611,8 +1611,8 @@ Suits:
     leggings-name: '&a&lSchleim&f&l-Hose'
     boots-name: '&a&lSchleim&f&l-Stiefel'
     Description: |-
-      &7&oSlimy green suit.
-      &7&oThe slimes will love it!
+      &7&oSchleimiger, grüner Anzug.
+      &7&oDie Schleime werden es lieben!
   Equip: '%prefix% &9Du hast %suitname% &9ausgerüstet!'
   Unequip: '%prefix% &9Du hast %suitname% &9entfernt!'
   Suit-Part-Lore: '&9Anzug-Teil'
@@ -1649,17 +1649,17 @@ Emotes:
     Name: '&a&lZwinkern'
     Description: '&7&oLass jemanden wissen, dass du den Witz verstanden hast!'
   RaiseEyebrows:
-    Name: '&3&lRaise Eyebrows'
-    Description: '&7&oSurprised?'
+    Name: '&3&lAugenbrauen hochziehen'
+    Description: '&7&oÜberrascht?'
   ScaryCandle:
-    Name: '&5&lScary Candle'
+    Name: '&5&lUnheimliche Kerze'
     Description: '&7&oHappy Halloween!'
   GlowingPumpkin:
-    Name: '&6&lGlowing Pumpkin'
-    Description: '&7&oJack O''Slime'
+    Name: '&6&lLeuchtender Kürbis'
+    Description: '&7&oSchleimkürbislaterne'
   LovestruckAllay:
-    Name: '&b&lLovestruck Allay'
-    Description: '&7&oAre we falling in love?'
+    Name: '&b&lVerliebter Hilfsgeist'
+    Description: '&7&oVerlieben wir uns?'
 Projectile-Effects:
   Equip: '%prefix% &9Du hast %projectile-effectname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %projectile-effectname% &9entfernt'
@@ -1769,13 +1769,13 @@ Death-Effects:
     name: '&4&lExplosion'
     Description: '&7&oBUMM!'
   Firework:
-    name: '&7&lFirework Rocket'
+    name: '&7&lFeuerwerksrakete'
     Description: |-
       &7&oGlückwunsch!
       &7&oDu bist... gestorben?
   Lightning:
-    name: '&f&lLightning'
-    Description: '&7&o⚡ ZAP!'
+    name: '&f&lBlitz'
+    Description: '&7&o⚡ KRAWUMM!'
 Enabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen aktiviert!'
 Disabled-SelfMorphView: '%prefix% &9Du hast die Selbstansicht für Verwandlungen deaktiviert!'
 Enabled-Gadgets: '%prefix% &9Du hast Gadgets aktiviert!'

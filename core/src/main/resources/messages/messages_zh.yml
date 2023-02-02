@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&l下一页'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&l这里没有足够的空间来召唤宝藏箱！'
-  Too-Close: '%prefix% &c&l你离另一个宝藏箱太近了！'
   Region-Disabled: '%prefix% &c&l你不能在这里打开一个宝藏箱！'
   Invalid: '%prefix% &c&l这不是一个可用地点'
   In-Air: '%prefix% &c&l该地点不在地面上！'
   In-Ground: '%prefix% &c&l该地点在地下！'
   Suggestion: '%prefix% &a你指的是 %location%?'
   Dismount-First: '%prefix% &c&l你必须先从载具上下来才能打开箱子'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&l你需要召唤一只宠物才能重命名它'
 Treasure-Chests-Loot:
   Ammo: |-

@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lHalaman Selanjutnya'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lTidak ada cukup ruang untuk membuka kotak kosmetik!'
-  Too-Close: '%prefix% &c&lAnda terlalu dekat dengan kotak kosmetik lainnya!'
   Region-Disabled: '%prefix% &c&lAnda tidak dapat membuka kotak kosmetik disini!'
   Invalid: '%prefix% &c&lLokasi tersebut tidak sah.'
   In-Air: '%prefix% &c&lLokasi tersebut tidak berada di tanah!'
   In-Ground: '%prefix% &c&lLokasi tersebut ada di dalam tanah!'
   Suggestion: '%prefix% &aMungkin maksud anda %location%?'
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lAnda harus memanggil hewan peliharaan untuk mengganti nama'
 Treasure-Chests-Loot:
   Ammo: |-
