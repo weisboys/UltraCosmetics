@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lNächste Seite'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lHier ist nicht genug Platz für eine Schatztruhe!'
-  Too-Close: '%prefix% &c&lDu bist zu nah an einer anderen Schatztruhe!'
   Region-Disabled: '%prefix% &c&lDu kannst hier keine Truhe öffnen!'
   Invalid: '%prefix% &c&lDas ist keine gültige Position.'
   In-Air: '%prefix% &c&lDiese Position ist nicht am Boden!'
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
   Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: |-
