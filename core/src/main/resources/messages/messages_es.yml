@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lProxima Pagina'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lNo hay suficiente espacio para poner el cofre!'
-  Too-Close: '%prefix% &c&lEstas muy cerca de otro cofre!'
   Region-Disabled: '%prefix% &c&lNo puedes abrir un cofre aqui!'
   Invalid: '%prefix% &c&lLocalizacion invalida.'
   In-Air: '%prefix% &c&lEl lugar no esta en el suelo!'
   In-Ground: '%prefix% &c&lEl lugar esta en el suelo!'
   Suggestion: '%prefix% &aQuizas quisiste decir %location%?'
   Dismount-First: '%prefix% &c&lDebes desmontar tu vehículo antes de abrir un cofre.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lNecesitas spawnear una mascota para renombrarla'
 Treasure-Chests-Loot:
   Ammo: |-
