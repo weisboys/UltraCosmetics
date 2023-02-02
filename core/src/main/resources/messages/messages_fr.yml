@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lPage suivante'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lIl n''y a pas assez de place pour un coffre au trésor !'
-  Too-Close: '%prefix% &c&lTu es trop proche d''un autre coffre au trésor !'
   Region-Disabled: '%prefix% &c&lTu ne peux pas ouvrir un coffre ici !'
   Invalid: '%prefix% &c&lCe n''est pas un emplacement valide.'
   In-Air: '%prefix% &c&lCet emplacement n''est pas au sol !'
   In-Ground: '%prefix% &c&lCet emplacement est au sol !'
   Suggestion: '%prefix% &aTu voulais peut-être dire %location% ?'
   Dismount-First: '%prefix% &c&lVous devez démonter votre véhicule avant d''ouvrir un coffre.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lTu dois faire apparaître un familier pour le renommer'
 Treasure-Chests-Loot:
   Ammo: |-
