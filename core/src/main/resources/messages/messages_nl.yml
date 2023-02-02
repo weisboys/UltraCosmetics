@@ -136,13 +136,13 @@ Menu:
       Next-Page: '&a&lNext Page'
 Chest-Location:
   Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
-  Too-Close: '%prefix% &c&lYou are too close to another treasure chest!'
   Region-Disabled: '%prefix% &c&lYou can''t open a chest here!'
   Invalid: '%prefix% &c&lThat''s not a valid location.'
   In-Air: '%prefix% &c&lThat location is not on the ground!'
   In-Ground: '%prefix% &c&lThat location is in the ground!'
   Suggestion: '%prefix% &aMaybe you meant %location%?'
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
+  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
 Active-Pet-Needed: '&c&lYou need to spawn a pet to rename it'
 Treasure-Chests-Loot:
   Ammo: |-
