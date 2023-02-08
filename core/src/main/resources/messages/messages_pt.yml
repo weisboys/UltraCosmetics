@@ -31,7 +31,7 @@ Your-Keys: '&7&oSuas chaves: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lChave de Tesouro &e&lpor $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lVocê ganhou: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lTodos os locais do tesouro estão cheios, aguarde e tente novamente'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '%prefix% &c&lVocê não tem nenhuma munição para esta engenhoca!'
 Clear:
   Cosmetics: '&c&lLimpar cosméticos'
   Gadgets: '&c&lLimpar a engenhoca atual'
