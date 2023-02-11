@@ -134,6 +134,11 @@ subprojects { subproj ->
             url "https://hub.jeff-media.com/nexus/repository/jeff-media-public/"
         }
 
+        // Towny
+        maven {
+            url = 'https://repo.glaremasters.me/repository/towny/'
+        }
+
         // Vault
         maven {
             url 'https://jitpack.io'

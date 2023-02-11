@@ -14,6 +14,7 @@ import be.isach.ultracosmetics.economy.EconomyHandler;
 import be.isach.ultracosmetics.hook.ChestSortHook;
 import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
+import be.isach.ultracosmetics.hook.TownyHook;
 import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
@@ -349,6 +350,13 @@ public class UltraCosmetics extends JavaPlugin {
             getSmartLogger().write("Hooked into ChestSort");
         }
 
+        if (getServer().getPluginManager().isPluginEnabled("Towny")
+                && SettingsManager.getConfig().getBoolean("Towny-Hook", true)) {
+            getServer().getPluginManager().registerEvents(new TownyHook(), this);
+            getSmartLogger().write();
+            getSmartLogger().write("Hooked into Towny");
+        }
+
         // Start up bStats
         setupMetrics();
 
@@ -437,15 +445,15 @@ public class UltraCosmetics extends JavaPlugin {
         }
         String version = getDescription().getVersion();
         metrics.addCustomChart(new DrilldownPie("uc_by_mc", () -> {
-            Map<String,Map<String,Integer>> map = new HashMap<>();
-            Map<String,Integer> entry = new HashMap<>();
+            Map<String, Map<String, Integer>> map = new HashMap<>();
+            Map<String, Integer> entry = new HashMap<>();
             entry.put(version, 1);
             map.put(nms, entry);
             return map;
         }));
         metrics.addCustomChart(new DrilldownPie("mc_by_uc", () -> {
-            Map<String,Map<String,Integer>> map = new HashMap<>();
-            Map<String,Integer> entry = new HashMap<>();
+            Map<String, Map<String, Integer>> map = new HashMap<>();
+            Map<String, Integer> entry = new HashMap<>();
             entry.put(nms, 1);
             map.put(version, entry);
             return map;

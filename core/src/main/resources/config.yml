@@ -319,12 +319,12 @@ Fill-Blank-Slots-With-Item:
 # List of commands that won't work when cosmetics are equipped.
 # Command arguments are ignored, commands are blocked when base command matches.
 Disabled-Commands:
-- hat
+  - hat
 
 # List of the worlds where cosmetics are enabled!
 # If list contains '*', all worlds will be allowed.
 Enabled-Worlds:
-- '*'
+  - '*'
 
 # Toggle this to allow players to rename pets.
 #
@@ -447,10 +447,10 @@ Area-Debug: false
 
 # Materials that are treated as air. Changing these is not recommended.
 Air-Materials:
-- AIR
-- CAVE_AIR
-- VOID_AIR
-- LIGHT
+  - AIR
+  - CAVE_AIR
+  - VOID_AIR
+  - LIGHT
 
 # Whether UltraCosmetics should automatically download and install new versions.
 # Requires Check-For-Updates to be enabled.
@@ -466,7 +466,7 @@ Max-Entity-Spawns-Per-Tick: 10
 
 # Languages supported by this version of UltraCosmetics.
 # This is not a configurable list, just informative.
-Supported-Languages: []
+Supported-Languages: [ ]
 
 # The language to use. Can be set to any language listed above.
 Language: en
@@ -488,11 +488,15 @@ Force-NMS: false
 # This only works for things that are Projectiles and are directly launched by the player (i.e. with a bow.)
 # For hints on what a Projectile is, see: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/Projectile.html
 Projectile-Types:
-- ARROW
-- SNOWBALL
-- SPECTRAL_ARROW
-- TRIDENT
+  - ARROW
+  - SNOWBALL
+  - SPECTRAL_ARROW
+  - TRIDENT
 
 # If ChestSort is detected, hooks it to prevent moving the menu item.
 # If ChestSort is not installed, this has no effect.
 ChestSort-Hook: true
+
+# If Towny is installed, UltraCosmetics will prevent Towny from removing UC's pets and mounts.
+# If Towny is not installed, this has no effect.
+Towny-Hook: true
