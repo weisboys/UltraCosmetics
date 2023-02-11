@@ -8,13 +8,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -37,7 +37,9 @@ public class TreasureChestManager implements Listener {
         if (SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
             Set<String> locationNames = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations").getKeys(false);
             for (String locationName : locationNames) {
-                if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) continue;
+                if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) {
+                    continue;
+                }
                 ConfigurationSection location = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations." + locationName);
                 String worldName = location.getString("World", "none");
                 World world = null;
@@ -84,6 +86,14 @@ public class TreasureChestManager implements Listener {
         tryOpenChest(player, tloc);
     }
 
+    public static boolean shouldPush(UltraPlayer chestOwner, Entity entity) {
+        if (chestOwner.getBukkitPlayer() == entity || !(entity instanceof LivingEntity)) return false;
+        if (entity instanceof ArmorStand && !((ArmorStand) entity).isVisible()) return false;
+        if (entity.hasMetadata("NPC")) return false;
+        if (chestOwner.getCurrentPet() != null && entity == chestOwner.getCurrentPet().getEntity()) return false;
+        return true;
+    }
+
     public static void tryOpenChest(Player player, TreasureLocation tpTo) {
         UltraCosmetics plugin = UltraCosmeticsData.get().getPlugin();
         UltraPlayer ultraPlayer = plugin.getPlayerManager().getUltraPlayer(player);
@@ -100,17 +110,19 @@ public class TreasureChestManager implements Listener {
 
         Location targetLoc = tpTo == null ? player.getLocation() : tpTo.toLocation(player);
 
-        Area area = new Area(targetLoc, SettingsManager.getConfig().getBoolean("TreasureChests.Large") ? 3 : 2, 1);
+        boolean large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+        Area area = new Area(targetLoc, large ? 3 : 2, 1);
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
             player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
             return;
         }
 
-        for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, 5, 5, 5)) {
-            if (ent instanceof LivingEntity && ent != player) {
+        int range = large ? 3 : 2;
+        for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, range, range, range)) {
+            if (shouldPush(ultraPlayer, ent)) {
                 player.closeInventory();
-                player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close"));
+                player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close-to-Entity"));
                 return;
             }
         }
