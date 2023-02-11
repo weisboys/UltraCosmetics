@@ -111,21 +111,21 @@ Menu:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lEfeitos de Projéteis'
     Button:
-      Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&5&lEfeitos de Projéteis'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lEfeitos da Morte'
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&c&lEfeitos da Morte'
+      Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
