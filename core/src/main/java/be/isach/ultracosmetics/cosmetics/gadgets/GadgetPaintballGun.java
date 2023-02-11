@@ -8,7 +8,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EnderPearl;
@@ -20,9 +21,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,11 +54,28 @@ public class GadgetPaintballGun extends Gadget {
 
     private final Set<Projectile> projectiles = new HashSet<>();
     private final int radius;
+    private final Particles effect;
+    private final int particleCount;
 
     public GadgetPaintballGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        radius = SettingsManager.getConfig().getInt("Gadgets." + getType().getConfigName() + ".Radius", 2);
+        radius = SettingsManager.getConfig().getInt(getOptionPath("Radius"), 2);
         displayCooldownMessage = false;
+        if (!SettingsManager.getConfig().getBoolean(getOptionPath("Particle.Enabled"))) {
+            particleCount = 0;
+            effect = null;
+            return;
+        }
+        Particles effect = null;
+        try {
+            effect = Particles.valueOf(SettingsManager.getConfig().getString(getOptionPath("Particle.Effect")));
+        } catch (IllegalArgumentException ignored) {
+            this.particleCount = 0;
+            this.effect = null;
+            return;
+        }
+        this.effect = effect;
+        particleCount = SettingsManager.getConfig().getInt(getOptionPath("Particle.Count"), 50);
     }
 
     @Override
@@ -86,14 +101,13 @@ public class GadgetPaintballGun extends Gadget {
         // if successfully removed (in other words, if it was there to begin with)
         if (projectiles.remove(event.getEntity())) {
             Location center = event.getEntity().getLocation().add(event.getEntity().getVelocity());
-            Map<Block,XMaterial> updates = new HashMap<>();
+            Map<Block, XMaterial> updates = new HashMap<>();
             for (Block block : BlockUtils.getBlocksInRadius(center.getBlock().getLocation(), radius, false)) {
                 updates.put(block, PAINT_BLOCKS.get(RANDOM.nextInt(PAINT_BLOCKS.size())));
             }
             BlockUtils.setToRestore(updates, 20 * 3);
-            if (SettingsManager.getConfig().getBoolean("Gadgets." + getType().getConfigName() + ".Particle.Enabled")) {
-                Particles effect = Particles.valueOf((SettingsManager.getConfig().getString("Gadgets." + getType().getConfigName() + ".Particle.Effect")).replace("_", ""));
-                effect.display(2.5, 0.2f, 2.5f, center.clone().add(0.5f, 1.2f, 0.5F), 50);
+            if (particleCount > 0) {
+                effect.display(2.5, 0.2f, 2.5f, center.clone().add(0.5f, 1.2f, 0.5F), particleCount);
             }
             event.getEntity().remove();
             try {

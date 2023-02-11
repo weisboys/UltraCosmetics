@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.gadgets.*;
 import be.isach.ultracosmetics.util.ServerVersion;
-
 import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
@@ -100,6 +99,7 @@ public class GadgetType extends CosmeticType<Gadget> {
                 config.addDefault(path + ".Block-Type", "_TERRACOTTA", "With what block will it paint?", "Uses all blocks that end with the supplied string. For values, see:", "https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html");
                 config.addDefault(path + ".Particle.Enabled", false, "Should it display particles?");
                 config.addDefault(path + ".Particle.Effect", "FIREWORKS_SPARK", "what particles? (List: http://pastebin.com/CVKkufck)");
+                config.addDefault(path + ".Particle.Count", 50, "How many particles should be displayed?");
                 config.addDefault(path + ".Radius", 2, "The radius of painting.");
                 List<String> blackListedBlocks = new ArrayList<>();
                 blackListedBlocks.add("REDSTONE_BLOCK");
