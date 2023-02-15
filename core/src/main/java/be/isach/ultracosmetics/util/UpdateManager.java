@@ -4,13 +4,11 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.Version;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
-import org.bukkit.Bukkit;
-import org.bukkit.scheduler.BukkitRunnable;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.bukkit.Bukkit;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -41,6 +39,11 @@ public class UpdateManager extends BukkitRunnable {
      */
     private final Version currentVersion;
 
+    /**
+     * Last Version published on spigotmc.org.
+     */
+    private Version spigotVersion;
+
     private final UltraCosmetics ultraCosmetics;
 
     /**
@@ -48,10 +51,7 @@ public class UpdateManager extends BukkitRunnable {
      */
     private boolean outdated = false;
 
-    /**
-     * Last Version published on spigotmc.org.
-     */
-    private Version spigotVersion;
+    private String status;
 
     public UpdateManager(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -63,27 +63,36 @@ public class UpdateManager extends BukkitRunnable {
      */
     @Override
     public void run() {
-        String spigotVersionString = getLastVersion();
+        determineStatus();
+        ultraCosmetics.getSmartLogger().write(status);
+        if (outdated && SettingsManager.getConfig().getBoolean("Auto-Update")) {
+            update();
+        }
+    }
+
+    private void determineStatus() {
+        String spigotVersionString = fetchSpigotVersion();
         if (spigotVersionString == null) {
-            ultraCosmetics.getSmartLogger().write("Cannot update, unknown version");
+            status = "Cannot update, unknown version";
+
             return;
         }
         spigotVersion = new Version(spigotVersionString);
-        if (currentVersion.compareTo(spigotVersion) >= 0) {
-            ultraCosmetics.getSmartLogger().write("No new version available.");
+        if (currentVersion.compareTo(spigotVersion) == 0) {
+            status = "You are running the latest version on Spigot.";
+            return;
+        }
+        if (currentVersion.compareTo(spigotVersion) > 0) {
+            status = "You are running a version newer than the latest one on Spigot.";
             return;
         }
         if (!checkMinecraftVersion()) {
-            ultraCosmetics.getSmartLogger().write("A new version is available, but it doesn't support this server version.");
+            status = "A new version is available on Spigot, but it doesn't support this server version.";
             return;
         }
 
         outdated = true;
-        ultraCosmetics.getSmartLogger().write("New version available on Spigot: " + spigotVersion.get());
-        if (!SettingsManager.getConfig().getBoolean("Auto-Update")) {
-            return;
-        }
-        update();
+        status = "New version available on Spigot: " + spigotVersion.get();
     }
 
     public boolean update() {
@@ -92,22 +101,31 @@ public class UpdateManager extends BukkitRunnable {
             return false;
         }
         outdated = false;
-        ultraCosmetics.getSmartLogger().write("Successfully downloaded new version, restart server to apply update.");
+        status = "Successfully downloaded new version, restart server to apply update.";
+        ultraCosmetics.getSmartLogger().write(status);
         return true;
     }
 
     /**
-     * Gets last version published on Spigot.
+     * Fetches latest version published on Spigot.
      *
-     * @return last version published on Spigot.
+     * @return latest version published on Spigot.
      */
-    public String getLastVersion() {
+    private String fetchSpigotVersion() {
         JsonObject jsonVersion = (JsonObject) apiRequest("versions/latest");
         if (jsonVersion == null) {
             return null;
         }
         String version = jsonVersion.get("name").toString();
         return version;
+    }
+
+    public Version getSpigotVersion() {
+        return spigotVersion;
+    }
+
+    public Version getCurrentVersion() {
+        return currentVersion;
     }
 
     private JsonElement apiRequest(String suffix) {
@@ -144,7 +162,7 @@ public class UpdateManager extends BukkitRunnable {
     /**
      * Downloads the file
      * <p>
-     * Borrowed f<a href="rom">https://github.com/Stipess1/AutoUpdater/blob/master/src/main/java/com/stipess1/updater/Updater.</a>java
+     * Borrowed from https://github.com/Stipess1/AutoUpdater/blob/master/src/main/java/com/stipess1/updater/Updater.java
      */
     private boolean download() {
         BufferedInputStream in = null;
@@ -218,5 +236,9 @@ public class UpdateManager extends BukkitRunnable {
 
     public boolean isOutdated() {
         return outdated;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

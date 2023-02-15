@@ -21,7 +21,7 @@ Please read the [Development section](#-development) in this README.
 
 ## ✅ Compatibility
 
-UltraCosmetics v3 officially supports the **Spigot** and **[Paper](https://papermc.io/) (recommended)** server software running the following Minecraft versions:
+UltraCosmetics v3 officially supports the **Spigot** and **Paper** server software running the following Minecraft versions:
 
 - **1.8.8** to **latest**
 

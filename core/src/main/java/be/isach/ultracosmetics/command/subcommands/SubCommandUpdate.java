@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.command.subcommands;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.util.UpdateManager;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -21,12 +20,16 @@ public class SubCommandUpdate extends SubCommand {
             sender.sendMessage(ChatColor.RED + "Version checking must be enabled to update.");
             return;
         }
+        sender.sendMessage(ChatColor.GREEN + "Current version: " + updateManager.getCurrentVersion().getFull());
         if (args.length > 1 && args[1].equalsIgnoreCase("force")) {
             sender.sendMessage(ChatColor.RED + "Ignoring version check and downloading anyway. This is not recommended and may result in a downgrade.");
-        } else if (!updateManager.isOutdated()) {
-            sender.sendMessage(ChatColor.RED + "There is no new version available for this server version.");
-            return;
+        } else {
+            sender.sendMessage(ChatColor.YELLOW + "Update status: " + updateManager.getStatus());
+            if (!updateManager.isOutdated()) {
+                return;
+            }
         }
+        sender.sendMessage(ChatColor.GREEN + "UltraCosmetics " + updateManager.getSpigotVersion() + " is available to download.");
         sender.sendMessage(ChatColor.YELLOW + "Requesting update...");
         new BukkitRunnable() {
             @Override

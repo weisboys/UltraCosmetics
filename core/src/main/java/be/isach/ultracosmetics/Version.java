@@ -23,6 +23,10 @@ public class Version implements Comparable<Version> {
         return this.version;
     }
 
+    public String getFull() {
+        return versionString;
+    }
+
     public Version(String version) {
         if (version == null)
             throw new IllegalArgumentException("Version can not be null");
@@ -71,5 +75,10 @@ public class Version implements Comparable<Version> {
     @Override
     public int hashCode() {
         return version.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return get();
     }
 }
