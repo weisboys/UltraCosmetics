@@ -420,7 +420,6 @@ No-Permission:
     Lore:
       - ''
       - '&c&lYou do not have permission for this!'
-      - ''
 
 # If set to true, in messages the cosmetics' names
 # won't be colored.
