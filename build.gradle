@@ -9,7 +9,7 @@ allprojects {
     idea.module.downloadSources = true
 
     group = 'be.isach'
-    version = '3.0-DEV-b6'
+    version = '3.0-DEV-b7'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
