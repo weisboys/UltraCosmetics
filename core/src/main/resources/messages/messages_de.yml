@@ -142,7 +142,7 @@ Chest-Location:
   In-Ground: '%prefix% &c&lDiese Position ist im Boden!'
   Suggestion: '%prefix% &aMeintest du vielleicht %location%?'
   Dismount-First: '%prefix% &c&lDu musst dein Fahrzeug verlassen, bevor du eine Truhe öffnest.'
-  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
+  Too-Close-To-Entity: '%prefix% &c&lDu bist zu nah an einem anderen Objekt!'
 Active-Pet-Needed: '&c&lDu must ein Haustier spawnen um es umzubenennen'
 Treasure-Chests-Loot:
   Ammo: |-

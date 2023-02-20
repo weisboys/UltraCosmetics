@@ -89,7 +89,7 @@ Menu:
   Hats:
     Title: '&lHatut'
     Button:
-      Name: '&d&lHatut'
+      Name: '&d&lHats'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'
@@ -103,7 +103,7 @@ Menu:
   Suits:
     Title: '&lVaatteet'
     Button:
-      Name: '&3&lVaatteet'
+      Name: '&3&lSuits'
       Lore: '&7Unlocked: &f%unlocked%'
       Tooltip-Equip: '&b&lOta käyttöön'
       Tooltip-Unequip: '&c&lPoista käytöstä'

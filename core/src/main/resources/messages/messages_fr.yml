@@ -160,8 +160,8 @@ Treasure-Chests-Loot:
   Gadgets: "&9Gadget \n%cosmetic%"
   Suits: "&3Costume\n%cosmetic%"
   Emotes: "&eÉmote\n%cosmetic%"
-  Death-Effects: "&cEffet de mort %cosmetic%"
-  Projectile-Effects: "&5Effet de projectile %cosmetic%"
+  Death-Effects: "&cEffet de mort\n%cosmetic%"
+  Projectile-Effects: "&5Effet de projectile\n%cosmetic%"
 Disable-Gadgets: '&c&lDésactiver les gadgets'
 Disable-Gadgets-Lore: '&cDésactive l''utilisation des gadgets et leurs effets sur toi'
 Enable-Gadgets: '&a&lActiver les gadgets'
@@ -491,7 +491,7 @@ Particle-Effects:
       &7&oLaisse une trace de
       &7&oénergie sombre derrière.
   SpringFootprints:
-    name: '&5&lEmpreintes maudites'
+    name: '&a&lEmpreintes maudites'
     Description: |-
       &7&oLaisse une trace de
       &7&oparticules vertes derrière.
@@ -727,7 +727,7 @@ Pets:
     Description: '&7&oIl se balade partout en essayant de vendre ses affaires !'
   CaveSpider:
     menu-name: '&2&lAraignée des cavernes'
-    entity-displayname: '&l%playername% Araignée des cavernes'
+    entity-displayname: '&l%playername%''s Cave Spider'
     Description: '&7&oUne araignée, mais toxique!'
   Dolphin:
     menu-name: '&b&Dauphin'

@@ -31,7 +31,7 @@ Your-Keys: '&7&oSuas chaves: &f&l%keys%'
 Buy-Treasure-Key-ItemName: '&e&l1 &7&lChave de Tesouro &e&lpor $%price%'
 You-Won-Treasure-Chests: '%prefix% &f&lVocê ganhou: %name%!'
 Treasure-Chest-Occupied: '%prefix% &c&lTodos os locais do tesouro estão cheios, aguarde e tente novamente'
-No-Ammo: '%prefix% &c&lYou don''t have any ammo for this gadget!'
+No-Ammo: '%prefix% &c&lVocê não tem nenhuma munição para esta engenhoca!'
 Clear:
   Cosmetics: '&c&lLimpar cosméticos'
   Gadgets: '&c&lLimpar a engenhoca atual'
@@ -42,8 +42,8 @@ Clear:
   Hats: '&c&lLimpar o chapéu atual'
   Suits: '&c&lLimpar o traje atual'
   Emotes: '&c&lLimpar o emote atual'
-  Projectile-Effects: '&c&lClear current projectile effect'
-  Death-Effects: '&c&lClear current death effect'
+  Projectile-Effects: '&c&lLimpar efeito de projétil atual'
+  Death-Effects: '&c&lLimpar efeito de morte atual'
 Menu:
   Purchase-Rename:
     Button:
@@ -62,70 +62,70 @@ Menu:
     Title: '&lMascotes'
     Button:
       Name: '&a&lMascotes'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawnar'
       Tooltip-Unequip: '&c&lDespawnar'
   Gadgets:
     Title: '&lEngenhocas'
     Button:
       Name: '&9&lEngenhocas'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lativar'
       Tooltip-Unequip: '&c&lDesativar'
   Mounts:
     Title: '&lMontarias'
     Button:
-      Name: '&6&lMounts'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&lMontarias'
+      Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lSpawn'
       Tooltip-Unequip: '&c&lDespawn'
   Morphs:
-    Title: '&lMorphs'
+    Title: '&lTransformações'
     Button:
-      Name: '&2&lMorphs'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lMorph into'
-      Tooltip-Unequip: '&c&lUnmorph from'
+      Name: '&2&lTransformações'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lTransformar-se em'
+      Tooltip-Unequip: '&c&lDestransformar de'
   Hats:
-    Title: '&lHats'
+    Title: '&lChapéus'
     Button:
-      Name: '&d&lHats'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&d&lChapéus'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Particle-Effects:
-    Title: '&lParticle Effects'
+    Title: '&lEfeitos de partículas'
     Button:
-      Name: '&b&lParticle Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lSummon'
-      Tooltip-Unequip: '&c&lUnsummon'
+      Name: '&b&lEfeitos de partículas'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lInvocar'
+      Tooltip-Unequip: '&c&lDesinvocar'
   Suits:
     Title: '&lSuits'
     Button:
       Name: '&3&lSuits'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Emotes:
     Title: '&lEmotes'
     Button:
       Name: '&e&lEmotes'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lEfeitos de Projéteis'
     Button:
-      Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&5&lEfeitos de Projéteis'
+      Lore: '&7Desbloqueado: &f%unlocked%'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lDesequipar'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lEfeitos da Morte'
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&c&lEfeitos da Morte'
+      Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
       Tooltip-Unequip: '&c&lUnequip'
   Buy-Ammo:
