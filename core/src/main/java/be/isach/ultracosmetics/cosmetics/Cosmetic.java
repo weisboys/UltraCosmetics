@@ -4,6 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.events.UCCosmeticEquipEvent;
+import be.isach.ultracosmetics.events.UCCosmeticUnequipEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
@@ -73,6 +75,12 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             return;
         }
 
+        UCCosmeticEquipEvent event = new UCCosmeticEquipEvent(owner, this);
+        Bukkit.getPluginManager().callEvent(event);
+        if (event.isCancelled()) {
+            return;
+        }
+
         ultraCosmetics.getServer().getPluginManager().registerEvents(this, ultraCosmetics);
 
         unequipLikeCosmetics();
@@ -93,6 +101,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public /* final */ void clear() {
+        UCCosmeticUnequipEvent event = new UCCosmeticUnequipEvent(owner, this);
+        Bukkit.getPluginManager().callEvent(event);
+
         if (!owner.isPreserveEquipped()) {
             owner.sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
         }

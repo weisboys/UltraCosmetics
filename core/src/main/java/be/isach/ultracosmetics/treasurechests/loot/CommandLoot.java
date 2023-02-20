@@ -1,7 +1,7 @@
 package be.isach.ultracosmetics.treasurechests.loot;
 
 import be.isach.ultracosmetics.config.MessageManager;
-import be.isach.ultracosmetics.events.UCCommandRewardEvent;
+import be.isach.ultracosmetics.events.loot.UCCommandRewardEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.CommandReward;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;

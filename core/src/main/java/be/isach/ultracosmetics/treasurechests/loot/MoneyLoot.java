@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.treasurechests.loot;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.events.UCMoneyRewardEvent;
+import be.isach.ultracosmetics.events.loot.UCMoneyRewardEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import com.cryptomorin.xseries.XMaterial;

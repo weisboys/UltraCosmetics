@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.events;
+package be.isach.ultracosmetics.events.loot;
 
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
