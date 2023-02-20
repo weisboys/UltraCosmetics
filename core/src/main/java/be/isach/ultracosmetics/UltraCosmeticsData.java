@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.VersionManager;
-
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.Method;
@@ -77,6 +76,11 @@ public class UltraCosmeticsData {
     private boolean ammoPurchase;
 
     /**
+     * Whether NMS support should be loaded. Options are "auto", "no", and "force"
+     */
+    private String useNMS;
+
+    /**
      * Server NMS version.
      */
     private ServerVersion serverVersion;
@@ -118,10 +122,12 @@ public class UltraCosmeticsData {
     protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
-
-        if (serverVersion.isNmsSupported() && serverVersion.getNMSRevision() == nmsRev) {
+        if (useNMS.equalsIgnoreCase("no")) {
+            logger.write("NMS support has been disabled in the config, will run without it.");
+        } else if (serverVersion.isNmsSupported() && serverVersion.getNMSRevision() == nmsRev) {
             if (startNMS()) return true;
         }
+
         try {
             versionManager = new VersionManager(serverVersion, false);
         } catch (ReflectiveOperationException e) {
@@ -139,7 +145,7 @@ public class UltraCosmeticsData {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         if (!checkMappingsVersion(serverVersion)) {
             ultraCosmetics.addProblem(Problem.BAD_MAPPINGS_VERSION);
-            if (SettingsManager.getConfig().getBoolean("Force-NMS")) {
+            if (useNMS.equalsIgnoreCase("force")) {
                 logger.write(LogLevel.WARNING, "Server internals seem to have changed since this build was created,");
                 logger.write(LogLevel.WARNING, "but you have chosen to override version checking!");
                 logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
@@ -228,6 +234,9 @@ public class UltraCosmeticsData {
         this.cosmeticsProfilesEnabled = ultraCosmetics.getConfig().getBoolean("Auto-Equip-Cosmetics");
         this.language = SettingsManager.getConfig().getString("Language");
         this.ammoPurchase = SettingsManager.getConfig().getBoolean("Ammo-System-For-Gadgets.Allow-Purchase");
+        this.useNMS = SettingsManager.getConfig().getString("Use-NMS", "auto");
+        // I'm not sure why "no" is translated to "false", but this changes it back
+        if (useNMS.equalsIgnoreCase("false")) useNMS = "no";
     }
 
     public boolean isAmmoEnabled() {
@@ -295,6 +304,10 @@ public class UltraCosmeticsData {
 
     public void setFileStorage(boolean fileStorage) {
         this.fileStorage = fileStorage;
+    }
+
+    public String getNmsConfigOption() {
+        return useNMS;
     }
 
     public String getRawNMSVersion() {

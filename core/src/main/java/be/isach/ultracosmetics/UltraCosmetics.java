@@ -215,7 +215,6 @@ public class UltraCosmetics extends JavaPlugin {
             return;
         }
 
-        CosmeticType.loadCustomCosmetics();
         UltraCosmeticsData.get().initConfigFields();
 
         String langFileName = "messages_" + UltraCosmeticsData.get().getLanguage() + ".yml";
@@ -276,6 +275,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         // Set up Cosmetics config.
         CosmeticType.registerAll();
+        CosmeticType.loadCustomCosmetics();
 
         // Can't use Category.MORPHS.isEnabled() here because it checks whether LibsDisguises is enabled on its own
         if (SettingsManager.getConfig().getBoolean("Categories-Enabled." + Category.MORPHS.getConfigPath())) {

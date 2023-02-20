@@ -479,8 +479,13 @@ WorldGuard-Integration: true
 # Requires DiscordSRV. 0 to disable.
 DiscordSRV-Loot-Channel: 0
 
-# Overrides minor version checking and enables NMS
-Force-NMS: false
+# Whether NMS should be loaded. Options are:
+# - auto: Try to load NMS, print an error if failed. (default)
+# - no: Do not attempt to load NMS, only run without it.
+#           Recommended if you want to try UC on a non-Spigot-based server.
+# - force: Override minor version checking and try to load NMS,
+#              even if it doesn't look like it's going to work.
+Use-NMS: auto
 
 # Entity types that are considered "projectiles" for the purposes of projectile effects.
 # Valid options are found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
