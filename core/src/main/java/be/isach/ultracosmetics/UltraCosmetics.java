@@ -344,7 +344,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         if (getServer().getPluginManager().isPluginEnabled("ChestSort")
                 && SettingsManager.getConfig().getBoolean("ChestSort-Hook", true)) {
-            chestSortHook = new ChestSortHook();
+            chestSortHook = new ChestSortHook(this);
             getServer().getPluginManager().registerEvents(chestSortHook, this);
             getSmartLogger().write();
             getSmartLogger().write("Hooked into ChestSort");
