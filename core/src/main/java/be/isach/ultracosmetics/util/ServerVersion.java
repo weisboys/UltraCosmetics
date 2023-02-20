@@ -1,7 +1,5 @@
 package be.isach.ultracosmetics.util;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
-
 /**
  * Created by Sacha on 6/03/16.
  */
@@ -81,7 +79,7 @@ public enum ServerVersion {
     }
 
     public boolean isMobChipAvailable() {
-        return isAtLeast(v1_13) && UltraCosmeticsData.get().getVersionManager().isUsingNMS();
+        return isAtLeast(v1_13) && this != NEW;
     }
 
     public boolean isNmsSupported() {
