@@ -56,7 +56,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             return;
         }
 
-        if (SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
+        if (PlayerAffectingCosmetic.isVanished(getPlayer()) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
             owner.clear();
             getPlayer().sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
             return;
