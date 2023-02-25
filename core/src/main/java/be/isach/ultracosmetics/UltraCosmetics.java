@@ -27,6 +27,7 @@ import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
+import be.isach.ultracosmetics.run.VanishChecker;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
@@ -332,6 +333,9 @@ public class UltraCosmetics extends JavaPlugin {
         // No need to worry about the invalid world checker if all worlds are allowed
         if (!config.getStringList("Enabled-Worlds").contains("*")) {
             new InvalidWorldChecker(this).runTaskTimerAsynchronously(this, 0, 5);
+        }
+        if (config.getBoolean("Prevent-Cosmetics-In-Vanish")) {
+            new VanishChecker(this).runTaskTimerAsynchronously(this, 100, 100);
         }
         armorStandManager = new ArmorStandManager(this);
 

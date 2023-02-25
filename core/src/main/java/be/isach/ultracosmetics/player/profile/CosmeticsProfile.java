@@ -46,12 +46,12 @@ public abstract class CosmeticsProfile {
     public void equip() {
         if (!ultraPlayer.isOnline()) return;
         if (!SettingsManager.isAllowedWorld(ultraPlayer.getBukkitPlayer().getWorld())) return;
-        ultraPlayer.setPreserveEquipped(true);
-        for (Entry<Category, CosmeticType<?>> type : data.getEnabledCosmetics().entrySet()) {
-            if (type.getValue() == null || !type.getKey().isEnabled() || !type.getValue().isEnabled()) continue;
-            type.getValue().equip(ultraPlayer, ultraCosmetics);
-        }
-        ultraPlayer.setPreserveEquipped(false);
+        ultraPlayer.withPreserveEquipped(() -> {
+            for (Entry<Category, CosmeticType<?>> type : data.getEnabledCosmetics().entrySet()) {
+                if (type.getValue() == null || !type.getKey().isEnabled() || !type.getValue().isEnabled()) continue;
+                type.getValue().equip(ultraPlayer, ultraCosmetics);
+            }
+        });
     }
 
     public void setEnabledCosmetic(Category cat, Cosmetic<?> cosmetic) {

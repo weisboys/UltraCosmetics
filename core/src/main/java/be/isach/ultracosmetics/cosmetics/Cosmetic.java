@@ -35,7 +35,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     private final UUID ownerUniqueId;
 
     public Cosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
-        if (owner == null || Bukkit.getPlayer(owner.getUUID()) == null) {
+        if (owner == null || owner.getBukkitPlayer() == null) {
             throw new IllegalArgumentException("Invalid UltraPlayer.");
         }
         this.owner = owner;

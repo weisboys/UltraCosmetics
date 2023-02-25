@@ -28,13 +28,14 @@ public class InvalidWorldChecker extends BukkitRunnable {
             Player p = ultraPlayer.getBukkitPlayer();
             // not sure what causes p to be null, but it happens in some circumstances apparently
             // https://mcpaste.io/1bbcbf856c5e503b
-            if (p != null && !SettingsManager.isAllowedWorld(p.getWorld())) {
+            if (p == null) return;
+            if (!SettingsManager.isAllowedWorld(p.getWorld())) {
                 ultraPlayer.removeMenuItem();
-                ultraPlayer.setPreserveEquipped(true);
-                if (ultraPlayer.clear()) {
-                    ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
-                }
-                ultraPlayer.setPreserveEquipped(false);
+                ultraPlayer.withPreserveEquipped(() -> {
+                    if (ultraPlayer.clear()) {
+                        ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
+                    }
+                });
             }
         }
     }

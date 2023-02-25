@@ -95,11 +95,11 @@ public class PlayerListener implements Listener {
         if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             // Disable cosmetics when joining a bad world.
             ultraPlayer.removeMenuItem();
-            ultraPlayer.setPreserveEquipped(true);
-            if (ultraPlayer.clear()) {
-                ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
-            }
-            ultraPlayer.setPreserveEquipped(false);
+            ultraPlayer.withPreserveEquipped(() -> {
+                if (ultraPlayer.clear()) {
+                    ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
+                }
+            });
         }
     }
 
@@ -203,14 +203,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onQuit(PlayerQuitEvent event) {
-        UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
-        if (up.getCurrentTreasureChest() != null) {
-            up.getCurrentTreasureChest().forceOpen(0);
-        }
-        up.setPreserveEquipped(true);
-        up.saveCosmeticsProfile();
-        up.clear();
-        up.removeMenuItem();
+        pm.getUltraPlayer(event.getPlayer()).dispose();
         // workaround plugins calling events after player quit
         Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> pm.remove(event.getPlayer()), 1);
     }
@@ -238,14 +231,13 @@ public class PlayerListener implements Listener {
             event.getDrops().remove(ultraPlayer.getCurrentEmote().getItemStack());
         }
 
-        ultraPlayer.setPreserveEquipped(true);
-        for (Category cat : Category.values()) {
-            if (cat.isClearOnDeath()) {
-                ultraPlayer.removeCosmetic(cat);
+        ultraPlayer.withPreserveEquipped(() -> {
+            for (Category cat : Category.values()) {
+                if (cat.isClearOnDeath()) {
+                    ultraPlayer.removeCosmetic(cat);
+                }
             }
-        }
-        ultraPlayer.setPreserveEquipped(false);
-
+        });
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)

@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class FallDamageManager extends BukkitRunnable {
 
-    public static List<Entity> noFallDamage = Collections.synchronizedList(new ArrayList<>());
-    public static List<Entity> queue = Collections.synchronizedList(new ArrayList<>());
+    public static final List<Entity> noFallDamage = Collections.synchronizedList(new ArrayList<>());
+    public static final List<Entity> queue = Collections.synchronizedList(new ArrayList<>());
 
     public static void addNoFall(Entity entity) {
         if (!queue.contains(entity)

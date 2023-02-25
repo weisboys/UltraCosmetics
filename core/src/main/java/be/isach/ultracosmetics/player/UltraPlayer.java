@@ -259,7 +259,7 @@ public class UltraPlayer {
      * @return the cosmetic that was removed, or null if no cosmetic was removed.
      */
     public Cosmetic<?> unsetCosmetic(Category category) {
-        if (!isPreserveEquipped()) {
+        if (!preserveEquipped) {
             cosmeticsProfile.setEnabledCosmetic(category, (CosmeticType<?>) null);
         }
         return equipped.remove(category);
@@ -280,7 +280,7 @@ public class UltraPlayer {
     public void setCosmeticEquipped(Cosmetic<?> cosmetic) {
         removeCosmetic(cosmetic.getCategory());
         equipped.put(cosmetic.getCategory(), cosmetic);
-        if (!isPreserveEquipped()) {
+        if (!preserveEquipped) {
             cosmeticsProfile.setEnabledCosmetic(cosmetic.getCategory(), cosmetic);
         }
     }
@@ -326,14 +326,14 @@ public class UltraPlayer {
      */
     public boolean clear() {
         boolean toReturn = hasCosmeticsEquipped();
-        if (!isPreserveEquipped()) {
+        if (!preserveEquipped) {
             cosmeticsProfile.clearAllEquipped();
         }
         if (Category.MORPHS.isEnabled() && Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")
                 // Ensure disguises in non-enabled worlds (not from UC) aren't cleared on accident.
                 // If player is "quitting", remove the disguise anyway. Player is marked as quitting
                 // when changing worlds, making sure morphs get correctly unset.
-                && (isPreserveEquipped() || SettingsManager.isAllowedWorld(getBukkitPlayer().getWorld()))) {
+                && (preserveEquipped || SettingsManager.isAllowedWorld(getBukkitPlayer().getWorld()))) {
             removeCosmetic(Category.MORPHS);
         }
         for (Category cat : Category.values()) {
@@ -345,6 +345,20 @@ public class UltraPlayer {
         }
         removeTreasureChest();
         return toReturn;
+    }
+
+    /**
+     * Saves player data and removes all cosmetics from them.
+     * Do NOT continue using object after this is called.
+     */
+    public void dispose() {
+        preserveEquipped = true;
+        if (currentTreasureChest != null) {
+            currentTreasureChest.forceOpen(0);
+        }
+        saveCosmeticsProfile();
+        clear();
+        removeMenuItem();
     }
 
     /**
@@ -571,23 +585,27 @@ public class UltraPlayer {
     }
 
     /**
-     * Marks whether the player is doing something (like leaving the server)
-     * where cosmetics need to be removed but should still be stored in
-     * their profile (equipped cosmetics list.)
-     * Also, if true, equip and unequip messages will not be sent.
-     *
-     * @return true if equipped cosmetics should be retained
+     * @return true if equipped cosmetics should not be removed from external data sources.
+     * @see #withPreserveEquipped(Runnable)
      */
     public boolean isPreserveEquipped() {
         return preserveEquipped;
     }
 
     /**
-     * @param preserveEquipped Whether equipped cosmetics should be retained
-     * @see #isPreserveEquipped()
+     * Runs code without marking any cosmetics as no longer equipped in
+     * external data sources. This allows for cosmetics to be temporarily
+     * cleared, such as on death, and then restored with a call to {@link CosmeticsProfile#equip()}
+     *
+     * @param runnable The runnable to run while preserving equipped cosmetics.
      */
-    public void setPreserveEquipped(boolean preserveEquipped) {
-        this.preserveEquipped = preserveEquipped;
+    public void withPreserveEquipped(Runnable runnable) {
+        this.preserveEquipped = true;
+        try {
+            runnable.run();
+        } finally {
+            this.preserveEquipped = false;
+        }
     }
 
     public boolean isBypassingCooldown() {
