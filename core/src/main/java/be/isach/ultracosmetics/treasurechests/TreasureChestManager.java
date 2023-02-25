@@ -97,6 +97,10 @@ public class TreasureChestManager implements Listener {
     public static void tryOpenChest(Player player, TreasureLocation tpTo) {
         UltraCosmetics plugin = UltraCosmeticsData.get().getPlugin();
         UltraPlayer ultraPlayer = plugin.getPlayerManager().getUltraPlayer(player);
+        if (ultraPlayer.getCurrentTreasureChest() != null) {
+            return;
+        }
+
         if (ultraPlayer.getKeys() < 1) {
             player.closeInventory();
             ultraPlayer.openKeyPurchaseMenu();
