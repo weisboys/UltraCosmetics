@@ -308,7 +308,7 @@ TreasureChests:
   # Adding nolog will suppress logging of added permissions
   #
   # [BETA] Set to '' to store unlocked cosmetics in data files or SQL
-  Permission-Add-Command: '!lp-api'
+  Permission-Add-Command: ''
 
 # This option will fill the blank slots of inventories
 # with a custom item!
