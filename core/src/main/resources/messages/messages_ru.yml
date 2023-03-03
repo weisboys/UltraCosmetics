@@ -379,6 +379,7 @@ Mounts:
     Description: |-
       &7&oТаинственная толпа в форме куба
       &7&oспособный ходить прямо по лаве.
+    Held-Item-Lore: '&7&oStrider food on a stick!'
   Horse:
     menu-name: '&7&lЛошадь'
     entity-displayname: '&l%playername%'' Лошадь'
@@ -395,6 +396,7 @@ Mounts:
     menu-name: '&d&lPig'
     entity-displayname: '&l%playername%''s Pig'
     Description: '&7&oOink!'
+    Held-Item-Lore: '&7&oPig food on a stick!'
   Equip: '%prefix% &9Вы заспавнили %mountname%'
   Unequip: '%prefix% &9Вы зареспавнили %mountname%'
   Cant-Spawn: '%prefix% &c&lМонстры не могут спавниться здесь!'

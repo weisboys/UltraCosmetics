@@ -379,6 +379,7 @@ Mounts:
     Description: |-
       &7&oUn mob misterioso en forma de cubo
       &7&ocapaz de caminar recto sobre lava.
+    Held-Item-Lore: '&7&oStrider food on a stick!'
   Horse:
     menu-name: '&7&lCaballo'
     entity-displayname: '&lCaballo de %playername%'
@@ -395,6 +396,7 @@ Mounts:
     menu-name: '&d&lCerdo'
     entity-displayname: 'Cerdo de &l%playername%'
     Description: '&7&oOink!'
+    Held-Item-Lore: '&7&oPig food on a stick!'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
