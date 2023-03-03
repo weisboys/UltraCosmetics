@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
-import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
@@ -35,6 +34,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Arrays;
 
@@ -49,18 +49,21 @@ public class PlayerListener implements Listener {
     private final UltraCosmetics ultraCosmetics;
     private final UltraPlayerManager pm;
     private final ItemStack menuItem;
+    private final boolean menuItemEnabled = SettingsManager.getConfig().getBoolean("Menu-Item.Enabled");
+    private final int menuItemSlot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
 
     public PlayerListener(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
         this.pm = ultraCosmetics.getPlayerManager();
-        this.menuItem = ItemFactory.createMenuItem();
+        this.menuItem = ItemFactory.getMenuItem();
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onJoin(final PlayerJoinEvent event) {
         // Load UltraPlayer whether we use it or not so it's ready
         UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
-        if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
+        if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")
+                && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             if (up != null) {
                 up.giveMenuItem();
             }
@@ -78,7 +81,7 @@ public class PlayerListener implements Listener {
     public void onWorldChange(final PlayerChangedWorldEvent event) {
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
-            if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
+            if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
                 up.giveMenuItem();
             }
             // If the player joined an allowed world from a non-allowed world, re-equip their cosmetics.
@@ -143,16 +146,36 @@ public class PlayerListener implements Listener {
     public void cancelMove(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         if (!SettingsManager.isAllowedWorld(player.getWorld())) return;
-        boolean isMenuItem = isMenuItem(event.getCurrentItem()) || isMenuItem(event.getCursor()) || (event.getClick() == ClickType.NUMBER_KEY && isMenuItem(player.getInventory().getItem(event.getHotbarButton())));
-        // TODO: redundant check? see be.isach.ultracosmetics.menu.Menu#onClick
-        if (event.getView().getTopInventory().getHolder() instanceof CosmeticsInventoryHolder
-                || isMenuItem) {
+        int targetedSlot;
+        if (event.getClickedInventory() == event.getView().getTopInventory()) {
             event.setCancelled(true);
-            player.updateInventory();
-            if (isMenuItem && SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
-                // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
+            return;
+        }
+        PlayerInventory inv = event.getWhoClicked().getInventory();
+        if (isMenuItem(event.getCurrentItem())) {
+            targetedSlot = event.getSlot();
+        } else if (isMenuItem(event.getCursor())) {
+            targetedSlot = -1;
+        } else if (event.getClick() == ClickType.NUMBER_KEY && isMenuItem(inv.getItem(event.getHotbarButton()))) {
+            targetedSlot = event.getHotbarButton();
+        } else {
+            return;
+        }
+        event.setCancelled(true);
+        player.updateInventory();
+        // If the menu item is in an incorrect slot and not on the cursor
+        if (targetedSlot != -1 && targetedSlot != menuItemSlot) {
+            // If there's something in the menu item slot, move it to
+            // where the menu item was before and clear the menu item slot.
+            if (inv.getItem(menuItemSlot) != null) {
+                inv.setItem(targetedSlot, inv.getItem(menuItemSlot));
+                inv.setItem(menuItemSlot, null);
             }
+            pm.getUltraPlayer(player).giveMenuItem();
+        }
+        if (SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
+            // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
+            Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
         }
     }
 
@@ -188,10 +211,12 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onRespawn(PlayerRespawnEvent event) {
-        if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
+        if (menuItemEnabled && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
             if (event.getPlayer().getInventory().getItem(slot) != null) {
                 event.getPlayer().getWorld().dropItemNaturally(event.getPlayer().getLocation(), event.getPlayer().getInventory().getItem(slot));
+                // Redundant unless an exception is thrown between here and the next setItem line,
+                // meaning this line protects against duplication bugs.
                 event.getPlayer().getInventory().setItem(slot, null);
             }
             String name = ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("Menu-Item.Displayname"));
@@ -212,10 +237,9 @@ public class PlayerListener implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         // Ignore NPC deaths as per iSach#467
         if (Bukkit.getPlayer(event.getEntity().getUniqueId()) == null) return;
-        int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
-        if (isMenuItem(event.getEntity().getInventory().getItem(slot))) {
-            event.getDrops().remove(event.getEntity().getInventory().getItem(slot));
-            event.getEntity().getInventory().setItem(slot, null);
+        if (isMenuItem(event.getEntity().getInventory().getItem(menuItemSlot))) {
+            event.getDrops().remove(event.getEntity().getInventory().getItem(menuItemSlot));
+            event.getEntity().getInventory().setItem(menuItemSlot, null);
         }
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getEntity());
         if (ultraPlayer.getCurrentGadget() != null) {
@@ -299,6 +323,6 @@ public class PlayerListener implements Listener {
     }
 
     private boolean isMenuItem(ItemStack item) {
-        return menuItem.equals(item);
+        return menuItem.isSimilar(item);
     }
 }

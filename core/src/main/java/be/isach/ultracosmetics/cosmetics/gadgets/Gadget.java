@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.TextUtil;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
@@ -80,6 +81,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     // Cache the actual material value so we don't have to keep calling parseMaterial
     private final Material material;
 
+    private final int slot;
+
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         this(owner, type, ultraCosmetics, false);
     }
@@ -88,22 +91,18 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         super(owner, type, ultraCosmetics);
         material = type.getMaterial().parseMaterial();
         this.asynchronous = asynchronous;
+        this.slot = SettingsManager.getConfig().getInt("Gadget-Slot");
     }
 
     @Override
     public boolean tryEquip() {
         getOwner().removeCosmetic(Category.GADGETS);
-        int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
         if (getPlayer().getInventory().getItem(slot) != null) {
             getPlayer().sendMessage(MessageManager.getMessage("Must-Remove.Gadgets").replace("%slot%", String.valueOf(slot + 1)));
             return false;
         }
-        String ammo = "";
-        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
-            ammo = ChatColor.WHITE.toString() + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
-        }
 
-        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
+        updateItemStack();
         getPlayer().getInventory().setItem(slot, itemStack);
         return true;
     }
@@ -123,19 +122,12 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         }
         // Only Updatable cosmetics schedule this task
         ((Updatable) this).onUpdate();
-        try {
-            if (UltraCosmeticsData.get().displaysCooldownInBar()) {
-                @SuppressWarnings("deprecation")
-                ItemStack hand = getPlayer().getItemInHand();
-                // TODO: this is ugly
-                if (itemStack != null && hand.hasItemMeta() && hand.getType() == getItemStack().getType()
-                        && hand.getItemMeta().hasDisplayName() && hand.getItemMeta().getDisplayName().endsWith(getType().getName())
-                        && !owner.canUse(getType())) {
-                    owner.sendCooldownBar(getType(), getType().getCountdown(), getType().getRunTime());
-                }
+        if (UltraCosmeticsData.get().displaysCooldownInBar()) {
+            @SuppressWarnings("deprecation")
+            ItemStack hand = getPlayer().getItemInHand();
+            if (itemMatches(hand) && !owner.canUse(getType())) {
+                owner.sendCooldownBar(getType(), getType().getCountdown(), getType().getRunTime());
             }
-        } catch (NullPointerException ignored) {
-            // Caused by rapid item switching in inventory.
         }
 
         double left = owner.getCooldown(getType());
@@ -159,20 +151,31 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     }
 
     /**
-     * Removes the item.
+     * Removes the item from the player.
+     * Does not assume item is in the correct slot,
+     * or that there is only one item.
      */
     public void removeItem() {
-        itemStack = null;
-        getPlayer().getInventory().setItem((int) SettingsManager.getConfig().get("Gadget-Slot"), null);
+        PlayerUtils.removeItems(getPlayer(), this::itemMatches);
     }
 
     /**
      * Gets the gadget current Item Stack.
+     * If using ammo system, this may not be up-to-date.
+     * Call {@link #updateItemStack()} to update itemstack immediately.
      *
      * @return current itemstack
      */
     public ItemStack getItemStack() {
         return itemStack;
+    }
+
+    public void updateItemStack() {
+        String ammo = "";
+        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
+            ammo = ChatColor.WHITE.toString() + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
+        }
+        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
     }
 
     protected boolean checkRequirements(PlayerInteractEvent event) {
@@ -191,17 +194,20 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         }
     }
 
+    public boolean itemMatches(ItemStack stack) {
+        if (stack == null || !stack.hasItemMeta() || stack.getType() != getItemStack().getType() || !stack.getItemMeta().hasDisplayName()) {
+            return false;
+        }
+        return stack.getItemMeta().getDisplayName().endsWith(getType().getName());
+    }
+
+    @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        if (getOwner() == null || getPlayer() == null || event.getPlayer() != getPlayer()
-                || !(event.getRightClicked() instanceof ItemFrame) || getItemStack() == null
-                || itemStack == null || !itemStack.hasItemMeta()
-                || itemStack.getType() != getItemStack().getType()
-                || !itemStack.getItemMeta().getDisplayName().endsWith(getType().getName())) {
-            return;
+        if (getPlayer() == event.getPlayer() && event.getRightClicked() instanceof ItemFrame
+                && itemMatches(event.getPlayer().getItemInHand())) {
+            event.setCancelled(true);
         }
-
-        event.setCancelled(true);
     }
 
     @EventHandler
@@ -212,7 +218,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         @SuppressWarnings("deprecation")
         ItemStack itemStack = player.getItemInHand();
         if (itemStack.getType() != material) return;
-        if (player.getInventory().getHeldItemSlot() != SettingsManager.getConfig().getInt("Gadget-Slot")) return;
+        if (player.getInventory().getHeldItemSlot() != slot) return;
         if (UltraCosmeticsData.get().getServerVersion().offhandAvailable()) {
             if (event.getHand() != EquipmentSlot.HAND) return;
         }
@@ -257,23 +263,14 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         ultraPlayer.setCoolDown(getType(), getType().getCountdown(), getType().getRunTime());
         if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
             ultraPlayer.removeAmmo(getType());
-            itemStack = ItemFactory.create(getType().getMaterial(),
-                    ChatColor.WHITE + "" + ChatColor.BOLD + ultraPlayer.getAmmo(getType()) + " " + getType().getName(),
-                    MessageManager.getMessage("Gadgets.Lore"));
-            this.itemStack = itemStack;
-            getPlayer().getInventory().setItem((int) SettingsManager.getConfig().get("Gadget-Slot"), itemStack);
+            updateItemStack();
+            getPlayer().getInventory().setItem(slot, this.itemStack);
         }
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK) {
             lastClickedBlock = event.getClickedBlock();
         }
         boolean isLeft = event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK;
-        Runnable callClick = () -> {
-            if (isLeft) {
-                onLeftClick();
-            } else {
-                onRightClick();
-            }
-        };
+        Runnable callClick = isLeft ? this::onLeftClick : this::onRightClick;
         if (asynchronous) {
             Bukkit.getScheduler().runTaskAsynchronously(getUltraCosmetics(), callClick);
         } else {
@@ -296,26 +293,38 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     /**
      * Cancel players from removing, picking the item in their inventory.
      */
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void cancelMove(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
         if (player != getPlayer()) return;
-        if ((event.getCurrentItem() != null && event.getCurrentItem().equals(getItemStack()))
-                || (event.getClick() == ClickType.NUMBER_KEY && getItemStack().equals(player.getInventory().getItem(event.getHotbarButton())))) {
-            event.setCancelled(true);
-            player.updateInventory();
+        // If clicked item is the gadget
+        if (itemMatches(event.getCurrentItem())) {
+            // Item is not where it should be, clear it
+            if (event.getSlot() != slot) {
+                clear();
+            }
+            // If other item in hotbar swap is the gadget
+        } else if (event.getClick() == ClickType.NUMBER_KEY && itemMatches(player.getInventory().getItem(event.getHotbarButton()))) {
+            if (event.getHotbarButton() != slot) {
+                clear();
+            }
+        } else {
+            return;
         }
+        event.setCancelled(true);
+        player.updateInventory();
     }
 
     /**
      * Cancel players from removing, picking the item in their inventory.
+     * Does this actually do anything?
      */
     @EventHandler
     public void cancelMove(InventoryDragEvent event) {
         Player player = (Player) event.getWhoClicked();
         if (player != getPlayer()) return;
         for (ItemStack item : event.getNewItems().values()) {
-            if (item != null && item.equals(itemStack)) {
+            if (itemMatches(item)) {
                 event.setCancelled(true);
                 player.updateInventory();
                 player.closeInventory();
@@ -333,8 +342,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         ItemStack item = event.getCurrentItem();
         if (item != null && player == getPlayer() && item.equals(itemStack)) {
             event.setCancelled(true);
-            player.closeInventory(); // Close the inventory because clicking again results in the event being handled
-            // client side
+            // Close the inventory because clicking again results in the event being handled client side
+            player.closeInventory();
         }
     }
 

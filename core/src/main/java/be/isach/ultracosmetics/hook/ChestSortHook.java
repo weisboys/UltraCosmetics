@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.hook;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.cosmetics.gadgets.Gadget;
 import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.util.ItemFactory;
@@ -14,7 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class ChestSortHook implements Listener {
-    private final ItemStack menuItem = ItemFactory.createMenuItem();
+    private final ItemStack menuItem = ItemFactory.getMenuItem();
     private final UltraPlayerManager pm;
     private final int gadgetSlot;
 
@@ -29,13 +30,16 @@ public class ChestSortHook implements Listener {
 
     @EventHandler
     public void onChestSort(ChestSortEvent event) {
+        if (!(event.getPlayer() instanceof Player)) return;
         if (event.getInventory().getHolder() instanceof CosmeticsInventoryHolder) {
             event.setCancelled(true);
             return;
         }
         event.setUnmovable(menuItem);
-        if (event.getPlayer() instanceof Player && pm.getUltraPlayer((Player) event.getPlayer()).getCurrentGadget() != null) {
-            event.setUnmovable(gadgetSlot);
+        Gadget gadget = pm.getUltraPlayer((Player) event.getPlayer()).getCurrentGadget();
+        if (gadget != null) {
+            gadget.updateItemStack();
+            event.setUnmovable(gadget.getItemStack());
         }
     }
 }

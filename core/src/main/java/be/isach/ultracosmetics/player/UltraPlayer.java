@@ -28,6 +28,7 @@ import be.isach.ultracosmetics.player.profile.FileCosmeticsProfile;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.PlayerUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.messages.ActionBar;
 import org.bukkit.Bukkit;
@@ -529,12 +530,11 @@ public class UltraPlayer {
         int slot = section.getInt("Slot");
         ItemStack slotItem = getBukkitPlayer().getInventory().getItem(slot);
         if (slotItem != null) {
-            if (!slotItem.hasItemMeta() || !slotItem.getItemMeta().hasDisplayName()
-                    || !slotItem.getItemMeta().getDisplayName().equalsIgnoreCase(section.getString("Displayname"))) {
+            if (!slotItem.isSimilar(ItemFactory.getMenuItem())) {
                 getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
             }
         }
-        getBukkitPlayer().getInventory().setItem(slot, ItemFactory.createMenuItem());
+        getBukkitPlayer().getInventory().setItem(slot, ItemFactory.getMenuItem());
     }
 
     /**
@@ -542,12 +542,8 @@ public class UltraPlayer {
      */
     public void removeMenuItem() {
         if (getBukkitPlayer() == null) return;
-        int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
-        ItemStack slotItem = getBukkitPlayer().getInventory().getItem(slot);
-        if (slotItem != null && slotItem.hasItemMeta() && slotItem.getItemMeta().hasDisplayName()
-                && slotItem.getItemMeta().getDisplayName().equals(ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("Menu-Item.Displayname")))) {
-            getBukkitPlayer().getInventory().setItem(slot, null);
-        }
+        ItemStack menuItem = ItemFactory.getMenuItem();
+        PlayerUtils.removeItems(getBukkitPlayer(), menuItem::isSimilar);
     }
 
     public void sendMessage(Object message) {

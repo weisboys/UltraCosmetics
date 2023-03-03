@@ -4,7 +4,9 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.cryptomorin.xseries.SkullUtils;
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XTag;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -21,10 +23,6 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
-import com.cryptomorin.xseries.SkullUtils;
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XTag;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +37,7 @@ public class ItemFactory {
     private static final List<XMaterial> DYES = new ArrayList<>(16);
     private static final List<XMaterial> STAINED_GLASS = new ArrayList<>(16);
     private static final FixedMetadataValue UNPICKABLE_META = new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true);
+    private static final ItemStack MENU_ITEM;
 
     static {
         for (XMaterial mat : XMaterial.VALUES) {
@@ -53,9 +52,12 @@ public class ItemFactory {
         itemMeta.setDisplayName(ChatColor.GRAY + "");
         itemStack.setItemMeta(itemMeta);
         fillerItem = itemStack;
+
+        MENU_ITEM = createMenuItem();
     }
 
-    private ItemFactory(){}
+    private ItemFactory() {
+    }
 
     private static boolean noticePrinted = false;
     public static final ItemStack fillerItem;
@@ -153,7 +155,7 @@ public class ItemFactory {
         return XMaterial.matchXMaterial(fromConfig).orElse(null);
     }
 
-    public static ItemStack createMenuItem() {
+    private static ItemStack createMenuItem() {
         ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Menu-Item");
         String name = ChatColor.translateAlternateColorCodes('&', section.getString("Displayname"));
         int model = section.getInt("Custom-Model-Data");
@@ -168,6 +170,10 @@ public class ItemFactory {
 
         stack.setItemMeta(meta);
         return stack;
+    }
+
+    public static ItemStack getMenuItem() {
+        return MENU_ITEM.clone();
     }
 
 
