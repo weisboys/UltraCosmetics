@@ -380,6 +380,7 @@ Mounts:
     Description: |-
       &7&oA mysterious cube-shaped mob
       &7&ocapable of walking straight over lava.
+    Held-Item-Lore: '&7&oStrider food on a stick!'
   Horse:
     menu-name: '&7&lHorse'
     entity-displayname: '&l%playername%''s Horse'
@@ -396,6 +397,7 @@ Mounts:
     menu-name: '&d&lPig'
     entity-displayname: '&l%playername%''s Pig'
     Description: '&7&oOink!'
+    Held-Item-Lore: '&7&oPig food on a stick!'
   Equip: '%prefix% &9Anda memanggil %mountname%'
   Unequip: '%prefix% &9Anda menyimpan %mountname%'
   Cant-Spawn: '%prefix% &c&lMonster tidak bisa dipanggil di sini!'
