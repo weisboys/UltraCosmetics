@@ -382,6 +382,7 @@ Mounts:
     Description: |-
       &7&oEine mysteriöse, würfelförmige Kreatur,
       &7&odie direkt über Lava laufen kann.
+    Held-Item-Lore: '&7&oStrider food on a stick!'
   Horse:
     menu-name: '&7&lPferd'
     entity-displayname: '&l%playername%''s Pferd'
@@ -398,6 +399,7 @@ Mounts:
     menu-name: '&d&lSchwein'
     entity-displayname: '&l%playername%''s Schwein'
     Description: '&7&oOink!'
+    Held-Item-Lore: '&7&oPig food on a stick!'
   Equip: '%prefix% &9Du hast %mountname% &9ausgerüstet'
   Unequip: '%prefix% &9Du hast %mountname% &9entfernt'
   Cant-Spawn: '%prefix% &c&lMonster können hier nicht spawnen!'
