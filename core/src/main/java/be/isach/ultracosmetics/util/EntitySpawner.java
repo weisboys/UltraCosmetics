@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.util;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class EntitySpawner<T extends Entity> extends BukkitRunnable {
+    private static final Material FIREWORK = XMaterial.FIREWORK_ROCKET.parseMaterial();
     private final int limit = SettingsManager.getConfig().getInt("Max-Entity-Spawns-Per-Tick");
     private final EntityType type;
     private final Consumer<T> func;
@@ -121,7 +122,7 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
     public static void spawnFireworks(Location location, Color main, Color fade, FireworkEffect.Type type) {
         // EntitySpawner doesn't work well here, so just spawning manually
         Set<Firework> fireworks = new HashSet<>();
-        FireworkMeta meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(Material.FIREWORK_ROCKET);
+        FireworkMeta meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(FIREWORK);
         meta.addEffect(buildFireworkEffect(main, fade, type));
         for (int i = 0; i < 4; i++) {
             Firework f = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
