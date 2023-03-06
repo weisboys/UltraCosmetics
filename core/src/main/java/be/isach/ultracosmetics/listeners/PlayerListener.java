@@ -12,29 +12,20 @@ import be.isach.ultracosmetics.util.ItemFactory;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Firework;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCreativeEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 import java.util.Arrays;
 
@@ -106,122 +97,18 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void onDrop(PlayerDropItemEvent event) {
-        if (isMenuItem(event.getItemDrop().getItemStack())) {
-            event.setCancelled(true);
-            event.getItemDrop().remove();
-            ItemStack chest = event.getPlayer().getItemInHand().clone();
-            chest.setAmount(1);
-            event.getPlayer().setItemInHand(chest);
-            event.getPlayer().updateInventory();
-        }
-    }
-
-    @EventHandler
-    public void onInteract(final PlayerInteractEvent event) {
-        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
-        // apparently can happen if a player disconnected while on a pressure plate
-        if (ultraPlayer == null) return;
-        // Avoid triggering this when clicking in the inventory
-        InventoryType t = event.getPlayer().getOpenInventory().getType();
-        if (t != InventoryType.CRAFTING && t != InventoryType.CREATIVE) {
-            return;
-        }
-        if (ultraPlayer.getCurrentTreasureChest() != null) {
-            event.setCancelled(true);
-            return;
-        }
-        if (isMenuItem(event.getItem())) {
-            event.setCancelled(true);
-            ultraCosmetics.getMenus().getMainMenu().open(ultraPlayer);
-        }
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void cancelMove(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        if (!SettingsManager.isAllowedWorld(player.getWorld())) return;
-        int targetedSlot;
-        if (event.getClickedInventory() == event.getView().getTopInventory()) {
-            event.setCancelled(true);
-            return;
-        }
-        PlayerInventory inv = event.getWhoClicked().getInventory();
-        if (isMenuItem(event.getCurrentItem())) {
-            targetedSlot = event.getSlot();
-        } else if (isMenuItem(event.getCursor())) {
-            targetedSlot = -1;
-        } else if (event.getClick() == ClickType.NUMBER_KEY && isMenuItem(inv.getItem(event.getHotbarButton()))) {
-            targetedSlot = event.getHotbarButton();
-        } else {
-            return;
-        }
-        event.setCancelled(true);
-        player.updateInventory();
-        // If the menu item is in an incorrect slot and not on the cursor
-        if (targetedSlot != -1 && targetedSlot != menuItemSlot) {
-            // If there's something in the menu item slot, move it to
-            // where the menu item was before and clear the menu item slot.
-            if (inv.getItem(menuItemSlot) != null) {
-                inv.setItem(targetedSlot, inv.getItem(menuItemSlot));
-                inv.setItem(menuItemSlot, null);
-            }
-            pm.getUltraPlayer(player).giveMenuItem();
-        }
-        if (SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
-            // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
-            Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
-        }
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void cancelMove(InventoryCreativeEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        if (!SettingsManager.isAllowedWorld(player.getWorld())) return;
-        if (isMenuItem(event.getCurrentItem()) || isMenuItem(event.getCursor())) {
-            event.setCancelled(true);
-            player.closeInventory(); // Close the inventory because clicking again results in the event being handled client side
-            if (SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click", false)) {
-                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
-            }
-        }
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     */
-    @EventHandler(priority = EventPriority.HIGHEST)
-    public void cancelMove(InventoryDragEvent event) {
-        for (ItemStack item : event.getNewItems().values()) {
-            if (isMenuItem(item)) {
-                event.setCancelled(true);
-                ((Player) event.getWhoClicked()).updateInventory();
-                return;
-            }
-        }
-    }
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onRespawn(PlayerRespawnEvent event) {
         if (menuItemEnabled && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
-            if (event.getPlayer().getInventory().getItem(slot) != null) {
-                event.getPlayer().getWorld().dropItemNaturally(event.getPlayer().getLocation(), event.getPlayer().getInventory().getItem(slot));
+            if (event.getPlayer().getInventory().getItem(menuItemSlot) != null) {
+                event.getPlayer().getWorld().dropItemNaturally(event.getPlayer().getLocation(), event.getPlayer().getInventory().getItem(menuItemSlot));
                 // Redundant unless an exception is thrown between here and the next setItem line,
                 // meaning this line protects against duplication bugs.
-                event.getPlayer().getInventory().setItem(slot, null);
+                event.getPlayer().getInventory().setItem(menuItemSlot, null);
             }
             String name = ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("Menu-Item.Displayname"));
             ItemStack stack = ItemFactory.getItemStackFromConfig("Menu-Item.Type");
-            event.getPlayer().getInventory().setItem(slot, ItemFactory.rename(stack, name));
+            event.getPlayer().getInventory().setItem(menuItemSlot, ItemFactory.rename(stack, name));
         }
         pm.getUltraPlayer(event.getPlayer()).getProfile().equip();
     }

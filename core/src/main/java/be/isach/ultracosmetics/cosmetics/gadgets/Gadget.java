@@ -13,6 +13,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.TextUtil;
+import be.isach.ultracosmetics.util.UnmovableItemProvider;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
 import org.bukkit.Bukkit;
@@ -21,19 +22,10 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.inventory.ClickType;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCreativeEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
 import java.text.DecimalFormat;
@@ -46,7 +38,7 @@ import java.util.Locale;
  * @author iSach
  * @since 08-03-2015
  */
-public abstract class Gadget extends Cosmetic<GadgetType> {
+public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableItemProvider {
 
     private static final DecimalFormatSymbols OTHER_SYMBOLS = new DecimalFormatSymbols(Locale.US);
     private static final DecimalFormat DECIMAL_FORMAT;
@@ -81,7 +73,9 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     // Cache the actual material value so we don't have to keep calling parseMaterial
     private final Material material;
 
-    private final int slot;
+    private final int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
+
+    private final boolean removeWithDrop = SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop");
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         this(owner, type, ultraCosmetics, false);
@@ -91,7 +85,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         super(owner, type, ultraCosmetics);
         material = type.getMaterial().parseMaterial();
         this.asynchronous = asynchronous;
-        this.slot = SettingsManager.getConfig().getInt("Gadget-Slot");
     }
 
     @Override
@@ -109,6 +102,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
 
     @Override
     public void onEquip() {
+        getUltraCosmetics().getUnmovableItemListener().addProvider(this);
     }
 
     @Override
@@ -147,6 +141,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     @Override
     public void clear() {
         removeItem();
+        getUltraCosmetics().getUnmovableItemListener().removeProvider(this);
         super.clear();
     }
 
@@ -195,40 +190,21 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
     }
 
     public boolean itemMatches(ItemStack stack) {
-        if (stack == null || !stack.hasItemMeta() || stack.getType() != getItemStack().getType() || !stack.getItemMeta().hasDisplayName()) {
+        if (stack == null || stack.getType() != getItemStack().getType() || !stack.hasItemMeta() || !stack.getItemMeta().hasDisplayName()) {
             return false;
         }
         return stack.getItemMeta().getDisplayName().endsWith(getType().getName());
     }
 
-    @SuppressWarnings("deprecation")
-    @EventHandler
-    public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        if (getPlayer() == event.getPlayer() && event.getRightClicked() instanceof ItemFrame
-                && itemMatches(event.getPlayer().getItemInHand())) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onPlayerInteract(final PlayerInteractEvent event) {
-        if (event.getAction() == Action.PHYSICAL) return;
+    @Override
+    public void handleInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
-        if (player != getPlayer()) return;
-        @SuppressWarnings("deprecation")
-        ItemStack itemStack = player.getItemInHand();
-        if (itemStack.getType() != material) return;
-        if (player.getInventory().getHeldItemSlot() != slot) return;
-        if (UltraCosmeticsData.get().getServerVersion().offhandAvailable()) {
-            if (event.getHand() != EquipmentSlot.HAND) return;
-        }
         event.setCancelled(true);
-        // player.updateInventory();
-        UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(event.getPlayer());
+        UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(player);
 
         if (ultraPlayer.getCurrentTreasureChest() != null) return;
 
-        if (PlayerAffectingCosmetic.isVanished(player) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
+        if (PlayerAffectingCosmetic.isVanished(event.getPlayer()) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
             getOwner().clear();
             getPlayer().sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
             return;
@@ -278,75 +254,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onItemDrop(PlayerDropItemEvent event) {
-        if (event.getItemDrop().getItemStack().equals(getItemStack())) {
-            if (SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop")) {
-                clear();
-                event.getItemDrop().remove();
-            } else {
-                event.setCancelled(true);
-            }
-        }
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     */
-    @EventHandler
-    public void cancelMove(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        if (player != getPlayer()) return;
-        // If clicked item is the gadget
-        if (itemMatches(event.getCurrentItem())) {
-            // Item is not where it should be, clear it
-            if (event.getSlot() != slot) {
-                clear();
-            }
-            // If other item in hotbar swap is the gadget
-        } else if (event.getClick() == ClickType.NUMBER_KEY && itemMatches(player.getInventory().getItem(event.getHotbarButton()))) {
-            if (event.getHotbarButton() != slot) {
-                clear();
-            }
-        } else {
-            return;
-        }
-        event.setCancelled(true);
-        player.updateInventory();
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     * Does this actually do anything?
-     */
-    @EventHandler
-    public void cancelMove(InventoryDragEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        if (player != getPlayer()) return;
-        for (ItemStack item : event.getNewItems().values()) {
-            if (itemMatches(item)) {
-                event.setCancelled(true);
-                player.updateInventory();
-                player.closeInventory();
-                return;
-            }
-        }
-    }
-
-    /**
-     * Cancel players from removing, picking the item in their inventory.
-     */
-    @EventHandler
-    public void cancelMove(InventoryCreativeEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        ItemStack item = event.getCurrentItem();
-        if (item != null && player == getPlayer() && item.equals(itemStack)) {
-            event.setCancelled(true);
-            // Close the inventory because clicking again results in the event being handled client side
-            player.closeInventory();
-        }
-    }
-
     /**
      * Called when a right-click is performed, and potentially when a left-click
      * is performed, depending on the implementation of onLeftClick()
@@ -360,4 +267,23 @@ public abstract class Gadget extends Cosmetic<GadgetType> {
         onRightClick();
     }
 
+    @Override
+    public void handleDrop(PlayerDropItemEvent event) {
+        if (removeWithDrop) {
+            clear();
+            event.getItemDrop().remove();
+        } else {
+            event.setCancelled(true);
+        }
+    }
+
+    @Override
+    public int getSlot() {
+        return slot;
+    }
+
+    @Override
+    public void moveItem(int slot, Player player) {
+        clear();
+    }
 }

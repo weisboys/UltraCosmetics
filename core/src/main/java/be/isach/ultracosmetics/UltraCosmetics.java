@@ -16,10 +16,10 @@ import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.hook.TownyHook;
 import be.isach.ultracosmetics.listeners.Listener113;
-import be.isach.ultracosmetics.listeners.Listener19;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
+import be.isach.ultracosmetics.listeners.UnmovableItemListener;
 import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
@@ -129,6 +129,8 @@ public class UltraCosmetics extends JavaPlugin {
     private DiscordSRVHook discordHook;
 
     private ChestSortHook chestSortHook;
+
+    private UnmovableItemListener unmovableItemListener;
 
     /**
      * Manages WorldGuard flags.
@@ -326,6 +328,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         permissionManager = new PermissionManager(this);
 
+
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
@@ -421,12 +424,10 @@ public class UltraCosmetics extends JavaPlugin {
         pluginManager.registerEvents(new PlayerListener(this), this);
         pluginManager.registerEvents(new MainListener(), this);
         pluginManager.registerEvents(new EntitySpawningManager(), this);
-
-        if (UltraCosmeticsData.get().getServerVersion().offhandAvailable()) {
-            pluginManager.registerEvents(new Listener19(this), this);
-            if (VersionManager.IS_VERSION_1_13) {
-                pluginManager.registerEvents(new Listener113(), this);
-            }
+        unmovableItemListener = new UnmovableItemListener(this);
+        pluginManager.registerEvents(unmovableItemListener, this);
+        if (VersionManager.IS_VERSION_1_13) {
+            Bukkit.getPluginManager().registerEvents(new Listener113(), this);
         }
     }
 
@@ -686,6 +687,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public ChestSortHook getChestSortHook() {
         return chestSortHook;
+    }
+
+    public UnmovableItemListener getUnmovableItemListener() {
+        return unmovableItemListener;
     }
 
     public CustomConfiguration loadConfiguration(FunctionalConfigLoader loaderFunc) {
