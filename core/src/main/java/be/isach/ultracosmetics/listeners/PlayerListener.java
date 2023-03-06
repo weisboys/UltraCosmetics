@@ -99,18 +99,11 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onRespawn(PlayerRespawnEvent event) {
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (menuItemEnabled && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            if (event.getPlayer().getInventory().getItem(menuItemSlot) != null) {
-                event.getPlayer().getWorld().dropItemNaturally(event.getPlayer().getLocation(), event.getPlayer().getInventory().getItem(menuItemSlot));
-                // Redundant unless an exception is thrown between here and the next setItem line,
-                // meaning this line protects against duplication bugs.
-                event.getPlayer().getInventory().setItem(menuItemSlot, null);
-            }
-            String name = ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("Menu-Item.Displayname"));
-            ItemStack stack = ItemFactory.getItemStackFromConfig("Menu-Item.Type");
-            event.getPlayer().getInventory().setItem(menuItemSlot, ItemFactory.rename(stack, name));
+            ultraPlayer.giveMenuItem();
         }
-        pm.getUltraPlayer(event.getPlayer()).getProfile().equip();
+        ultraPlayer.getProfile().equip();
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
