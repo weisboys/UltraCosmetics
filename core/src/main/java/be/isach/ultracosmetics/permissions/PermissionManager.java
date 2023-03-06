@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -22,11 +21,15 @@ public class PermissionManager {
     private RawPermissionSetter rawSetter;
 
     public PermissionManager(UltraCosmetics ultraCosmetics) {
+        BukkitPermissionGetter bukkit = new BukkitPermissionGetter();
+        PermissionCommand cmd = new PermissionCommand();
+
         CustomConfiguration config = SettingsManager.getConfig();
         String pma = config.getString("TreasureChests.Permission-Add-Command", "");
         if (pma.isEmpty()) {
             ProfilePermissions profile = new ProfilePermissions(ultraCosmetics);
-            cosmeticGetter = profile;
+            // TODO: config option for this?
+            cosmeticGetter = new ProfileBukkitHybridGetter(profile, bukkit);
             cosmeticSetter = profile;
         } else if (pma.startsWith("!lp-api")) {
             if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
@@ -43,9 +46,6 @@ public class PermissionManager {
         if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
             ultraCosmetics.addProblem(Problem.PERMISSION_COMMAND_NOT_SET);
         }
-
-        BukkitPermissionGetter bukkit = new BukkitPermissionGetter();
-        PermissionCommand cmd = new PermissionCommand();
         if (cosmeticGetter == null) {
             cosmeticGetter = bukkit;
         }
