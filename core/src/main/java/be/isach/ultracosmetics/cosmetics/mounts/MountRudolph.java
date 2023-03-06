@@ -6,9 +6,8 @@ import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PlayerUtils;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Horse.Color;
@@ -23,7 +22,7 @@ import org.bukkit.util.Vector;
  * Created by sacha on 1/03/17.
  */
 public class MountRudolph extends MountAbstractHorse {
-
+    private static final ItemStack DEAD_BUSH = XMaterial.DEAD_BUSH.parseItem();
     private ArmorStand left, right;
 
     public MountRudolph(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
@@ -50,7 +49,7 @@ public class MountRudolph extends MountAbstractHorse {
         } else {
             armorStand.setRightArmPose(new EulerAngle(Math.PI, -Math.PI / 4, Math.PI / 4));
         }
-        armorStand.setItemInHand(new ItemStack(Material.DEAD_BUSH));
+        armorStand.setItemInHand(DEAD_BUSH);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(getUltraCosmetics(), getPlayer().getUniqueId().toString()));
         getUltraCosmetics().getArmorStandManager().makeUcStand(armorStand);
         return armorStand;

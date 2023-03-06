@@ -9,9 +9,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.ServerVersion;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -32,6 +31,7 @@ import org.bukkit.util.Vector;
 public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
     private static final boolean USE_LEVITATION = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9);
+    private static final ItemStack SEA_LANTERN = XMaterial.SEA_LANTERN.parseItem();
     private ArmorStand as;
     private boolean running;
 
@@ -48,7 +48,7 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         as.setSmall(true);
         running = true;
         as.setVisible(false);
-        as.setHelmet(new ItemStack(Material.SEA_LANTERN));
+        as.setHelmet(SEA_LANTERN);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> running = false, 240);
     }
 

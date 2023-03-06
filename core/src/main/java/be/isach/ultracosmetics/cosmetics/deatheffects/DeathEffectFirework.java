@@ -4,7 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.DeathEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -16,11 +16,12 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public class DeathEffectFirework extends DeathEffect {
+    private static final Material FIREWORK_ROCKET = XMaterial.FIREWORK_ROCKET.parseMaterial();
     private final FireworkMeta meta;
 
     public DeathEffectFirework(UltraPlayer owner, DeathEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(Material.FIREWORK_ROCKET);
+        meta = (FireworkMeta) Bukkit.getItemFactory().getItemMeta(FIREWORK_ROCKET);
         meta.addEffect(FireworkEffect.builder().with(Type.BALL_LARGE).withColor(Color.RED).build());
     }
 

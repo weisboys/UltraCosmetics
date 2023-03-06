@@ -3,8 +3,7 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
-import org.bukkit.Material;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.entity.AbstractHorse;
 import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
@@ -15,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 // Handles mounts that are real horses, but also variant horses on 1.8
 // For variant horses on 1.9+ see MountAbstractHorse
 public abstract class MountAbstractHorse extends Mount {
+    private static final ItemStack SADDLE = XMaterial.SADDLE.parseItem();
 
     public MountAbstractHorse(UltraPlayer ultraPlayer, MountType type, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, type, ultraCosmetics);
@@ -36,13 +36,13 @@ public abstract class MountAbstractHorse extends Mount {
             }
             horse.setTamed(true);
             horse.setDomestication(1);
-            horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+            horse.getInventory().setSaddle(SADDLE);
             horse.setJumpStrength(0.7);
         } else {
             AbstractHorse horse = (AbstractHorse) entity;
             horse.setTamed(true);
             horse.setDomestication(1);
-            horse.getInventory().setSaddle(new ItemStack(Material.SADDLE));
+            horse.getInventory().setSaddle(SADDLE);
             horse.setJumpStrength(0.7);
         }
 

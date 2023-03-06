@@ -1,11 +1,12 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
-
-import org.bukkit.Material;
+import be.isach.ultracosmetics.util.ServerVersion;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
@@ -17,6 +18,16 @@ import org.bukkit.inventory.ItemStack;
  * @since 08-10-2015
  */
 public class MountGlacialSteed extends MountAbstractHorse {
+    private static final ItemStack BOOTS;
+
+    static {
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            BOOTS = XMaterial.LEATHER_BOOTS.parseItem();
+            BOOTS.addEnchantment(Enchantment.FROST_WALKER, 2);
+        } else {
+            BOOTS = null;
+        }
+    }
 
     public MountGlacialSteed(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -25,9 +36,9 @@ public class MountGlacialSteed extends MountAbstractHorse {
     @Override
     public void setupEntity() {
         super.setupEntity();
-        ItemStack boots = new ItemStack(Material.LEATHER_BOOTS);
-        boots.addEnchantment(Enchantment.FROST_WALKER, 2);
-        ((Horse) entity).getEquipment().setBoots(boots, true);
+        if (BOOTS != null) {
+            ((Horse) entity).getEquipment().setBoots(BOOTS, true);
+        }
     }
 
     @Override

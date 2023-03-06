@@ -9,7 +9,8 @@ import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -27,9 +28,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -45,15 +43,16 @@ import java.util.Set;
  */
 public class GadgetRocket extends Gadget implements Updatable {
 
-    private static final BlockFace[] CARDINAL = new BlockFace[] { BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST };
+    private static final BlockFace[] CARDINAL = new BlockFace[] {BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST};
     private static final Material FENCE = XMaterial.OAK_FENCE.parseMaterial();
+    private static final Material QUARTZ_BLOCK = XMaterial.QUARTZ_BLOCK.parseMaterial();
     public static final Set<GadgetRocket> ROCKETS_WITH_BLOCKS = new HashSet<>();
 
     private boolean stillEquipped = true;
     private boolean launching;
     private ArmorStand armorStand;
     // key is used for easy access for contains() checks
-    private Map<Block,BlockState> blocks = new HashMap<>();
+    private Map<Block, BlockState> blocks = new HashMap<>();
     private List<FallingBlock> fallingBlocks = new ArrayList<>();
     private Entity playerVehicle = null;
     private int height;
@@ -83,7 +82,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                 }
                 Block quartz = center.getRelative(BlockFace.UP);
                 blocks.put(quartz, quartz.getState());
-                quartz.setType(Material.QUARTZ_BLOCK);
+                quartz.setType(QUARTZ_BLOCK);
             }
             armorStand = loc.getWorld().spawn(loc.add(0, 1.5, 0), ArmorStand.class);
             armorStand.setVisible(false);
@@ -122,8 +121,8 @@ public class GadgetRocket extends Gadget implements Updatable {
                     sendTitle(MessageManager.getMessage("Gadgets.Rocket.Takeoff"));
                     play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
 
-                    final FallingBlock top = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 3, 0), Material.QUARTZ_BLOCK);
-                    FallingBlock base = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 2, 0), Material.QUARTZ_BLOCK);
+                    final FallingBlock top = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 3, 0), QUARTZ_BLOCK);
+                    FallingBlock base = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 2, 0), QUARTZ_BLOCK);
                     for (int i = 0; i < 2; i++) {
                         fallingBlocks.add(BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 1 + i, 1), FENCE));
                         fallingBlocks.add(BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 1 + i, -1), FENCE));

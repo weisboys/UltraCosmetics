@@ -3,8 +3,8 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.MagmaCube;
@@ -23,7 +23,7 @@ import java.util.List;
  * @since 11-28-2015
  */
 public class MountMoltenSnake extends Mount {
-
+    private static final ItemStack NETHERRACK = XMaterial.NETHERRACK.parseItem();
     private List<Entity> entities = new ArrayList<>();
     private Location lastLocation;
     private float lastYaw;
@@ -35,7 +35,7 @@ public class MountMoltenSnake extends Mount {
 
     @Override
     public void setupEntity() {
-        ((MagmaCube)entity).setSize(2);
+        ((MagmaCube) entity).setSize(2);
         entities.add(entity);
         summonTailPart(25);
     }
@@ -51,9 +51,9 @@ public class MountMoltenSnake extends Mount {
                 entity.setVelocity(playerVector);
                 entity.teleport(loc.clone().add(0, -1.3, 0));
             } else {
-                if (i != 1)
+                if (i != 1) {
                     entity.teleport(lastLocation);
-                else {
+                } else {
                     entity.teleport(lastLocation.clone().add(0, -1.3, 0));
                     setHelmet((ArmorStand) entity, null);
                 }
@@ -74,7 +74,7 @@ public class MountMoltenSnake extends Mount {
             entities.add(armorStand);
             armorStand.setVisible(false);
             armorStand.setGravity(false);
-            setHelmet(armorStand, new ItemStack(Material.NETHERRACK));
+            setHelmet(armorStand, NETHERRACK);
             armorStand.setMetadata("NO_INTER", new FixedMetadataValue(getUltraCosmetics(), ""));
         }
     }
@@ -87,8 +87,9 @@ public class MountMoltenSnake extends Mount {
     @Override
     public void onClear() {
         super.onClear();
-        for (Entity entity : entities)
+        for (Entity entity : entities) {
             entity.remove();
+        }
         entities.clear();
     }
 }

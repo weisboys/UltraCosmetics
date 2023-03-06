@@ -6,14 +6,11 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
-
-import org.bukkit.Material;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.inventory.ItemStack;
-
-import com.cryptomorin.xseries.XMaterial;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -26,6 +23,7 @@ import java.util.Set;
  * @since 12-15-2015
  */
 public class GadgetFreezeCannon extends Gadget implements Updatable {
+    private static final ItemStack ICE = XMaterial.ICE.parseItem();
 
     private Set<Item> items = new HashSet<>();
 
@@ -35,7 +33,7 @@ public class GadgetFreezeCannon extends Gadget implements Updatable {
 
     @Override
     protected void onRightClick() {
-        Item item = getPlayer().getWorld().dropItem(getPlayer().getEyeLocation(), new ItemStack(Material.ICE));
+        Item item = getPlayer().getWorld().dropItem(getPlayer().getEyeLocation(), ICE);
         item.setVelocity(getPlayer().getEyeLocation().getDirection().multiply(0.9));
         items.add(item);
     }
@@ -51,7 +49,7 @@ public class GadgetFreezeCannon extends Gadget implements Updatable {
     @Override
     public void onUpdate() {
         Iterator<Item> iter = items.iterator();
-        Map<Block,XMaterial> updates = new HashMap<>();
+        Map<Block, XMaterial> updates = new HashMap<>();
         while (iter.hasNext()) {
             Item item = iter.next();
             if (item.isOnGround()) {
