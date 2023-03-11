@@ -147,6 +147,8 @@ public class UltraCosmetics extends JavaPlugin {
 
     private Set<Problem> loadTimeProblems = new HashSet<>();
 
+    private List<String> supportedLanguages = new ArrayList<>();
+
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
      */
@@ -181,10 +183,28 @@ public class UltraCosmetics extends JavaPlugin {
      */
     @Override
     public void onEnable() {
+        String pathPrefix = "messages/messages_";
+        try {
+            URL jar = getFile().toURI().toURL();
+            ZipInputStream zip = new ZipInputStream(jar.openStream());
+            while (true) {
+                ZipEntry e = zip.getNextEntry();
+                if (e == null) break;
+                String path = e.getName();
+                if (path.startsWith(pathPrefix)) {
+                    // Start string at end of prefix, end string two characters later
+                    supportedLanguages.add(path.substring(pathPrefix.length(), pathPrefix.length() + 2));
+                }
+            }
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
         start();
     }
 
     public void start() {
+        long startTime = System.currentTimeMillis();
+
         // If this is a reload, it's important to clear all enable-time problems
         activeProblems = new HashSet<>(loadTimeProblems);
 
@@ -328,7 +348,6 @@ public class UltraCosmetics extends JavaPlugin {
 
         permissionManager = new PermissionManager(this);
 
-
         playerManager.initPlayers();
 
         // Start the Fall Damage and Invalid World Check Runnables.
@@ -379,7 +398,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         // Ended well :v
         getSmartLogger().write();
-        getSmartLogger().write("UltraCosmetics successfully finished loading and is now enabled!");
+        getSmartLogger().write("UltraCosmetics successfully finished loading in " + (System.currentTimeMillis() - startTime) + "ms!");
         getSmartLogger().write("-------------------------------------------------------------------");
         enableFinished = true;
     }
@@ -515,24 +534,6 @@ public class UltraCosmetics extends JavaPlugin {
             section.set("Message.message", "%prefix% &6&l%name% found a flower!");
             section.set("Cancel-If-Permission", "example.yellowflower");
             section.set("Commands", Arrays.asList("give %name% yellow_flower 1", "lp user %name% permission set example.yellowflower true"));
-        }
-
-        String pathPrefix = "messages/messages_";
-        List<String> supportedLanguages = new ArrayList<>();
-        try {
-            URL jar = getFile().toURI().toURL();
-            ZipInputStream zip = new ZipInputStream(jar.openStream());
-            while (true) {
-                ZipEntry e = zip.getNextEntry();
-                if (e == null) break;
-                String path = e.getName();
-                if (path.startsWith(pathPrefix)) {
-                    // Start string at end of prefix, end string two characters later
-                    supportedLanguages.add(path.substring(pathPrefix.length(), pathPrefix.length() + 2));
-                }
-            }
-        } catch (IOException e1) {
-            e1.printStackTrace();
         }
 
         config.set("Supported-Languages", supportedLanguages, "Languages supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
