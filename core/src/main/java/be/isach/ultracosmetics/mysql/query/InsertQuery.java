@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.mysql.query;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.mysql.tables.Table;
 
 import java.sql.Connection;
@@ -49,7 +50,18 @@ public class InsertQuery {
         return this;
     }
 
+    /**
+     * Executes the query.
+     * <p>
+     * If no values were specified to insert, the query will not run.
+     */
     public void execute() {
+        // This happens regularly during migration.
+        if (inserts.size() == 0) {
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(
+                    "Skipping query to " + table.getClass().getSimpleName() + " as no values were specified.");
+            return;
+        }
         StringBuilder sql = new StringBuilder("INSERT ");
         if (ignore) sql.append("IGNORE ");
         sql.append("INTO ").append(table.getWrappedName()).append(" ");

@@ -337,7 +337,12 @@ public class UltraCosmetics extends JavaPlugin {
 
             // Start MySQL. May forcefully switch to file storage if it fails to connect.
             mySqlConnectionManager = new MySqlConnectionManager(this);
-            mySqlConnectionManager.start();
+            // If initialization was successful, create tables and such.
+            if (mySqlConnectionManager.success()) {
+                mySqlConnectionManager.start();
+            }
+            // Separate check because both constructor and MySqlConnectionManager#start
+            // can modify the success tracker.
             if (mySqlConnectionManager.success()) {
                 getSmartLogger().write("Connected to MySQL database.");
             } else {

@@ -150,9 +150,9 @@ public class StandardQuery {
         return getResults(r -> r.getString(1), false);
     }
 
-    public Map<String,Object> getWholeRow() {
+    public Map<String, Object> getWholeRow() {
         return getResults(r -> {
-            Map<String,Object> values = new HashMap<>();
+            Map<String, Object> values = new HashMap<>();
             for (TableInfo info : table.getTableInfo()) {
                 if (info instanceof Column<?>) {
                     values.put(((Column<?>) info).getName(), ((Column<?>) info).getValue(r));
@@ -175,23 +175,22 @@ public class StandardQuery {
     }
 
     public static void printStringified(StringBuilder sql, List<Object> objects) {
-        if (UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) {
-            String plaintext = sql.toString();
-            for (Object obj : objects) {
-                if (obj instanceof byte[]) {
-                    byte[] data = (byte[]) obj;
-                    StringBuilder hex = new StringBuilder("x'");
-                    for (byte datum : data) {
-                        // `byte & 0xFF` does magic to treat it as unsigned
-                        hex.append(Integer.toHexString(datum & 0xFF));
-                    }
-                    hex.append("'");
-                    plaintext = plaintext.replaceFirst("\\?", hex.toString());
-                    continue;
+        if (!UltraCosmeticsData.get().getPlugin().getMySqlConnectionManager().isDebug()) return;
+        String plaintext = sql.toString();
+        for (Object obj : objects) {
+            if (obj instanceof byte[]) {
+                byte[] data = (byte[]) obj;
+                StringBuilder hex = new StringBuilder("x'");
+                for (byte datum : data) {
+                    // `byte & 0xFF` does magic to treat it as unsigned
+                    hex.append(Integer.toHexString(datum & 0xFF));
                 }
-                plaintext = plaintext.replaceFirst("\\?", obj == null ? "NULL" : obj.toString());
+                hex.append("'");
+                plaintext = plaintext.replaceFirst("\\?", hex.toString());
+                continue;
             }
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Executing SQL: " + plaintext);
+            plaintext = plaintext.replaceFirst("\\?", obj == null ? "NULL" : obj.toString());
         }
+        UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Executing SQL: " + plaintext);
     }
 }

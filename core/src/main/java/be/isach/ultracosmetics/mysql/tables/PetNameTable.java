@@ -13,12 +13,11 @@ import be.isach.ultracosmetics.mysql.query.InnerJoin;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
-
-import javax.sql.DataSource;
 
 public class PetNameTable extends Table {
     private final PlayerDataTable playerData;
@@ -45,9 +44,9 @@ public class PetNameTable extends Table {
         return select("name").uuid(uuid).where(cosmeticTable.subqueryFor(type, false)).asString();
     }
 
-    public Map<PetType,String> getAllPetNames(UUID uuid) {
+    public Map<PetType, String> getAllPetNames(UUID uuid) {
         return select("name, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
-            Map<PetType,String> names = new HashMap<>();
+            Map<PetType, String> names = new HashMap<>();
             while (r.next()) {
                 names.put(CosmeticType.valueOf(Category.PETS, r.getString("type")), r.getString("name"));
             }
@@ -68,12 +67,13 @@ public class PetNameTable extends Table {
         delete().uuid(uuid).where(cosmeticTable.subqueryFor(type, false)).execute();
     }
 
-    public void setAllPetNames(UUID uuid, Map<PetType,String> names) {
+    public void setAllPetNames(UUID uuid, Map<PetType, String> names) {
         delete().uuid(uuid).execute();
         if (names.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "name");
         InsertValue uuidVal = insertUUID(uuid);
-        for (Entry<PetType,String> entry : names.entrySet()) {
+        for (Entry<PetType, String> entry : names.entrySet()) {
+            if (entry.getValue() == null) continue;
             query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getKey(), true), new InsertValue(entry.getValue()));
         }
         query.updateOnDuplicate().execute();

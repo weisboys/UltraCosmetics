@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.mysql.tables.PlayerDataTable;
-
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
@@ -27,9 +26,9 @@ public class PlayerData {
     private boolean morphSelfView;
     private boolean treasureNotifications;
     private boolean filterByOwned;
-    private Map<PetType,String> petNames = new HashMap<>();
-    private Map<GadgetType,Integer> ammo = new HashMap<>();
-    private Map<Category,CosmeticType<?>> enabledCosmetics = new HashMap<>();
+    private Map<PetType, String> petNames = new HashMap<>();
+    private Map<GadgetType, Integer> ammo = new HashMap<>();
+    private Map<Category, CosmeticType<?>> enabledCosmetics = new HashMap<>();
     private Set<CosmeticType<?>> unlockedCosmetics = new HashSet<>();
 
     public PlayerData(UUID uuid) {
@@ -80,15 +79,15 @@ public class PlayerData {
         this.filterByOwned = filterByOwned;
     }
 
-    public Map<PetType,String> getPetNames() {
+    public Map<PetType, String> getPetNames() {
         return petNames;
     }
 
-    public Map<GadgetType,Integer> getAmmo() {
+    public Map<GadgetType, Integer> getAmmo() {
         return ammo;
     }
 
-    public Map<Category,CosmeticType<?>> getEnabledCosmetics() {
+    public Map<Category, CosmeticType<?>> getEnabledCosmetics() {
         return enabledCosmetics;
     }
 
@@ -109,7 +108,10 @@ public class PlayerData {
         }
 
         for (CosmeticType<?> pet : CosmeticType.enabledOf(Category.PETS)) {
-            petNames.put((PetType) pet, sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName()));
+            String name = sm.getString(ProfileKey.PET_NAMES.getFileKey() + "." + pet.getConfigName());
+            if (name != null) {
+                petNames.put((PetType) pet, name);
+            }
         }
 
         for (CosmeticType<?> gadget : CosmeticType.enabledOf(Category.GADGETS)) {
@@ -167,11 +169,11 @@ public class PlayerData {
             data.set("enabled." + cat.toString().toLowerCase(), type == null ? null : type.getConfigName().toLowerCase());
         }
 
-        for (Entry<PetType,String> entry : petNames.entrySet()) {
+        for (Entry<PetType, String> entry : petNames.entrySet()) {
             data.set(ProfileKey.PET_NAMES.getFileKey() + "." + entry.getKey().getConfigName(), entry.getValue());
         }
 
-        for (Entry<GadgetType,Integer> entry : ammo.entrySet()) {
+        for (Entry<GadgetType, Integer> entry : ammo.entrySet()) {
             Integer amount = entry.getValue();
             // carefully handled because numeric comparisons auto-unbox but null checks do not
             if (amount != null && amount == 0) amount = null;
@@ -190,7 +192,7 @@ public class PlayerData {
         // update table with UUID. If it's already there, ignore
         PlayerDataTable pd = sql.getPlayerData();
         pd.addPlayer(uuid);
-        Map<String,Object> settings = pd.getSettings(uuid);
+        Map<String, Object> settings = pd.getSettings(uuid);
         gadgetsEnabled = (boolean) settings.get(ProfileKey.GADGETS_ENABLED.getSqlKey());
         morphSelfView = (boolean) settings.get(ProfileKey.MORPH_VIEW.getSqlKey());
         treasureNotifications = (boolean) settings.get(ProfileKey.TREASURE_NOTIFICATION.getSqlKey());
@@ -222,9 +224,17 @@ public class PlayerData {
         pd.setSetting(uuid, ProfileKey.TREASURE_NOTIFICATION, treasureNotifications);
         pd.setSetting(uuid, ProfileKey.FILTER_OWNED, filterByOwned);
 
-        sql.getPetNames().setAllPetNames(uuid, petNames);
-        sql.getAmmoTable().setAllAmmo(uuid, ammo);
-        sql.getEquippedTable().setAllEquipped(uuid, enabledCosmetics);
-        sql.getUnlockedTable().setAllUnlocked(uuid, unlockedCosmetics);
+        if (sql.getPetNames() != null) {
+            sql.getPetNames().setAllPetNames(uuid, petNames);
+        }
+        if (sql.getAmmoTable() != null) {
+            sql.getAmmoTable().setAllAmmo(uuid, ammo);
+        }
+        if (sql.getEquippedTable() != null) {
+            sql.getEquippedTable().setAllEquipped(uuid, enabledCosmetics);
+        }
+        if (sql.getUnlockedTable() != null) {
+            sql.getUnlockedTable().setAllUnlocked(uuid, unlockedCosmetics);
+        }
     }
 }

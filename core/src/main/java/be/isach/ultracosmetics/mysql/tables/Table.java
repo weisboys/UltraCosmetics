@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 import be.isach.ultracosmetics.mysql.query.StandardQuery;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,8 +14,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.UUID;
-
-import javax.sql.DataSource;
 
 public abstract class Table {
     private final DataSource dataSource;
@@ -44,7 +43,7 @@ public abstract class Table {
         return "`" + name + "`";
     }
 
-    protected String getRawName() {
+    public String getRawName() {
         return name;
     }
 

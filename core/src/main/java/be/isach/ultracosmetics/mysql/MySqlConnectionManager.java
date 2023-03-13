@@ -12,15 +12,12 @@ import be.isach.ultracosmetics.mysql.tables.Table;
 import be.isach.ultracosmetics.mysql.tables.UnlockedTable;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
 import org.bukkit.configuration.ConfigurationSection;
 
-import com.zaxxer.hikari.pool.HikariPool.PoolInitializationException;
-
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-
-import javax.sql.DataSource;
 
 /**
  * Package: be.isach.ultracosmetics.mysql
@@ -87,6 +84,8 @@ public class MySqlConnectionManager {
         try {
             hook = new HikariHook(hostname, port, database, username, password);
         } catch (PoolInitializationException e) {
+            // This exception happens when Hikari cannot connect to the server,
+            // such as if the hostname is wrong or the password is incorrect.
             // We have to do this weirdness to be able to break out of the constructor early.
             hikariHook = null;
             dataSource = null;

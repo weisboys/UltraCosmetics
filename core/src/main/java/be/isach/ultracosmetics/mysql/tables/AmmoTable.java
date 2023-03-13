@@ -12,12 +12,11 @@ import be.isach.ultracosmetics.mysql.query.InnerJoin;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
-
-import javax.sql.DataSource;
 
 public class AmmoTable extends Table {
     private final PlayerDataTable playerData;
@@ -44,9 +43,9 @@ public class AmmoTable extends Table {
         return select("ammo").uuid(uuid).where(cosmeticTable.subqueryFor(type, false)).asInt();
     }
 
-    public Map<GadgetType,Integer> getAllAmmo(UUID uuid) {
+    public Map<GadgetType, Integer> getAllAmmo(UUID uuid) {
         return select("ammo, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
-            Map<GadgetType,Integer> ammo = new HashMap<>();
+            Map<GadgetType, Integer> ammo = new HashMap<>();
             while (r.next()) {
                 ammo.put(CosmeticType.valueOf(Category.GADGETS, r.getString("type")), r.getInt("ammo"));
             }
@@ -59,12 +58,12 @@ public class AmmoTable extends Table {
                 .updateOnDuplicate().execute();
     }
 
-    public void setAllAmmo(UUID uuid, Map<GadgetType,Integer> ammo) {
+    public void setAllAmmo(UUID uuid, Map<GadgetType, Integer> ammo) {
         delete().uuid(uuid).execute();
         if (ammo.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "ammo");
         InsertValue uuidVal = insertUUID(uuid);
-        for (Entry<GadgetType,Integer> entry : ammo.entrySet()) {
+        for (Entry<GadgetType, Integer> entry : ammo.entrySet()) {
             if (entry.getValue() == null || entry.getValue() == 0) continue;
             query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getKey(), true), new InsertValue(entry.getValue()));
         }
