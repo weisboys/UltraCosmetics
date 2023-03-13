@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -26,12 +25,7 @@ public class PermissionManager {
 
         CustomConfiguration config = SettingsManager.getConfig();
         String pma = config.getString("TreasureChests.Permission-Add-Command", "");
-        if (pma.isEmpty()) {
-            ProfilePermissions profile = new ProfilePermissions(ultraCosmetics);
-            // TODO: config option for this?
-            cosmeticGetter = new ProfileBukkitHybridGetter(profile, bukkit);
-            cosmeticSetter = profile;
-        } else if (pma.startsWith("!lp-api")) {
+        if (pma.startsWith("!lp-api")) {
             if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
                 LuckPermsHook lp = new LuckPermsHook(ultraCosmetics);
                 rawSetter = lp;
@@ -39,13 +33,18 @@ public class PermissionManager {
                     cosmeticSetter = lp;
                 }
             } else {
-                ultraCosmetics.getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present. Please change it manually.");
-                config.set("TreasureChests.Permission-Add-Command", "say Please set Permission-Add-Command in UC config.yml");
+                ultraCosmetics.getSmartLogger().write(LogLevel.WARNING, "Permission-Add-Command was set to '!lp-api' but LuckPerms is not present.");
+                config.set("TreasureChests.Permission-Add-Command", "");
+                pma = "";
             }
         }
-        if (config.getBoolean("TreasureChests.Enabled") && config.getString("TreasureChests.Permission-Add-Command", "say ").startsWith("say ")) {
-            ultraCosmetics.addProblem(Problem.PERMISSION_COMMAND_NOT_SET);
+        if (pma.isEmpty()) {
+            ProfilePermissions profile = new ProfilePermissions(ultraCosmetics);
+            // TODO: config option for this?
+            cosmeticGetter = new ProfileBukkitHybridGetter(profile, bukkit);
+            cosmeticSetter = profile;
         }
+
         if (cosmeticGetter == null) {
             cosmeticGetter = bukkit;
         }
