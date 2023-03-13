@@ -6,7 +6,10 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.PathfinderPanic;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
@@ -18,14 +21,8 @@ import org.bukkit.event.player.PlayerShearEntityEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import com.cryptomorin.xseries.XSound;
-
 import java.util.HashSet;
 import java.util.Set;
-
-import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.goal.PathfinderPanic;
-import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a explosive sheep gadget summoned by a player.
@@ -38,7 +35,7 @@ public class GadgetExplosiveSheep extends Gadget {
     // I know 'sheeps' isn't the plural form of 'sheep' but it's funny
     // and it distinguishes it from the local variables named 'sheep' (singular)
     private Set<Sheep> sheeps = new HashSet<>();
-    private BukkitRunnable sheepExplosionRunnable = null;
+    private BukkitRunnable sheepRemovalRunnable = null;
 
     public GadgetExplosiveSheep(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -79,8 +76,10 @@ public class GadgetExplosiveSheep extends Gadget {
         for (Sheep sheep : sheeps) {
             sheep.remove();
         }
-        if (sheepExplosionRunnable != null) {
-            sheepExplosionRunnable.cancel();
+        if (sheepRemovalRunnable != null) {
+            sheepRemovalRunnable.run();
+            // No try-catch because this gadget doesn't run on legacy versions anyway.
+            sheepRemovalRunnable.cancel();
         }
     }
 
@@ -131,7 +130,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 sheep.damage(1, player);
                 brain.getGoalAI().put(new PathfinderPanic(sheep, 2), 0);
             }, getUltraCosmetics());
-            sheepExplosionRunnable = new BukkitRunnable() {
+            sheepRemovalRunnable = new BukkitRunnable() {
                 @Override
                 public void run() {
                     for (Sheep sheep : sheeps.getEntities()) {
@@ -140,7 +139,7 @@ public class GadgetExplosiveSheep extends Gadget {
                     sheeps.removeEntities();
                 }
             };
-            sheepExplosionRunnable.runTaskLater(getUltraCosmetics(), 110);
+            sheepRemovalRunnable.runTaskLater(getUltraCosmetics(), 110);
         }
     }
 }
