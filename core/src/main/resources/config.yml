@@ -276,14 +276,6 @@ TreasureChests:
       barriers: JUNGLE_LEAVES
       chest-type: NORMAL
       effect: VILLAGER_HAPPY
-    Desert:
-      center-block: GLOWSTONE
-      around-center: SAND
-      third-blocks: SANDSTONE
-      below-chests: ORANGE_TERRACOTTA
-      barriers: SANDSTONE_SLAB
-      chest-type: NORMAL
-      effect: CRIT
     Ocean:
       center-block: SEA_LANTERN
       around-center: PRISMARINE_BRICKS

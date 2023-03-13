@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.Version;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import com.google.gson.JsonElement;
@@ -226,12 +225,16 @@ public class UpdateManager extends BukkitRunnable {
         // Cuts the string to something like "1.18.2"
         thisMinecraftVersion = thisMinecraftVersion.substring(0, thisMinecraftVersion.indexOf('-'));
 
-        for (String supportedVersion : supportedVersions) {
-            if (thisMinecraftVersion.equals(supportedVersion)) {
-                return true;
+        // Since 3.0, the range of supported versions is wide enough we can just check if
+        // the server's version is less than or equal to the highest version listed supported.
+        String[] tmvParts = thisMinecraftVersion.split("\\.");
+        String[] supportedParts = supportedVersions[supportedVersions.length - 1].split("\\.");
+        for (int i = 0; i < tmvParts.length; i++) {
+            if (Integer.parseInt(tmvParts[i]) > Integer.parseInt(supportedParts[i])) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public boolean isOutdated() {
