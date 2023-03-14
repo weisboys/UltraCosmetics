@@ -17,7 +17,7 @@ public enum ServerVersion {
     v1_16("1.16.5", null, 0),
     v1_17("1.17.1", null, 0),
     v1_18("1.18.2", "eaeedbff51b16ead3170906872fda334", 2),
-    v1_19("1.19.3", "1afe2ffe8a9d7fc510442a168b3d4338", 2),
+    v1_19("1.19.4", "3009edc0fff87fa34680686663bd59df", 3),
     NEW("???", null, 0),
     ;
 
@@ -27,7 +27,7 @@ public enum ServerVersion {
     // which is more often than actual NMS revisions happen. You can find this
     // value by checking the source code of this method:
     // org.bukkit.craftbukkit.util.CraftMagicNumbers#getMappingsVersion
-    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#238
+    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#240
     // getMappingsVersion was added in 1.13.2, earlier versions don't have it.
     private final String mappingsVersion;
     // The NMS revision the corresponding module is built for, or 0 for no module.
