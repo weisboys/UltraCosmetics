@@ -275,9 +275,7 @@ public class UltraCosmetics extends JavaPlugin {
         }
 
         // Initialize NMS Module
-        if (UltraCosmeticsData.get().initModule()) {
-            smartLogger.write("Module initialized");
-        } else {
+        if (!UltraCosmeticsData.get().initModule()) {
             // This method sets its own problems
             return;
         }

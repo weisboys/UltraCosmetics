@@ -121,11 +121,13 @@ public class UltraCosmeticsData {
 
     protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
-        logger.write("Initializing module " + serverVersion + " (server: " + serverVersion.getName() + ")");
+        logger.write("Initializing module " + serverVersion + " (expected version: " + serverVersion.getName() + ")");
         if (useNMS.equalsIgnoreCase("no")) {
             logger.write("NMS support has been disabled in the config, will run without it.");
         } else if (serverVersion.isNmsSupported() && serverVersion.getNMSRevision() == nmsRev) {
             if (startNMS()) return true;
+        } else {
+            logger.write("Loading NMS-less mode...");
         }
 
         try {
@@ -135,6 +137,7 @@ public class UltraCosmeticsData {
             logger.write(LogLevel.ERROR, "Failed to start NMS-less module, please report this error.");
             return false;
         }
+        logger.write("Loaded NMS-less mode");
         return true;
     }
 
@@ -173,6 +176,7 @@ public class UltraCosmeticsData {
             ultraCosmetics.addProblem(Problem.NMS_LOAD_FAILURE);
             return false;
         }
+        logger.write("Loaded NMS support");
         return true;
     }
 
