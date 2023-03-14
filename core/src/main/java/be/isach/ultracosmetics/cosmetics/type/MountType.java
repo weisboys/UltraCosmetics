@@ -130,13 +130,7 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, 0.25, MountMule.class);
         new MountType("Pig", XMaterial.PORKCHOP, EntityType.PIG, 0, 0.35, MountPig.class);
 
-        if (version.isAtLeast(ServerVersion.v1_16)) {
-            new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
-        }
-
-        if (vm.isUsingNMS()) {
-            new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
-            new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
+        if (version.isNmsSupported()) {
             new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
                 @Override
                 public void setupConfig(CustomConfiguration config, String path) {
@@ -144,6 +138,15 @@ public class MountType extends CosmeticEntType<Mount> {
                     config.addDefault("Mounts.Dragon.Stationary", false, "If true, the dragon will not move.");
                 }
             };
+        }
+
+        if (version.isAtLeast(ServerVersion.v1_16)) {
+            new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
+        }
+
+        if (vm.isUsingNMS()) {
+            new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
+            new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
         }
     }
 
