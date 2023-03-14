@@ -271,7 +271,6 @@ public class UltraCosmetics extends JavaPlugin {
         if (activeProblems.contains(Problem.BAD_MC_VERSION)) {
             getSmartLogger().write();
             getSmartLogger().write(LogLevel.WARNING, "This NMS version is unknown (" + UltraCosmeticsData.get().getRawNMSVersion() + "), but UltraCosmetics will try to continue running.");
-            getSmartLogger().write(LogLevel.WARNING, "As UltraCosmetics was not built for this version, some features will be disabled. Please check for an update.");
         }
 
         // Initialize NMS Module
