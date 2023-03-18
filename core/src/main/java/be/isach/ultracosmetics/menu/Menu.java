@@ -41,7 +41,7 @@ public abstract class Menu implements Listener {
      * Key: Item
      * Value: ClickRunnable to call when item is clicked.
      */
-    private Map<Inventory,Map<ItemStack,ClickRunnable>> clickRunnableMap = new HashMap<>();
+    private Map<Inventory, Map<ItemStack, ClickRunnable>> clickRunnableMap = new HashMap<>();
 
     public Menu(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -55,7 +55,7 @@ public abstract class Menu implements Listener {
 
     protected Inventory createInventory(int size, String name) {
         Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), getName());
-        ((CosmeticsInventoryHolder)inventory.getHolder()).setInventory(inventory);
+        ((CosmeticsInventoryHolder) inventory.getHolder()).setInventory(inventory);
         return inventory;
     }
 
@@ -77,7 +77,7 @@ public abstract class Menu implements Listener {
         }
 
         inventory.setItem(slot, itemStack);
-        Map<ItemStack,ClickRunnable> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
+        Map<ItemStack, ClickRunnable> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
         map.put(itemStack, clickRunnable);
     }
 
@@ -88,35 +88,29 @@ public abstract class Menu implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta() || !event.getCurrentItem().getItemMeta().hasDisplayName()) {
-            return;
-        }
-
         if (!(event.getWhoClicked() instanceof Player)) {
             return;
         }
 
-        // Check Inventory is the good one.
-        // Using contains because inventory titles get
-        // page numbers when multiple pages exist.
-        if (!event.getView().getTitle().startsWith(getName())) {
-            return;
-        }
         // Check that Inventory is valid.
         if (!clickRunnableMap.containsKey(event.getInventory())) {
             return;
         }
 
+        // Cancel the event no matter what once we've verified that
+        // the player is clicking with our inventory open.
+        event.setCancelled(true);
+
         // Check that the filler item isn't being clicked
-        if (event.getCurrentItem().equals(fillerItem)) {
-            event.setCancelled(true);
+        if (event.getCurrentItem() == null || !event.getCurrentItem().hasItemMeta()
+                || !event.getCurrentItem().getItemMeta().hasDisplayName() || event.getCurrentItem().equals(fillerItem)) {
             return;
         }
 
         ClickRunnable clickRunnable = null;
         String clickItemName = event.getCurrentItem().getItemMeta().getDisplayName();
-        Set<Entry<ItemStack,ClickRunnable>> entries = clickRunnableMap.get(event.getInventory()).entrySet();
-        for (Entry<ItemStack,ClickRunnable> entry : entries) {
+        Set<Entry<ItemStack, ClickRunnable>> entries = clickRunnableMap.get(event.getInventory()).entrySet();
+        for (Entry<ItemStack, ClickRunnable> entry : entries) {
             if (entry.getKey().getItemMeta().getDisplayName().equals(clickItemName)) {
                 clickRunnable = entry.getValue();
                 break;
@@ -125,8 +119,6 @@ public abstract class Menu implements Listener {
         if (clickRunnable == null) {
             return;
         }
-
-        event.setCancelled(true);
 
         Player player = (Player) event.getWhoClicked();
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
