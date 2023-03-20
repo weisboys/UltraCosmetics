@@ -1,15 +1,13 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
-import static java.lang.Math.cos;
-import static java.lang.Math.sin;
-import static java.lang.Math.toRadians;
-
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
-
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.controller.NaturalMoveType;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.entity.EnderDragonPart;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
@@ -18,9 +16,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.util.Vector;
 
-import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.controller.NaturalMoveType;
-import me.gamercoder215.mobchip.bukkit.BukkitBrain;
+import static java.lang.Math.cos;
+import static java.lang.Math.sin;
+import static java.lang.Math.toRadians;
 
 /**
  * Represents an instance of a enderdragon mount.

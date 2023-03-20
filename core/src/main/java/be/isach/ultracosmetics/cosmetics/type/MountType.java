@@ -5,33 +5,13 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.mounts.Mount;
-import be.isach.ultracosmetics.cosmetics.mounts.MountDonkey;
-import be.isach.ultracosmetics.cosmetics.mounts.MountDragon;
-import be.isach.ultracosmetics.cosmetics.mounts.MountDruggedHorse;
-import be.isach.ultracosmetics.cosmetics.mounts.MountEcologistHorse;
-import be.isach.ultracosmetics.cosmetics.mounts.MountGlacialSteed;
-import be.isach.ultracosmetics.cosmetics.mounts.MountHorse;
-import be.isach.ultracosmetics.cosmetics.mounts.MountHypeCart;
-import be.isach.ultracosmetics.cosmetics.mounts.MountInfernalHorror;
-import be.isach.ultracosmetics.cosmetics.mounts.MountMoltenSnake;
-import be.isach.ultracosmetics.cosmetics.mounts.MountMule;
-import be.isach.ultracosmetics.cosmetics.mounts.MountNyanSheep;
-import be.isach.ultracosmetics.cosmetics.mounts.MountOfFire;
-import be.isach.ultracosmetics.cosmetics.mounts.MountOfWater;
-import be.isach.ultracosmetics.cosmetics.mounts.MountPig;
-import be.isach.ultracosmetics.cosmetics.mounts.MountRudolph;
-import be.isach.ultracosmetics.cosmetics.mounts.MountSnake;
-import be.isach.ultracosmetics.cosmetics.mounts.MountStrider;
-import be.isach.ultracosmetics.cosmetics.mounts.MountWalkingDead;
+import be.isach.ultracosmetics.cosmetics.mounts.*;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-
-import com.cryptomorin.xseries.XMaterial;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -120,7 +100,6 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("HypeCart", XMaterial.MINECART, EntityType.MINECART, 1, 0, MountHypeCart.class);
         new MountType("MoltenSnake", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, 1, 0.4, MountMoltenSnake.class);
         new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, 0.4, MountOfWater.class, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA));
-        new MountType("NyanSheep", XMaterial.CYAN_DYE, EntityType.SHEEP, 1, 0.4, MountNyanSheep.class);
         new MountType("EcologistHorse", XMaterial.GREEN_DYE, EntityType.HORSE, 2, 0.4, MountEcologistHorse.class, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA));
         new MountType("Rudolph", XMaterial.DEAD_BUSH, horseOrType("MULE", version), 1, 0.4, MountRudolph.class);
         new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, horseOrType("ZOMBIE_HORSE", version), 2, 0.4, MountWalkingDead.class);
@@ -130,7 +109,8 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, 0.25, MountMule.class);
         new MountType("Pig", XMaterial.PORKCHOP, EntityType.PIG, 0, 0.35, MountPig.class);
 
-        if (version.isNmsSupported()) {
+        if (version.isMobChipAvailable()) {
+            new MountType("NyanSheep", XMaterial.CYAN_DYE, EntityType.SHEEP, 1, 0.4, MountNyanSheep.class);
             new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
                 @Override
                 public void setupConfig(CustomConfiguration config, String path) {
