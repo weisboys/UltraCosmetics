@@ -379,7 +379,7 @@ Mounts:
     Description: |-
       &7&oUn mob misterioso en forma de cubo
       &7&ocapaz de caminar recto sobre lava.
-    Held-Item-Lore: '&7&oStrider food on a stick!'
+    Held-Item-Lore: '&7&oComida de zancudo en un palo!'
   Horse:
     menu-name: '&7&lCaballo'
     entity-displayname: '&lCaballo de %playername%'
@@ -396,7 +396,7 @@ Mounts:
     menu-name: '&d&lCerdo'
     entity-displayname: 'Cerdo de &l%playername%'
     Description: '&7&oOink!'
-    Held-Item-Lore: '&7&oPig food on a stick!'
+    Held-Item-Lore: '&7&oComida de cerdo en un palo!'
   Equip: '%prefix% &9Spawneaste %mountname%'
   Unequip: '%prefix% &9Despawneaste %mountname%'
   Cant-Spawn: '%prefix% &c&lLos monstruos no pueden spawnear aqui!'
@@ -484,8 +484,8 @@ Particle-Effects:
   VolcanicHalo:
     name: '&c&lHalo Volcánico'
     Description: |-
-      &7&oA halo composed of
-      &7&oeternal flames.
+      &7&oUn anillo de luz compuesto 
+      &7&ode flamas eternas.
   CursedFootprints:
     name: '&5&lHuellas Malditas'
     Description: |-
@@ -516,10 +516,10 @@ Particle-Effects:
     name: '&b&lLlamas Arcanas'
     Description: '&7&oLlamas azules sobre tu cabeza.'
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: '&e&lAnillo de luz divino'
     Description: |-
-      &7&oA halo composed of
-      &7&oglowing light.
+      &7&oUn anillo compuesto
+      &7&opor una luz brillante.
   SnowFootprints:
     name: '&f&lHuellas de nieve'
     Description: |-
@@ -1176,7 +1176,7 @@ Hats:
     Name: '&e&lMoobloom'
     Description: '&7&oVaca muy rara!'
   ChestnutHorse:
-    Name: '&2&lChestnut Horse'
+    Name: '&2&lCaballo castaño'
     Description: '&7&o¡No olvides la montura!'
   Golem:
     Name: '&7&lGolem'
@@ -1224,8 +1224,8 @@ Hats:
     Name: '&3&lGuardián'
     Description: '&7&oProtege el monumento en océanos!'
   ShepherdVillager:
-    Name: '&e&lShepherd Villager'
-    Description: '&7&oThe Lonely Shepherd'
+    Name: '&e&lAldeano Pastor'
+    Description: '&7&oEl Pastor Solitario'
   FletcherVillager:
     Name: '&a&lAldeano de flechas'
     Description: '&7&oHago flechas.'
@@ -1290,26 +1290,26 @@ Hats:
     Name: '&b&lNecromancer'
     Description: '&7&o¡Invoca a los no muertos!'
   MCD-NamelessOne:
-    Name: '&2&lNameless One'
+    Name: '&2&lEl Sin Nombre'
     Description: '&7&oNecromancer poderoso'
   MCD-StrayKnight:
-    Name: '&7&lStray Knight'
-    Description: '&7&oA lonely knight...'
+    Name: '&7&lCaballero Perdido'
+    Description: '&7&oCaballero Solitario...'
   MCD-AncientGuardian:
     Name: '&5&lGuardián Antiguo'
     Description: '&7&oEl guardián más antiguo'
   MCD-KeyGolem:
-    Name: '&6&lKey Golem'
+    Name: '&6&lGolem Llave'
     Description: '&7&oDesbloquea todas las puertas!'
   MCD-ArchIllager:
-    Name: '&3&lArch Illager'
+    Name: '&3&lArchillano'
     Description: '&7&oLíder de los Illagers'
   MCD-SunkenSkeleton:
-    Name: '&2&lSunken Skeleton'
-    Description: '&7&oUnderwater skeleton'
+    Name: '&2&lEsqueleto Undido'
+    Description: '&7&oEsqueleto Marino'
   MCD-TheWildfire:
-    Name: '&4&lThe Wildfire'
-    Description: '&7&oHovering inferno'
+    Name: '&4&lIncendio Forestal'
+    Description: '&7&oInfierno Flotante'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt is me! Mario!'
@@ -1392,14 +1392,14 @@ Hats:
     Name: '&f&lNotch'
     Description: '&7&oCreador de Minecraft'
   KitsuneMask:
-    Name: '&c&lKitsune Mask'
+    Name: '&c&lMáscara Kitsune'
     Description: '&7&oMáscara de zorro blanco'
   Goblin:
     Name: '&9&lGoblin'
-    Description: '&7&oSneaky!'
+    Description: '&7&oFurtivo!'
   Unicorn:
     Name: '&d&lUnicornio'
-    Description: '&7&oBe magical!'
+    Description: '&7&oSé mágico!'
   Ogre:
     Name: '&2&lOgro'
     Description: '&7&oTengo hambre.'
@@ -1411,7 +1411,7 @@ Hats:
     Description: '&7&oEmbrace masculinity!'
   Anubis:
     Name: '&6&lAnubis'
-    Description: '&7&oAncient Egyptian god'
+    Description: '&7&oAntiguo dio egipcio'
   Bread:
     Name: '&f&lPan'
     Description: '&7&oRecien cocinado!'
@@ -1648,7 +1648,7 @@ Emotes:
     Name: '&a&lGuiño'
     Description: '&7&oTe diviertes? Hazle saber a alguien que estas en la broma'
   RaiseEyebrows:
-    Name: '&3&lRaise Eyebrows'
+    Name: '&3&lLevantar las cejas'
     Description: '&7&oSorprendido?'
   ScaryCandle:
     Name: '&5&lVela aterradora'
@@ -1657,7 +1657,7 @@ Emotes:
     Name: '&6&lCalabaza Brillante'
     Description: '&7&oJack O''Slime'
   LovestruckAllay:
-    Name: '&b&lLovestruck Allay'
+    Name: '&b&lAmoroso'
     Description: '&7&oNos estamos enamorando?'
 Projectile-Effects:
   Equip: '%prefix% &9Equipaste %projectile-effectname%'
@@ -1682,7 +1682,7 @@ Projectile-Effects:
     Description: '&7&oRotando, llamas cian'
   Spark:
     name: '&f&lChispas'
-    Description: '&7&oSparkling, white stars'
+    Description: '&7&oEstrellas blancas brillantes'
   Redstone:
     name: '&4&lRedstone'
     Description: '&7&oNubes rojas y pequeñas'
@@ -1714,10 +1714,10 @@ Projectile-Effects:
     name: '&a&lSlime'
     Description: '&7&oPartículas de Slime'
   Crit:
-    name: '&7&lCrit'
+    name: '&7&lCrítico'
     Description: '&7&oCruces marrón claro'
   MagicCrit:
-    name: '&3&lMagic Crit'
+    name: '&3&lCrítico Mágico'
     Description: '&7&oEstrellas cian'
   Explosion:
     name: '&4&lExplosion'
@@ -1741,22 +1741,22 @@ Projectile-Effects:
     name: '&b&Llamas de Almas'
     Description: '&7&oLlamas cian, pequeñas'
   Snowflake:
-    name: '&f&lSnowflake'
+    name: '&f&lCopo de Nieve'
     Description: '&7&oNubes blancas y pequeñas'
   GlowSquid:
     name: '&3&lCalamar Brillante'
-    Description: '&7&oTeal stars'
+    Description: '&7&oEstrellas Cerceta'
   GlowSquidInk:
     name: '&3&lTinta de calamar brillante'
     Description: '&7&oNubes de Aquamarina'
   Scrape:
-    name: '&2&lScrape'
-    Description: '&7&oTeal stars'
+    name: '&2&lRaspar'
+    Description: '&7&oEstrellas Cerceta'
   WaxOff:
-    name: '&f&lWax Off'
+    name: '&f&lDespegando'
     Description: '&7&oEstrellas Blancas'
   WaxOn:
-    name: '&6&lWax On'
+    name: '&6&lEncerando'
     Description: '&7&oEstrellas naranja'
   SculkSoul:
     name: '&b&lAlma de Sculk'
