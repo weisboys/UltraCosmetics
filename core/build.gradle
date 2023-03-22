@@ -30,8 +30,7 @@ dependencies {
     compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     compileOnly 'com.palmergames.bukkit.towny:towny:0.98.6.0'
     implementation 'com.zaxxer:HikariCP:4.0.3'
-    //implementation 'net.wesjd:anvilgui:1.6.3-SNAPSHOT'
-    implementation(fileTree(dir: '.', include: ['anvilgui-*.jar']))
+    implementation 'net.wesjd:anvilgui:1.6.3-SNAPSHOT'
     implementation 'me.gamercoder215:mobchip-bukkit:1.8.1-SNAPSHOT'
     compileOnly 'com.discordsrv:discordsrv:1.26.0'
 }
