@@ -126,7 +126,7 @@ public class TreasureChestManager implements Listener {
         for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, range, range, range)) {
             if (shouldPush(ultraPlayer, ent)) {
                 player.closeInventory();
-                player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close-to-Entity"));
+                player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close-To-Entity"));
                 return;
             }
         }
