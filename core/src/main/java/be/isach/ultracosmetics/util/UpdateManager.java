@@ -170,7 +170,9 @@ public class UpdateManager extends BukkitRunnable {
         try {
             URL url = new URL(RESOURCE_URL + "download");
             in = new BufferedInputStream(url.openStream());
-            fout = new FileOutputStream(new File(Bukkit.getUpdateFolderFile(), "UltraCosmetics-" + spigotVersion.get() + "-RELEASE.jar"));
+            File outputFile = new File(Bukkit.getUpdateFolderFile(), "UltraCosmetics-" + spigotVersion.get() + "-RELEASE.jar");
+            outputFile.getParentFile().mkdirs();
+            fout = new FileOutputStream(outputFile);
 
             final byte[] data = new byte[4096];
             int count;
