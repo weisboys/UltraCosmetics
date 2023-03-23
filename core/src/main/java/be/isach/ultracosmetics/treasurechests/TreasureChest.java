@@ -45,8 +45,8 @@ import java.util.UUID;
 public class TreasureChest implements Listener {
 
     private final Map<Block, BlockState> blocksToRestore = new HashMap<>();
-    private final List<Block> chests = new ArrayList<>();
-    private final List<Block> chestsToRemove = new ArrayList<>();
+    private final List<Block> unopenedChests = new ArrayList<>();
+    private final List<Block> openedChests = new ArrayList<>();
     private final UUID owner;
     private TreasureRandomizer randomGenerator;
     private Location center;
@@ -143,17 +143,17 @@ public class TreasureChest implements Listener {
         for (Item item : items) {
             item.remove();
         }
-        for (Block b : chestsToRemove) {
+        for (Block b : openedChests) {
             b.setType(Material.AIR);
         }
-        for (Block b : chests) {
+        for (Block b : unopenedChests) {
             b.setType(Material.AIR);
         }
         cancelRunnables();
         items.clear();
-        chests.clear();
+        unopenedChests.clear();
         holograms.clear();
-        chestsToRemove.clear();
+        openedChests.clear();
         if (getPlayer() != null) {
             UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(getPlayer()).setCurrentTreasureChest(null);
             if (preLoc != null) {
@@ -187,7 +187,7 @@ public class TreasureChest implements Listener {
             return;
         }
 
-        for (final Block b : chests) {
+        for (final Block b : unopenedChests) {
             openChest(b);
             randomGenerator.setLocation(b.getLocation().clone().add(0.0D, 1.0D, 0.0D));
             LootReward reward = randomGenerator.giveRandomThing(this);
@@ -196,16 +196,16 @@ public class TreasureChest implements Listener {
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation(), reward), 15L);
 
             chestsLeft -= 1;
-            chestsToRemove.add(b);
+            openedChests.add(b);
         }
-        chests.clear();
+        unopenedChests.clear();
 
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, delay);
     }
 
     @EventHandler
     public void onBreakBlock(BlockBreakEvent event) {
-        if (blocksToRestore.containsKey(event.getBlock()) || chests.contains(event.getBlock())) {
+        if (blocksToRestore.containsKey(event.getBlock()) || unopenedChests.contains(event.getBlock()) || openedChests.contains(event.getBlock())) {
             event.setCancelled(true);
         }
     }
@@ -249,7 +249,12 @@ public class TreasureChest implements Listener {
 
     @EventHandler
     public void onInter(final PlayerInteractEvent event) {
-        if (event.getClickedBlock() == null || !chests.contains(event.getClickedBlock())) return;
+        if (event.getClickedBlock() == null) return;
+        if (openedChests.contains(event.getClickedBlock()) || blocksToRestore.containsKey(event.getClickedBlock())) {
+            event.setCancelled(true);
+            return;
+        }
+        if (!unopenedChests.contains(event.getClickedBlock())) return;
         event.setCancelled(true);
         if (event.getPlayer() != getPlayer() || cooldown) return;
 
@@ -266,8 +271,8 @@ public class TreasureChest implements Listener {
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(event.getClickedBlock().getLocation(), reward), 15L);
 
         chestsLeft -= 1;
-        chests.remove(event.getClickedBlock());
-        chestsToRemove.add(event.getClickedBlock());
+        unopenedChests.remove(event.getClickedBlock());
+        openedChests.add(event.getClickedBlock());
         if (chestsLeft == 0) {
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, 50L);
         }
@@ -303,7 +308,7 @@ public class TreasureChest implements Listener {
     }
 
     public void addChest(Block b) {
-        chests.add(b);
+        unopenedChests.add(b);
     }
 
     public void addRestoreBlock(Block b) {
@@ -312,10 +317,6 @@ public class TreasureChest implements Listener {
 
     public int getChestsLeft() {
         return chestsLeft;
-    }
-
-    protected void setChestsLeft(int chestsLeft) {
-        this.chestsLeft = chestsLeft;
     }
 
     /**
