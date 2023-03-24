@@ -2,18 +2,10 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.cosmetics.gadgets.GadgetRocket;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.VersionManager;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
-import java.util.Set;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XTag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,17 +16,18 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XTag;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by sacha on 03/08/15.
  */
 public class BlockUtils {
-    /**
-     * List of all the current Treasure Blocks.
-     */
-    public static final List<Block> treasureBlocks = new ArrayList<>();
 
     /**
      * Set containing all materials that shouldn't
@@ -119,17 +112,20 @@ public class BlockUtils {
         int bX = location.getBlockX(),
                 bY = location.getBlockY(),
                 bZ = location.getBlockZ();
-        for (int x = bX - radius; x <= bX + radius; x++)
-            for (int y = bY - radius; y <= bY + radius; y++)
+        for (int x = bX - radius; x <= bX + radius; x++) {
+            for (int y = bY - radius; y <= bY + radius; y++) {
                 for (int z = bZ - radius; z <= bZ + radius; z++) {
                     double distance = ((bX - x) * (bX - x) + (bY - y) * (bY - y) + (bZ - z) * (bZ - z));
                     if (distance < radius * radius
                             && !(hollow && distance < ((radius - 1) * (radius - 1)))) {
                         Location l = new Location(location.getWorld(), x, y, z);
-                        if (l.getBlock().getType() != Material.BARRIER)
+                        if (l.getBlock().getType() != Material.BARRIER) {
                             blocks.add(l.getBlock());
+                        }
                     }
                 }
+            }
+        }
         return blocks;
     }
 
@@ -145,21 +141,6 @@ public class BlockUtils {
     }
 
     /**
-     * Checks if a block is part of a rocket.
-     *
-     * @param b The block to check.
-     * @return {@code true} if the block is part of a rocket, otherwise {@code false}.
-     */
-    public static boolean isRocketBlock(Block b) {
-        for (GadgetRocket rocket : GadgetRocket.ROCKETS_WITH_BLOCKS) {
-            if (rocket.containsBlock(b)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Sends packets to replace each block in a Map of blocks with the new material it's mapped to
      * and after delay, send packets to restore it. No blocks are actually changed on the server side.
      *
@@ -167,12 +148,12 @@ public class BlockUtils {
      * @param tickDelay The delay after which the blocks are restored.
      */
     @SuppressWarnings("deprecation")
-    public static void setToRestoreIgnoring(final Map<Block,XMaterial> blocks, final int tickDelay) {
+    public static void setToRestoreIgnoring(final Map<Block, XMaterial> blocks, final int tickDelay) {
         Bukkit.getScheduler().runTaskAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> {
             blocks.keySet().removeIf(BlockViewUpdater::isUpdating);
             if (blocks.size() == 0) return;
             World world = blocks.keySet().iterator().next().getWorld();
-            for (Entry<Block,XMaterial> entry : blocks.entrySet()) {
+            for (Entry<Block, XMaterial> entry : blocks.entrySet()) {
                 for (Player player : world.getPlayers()) {
                     if (VersionManager.IS_VERSION_1_13) {
                         // we have to do this when we can or we enable legacy material support which is evil sometimes
@@ -186,32 +167,21 @@ public class BlockUtils {
         });
     }
 
-    public static void setToRestore(final Map<Block,XMaterial> blocks, final int tickDelay) {
+    public static void setToRestore(final Map<Block, XMaterial> blocks, final int tickDelay) {
         blocks.keySet().removeIf(b -> !canRestore(b));
         setToRestoreIgnoring(blocks, tickDelay);
     }
 
     public static boolean canRestore(Block block) {
         if (badMaterials.contains(block.getType())
-            || SettingsManager.getConfig().getStringList("Gadgets.PaintballGun.BlackList").contains(block.getType().name())
-            || isPortalBlock(block)
-            || isRocketBlock(block)
-            || isTreasureChestBlock(block)
-            || !block.getType().isSolid()
-            || !okAboveBlock(block.getRelative(BlockFace.UP).getType())) {
+                || SettingsManager.getConfig().getStringList("Gadgets.PaintballGun.BlackList").contains(block.getType().name())
+                || isPortalBlock(block)
+                || BlockRollback.isBlockRollingBack(block)
+                || !block.getType().isSolid()
+                || !okAboveBlock(block.getRelative(BlockFace.UP).getType())) {
             return false;
         }
         return true;
-    }
-
-    /**
-     * Checks if a block is part of a Treasure Chest.
-     *
-     * @param block The block to check.
-     * @return {@code true} if yes, otherwise {@code false}.
-     */
-    public static boolean isTreasureChestBlock(Block block) {
-        return treasureBlocks.contains(block);
     }
 
     private static boolean okAboveBlock(Material mat) {
@@ -247,7 +217,7 @@ public class BlockUtils {
         if (VersionManager.IS_VERSION_1_13) {
             return loc.getWorld().spawnFallingBlock(loc, type.createBlockData());
         } else {
-            return loc.getWorld().spawnFallingBlock(loc, type, (byte)0);
+            return loc.getWorld().spawnFallingBlock(loc, type, (byte) 0);
         }
     }
 

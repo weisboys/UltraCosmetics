@@ -3,8 +3,6 @@ package be.isach.ultracosmetics.treasurechests;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
-import be.isach.ultracosmetics.util.BlockUtils;
-import com.cryptomorin.xseries.XBlock;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -18,6 +16,7 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
     private final UltraCosmetics uc = UltraCosmeticsData.get().getPlugin();
     private int i = 6;
     private ChestParticleRunnable particleRunnable = null;
+
     public PlaceBlocksRunnable(TreasureChest chest) {
         this.chest = chest;
         this.design = chest.getDesign();
@@ -59,12 +58,7 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
 
     private void doChestStage(Location center, ChestBlockPattern pattern, XMaterial newData) {
         if (newData == null) return;
-        pattern.loop(center, loc -> {
-            Block b = loc.getBlock();
-            chest.addRestoreBlock(b);
-            BlockUtils.treasureBlocks.add(b);
-            XBlock.setType(b, newData);
-        });
+        pattern.loop(center, loc -> chest.addRestoreBlock(loc.getBlock(), newData));
     }
 
     public void propogateCancel() {

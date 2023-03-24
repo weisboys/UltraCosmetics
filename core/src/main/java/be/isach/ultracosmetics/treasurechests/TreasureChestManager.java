@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Area;
+import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import org.bukkit.Bukkit;
@@ -118,6 +119,12 @@ public class TreasureChestManager implements Listener {
         Area area = new Area(targetLoc, large ? 3 : 2, 1);
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
+            player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
+            return;
+        }
+
+        Area placeArea = new Area(targetLoc.clone().subtract(0, 1, 0), large ? 3 : 2, 0);
+        if (BlockRollback.isBlockRollingBackInArea(placeArea)) {
             player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
             return;
         }

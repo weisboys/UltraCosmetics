@@ -6,10 +6,12 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.treasurechests.loot.LootReward;
+import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,7 +26,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -34,19 +35,16 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
 
 public class TreasureChest implements Listener {
 
-    private final Map<Block, BlockState> blocksToRestore = new HashMap<>();
+    private final BlockRollback rollback = new BlockRollback();
     private final List<Block> unopenedChests = new ArrayList<>();
-    private final List<Block> openedChests = new ArrayList<>();
+    private final BlockRollback chestRollback = new BlockRollback();
     private final UUID owner;
     private TreasureRandomizer randomGenerator;
     private Location center;
@@ -89,11 +87,7 @@ public class TreasureChest implements Listener {
         Block centerPossibleBlock = player.getLocation().getBlock();
         center = centerPossibleBlock.getLocation();
         if (!BlockUtils.isAir(centerPossibleBlock.getType())) {
-            // Save the block
-            blocksToRestore.put(centerPossibleBlock, centerPossibleBlock.getState());
-
-            // Temporarily remove it
-            centerPossibleBlock.setType(Material.AIR);
+            rollback.setToRestore(centerPossibleBlock, Material.AIR);
         }
 
         if (pm.getUltraPlayer(getPlayer()).getCurrentMorph() != null) {
@@ -124,11 +118,7 @@ public class TreasureChest implements Listener {
     }
 
     public void clear() {
-        for (Entry<Block, BlockState> entry : blocksToRestore.entrySet()) {
-            entry.getValue().update(true);
-            BlockUtils.treasureBlocks.remove(entry.getKey());
-        }
-        blocksToRestore.clear();
+        rollback.rollback();
         if (stopping) {
             cleanup();
         } else {
@@ -143,17 +133,12 @@ public class TreasureChest implements Listener {
         for (Item item : items) {
             item.remove();
         }
-        for (Block b : openedChests) {
-            b.setType(Material.AIR);
-        }
-        for (Block b : unopenedChests) {
-            b.setType(Material.AIR);
-        }
         cancelRunnables();
         items.clear();
         unopenedChests.clear();
         holograms.clear();
-        openedChests.clear();
+        rollback.cleanup();
+        chestRollback.cleanup();
         if (getPlayer() != null) {
             UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(getPlayer()).setCurrentTreasureChest(null);
             if (preLoc != null) {
@@ -196,18 +181,10 @@ public class TreasureChest implements Listener {
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation(), reward), 15L);
 
             chestsLeft -= 1;
-            openedChests.add(b);
         }
         unopenedChests.clear();
 
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, delay);
-    }
-
-    @EventHandler
-    public void onBreakBlock(BlockBreakEvent event) {
-        if (blocksToRestore.containsKey(event.getBlock()) || unopenedChests.contains(event.getBlock()) || openedChests.contains(event.getBlock())) {
-            event.setCancelled(true);
-        }
     }
 
     private void makeHolograms(Location location, LootReward reward) {
@@ -249,17 +226,20 @@ public class TreasureChest implements Listener {
 
     @EventHandler
     public void onInter(final PlayerInteractEvent event) {
-        if (event.getClickedBlock() == null) return;
-        if (openedChests.contains(event.getClickedBlock()) || blocksToRestore.containsKey(event.getClickedBlock())) {
+        Block block = event.getClickedBlock();
+        if (block == null) return;
+        if (rollback.containsBlock(block)) {
             event.setCancelled(true);
             return;
         }
-        if (!unopenedChests.contains(event.getClickedBlock())) return;
+        if (!chestRollback.containsBlock(block)) return;
         event.setCancelled(true);
+        if (!unopenedChests.contains(block)) return;
         if (event.getPlayer() != getPlayer() || cooldown) return;
 
-        openChest(event.getClickedBlock());
-        randomGenerator.setLocation(event.getClickedBlock().getLocation().add(0.0D, 1.0D, 0.0D));
+        openChest(block);
+        Location loc = block.getLocation();
+        randomGenerator.setLocation(loc.clone().add(0.0D, 1.0D, 0.0D));
         LootReward reward = randomGenerator.giveRandomThing(this);
 
         cooldown = true;
@@ -267,12 +247,11 @@ public class TreasureChest implements Listener {
 
         ItemStack is = reward.getStack();
 
-        items.add(spawnItem(is, event.getClickedBlock().getLocation()));
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(event.getClickedBlock().getLocation(), reward), 15L);
+        items.add(spawnItem(is, loc));
+        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(loc, reward), 15L);
 
         chestsLeft -= 1;
-        unopenedChests.remove(event.getClickedBlock());
-        openedChests.add(event.getClickedBlock());
+        unopenedChests.remove(block);
         if (chestsLeft == 0) {
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, 50L);
         }
@@ -307,12 +286,13 @@ public class TreasureChest implements Listener {
         return design;
     }
 
-    public void addChest(Block b) {
+    public void addChest(Block b, Material newType) {
         unopenedChests.add(b);
+        chestRollback.setToRestore(b, newType);
     }
 
-    public void addRestoreBlock(Block b) {
-        blocksToRestore.put(b, b.getState());
+    public void addRestoreBlock(Block b, XMaterial newType) {
+        rollback.setToRestore(b, newType);
     }
 
     public int getChestsLeft() {

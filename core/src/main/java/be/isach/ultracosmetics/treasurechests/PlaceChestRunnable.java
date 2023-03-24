@@ -10,6 +10,7 @@ public class PlaceChestRunnable extends BukkitRunnable {
     private final TreasureChest chest;
     private final Block chestBlock;
     private final int direction;
+
     public PlaceChestRunnable(TreasureChest chest, Block chestBlock, int direction) {
         this.chest = chest;
         this.chestBlock = chestBlock;
@@ -18,12 +19,11 @@ public class PlaceChestRunnable extends BukkitRunnable {
 
     @Override
     public void run() {
-        chestBlock.setType(chest.getDesign().getChestType().getType());
+        chest.addChest(chestBlock, chest.getDesign().getChestType().getType());
         XSound.BLOCK_ANVIL_LAND.play(chest.getPlayer(), 1.4f, 1.5f);
         Particles.SMOKE_LARGE.display(chestBlock.getLocation(), 5);
         Particles.LAVA.display(chestBlock.getLocation(), 5);
         XBlock.setDirection(chestBlock, ChestParticleRunnable.getDirection(direction).getOppositeFace());
-        chest.addChest(chestBlock);
     }
 
 }

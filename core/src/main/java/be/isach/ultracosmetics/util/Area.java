@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
-
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -64,7 +63,7 @@ public class Area {
      * @param okMatFunc A function that decides if a Material is OK to be there
      * @return true if every block matches okMatFunc
      */
-    public boolean isEmptyExcept(int badX, int badY, int badZ, Function<Material,Boolean> okMatFunc) {
+    public boolean isEmptyExcept(int badX, int badY, int badZ, Function<Material, Boolean> okMatFunc) {
         for (int x = x1; x <= x2; x++) {
             for (int y = y1; y <= y2; y++) {
                 for (int z = z1; z <= z2; z++) {
@@ -104,5 +103,10 @@ public class Area {
     public boolean contains(Block block) {
         return block.getWorld() == world && block.getX() >= x1 && block.getX() <= x2 && block.getY() >= y1
                 && block.getY() <= y2 && block.getZ() >= z1 && block.getZ() <= z2;
+    }
+
+    @Override
+    public String toString() {
+        return "Area{x1=" + x1 + ",y1=" + y1 + ",z1=" + z1 + ",x2=" + x2 + ",y2=" + y2 + ",z2=" + z2 + "}";
     }
 }

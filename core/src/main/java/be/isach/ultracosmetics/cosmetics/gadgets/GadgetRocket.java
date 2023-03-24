@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.Area;
+import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
@@ -18,7 +19,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
@@ -29,11 +29,7 @@ import org.bukkit.util.Vector;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Represents an instance of a rocket gadget summoned by a player.
@@ -46,13 +42,12 @@ public class GadgetRocket extends Gadget implements Updatable {
     private static final BlockFace[] CARDINAL = new BlockFace[] {BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST};
     private static final Material FENCE = XMaterial.OAK_FENCE.parseMaterial();
     private static final Material QUARTZ_BLOCK = XMaterial.QUARTZ_BLOCK.parseMaterial();
-    public static final Set<GadgetRocket> ROCKETS_WITH_BLOCKS = new HashSet<>();
 
+    private final BlockRollback rollback = new BlockRollback();
     private boolean stillEquipped = true;
     private boolean launching;
     private ArmorStand armorStand;
     // key is used for easy access for contains() checks
-    private Map<Block, BlockState> blocks = new HashMap<>();
     private List<FallingBlock> fallingBlocks = new ArrayList<>();
     private Entity playerVehicle = null;
     private int height;
@@ -72,17 +67,16 @@ public class GadgetRocket extends Gadget implements Updatable {
         loc.setZ(loc.getBlockZ() + 0.5);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             if (getOwner() == null || getOwner().getCurrentGadget() != this) return;
-            ROCKETS_WITH_BLOCKS.add(this);
             for (int i = 0; i < 2; i++) {
                 Block center = loc.clone().add(0, i, 0).getBlock();
                 for (BlockFace face : CARDINAL) {
                     Block side = center.getRelative(face);
-                    blocks.put(side, side.getState());
-                    side.setType(FENCE);
+                    rollback.setToRestore(side, FENCE);
+                    Bukkit.getLogger().info("Adding block " + side);
                 }
                 Block quartz = center.getRelative(BlockFace.UP);
-                blocks.put(quartz, quartz.getState());
-                quartz.setType(QUARTZ_BLOCK);
+                rollback.setToRestore(quartz, QUARTZ_BLOCK);
+                Bukkit.getLogger().info("Adding block " + quartz);
             }
             armorStand = loc.getWorld().spawn(loc.add(0, 1.5, 0), ArmorStand.class);
             armorStand.setVisible(false);
@@ -172,12 +166,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                     armorStand.remove();
                     armorStand = null;
 
-                    for (BlockState state : blocks.values()) {
-                        state.update(true);
-                    }
-
-                    blocks.clear();
-                    ROCKETS_WITH_BLOCKS.remove(GadgetRocket.this);
+                    rollback.rollback();
                     sendTitle(" ");
                     cancel();
                 }
@@ -220,13 +209,10 @@ public class GadgetRocket extends Gadget implements Updatable {
     }
 
     protected void cleanup() {
-        for (BlockState state : blocks.values()) {
-            state.update(true);
-        }
+        rollback.rollback();
         for (FallingBlock fallingBlock : fallingBlocks) {
             fallingBlock.remove();
         }
-        blocks.clear();
         playerVehicle = null;
         fallingBlocks.clear();
         if (armorStand != null) {
@@ -247,10 +233,7 @@ public class GadgetRocket extends Gadget implements Updatable {
     public void onClear() {
         stillEquipped = false;
         cleanup();
-    }
-
-    public boolean containsBlock(Block block) {
-        return blocks.containsKey(block);
+        rollback.cleanup();
     }
 
     @EventHandler

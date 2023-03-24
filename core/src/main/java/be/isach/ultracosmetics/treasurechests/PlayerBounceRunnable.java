@@ -32,18 +32,11 @@ public class PlayerBounceRunnable extends BukkitRunnable {
             cancel();
             return;
         }
-        if (player.getWorld() != center.getWorld()) {
+        if (player.getWorld() != center.getWorld() || player.getLocation().distanceSquared(center) > 2.25) {
             player.teleport(center);
-        } else {
-            // distanceSquared is cheaper performance-wise than distance,
-            // and for our use case it doesn't matter.
-            //                equivalent to distance(center) > 1.5
-            if (player.getLocation().distanceSquared(center) > 2.25) {
-                player.teleport(center);
-            }
         }
         for (Entity ent : player.getNearbyEntities(searchDistance, searchDistance, searchDistance)) {
-            if (TreasureChestManager.shouldPush(ultraPlayer, ent)) continue;
+            if (!TreasureChestManager.shouldPush(ultraPlayer, ent)) continue;
             if (chest.isSpecialEntity(ent)) continue;
             // Passed all checks, launch the entity!
             Vector v = ent.getLocation().toVector().subtract(player.getLocation().toVector()).multiply(0.5).setY(1);

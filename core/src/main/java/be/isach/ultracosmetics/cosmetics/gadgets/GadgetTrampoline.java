@@ -6,29 +6,20 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Area;
+import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
-
+import com.cryptomorin.xseries.XBlock;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.Entity;
-import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XBlock;
-import com.cryptomorin.xseries.XMaterial;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Represents an instance of a trampoline gadget summoned by a player.
@@ -37,7 +28,7 @@ import java.util.Set;
  * @since 12-19-2015
  */
 public class GadgetTrampoline extends Gadget implements Updatable {
-    private Set<BlockState> trampoline = new HashSet<>();
+    private final BlockRollback rollback = new BlockRollback();
     private Area cuboid;
     private Location center;
     private boolean running;
@@ -90,6 +81,7 @@ public class GadgetTrampoline extends Gadget implements Updatable {
     @Override
     public void onClear() {
         clearBlocks();
+        rollback.cleanup();
     }
 
     private void generateStructure() {
@@ -149,42 +141,19 @@ public class GadgetTrampoline extends Gadget implements Updatable {
     }
 
     private void setToRestore(Block block, XMaterial material) {
-        trampoline.add(block.getState());
-        XBlock.setType(block, material, material != XMaterial.LADDER);
-    }
-
-    @EventHandler
-    public void onBlockBreak(BlockBreakEvent event) {
-        onBlockEvent(event);
+        rollback.setToRestore(block, material, material != XMaterial.LADDER);
     }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        onBlockEvent(event);
-    }
-
-    private void onBlockEvent(BlockEvent event) {
         if (cuboid == null || !running) return;
-        Block block = event.getBlock();
-        if (cuboid.contains(block)) {
-            ((Cancellable) event).setCancelled(true);
-            return;
-        }
-        Location ladder = center.clone().add(-3, 0, 0);
-        if (block.getLocation().equals(ladder) || block.getLocation().equals(ladder.clone().add(0, 1, 0))) {
-            ((Cancellable) event).setCancelled(true);
+        if (cuboid.contains(event.getBlock())) {
+            event.setCancelled(true);
         }
     }
 
     private void clearBlocks() {
-        if (center != null) {
-            get(-3, 0, 0).setType(Material.AIR);
-            get(-3, 1, 0).setType(Material.AIR);
-        }
-        for (BlockState state : trampoline) {
-            state.update(true);
-        }
-        trampoline.clear();
+        rollback.rollback();
         cuboid = null;
         running = false;
     }

@@ -5,11 +5,12 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.version.VersionManager;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -24,8 +25,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,8 +106,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         for (Block b : BlockUtils.getBlocksInRadius(loc.clone().add(0, -1, 0), i, true)) {
             if (b.getLocation().getBlockY() == loc.getBlockY() - 1) {
                 if (!BlockUtils.isBadMaterial(b.getType())
-                        && !BlockUtils.isRocketBlock(b)
-                        && !BlockUtils.isTreasureChestBlock(b)
+                        && !BlockRollback.isBlockRollingBack(b)
                         && b.getType().isSolid()
                         && BlockUtils.isAir(b.getRelative(BlockFace.UP).getType())) {
                     Bukkit.getScheduler().runTask(getUltraCosmetics(), () -> {
@@ -118,7 +116,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
                         fb.setDropItem(false);
                         fallingBlocks.add(fb);
                         fb.getNearbyEntities(1, 1, 1).stream().filter(ent -> ent != getPlayer()
-                                && !(ent instanceof FallingBlock) && canAffect(ent))
+                                        && !(ent instanceof FallingBlock) && canAffect(ent))
                                 .forEach(ent -> MathUtils.applyVelocity(ent, new Vector(0, 0.5, 0)));
                     });
                 }
