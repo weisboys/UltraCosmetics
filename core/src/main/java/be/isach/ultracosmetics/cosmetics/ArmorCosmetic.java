@@ -6,12 +6,14 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<T> {
@@ -53,33 +55,33 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     protected ItemStack getArmorItem() {
         switch (getArmorSlot()) {
-        case BOOTS:
-            return getPlayer().getInventory().getBoots();
-        case LEGGINGS:
-            return getPlayer().getInventory().getLeggings();
-        case CHESTPLATE:
-            return getPlayer().getInventory().getChestplate();
-        case HELMET:
-            return getPlayer().getInventory().getHelmet();
-        default:
-            return null;
+            case BOOTS:
+                return getPlayer().getInventory().getBoots();
+            case LEGGINGS:
+                return getPlayer().getInventory().getLeggings();
+            case CHESTPLATE:
+                return getPlayer().getInventory().getChestplate();
+            case HELMET:
+                return getPlayer().getInventory().getHelmet();
+            default:
+                return null;
         }
     }
 
     protected void setArmorItem(ItemStack item) {
         switch (getArmorSlot()) {
-        case BOOTS:
-            getPlayer().getInventory().setBoots(item);
-            break;
-        case LEGGINGS:
-            getPlayer().getInventory().setLeggings(item);
-            break;
-        case CHESTPLATE:
-            getPlayer().getInventory().setChestplate(item);
-            break;
-        case HELMET:
-            getPlayer().getInventory().setHelmet(item);
-            break;
+            case BOOTS:
+                getPlayer().getInventory().setBoots(item);
+                break;
+            case LEGGINGS:
+                getPlayer().getInventory().setLeggings(item);
+                break;
+            case CHESTPLATE:
+                getPlayer().getInventory().setChestplate(item);
+                break;
+            case HELMET:
+                getPlayer().getInventory().setHelmet(item);
+                break;
         }
     }
 
@@ -99,12 +101,19 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     @EventHandler
     public void onItemDrop(PlayerDropItemEvent event) {
-        if (getOwner() == null || getPlayer() == null) {
-            return;
-        }
         if (event.getPlayer() == getPlayer() && isItemThis(event.getItemDrop().getItemStack())) {
             event.getItemDrop().remove();
             handleDrop();
+        }
+    }
+
+    // Prevent 1.19.4 armor item switching
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        if (event.getPlayer() != getPlayer() || !event.hasItem()) return;
+        if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getItem().getType().name().endsWith("_" + getArmorSlot())) {
+            event.setUseItemInHand(Event.Result.DENY);
         }
     }
 
