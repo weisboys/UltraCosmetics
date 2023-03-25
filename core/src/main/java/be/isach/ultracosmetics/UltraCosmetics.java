@@ -31,6 +31,7 @@ import be.isach.ultracosmetics.run.VanishChecker;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
+import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
@@ -200,6 +201,8 @@ public class UltraCosmetics extends JavaPlugin {
             e1.printStackTrace();
         }
         start();
+        // Load the class manually so it's available on shutdown
+        PlayerUtils.class.getName();
     }
 
     public void start() {
