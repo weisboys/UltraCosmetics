@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics;
 
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.player.UltraPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
@@ -17,7 +18,8 @@ public interface PlayerAffectingCosmetic {
             // alternate NPC check
             if (Bukkit.getPlayer(target.getUniqueId()) == null) return false;
             if (isVanished(target)) return false;
-            if (!getSelf().getUltraCosmetics().getPlayerManager().getUltraPlayer(target).hasGadgetsEnabled()) {
+            UltraPlayer ultraPlayer = getSelf().getUltraCosmetics().getPlayerManager().getUltraPlayer(target);
+            if (!ultraPlayer.hasGadgetsEnabled() || ultraPlayer.getCurrentTreasureChest() != null) {
                 return false;
             }
             if (!getSelf().getUltraCosmetics().getWorldGuardManager().canAffectPlayersHere(target)) {

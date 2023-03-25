@@ -98,23 +98,22 @@ public class GadgetPaintballGun extends Gadget {
 
     @EventHandler
     public void onProjectileHit(ProjectileHitEvent event) {
-        // if successfully removed (in other words, if it was there to begin with)
-        if (projectiles.remove(event.getEntity())) {
-            Location center = event.getEntity().getLocation().add(event.getEntity().getVelocity());
-            Map<Block, XMaterial> updates = new HashMap<>();
-            for (Block block : BlockUtils.getBlocksInRadius(center.getBlock().getLocation(), radius, false)) {
-                updates.put(block, PAINT_BLOCKS.get(RANDOM.nextInt(PAINT_BLOCKS.size())));
-            }
-            BlockUtils.setToRestore(updates, 20 * 3);
-            if (particleCount > 0) {
-                effect.display(2.5, 0.2f, 2.5f, center.clone().add(0.5f, 1.2f, 0.5F), particleCount);
-            }
-            event.getEntity().remove();
-            try {
-                // ProjectileHitEvent is only cancellable 1.16.5 and up
-                event.setCancelled(true);
-            } catch (NoSuchMethodError ignored) {
-            }
+        if (!projectiles.remove(event.getEntity())) return;
+
+        Location center = event.getEntity().getLocation().add(event.getEntity().getVelocity());
+        Map<Block, XMaterial> updates = new HashMap<>();
+        for (Block block : BlockUtils.getBlocksInRadius(center.getBlock().getLocation(), radius, false)) {
+            updates.put(block, PAINT_BLOCKS.get(RANDOM.nextInt(PAINT_BLOCKS.size())));
+        }
+        BlockUtils.setToRestore(updates, 20 * 3);
+        if (particleCount > 0) {
+            effect.display(2.5, 0.2f, 2.5f, center.clone().add(0.5f, 1.2f, 0.5F), particleCount);
+        }
+        event.getEntity().remove();
+        try {
+            // ProjectileHitEvent is only cancellable 1.16.5 and up
+            event.setCancelled(true);
+        } catch (NoSuchMethodError ignored) {
         }
     }
 
