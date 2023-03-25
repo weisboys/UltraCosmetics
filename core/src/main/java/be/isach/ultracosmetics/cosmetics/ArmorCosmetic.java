@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -133,6 +134,9 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
             // player.updateInventory();
             if (event.getAction().name().contains("DROP")) {
                 handleDrop();
+            }
+            if (player.getGameMode() == GameMode.CREATIVE) {
+                player.closeInventory();
             }
         }
     }
