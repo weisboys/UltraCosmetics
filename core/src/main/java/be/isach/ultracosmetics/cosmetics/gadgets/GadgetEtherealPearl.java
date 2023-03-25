@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ServerVersion;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.GameMode;
@@ -19,7 +18,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.spigotmc.event.entity.EntityDismountEvent;
 
 /**
@@ -33,7 +31,6 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
     private static final Color SECONDARY_EFFECT = Color.fromRGB(30, 0, 30);
     private EnderPearl pearl;
     private boolean running;
-    private boolean handledThisTick = false;
     private Location lastLoc = null;
 
     public GadgetEtherealPearl(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -46,16 +43,6 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         if (pearl != null) {
             pearl.remove();
         }
-    }
-
-    @Override
-    protected boolean checkRequirements(PlayerInteractEvent event) {
-        // For some reason, the client sends two `use` packets for ender pearls
-        // so we have to figure out how to ignore one of them.
-        if (handledThisTick) return false;
-        handledThisTick = true;
-        Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> handledThisTick = false, 1);
-        return true;
     }
 
     @SuppressWarnings("deprecation")

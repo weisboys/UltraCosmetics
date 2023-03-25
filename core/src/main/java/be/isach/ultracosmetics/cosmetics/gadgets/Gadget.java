@@ -79,6 +79,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     private final boolean showCooldownInBar = UltraCosmeticsData.get().displaysCooldownInBar();
 
+    private boolean handledThisTick = false;
+
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         this(owner, type, ultraCosmetics, false);
     }
@@ -109,7 +111,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         // so we just need to handle the other case.
         // The base Cosmetic class attempts to cancel the task for Updatable and
         // non-Updatable cosmetics alike, so we don't need to worry about that.
-        if (showCooldownInBar && !(this instanceof Updatable)) {
+        if (!(this instanceof Updatable)) {
             scheduleTask();
         }
         getUltraCosmetics().getUnmovableItemListener().addProvider(this);
@@ -117,6 +119,9 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     @Override
     public void run() {
+        // For some reason, the client sends two `use` packets for snowballs and
+        // ender pearls, so we have to figure out how to ignore one of them.
+        handledThisTick = false;
         if (getOwner() == null || getPlayer() == null) return;
 
         UltraPlayer owner = getOwner();
@@ -209,6 +214,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     @Override
     public void handleInteract(PlayerInteractEvent event) {
+        if (handledThisTick) return;
+        handledThisTick = true;
         Player player = event.getPlayer();
         event.setCancelled(true);
         UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(player);
