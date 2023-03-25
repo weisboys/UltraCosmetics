@@ -77,6 +77,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     private final boolean removeWithDrop = SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop");
 
+    private final boolean showCooldownInBar = UltraCosmeticsData.get().displaysCooldownInBar();
+
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         this(owner, type, ultraCosmetics, false);
     }
@@ -102,6 +104,14 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     @Override
     public void onEquip() {
+        // All gadgets need a task running if we need to show the cooldown bar.
+        // The base Cosmetic class schedules it anyway if the cosmetic is Updatable,
+        // so we just need to handle the other case.
+        // The base Cosmetic class attempts to cancel the task for Updatable and
+        // non-Updatable cosmetics alike, so we don't need to worry about that.
+        if (showCooldownInBar && !(this instanceof Updatable)) {
+            scheduleTask();
+        }
         getUltraCosmetics().getUnmovableItemListener().addProvider(this);
     }
 
@@ -114,9 +124,10 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             clear();
             return;
         }
-        // Only Updatable cosmetics schedule this task
-        ((Updatable) this).onUpdate();
-        if (UltraCosmeticsData.get().displaysCooldownInBar()) {
+        if (this instanceof Updatable) {
+            ((Updatable) this).onUpdate();
+        }
+        if (showCooldownInBar) {
             @SuppressWarnings("deprecation")
             ItemStack hand = getPlayer().getItemInHand();
             if (itemMatches(hand) && !owner.canUse(getType())) {
