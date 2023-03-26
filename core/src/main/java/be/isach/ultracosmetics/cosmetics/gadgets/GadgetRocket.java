@@ -70,13 +70,9 @@ public class GadgetRocket extends Gadget implements Updatable {
             for (int i = 0; i < 2; i++) {
                 Block center = loc.clone().add(0, i, 0).getBlock();
                 for (BlockFace face : CARDINAL) {
-                    Block side = center.getRelative(face);
-                    rollback.setToRestore(side, FENCE);
-                    Bukkit.getLogger().info("Adding block " + side);
+                    rollback.setToRestore(center.getRelative(face), FENCE);
                 }
-                Block quartz = center.getRelative(BlockFace.UP);
-                rollback.setToRestore(quartz, QUARTZ_BLOCK);
-                Bukkit.getLogger().info("Adding block " + quartz);
+                rollback.setToRestore(center.getRelative(BlockFace.UP), QUARTZ_BLOCK);
             }
             armorStand = loc.getWorld().spawn(loc.add(0, 1.5, 0), ArmorStand.class);
             armorStand.setVisible(false);
