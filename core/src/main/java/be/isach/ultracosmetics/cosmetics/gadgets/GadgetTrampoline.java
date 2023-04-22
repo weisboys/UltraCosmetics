@@ -6,9 +6,9 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Area;
-import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
+import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XBlock;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
@@ -28,7 +28,7 @@ import org.bukkit.util.Vector;
  * @since 12-19-2015
  */
 public class GadgetTrampoline extends Gadget implements Updatable {
-    private final BlockRollback rollback = new BlockRollback();
+    private final StructureRollback rollback = new StructureRollback();
     private Area cuboid;
     private Location center;
     private boolean running;

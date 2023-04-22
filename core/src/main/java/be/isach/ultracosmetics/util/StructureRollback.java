@@ -21,11 +21,11 @@ import java.util.LinkedHashMap;
 import java.util.ListIterator;
 import java.util.Set;
 
-public class BlockRollback implements Listener {
-    private static final Set<BlockRollback> INSTANCES = new HashSet<>();
+public class StructureRollback implements Listener {
+    private static final Set<StructureRollback> INSTANCES = new HashSet<>();
 
     public static boolean isBlockRollingBack(Block block) {
-        for (BlockRollback rollback : INSTANCES) {
+        for (StructureRollback rollback : INSTANCES) {
             if (rollback.containsBlock(block)) {
                 return true;
             }
@@ -34,7 +34,7 @@ public class BlockRollback implements Listener {
     }
 
     public static boolean isBlockRollingBackInArea(Area area) {
-        for (BlockRollback rollback : INSTANCES) {
+        for (StructureRollback rollback : INSTANCES) {
             for (Block block : rollback.states.keySet()) {
                 if (area.contains(block)) return true;
             }
@@ -43,8 +43,14 @@ public class BlockRollback implements Listener {
     }
 
     private final HashMap<Block, BlockState> states = new LinkedHashMap<>();
+    private Area protectionArea;
 
-    public BlockRollback() {
+    public StructureRollback() {
+        this(null);
+    }
+
+    public StructureRollback(Area protectionArea) {
+        this.protectionArea = protectionArea;
         Bukkit.getPluginManager().registerEvents(this, UltraCosmeticsData.get().getPlugin());
         INSTANCES.add(this);
     }
@@ -69,6 +75,14 @@ public class BlockRollback implements Listener {
     public void setToRestore(Block block, Material newType, boolean applyPhysics) {
         states.put(block, block.getState());
         block.setType(newType, applyPhysics);
+    }
+
+    public Area getProtectionArea() {
+        return protectionArea;
+    }
+
+    public void updateProtectionArea(Area area) {
+        this.protectionArea = area;
     }
 
     @EventHandler

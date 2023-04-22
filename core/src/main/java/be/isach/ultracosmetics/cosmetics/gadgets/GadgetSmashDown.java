@@ -5,10 +5,10 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.StructureRollback;
 import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
@@ -106,7 +106,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         for (Block b : BlockUtils.getBlocksInRadius(loc.clone().add(0, -1, 0), i, true)) {
             if (b.getLocation().getBlockY() == loc.getBlockY() - 1) {
                 if (!BlockUtils.isBadMaterial(b.getType())
-                        && !BlockRollback.isBlockRollingBack(b)
+                        && !StructureRollback.isBlockRollingBack(b)
                         && b.getType().isSolid()
                         && BlockUtils.isAir(b.getRelative(BlockFace.UP).getType())) {
                     Bukkit.getScheduler().runTask(getUltraCosmetics(), () -> {

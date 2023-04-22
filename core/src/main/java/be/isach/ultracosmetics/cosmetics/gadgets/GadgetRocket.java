@@ -7,9 +7,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.Area;
-import be.isach.ultracosmetics.util.BlockRollback;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
+import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
@@ -43,7 +43,7 @@ public class GadgetRocket extends Gadget implements Updatable {
     private static final Material FENCE = XMaterial.OAK_FENCE.parseMaterial();
     private static final Material QUARTZ_BLOCK = XMaterial.QUARTZ_BLOCK.parseMaterial();
 
-    private final BlockRollback rollback = new BlockRollback();
+    private final StructureRollback rollback = new StructureRollback();
     private boolean stillEquipped = true;
     private boolean launching;
     private ArmorStand armorStand;

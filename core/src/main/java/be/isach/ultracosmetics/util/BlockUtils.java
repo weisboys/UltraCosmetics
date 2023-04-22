@@ -171,7 +171,7 @@ public class BlockUtils {
         if (badMaterials.contains(block.getType())
                 || SettingsManager.getConfig().getStringList("Gadgets.PaintballGun.BlackList").contains(block.getType().name())
                 || isPortalBlock(block)
-                || BlockRollback.isBlockRollingBack(block)
+                || StructureRollback.isBlockRollingBack(block)
                 || !block.getType().isSolid()
                 || !okAboveBlock(block.getRelative(BlockFace.UP).getType())) {
             return false;

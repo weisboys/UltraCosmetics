@@ -101,8 +101,30 @@ public class Area {
     }
 
     public boolean contains(Block block) {
-        return block.getWorld() == world && block.getX() >= x1 && block.getX() <= x2 && block.getY() >= y1
-                && block.getY() <= y2 && block.getZ() >= z1 && block.getZ() <= z2;
+        return block.getWorld() == world && contains(block.getX(), block.getY(), block.getZ());
+    }
+
+    public boolean contains(int x, int y, int z) {
+        return x >= x1 && x <= x2 && y >= y1 && y <= y2 && z >= z1 && z <= z2;
+    }
+
+    public boolean overlapsWith(Area area) {
+        return rangesOverlap(area.x1, area.x2, x1, x2)
+                && rangesOverlap(area.y1, area.y2, y1, y2)
+                && rangesOverlap(area.z1, area.z2, z1, z2);
+    }
+
+    /**
+     * Returns true if the ranges A and B overlap
+     *
+     * @param a1 lower bound of range A
+     * @param a2 upper bound of range A
+     * @param b1 lower bound of range B
+     * @param b2 upper bound of range B
+     * @return true if A and B overlap
+     */
+    private boolean rangesOverlap(int a1, int a2, int b1, int b2) {
+        return a1 <= b2 && a2 >= b1;
     }
 
     @Override

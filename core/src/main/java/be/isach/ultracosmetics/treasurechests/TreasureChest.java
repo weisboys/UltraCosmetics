@@ -6,11 +6,12 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.treasurechests.loot.LootReward;
-import be.isach.ultracosmetics.util.BlockRollback;
+import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -42,9 +43,9 @@ import java.util.UUID;
 
 public class TreasureChest implements Listener {
 
-    private final BlockRollback rollback = new BlockRollback();
+    private final StructureRollback rollback;
     private final List<Block> unopenedChests = new ArrayList<>();
-    private final BlockRollback chestRollback = new BlockRollback();
+    private final StructureRollback chestRollback = new StructureRollback();
     private final UUID owner;
     private TreasureRandomizer randomGenerator;
     private Location center;
@@ -86,6 +87,7 @@ public class TreasureChest implements Listener {
 
         Block centerPossibleBlock = player.getLocation().getBlock();
         center = centerPossibleBlock.getLocation();
+        rollback = new StructureRollback(new Area(center.clone().subtract(0, 1, 0), large ? 3 : 2, 3));
         if (!BlockUtils.isAir(centerPossibleBlock.getType())) {
             rollback.setToRestore(centerPossibleBlock, Material.AIR);
         }
