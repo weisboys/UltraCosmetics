@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -72,7 +71,7 @@ public enum Category {
         }
     }
 
-    public static Category fromSlot(ArmorSlot slot) {
+    public static Category suitsFromSlot(ArmorSlot slot) {
         return Category.valueOf("SUITS_" + slot.name());
     }
 

@@ -232,7 +232,7 @@ public class UltraPlayer {
     }
 
     public Suit getCurrentSuit(ArmorSlot slot) {
-        return (Suit) getCosmetic(Category.fromSlot(slot));
+        return (Suit) getCosmetic(Category.suitsFromSlot(slot));
     }
 
     public boolean hasCosmetic(Category category) {

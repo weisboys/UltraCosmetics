@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.cosmetics.ArmorCosmetic;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -35,7 +34,9 @@ public class Emote extends ArmorCosmetic<EmoteType> {
     }
 
     protected void setItemStack(ItemStack itemStack) {
-        this.itemStack = itemStack;
+        this.itemStack = itemStack.clone();
+        writeAttributes(this.itemStack);
+        setArmorItem(this.itemStack);
     }
 
     @Override

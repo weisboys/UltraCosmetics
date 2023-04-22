@@ -5,12 +5,10 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Color;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-
-import com.cryptomorin.xseries.XMaterial;
 
 /**
  * Suit types.
@@ -29,7 +27,7 @@ public class SuitType extends CosmeticType<Suit> {
      * @param category The Suit category this part belongs to
      */
     protected SuitType(XMaterial material, ArmorSlot slot, SuitCategory category) {
-        super(Category.fromSlot(slot), category.getConfigName(), material, category.getSuitClass(), false);
+        super(Category.suitsFromSlot(slot), category.getConfigName(), material, category.getSuitClass(), false);
         this.slot = slot;
         this.category = category;
         // delay permission registration until we've loaded slot and category fields

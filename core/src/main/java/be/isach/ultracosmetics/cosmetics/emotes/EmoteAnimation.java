@@ -58,7 +58,6 @@ class EmoteAnimation extends BukkitRunnable {
     private void updateTexture() {
         if (!running) return;
 
-        emote.getPlayer().getInventory().setHelmet(emote.getType().getFrames().get(currentFrame));
         emote.setItemStack(emote.getType().getFrames().get(currentFrame));
 
         if (up) {
