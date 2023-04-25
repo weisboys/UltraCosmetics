@@ -13,6 +13,7 @@ import org.bukkit.Color;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.EnderPearl;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
@@ -50,14 +51,17 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
     protected void onRightClick() {
         getOwner().removeCosmetic(Category.MOUNTS);
 
-        if (getPlayer().getVehicle() instanceof EnderPearl) {
-            getPlayer().getVehicle().remove();
+        Entity vehicle = getPlayer().getVehicle();
+        if (vehicle instanceof EnderPearl) {
             getPlayer().eject();
+            vehicle.remove();
         }
 
         pearl = getPlayer().launchProjectile(EnderPearl.class);
         pearl.setVelocity(getPlayer().getEyeLocation().getDirection().multiply(1.53d));
         getPlayer().teleport(getPlayer().getLocation().add(0, 5, 0));
+        // Teleportation can cause the pearl to hit the player in the same tick
+        if (pearl == null) return;
         if (!getPlayer().getAllowFlight()) {
             getPlayer().setAllowFlight(true);
         }
