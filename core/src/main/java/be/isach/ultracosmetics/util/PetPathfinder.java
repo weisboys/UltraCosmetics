@@ -1,14 +1,13 @@
 package be.isach.ultracosmetics.util;
 
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.CustomPathfinder;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Slime;
-
-import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.goal.CustomPathfinder;
-import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 public class PetPathfinder extends CustomPathfinder {
     private final Player target;
@@ -39,7 +38,7 @@ public class PetPathfinder extends CustomPathfinder {
 
     @Override
     public PathfinderFlag[] getFlags() {
-        return new PathfinderFlag[] { PathfinderFlag.MOVEMENT, PathfinderFlag.JUMPING };
+        return new PathfinderFlag[] {PathfinderFlag.MOVEMENT, PathfinderFlag.JUMPING};
     }
 
     @Override
@@ -50,7 +49,11 @@ public class PetPathfinder extends CustomPathfinder {
     @Override
     public void tick() {
         Location loc = useEyeLocation ? target.getEyeLocation() : target.getLocation();
-        if (entity.getWorld() != loc.getWorld() || entity.getLocation().distanceSquared(loc) > 10 * 10) {
+        // Entity will be respawned by Pet instance
+        if (entity.getWorld() != loc.getWorld()) {
+            return;
+        }
+        if (entity.getLocation().distanceSquared(loc) > 10 * 10) {
             entity.teleport(loc);
             brain.getController().moveTo(loc, speed);
             return;

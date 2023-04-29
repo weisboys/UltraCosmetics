@@ -11,7 +11,10 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PetPathfinder;
 import be.isach.ultracosmetics.util.ServerVersion;
-
+import com.cryptomorin.xseries.XMaterial;
+import me.gamercoder215.mobchip.EntityBrain;
+import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
@@ -34,17 +37,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
-
-import me.gamercoder215.mobchip.EntityBrain;
-import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
-import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 
 /**
  * Represents an instance of a pet summoned by a player.
@@ -52,7 +49,7 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  * @author iSach
  * @since 03-08-2015
  */
-public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatable {
+public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
 
     /**
      * List of items popping out from Pet.
@@ -86,7 +83,10 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
     @SuppressWarnings("deprecation")
     @Override
     protected void onEquip() {
+        initializeEntity();
+    }
 
+    private void initializeEntity() {
         entity = spawnEntity();
 
         if (entity instanceof Ageable) {
@@ -174,6 +174,13 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         if (!getOwner().isOnline() || getOwner().getCurrentPet() != this) {
             clear();
             return;
+        }
+
+        // Teleporting an entity across worlds seems to internally remove and re-add
+        // the entity anyway, so we do it manually to keep pathfinders working correctly.
+        if (entity.getWorld() != getPlayer().getWorld()) {
+            entity.remove();
+            initializeEntity();
         }
 
         onUpdate();
@@ -295,7 +302,7 @@ public abstract class Pet extends EntityCosmetic<PetType,Mob> implements Updatab
         return valueCustomize(s -> Enum.valueOf(types, s), arg, func);
     }
 
-    protected <T> boolean valueCustomize(Function<String,T> valueFunc, String arg, Consumer<T> func) {
+    protected <T> boolean valueCustomize(Function<String, T> valueFunc, String arg, Consumer<T> func) {
         T value;
         try {
             value = valueFunc.apply(arg.toUpperCase());
