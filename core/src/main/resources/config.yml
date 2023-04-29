@@ -109,6 +109,8 @@ TreasureChests:
   # If true, treasure chests will occupy a 7x7 area instead of 5x5,
   # and you can have up to 12 treasure chests per key.
   Large: false
+  # Whether players opening chests can be damaged
+  Allow-Damage: false
   # The treasure chest mode. Options:
   # - structure: places blocks and chests (default)
   # - simple: only gives <Count> cosmetics, no blocks are placed
@@ -353,7 +355,7 @@ Gadgets-Are-Silent: false
 Mounts-Block-Trails: true
 
 # Should players on UC mounts be able to be damaged?
-allow-damage-to-players-on-mounts: true
+allow-damage-to-players-on-mounts: false
 
 # Adds extra attributes to specified categories. 1.13+ only
 # See the wiki page for details: https://github.com/datatags/UltraCosmetics/wiki/Attribute-Bonuses

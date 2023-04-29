@@ -12,6 +12,7 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
 import java.util.ArrayList;
@@ -88,6 +89,14 @@ public class StructureRollback implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if (states.containsKey(event.getBlock())) {
+            event.setCancelled(true);
+        }
+    }
+
+    // Prevents blocks falling into chest area
+    @EventHandler
+    public void onEntityChangeBlock(EntityChangeBlockEvent event) {
+        if (protectionArea != null && protectionArea.contains(event.getBlock())) {
             event.setCancelled(true);
         }
     }

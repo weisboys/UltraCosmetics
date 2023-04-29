@@ -27,6 +27,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerKickEvent;
@@ -61,6 +62,7 @@ public class TreasureChest implements Listener {
     private final TreasureLocation treasureLoc;
     private final boolean large;
     private final PlaceBlocksRunnable blocksRunnable;
+    private final boolean allowDamage;
 
     public TreasureChest(UUID owner, final TreasureChestDesign design, Location preLoc, TreasureLocation destLoc) {
         this.design = design;
@@ -69,6 +71,7 @@ public class TreasureChest implements Listener {
         this.preLoc = preLoc;
         this.treasureLoc = destLoc;
         large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
+        allowDamage = SettingsManager.getConfig().getBoolean("TreasureChests.Allow-Damage");
         if (chestsLeft > 4) {
             if (large && chestsLeft > 12) {
                 chestsLeft = 12;
@@ -256,6 +259,13 @@ public class TreasureChest implements Listener {
         unopenedChests.remove(block);
         if (chestsLeft == 0) {
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), this::clear, 50L);
+        }
+    }
+
+    @EventHandler
+    public void onDamage(EntityDamageEvent event) {
+        if (!allowDamage && event.getEntity() == getPlayer()) {
+            event.setCancelled(true);
         }
     }
 
