@@ -99,11 +99,16 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onRespawn(PlayerRespawnEvent event) {
-        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
-        if (menuItemEnabled && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            ultraPlayer.giveMenuItem();
-        }
-        ultraPlayer.getProfile().equip();
+        // When PlayerRespawnEvent is being called, the player may or may not be at
+        // the final respawn location, so wait one tick before re-equipping.
+        Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> {
+            if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) return;
+            UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
+            if (menuItemEnabled) {
+                ultraPlayer.giveMenuItem();
+            }
+            ultraPlayer.getProfile().equip();
+        }, 1);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
