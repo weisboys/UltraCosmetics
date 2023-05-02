@@ -42,8 +42,8 @@ Clear:
   Hats: '&c&lОчистить выбранную шляпу'
   Suits: '&c&lОчистить выбранный костюм'
   Emotes: '&c&lОчистить выбранную эмоцию'
-  Projectile-Effects: '&c&lClear current projectile effect'
-  Death-Effects: '&c&lClear current death effect'
+  Projectile-Effects: '&c&lОчистка текущего эффекта снаряда'
+  Death-Effects: '&c&lОчистить текущий эффект смерти'
 Menu:
   Purchase-Rename:
     Button:
@@ -62,72 +62,72 @@ Menu:
     Title: '&lПитомцы'
     Button:
       Name: '&a&lПитомцы'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lЗаспавнить'
       Tooltip-Unequip: '&c&lРеспавн'
   Gadgets:
     Title: '&lГаджеты'
     Button:
       Name: '&9&lГаджеты'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lАктивировать'
       Tooltip-Unequip: '&c&lДеактивировать'
   Mounts:
     Title: '&6&lТранспорт'
     Button:
       Name: '&6&lТранспорт'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lПолучить'
       Tooltip-Unequip: '&c&lУбрать'
   Morphs:
     Title: '&lПревращения'
     Button:
       Name: '&2&lПревращения'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lПревратиться в'
       Tooltip-Unequip: '&c&lПеревоплотиться из'
   Hats:
     Title: '&lШляпы'
     Button:
       Name: '&d&lШляпы'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lОдеть'
       Tooltip-Unequip: '&c&lСнять'
   Particle-Effects:
     Title: '&b&lЭффект частиц'
     Button:
       Name: '&b&lЭффекты частиц'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lПоказать'
       Tooltip-Unequip: '&c&lСкрыть'
   Suits:
     Title: '&lКостюмы'
     Button:
       Name: '&3&lКостюм'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lОдеть'
       Tooltip-Unequip: '&c&lСнять'
   Emotes:
     Title: '&lЭмоции'
     Button:
       Name: '&e&lЭмоции'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lПоказать'
       Tooltip-Unequip: '&c&lСкрыть'
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: '&lЭффекты снаряда'
     Button:
-      Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: '&5&lЭффекты снаряда'
+      Lore: '&7Разблокировано: &f%unlocked%'
+      Tooltip-Equip: '&b&lПрименить'
+      Tooltip-Unequip: '&c&lСнять'
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: '&lЭффекты смерти'
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
+      Name: '&c&lЭффекты смерти'
+      Lore: '&7Разблокировано: &f%unlocked%'
       Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Unequip: '&c&lСкрыть'
   Buy-Ammo:
     Title: '&lКупить заряды'
   Misc:
@@ -142,19 +142,19 @@ Chest-Location:
   In-Ground: '%prefix% &c&lМестоположение магического сундука находится в воздухе, расположите его на земле.'
   Suggestion: '%prefix% &aМожет быть, ты имел в виду %location%?'
   Dismount-First: '%prefix% &c&lТы должен призвать транспорт для взаимодействия инвентаря.'
-  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
+  Too-Close-To-Entity: '%prefix% &c&lТы слишком близко к другому сундуку с сокровищами!'
 Active-Pet-Needed: '&c&lВам нужно создать питомца, чтобы переименовать его.'
 Treasure-Chests-Loot:
   Ammo: |-
     &9Ammo
     %ammo% %cosmetic%
   Money: |-
-    &eMoney
+    &eДеньги
     &e&l$%money%
   Nothing: "&c&lНичего\n"
-  Pets: "&aPet\n%cosmetic%"
+  Pets: "&aПитание\n%cosmetic%"
   Mounts: "&6Mount\n%cosmetic%"
-  Particle-Effects: "&bParticle Effect\n%cosmetic%"
+  Particle-Effects: "&bЭффект частиц\n%cosmetic%"
   Morphs: "&2Morph\n%cosmetic%"
   Hats: "&dHat\n%cosmetic%"
   Gadgets: "&9Gadget\n%cosmetic%"
@@ -513,10 +513,10 @@ Particle-Effects:
       &7&oLeaves a trail of
       &7&odragon breath behind.
   ArcaneFlame:
-    name: '&b&lArcane Flame'
-    Description: '&7&oBlue flame above your head.'
+    name: '&b&lЧародейское пламя'
+    Description: '&7&oСинее пламя над головой.'
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: '&e&lБожественный ореол'
     Description: |-
       &7&oA halo composed of
       &7&oglowing light.
