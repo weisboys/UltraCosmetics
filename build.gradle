@@ -142,12 +142,9 @@ subprojects { subproj ->
         }
 
         // Vault
+        // PEconomy
         maven {
             url 'https://jitpack.io'
-        }
-        //PEconomy 
-        maven {
-             url "https://raw.github.com/SoKnight/PEconomy/mvn-repo/"
         }
 
         // Mojang Authlib

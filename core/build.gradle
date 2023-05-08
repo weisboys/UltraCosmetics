@@ -33,6 +33,7 @@ dependencies {
     implementation 'net.wesjd:anvilgui:1.6.3-SNAPSHOT'
     implementation 'me.gamercoder215:mobchip-bukkit:1.8.1-SNAPSHOT'
     compileOnly 'com.discordsrv:discordsrv:1.26.0'
+    compileOnly 'me.soknight:peconomy:2.7.3'
 }
 shadowJar {
     // removes unused classes in 'implementation' path dependencies
