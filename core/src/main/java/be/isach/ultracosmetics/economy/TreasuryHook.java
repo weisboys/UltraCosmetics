@@ -3,7 +3,15 @@ package be.isach.ultracosmetics.economy;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import me.lokka30.treasury.api.common.service.Service;
+import me.lokka30.treasury.api.common.service.ServiceRegistry;
+import me.lokka30.treasury.api.economy.EconomyProvider;
+import me.lokka30.treasury.api.economy.account.PlayerAccount;
+import me.lokka30.treasury.api.economy.currency.Currency;
+import me.lokka30.treasury.api.economy.response.EconomyException;
+import me.lokka30.treasury.api.economy.response.EconomySubscriber;
+import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator;
+import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator.Type;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,33 +20,34 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Consumer;
 
-import me.lokka30.treasury.api.common.service.Service;
-import me.lokka30.treasury.api.common.service.ServiceRegistry;
-import me.lokka30.treasury.api.economy.EconomyProvider;
-import me.lokka30.treasury.api.economy.account.PlayerAccount;
-import me.lokka30.treasury.api.economy.response.EconomyException;
-import me.lokka30.treasury.api.economy.response.EconomySubscriber;
-import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator;
-import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator.Type;
-
 public class TreasuryHook implements EconomyHook {
     private final EconomyProvider economy;
     private final SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
     private final EconomyTransactionInitiator<String> initiator = EconomyTransactionInitiator.createInitiator(Type.PLUGIN, "UltraCosmetics");
+    private final Currency currency;
 
-    public TreasuryHook() {
+    public TreasuryHook(String currencyName) {
         Optional<Service<EconomyProvider>> optProvider = ServiceRegistry.INSTANCE.serviceFor(EconomyProvider.class);
         if (!optProvider.isPresent()) {
             throw new IllegalStateException("Could not find provider for Treasury economy.");
         }
         economy = optProvider.get().get();
+        if (currencyName == null) {
+            currency = economy.getPrimaryCurrency();
+        } else {
+            Optional<Currency> optCurrency = economy.findCurrency(currencyName);
+            if (!optCurrency.isPresent()) {
+                throw new IllegalArgumentException("Couldn't find specified Treasury currency '" + currencyName + "'");
+            }
+            currency = optCurrency.get();
+        }
     }
 
     @Override
     public void withdraw(Player player, int intAmount, Runnable onSuccess, Runnable onFailure) {
         BigDecimal amount = new BigDecimal(intAmount);
         getAccount(player.getUniqueId(), account -> {
-            account.canAfford(amount, economy.getPrimaryCurrency(), new EconomySubscriber<Boolean>() {
+            account.canAfford(amount, currency, new EconomySubscriber<Boolean>() {
 
                 @Override
                 public void succeed(@NotNull Boolean t) {
@@ -46,7 +55,7 @@ public class TreasuryHook implements EconomyHook {
                         onFailure.run();
                         return;
                     }
-                    account.withdrawBalance(amount, initiator, economy.getPrimaryCurrency(), new EconomySubscriber<BigDecimal>() {
+                    account.withdrawBalance(amount, initiator, currency, new EconomySubscriber<BigDecimal>() {
                         @Override
                         public void succeed(BigDecimal newBalance) {
                             onSuccess.run();
@@ -75,7 +84,7 @@ public class TreasuryHook implements EconomyHook {
     public void deposit(Player player, int amount) {
 
         getAccount(player.getUniqueId(), account -> {
-            account.depositBalance(new BigDecimal(amount), initiator, economy.getPrimaryCurrency(), new EconomySubscriber<BigDecimal>() {
+            account.depositBalance(new BigDecimal(amount), initiator, currency, new EconomySubscriber<BigDecimal>() {
                 @Override
                 public void succeed(BigDecimal newBalance) {
                 }

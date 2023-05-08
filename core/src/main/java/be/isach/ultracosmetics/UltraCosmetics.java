@@ -459,7 +459,7 @@ public class UltraCosmetics extends JavaPlugin {
      * Sets the economy up.
      */
     private void setupEconomy() {
-        economyHandler = new EconomyHandler(this, getConfig().getString("Economy"));
+        economyHandler = new EconomyHandler(this);
         UltraCosmeticsData.get().checkTreasureChests();
     }
 

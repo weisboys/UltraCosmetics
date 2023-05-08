@@ -76,8 +76,12 @@ Categories:
     Enabled: false
     Command: cc open custommenu.yml {player}
 
-# The economy that should be used. Supports 'Vault', 'PlayerPoints', or 'Treasury'
+# The economy that should be used. Supports 'Vault', 'PlayerPoints', 'Treasury', or 'PEconomy'
 Economy: 'Vault'
+
+# If the economy above supports multiple currencies, you can pick a specific currency here.
+# If this is not set and the economy has no default currency, UC may pick a random one.
+Economy-Currency: ''
 
 # Treasure Chests Settings.
 #
