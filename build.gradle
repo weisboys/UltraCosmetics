@@ -75,8 +75,6 @@ dependencies {
             transitive false
         }
     }
-compileOnly 'com.github.SoKnight.PEconomy:PEconomy:1.2.0'
-}
 }
 
 subprojects { subproj ->
