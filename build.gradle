@@ -75,6 +75,8 @@ dependencies {
             transitive false
         }
     }
+compileOnly 'com.github.SoKnight.PEconomy:PEconomy:1.2.0'
+}
 }
 
 subprojects { subproj ->
@@ -142,6 +144,10 @@ subprojects { subproj ->
         // Vault
         maven {
             url 'https://jitpack.io'
+        }
+        //PEconomy 
+        maven {
+             url "https://raw.github.com/SoKnight/PEconomy/mvn-repo/"
         }
 
         // Mojang Authlib
