@@ -140,6 +140,7 @@ subprojects { subproj ->
         }
 
         // Vault
+        // PEconomy
         maven {
             url 'https://jitpack.io'
         }
