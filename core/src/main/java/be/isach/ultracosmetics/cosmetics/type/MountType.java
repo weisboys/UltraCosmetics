@@ -56,13 +56,9 @@ public class MountType extends CosmeticEntType<Mount> {
         return defaultSpeed;
     }
 
-    public String getMenuName() {
-        return MessageManager.getMessage("Mounts." + getConfigName() + ".menu-name");
-    }
-
     @Override
     public String getName() {
-        return getMenuName();
+        return MessageManager.getMessage("Mounts." + getConfigName() + ".menu-name");
     }
 
     public String getName(Player player) {

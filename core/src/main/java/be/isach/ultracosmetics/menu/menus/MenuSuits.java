@@ -1,23 +1,15 @@
 package be.isach.ultracosmetics.menu.menus;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
+import be.isach.ultracosmetics.menu.buttons.EquipWholeSuitButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
-import com.cryptomorin.xseries.XMaterial;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,7 +22,7 @@ import java.util.Map;
  */
 public final class MenuSuits extends CosmeticMenu<SuitType> {
 
-    private static final int[] SLOTS = new int[] { 10, 11, 12, 13, 14, 15, 16 };
+    private static final int[] SLOTS = new int[] {10, 11, 12, 13, 14, 15, 16};
 
     public MenuSuits(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics, Category.SUITS_HELMET);
@@ -48,36 +40,15 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
         List<SuitCategory> enabled = SuitCategory.enabled();
         for (int i = from; i < to && i < enabled.size(); i++) {
             SuitCategory cat = enabled.get(i);
-            ItemStack wholeEquipStack = XMaterial.HOPPER.parseItem();
-            ItemMeta wholeEquipMeta = wholeEquipStack.getItemMeta();
-            wholeEquipMeta.setDisplayName(Category.SUITS_HELMET.getActivateTooltip() + " " + MessageManager.getMessage("Suits." + cat.getConfigName() + ".whole-equip"));
-            wholeEquipMeta.setLore(Arrays.asList("", MessageManager.getMessage("Suits.Whole-Equip-Lore"), ""));
-            wholeEquipStack.setItemMeta(wholeEquipMeta);
-            putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, wholeEquipStack, clickData -> {
-                for (ArmorSlot armorSlot : ArmorSlot.values()) {
-                    SuitType type = cat.getPiece(armorSlot);
-                    if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
-                        if (player.getCosmetic(type.getCategory()) != null
-                                && player.getCosmetic(type.getCategory()).getType() == type) {
-                            continue;
-                        }
-                        toggleOn(clickData.getClicker(), type, getUltraCosmetics());
-                    }
-                }
-                if (UltraCosmeticsData.get().shouldCloseAfterSelect()) {
-                    player.getBukkitPlayer().closeInventory();
-                } else {
-                    open(player, getCurrentPage(player));
-                }
-            });
+            putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, new EquipWholeSuitButton(cat, ultraCosmetics), player);
         }
     }
 
     @Override
-    protected Map<Integer,SuitType> getSlots(int page, UltraPlayer player) {
+    protected Map<Integer, SuitType> getSlots(int page, UltraPlayer player) {
         int from = (page - 1) * getItemsPerPage();
         int to = page * getItemsPerPage();
-        Map<Integer,SuitType> slots = new HashMap<>();
+        Map<Integer, SuitType> slots = new HashMap<>();
         List<SuitCategory> enabled = SuitCategory.enabled();
         for (int i = from; i < to && i < enabled.size(); i++) {
             SuitCategory cat = enabled.get(i);
@@ -89,18 +60,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
             }
         }
         return slots;
-    }
-
-    @Override
-    protected void toggleOff(UltraPlayer ultraPlayer, SuitType type) {
-        if (type != null) {
-            ultraPlayer.removeCosmetic(type.getCategory());
-            return;
-        }
-        ultraPlayer.removeCosmetic(Category.SUITS_HELMET);
-        ultraPlayer.removeCosmetic(Category.SUITS_CHESTPLATE);
-        ultraPlayer.removeCosmetic(Category.SUITS_LEGGINGS);
-        ultraPlayer.removeCosmetic(Category.SUITS_BOOTS);
     }
 
     @Override

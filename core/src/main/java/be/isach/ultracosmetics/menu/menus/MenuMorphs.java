@@ -1,14 +1,11 @@
 package be.isach.ultracosmetics.menu.menus;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
-import be.isach.ultracosmetics.menu.ClickRunnable;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
+import be.isach.ultracosmetics.menu.buttons.ToggleMorphSelfViewButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -29,26 +26,8 @@ public class MenuMorphs extends CosmeticMenu<MorphType> {
 
     @Override
     protected void putItems(Inventory inventory, UltraPlayer player, int page) {
-        putSelfViewItem(inventory, player);
-    }
-
-    private void putSelfViewItem(Inventory inventory, UltraPlayer player) {
         int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
-        ItemStack selfViewStack;
-        boolean toggle;
-        if (player.canSeeSelfMorph()) {
-            selfViewStack = ItemFactory.getItemStackFromConfig("Categories.Self-View-Item.When-Enabled");
-            toggle = false;
-        } else {
-            selfViewStack = ItemFactory.getItemStackFromConfig("Categories.Self-View-Item.When-Disabled");
-            toggle = true;
-        }
-        String msg = MessageManager.getMessage((toggle ? "Enable" : "Disable") + "-Third-Person-View");
-        ClickRunnable run = data -> {
-            player.setSeeSelfMorph(!player.canSeeSelfMorph());
-            putSelfViewItem(inventory, player);
-        };
-        putItem(inventory, slot, ItemFactory.rename(selfViewStack, msg), run);
+        putItem(inventory, slot, new ToggleMorphSelfViewButton(), player);
     }
 
     @Override

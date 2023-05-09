@@ -13,7 +13,7 @@ import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.ServerVersion;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
 import org.bukkit.Location;
@@ -35,8 +35,6 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitTask;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +45,7 @@ import java.util.Map;
  * @author iSach
  * @since 08-03-2015
  */
-public abstract class Mount extends EntityCosmetic<MountType,Entity> implements Updatable {
+public abstract class Mount extends EntityCosmetic<MountType, Entity> implements Updatable {
     private BukkitTask mountRegionTask = null;
 
     protected boolean beingRemoved = false;
@@ -144,6 +142,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
 
     @Override
     protected void onClear() {
+        beingRemoved = true;
         if (entity != null) {
             entity.remove();
         }
@@ -159,8 +158,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
             return;
         }
 
-        if (!beingRemoved && event.getExited() == getPlayer() && event.getVehicle() == entity) {
-            beingRemoved = true;
+        if (event.getVehicle() == entity && !beingRemoved && event.getExited() == getPlayer()) {
             clear();
         }
     }
@@ -196,10 +194,6 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
         }
     }
 
-    public void setBeingRemoved(boolean beingRemoved) {
-        this.beingRemoved = beingRemoved;
-    }
-
     private boolean isHorse(EntityType type) {
         if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
             return type == EntityType.HORSE;
@@ -217,7 +211,7 @@ public abstract class Mount extends EntityCosmetic<MountType,Entity> implements 
             if (mats.size() == 0) {
                 return;
             }
-            Map<Block,XMaterial> updates = new HashMap<>();
+            Map<Block, XMaterial> updates = new HashMap<>();
             for (Block b : BlockUtils.getBlocksInRadius(event.getPlayer().getLocation(), 3, false)) {
                 if (b.getLocation().getBlockY() == event.getPlayer().getLocation().getBlockY() - 1) {
                     XMaterial mat = mats.get(RANDOM.nextInt(mats.size()));

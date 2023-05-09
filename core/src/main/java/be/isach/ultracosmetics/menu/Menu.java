@@ -33,7 +33,7 @@ public abstract class Menu implements Listener {
     /**
      * UltraCosmetcs Instance.
      */
-    protected UltraCosmetics ultraCosmetics;
+    protected final UltraCosmetics ultraCosmetics;
 
     /**
      * Click Runnables maps.
@@ -41,7 +41,7 @@ public abstract class Menu implements Listener {
      * Key: Item
      * Value: ClickRunnable to call when item is clicked.
      */
-    private Map<Inventory, Map<ItemStack, ClickRunnable>> clickRunnableMap = new HashMap<>();
+    private final Map<Inventory, Map<ItemStack, ClickRunnable>> clickRunnableMap = new HashMap<>();
 
     public Menu(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -51,6 +51,10 @@ public abstract class Menu implements Listener {
 
     public void open(UltraPlayer player) {
         player.getBukkitPlayer().openInventory(getInventory(player));
+    }
+
+    public void refresh(UltraPlayer player) {
+        open(player);
     }
 
     protected Inventory createInventory(int size, String name) {
@@ -79,6 +83,10 @@ public abstract class Menu implements Listener {
         inventory.setItem(slot, itemStack);
         Map<ItemStack, ClickRunnable> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
         map.put(itemStack, clickRunnable);
+    }
+
+    protected void putItem(Inventory inventory, int slot, Button button, UltraPlayer ultraPlayer) {
+        putItem(inventory, slot, button.getDisplayItem(ultraPlayer), button::onClick);
     }
 
     protected void putItem(Inventory inventory, int slot, ItemStack itemStack) {
@@ -122,7 +130,7 @@ public abstract class Menu implements Listener {
 
         Player player = (Player) event.getWhoClicked();
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
-        clickRunnable.run(new ClickData(event.getInventory(), ultraPlayer, event.getClick(), event.getCurrentItem(), event.getSlot()));
+        clickRunnable.run(new ClickData(this, ultraPlayer, event.getClick(), event.getCurrentItem(), event.getSlot()));
         player.updateInventory();
     }
 

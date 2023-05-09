@@ -7,10 +7,9 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.menu.Menus;
-import be.isach.ultracosmetics.menu.menus.MenuPets;
+import be.isach.ultracosmetics.menu.buttons.RenamePetButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -63,7 +62,7 @@ public class SubCommandMenu extends SubCommand {
                 sender.sendMessage(MessageManager.getMessage("Active-Pet-Needed"));
                 return;
             }
-            ((MenuPets) menus.getCategoryMenu(Category.PETS)).renamePet(ultraPlayer);
+            RenamePetButton.renamePet(ultraCosmetics, ultraPlayer, menus.getCategoryMenu(Category.PETS));
             return;
         } else if (s.startsWith("b") && UltraCosmeticsData.get().areTreasureChestsEnabled()) {
             sender.closeInventory();

@@ -3,9 +3,8 @@ package be.isach.ultracosmetics.command.subcommands;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.menu.menus.MenuPets;
+import be.isach.ultracosmetics.menu.buttons.RenamePetButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -47,7 +46,7 @@ public class SubCommandRename extends SubCommand {
 
         if (!newName.isEmpty() && ultraCosmetics.getEconomyHandler().isUsingEconomy()
                 && SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled")) {
-            player.openInventory(MenuPets.buyRenamePet(up, newName, null));
+            player.openInventory(RenamePetButton.buyRenamePet(up, newName, null));
         } else {
             up.setPetName(up.getCurrentPet().getType(), newName);
             player.sendMessage(ChatColor.GREEN + "Success!");

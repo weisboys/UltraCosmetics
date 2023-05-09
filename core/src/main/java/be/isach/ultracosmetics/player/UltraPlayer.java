@@ -99,12 +99,6 @@ public class UltraPlayer {
     private String clientBrand = null;
 
     /**
-     * Stores the last page of the gadgets menu the user looked at
-     * before clicking to purchase ammo.
-     */
-    private int lastGadgetPage = 1;
-
-    /**
      * Allows to store custom data for each player easily.
      * Created on join, and deleted on quit.
      *
@@ -628,26 +622,18 @@ public class UltraPlayer {
      * Clients with brand "Geyser" are not guaranteed to actually be Geyser clients,
      * but all Geyser clients will have brand "Geyser". If some Java client wants
      * to see the Geyser menu view enough to change its brand, UC has no problems with that.
-     * We're doing this weird inverted equals() check because it means we don't have to do
-     * a separate null check.
+     * <p>
      * Not currently used anywhere.
      *
      * @return {@code true} if the client says it is a Geyser client.
      */
     public boolean isGeyserClient() {
+        // Inverted equals so we don't have to worry about nulls
         return "Geyser".equals(clientBrand);
     }
 
     public void setClientBrand(String brand) {
         this.clientBrand = brand;
-    }
-
-    public int getGadgetsPage() {
-        return lastGadgetPage;
-    }
-
-    public void setGadgetsPage(int gadgetsPage) {
-        this.lastGadgetPage = gadgetsPage;
     }
 
     /*

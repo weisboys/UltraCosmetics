@@ -1,31 +1,31 @@
 package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticEntType;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
-import be.isach.ultracosmetics.menu.menus.MenuMain;
-import be.isach.ultracosmetics.menu.menus.MenuPurchase;
+import be.isach.ultracosmetics.menu.buttons.ClearCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.CosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.FilterCosmeticsButton;
+import be.isach.ultracosmetics.menu.buttons.MainMenuButton;
+import be.isach.ultracosmetics.menu.buttons.NextPageButton;
+import be.isach.ultracosmetics.menu.buttons.PreviousPageButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import com.cryptomorin.xseries.XMaterial;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.UUID;
 
 /**
  * A cosmetic menu.
@@ -46,6 +46,8 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      */
     protected final Category category;
     protected final PermissionManager pm = ultraCosmetics.getPermissionManager();
+    private final Map<UUID, Integer> lastUsedPages = new HashMap<>();
+    private final boolean hideNoPermissionItems = SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item");
 
     public CosmeticMenu(UltraCosmetics ultraCosmetics, Category category) {
         super(ultraCosmetics);
@@ -65,6 +67,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         if (page < 1) {
             page = 1;
         }
+        lastUsedPages.put(player.getUUID(), page);
 
         Inventory inventory = createInventory(getSize(), maxPages == 1 ? getName() : getName(page, player));
         boolean hasUnlockable = hasUnlockable(player);
@@ -76,103 +79,27 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
             T cosmeticType = entry.getValue();
 
             if (shouldHideItem(player, cosmeticType)) continue;
-
-            final int price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
-
-            String toggle = cosmeticType.getCategory().getActivateTooltip();
-            boolean deactivate = player.hasCosmetic(cosmeticType.getCategory()) && player.getCosmetic(cosmeticType.getCategory()).getType() == cosmeticType;
-
-            if (deactivate) {
-                toggle = cosmeticType.getCategory().getDeactivateTooltip();
-            }
-
-            String typeName = getTypeName(cosmeticType, player);
-            ItemStack is;
-            List<String> loreList = new ArrayList<>();
-            boolean ignoreTooltip;
-            if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled")
-                    && !pm.hasPermission(player, cosmeticType)) {
-                ignoreTooltip = true;
-                is = ItemFactory.getItemStackFromConfig("No-Permission.Custom-Item.Type");
-                String name = ChatColor.translateAlternateColorCodes('&', SettingsManager.getConfig().getString("No-Permission.Custom-Item.Name")).replace("{cosmetic-name}", typeName);
-                ItemFactory.rename(is, name);
-                for (String line : SettingsManager.getConfig().getStringList("No-Permission.Custom-Item.Lore")) {
-                    loreList.add(ChatColor.translateAlternateColorCodes('&', line));
-                }
-            } else {
-                ignoreTooltip = false;
-                is = ItemFactory.rename(cosmeticType.getItemStack(), toggle + " " + typeName);
-                if (deactivate) {
-                    ItemFactory.addGlow(is);
-                }
-                if (cosmeticType.showsDescription()) {
-                    loreList.add("");
-                    loreList.addAll(cosmeticType.getDescription());
-                }
-
-                if (SettingsManager.getConfig().getBoolean("No-Permission.Show-In-Lore")) {
-                    String yesOrNo = pm.hasPermission(player, cosmeticType) ? "Yes" : "No";
-                    String s = SettingsManager.getConfig().getString("No-Permission.Lore-Message-" + yesOrNo);
-                    loreList.add("");
-                    loreList.add(ChatColor.translateAlternateColorCodes('&', s));
-                }
-            }
-
-            addPurchaseLore(price, loreList, cosmeticType, player);
-            ItemMeta itemMeta = is.getItemMeta();
-            itemMeta.setLore(loreList);
-
-            is.setItemMeta(itemMeta);
-            filterItem(is, cosmeticType, player);
-            putItem(inventory, slot, is, (data) -> {
-                boolean success = handleClick(data, cosmeticType, price, ignoreTooltip);
-                if (success && UltraCosmeticsData.get().shouldCloseAfterSelect()) {
-                    data.getClicker().getBukkitPlayer().closeInventory();
-                }
-            });
+            CosmeticButton button = CosmeticButton.fromType(cosmeticType, player, ultraCosmetics);
+            ItemStack stack = button.getDisplayItem(player);
+            filterItem(stack, cosmeticType, player);
+            putItem(inventory, slot, button, player);
         }
 
-        // Previous page item.
         if (page > 1) {
-            int finalPage = page;
-            putItem(inventory, getSize() - 18, ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Previous-Page-Item"),
-                    MessageManager.getMessage("Menu.Misc.Button.Previous-Page")), (data) -> open(player, finalPage - 1));
+            putItem(inventory, getSize() - 18, new PreviousPageButton(), player);
         }
-
-        // Next page item.
         if (page < maxPages) {
-            int finalPage = page;
-            putItem(inventory, getSize() - 10, ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Next-Page-Item"),
-                    MessageManager.getMessage("Menu.Misc.Button.Next-Page")), (data) -> open(player, finalPage + 1));
+            putItem(inventory, getSize() - 10, new NextPageButton(), player);
         }
 
-        // Clear cosmetic item.
-        String message = MessageManager.getMessage("Clear." + category.getConfigPath());
-        ItemStack itemStack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Clear-Cosmetic-Item"), message);
-        putItem(inventory, inventory.getSize() - 5, itemStack, data -> {
-            toggleOff(player, null);
-            open(player, getCurrentPage(player));
-        });
+        putItem(inventory, inventory.getSize() - 5, new ClearCosmeticButton(category), player);
 
-        // Go Back to Main Menu Arrow.
         if (getCategory().hasGoBackArrow()) {
-            ItemStack item = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Back-Main-Menu-Item"), MessageManager.getMessage("Menu.Main.Button.Name"));
-            putItem(inventory, inventory.getSize() - 6, item, (data) -> MenuMain.openMainMenu(player));
+            putItem(inventory, inventory.getSize() - 6, new MainMenuButton(), player);
         }
 
-        if (hasUnlockable && !SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item")) {
-            String filterItemName;
-            if (player.isFilteringByOwned()) {
-                filterItemName = MessageManager.getMessage("Disable-Filter-By-Owned");
-            } else {
-                filterItemName = MessageManager.getMessage("Enable-Filter-By-Owned");
-            }
-            ItemStack filterItem = ItemFactory.create(XMaterial.HOPPER, filterItemName);
-            final int finalPage = page;
-            putItem(inventory, inventory.getSize() - 3, filterItem, data -> {
-                player.setFilteringByOwned(!player.isFilteringByOwned());
-                open(player, finalPage); // refresh inventory completely because it changes the layout
-            });
+        if (hasUnlockable && !hideNoPermissionItems) {
+            putItem(inventory, inventory.getSize() - 3, new FilterCosmeticsButton(), player);
         }
 
         putItems(inventory, player, page);
@@ -180,40 +107,17 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         player.getBukkitPlayer().openInventory(inventory);
     }
 
-    private void addPurchaseLore(int price, List<String> lore, T cosmeticType, UltraPlayer player) {
-        if (price > 0 && !pm.hasPermission(player, cosmeticType)
-                && SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase")) {
-            lore.add("");
-            lore.add(MessageManager.getMessage("Click-To-Purchase").replace("%price%", String.valueOf(price)));
-        }
-    }
-
-    @SuppressWarnings("unchecked")
-    public T getCosmeticType(String name) {
-        for (CosmeticType<?> effectType : CosmeticType.enabledOf(category)) {
-            if (effectType.getConfigName().replace(" ", "").equals(name.replace(" ", ""))) {
-                return (T) effectType;
-            }
-        }
-        return null;
+    @Override
+    public void refresh(UltraPlayer player) {
+        open(player, getCurrentPage(player));
     }
 
     /**
      * @param ultraPlayer The menu owner
      * @return The current page of the menu opened by ultraPlayer
      */
-    protected int getCurrentPage(UltraPlayer ultraPlayer) {
-        Player player = ultraPlayer.getBukkitPlayer();
-        String title = player.getOpenInventory().getTitle();
-        if (player.getOpenInventory() != null
-                && title.startsWith(getName())
-                && !title.equals(getName())) {
-            String s = player.getOpenInventory().getTitle()
-                    .replace(getName() + " " + ChatColor.GRAY + "" + ChatColor.ITALIC + "(", "")
-                    .replace("/" + getMaxPages(ultraPlayer) + ")", "");
-            return Integer.parseInt(s);
-        }
-        return 0;
+    public int getCurrentPage(UltraPlayer ultraPlayer) {
+        return lastUsedPages.getOrDefault(ultraPlayer.getUUID(), 1);
     }
 
     /**
@@ -247,10 +151,6 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @param player       The Inventory Opener.
      */
     protected void filterItem(ItemStack itemStack, T cosmeticType, UltraPlayer player) {
-    }
-
-    protected String getTypeName(T cosmeticType, UltraPlayer ultraPlayer) {
-        return cosmeticType.getName();
     }
 
     /**
@@ -309,106 +209,14 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         return slots;
     }
 
-    protected void toggleOn(UltraPlayer ultraPlayer, T type, UltraCosmetics ultraCosmetics) {
-        type.equip(ultraPlayer, ultraCosmetics);
-    }
-
-    // `T cosmeticType` parameter required for MenuSuits implementation
-    protected void toggleOff(UltraPlayer ultraPlayer, T cosmeticType) {
-        ultraPlayer.removeCosmetic(category);
-    }
-
-    protected void handleRightClick(UltraPlayer ultraPlayer, T type) {
-    }
-
-    protected boolean handleActivate(UltraPlayer ultraPlayer) {
-        if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
-            open(ultraPlayer, getCurrentPage(ultraPlayer));
-        }
-        return true;
-    }
-
-    /**
-     * Handles clicking on cosmetics in the GUI
-     *
-     * @param data          The ClickData from the event
-     * @param cosmeticType  The cosmetic that was clicked
-     * @param price         The price of the clicked cosmetic
-     * @param ignoreTooltip Whether to assume the tooltip is the equip one
-     * @return true if closing the inventory now is OK
-     */
-    protected boolean handleClick(ClickData data, T cosmeticType, int price, boolean ignoreTooltip) {
-        UltraPlayer ultraPlayer = data.getClicker();
-        ItemStack clicked = data.getClicked();
-        int currentPage = getCurrentPage(ultraPlayer);
-        if (data.getClick().isRightClick()) {
-            if (pm.hasPermission(ultraPlayer, cosmeticType)) {
-                handleRightClick(ultraPlayer, cosmeticType);
-                return false;
-            }
-        }
-
-        if (ignoreTooltip || startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getActivateTooltip())) {
-            if (pm.hasPermission(ultraPlayer, cosmeticType)) {
-                toggleOn(ultraPlayer, cosmeticType, getUltraCosmetics());
-                if (hasEquipped(ultraPlayer, cosmeticType)) {
-                    return handleActivate(ultraPlayer);
-                }
-                return true;
-            }
-            if (!SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase") || price <= 0) {
-                ultraPlayer.sendMessage(MessageManager.getMessage("No-Permission"));
-                return true;
-            }
-
-            String itemName = MessageManager.getMessage("Buy-Cosmetic-Description");
-            itemName = itemName.replace("%price%", String.valueOf(price));
-            itemName = itemName.replace("%gadgetname%", cosmeticType.getName());
-            ItemStack display = ItemFactory.rename(cosmeticType.getItemStack(), itemName);
-            PurchaseData pd = new PurchaseData();
-            pd.setPrice(price);
-            pd.setShowcaseItem(display);
-            pd.setOnPurchase(() -> {
-                pm.setPermission(ultraPlayer, cosmeticType);
-                // delay by five ticks so the command processes
-                // TODO: how long is actually required?
-                Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-                    cosmeticType.equip(ultraPlayer, getUltraCosmetics());
-                    this.open(ultraPlayer);
-                }, 5);
-            });
-            pd.setOnCancel(() -> this.open(ultraPlayer));
-            MenuPurchase mp = new MenuPurchase(getUltraCosmetics(), "Purchase " + cosmeticType.getName(), pd);
-            ultraPlayer.getBukkitPlayer().openInventory(mp.getInventory(ultraPlayer));
-            return false; // we just opened another inventory, don't close it
-        } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getDeactivateTooltip())) {
-            toggleOff(ultraPlayer, cosmeticType);
-            if (!UltraCosmeticsData.get().shouldCloseAfterSelect()) {
-                open(ultraPlayer, currentPage);
-            }
-        }
-        return true;
-    }
-
-    protected boolean startsWithColorless(String a, String b) {
-        return ChatColor.stripColor(a).startsWith(ChatColor.stripColor(b));
-    }
 
     protected boolean shouldHideItem(UltraPlayer player, CosmeticType<?> cosmeticType) {
-        if ((SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item")
-                || player.isFilteringByOwned()) && !pm.hasPermission(player, cosmeticType)) {
+        if ((hideNoPermissionItems || player.isFilteringByOwned()) && !pm.hasPermission(player, cosmeticType)) {
             return true;
         }
-        if (cosmeticType instanceof CosmeticEntType
+        return cosmeticType instanceof CosmeticEntType
                 && ((CosmeticEntType<?>) cosmeticType).isMonster()
-                && player.getBukkitPlayer().getWorld().getDifficulty() == Difficulty.PEACEFUL) {
-            return true;
-        }
-        return false;
-    }
-
-    protected boolean hasEquipped(UltraPlayer ultraPlayer, T type) {
-        return ultraPlayer.hasCosmetic(type.getCategory());
+                && player.getBukkitPlayer().getWorld().getDifficulty() == Difficulty.PEACEFUL;
     }
 
     protected boolean hasUnlockable(UltraPlayer player) {

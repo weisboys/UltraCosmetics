@@ -6,11 +6,9 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
-import be.isach.ultracosmetics.menu.ClickRunnable;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
+import be.isach.ultracosmetics.menu.buttons.ToggleGadgetsButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -32,30 +30,17 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
     @Override
     protected void putItems(Inventory inventory, UltraPlayer player, int page) {
         if (SettingsManager.getConfig().getBoolean("Categories.Gadgets.Allow-Disable-Gadgets", true)) {
-            putToggleGadgetsItems(inventory, player);
+            int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
+            putItem(inventory, slot, new ToggleGadgetsButton(), player);
         }
-    }
-
-    private void putToggleGadgetsItems(Inventory inventory, UltraPlayer player) {
-        int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
-        String configPath = "Categories.Gadgets-Item.When-" + (player.hasGadgetsEnabled() ? "Enabled" : "Disabled");
-        String key = (player.hasGadgetsEnabled() ? "Dis" : "En") + "able-Gadgets";
-        String msg = MessageManager.getMessage(key);
-        String[] lore = MessageManager.getMessage(key + "-Lore").split("\n");
-        if (lore[0].isEmpty()) {
-            lore = new String[] {};
-        }
-        ClickRunnable run = data -> {
-            player.setGadgetsEnabled(!player.hasGadgetsEnabled());
-            putToggleGadgetsItems(inventory, player);
-        };
-        putItem(inventory, slot, ItemFactory.rename(ItemFactory.getItemStackFromConfig(configPath), msg, lore), run);
     }
 
     @Override
     protected void filterItem(ItemStack itemStack, GadgetType gadgetType, UltraPlayer player) {
         if (!UltraCosmeticsData.get().isAmmoEnabled() || !gadgetType.requiresAmmo()
-                || !ultraCosmetics.getPermissionManager().hasPermission(player, gadgetType)) return;
+                || !ultraCosmetics.getPermissionManager().hasPermission(player, gadgetType)) {
+            return;
+        }
         ItemMeta itemMeta = itemStack.getItemMeta();
         List<String> loreList = itemMeta.getLore();
 
@@ -68,29 +53,12 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
         if (SettingsManager.getConfig().getBoolean("Ammo-System-For-Gadgets.Show-Ammo-In-Menu-As-Item-Amount")
                 && !(player.getCurrentGadget() != null
-                        && player.getCurrentGadget().getType() == gadgetType)) {
+                && player.getCurrentGadget().getType() == gadgetType)) {
             itemStack.setAmount(Math.max(1, Math.min(64, ammo)));
         }
         itemMeta.setLore(loreList);
         itemStack.setItemMeta(itemMeta);
     }
 
-    @Override
-    protected void handleRightClick(UltraPlayer ultraPlayer, GadgetType type) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled() && type.requiresAmmo()) {
-            ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
-            ultraCosmetics.getMenus().openAmmoPurchaseMenu(type, ultraPlayer);
-        }
-    }
 
-    @Override
-    protected boolean handleActivate(UltraPlayer ultraPlayer) {
-        if (ultraCosmetics.getEconomyHandler().isUsingEconomy() && UltraCosmeticsData.get().isAmmoPurchaseEnabled()
-                && ultraPlayer.getCurrentGadget().getType().requiresAmmo() && ultraPlayer.getAmmo(ultraPlayer.getCurrentGadget().getType()) < 1) {
-            ultraPlayer.setGadgetsPage(getCurrentPage(ultraPlayer));
-            ultraCosmetics.getMenus().openAmmoPurchaseMenu(ultraPlayer.getCurrentGadget().getType(), ultraPlayer);
-            return false;
-        }
-        return super.handleActivate(ultraPlayer);
-    }
 }

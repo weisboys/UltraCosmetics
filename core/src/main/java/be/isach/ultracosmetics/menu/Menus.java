@@ -4,21 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
-import be.isach.ultracosmetics.menu.menus.MenuDeathEffects;
-import be.isach.ultracosmetics.menu.menus.MenuEmotes;
-import be.isach.ultracosmetics.menu.menus.MenuGadgets;
-import be.isach.ultracosmetics.menu.menus.MenuHats;
-import be.isach.ultracosmetics.menu.menus.MenuMain;
-import be.isach.ultracosmetics.menu.menus.MenuMorphs;
-import be.isach.ultracosmetics.menu.menus.MenuMounts;
-import be.isach.ultracosmetics.menu.menus.MenuParticleEffects;
-import be.isach.ultracosmetics.menu.menus.MenuPets;
-import be.isach.ultracosmetics.menu.menus.MenuProjectileEffects;
-import be.isach.ultracosmetics.menu.menus.MenuPurchase;
-import be.isach.ultracosmetics.menu.menus.MenuSuits;
+import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -33,7 +21,7 @@ import java.util.Map;
 public class Menus {
 
     private final UltraCosmetics ultraCosmetics;
-    private final Map<Category,CosmeticMenu<?>> categoryMenus = new HashMap<>();
+    private final Map<Category, CosmeticMenu<?>> categoryMenus = new HashMap<>();
     private final MenuMain mainMenu;
 
     public Menus(UltraCosmetics ultraCosmetics) {
@@ -69,25 +57,20 @@ public class Menus {
     /**
      * Opens Ammo Purchase Menu.
      */
-    public void openAmmoPurchaseMenu(GadgetType type, UltraPlayer player) {
+    public void openAmmoPurchaseMenu(GadgetType type, UltraPlayer player, Runnable menuReturnFunc) {
         String itemName = MessageManager.getMessage("Buy-Ammo-Description");
         itemName = itemName.replace("%amount%", String.valueOf(type.getResultAmmoAmount()));
         itemName = itemName.replace("%price%", String.valueOf(type.getAmmoPrice()));
         itemName = itemName.replace("%gadgetname%", type.getName());
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
         PurchaseData pd = new PurchaseData();
-        MenuGadgets mg = (MenuGadgets) categoryMenus.get(Category.GADGETS);
         pd.setPrice(type.getAmmoPrice());
         pd.setShowcaseItem(display);
         pd.setOnPurchase(() -> {
             player.addAmmo(type, type.getResultAmmoAmount());
-            mg.open(player, player.getGadgetsPage());
-            player.setGadgetsPage(1);
+            menuReturnFunc.run();
         });
-        pd.setOnCancel(() -> {
-            mg.open(player, player.getGadgetsPage());
-            player.setGadgetsPage(1);
-        });
+        pd.setOnCancel(menuReturnFunc);
         MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Menu.Buy-Ammo.Title"), pd);
         player.getBukkitPlayer().openInventory(mp.getInventory(player));
     }

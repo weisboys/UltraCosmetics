@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
-import be.isach.ultracosmetics.player.UltraPlayer;
 
 /**
  * Mount {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -18,17 +17,4 @@ public class MenuMounts extends CosmeticMenu<MountType> {
         super(ultraCosmetics, Category.MOUNTS);
     }
 
-    @Override
-    protected void toggleOff(UltraPlayer ultraPlayer, MountType cosmeticType) {
-        if (ultraPlayer.getCurrentMount() == null) {
-            return;
-        }
-        ultraPlayer.getCurrentMount().setBeingRemoved(true);
-        ultraPlayer.removeCosmetic(Category.MOUNTS);
-    }
-
-    @Override
-    protected String getTypeName(MountType cosmeticType, UltraPlayer ultraPlayer) {
-        return cosmeticType.getMenuName();
-    }
 }

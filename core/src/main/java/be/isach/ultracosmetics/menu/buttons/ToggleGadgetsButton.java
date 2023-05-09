@@ -1,0 +1,30 @@
+package be.isach.ultracosmetics.menu.buttons;
+
+import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.menu.Button;
+import be.isach.ultracosmetics.menu.ClickData;
+import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ItemFactory;
+import org.bukkit.inventory.ItemStack;
+
+public class ToggleGadgetsButton implements Button {
+    @Override
+    public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
+        String enabledKey = (ultraPlayer.hasGadgetsEnabled() ? "Enable" : "Disable");
+        String configPath = "Categories.Gadgets-Item.When-" + enabledKey + "d";
+        String key = enabledKey + "-Gadgets";
+        String msg = MessageManager.getMessage(key);
+        String[] lore = MessageManager.getMessage(key + "-Lore").split("\n");
+        if (lore[0].isEmpty()) {
+            lore = new String[] {};
+        }
+        return ItemFactory.rename(ItemFactory.getItemStackFromConfig(configPath), msg, lore);
+    }
+
+    @Override
+    public void onClick(ClickData clickData) {
+        UltraPlayer player = clickData.getClicker();
+        player.setGadgetsEnabled(!player.hasGadgetsEnabled());
+        clickData.getMenu().refresh(player);
+    }
+}

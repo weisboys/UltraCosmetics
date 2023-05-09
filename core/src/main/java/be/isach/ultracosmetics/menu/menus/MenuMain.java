@@ -3,26 +3,15 @@ package be.isach.ultracosmetics.menu.menus;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.menu.Menu;
-import be.isach.ultracosmetics.permissions.PermissionManager;
+import be.isach.ultracosmetics.menu.buttons.ClearCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.KeysButton;
+import be.isach.ultracosmetics.menu.buttons.OpenChestButton;
+import be.isach.ultracosmetics.menu.buttons.OpenCosmeticMenuButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
-import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
-import be.isach.ultracosmetics.util.ItemFactory;
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Main {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -31,7 +20,7 @@ import java.util.List;
  * @since 08-23-2016
  */
 public class MenuMain extends Menu {
-
+    private final String title = MessageManager.getMessage("Menu.Main.Title");
     private int[] layout;
 
     public MenuMain(UltraCosmetics ultraCosmetics) {
@@ -91,121 +80,25 @@ public class MenuMain extends Menu {
         if (Category.enabledSize() > 0) {
             int i = 0;
             boolean foundSuits = false;
-            PermissionManager pm = UltraCosmeticsData.get().getPlugin().getPermissionManager();
-            Player bukkitPlayer = player.getBukkitPlayer();
             for (Category category : Category.enabled()) {
                 // Avoid counting suits categories as different menu items
                 if (category.isSuits()) {
                     if (foundSuits) continue;
                     foundSuits = true;
                 }
-                ItemStack stack = category.getItemStack();
-                String lore = MessageManager.getMessage("Menu." + category.getConfigPath() + ".Button.Lore");
-                if (lore.contains("%unlocked%")) {
-                    lore = lore.replace("%unlocked%", calculateUnlocked(bukkitPlayer, category, pm));
-                }
-                List<String> loreList = new ArrayList<>();
-                loreList.add("");
-                loreList.addAll(Arrays.asList(lore.split("\n")));
-                ItemMeta meta = stack.getItemMeta();
-                meta.setLore(loreList);
-                stack.setItemMeta(meta);
-                putItem(inventory, layout[i++], stack, data -> {
-                    getUltraCosmetics().getMenus().getCategoryMenu(category).open(player);
-                });
+                putItem(inventory, layout[i++], new OpenCosmeticMenuButton(getUltraCosmetics(), category), player);
             }
         }
-
-        // Clear cosmetics item.
-        String message = MessageManager.getMessage("Clear.Cosmetics");
-        ItemStack itemStack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Categories.Clear-Cosmetic-Item"), message);
-        putItem(inventory, inventory.getSize() - 5, itemStack, data -> {
-            player.clear();
-            open(player);
-        });
-
+        putItem(inventory, inventory.getSize() - 5, new ClearCosmeticButton(), player);
         if (UltraCosmeticsData.get().areTreasureChestsEnabled()) {
-            String msgChests = MessageManager.getMessage("Treasure-Chests");
-            final boolean usingEconomy = getUltraCosmetics().getEconomyHandler().isUsingEconomy();
-            boolean canBuyKeys = usingEconomy && SettingsManager.getConfig().getInt("TreasureChests.Key-Price") > 0;
-            String buyKeyMessage = "";
-            if (canBuyKeys) {
-                buyKeyMessage = "\n" + MessageManager.getMessage("Click-Buy-Key") + "\n";
-            }
-            String[] chestLore;
-            if (player.getKeys() < 1) {
-                chestLore = new String[] {"", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage};
-            } else {
-                if (SettingsManager.getConfig().getString("TreasureChests.Mode", "").equalsIgnoreCase("both")) {
-                    chestLore = new String[] {"", MessageManager.getMessage("Left-Click-Open-Chest"), MessageManager.getMessage("Right-Click-Simple"), ""};
-                } else {
-                    chestLore = new String[] {"", MessageManager.getMessage("Click-Open-Chest"), ""};
-                }
-            }
-            ItemStack keys = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getMessage("Treasure-Keys"), "",
-                    MessageManager.getMessage("Your-Keys").replace("%keys%", String.valueOf(player.getKeys())), buyKeyMessage);
-
-            putItem(inventory, 5, keys, (data) -> {
-                if (!canBuyKeys) {
-                    XSound.BLOCK_ANVIL_LAND.play(player.getBukkitPlayer().getLocation(), 0.2f, 1.2f);
-                    return;
-                }
-                player.getBukkitPlayer().closeInventory();
-                player.openKeyPurchaseMenu();
-            });
-
-            ItemStack chest = ItemFactory.create(XMaterial.CHEST, msgChests, chestLore);
-            putItem(inventory, 3, chest, (data) -> {
-                Player p = player.getBukkitPlayer();
-                if (!canBuyKeys && player.getKeys() < 1) {
-                    XSound.BLOCK_ANVIL_LAND.play(p.getLocation(), 0.2f, 1.2f);
-                    return;
-                }
-                String mode = SettingsManager.getConfig().getString("TreasureChests.Mode", "structure");
-                if (mode.equalsIgnoreCase("both")) {
-                    if (data.getClick().isRightClick()) {
-                        mode = "simple";
-                    } else {
-                        mode = "structure";
-                    }
-                }
-                if (player.getKeys() > 0 && mode.equalsIgnoreCase("simple")) {
-                    player.removeKey();
-                    int count = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
-                    TreasureRandomizer tr = new TreasureRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
-                    for (int i = 0; i < count; i++) {
-                        tr.giveRandomThing(null);
-                    }
-                    // Refresh with new key count
-                    open(player);
-                } else {
-                    // Opens the buy-a-key menu if the player doesn't have enough keys
-                    TreasureChestManager.tryOpenChest(p);
-                }
-            });
-
+            putItem(inventory, 5, new KeysButton(ultraCosmetics), player);
+            putItem(inventory, 3, new OpenChestButton(ultraCosmetics), player);
         }
-    }
-
-    private String calculateUnlocked(Player player, Category category, PermissionManager pm) {
-        int unlocked = 0;
-        int total;
-        if (category.isSuits()) {
-            for (Category cat : Category.enabled()) {
-                if (!cat.isSuits()) continue;
-                unlocked += pm.getEnabledUnlocked(player, cat).size();
-            }
-            total = SuitCategory.enabled().size() * 4;
-        } else {
-            unlocked = pm.getEnabledUnlocked(player, category).size();
-            total = category.getEnabled().size();
-        }
-        return unlocked + "/" + total;
     }
 
     @Override
     protected String getName() {
-        return MessageManager.getMessage("Menu.Main.Title");
+        return title;
     }
 
     @Override

@@ -235,7 +235,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
         if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo() && ultraPlayer.getAmmo(getType()) < 1) {
             if (UltraCosmeticsData.get().isAmmoPurchaseEnabled() && getUltraCosmetics().getEconomyHandler().isUsingEconomy()) {
-                getUltraCosmetics().getMenus().openAmmoPurchaseMenu(getType(), getOwner());
+                getUltraCosmetics().getMenus().openAmmoPurchaseMenu(getType(), getOwner(), () -> {
+                });
             } else {
                 player.sendMessage(MessageManager.getMessage("No-Ammo"));
             }
