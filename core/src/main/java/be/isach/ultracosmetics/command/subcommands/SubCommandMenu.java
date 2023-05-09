@@ -38,7 +38,7 @@ public class SubCommandMenu extends SubCommand {
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(sender);
         Menus menus = ultraCosmetics.getMenus();
         if (args.length < 2) {
-            menus.getMainMenu().open(ultraPlayer);
+            menus.openMainMenu(ultraPlayer);
             return;
         }
 
@@ -51,7 +51,7 @@ public class SubCommandMenu extends SubCommand {
         String s = args[1].toLowerCase();
 
         if (s.startsWith("ma")) {
-            menus.getMainMenu().open(ultraPlayer);
+            menus.openMainMenu(ultraPlayer);
             return;
         } else if (s.startsWith("r") && SettingsManager.getConfig().getBoolean("Pets-Rename.Enabled")) {
             if (SettingsManager.getConfig().getBoolean("Pets-Rename.Permission-Required") && !sender.hasPermission("ultracosmetics.pets.rename")) {

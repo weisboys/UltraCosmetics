@@ -74,14 +74,14 @@ public class MenuItemHandler implements UnmovableItemProvider {
             return;
         }
         event.setCancelled(true);
-        ultraCosmetics.getMenus().getMainMenu().open(ultraPlayer);
+        ultraCosmetics.getMenus().openMainMenu(ultraPlayer);
     }
 
     @Override
     public void handleClick(Player player) {
         if (menuOnClick) {
             // if it's not delayed by one tick, the client holds the item in cursor slot until they open their inventory again
-            Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().getMainMenu().open(pm.getUltraPlayer(player)), 1);
+            Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> ultraCosmetics.getMenus().openMainMenu(pm.getUltraPlayer(player)), 1);
         }
     }
 }

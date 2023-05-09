@@ -95,7 +95,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         putItem(inventory, inventory.getSize() - 5, new ClearCosmeticButton(category), player);
 
         if (getCategory().hasGoBackArrow()) {
-            putItem(inventory, inventory.getSize() - 6, new MainMenuButton(), player);
+            putItem(inventory, inventory.getSize() - 6, new MainMenuButton(ultraCosmetics), player);
         }
 
         if (hasUnlockable && !hideNoPermissionItems) {

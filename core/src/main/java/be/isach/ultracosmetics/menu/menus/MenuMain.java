@@ -10,7 +10,6 @@ import be.isach.ultracosmetics.menu.buttons.KeysButton;
 import be.isach.ultracosmetics.menu.buttons.OpenChestButton;
 import be.isach.ultracosmetics.menu.buttons.OpenCosmeticMenuButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
 /**
@@ -106,18 +105,4 @@ public class MenuMain extends Menu {
         return UltraCosmeticsData.get().areTreasureChestsEnabled() ? 54 : 45;
     }
 
-    /**
-     * Opens UC's main menu OR runs the custom main menu command specified in config.yml
-     *
-     * @param ultraPlayer The player to show the menu to
-     */
-    public static void openMainMenu(UltraPlayer ultraPlayer) {
-        UltraCosmetics ultraCosmetics = UltraCosmeticsData.get().getPlugin();
-        if (ultraCosmetics.getConfig().getBoolean("Categories.Back-To-Main-Menu-Custom-Command.Enabled")) {
-            String command = ultraCosmetics.getConfig().getString("Categories.Back-To-Main-Menu-Custom-Command.Command").replace("/", "").replace("{player}", ultraPlayer.getBukkitPlayer().getName()).replace("{playeruuid}", ultraPlayer.getUUID().toString());
-            Bukkit.dispatchCommand(ultraCosmetics.getServer().getConsoleSender(), command);
-        } else {
-            ultraCosmetics.getMenus().getMainMenu().open(ultraPlayer);
-        }
-    }
 }

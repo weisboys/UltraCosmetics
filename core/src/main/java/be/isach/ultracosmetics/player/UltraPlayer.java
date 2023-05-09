@@ -20,7 +20,6 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
 import be.isach.ultracosmetics.menu.PurchaseData;
-import be.isach.ultracosmetics.menu.menus.MenuMain;
 import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.mysql.SqlCache;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
@@ -384,9 +383,9 @@ public class UltraPlayer {
         });
         pd.setOnPurchase(() -> {
             addKey();
-            MenuMain.openMainMenu(this);
+            ultraCosmetics.getMenus().openMainMenu(this);
         });
-        pd.setOnCancel(() -> MenuMain.openMainMenu(this));
+        pd.setOnCancel(() -> ultraCosmetics.getMenus().openMainMenu(this));
         MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
         Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> getBukkitPlayer().openInventory(mp.getInventory(this)), 1);
     }
