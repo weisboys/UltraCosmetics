@@ -65,7 +65,12 @@ public class CustomMainMenu extends Menu {
             // Item, ClearCosmetic, Keys, OpenChest, OpenCosmeticMenu, RenamePet, ToggleGadgets, ToggleMorphSelfView
             switch (typeName.toLowerCase()) {
                 case "command":
-                    button = CommandButton.deserialize(section, ultraCosmetics);
+                    try {
+                        button = CommandButton.deserialize(section, ultraCosmetics);
+                    } catch (IllegalArgumentException e) {
+                        ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, e.getMessage());
+                        continue;
+                    }
                     break;
                 case "clearcosmetic":
                     button = new ClearCosmeticButton();
