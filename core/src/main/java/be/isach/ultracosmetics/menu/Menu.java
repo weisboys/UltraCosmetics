@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.menu;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,7 +40,7 @@ public abstract class Menu implements Listener {
      * Key: Item
      * Value: ClickRunnable to call when item is clicked.
      */
-    private final Map<Inventory, Map<ItemStack, ClickRunnable>> clickRunnableMap = new HashMap<>();
+    private final Map<Inventory, Map<ItemStack, Button>> clickRunnableMap = new HashMap<>();
 
     public Menu(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -70,10 +69,8 @@ public abstract class Menu implements Listener {
         return inventory;
     }
 
-    protected void putItem(Inventory inventory, int slot, ItemStack itemStack, ClickRunnable clickRunnable) {
-        Validate.notNull(itemStack);
-        Validate.notNull(clickRunnable);
-
+    protected void putItem(Inventory inventory, int slot, Button button, UltraPlayer ultraPlayer) {
+        ItemStack itemStack = button.getDisplayItem(ultraPlayer);
         if (itemStack.hasItemMeta()) {
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.addItemFlags(ItemFlag.values());
@@ -81,17 +78,8 @@ public abstract class Menu implements Listener {
         }
 
         inventory.setItem(slot, itemStack);
-        Map<ItemStack, ClickRunnable> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
-        map.put(itemStack, clickRunnable);
-    }
-
-    protected void putItem(Inventory inventory, int slot, Button button, UltraPlayer ultraPlayer) {
-        putItem(inventory, slot, button.getDisplayItem(ultraPlayer), button::onClick);
-    }
-
-    protected void putItem(Inventory inventory, int slot, ItemStack itemStack) {
-        putItem(inventory, slot, itemStack, data -> {
-        });
+        Map<ItemStack, Button> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
+        map.put(itemStack, button);
     }
 
     @EventHandler
@@ -115,22 +103,22 @@ public abstract class Menu implements Listener {
             return;
         }
 
-        ClickRunnable clickRunnable = null;
+        Button button = null;
         String clickItemName = event.getCurrentItem().getItemMeta().getDisplayName();
-        Set<Entry<ItemStack, ClickRunnable>> entries = clickRunnableMap.get(event.getInventory()).entrySet();
-        for (Entry<ItemStack, ClickRunnable> entry : entries) {
+        Set<Entry<ItemStack, Button>> entries = clickRunnableMap.get(event.getInventory()).entrySet();
+        for (Entry<ItemStack, Button> entry : entries) {
             if (entry.getKey().getItemMeta().getDisplayName().equals(clickItemName)) {
-                clickRunnable = entry.getValue();
+                button = entry.getValue();
                 break;
             }
         }
-        if (clickRunnable == null) {
+        if (button == null) {
             return;
         }
 
         Player player = (Player) event.getWhoClicked();
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
-        clickRunnable.run(new ClickData(this, ultraPlayer, event.getClick(), event.getCurrentItem(), event.getSlot()));
+        button.onClick(new ClickData(this, ultraPlayer, event.getClick(), event.getCurrentItem(), event.getSlot()));
         player.updateInventory();
     }
 
