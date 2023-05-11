@@ -46,7 +46,7 @@ public class PEconomyHook implements EconomyHook {
 
     @Override
     public void deposit(Player player, int amount) {
-        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> api.addAmount(player.getName(), currency.getId(), amount));
+        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> api.updateWallet(api.addAmount(player.getName(), currency.getId(), amount)));
     }
 
     @Override
