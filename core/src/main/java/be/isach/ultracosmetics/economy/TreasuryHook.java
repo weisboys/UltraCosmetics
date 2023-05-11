@@ -1,6 +1,6 @@
 package be.isach.ultracosmetics.economy;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import me.lokka30.treasury.api.common.service.Service;
@@ -12,6 +12,7 @@ import me.lokka30.treasury.api.economy.response.EconomyException;
 import me.lokka30.treasury.api.economy.response.EconomySubscriber;
 import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator;
 import me.lokka30.treasury.api.economy.transaction.EconomyTransactionInitiator.Type;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,12 +22,15 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public class TreasuryHook implements EconomyHook {
+    private final UltraCosmetics ultraCosmetics;
     private final EconomyProvider economy;
-    private final SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
+    private final SmartLogger log;
     private final EconomyTransactionInitiator<String> initiator = EconomyTransactionInitiator.createInitiator(Type.PLUGIN, "UltraCosmetics");
     private final Currency currency;
 
-    public TreasuryHook(String currencyName) {
+    public TreasuryHook(UltraCosmetics ultraCosmetics, String currencyName) {
+        this.ultraCosmetics = ultraCosmetics;
+        this.log = ultraCosmetics.getSmartLogger();
         Optional<Service<EconomyProvider>> optProvider = ServiceRegistry.INSTANCE.serviceFor(EconomyProvider.class);
         if (!optProvider.isPresent()) {
             throw new IllegalStateException("Could not find provider for Treasury economy.");
@@ -43,6 +47,10 @@ public class TreasuryHook implements EconomyHook {
         }
     }
 
+    private void mainThread(Runnable runnable) {
+        Bukkit.getScheduler().runTask(ultraCosmetics, runnable);
+    }
+
     @Override
     public void withdraw(Player player, int intAmount, Runnable onSuccess, Runnable onFailure) {
         BigDecimal amount = new BigDecimal(intAmount);
@@ -52,18 +60,18 @@ public class TreasuryHook implements EconomyHook {
                 @Override
                 public void succeed(@NotNull Boolean t) {
                     if (!t) {
-                        onFailure.run();
+                        mainThread(onFailure);
                         return;
                     }
                     account.withdrawBalance(amount, initiator, currency, new EconomySubscriber<BigDecimal>() {
                         @Override
                         public void succeed(BigDecimal newBalance) {
-                            onSuccess.run();
+                            mainThread(onSuccess);
                         }
 
                         @Override
                         public void fail(EconomyException exception) {
-                            onFailure.run();
+                            mainThread(onFailure);
                             log.write(LogLevel.WARNING, "Failed to take player money: " + exception.getMessage());
                         }
                     });
@@ -71,7 +79,7 @@ public class TreasuryHook implements EconomyHook {
 
                 @Override
                 public void fail(@NotNull EconomyException exception) {
-                    onFailure.run();
+                    mainThread(onFailure);
                     log.write(LogLevel.WARNING + "Failed to check if player can afford cost: " + exception.getMessage());
                 }
 
@@ -133,7 +141,7 @@ public class TreasuryHook implements EconomyHook {
 
     @Override
     public String getName() {
-        return "Treasury";
+        return "Treasury:" + currency.getIdentifier();
     }
 
 }

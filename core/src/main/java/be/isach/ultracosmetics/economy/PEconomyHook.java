@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import ru.soknight.peconomy.api.PEconomyAPI;
 import ru.soknight.peconomy.configuration.CurrencyInstance;
+import ru.soknight.peconomy.database.model.WalletModel;
 
 import java.util.Iterator;
 
@@ -31,7 +32,16 @@ public class PEconomyHook implements EconomyHook {
 
     @Override
     public void withdraw(Player player, int amount, Runnable onSuccess, Runnable onFailure) {
-        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> api.takeAmount(player.getName(), currency.getId(), 0));
+        Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> {
+            WalletModel wallet = api.getWallet(player.getName());
+            if (wallet.hasAmount(currency.getId(), amount)) {
+                wallet.takeAmount(currency.getId(), amount);
+                api.updateWallet(wallet);
+                Bukkit.getScheduler().runTask(ultraCosmetics, onSuccess);
+            } else {
+                Bukkit.getScheduler().runTask(ultraCosmetics, onFailure);
+            }
+        });
     }
 
     @Override
@@ -41,6 +51,6 @@ public class PEconomyHook implements EconomyHook {
 
     @Override
     public String getName() {
-        return "PEconomy";
+        return "PEconomy:" + currency.getId();
     }
 }

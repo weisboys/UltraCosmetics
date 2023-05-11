@@ -24,7 +24,7 @@ public class EconomyHandler {
         ultraCosmetics.getSmartLogger().write("");
         try {
             if (economy.equalsIgnoreCase("treasury")) {
-                economyHook = new TreasuryHook(currency);
+                economyHook = new TreasuryHook(ultraCosmetics, currency);
             } else if (economy.equalsIgnoreCase("vault")) {
                 economyHook = new VaultHook();
             } else if (economy.equalsIgnoreCase("playerpoints")) {
@@ -45,10 +45,6 @@ public class EconomyHandler {
 
     public EconomyHook getHook() {
         return economyHook;
-    }
-
-    public String getName() {
-        return economyHook.getName();
     }
 
     public boolean isUsingEconomy() {
