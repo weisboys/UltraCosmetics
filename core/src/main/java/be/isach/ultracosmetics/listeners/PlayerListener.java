@@ -49,7 +49,7 @@ public class PlayerListener implements Listener {
         this.menuItem = ItemFactory.getMenuItem();
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void onJoin(final PlayerJoinEvent event) {
         // Load UltraPlayer whether we use it or not so it's ready
         UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
