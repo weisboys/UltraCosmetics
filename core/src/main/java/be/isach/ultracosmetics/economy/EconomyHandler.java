@@ -13,12 +13,12 @@ public class EconomyHandler {
     private boolean usingEconomy = false;
 
     public EconomyHandler(UltraCosmetics ultraCosmetics) {
-        String economy = ultraCosmetics.getConfig().getString("Economy");
-        if (economy == null || economy.isEmpty()) {
+        String economy = ultraCosmetics.getConfig().getString("Economy", "");
+        if (economy.isEmpty()) {
             ultraCosmetics.getSmartLogger().write("Economy not specified in the config, disabling economy features.");
             return;
         }
-        String currency = ultraCosmetics.getConfig().getString("Economy-Currency");
+        String currency = ultraCosmetics.getConfig().getString("Economy-Currency", "");
         if (currency.isEmpty()) currency = null;
 
         ultraCosmetics.getSmartLogger().write("");

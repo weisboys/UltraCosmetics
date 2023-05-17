@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.player;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.listeners.ClientBrandListener;
+import be.isach.ultracosmetics.util.SmartLogger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -19,12 +20,20 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class UltraPlayerManager {
 
-    private Map<UUID, UltraPlayer> playerCache;
-    private UltraCosmetics ultraCosmetics;
+    private final Map<UUID, UltraPlayer> playerCache;
+    private final UltraCosmetics ultraCosmetics;
 
     public UltraPlayerManager(UltraCosmetics ultraCosmetics) {
         this.playerCache = new ConcurrentHashMap<>();
         this.ultraCosmetics = ultraCosmetics;
+    }
+
+    public void createUltraPlayer(UUID uuid) {
+        // This should overwrite any existing UltraPlayer
+        UltraPlayer old = playerCache.put(uuid, new UltraPlayer(uuid, ultraCosmetics));
+        if (old != null) {
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Removed stale UltraPlayer, potential memory leak?");
+        }
     }
 
     public UltraPlayer getUltraPlayer(Player player) {

@@ -86,6 +86,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         initializeEntity();
     }
 
+    @SuppressWarnings("deprecation")
     private void initializeEntity() {
         entity = spawnEntity();
 

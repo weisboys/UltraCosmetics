@@ -49,15 +49,16 @@ public class PlayerListener implements Listener {
         this.menuItem = ItemFactory.getMenuItem();
     }
 
+    @EventHandler(priority = EventPriority.LOWEST)
+    public void onPreJoin(final PlayerJoinEvent event) {
+        // Ready UltraPlayer as early as possible so it can be ready for other plugins that might also run code on join
+        pm.createUltraPlayer(event.getPlayer().getUniqueId());
+    }
+
     @EventHandler
     public void onJoin(final PlayerJoinEvent event) {
-        // Load UltraPlayer whether we use it or not so it's ready
-        UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
-        if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")
-                && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            if (up != null) {
-                up.giveMenuItem();
-            }
+        if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
+            pm.getUltraPlayer(event.getPlayer()).giveMenuItem();
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
@@ -111,7 +112,7 @@ public class PlayerListener implements Listener {
         }, 1);
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         pm.getUltraPlayer(event.getPlayer()).dispose();
         // workaround plugins calling events after player quit
@@ -151,8 +152,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onEntityDamage(EntityDamageEvent event) {
-        if (event.getCause() == EntityDamageEvent.DamageCause.FALL
-                && FallDamageManager.shouldBeProtected(event.getEntity())) {
+        if (event.getCause() == EntityDamageEvent.DamageCause.FALL && FallDamageManager.shouldBeProtected(event.getEntity())) {
             event.setCancelled(true);
         }
     }
