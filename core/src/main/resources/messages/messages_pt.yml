@@ -101,9 +101,9 @@ Menu:
       Tooltip-Equip: '&b&lInvocar'
       Tooltip-Unequip: '&c&lDesinvocar'
   Suits:
-    Title: '&lSuits'
+    Title: '&lRoupas'
     Button:
-      Name: '&3&lSuits'
+      Name: '&3&lRoupas'
       Lore: '&7Desbloqueado: &f%unlocked%'
       Tooltip-Equip: '&b&lEquipar'
       Tooltip-Unequip: '&c&lDesequipar'
@@ -126,19 +126,19 @@ Menu:
     Button:
       Name: '&c&lEfeitos da Morte'
       Lore: '&7Desbloqueado: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Tooltip-Equip: '&b&lEquipar'
+      Tooltip-Unequip: '&c&lRemover'
   Buy-Ammo:
-    Title: '&lBuy Ammo'
+    Title: '&lAdquirir munição'
   Misc:
     Button:
-      Previous-Page: '&c&lPrevious Page'
-      Next-Page: '&a&lNext Page'
+      Previous-Page: '&c&lPágina anterior'
+      Next-Page: '&a&lPróxima página'
 Chest-Location:
-  Not-Enough-Space: '%prefix% &c&lThere isn''t enough space for a treasure chest!'
-  Region-Disabled: '%prefix% &c&lYou can''t open a chest here!'
-  Invalid: '%prefix% &c&lThat''s not a valid location.'
-  In-Air: '%prefix% &c&lThat location is not on the ground!'
+  Not-Enough-Space: '%prefix% &c&lNão há espaço suficiente para um baú do tesouro!'
+  Region-Disabled: '%prefix%&c&lVocê não pode abrir um baú aqui!'
+  Invalid: '%prefix% &c&lEssa localização não é válida.'
+  In-Air: '%prefix% &c&lA localização precisa estar no chão!'
   In-Ground: '%prefix% &c&lThat location is in the ground!'
   Suggestion: '%prefix% &aMaybe you meant %location%?'
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
@@ -157,12 +157,12 @@ Treasure-Chests-Loot:
   Particle-Effects: "&bParticle Effect\n%cosmetic%"
   Morphs: "&2Morph\n%cosmetic%"
   Hats: "&dHat\n%cosmetic%"
-  Gadgets: "&9Gadget\n%cosmetic%"
-  Suits: "&3Suit\n%cosmetic%"
-  Emotes: "&eEmote\n%cosmetic%"
-  Death-Effects: "&cDeath Effect\n%cosmetic%"
-  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
-Disable-Gadgets: '&c&lDisable Gadgets'
+  Gadgets: "&9Bugiganga %cosmetic%"
+  Suits: "&3Roupa %cosmetic%"
+  Emotes: "&eReação %cosmetic%"
+  Death-Effects: "&cEfeito de morte %cosmetic%"
+  Projectile-Effects: "&5Efeito de Projétil\n%cosmetic%"
+Disable-Gadgets: '&c&lDesabilitar bugigangas'
 Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
 Enable-Gadgets: '&a&lEnable Gadgets'
 Enable-Gadgets-Lore: '&aEnables use of gadgets and effects of them on you'
@@ -178,8 +178,8 @@ Gadgets:
   Unequip: '%prefix% &9You unequipped %gadgetname%'
   Countdown-Message: '%prefix% &c&lYou can''t use %gadgetname% &c&lfor %time%s!'
   PaintballGun:
-    name: '&b&lPaintball Gun'
-    Description: '&7&oPEW PEW PEW PEW!!!'
+    name: '&b&lArminha de tinta'
+    Description: '&7&oPOW POW POW POW!!!'
   BatBlaster:
     name: '&7&lBat Blaster'
     Description: |-
