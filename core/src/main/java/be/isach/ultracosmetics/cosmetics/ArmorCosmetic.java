@@ -1,11 +1,13 @@
 package be.isach.ultracosmetics.cosmetics;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ServerVersion;
 import org.bukkit.GameMode;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
@@ -31,7 +33,11 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     public ArmorCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        attributes = getAttributes();
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+            attributes = getAttributes();
+        } else {
+            attributes = new HashMap<>();
+        }
     }
 
     @Override
@@ -68,7 +74,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
     }
 
     protected void writeAttributes(ItemStack stack) {
-
+        if (attributes.size() == 0) return;
         ItemMeta meta = stack.getItemMeta();
         if (meta.hasAttributeModifiers()) {
             meta.removeAttributeModifier(getArmorSlot().toBukkit());

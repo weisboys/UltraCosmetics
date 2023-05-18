@@ -1,10 +1,12 @@
 package be.isach.ultracosmetics.menu.buttons;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -61,7 +63,7 @@ public class CommandButton implements Button {
             lore = lore.stream().map(s -> ChatColor.translateAlternateColorCodes('&', s)).collect(Collectors.toList());
             meta.setLore(lore);
         }
-        if (section.isInt("CustomModelData")) {
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && section.isInt("CustomModelData")) {
             meta.setCustomModelData(section.getInt("CustomModelData"));
         }
         stack.setItemMeta(meta);
