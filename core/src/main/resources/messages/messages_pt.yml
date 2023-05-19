@@ -139,7 +139,7 @@ Chest-Location:
   Region-Disabled: '%prefix%&c&lVocê não pode abrir um baú aqui!'
   Invalid: '%prefix% &c&lEssa localização não é válida.'
   In-Air: '%prefix% &c&lA localização precisa estar no chão!'
-  In-Ground: '%prefix% &c&lThat location is in the ground!'
+  In-Ground: '%prefix% &c&lEsse local é no chão!'
   Suggestion: '%prefix% &aMaybe you meant %location%?'
   Dismount-First: '%prefix% &c&lYou must dismount your vehicle before opening a chest.'
   Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
@@ -493,7 +493,6 @@ Particle-Effects:
       &7&oLeaves a trail of
       &7&odark energy behind.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&ogreen particles behind.
@@ -509,7 +508,6 @@ Particle-Effects:
     name: '&c&lHearts'
     Description: '&7&oHearts above your head.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&odragon breath behind.
@@ -522,7 +520,6 @@ Particle-Effects:
       &7&oA halo composed of
       &7&oglowing light.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&osnow behind.
