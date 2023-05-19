@@ -492,6 +492,7 @@ Particle-Effects:
       &7&oLeaves a trail of
       &7&odark energy behind.
   SpringFootprints:
+    name: '&a&lSpring Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&ogreen particles behind.
@@ -507,6 +508,7 @@ Particle-Effects:
     name: '&c&lHearts'
     Description: '&7&oHearts above your head.'
   EnderFootprints:
+    name: '&d&lEnder Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&odragon breath behind.
@@ -519,6 +521,7 @@ Particle-Effects:
       &7&oA halo composed of
       &7&oglowing light.
   SnowFootprints:
+    name: '&f&lSnow Footprints'
     Description: |-
       &7&oLeaves a trail of
       &7&osnow behind.
