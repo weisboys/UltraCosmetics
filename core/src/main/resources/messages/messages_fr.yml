@@ -493,6 +493,7 @@ Particle-Effects:
       &7&oLaisse une trace de
       &7&oénergie sombre derrière.
   SpringFootprints:
+    name: '&a&lSpring Footprints'
     Description: |-
       &7&oLaisse une trace de
       &7&oparticules vertes derrière.
@@ -508,6 +509,7 @@ Particle-Effects:
     name: '&c&lCoeurs'
     Description: '&7&oCœurs au-dessus de votre tête.'
   EnderFootprints:
+    name: '&d&lEnder Footprints'
     Description: |-
       &7&oLaisse une trace de
       &7&oSouffle de dragon derrière.
@@ -520,6 +522,7 @@ Particle-Effects:
       &7&oUn halo composé de
       &7&olumiere.
   SnowFootprints:
+    name: '&f&lSnow Footprints'
     Description: |-
       &7&oLaisse une trace de
       &7&osnow derrière.
