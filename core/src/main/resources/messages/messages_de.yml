@@ -495,7 +495,7 @@ Particle-Effects:
       &7&oHinterlässt eine Spur
       &7&oaus dunkler Energie.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: '&a&lFrühlings-Fußspuren'
     Description: |-
       &7&oHinterlässt eine Spur
       &7&oaus grünen Partikeln.
@@ -511,7 +511,7 @@ Particle-Effects:
     name: '&c&lHerzen'
     Description: '&7&oHerzen über deinem Kopf.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: '&d&lEnder-Fußspuren'
     Description: |-
       &7&oHinterlässt eine Spur
       &7&oaus Drachenatem.
@@ -524,7 +524,7 @@ Particle-Effects:
       &7&oEin Heiligenschein bestehend
       &7&oaus glühendem Licht.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: '&f&lSchnee-Fußspuren'
     Description: |-
       &7&oHinterlässt eine Spur
       &7&oaus Schnee.
