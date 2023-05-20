@@ -492,7 +492,7 @@ Particle-Effects:
       &7&oDeja un rastro de energía
       &7&ooscura al caminar.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: '&a&lHuellas de primavera'
     Description: |-
       &7&oDeja un rastro de
       &7&opartículas verdes al caminar.
@@ -508,7 +508,7 @@ Particle-Effects:
     name: '&c&lCorazones'
     Description: '&7&oCorazones sobre tu cabeza.'
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: '&d&lHuellas de Ender'
     Description: |-
       &7&oDeja un rastro de aliento de
       &7&odragón al caminar.
@@ -521,7 +521,7 @@ Particle-Effects:
       &7&oUn anillo compuesto
       &7&opor una luz brillante.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: '&f&lHuellas de nieve'
     Description: |-
       &7&oDeja un rastro de
       &7&onieve al caminar.
