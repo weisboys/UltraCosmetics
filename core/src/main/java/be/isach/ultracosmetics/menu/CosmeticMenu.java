@@ -14,7 +14,6 @@ import be.isach.ultracosmetics.menu.buttons.NextPageButton;
 import be.isach.ultracosmetics.menu.buttons.PreviousPageButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ItemFactory;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
@@ -103,7 +102,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
 
         putItems(inventory, player, page);
-        ItemFactory.fillInventory(inventory);
+        fillInventory(inventory);
         player.getBukkitPlayer().openInventory(inventory);
     }
 

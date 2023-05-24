@@ -1,9 +1,12 @@
 package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,8 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-
-import static be.isach.ultracosmetics.util.ItemFactory.fillerItem;
 
 /**
  * Represents a Menu. A menu can have multiple pages in case of cosmetics.
@@ -41,6 +42,9 @@ public abstract class Menu implements Listener {
      * Value: ClickRunnable to call when item is clicked.
      */
     private final Map<Inventory, Map<ItemStack, Button>> clickRunnableMap = new HashMap<>();
+    private final boolean fillEmpty = SettingsManager.getConfig().getBoolean("Fill-Blank-Slots-With-Item.Enabled");
+
+    private final ItemStack fillerItem = getFillerItem();
 
     public Menu(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -65,7 +69,7 @@ public abstract class Menu implements Listener {
     public Inventory getInventory(UltraPlayer player) {
         Inventory inventory = createInventory(getSize(), getName());
         putItems(inventory, player);
-        ItemFactory.fillInventory(inventory);
+        fillInventory(inventory);
         return inventory;
     }
 
@@ -80,6 +84,23 @@ public abstract class Menu implements Listener {
         inventory.setItem(slot, itemStack);
         Map<ItemStack, Button> map = clickRunnableMap.computeIfAbsent(inventory, f -> new HashMap<>());
         map.put(itemStack, button);
+    }
+
+    protected void fillInventory(Inventory inventory) {
+        if (!fillEmpty) return;
+        for (int i = 0; i < inventory.getSize(); i++) {
+            if (inventory.getItem(i) == null || inventory.getItem(i).getType() == Material.AIR) {
+                inventory.setItem(i, fillerItem);
+            }
+        }
+    }
+
+    private ItemStack getFillerItem() {
+        ItemStack itemStack = ItemFactory.getItemStackFromConfig("Fill-Blank-Slots-With-Item.Item");
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(ChatColor.GRAY + "");
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
     }
 
     @EventHandler
