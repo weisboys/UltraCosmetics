@@ -814,23 +814,23 @@ Pets:
   WitherSkeleton:
     menu-name: '&8&lSquelette Wither'
     entity-displayname: '&lSquelette Wither de %playername%'
-    Description: '&7&oThe reason why Looting exists.'
+    Description: '&7&oLa raison pour laquelle il existe un butin.'
   Zoglin:
     menu-name: '&c&lZoglin'
     entity-displayname: '&l%playername%''s Zoglin'
-    Description: '&7&oA zombified Hoglin!'
+    Description: '&7&oA Hoglin zombifié !'
   ZombieVillager:
-    menu-name: '&2&lZombie Villager'
-    entity-displayname: '&l%playername%''s Zombie Villager'
-    Description: '&7&oA Villager Trader''s dream!'
+    menu-name: '&2&lVillageois Zombie'
+    entity-displayname: '&lZombie villageois de %playername%'
+    Description: '&7&oRêve du commerçant villageois !'
   ZombieHorse:
     menu-name: '&2&lCheval Zombie'
-    entity-displayname: '&l%playername%''s Zombie Horse'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    entity-displayname: '&lCheval zombie de %playername%'
+    Description: '&7&oLe cheval le plus rare de Minecraft !'
   Illusioner:
     menu-name: '&1&lIllusioner'
-    entity-displayname: '&l%playername%''s Illusioner'
-    Description: '&7&oOnly spawnable with commands!'
+    entity-displayname: '&lL''illusionner de %playername%'
+    Description: '&7&oNe peut apparaître qu''avec des commandes !'
   Equip: '%prefix% &9Tu as fait apparaître %petname%'
   Unequip: '%prefix% &9Tu as fait disparaître %petname%'
 Morphs:
@@ -848,33 +848,33 @@ Morphs:
     Description: '&7&oSplat splat !'
   Pig:
     name: '&d&lCochon'
-    skill: '&eCollide&7 to: &aBounce Players'
-    Description: '&7&oMust hold your carrot!'
+    skill: '&eCollision &7vers: &aRebondir les joueurs'
+    Description: '&7&oDoit tenir votre carotte !'
   Enderman:
     name: '&5&lEnderman'
-    skill: '&eDouble Jump&7 to: &aTeleport'
+    skill: '&eDouble saut &7vers: &aTéléporter'
     Description: |-
-      &7&oI go from there to
-      &7&othere, then you lost me...
+      &7&oJe passe de là à
+      &7&autre, puis vous m'avez perdu...
   Bat:
-    name: '&8&lBat'
-    skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oBecome a bat!'
+    name: '&8&lChauves-Souris'
+    skill: '&eDouble saut &7vers: &aRabat'
+    Description: '&7&oDevenez une chauve-souris !'
   Creeper:
     name: '&a&lCreeper'
-    skill: '&eSneak&7 to: &aDetonate'
-    charging: '&a&lCharging: %chargelevel%/100'
-    release-to-explode: '&f&lRelease to explode!'
-    Description: '&7&oHey What''sssssss up?'
+    skill: '&eS''accroupir &7pour: &aDétoner'
+    charging: '&a&lEn cours de chargement: %chargelevel%/100'
+    release-to-explode: '&f&lRelâchez pour exploser !'
+    Description: '&7&oHey quoi de neuf ?'
   Snowman:
-    name: '&f&lSnowman'
-    skill: '&eLeft Click&7 to: &aThrow Snowball'
-    Description: '&7&oBecome Olaf!'
-  Equip: '%prefix% &9You morphed into %morphname%'
-  Unequip: '%prefix% &9You unmorphed from %morphname%'
+    name: '&f&lBonhomme de neige'
+    skill: '&eClic-Gauche &7pour: &aLancer une boule de neige'
+    Description: '&7&oDevenez Olaf !'
+  Equip: '%prefix% &9Vous vous êtes transformé en %morphname%'
+  Unequip: '%prefix% &9Vous êtes revenu en %morphname%'
   WitherSkeleton:
-    name: '&8&lWither Skeleton'
-    skill: '&eSneak&7 to: &aBone Bomb'
+    name: '&8&lSquelette Wither'
+    skill: '&eS''accroupir &7pour : &aBombe d''os'
     Description: |-
       &7&oJuste un squelette ordinaire...
       &7&omais qui vient du Nether !
@@ -883,16 +883,16 @@ Morphs:
     skill: '&eClic-Gauche&7 pour : &aLaser'
     Description: '&7&oDeviens un Grand gardien !!'
   Cow:
-    name: '&8&lCow'
-    skill: '&eLeft-Click&7 to: &aMoo'
-    Description: '&7&oMoooo!'
+    name: '&8&lVache'
+    skill: '&eClic-Gauche &7pour : &aMeow'
+    Description: '&7&oMeuuuuh !'
   Sheep:
-    name: '&f&lSheep'
-    skill: '&eLeft-Click&7 to: &aChange Colors'
-    Description: '&7&oBaaaa, baa'
+    name: '&f&lMouton'
+    skill: '&eClic-Gauche &7pour: &aChanger les couleurs'
+    Description: '&7&oBêêêêêh'
   Mooshroom:
-    name: '&c&lMooshroom'
-    skill: '&eSneak&7 to: &aSoup Throw'
+    name: '&c&lChampimeuh'
+    skill: '&eSneak &7pour : &aLancer de soupe'
     Description: '&7&oMeuuuuh !'
   Villager:
     name: '&a&lVillageois'
@@ -909,22 +909,22 @@ Morphs:
   Llama:
     name: '&3&lLama'
     skill: '&eClic-Gauche&7 pour : &aCracher'
-    Description: '&7&oNeed me to carry anything?'
+    Description: '&7&oBesoin de moi pour transporter quelque chose ?'
   Parrot:
-    name: '&a&lParrot'
-    skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oPolly want a cracker?'
+    name: '&a&lPerroquet'
+    skill: '&eDouble saut &7vers: &aRabat'
+    Description: '&7&oPolly veut un craquer ?'
   Allay:
     name: '&a&lAllay'
-    skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oA new friend!'
+    skill: '&eDouble saut &7vers: &aRabat'
+    Description: '&7&oUn nouvel ami !'
   Axolotl:
-    name: '&5&lAxolotl'
-    skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo cute!'
+    name: '&5&lAxolot'
+    skill: '&eClic-Gauche &7pour les sons mignons'
+    Description: '&7&oSiii mignon !'
   Bee:
-    name: '&e&lBee'
-    skill: '&eDouble Jump&7 to: &aFlap'
+    name: '&e&lAbeille'
+    skill: '&eDouble saut &7vers: &aRabat'
     Description: '&7&o*bzzzz* *bzzzz*'
   Cat:
     name: '&e&lChat'
@@ -935,69 +935,69 @@ Morphs:
     skill: '&eClic-Gauche&7 pour : &aÀ Faire'
     Description: '&7&oUne araignée, mais toxique!'
   Cod:
-    name: '&e&lCod'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oPrefers water over land!'
+    name: '&e&lMorue'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oPréfère l''eau à la terre !'
   Dolphin:
-    name: '&e&lDolphin'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oThe happiest creature of the seas!'
+    name: '&e&Dauphin'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oLa créature la plus heureuse de la mer !'
   Donkey:
-    name: '&7&lDonkey'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oCan carry all your stuff!'
+    name: '&7&lÂne'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oPeut transporter toutes vos affaires !'
   Drowned:
-    name: '&3&lDrowned'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAn underwater zombie!'
+    name: '&3&lNoyé'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oUn zombie noyé !'
   Endermite:
     name: '&5&lEndermite'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAttracts Endermen!'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oAttire les Endermites !'
   Evoker:
     name: '&7&lEvoker'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oSummons Vexes for a living!'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oInvoque des Vexes pour vivre !'
   Frog:
-    name: '&2&lFrog'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like fireflies!'
+    name: '&2&lGrenouille'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oN''aime pas les lucioles !'
   Fox:
-    name: '&d&lFox'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oWhat does the fox say?'
+    name: '&d&lRenard'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oQue dit le renard ?'
   GlowSquid:
-    name: '&3&lGlow Squid'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oIt glows!'
+    name: '&3&lCalamar Brillant'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oC''est brillant !'
   Goat:
-    name: '&f&lGoat'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oBAAAA!'
+    name: '&f&lChèvre'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oMêêêêêh !'
   Guardian:
     name: '&3&lGuardian'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates squids!'
+    skill: '&eClic-Gauche &7pour: &aÀ Faire'
+    Description: '&7&oDéteste les calamars !'
   Wolf:
-    name: '&7&lWolf'
-    Description: '&7&oWoof!'
+    name: '&7&lLoup'
+    Description: '&7&oWouaf !'
   IronGolem:
-    name: '&7&lIron Golem'
+    name: '&7&lGolem de fer'
     Description: '&7&oHates zombies!'
   Wither:
     name: '&8&lWither'
     Description: '&7&oWatch out for me...'
   Skeleton:
-    name: '&7&lSkeleton'
+    name: '&7&lSquelette'
     Description: '&7&oVery good archer!'
   Zombie:
     name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Description: '&7&oCerveaux !!!'
   Squid:
-    name: '&d&lSquid'
-    Description: '&7&oBloop Bloop!'
+    name: '&d&lCalamar'
+    Description: '&7&oBloop Bloop !'
   Spider:
-    name: '&8&lSpider'
+    name: '&8&lAraignée'
     Description: '&7&oHISS...'
   Ghast:
     name: '&f&lGhast'
@@ -1006,20 +1006,20 @@ Morphs:
     name: '&c&lMagma Cube'
     Description: '&7&oA very hot cube!'
   Horse:
-    name: '&a&lHorse'
-    Description: '&7&o*fhrrrrhh*'
+    name: '&a&lCheval'
+    Description: '&7&oTagada-tagada'
   Warden:
     name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    Description: '&7&oÊtre silencieux...'
   Tadpole:
     name: '&8&lTadpole'
     Description: '&7&oWill grow into a frog!'
   Piglin:
     name: '&6&lPiglin'
-    Description: '&7&oDeals with gold!'
+    Description: '&7&oDes affaires en OR !'
   Strider:
     name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    Description: '&7&oJe déteste l''eau !'
   Hoglin:
     name: '&c&lHoglin'
     Description: '&7&oA pig, but in angry.'
@@ -1042,44 +1042,44 @@ Morphs:
     name: '&1&lWandering Trader'
     Description: '&7&oWanders around trying to sell his stuff!'
   Pillager:
-    name: '&7&lPillager'
+    name: '&7&lPilleur'
     Description: '&7&oLikes to pillage villages!'
   Ravager:
     name: '&8&lRavager'
     Description: '&7&oA Pillager''s favorite companion!'
   Pufferfish:
-    name: '&e&lPufferfish'
-    Description: '&7&oDoesn''t like to be touched!'
+    name: '&e&lPoisson-globe'
+    Description: '&7&oN''aime pas être touché !'
   Salmon:
-    name: '&c&lSalmon'
-    Description: '&7&oThey''re very tasty!'
+    name: '&c&lSaumon'
+    Description: '&7&oIls ont l''air vraiment bon !'
   TropicalFish:
     name: '&e&lTropical Fish'
     Description: '&7&oA colorful fish!'
   Turtle:
-    name: '&a&lTurtle'
+    name: '&a&lTortue'
     Description: '&7&oTake your time.'
   Phantom:
-    name: '&1&lPhantom'
+    name: '&1&lFantôme'
     Description: '&7&oHates players that don''t sleep!'
   Illusioner:
     name: '&1&lIllusioner'
-    Description: '&7&oOnly spawnable with commands!'
+    Description: '&7&oNe peut apparaître qu''avec des commandes !'
   Vex:
     name: '&7&lVex'
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: '&7&oYAAHH Ehehhehe !'
   Vindicator:
-    name: '&7&lVindicator'
-    Description: '&7&oDon''t underestimate their strength!'
+    name: '&7&lVindicateur'
+    Description: '&7&oNe sous-estimez pas leurs forces !'
   Mule:
     name: '&8&lMule'
-    Description: '&7&oYour standard, everyday mule'
+    Description: '&7&oVotre banal mulet, de toujours'
   SkeletonHorse:
-    name: '&f&lSkeleton Horse'
+    name: '&f&lCheval Squelette'
     Description: '&7&oLook out for lightning strikes!'
   ZombieHorse:
-    name: '&2&lZombie Horse'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    name: '&2&lCheval Zombie'
+    Description: '&7&oLe cheval le plus rare de Minecraft !'
   Shulker:
     name: '&5&lShulker'
     Description: '&7&oLikes to hide!'
@@ -1087,17 +1087,17 @@ Hats:
   Equip: '%prefix% &9You equipped %hatname% &9hat!'
   Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
   Astronaut:
-    Name: '&7&lAstronaut'
-    Description: '&7&oHouston, we have got a problem.'
+    Name: '&7&lAstronaute'
+    Description: '&7&oHouston, on a un problème.'
   Scared:
-    Name: '&4&lScared'
-    Description: '&7&oOh god, that scared me!'
+    Name: '&4&lEffrayé'
+    Description: '&7&oOh dieu, ça m''a fait peur !'
   Angel:
-    Name: '&f&lAngel'
+    Name: '&f&lAnge'
     Description: '&7&oDid it hurt when you fell from heaven?'
   Embarassed:
-    Name: '&7&lEmbarassed'
-    Description: '&7&oI''m kinda embarassed by that.'
+    Name: '&7&lEmbarassé'
+    Description: '&7&oJe suis un peu embarrassé par cela.'
   Kissy:
     Name: '&c&lKissy'
     Description: '&7&oWanna kiss?'
@@ -1126,106 +1126,106 @@ Hats:
     Name: '&3&lDerp'
     Description: '&7&oDerp Derp Derp'
   Smile:
-    Name: '&e&lSmile'
+    Name: '&e&lSourire'
     Description: '&7&oBecause I''m happy'
   Iron:
-    Name: '&7&lIron'
+    Name: '&7&lFer'
     Description: '&7&oAs hard as iron!'
   Gold:
-    Name: '&e&lGold'
+    Name: '&e&lOR'
     Description: '&7&oMy precious!'
   Diamond:
-    Name: '&b&lDiamond'
-    Description: '&7&oThis is really strong!'
+    Name: '&b&lDiamant'
+    Description: '&7&oC''est vraiment fort !'
   CommandBlock:
-    Name: '&7&lCommand Block'
-    Description: '&7&oControl the world with it!'
+    Name: '&7&lBloc de commandes'
+    Description: '&7&oContrôlez le monde avec !'
   Music:
-    Name: '&9&lMusic'
-    Description: '&7&oYou are so musical.'
+    Name: '&9&lMusique'
+    Description: '&7&oVous êtes tellement musical.'
   Squid:
-    Name: '&3&lSquid'
-    Description: '&7&oBloop Bloop!'
+    Name: '&3&lCalamar'
+    Description: '&7&oBloop Bloop !'
   GlowSquid:
-    Name: '&b&lGlow Squid'
-    Description: '&7&oLight up the ocean!'
+    Name: '&b&lCalamar Brillant'
+    Description: '&7&oAllumez l''océan !'
   Chicken:
-    Name: '&f&lChicken'
-    Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
+    Name: '&f&lPoulet'
+    Description: '&7&oCooooottt !'
   Blaze:
     Name: '&6&lBlaze'
-    Description: '&7&oWatch out for the fire!'
+    Description: '&7&oAttention au feu !'
   Piston:
     Name: '&7&lPiston'
-    Description: '&7&oHave you got the redstone?'
+    Description: '&7&oAvez-vous de la redstone ?'
   Sheep:
-    Name: '&f&lSheep'
-    Description: '&7&oBaaaa, baa'
+    Name: '&f&lMouton'
+    Description: '&7&oBêêêêêh'
   Pig:
-    Name: '&d&lPig'
-    Description: '&7&oOink Oink!'
+    Name: '&d&lCochon'
+    Description: '&7&oGrouin Grouin !'
   Cow:
-    Name: '&a&lCow'
-    Description: '&7&oMoooo!'
+    Name: '&a&lVache'
+    Description: '&7&oMeuuuuh !'
   Mooshroom:
-    Name: '&c&lMooshroom'
-    Description: '&7&oMoooo!'
+    Name: '&c&lChampimeuh'
+    Description: '&7&oMeuuuuh !'
   BrownMooshroom:
-    Name: '&b&lBrown Mooshroom'
-    Description: '&7&oMoooo!'
+    Name: '&b&lmarron mooshroom'
+    Description: '&7&oMeuuuuh !'
   Moobloom:
     Name: '&e&lMoobloom'
-    Description: '&7&oVery rare cow!'
+    Description: '&7&oVache très rare !'
   ChestnutHorse:
-    Name: '&2&lChestnut Horse'
-    Description: '&7&oDon''t forget the saddle!'
+    Name: '&2&lCheval alezan'
+    Description: '&7&oN''oubliez pas la selle !'
   Golem:
     Name: '&7&lGolem'
-    Description: '&7&oI''m your guard.'
+    Description: '&7&oJe suis votre garde.'
   CopperGolem:
-    Name: '&6&lCopper Golem'
-    Description: '&7&oMade out of 100% copper.'
+    Name: '&6&lGolem de cuivre'
+    Description: '&7&oFabriqué à partir de 100% de cuivre.'
   Enderman:
     Name: '&5&lEnderman'
-    Description: '&7&oNow I''m here, now I''m there!'
+    Description: '&7&oMaintenant je suis là, maintenant je suis là !'
   EndermanKing:
     Name: '&d&lEnderman King'
-    Description: '&7&oKing of the endermen'
+    Description: '&7&oRoi des Endermans'
   Slime:
     Name: '&a&lSlime'
-    Description: '&7&oVery slimy'
+    Description: '&7&oTrès visqueux'
   Creeper:
     Name: '&2&lCreeper'
-    Description: '&7&oScare your friends!'
+    Description: '&7&oEffrayez vos amis !'
   Skeleton:
-    Name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    Name: '&7&lSquelette'
+    Description: '&7&oTrès bon archer !'
   Zombie:
     Name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Description: '&7&oCerveaux !!!'
   Drowned:
-    Name: '&3&lDrowned'
-    Description: '&7&oUnderwater zombie'
+    Name: '&3&lNoyé'
+    Description: '&7&oZombie sous-marin'
   Strider:
     Name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    Description: '&7&oJe déteste l''eau !'
   WitherSkeleton:
-    Name: '&7&lWither Skeleton'
-    Description: '&7&oGuardian of the nether fortress'
+    Name: '&7&lSquelette Wither'
+    Description: '&7&oGardien de la forteresse du Nether'
   Ghast:
     Name: '&f&lGhast'
     Description: '&7&o*high-pitched scream*'
   Warden:
     Name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    Description: '&7&oÊtre silencieux...'
   Witch:
-    Name: '&5&lWitch'
-    Description: '&7&oPlease try my potion!'
+    Name: '&5&lSorcière'
+    Description: '&7&oEssayez ma potion s''il te plaît !'
   Guardian:
     Name: '&3&lGuardian'
-    Description: '&7&oProtect the ocean monuments!'
+    Description: '&7&oProtégez les monuments de l''océan !'
   ShepherdVillager:
-    Name: '&e&lShepherd Villager'
+    Name: '&e&lVillageois de bergers'
     Description: '&7&oThe Lonely Shepherd'
   FletcherVillager:
     Name: '&a&lFletcher Villager'
@@ -1234,10 +1234,10 @@ Hats:
     Name: '&6&lLibrarian Villager'
     Description: '&7&oKnowledge is power.'
   Bee:
-    Name: '&e&lBee'
+    Name: '&e&lAbeille'
     Description: '&7&oBe careful!'
   Fox:
-    Name: '&6&lFox'
+    Name: '&d&lRenard'
     Description: '&7&oFast and smart!'
   SnowFox:
     Name: '&f&lSnow Fox'
@@ -1246,7 +1246,7 @@ Hats:
     Name: '&e&lOcelot'
     Description: '&7&oKing of the jungle'
   Frog:
-    Name: '&2&lFrog'
+    Name: '&2&lGrenouille'
     Description: '&7&oEats whatever bugs him.'
   AxolotlPink:
     Name: '&d&lPink Axolotl'
