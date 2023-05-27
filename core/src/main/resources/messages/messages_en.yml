@@ -398,6 +398,13 @@ Mounts:
     entity-displayname: '&l%playername%''s Pig'
     Description: '&7&oOink!'
     Held-Item-Lore: '&7&oPig food on a stick!'
+  SlimeSnake:
+    menu-name: '&c&lSlime Snake'
+    entity-displayname: '&l%playername%''s Slime Snake'
+    Description: |-
+      &7&oThis type of snake comes straight from
+      &7&othe hidden "Secret Swamps of Sliminess".
+      &7&oThis one will serve you eternally.
   Equip: '%prefix% &9You spawned %mountname%'
   Unequip: '%prefix% &9You despawned %mountname%'
   Cant-Spawn: '%prefix% &c&lMonsters can''t spawn here!'

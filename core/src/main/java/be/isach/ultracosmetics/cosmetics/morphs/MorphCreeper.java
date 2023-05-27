@@ -8,17 +8,11 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
-import org.bukkit.entity.Entity;
-import org.bukkit.util.Vector;
-
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
-
-import me.libraryaddict.disguise.DisguiseAPI;
-import me.libraryaddict.disguise.disguisetypes.DisguiseType;
-import me.libraryaddict.disguise.disguisetypes.MobDisguise;
 import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
+import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 
 /**
  * @author iSach
@@ -40,12 +34,8 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
             XSound.ENTITY_CREEPER_PRIMED.play(getPlayer(), 1.4f, 1.5f);
         } else {
             if (creeperWatcher.isIgnited()) {
-                disguise = new MobDisguise(DisguiseType.getType(getType().getDisguiseType()));
-
-                if (!getOwner().canSeeSelfMorph()) disguise.setViewSelfDisguise(false);
-
-                DisguiseAPI.disguiseToAll(getPlayer(), disguise);
-                // disguise.setShowName(true);
+                // Reset disguise
+                onEquip();
             }
             if (charge == 100) {
                 Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
