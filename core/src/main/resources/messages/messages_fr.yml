@@ -741,7 +741,7 @@ Pets:
     Description: '&7&oVotre araignée de quartier amicale !'
   ZombifiedPiglin:
     menu-name: '&d&lPorcelet Zombifié'
-    entity-displayname: '&l%playername%''s Zombified Piglin'
+    entity-displayname: '&lPiglin zombifié de %playername%'
     Description: '&7&oAttaquez-le et tous seront après vous !'
   Drowned:
     menu-name: '&3&lNoyé'
@@ -817,7 +817,7 @@ Pets:
     Description: '&7&oLa raison pour laquelle il existe un butin.'
   Zoglin:
     menu-name: '&c&lZoglin'
-    entity-displayname: '&l%playername%''s Zoglin'
+    entity-displayname: '&lZoglin de %playername%'
     Description: '&7&oA Hoglin zombifié !'
   ZombieVillager:
     menu-name: '&2&lVillageois Zombie'
@@ -983,13 +983,13 @@ Morphs:
     Description: '&7&oWouaf !'
   IronGolem:
     name: '&7&lGolem de fer'
-    Description: '&7&oHates zombies!'
+    Description: '&7&oDéteste les zombies !'
   Wither:
     name: '&8&lWither'
-    Description: '&7&oWatch out for me...'
+    Description: '&7&oFaites attention à moi...'
   Skeleton:
     name: '&7&lSquelette'
-    Description: '&7&oVery good archer!'
+    Description: '&7&oTrès bon archer !'
   Zombie:
     name: '&2&lZombie'
     Description: '&7&oCerveaux !!!'
@@ -1001,10 +1001,10 @@ Morphs:
     Description: '&7&oHISS...'
   Ghast:
     name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Description: '&7&o*Cri fort*'
   MagmaCube:
     name: '&c&lMagma Cube'
-    Description: '&7&oA very hot cube!'
+    Description: '&7&oUn cube très chaud !'
   Horse:
     name: '&a&lCheval'
     Description: '&7&oTagada-tagada'
@@ -1012,41 +1012,41 @@ Morphs:
     name: '&3&lWarden'
     Description: '&7&oÊtre silencieux...'
   Tadpole:
-    name: '&8&lTadpole'
-    Description: '&7&oWill grow into a frog!'
+    name: '&8&lTêtard'
+    Description: '&7&oDeviendra une grenouille !'
   Piglin:
     name: '&6&lPiglin'
     Description: '&7&oDes affaires en OR !'
   Strider:
-    name: '&c&lStrider'
+    name: '&c&lArpenteur'
     Description: '&7&oJe déteste l''eau !'
   Hoglin:
     name: '&c&lHoglin'
-    Description: '&7&oA pig, but in angry.'
+    Description: '&7&oUn cochon, mais en colère.'
   PiglinBrute:
     name: '&6&lPiglin Brute'
-    Description: '&7&oA pretty buff Piglin!'
+    Description: '&7&oUn joli Piglin Brute !'
   Zoglin:
     name: '&c&lZoglin'
-    Description: '&7&oA zombified Hoglin!'
+    Description: '&7&oUn Hoglin zombifié !'
   ZombifiedPiglin:
-    name: '&d&lZombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    name: '&d&lPiglin Zombifié'
+    Description: '&7&oAttaquez-le et tous seront après vous !'
   Panda:
     name: '&a&lPanda'
-    Description: '&7&oLikes bamboo!'
+    Description: '&7&oAime le bambou !'
   Ocelot:
     name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    Description: '&7&oRoi de la Jungle'
   WanderingTrader:
-    name: '&1&lWandering Trader'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    name: '&1&lMarchand errant'
+    Description: '&7&oSe promène partout en essayant de vendre ses affaires !'
   Pillager:
     name: '&7&lPilleur'
-    Description: '&7&oLikes to pillage villages!'
+    Description: '&7&oAime piller les villages !'
   Ravager:
     name: '&8&lRavager'
-    Description: '&7&oA Pillager''s favorite companion!'
+    Description: '&7&oLe compagnon préféré d''un Pillard !'
   Pufferfish:
     name: '&e&lPoisson-globe'
     Description: '&7&oN''aime pas être touché !'
@@ -1054,14 +1054,14 @@ Morphs:
     name: '&c&lSaumon'
     Description: '&7&oIls ont l''air vraiment bon !'
   TropicalFish:
-    name: '&e&lTropical Fish'
-    Description: '&7&oA colorful fish!'
+    name: '&e&lPoisson tropical'
+    Description: '&7&oUn poisson coloré !'
   Turtle:
     name: '&a&lTortue'
-    Description: '&7&oTake your time.'
+    Description: '&7&oPrenez votre temps.'
   Phantom:
     name: '&1&lFantôme'
-    Description: '&7&oHates players that don''t sleep!'
+    Description: '&7&oDéteste les joueurs qui ne dorment pas !'
   Illusioner:
     name: '&1&lIllusioner'
     Description: '&7&oNe peut apparaître qu''avec des commandes !'
@@ -1076,16 +1076,16 @@ Morphs:
     Description: '&7&oVotre banal mulet, de toujours'
   SkeletonHorse:
     name: '&f&lCheval Squelette'
-    Description: '&7&oLook out for lightning strikes!'
+    Description: '&7&oAttention aux coups de foudre !'
   ZombieHorse:
     name: '&2&lCheval Zombie'
     Description: '&7&oLe cheval le plus rare de Minecraft !'
   Shulker:
     name: '&5&lShulker'
-    Description: '&7&oLikes to hide!'
+    Description: '&7&oAime se cacher !'
 Hats:
-  Equip: '%prefix% &9You equipped %hatname% &9hat!'
-  Unequip: '%prefix% &9You unequipped %hatname% &9hat!'
+  Equip: '%prefix% &9Tu as équipé %hatname% !'
+  Unequip: '%prefix% &9Tu as déséquipé %hatname% !'
   Astronaut:
     Name: '&7&lAstronaute'
     Description: '&7&oHouston, on a un problème.'
@@ -1094,46 +1094,46 @@ Hats:
     Description: '&7&oOh dieu, ça m''a fait peur !'
   Angel:
     Name: '&f&lAnge'
-    Description: '&7&oDid it hurt when you fell from heaven?'
+    Description: '&7&oCela a-t-il mal quand vous êtes tombé du paradis ?'
   Embarassed:
     Name: '&7&lEmbarassé'
     Description: '&7&oJe suis un peu embarrassé par cela.'
   Kissy:
     Name: '&c&lKissy'
-    Description: '&7&oWanna kiss?'
+    Description: '&7&oVous voulez un bisou ?'
   Sad:
-    Name: '&9&lSad'
-    Description: '&7&oI''m so sad.'
+    Name: '&9&lTriste'
+    Description: '&7Je suis tellement triste.'
   Cool:
     Name: '&6&lCool'
-    Description: '&7&oI''m such a cool guy.'
+    Description: '&7&oJe suis un gars tellement cool.'
   Surprised:
-    Name: '&4&lSurprised'
-    Description: '&7&oWow, did not expect that!'
+    Name: '&4&lSurprise'
+    Description: '&7&oWaouh, je ne m''attendais pas à ça !'
   Dead:
-    Name: '&8&lDead'
-    Description: '&7&oGot rekt'
+    Name: '&8&lMort'
+    Description: '&7&oA été rekt'
   Crying:
-    Name: '&9&lCrying'
+    Name: '&9&llpleurs'
     Description: '&7&oI cri evrytiem'
   BigSmile:
-    Name: '&6&lBig Smile'
-    Description: '&7&oBecause I''m really happy!'
+    Name: '&6&lGrand sourire'
+    Description: '&7&oParce que je suis tellement heureux !'
   Wink:
-    Name: '&e&lWink'
-    Description: '&7&oYou know what I mean ;)'
+    Name: '&e&lClin d''œil'
+    Description: '&7&oVous savez ce que je veux dire ;)'
   Derp:
     Name: '&3&lDerp'
     Description: '&7&oDerp Derp Derp'
   Smile:
     Name: '&e&lSourire'
-    Description: '&7&oBecause I''m happy'
+    Description: '&7&oParce que je suis heureux'
   Iron:
     Name: '&7&lFer'
-    Description: '&7&oAs hard as iron!'
+    Description: '&7&oAussi dur que le fer !'
   Gold:
     Name: '&e&lOR'
-    Description: '&7&oMy precious!'
+    Description: '&7&oMon précieux !'
   Diamond:
     Name: '&b&lDiamant'
     Description: '&7&oC''est vraiment fort !'
@@ -1207,14 +1207,14 @@ Hats:
     Name: '&3&lNoyé'
     Description: '&7&oZombie sous-marin'
   Strider:
-    Name: '&c&lStrider'
+    Name: '&c&lArpenteur'
     Description: '&7&oJe déteste l''eau !'
   WitherSkeleton:
     Name: '&7&lSquelette Wither'
     Description: '&7&oGardien de la forteresse du Nether'
   Ghast:
     Name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Description: '&7&o*Cri fort*'
   Warden:
     Name: '&3&lWarden'
     Description: '&7&oÊtre silencieux...'
@@ -1226,91 +1226,91 @@ Hats:
     Description: '&7&oProtégez les monuments de l''océan !'
   ShepherdVillager:
     Name: '&e&lVillageois de bergers'
-    Description: '&7&oThe Lonely Shepherd'
+    Description: '&7&oLe Berger Solitaire'
   FletcherVillager:
-    Name: '&a&lFletcher Villager'
-    Description: '&7&oI make arrows.'
+    Name: '&a&lVillageois Bergers'
+    Description: '&7&oJe fais des flèches.'
   LibrarianVillager:
-    Name: '&6&lLibrarian Villager'
-    Description: '&7&oKnowledge is power.'
+    Name: '&6&lVillageois bibliothécaires'
+    Description: '&7&oLa connaissance est la puissance.'
   Bee:
     Name: '&e&lAbeille'
-    Description: '&7&oBe careful!'
+    Description: '&7&oFait attention !'
   Fox:
     Name: '&d&lRenard'
-    Description: '&7&oFast and smart!'
+    Description: '&7&oRapide et intelligent !'
   SnowFox:
-    Name: '&f&lSnow Fox'
-    Description: '&7&oSnowy biomes are my home.'
+    Name: '&f&lRenard de neige'
+    Description: '&7&oLes biomes enneigés sont ma maison.'
   Ocelot:
     Name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    Description: '&7&oRoi de la jungle'
   Frog:
     Name: '&2&lGrenouille'
-    Description: '&7&oEats whatever bugs him.'
+    Description: '&7&oMange tout ce qui le dérange.'
   AxolotlPink:
-    Name: '&d&lPink Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: '&d&lAxolot rose'
+    Description: '&7&oLe Prédateur le plus mignon'
   AxolotlBlue:
-    Name: '&9&lBlue Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: '&9&lAxolol bleu'
+    Description: '&7&oLe Prédateur le plus mignon'
   Turtle:
-    Name: '&a&lTurtle'
-    Description: '&7&oTake your time.'
+    Name: '&a&lTortue'
+    Description: '&7&oPrenez votre temps.'
   Clownfish:
-    Name: '&6&lClownfish'
-    Description: '&7&oYou found him!'
+    Name: '&6&lPoisson clown'
+    Description: '&7&oVous l''avez trouvé !'
   BlackCat:
-    Name: '&2&lBlack Cat'
-    Description: '&7&oA witch''s best friend.'
+    Name: '&2&lChat Noir'
+    Description: '&7&oLe meilleur ami d''une sorcière.'
   Allay:
     Name: '&b&lAllay'
-    Description: '&7&oThe little helper'
+    Description: '&7&oLe petit assistant'
   Bat:
-    Name: '&5&lBat'
-    Description: '&7&oEnjoy the nightlife.'
+    Name: '&5&lChauves-Souris'
+    Description: '&7&oProfitez de la vie nocturne.'
   Glare:
     Name: '&2&lGlare'
-    Description: '&7&oIt hates the darkness.'
+    Description: '&7&oIl déteste l''obscurité.'
   Rana:
     Name: '&a&lRana'
-    Description: '&7&oFroggy hat!'
+    Description: '&7&oChapeau Grenouille !'
   MCD-Steve:
     Name: '&9&lSteve'
-    Description: '&7&oThe best skin'
+    Description: '&7&oLa meilleure peau'
   MCD-Alex:
     Name: '&6&lAlex'
-    Description: '&7&oSteve''s friend'
+    Description: '&7&oL''ami de Steve'
   MCD-QuestGiver:
-    Name: '&5&lQuest Giver'
-    Description: '&7&oI have a quest for you.'
+    Name: '&5&lDonneur de quête'
+    Description: '&7&oJ''ai une quête pour vous.'
   MCD-LuxuryMerchant:
-    Name: '&6&lLuxury Merchant'
-    Description: '&7&oI sell gems.'
+    Name: '&6&lMarchand de luxe'
+    Description: '&7&oJe vend des gemmes.'
   MCD-Necromancer:
-    Name: '&b&lNecromancer'
-    Description: '&7&oSummon the undead!'
+    Name: '&b&lNécromancienne'
+    Description: '&7&oInvoquez les morts-vivants !'
   MCD-NamelessOne:
-    Name: '&2&lNameless One'
-    Description: '&7&oPowerful necromancer'
+    Name: '&2&lUn sans nom'
+    Description: '&7&oNécromancien puissant'
   MCD-StrayKnight:
-    Name: '&7&lStray Knight'
-    Description: '&7&oA lonely knight...'
+    Name: '&7&lChevalier Égaré'
+    Description: '&7&oUn chevalier solitaire...'
   MCD-AncientGuardian:
-    Name: '&5&lAncient Guardian'
-    Description: '&7&oThe oldest guardian'
+    Name: '&5&lAncien gardien'
+    Description: '7&&oLe plus ancien gardien'
   MCD-KeyGolem:
     Name: '&6&lKey Golem'
-    Description: '&7&oUnlock every door!'
+    Description: '&7&oDéverrouillez toutes les portes !'
   MCD-ArchIllager:
     Name: '&3&lArch Illager'
-    Description: '&7&oLeader of the Illagers'
+    Description: '&7&oChef des Illagers'
   MCD-SunkenSkeleton:
-    Name: '&2&lSunken Skeleton'
-    Description: '&7&oUnderwater skeleton'
+    Name: '&2&lSquelette coulé'
+    Description: '&7&oSquelette sous-marin'
   MCD-TheWildfire:
-    Name: '&4&lThe Wildfire'
-    Description: '&7&oHovering inferno'
+    Name: '&4&lLe feu de forêt'
+    Description: '&7&oBrasier planant'
   Mario:
     Name: '&4&lMario'
     Description: '&7&oIt''s-a me! Mario!'
@@ -1319,79 +1319,79 @@ Hats:
     Description: '&7&oLuigi time!'
   Batman:
     Name: '&8&lBatman'
-    Description: '&7&oI''m Batman!'
+    Description: '&7&oJe suis Batman !'
   Chest:
-    Name: '&6&lChest'
-    Description: '&7&oOpen, and close'
+    Name: '&6&lCoffre'
+    Description: '&7&oOuvrir, et fermer'
   Skull:
-    Name: '&f&lSkull'
-    Description: '&7&oWho is headless now?'
+    Name: '&f&lCrâne'
+    Description: '&7&oQui est sans tête maintenant ?'
   JackOLantern:
-    Name: '&6&lJack-O''-Lantern'
-    Description: '&7&oA little pumpkin'
+    Name: '&6&lCitrouille d''Halloween'
+    Description: '&7&oUne petite citrouille'
   Ghost:
-    Name: '&f&lGhost'
+    Name: '&f&lFantôme'
     Description: '&7&o2spooky4u'
   ScaryClown:
-    Name: '&4&lScary Clown'
-    Description: '&7&oHope you are not scared of clowns.'
+    Name: '&4&lClown effrayant'
+    Description: '&7&oJ''espère que vous n''avez pas peur des clowns.'
   Santa:
-    Name: '&4&lSanta'
-    Description: '&7&oHo ho ho! Merry Christmas!'
+    Name: '&4&lPère Noël'
+    Description: '&7&oHo ho ho ! Joyeux noël !'
   Snowman:
-    Name: '&f&lSnowman'
-    Description: '&7&oI don''t have a skull... or bones'
+    Name: '&f&lBonhomme de neige'
+    Description: '&7&oJe n''ai pas de crâne... ni d''os'
   Present:
     Name: '&c&lPresent'
-    Description: '&7&oFrom Santa, to you!'
+    Description: '&7&oDu Père Noël, à vous !'
   Elf:
-    Name: '&a&lElf'
-    Description: '&7&oI work for Santa!'
+    Name: '&a&lElfe'
+    Description: '&7&oJe travaille pour le Père Noël !'
   Bedrock:
     Name: '&8&lBedrock'
-    Description: '&7&oUnbreakable!'
+    Description: '&7&oIncassable !'
   RedCrewmate:
-    Name: '&4&lRed Crewmate'
-    Description: '&7&oRed sus!'
+    Name: '&4&lCoéquipier rouge'
+    Description: '&7&oSus rouge !'
   BlueCrewmate:
-    Name: '&1&lBlue Crewmate'
-    Description: '&7&oBlue sus!'
+    Name: '&4&lCoéquipier bleu'
+    Description: '&7&oSus bleu !'
   GreenCrewmate:
-    Name: '&2&lGreen Crewmate'
-    Description: '&7&oGreen sus!'
+    Name: '&2&lCoéquipier vert'
+    Description: '&7&oSus vert !'
   CyanCrewmate:
-    Name: '&b&lCyan Crewmate'
-    Description: '&7&oCyan sus!'
+    Name: '&b&lCoéquipier cyan'
+    Description: '&7&oSus cyan !'
   LimeCrewmate:
-    Name: '&a&lLime Crewmate'
-    Description: '&7&oLime sus!'
+    Name: '&a&lCoéquipier lime'
+    Description: '&7&oSus lime !'
   YellowCrewmate:
-    Name: '&e&lYellow Crewmate'
-    Description: '&7&oYellow sus!'
+    Name: '&e&lCoéquipier jaune'
+    Description: '&7&oSus jaune !'
   OrangeCrewmate:
-    Name: '&6&lOrange Crewmate'
-    Description: '&7&oOrange sus!'
+    Name: '&6&lCoéquipier orange'
+    Description: '&7&oSus orange !'
   PurpleCrewmate:
-    Name: '&5&lPurple Crewmate'
-    Description: '&7&oPurple sus!'
+    Name: '&5&lCoéquipier violet'
+    Description: '&7&oSus violet !'
   BlackCrewmate:
-    Name: '&0&lBlack Crewmate'
-    Description: '&7&oBlack sus!'
+    Name: '&0&lCoéquipier noir'
+    Description: '&7&oSus noir !'
   WhiteCrewmate:
-    Name: '&f&lWhite Crewmate'
-    Description: '&7&oWhite sus!'
+    Name: '&f&lCoéquipier blanc'
+    Description: '&7&oSus blanc !'
   PinkCrewmate:
-    Name: '&d&lPink Crewmate'
-    Description: '&7&oPink sus!'
+    Name: '&d&lCoéquipier rose'
+    Description: '&7&oSus rose !'
   BrownCrewmate:
-    Name: '&8&lBrown Crewmate'
-    Description: '&7&oBrown sus!'
+    Name: '&8&lCoéquipier marron'
+    Description: '&7&oSus marron !'
   FrogPrince:
-    Name: '&2&lFrog Prince'
-    Description: '&7&oKiss me!'
+    Name: '&2&lPrince grenouille'
+    Description: '&7&oEmbrasse-moi !'
   Notch:
     Name: '&f&lNotch'
-    Description: '&7&oCreator of Minecraft'
+    Description: '&7&oCréateur de Minecraft'
   KitsuneMask:
     Name: '&c&lKitsune Mask'
     Description: '&7&oWhite fox mask'
