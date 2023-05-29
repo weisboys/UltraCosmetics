@@ -10,8 +10,10 @@ import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import net.kyori.adventure.text.format.Style;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
@@ -97,15 +99,15 @@ public class WorldGuardManager {
     public void doCosmeticCheck(Player player, UltraCosmetics uc) {
         if (flagManager == null) return;
         if (!flagManager.flagCheck(UCFlag.COSMETICS, player) && uc.getPlayerManager().getUltraPlayer(player).clear()) {
-            player.sendMessage(MessageManager.getMessage("Region-Disabled"));
+            MessageManager.send(player, "Region-Disabled");
             return;
         }
         Set<Category> blockedCategories = flagManager.categoryFlagCheck(player);
         if (blockedCategories == null) return;
         for (Category category : blockedCategories) {
             if (blockedCategories.contains(category) && uc.getPlayerManager().getUltraPlayer(player).removeCosmetic(category)) {
-                player.sendMessage(MessageManager.getMessage("Region-Disabled-Category")
-                        .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
+                TagResolver.Single placeholder = Placeholder.component("category", MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title").style(Style.empty()));
+                MessageManager.send(player, "Region-Disabled-Category", placeholder);
             }
         }
     }

@@ -15,8 +15,9 @@ import com.cryptomorin.xseries.XMaterial;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
 import org.bukkit.entity.Ageable;
 import org.bukkit.entity.ArmorStand;
@@ -224,7 +225,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
             rename = armorStand;
         }
         if (getOwner().getPetName(getType()) != null) {
-            rename.setCustomName(getOwner().getPetName(getType()));
+            rename.setCustomName(MessageManager.toLegacy(getOwner().getPetName(getType())));
         } else {
             rename.setCustomName(getType().getEntityName(getPlayer()));
         }
@@ -270,13 +271,10 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     }
 
     @Override
-    protected String filterPlaceholders(String message) {
-        String filtered = super.filterPlaceholders(message);
-        String name = getOwner().getPetName(getType());
-        if (name != null) {
-            filtered += " " + ChatColor.GRAY + "(" + name + ChatColor.GRAY + ")";
-        }
-        return filtered;
+    protected Component appendActivateMessage(Component base) {
+        Component name = getOwner().getPetName(getType());
+        if (name == null) return base;
+        return base.append(Component.text(" (", NamedTextColor.GRAY)).append(name).append(Component.text(")", NamedTextColor.GRAY));
     }
 
     public boolean isCustomEntity() {

@@ -116,7 +116,7 @@ public enum Category {
             is = ItemFactory.getItemStackFromConfig("Categories." + configPath + ".Main-Menu-Item");
         }
         ItemMeta itemMeta = is.getItemMeta();
-        itemMeta.setDisplayName(MessageManager.getMessage("Menu." + configPath + ".Button.Name"));
+        itemMeta.setDisplayName(MessageManager.getLegacyMessage("Menu." + configPath + ".Button.Name"));
         is.setItemMeta(itemMeta);
         return is;
     }
@@ -154,11 +154,11 @@ public enum Category {
     }
 
     public String getActivateTooltip() {
-        return MessageManager.getMessage("Menu." + configPath + ".Button.Tooltip-Equip");
+        return MessageManager.getLegacyMessage("Menu." + configPath + ".Button.Tooltip-Equip");
     }
 
     public String getDeactivateTooltip() {
-        return MessageManager.getMessage("Menu." + configPath + ".Button.Tooltip-Unequip");
+        return MessageManager.getLegacyMessage("Menu." + configPath + ".Button.Tooltip-Unequip");
     }
 
     public String getChatPlaceholder() {
@@ -167,14 +167,6 @@ public enum Category {
 
     public String getPermission() {
         return "ultracosmetics." + permission;
-    }
-
-    public String getActivateMessage() {
-        return MessageManager.getMessage(configPath + ".Equip");
-    }
-
-    public String getDeactivateMessage() {
-        return MessageManager.getMessage(configPath + ".Unequip");
     }
 
     public List<? extends CosmeticType<?>> getEnabled() {

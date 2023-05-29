@@ -11,6 +11,8 @@ import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.WeightedSet;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -47,7 +49,10 @@ public class AmmoLoot implements Loot {
         Bukkit.getPluginManager().callEvent(event);
         ammo = event.getAmmo();
 
-        String[] name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%cosmetic%", g.getName()).replace("%ammo%", String.valueOf(ammo)).split("\n");
+        String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Ammo",
+                Placeholder.component("cosmetic", g.getName()),
+                Placeholder.component("ammo", Component.text(ammo))
+        ).split("\n");
 
         player.addAmmo(g, ammo);
         // if the player received more than half of what they could have, send a firework

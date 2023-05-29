@@ -34,14 +34,15 @@ dependencies {
     implementation 'me.gamercoder215:mobchip-bukkit:1.8.1-SNAPSHOT'
     compileOnly 'com.discordsrv:discordsrv:1.26.0'
     compileOnly 'me.soknight:peconomy:2.7.3'
+    implementation "net.kyori:adventure-text-minimessage:4.13.1"
 }
 shadowJar {
     // removes unused classes in 'implementation' path dependencies
-    /*minimize {
+    minimize {
         // Loads classes reflectively
         exclude(dependency('net.wesjd:anvilgui:.*'))
         exclude(dependency('me.gamercoder215:.*:.*'))
-    }*/
+    }
     def path = 'be.isach.ultracosmetics.shaded'
     // XParticle is big and not required so don't shade it.
     // It's not removed by minimize() because it's on the API path I guess?
@@ -51,4 +52,5 @@ shadowJar {
     relocate('org.bstats', path + '.metrics')
     relocate('net.wesjd', path + '.anvilgui')
     relocate('me.gamercoder215.mobchip', path + '.mobchip')
+    relocate('net.kyori.adventure', path + '.adventure')
 }
