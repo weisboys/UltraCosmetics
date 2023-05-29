@@ -1,13 +1,12 @@
 package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.StructureRollback;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -31,50 +30,50 @@ import java.util.Set;
  */
 public class TreasureChestManager implements Listener {
 
-    private static Random random = new Random();
-    private static final List<TreasureLocation> TREASURE_LOCATIONS = new ArrayList<>();
+    private static final Random random = new Random();
+    private final UltraCosmetics ultraCosmetics;
+    private final List<TreasureLocation> TREASURE_LOCATIONS = new ArrayList<>();
 
-    static {
-        if (SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
-            Set<String> locationNames = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations").getKeys(false);
-            for (String locationName : locationNames) {
-                if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) {
-                    continue;
-                }
-                ConfigurationSection location = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations." + locationName);
-                String worldName = location.getString("World", "none");
-                World world = null;
-                if (!worldName.equals("none")) {
-                    world = Bukkit.getWorld(worldName);
-                    if (world == null) {
-                        UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.ERROR, "Invalid world set for location " + locationName + ", using player world");
-                    }
-                }
-                TreasureLocation tloc = new TreasureLocation(world, location.getInt("X", 0), location.getInt("Y", 63), location.getInt("Z", 0));
-                TREASURE_LOCATIONS.add(tloc);
+    public TreasureChestManager(UltraCosmetics ultraCosmetics) {
+        this.ultraCosmetics = ultraCosmetics;
+        if (!SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
+            return;
+        }
+        Set<String> locationNames = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations").getKeys(false);
+        for (String locationName : locationNames) {
+            if (!SettingsManager.getConfig().isConfigurationSection("TreasureChests.Locations." + locationName)) {
+                continue;
             }
-            if (TREASURE_LOCATIONS.size() == 0 && SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled")) {
-                UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "No treasure chest locations are defined, the setting will be ignored");
+            ConfigurationSection location = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Locations." + locationName);
+            String worldName = location.getString("World", "none");
+            World world = null;
+            if (!worldName.equals("none")) {
+                world = Bukkit.getWorld(worldName);
+                if (world == null) {
+                    ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, "Invalid world set for location " + locationName + ", using player world");
+                }
             }
+            TreasureLocation tloc = new TreasureLocation(world, location.getInt("X", 0), location.getInt("Y", 63), location.getInt("Z", 0));
+            TREASURE_LOCATIONS.add(tloc);
+        }
+        if (TREASURE_LOCATIONS.size() == 0) {
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "No treasure chest locations are defined, the setting will be ignored");
         }
     }
 
-    private TreasureChestManager() {
-    }
-
-    private static String getRandomDesign() {
-        Set<String> set = UltraCosmeticsData.get().getPlugin().getConfig().getConfigurationSection("TreasureChests.Designs").getKeys(false);
+    private String getRandomDesign() {
+        Set<String> set = ultraCosmetics.getConfig().getConfigurationSection("TreasureChests.Designs").getKeys(false);
         List<String> list = new ArrayList<>(set);
         return list.get(random.nextInt(set.size()));
     }
 
-    public static void tryOpenChest(Player player) {
-        if (!SettingsManager.getConfig().getBoolean("TreasureChests.Locations.Enabled") || TREASURE_LOCATIONS.size() == 0) {
+    public void tryOpenChest(Player player) {
+        if (TREASURE_LOCATIONS.size() == 0) {
             tryOpenChest(player, null);
             return;
         }
         List<TreasureLocation> locations = new ArrayList<>(TREASURE_LOCATIONS);
-        for (UltraPlayer up : UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayers()) {
+        for (UltraPlayer up : ultraCosmetics.getPlayerManager().getUltraPlayers()) {
             if (up.getCurrentTreasureChest() != null) {
                 locations.remove(up.getCurrentTreasureChest().getTreasureLocation());
             }
@@ -87,17 +86,8 @@ public class TreasureChestManager implements Listener {
         tryOpenChest(player, tloc);
     }
 
-    public static boolean shouldPush(UltraPlayer chestOwner, Entity entity) {
-        if (chestOwner.getBukkitPlayer() == entity || !(entity instanceof LivingEntity)) return false;
-        if (entity instanceof ArmorStand && !((ArmorStand) entity).isVisible()) return false;
-        if (entity.hasMetadata("NPC")) return false;
-        if (chestOwner.getCurrentPet() != null && entity == chestOwner.getCurrentPet().getEntity()) return false;
-        return true;
-    }
-
-    public static void tryOpenChest(Player player, TreasureLocation tpTo) {
-        UltraCosmetics plugin = UltraCosmeticsData.get().getPlugin();
-        UltraPlayer ultraPlayer = plugin.getPlayerManager().getUltraPlayer(player);
+    public void tryOpenChest(Player player, TreasureLocation tpTo) {
+        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
         if (ultraPlayer.getCurrentTreasureChest() != null) {
             return;
         }
@@ -116,7 +106,8 @@ public class TreasureChestManager implements Listener {
         Location targetLoc = tpTo == null ? player.getLocation() : tpTo.toLocation(player);
 
         boolean large = SettingsManager.getConfig().getBoolean("TreasureChests.Large");
-        Area area = new Area(targetLoc, large ? 3 : 2, 1);
+        int range = large ? 3 : 2;
+        Area area = new Area(targetLoc, range, 1);
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
             player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
@@ -129,7 +120,6 @@ public class TreasureChestManager implements Listener {
             return;
         }
 
-        int range = large ? 3 : 2;
         for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, range, range, range)) {
             if (shouldPush(ultraPlayer, ent)) {
                 player.closeInventory();
@@ -151,7 +141,7 @@ public class TreasureChestManager implements Listener {
             tpTo.tpTo(player);
         }
 
-        if (!plugin.getWorldGuardManager().areChestsAllowedHere(player)) {
+        if (!ultraCosmetics.getWorldGuardManager().areChestsAllowedHere(player)) {
             player.closeInventory();
             player.sendMessage(MessageManager.getMessage("Chest-Location.Region-Disabled"));
             if (preLoc != null) {
@@ -164,5 +154,13 @@ public class TreasureChestManager implements Listener {
         String designPath = getRandomDesign();
         player.closeInventory();
         new TreasureChest(player.getUniqueId(), new TreasureChestDesign(designPath), preLoc, tpTo);
+    }
+
+    public static boolean shouldPush(UltraPlayer chestOwner, Entity entity) {
+        if (chestOwner.getBukkitPlayer() == entity || !(entity instanceof LivingEntity)) return false;
+        if (entity instanceof ArmorStand && !((ArmorStand) entity).isVisible()) return false;
+        if (entity.hasMetadata("NPC")) return false;
+        if (chestOwner.getCurrentPet() != null && entity == chestOwner.getCurrentPet().getEntity()) return false;
+        return true;
     }
 }

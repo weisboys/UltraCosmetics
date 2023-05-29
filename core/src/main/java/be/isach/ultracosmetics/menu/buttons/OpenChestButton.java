@@ -19,9 +19,11 @@ public class OpenChestButton extends TreasureButton {
     private final int chestCount = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
     private final String[] noKeysLore = new String[] {"", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage};
     private final String[] hasKeysLore;
+    private final TreasureChestManager treasureChestManager;
 
     public OpenChestButton(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
+        this.treasureChestManager = ultraCosmetics.getTreasureChestManager();
         if (chestMode.equalsIgnoreCase("both")) {
             hasKeysLore = new String[] {"", MessageManager.getMessage("Left-Click-Open-Chest"), MessageManager.getMessage("Right-Click-Simple"), ""};
         } else {
@@ -61,7 +63,7 @@ public class OpenChestButton extends TreasureButton {
             clickData.getMenu().open(player);
         } else {
             // Opens a standard chest, or opens the buy-a-key menu if the player doesn't have enough keys
-            TreasureChestManager.tryOpenChest(p);
+            treasureChestManager.tryOpenChest(p);
         }
     }
 }
