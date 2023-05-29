@@ -33,6 +33,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     protected boolean equipped;
     protected final T cosmeticType;
     private final UUID ownerUniqueId;
+    private final String typeName;
 
     public Cosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         if (owner == null || owner.getBukkitPlayer() == null) {
@@ -43,6 +44,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         this.category = type.getCategory();
         this.ultraCosmetics = ultraCosmetics;
         this.cosmeticType = type;
+        this.typeName = type.getName();
     }
 
     public final void equip() {
@@ -177,8 +179,8 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         return cosmeticType;
     }
 
-    protected String getTypeName() {
-        return getType().getName();
+    public String getTypeName() {
+        return typeName;
     }
 
     protected String filterPlaceholders(String message) {

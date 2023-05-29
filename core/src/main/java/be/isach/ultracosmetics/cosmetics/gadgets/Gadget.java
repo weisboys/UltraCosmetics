@@ -73,7 +73,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
     // Cache the actual material value so we don't have to keep calling parseMaterial
     private final Material material;
 
-    private final int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
+    protected final int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
 
     private final boolean removeWithDrop = SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop");
 
@@ -147,7 +147,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             if (decimalRoundedValue == 0) {
                 String message = MessageManager.getMessage("Gadgets.Gadget-Ready-ActionBar");
                 message = message.replace("%gadgetname%",
-                        TextUtil.filterPlaceHolder(getType().getName()));
+                        TextUtil.filterPlaceHolder(getTypeName()));
                 ActionBar.sendActionBar(getPlayer(), message);
                 play(XSound.BLOCK_NOTE_BLOCK_HAT, getPlayer(), 1.4f, 1.5f);
             }
@@ -186,7 +186,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
             ammo = ChatColor.WHITE.toString() + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
         }
-        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
+        itemStack = ItemFactory.create(getType().getMaterial(), ammo + getTypeName(), MessageManager.getMessage("Gadgets.Lore"));
     }
 
     protected boolean checkRequirements(PlayerInteractEvent event) {
@@ -209,7 +209,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         if (stack == null || stack.getType() != getItemStack().getType() || !stack.hasItemMeta() || !stack.getItemMeta().hasDisplayName()) {
             return false;
         }
-        return stack.getItemMeta().getDisplayName().endsWith(getType().getName());
+        // Case sensitivity causes issues with hex color codes for some reason
+        return stack.getItemMeta().getDisplayName().toLowerCase().endsWith(getTypeName().toLowerCase());
     }
 
     @Override
@@ -250,7 +251,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             String timeLeft = new DecimalFormat("#.#").format(coolDown);
             if (getType().getCountdown() > 1) {
                 getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Countdown-Message")
-                        .replace("%gadgetname%", TextUtil.filterPlaceHolder(getType().getName()))
+                        .replace("%gadgetname%", TextUtil.filterPlaceHolder(getTypeName()))
                         .replace("%time%", timeLeft));
             }
             return;

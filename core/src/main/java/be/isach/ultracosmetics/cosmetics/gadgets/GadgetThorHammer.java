@@ -2,8 +2,6 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.MessageManager;
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.listeners.HammerPickupListener;
@@ -11,17 +9,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.ServerVersion;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XMaterial;
 
 /**
  * Represents an instance of a thor hammer gadget summoned by a player.
@@ -47,8 +41,8 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
             hammer.remove();
         }
         Vector velocity = getPlayer().getEyeLocation().getDirection().multiply(1.4);
-        hammer = ItemFactory.spawnUnpickableItem(ItemFactory.create(XMaterial.IRON_AXE, MessageManager.getMessage("Gadgets.ThorHammer.name")), getPlayer().getEyeLocation(), velocity);
-        getPlayer().getInventory().setItem(SettingsManager.getConfig().getInt("Gadget-Slot"), null);
+        hammer = ItemFactory.spawnUnpickableItem(ItemFactory.create(XMaterial.IRON_AXE, getTypeName()), getPlayer().getEyeLocation(), velocity);
+        getPlayer().getInventory().setItem(slot, null);
         v = getPlayer().getEyeLocation().getDirection().multiply(1.4).add(new Vector(0, 1, 0));
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             if (hammer == null) return;
@@ -56,16 +50,7 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
             v = null;
             Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
                 if (hammer == null) return;
-                ItemStack is;
-                if (UltraCosmeticsData.get().isAmmoEnabled()) {
-                    is = ItemFactory.create(getType().getMaterial(), ChatColor.WHITE + "" + ChatColor.BOLD + getOwner().getAmmo(getType()) + " " + getType().getName(), ChatColor.BLUE + "Gadget");
-                } else {
-                    is = ItemFactory.create(getType().getMaterial(), getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
-                }
-                itemStack = is;
-                getPlayer().getInventory().setItem(SettingsManager.getConfig().getInt("Gadget-Slot"), is);
-                hammer.remove();
-                hammer = null;
+                pickupItem();
             }, 40);
         }, 20);
     }
@@ -93,14 +78,12 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
 
         if (hammer.getTicksLived() <= 5) return;
 
-        ItemStack is;
-        if (UltraCosmeticsData.get().isAmmoEnabled()) {
-            is = ItemFactory.create(getType().getMaterial(), ChatColor.WHITE + "" + ChatColor.BOLD + getOwner().getAmmo(getType()) + " " + getType().getName(), ChatColor.BLUE + "Gadget");
-        } else {
-            is = ItemFactory.create(getType().getMaterial(), getType().getName(), MessageManager.getMessage("Gadgets.Lore"));
-        }
-        itemStack = is;
-        getPlayer().getInventory().setItem((int) SettingsManager.getConfig().get("Gadget-Slot"), is);
+        pickupItem();
+    }
+
+    private void pickupItem() {
+        updateItemStack();
+        getPlayer().getInventory().setItem(slot, itemStack);
         hammer.remove();
         hammer = null;
     }

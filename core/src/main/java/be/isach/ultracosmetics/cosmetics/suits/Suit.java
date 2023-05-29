@@ -35,7 +35,7 @@ public abstract class Suit extends ArmorCosmetic<SuitType> {
     }
 
     protected void setupItemStack() {
-        itemStack = ItemFactory.create(getType().getMaterial(), getType().getName(), "", MessageManager.getMessage("Suits.Suit-Part-Lore"));
+        itemStack = ItemFactory.create(getType().getMaterial(), getTypeName(), "", MessageManager.getMessage("Suits.Suit-Part-Lore"));
     }
 
     @Override
