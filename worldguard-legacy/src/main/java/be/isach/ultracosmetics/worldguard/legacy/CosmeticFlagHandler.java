@@ -1,9 +1,11 @@
 package be.isach.ultracosmetics.worldguard.legacy;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-
+import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.player.UltraPlayerManager;
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.SetFlag;
@@ -13,30 +15,33 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.session.MoveType;
 import com.sk89q.worldguard.session.Session;
 import com.sk89q.worldguard.session.handler.Handler;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.MessageManager;
-import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.player.UltraPlayerManager;
-
 public class CosmeticFlagHandler extends Handler {
     private static final Set<Category> ALL_CATEGORIES = new HashSet<>();
+
     static {
         ALL_CATEGORIES.addAll(Arrays.asList(Category.values()));
     }
-    private final UltraPlayerManager pm;
+
+    private final UltraCosmetics ultraCosmetics = UltraCosmeticsData.get().getPlugin();
+    private final UltraPlayerManager playerManager = ultraCosmetics.getPlayerManager();
     private final StateFlag cosmeticsFlag;
-    private final SetFlag<Category> categoryFlag;   
+    private final StateFlag showroomFlag;
+    private final SetFlag<Category> categoryFlag;
     private Set<Category> lastCategoryFlagValue = null;
-    protected CosmeticFlagHandler(Session session, StateFlag cosmeticsFlag, SetFlag<Category> categoryFlag) {
+    private Boolean lastShowroomFlagValue;
+
+    protected CosmeticFlagHandler(Session session, StateFlag cosmeticsFlag, StateFlag showroomFlag, SetFlag<Category> categoryFlag) {
         super(session);
-        pm = UltraCosmeticsData.get().getPlugin().getPlayerManager();
         this.cosmeticsFlag = cosmeticsFlag;
+        this.showroomFlag = showroomFlag;
         this.categoryFlag = categoryFlag;
     }
 
@@ -46,9 +51,10 @@ public class CosmeticFlagHandler extends Handler {
         if (Bukkit.getPlayer(player.getUniqueId()) == null) return true;
 
         LocalPlayer wrappedPlayer = getSession().getManager().getPlugin().wrapPlayer(player);
+        UltraPlayer ultraPlayer = playerManager.getUltraPlayer(player);
         State currentValue = toSet.queryState(wrappedPlayer, cosmeticsFlag);
         if (currentValue == State.DENY) {
-            if (pm.getUltraPlayer(player).clear()) {
+            if (ultraPlayer.clear()) {
                 player.sendMessage(MessageManager.getMessage("Region-Disabled"));
             }
             // This is effectively what DENY represents for the `uc-cosmetics` flag
@@ -57,14 +63,15 @@ public class CosmeticFlagHandler extends Handler {
         }
         Set<Category> categoryValue = toSet.queryValue(wrappedPlayer, categoryFlag);
         Set<Category> needsUpdating = compareSets(categoryValue, lastCategoryFlagValue);
-        // This check is not actually required, but it saves the call to getUltraPlayer if we don't actually need it.
-        if (needsUpdating.size() > 0) {
-            UltraPlayer up = pm.getUltraPlayer(player);
-            for (Category cat : needsUpdating) {
-                if (up.removeCosmetic(cat)) {
-                    player.sendMessage(MessageManager.getMessage("Region-Disabled-Category").replace("%category%", cat.getMessagesName()));
-                }
+        for (Category cat : needsUpdating) {
+            if (ultraPlayer.removeCosmetic(cat)) {
+                player.sendMessage(MessageManager.getMessage("Region-Disabled-Category").replace("%category%", cat.getMessagesName()));
             }
+        }
+        // [== ALLOW] is NOT the same as [!= DENY], queryState returns null if unset.
+        boolean newShowroomState = toSet.queryState(wrappedPlayer, showroomFlag) == State.ALLOW;
+        if (lastShowroomFlagValue == null || lastShowroomFlagValue != newShowroomState) {
+            ultraCosmetics.getWorldGuardManager().showroomFlagChange(ultraPlayer, newShowroomState);
         }
         lastCategoryFlagValue = categoryValue;
         return true;
@@ -73,10 +80,10 @@ public class CosmeticFlagHandler extends Handler {
     /**
      * Returns any values in currentSet that are not in previousSet,
      * or an empty set if no comparison is required.
-     * 
+     *
      * @param currentSet The active set of categories
-     * @param lastSet The last known active set of categories
-     * @return a set containing any Categories not present in previousSet  
+     * @param lastSet    The last known active set of categories
+     * @return a set containing any Categories not present in previousSet
      */
     private Set<Category> compareSets(Set<Category> currentSet, Set<Category> lastSet) {
         Set<Category> newValues = new HashSet<>();

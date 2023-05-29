@@ -82,8 +82,7 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
     }
 
     private void pickupItem() {
-        updateItemStack();
-        getPlayer().getInventory().setItem(slot, itemStack);
+        equipItem();
         hammer.remove();
         hammer = null;
     }

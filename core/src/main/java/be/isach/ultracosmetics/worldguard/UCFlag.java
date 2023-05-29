@@ -6,7 +6,7 @@ public enum UCFlag {
     COSMETICS(new StateFlag("uc-cosmetics", true)),
     TREASURE(new StateFlag("uc-treasurechest", true)),
     AFFECT_PLAYERS(new StateFlag("uc-affect-players", true)),
-    ;
+    SHOWROOM(new StateFlag("uc-showroom", false));
 
     private final StateFlag flag;
 

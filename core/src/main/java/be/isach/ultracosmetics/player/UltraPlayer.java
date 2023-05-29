@@ -143,6 +143,17 @@ public class UltraPlayer {
     }
 
     /**
+     * Checks if the player can equip a cosmetic, whether due to permissions or a showroom.
+     *
+     * @param type the type of cosmetic to check for
+     * @return true if the cosmetic can be equipped
+     */
+    public boolean canEquip(CosmeticType<?> type) {
+        return ultraCosmetics.getWorldGuardManager().isInShowroom(getBukkitPlayer())
+                || ultraCosmetics.getPermissionManager().hasPermission(this, type);
+    }
+
+    /**
      * Sets the cooldown of a gadget.
      *
      * @param type     The gadget.

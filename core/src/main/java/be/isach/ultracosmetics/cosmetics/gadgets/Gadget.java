@@ -79,6 +79,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     private final boolean showCooldownInBar = UltraCosmeticsData.get().displaysCooldownInBar();
 
+    private final boolean requiresAmmo = UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo();
+
     private boolean handledThisTick = false;
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -99,8 +101,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             return false;
         }
 
-        updateItemStack();
-        getPlayer().getInventory().setItem(slot, itemStack);
+        equipItem();
         return true;
     }
 
@@ -183,10 +184,15 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     public void updateItemStack() {
         String ammo = "";
-        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
+        if (requiresAmmo && !getUltraCosmetics().getWorldGuardManager().isInShowroom(getPlayer())) {
             ammo = ChatColor.WHITE.toString() + ChatColor.BOLD + getOwner().getAmmo(getType()) + " ";
         }
         itemStack = ItemFactory.create(getType().getMaterial(), ammo + getTypeName(), MessageManager.getMessage("Gadgets.Lore"));
+    }
+
+    public void equipItem() {
+        updateItemStack();
+        getPlayer().getInventory().setItem(slot, this.itemStack);
     }
 
     protected boolean checkRequirements(PlayerInteractEvent event) {
@@ -234,7 +240,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             return;
         }
 
-        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo() && ultraPlayer.getAmmo(getType()) < 1) {
+        boolean inShowroom = getUltraCosmetics().getWorldGuardManager().isInShowroom(player);
+        if (requiresAmmo && ultraPlayer.getAmmo(getType()) < 1 && !inShowroom) {
             if (UltraCosmeticsData.get().isAmmoPurchaseEnabled() && getUltraCosmetics().getEconomyHandler().isUsingEconomy()) {
                 getUltraCosmetics().getMenus().openAmmoPurchaseMenu(getType(), getOwner(), () -> {
                 });
@@ -257,10 +264,9 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             return;
         }
         ultraPlayer.setCoolDown(getType(), getType().getCountdown(), getType().getRunTime());
-        if (UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo()) {
+        if (requiresAmmo && !inShowroom) {
             ultraPlayer.removeAmmo(getType());
-            updateItemStack();
-            getPlayer().getInventory().setItem(slot, this.itemStack);
+            equipItem();
         }
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK) {
             lastClickedBlock = event.getClickedBlock();

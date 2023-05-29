@@ -37,8 +37,7 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
     @Override
     protected void filterItem(ItemStack itemStack, GadgetType gadgetType, UltraPlayer player) {
-        if (!UltraCosmeticsData.get().isAmmoEnabled() || !gadgetType.requiresAmmo()
-                || !ultraCosmetics.getPermissionManager().hasPermission(player, gadgetType)) {
+        if (!UltraCosmeticsData.get().isAmmoEnabled() || !gadgetType.requiresAmmo() || !player.canEquip(gadgetType)) {
             return;
         }
         ItemMeta itemMeta = itemStack.getItemMeta();

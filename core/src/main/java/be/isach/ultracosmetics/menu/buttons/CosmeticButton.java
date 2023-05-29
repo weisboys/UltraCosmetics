@@ -33,8 +33,7 @@ public abstract class CosmeticButton implements Button {
     private ItemStack stack = null;
 
     public static CosmeticButton fromType(CosmeticType<?> cosmeticType, UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics) {
-        if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled")
-                && !ultraCosmetics.getPermissionManager().hasPermission(ultraPlayer, cosmeticType)) {
+        if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled") && !ultraPlayer.canEquip(cosmeticType)) {
             return new CosmeticNoPermissionButton(ultraCosmetics, cosmeticType);
         }
         if (cosmeticType instanceof GadgetType) {
@@ -90,14 +89,14 @@ public abstract class CosmeticButton implements Button {
         UltraPlayer ultraPlayer = data.getClicker();
         ItemStack clicked = data.getClicked();
         if (data.getClick().isRightClick()) {
-            if (pm.hasPermission(ultraPlayer, cosmeticType)) {
+            if (ultraPlayer.canEquip(cosmeticType)) {
                 handleRightClick(data);
                 return false;
             }
         }
 
         if (ignoreTooltip || startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getActivateTooltip())) {
-            if (pm.hasPermission(ultraPlayer, cosmeticType)) {
+            if (ultraPlayer.canEquip(cosmeticType)) {
                 cosmeticType.equip(ultraPlayer, ultraCosmetics);
                 if (ultraPlayer.hasCosmetic(cosmeticType.getCategory())) {
                     return handleActivate(data);
@@ -136,7 +135,7 @@ public abstract class CosmeticButton implements Button {
     }
 
     private void addPurchaseLore(ItemStack stack, UltraPlayer player) {
-        if (price > 0 && !pm.hasPermission(player, cosmeticType) && allowPurchase) {
+        if (price > 0 && !player.canEquip(cosmeticType) && allowPurchase) {
             ItemMeta meta = stack.getItemMeta();
             List<String> lore = meta.getLore();
             lore.add("");

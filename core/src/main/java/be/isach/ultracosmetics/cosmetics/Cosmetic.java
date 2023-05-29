@@ -48,27 +48,28 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     }
 
     public final void equip() {
+        Player player = getPlayer();
         if (!cosmeticType.isEnabled()) {
-            getPlayer().sendMessage(MessageManager.getMessage("Cosmetic-Disabled"));
+            player.sendMessage(MessageManager.getMessage("Cosmetic-Disabled"));
             return;
         }
 
-        if (!ultraCosmetics.getPermissionManager().hasPermission(getPlayer(), cosmeticType)) {
-            getPlayer().sendMessage(MessageManager.getMessage("No-Permission"));
+        if (!owner.canEquip(cosmeticType)) {
+            player.sendMessage(MessageManager.getMessage("No-Permission"));
             return;
         }
 
-        if (PlayerAffectingCosmetic.isVanished(getPlayer()) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
+        if (PlayerAffectingCosmetic.isVanished(player) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
             owner.clear();
-            getPlayer().sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
+            player.sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
             return;
         }
-        CosmeticRegionState state = ultraCosmetics.getWorldGuardManager().allowedCosmeticsState(getPlayer(), category);
+        CosmeticRegionState state = ultraCosmetics.getWorldGuardManager().allowedCosmeticsState(player, category);
         if (state == CosmeticRegionState.BLOCKED_ALL) {
-            getPlayer().sendMessage(MessageManager.getMessage("Region-Disabled"));
+            player.sendMessage(MessageManager.getMessage("Region-Disabled"));
             return;
         } else if (state == CosmeticRegionState.BLOCKED_CATEGORY) {
-            getPlayer().sendMessage(MessageManager.getMessage("Region-Disabled-Category")
+            player.sendMessage(MessageManager.getMessage("Region-Disabled-Category")
                     .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
             return;
         }
