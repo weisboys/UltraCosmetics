@@ -1393,344 +1393,344 @@ Hats:
     Name: '&f&lNotch'
     Description: '&7&oCréateur de Minecraft'
   KitsuneMask:
-    Name: '&c&lKitsune Mask'
-    Description: '&7&oWhite fox mask'
+    Name: '&c&lMasque Kitsune'
+    Description: '&7&oMasque de renard blanc'
   Goblin:
     Name: '&9&lGoblin'
-    Description: '&7&oSneaky!'
+    Description: '&7&oSournois !'
   Unicorn:
     Name: '&d&lUnicorn'
-    Description: '&7&oBe magical!'
+    Description: '&7&oSoyez magique !'
   Ogre:
     Name: '&2&lOgre'
-    Description: '&7&oI''m hungry.'
+    Description: '&7&oJ''ai faim.'
   GreenDragon:
-    Name: '&a&lGreen Dragon'
-    Description: '&7&oBe a dragon.'
+    Name: '&a&lDragon vert'
+    Description: '&7&oSoyez un dragon.'
   GigaChad:
     Name: '&7&lGigaChad'
-    Description: '&7&oEmbrace masculinity!'
+    Description: '&7&oAdoptez la masculinité !'
   Anubis:
     Name: '&6&lAnubis'
-    Description: '&7&oAncient Egyptian god'
+    Description: '&7&oDieu égyptien antique'
   Bread:
-    Name: '&f&lBread'
-    Description: '&7&oFreshly baked'
+    Name: '&f&lPain'
+    Description: '&7&oFraîchement cuit'
   Cheese:
-    Name: '&e&lCheese'
-    Description: '&7&oSay cheese!'
+    Name: '&e&lFromage'
+    Description: '&7&oDites "cheese" !'
   Pancakes:
-    Name: '&f&lPancakes'
-    Description: '&7&oBetter with syrup!'
+    Name: '&f&lCrêpes'
+    Description: '&7&oC''est mieux avec du sirop !'
   Cake:
-    Name: '&c&lCake'
-    Description: '&7&oMmmm, cake.'
+    Name: '&c&lGâteau'
+    Description: '&7&oMmmm, gâteau.'
   Cookie:
     Name: '&6&lCookie'
-    Description: '&7&oChocolate chips included!'
+    Description: '&7&oPépites de chocolat incluses !'
   CandyCane:
-    Name: '&c&lCandy &f&lCane'
-    Description: '&7&oA bit of tooth-breaking'
+    Name: '&c&lBonbon &f&lCane'
+    Description: '&7&oUn peu casse dents'
   Chocolate:
-    Name: '&a&lChocolate'
-    Description: '&7&oDon''t feed your dog with this!'
+    Name: '&a&lChocolat'
+    Description: '&7&oNe nourrissez pas votre chien avec ça !'
   WhiteChocolate:
-    Name: '&f&lWhite Chocolate'
-    Description: '&7&oA bit more creamy'
+    Name: '&f&lChocolat blanc'
+    Description: '&7&oUn peu plus crémeux'
   Apple:
-    Name: '&4&lApple'
-    Description: '&7&oNot the company'
+    Name: '&4&lPomme'
+    Description: '&7&oPas la société'
   Melon:
     Name: '&a&lMelon'
-    Description: '&7&oDon''t smash it with your head'
+    Description: '&7&oNe l''écrasez pas avec votre tête'
   CarvedPumpkin:
-    Name: '&6&lCarved Pumpkin'
-    Description: '&7&oWho turned this thing off?'
+    Name: '&6&lCitrouille sculptée'
+    Description: '&7&oQui a éteint ce truc ?'
   Strawberry:
-    Name: '&c&lStrawberry'
-    Description: '&7&oDo these grow on trees?'
+    Name: '&c&lFraise'
+    Description: '&7&oEst-ce que ceux-ci poussent sur les arbres ?'
   Coconut:
-    Name: '&f&lCoconut'
-    Description: '&7&oParadise'
+    Name: '&f&lNoix de coco'
+    Description: '&7&oParadis'
   Taco:
     Name: '&e&lTaco'
-    Description: '&7&oLet''s go for some tacos!'
+    Description: '&7&oAllons-y pour des tacos !'
   Bacon:
     Name: '&f&lBacon'
-    Description: '&7&oEverything''s better with bacon.'
+    Description: '&7&oTout est meilleur avec du bacon.'
   Fries:
-    Name: '&6&lFries'
-    Description: '&7&oHamburger''s best friend'
+    Name: '&6&lFrites'
+    Description: '&7&oLe meilleur ami du hamburger'
   Hamburger:
     Name: '&6&lHamburger'
-    Description: '&7&oThe classic fastfood!'
+    Description: '&7&oLe fast-food classique !'
   Popcorn:
     Name: '&6&lPopcorn'
-    Description: '&7&oThe classic movie snack!'
+    Description: '&7&oLe goûter classique du cinéma !'
   WhiteDonut:
-    Name: '&f&lWhite Donut'
-    Description: '&7&oLike a donut, but in white!'
+    Name: '&f&lBeignet blanc'
+    Description: '&7&oComme un beignet, mais en blanc !'
   PinkDonut:
-    Name: '&d&lPink Donut'
-    Description: '&7&oHomer''s favorites'
+    Name: '&d&lBeignet rose'
+    Description: '&7&oLes favoris d''Homer'
   ChocolateDonut:
-    Name: '&a&lChocolate Donut'
-    Description: '&7&oA better donut!'
+    Name: '&a&lBeignet au chocolat'
+    Description: '&7&oUn meilleur beignet !'
   Pie:
     Name: '&4&lPie'
-    Description: '&7&oI like pie'
+    Description: '&7&oJ''aime la pie'
   A:
     Name: '&6&lA'
-    Description: '&7&oThe first letter in the alphabet!'
+    Description: '&7&oLa première lettre de l''alphabet !'
   B:
     Name: '&4&lB'
-    Description: '&7&oThe second letter in the alphabet!'
+    Description: '&7&oLa deuxième lettre de l''alphabet !'
   C:
     Name: '&2&lC'
-    Description: '&7&oThe third letter in the alphabet!'
+    Description: '&7&oLa troisième lettre de l''alphabet !'
   D:
     Name: '&b&lD'
-    Description: '&7&oThe fourth letter in the alphabet!'
+    Description: '&7&oLa quatrième lettre de l''alphabet !'
   E:
     Name: '&e&lE'
-    Description: '&7&oThe fifth letter in the alphabet!'
+    Description: '&7&oLa cinquième lettre de l''alphabet !'
   F:
     Name: '&5&lF'
-    Description: '&7&oThe sixth letter in the alphabet!'
+    Description: '&7&oLa sixième lettre de l''alphabet !'
   G:
     Name: '&d&lG'
-    Description: '&7&oThe seventh letter in the alphabet!'
+    Description: '&7&oLa septième lettre de l''alphabet !'
   H:
     Name: '&a&lH'
-    Description: '&7&oThe eighth letter in the alphabet!'
+    Description: '&7&oLa huitième lettre de l''alphabet !'
   I:
     Name: '&6&lI'
-    Description: '&7&oThe ninth letter in the alphabet!'
+    Description: '&7&oLa neuvième lettre de l''alphabet !'
   J:
     Name: '&4&lJ'
-    Description: '&7&oThe tenth letter in the alphabet!'
+    Description: '&7&oLa dixième lettre de l''alphabet !'
   K:
     Name: '&2&lK'
-    Description: '&7&oThe eleventh letter in the alphabet!'
+    Description: '&7&oLa onzième lettre de l''alphabet !'
   L:
     Name: '&b&lL'
-    Description: '&7&oThe twelfth letter in the alphabet!'
+    Description: '&7&oLa douzième lettre de l''alphabet !'
   M:
     Name: '&e&lM'
-    Description: '&7&oThe thirteenth letter in the alphabet!'
+    Description: '&7&oLa treizième lettre de l''alphabet !'
   N:
     Name: '&5&lN'
-    Description: '&7&oThe fourteenth letter in the alphabet!'
+    Description: '&7&oLa quatorzième lettre de l''alphabet !'
   O:
     Name: '&d&lO'
-    Description: '&7&oThe fifteenth letter in the alphabet!'
+    Description: '&7&oLa quinzième lettre de l''alphabet !'
   P:
     Name: '&a&lP'
-    Description: '&7&oThe sixteenth letter in the alphabet!'
+    Description: '&7&oLa seizième lettre de l''alphabet !'
   Q:
     Name: '&6&lQ'
-    Description: '&7&oThe seventeenth letter in the alphabet!'
+    Description: '&7&oLa dix-septième lettre de l''alphabet !'
   R:
     Name: '&4&lR'
-    Description: '&7&oThe eighteenth letter in the alphabet!'
+    Description: '&7&oLa dix-huitième lettre de l''alphabet !'
   S:
     Name: '&2&lS'
-    Description: '&7&oThe nineteenth letter in the alphabet!'
+    Description: '&7&oLa dix-neuvième lettre de l''alphabet !'
   T:
     Name: '&b&lT'
-    Description: '&7&oThe twentieth letter in the alphabet!'
+    Description: '&7&oLa vingtième lettre de l''alphabet !'
   U:
     Name: '&e&lU'
-    Description: '&7&oThe twenty-first letter in the alphabet!'
+    Description: '&7&oLa vingt-première lettre de l''alphabet !'
   V:
     Name: '&5&lV'
-    Description: '&7&oThe twenty-second letter in the alphabet!'
+    Description: '&7&oLa vingt-deuxième lettre de l''alphabet !'
   W:
     Name: '&d&lW'
-    Description: '&7&oThe twenty-third letter in the alphabet!'
+    Description: '&7&oLa vingt-troisième lettre de l''alphabet !'
   X:
     Name: '&a&lX'
-    Description: '&7&oThe twenty-fourth letter in the alphabet!'
+    Description: '&7&oLa vingt-quatrième lettre de l''alphabet !'
   Y:
     Name: '&6&lY'
-    Description: '&7&oThe twenty-fifth letter in the alphabet!'
+    Description: '&7&oLa vingt-cinquième lettre de l''alphabet !'
   Z:
     Name: '&4&lZ'
-    Description: '&7&oThe twenty-sixth letter in the alphabet!'
+    Description: '&7&oLa vingt-sixième lettre de l''alphabet !'
 Suits:
   Rave:
-    whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
-    helmet-name: '&b&lR&a&la&e&lv&6&le &f&lHelmet'
-    chestplate-name: '&b&lR&a&la&e&lv&6&le &f&lChestplate'
-    leggings-name: '&b&lR&a&la&e&lv&6&le &f&lLeggings'
-    boots-name: '&b&lR&a&la&e&lv&6&le &f&lBoots'
-    Description: '&7&oSuch amazing colors!'
+    whole-equip: '&f&lensemble &b&lR&a&la&e&lv&6&le &f&lcostume'
+    helmet-name: '&b&lR&a&la&e&lv&6&le &f&lCasque'
+    chestplate-name: '&b&lR&a&la&e&lv&6&le &f&lPlastron'
+    leggings-name: '&b&lR&a&la&e&ni&6&le &f&lJambières'
+    boots-name: '&b&lR&a&la&e&ni&6&le &f&lBottes'
+    Description: '&7&oDes couleurs incroyables !'
   Astronaut:
-    whole-equip: '&f&lwhole &f&lAstronaut &f&lsuit'
-    helmet-name: '&f&lAstronaut &f&lHelmet'
-    chestplate-name: '&f&lAstronaut &f&lChestplate'
-    leggings-name: '&f&lAstronaut &f&lLeggings'
-    boots-name: '&f&lAstronaut &f&lBoots'
-    Description: '&7&oHouston?'
+    whole-equip: '&f&Costume &f&ld''Astronaute &f&entier'
+    helmet-name: '&f&lCasque &f&ld''Astronaute'
+    chestplate-name: '&f&lPlastron &f&ld''Astronaute'
+    leggings-name: '&f&lJambière &f&ld''Astronaute'
+    boots-name: '&f&lBottes &f&ld''Astronaute'
+    Description: '&7&oHouston ?'
   Diamond:
-    whole-equip: '&f&lwhole &b&lDiamond &f&lsuit'
-    helmet-name: '&b&lDiamond &f&lHelmet'
-    chestplate-name: '&b&lDiamond &f&lChestplate'
-    leggings-name: '&b&lDiamond &f&lLeggings'
-    boots-name: '&b&lDiamond &f&lBoots'
+    whole-equip: '&f&lCostume &b&lde Diamant &f&lentier'
+    helmet-name: '&b&lCasque &f&de diamant'
+    chestplate-name: '&b&lPlastron &f&lde diamant'
+    leggings-name: '&b&lJambière &f&de diamant'
+    boots-name: '&b&lBottes &f&de diamant'
     Description: |-
-      &7&oShow your Mining skills
-      &7&owith this amazing outfit!
+      &7&oMontrez vos compétences minières
+      &7&oavec cette superbe tenue !
   Santa:
-    whole-equip: '&f&lwhole &4&lSanta &f&lsuit'
-    helmet-name: '&4&lSanta &f&lHelmet'
-    chestplate-name: '&4&lSanta &f&lChestplate'
-    leggings-name: '&4&lSanta &f&lLeggings'
-    boots-name: '&4&lSanta &f&lBoots'
-    Description: '&7&oBecome Santa and deliver presents!'
+    whole-equip: '&f&lCostume &4&lde Père Nöel &f&lentier'
+    helmet-name: '&f&lCasque &4&ldu Père Noël'
+    chestplate-name: '&4&lPlastron &f&ldu Père Nöel'
+    leggings-name: '&4&lJambière &f&du Père Nöel'
+    boots-name: '&4&lBottes &f&ldu Père Noël'
+    Description: '&7&oDevenez le Père Noël et offrez des cadeaux !'
   Frozen:
-    whole-equip: '&f&lwhole &b&lFrozen &f&lsuit'
-    helmet-name: '&b&lFrozen &f&lHelmet'
-    chestplate-name: '&b&lFrozen &f&lChestplate'
-    leggings-name: '&b&lFrozen &f&lLeggings'
-    boots-name: '&b&lFrozen &f&lBoots'
+    whole-equip: '&f&lCostume &b&lglacé &f&lentier'
+    helmet-name: '&b&lCasque &f&lglacé'
+    chestplate-name: '&b&lPlastron &f&lglacé'
+    leggings-name: '&b&lJambière &f&lglacé'
+    boots-name: '&b&lBottes &f&lglacé'
     Description: |-
-      &7&oThis suit belongs to the
-      &7&oLord of the Frozen Lands!
+      &7&oCe costume appartient à la
+      &7&oseigneur des terres gelées !
   Cursed:
-    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
-    helmet-name: '&5&lCursed &f&lHelmet'
-    chestplate-name: '&5&lCursed &f&lChestplate'
-    leggings-name: '&5&lCursed &f&lLeggings'
-    boots-name: '&5&lCursed &f&lBoots'
-    Description: '&7&oMysterious and spooky.'
+    whole-equip: '&f&lCostume &5&lmaudit &f&lentier'
+    helmet-name: '&5&lCasque &f&lmaudit'
+    chestplate-name: '&5&lPlastron &f&lmaudit'
+    leggings-name: '&5&lJambière &f&lmaudite'
+    boots-name: '&5&lBottes &f&lmaudites'
+    Description: '&7&oMystérieux et effrayant.'
   Slime:
-    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
-    helmet-name: '&a&lSlime &f&lHelmet'
-    chestplate-name: '&a&lSlime &f&lChestplate'
-    leggings-name: '&a&lSlime &f&lLeggings'
-    boots-name: '&a&lSlime &f&lBoots'
+    whole-equip: '&f&lCostume &a&lvisqueux &f&lentier'
+    helmet-name: '&a&lCasque &f&lvisqueux'
+    chestplate-name: '&a&lPlastron &f&lvase'
+    leggings-name: '&a&lJambière &f&lvisqueuse'
+    boots-name: '&a&lBottes &f&lvisqueuses'
     Description: |-
-      &7&oSlimy green suit.
-      &7&oThe slimes will love it!
-  Equip: '%prefix% &9You equipped %suitname%!'
-  Unequip: '%prefix% &9You unequipped %suitname%!'
-  Suit-Part-Lore: '&9Suits Part'
-  Whole-Equip-Lore: '&7&oEquip the whole suit!'
+      &7&oCostume vert visqueux.
+      &7&oLes slimes vont adorer !
+  Equip: '%prefix% &9Tu as équipé %suitname% !'
+  Unequip: '%prefix% &9Tu as déséquipé %suitname% !'
+  Suit-Part-Lore: '&9Pièce de costumes'
+  Whole-Equip-Lore: '&7&oÉquipez l''ensemble du costume !'
   Must-Remove: [ ]
 Emotes:
-  Equip: '%prefix% &9You equipped %emotename%'
-  Unequip: '%prefix% &9You unequipped %emotename%'
+  Equip: '%prefix% &9Tu as équipé %emotename%'
+  Unequip: '%prefix% &9Tu as déséquipé %emotename%'
   Cry:
-    Name: '&9&lCry'
-    Description: '&7&oAre you really sad? :('
+    Name: '&9&lPleure'
+    Description: '&7&oEs-tu vraiment triste ? :('
   Angry:
     Name: '&c&Furieux'
-    Description: '&7&oShow your rage to the other players!'
+    Description: '&7&oMontrez votre rage aux autres joueurs !'
   Happy:
     Name: '&e&lHeureux'
-    Description: '&7&oDon''t worry, be happy!'
+    Description: '&7&oNe vous inquiétez pas, soyez heureux !'
   Cheeky:
-    Name: '&6&lCheeky'
-    Description: '&7&oYou like being cheeky? Well, this emote is for you!'
+    Name: '&6&lEffrontée'
+    Description: '&7&oVous aimez être culotté ? Eh bien, cette émote est pour vous !'
   Love:
     Name: '&4&lAmour'
-    Description: '&7&oYou have beautiful eyes, do you know that?'
+    Description: '&7&oTu as de beaux yeux, tu le sais ?'
   DealWithIt:
-    Name: '&7&lDeal With it'
-    Description: '&7&oDo you feel like showing off? This emote is for you!'
+    Name: '&7&lFaites avec'
+    Description: '&7&oEnvie de vous montrer ? Cette emote est pour vous !'
   Cool:
     Name: '&9&lCool'
-    Description: '&7&oKeep cool man!'
+    Description: '&7&oReste cool mec !'
   Surprised:
     Name: '&6&lSurprise'
-    Description: '&7&oOH LORD!!!'
+    Description: '&7&oOH SEIGNEUR !!!'
   Wink:
-    Name: '&a&lWink'
+    Name: '&a&lClin d''œil'
     Description: '&7&oVous vous amusez ? Faites savoir à quelqu''un que vous êtes dans la plaisanterie !'
   RaiseEyebrows:
-    Name: '&3&lRaise Eyebrows'
-    Description: '&7&oSurprised?'
+    Name: '&3&lLever les sourcils'
+    Description: '&7&oSurpris ?'
   ScaryCandle:
-    Name: '&5&lScary Candle'
-    Description: '&7&oHappy Halloween!'
+    Name: '&5&lBougie effrayante'
+    Description: '&7&oJoyeux Halloween !'
   GlowingPumpkin:
-    Name: '&6&lGlowing Pumpkin'
+    Name: '&6&lCitrouille rayonnante'
     Description: '&7&oJack O''Slime'
   LovestruckAllay:
     Name: '&b&lLovestruck Allay'
-    Description: '&7&oAre we falling in love?'
+    Description: '&7&oSommes-nous en train de tomber amoureux ?'
 Projectile-Effects:
-  Equip: '%prefix% &9You equipped %projectile-effectname%'
-  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Equip: '%prefix% &9Tu as équipé %projectile-effectname%'
+  Unequip: '%prefix% &9Tu as déséquipé %projectile-effectname%'
   Rainbow:
     name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
-    Description: '&7&oRainbow-colored particles'
+    Description: '&7&oParticules de couleur arc-en-ciel'
   Christmas:
-    name: '&4&lChrist&f&lmas'
-    Description: '&7&oMerry Christmas!'
+    name: '&4&lNo&f&lël'
+    Description: '&7&oJoyeux Noël !'
   RedstoneHelix:
-    name: '&4&lRedstone Helix'
-    Description: '&7&oRotating, red particles'
+    name: '&4&lHélice de redstone'
+    Description: '&7&oRotations, particules rouges'
   FlameHelix:
-    name: '&c&lFlame Helix'
-    Description: '&7&oRotating flames'
+    name: '&c&lHélice de flamme'
+    Description: '&7&oFlammes en rotation'
   CursedHelix:
-    name: '&5&lCursed Helix'
-    Description: '&7&oRotating, purple particles'
+    name: '&5&lHélice maudite'
+    Description: '&7&oRotations, particules violettes'
   SoulFireHelix:
-    name: '&b&lSoul Fire Helix'
-    Description: '&7&oRotating, cyan flames'
+    name: '&b&lHélice de feu de l''âme'
+    Description: '&7&oRotations, flammes cyan'
   Spark:
-    name: '&f&lSpark'
-    Description: '&7&oSparkling, white stars'
+    name: '&f&lÉtincelle'
+    Description: '&7&oÉtoiles blanches scintillantes'
   Redstone:
     name: '&4&lRedstone'
-    Description: '&7&oSmall, red clouds'
+    Description: '&7&oPetits nuages rouges'
   Flame:
     name: '&c&lFlame'
-    Description: '&7&oSmall flames'
+    Description: '&7&oPetites flammes'
   Water:
-    name: '&9&lWater'
-    Description: '&7&oBlue waterdrops'
+    name: '&9&lEau'
+    Description: '&7&oGouttes d''eau bleues'
   Witch:
-    name: '&5&lWitch'
-    Description: '&7&oPurple crosses'
+    name: '&5&lSorcière'
+    Description: '&7&oCroix violettes'
   Emerald:
-    name: '&2&lEmerald'
-    Description: '&7&oGreen stars'
+    name: '&2&lÉmeraude'
+    Description: '&7&oEtoiles vertes'
   Note:
     name: '&e&lNote'
-    Description: '&7&oColorful notes'
+    Description: '&7&oNotes colorées'
   Love:
-    name: '&d&lLove'
-    Description: '&7&oRed hearts'
+    name: '&d&lAmour'
+    Description: '&7&oCœurs rouges'
   Lava:
-    name: '&4&lLava'
-    Description: '&7&oLava bubbles'
+    name: '&4&lLave'
+    Description: '&7&oBulles de lave'
   Snow:
-    name: '&f&lSnow'
-    Description: '&7&oSnowball particles'
+    name: '&f&lNeige'
+    Description: '&7&oParticules de boule de neige'
   Slime:
     name: '&a&lSlime'
-    Description: '&7&oSlimeball particles'
+    Description: '&7&oParticules de Slimeball'
   Crit:
     name: '&7&lCrit'
-    Description: '&7&oLight brown crosses'
+    Description: '&7&oCroix marron clair'
   MagicCrit:
-    name: '&3&lMagic Crit'
-    Description: '&7&oCyan stars'
+    name: '&3&lCritique magique'
+    Description: '&7&oÉtoiles cyan'
   Explosion:
     name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    Description: '&7&oBOOM !'
   Cloud:
-    name: '&f&lCloud'
-    Description: '&7&oWhite clouds'
+    name: '&f&lNuage'
+    Description: '&7&oNuages blancs'
   Smoke:
-    name: '&7&lSmoke'
-    Description: '&7&oSmall, gray clouds'
+    name: '&7&lFumée'
+    Description: '&7&oPetits nuages gris'
   Portal:
-    name: '&5&lPortal'
+    name: '&5&lPortail'
     Description: '&7&oPetits, nuages violets'
   DragonBreath:
     name: '&d&lSouffle du Dragon'
@@ -1742,7 +1742,7 @@ Projectile-Effects:
     name: '&b&lFeu de feu lÂme'
     Description: '&7&oPetit, flammes cyanes'
   Snowflake:
-    name: '&f&lSnowflake'
+    name: '&f&lFlocon de neige'
     Description: '&7&oPetits, nuages violets'
   GlowSquid:
     name: '&3&lCalamar Lumineux'
@@ -1751,17 +1751,17 @@ Projectile-Effects:
     name: '&3&lCalamar Lumineux'
     Description: '&7&oNuages Aquamarine'
   Scrape:
-    name: '&2&lScrape'
+    name: '&2&lRayer'
     Description: '&7&oEtoiles turbulentes'
   WaxOff:
     name: '&f&lWax désactivé'
-    Description: '&7&oWhite stars'
+    Description: '&7&oÉtoiles blanches'
   WaxOn:
     name: '&f&lWax désactivé'
     Description: '&7&oÉtoiles Orange'
   SculkSoul:
     name: '&b&Âme de lSculk'
-    Description: '&7&oCyan souls'
+    Description: '&7&oÂmes cyan'
 Death-Effects:
   Equip: '%prefix% &9Tu as équipé %death-effectname%'
   Unequip: '%prefix% &9Tu as déséquipé %death-effectname%'
@@ -1774,7 +1774,7 @@ Death-Effects:
       &7&oFélicitations !
       &7&oVous... êtes mort?
   Lightning:
-    name: '&f&lLightning'
+    name: '&f&lFoudre'
     Description: '&7&o⚡ ZAP!'
 Enabled-SelfMorphView: '%prefix% &9Vous avez activé l''auto-affichage pour les morphes !'
 Disabled-SelfMorphView: '%prefix% &9Vous avez désactivé l''auto-affichage pour les morphes !'
