@@ -9,7 +9,7 @@ public class NothingLoot implements Loot {
 
     @Override
     public LootReward giveToPlayer(UltraPlayer player, TreasureChest chest) {
-        String[] name = MessageManager.getMessage("Treasure-Chests-Loot.Nothing").split("\n");
+        String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Nothing").split("\n");
         return new LootReward(name, XMaterial.BARREL.parseItem(), null, false, false);
     }
 

@@ -8,7 +8,6 @@ import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
@@ -90,8 +89,8 @@ public class Menus {
      */
     public void openAmmoPurchaseMenu(GadgetType type, UltraPlayer player, Runnable menuReturnFunc) {
         String itemName = MessageManager.getLegacyMessage("Buy-Ammo-Description",
-                Placeholder.component("amount", Component.text(type.getResultAmmoAmount())),
-                Placeholder.component("price", Component.text(type.getAmmoPrice())),
+                Placeholder.unparsed("amount", String.valueOf(type.getResultAmmoAmount())),
+                Placeholder.unparsed("price", String.valueOf(type.getAmmoPrice())),
                 Placeholder.component("gadgetname", type.getName())
         );
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
@@ -103,7 +102,7 @@ public class Menus {
             menuReturnFunc.run();
         });
         pd.setOnCancel(menuReturnFunc);
-        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getLegacyMessage("Menu.Buy-Ammo.Title"), pd);
+        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Menu.Buy-Ammo.Title"), pd);
         player.getBukkitPlayer().openInventory(mp.getInventory(player));
     }
 }

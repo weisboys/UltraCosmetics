@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 
 public class ToggleGadgetsButton implements Button {
@@ -13,8 +14,8 @@ public class ToggleGadgetsButton implements Button {
         String enabledKey = (ultraPlayer.hasGadgetsEnabled() ? "Enable" : "Disable");
         String configPath = "Categories.Gadgets-Item.When-" + enabledKey + "d";
         String key = enabledKey + "-Gadgets";
-        String msg = MessageManager.getMessage(key);
-        String[] lore = MessageManager.getMessage(key + "-Lore").split("\n");
+        Component msg = MessageManager.getMessage(key);
+        String[] lore = MessageManager.getLegacyMessage(key + "-Lore").split("\n");
         if (lore[0].isEmpty()) {
             lore = new String[] {};
         }

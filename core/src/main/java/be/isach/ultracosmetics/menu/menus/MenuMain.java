@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.menu.buttons.KeysButton;
 import be.isach.ultracosmetics.menu.buttons.OpenChestButton;
 import be.isach.ultracosmetics.menu.buttons.OpenCosmeticMenuButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.Inventory;
 
 /**
@@ -19,7 +20,7 @@ import org.bukkit.inventory.Inventory;
  * @since 08-23-2016
  */
 public class MenuMain extends Menu {
-    private final String title = MessageManager.getMessage("Menu.Main.Title");
+    private final Component title = MessageManager.getMessage("Menu.Main.Title");
     private int[] layout;
 
     public MenuMain(UltraCosmetics ultraCosmetics) {
@@ -96,7 +97,7 @@ public class MenuMain extends Menu {
     }
 
     @Override
-    protected String getName() {
+    protected Component getName() {
         return title;
     }
 

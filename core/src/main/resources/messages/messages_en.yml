@@ -162,6 +162,23 @@ Treasure-Chests-Loot:
   Emotes: "&eEmote\n%cosmetic%"
   Death-Effects: "&cDeath Effect\n%cosmetic%"
   Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
+Treasure-Chests-Loot-Messages:
+  Ammo: '%prefix% &6&l%name% found %ammo% %cosmetic% ammo'
+  Money: '%prefix% &6&l%name% found $%money%'
+  Pets: '%prefix% &6&l%name% found rare %cosmetic%'
+  Mounts: '%prefix% &6&l%name% found rare %cosmetic%'
+  Particle-Effects: '%prefix% &6&l%name% found legendary %cosmetic%'
+  Morphs: '%prefix% &6&l%name% found legendary %cosmetic%'
+  Hats: '%prefix% &6&l%name% found rare %cosmetic%'
+  Gadgets: '%prefix% &6&l%name% found gadget %cosmetic%'
+  Suits: '%prefix% &6&l%name% found rare %cosmetic%'
+  Emotes: '%prefix% &6&l%name% found rare %cosmetic%'
+  Death-Effects: '%prefix% &6&l%name% found rare %cosmetic%'
+  Projectile-Effects: '%prefix% &6&l%name% found rare %cosmetic%'
+No-Permission-Lore:
+  Yes: '&o&7Permission: &a&lYes!'
+  No: '&o&7Permission: &4&lNo!'
+  Showroom: '&o&7Permission: &6Usable in showroom'
 Disable-Gadgets: '&c&lDisable Gadgets'
 Disable-Gadgets-Lore: '&cDisables use of gadgets and effects of them on you'
 Enable-Gadgets: '&a&lEnable Gadgets'

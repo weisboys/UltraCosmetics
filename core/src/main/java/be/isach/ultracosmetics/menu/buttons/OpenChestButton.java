@@ -10,14 +10,15 @@ import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class OpenChestButton extends TreasureButton {
-    private final String itemName = MessageManager.getMessage("Treasure-Chests");
+    private final Component itemName = MessageManager.getMessage("Treasure-Chests");
     private final String chestMode = SettingsManager.getConfig().getString("TreasureChests.Mode", "structure");
     private final int chestCount = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
-    private final String[] noKeysLore = new String[] {"", MessageManager.getMessage("Dont-Have-Key"), buyKeyMessage};
+    private final String[] noKeysLore = new String[] {"", MessageManager.getLegacyMessage("Dont-Have-Key"), buyKeyMessage};
     private final String[] hasKeysLore;
     private final TreasureChestManager treasureChestManager;
 
@@ -25,9 +26,10 @@ public class OpenChestButton extends TreasureButton {
         super(ultraCosmetics);
         this.treasureChestManager = ultraCosmetics.getTreasureChestManager();
         if (chestMode.equalsIgnoreCase("both")) {
-            hasKeysLore = new String[] {"", MessageManager.getMessage("Left-Click-Open-Chest"), MessageManager.getMessage("Right-Click-Simple"), ""};
+            hasKeysLore = new String[] {"", MessageManager.getLegacyMessage("Left-Click-Open-Chest"),
+                    MessageManager.getLegacyMessage("Right-Click-Simple"), ""};
         } else {
-            hasKeysLore = new String[] {"", MessageManager.getMessage("Click-Open-Chest"), ""};
+            hasKeysLore = new String[] {"", MessageManager.getLegacyMessage("Click-Open-Chest"), ""};
         }
     }
 

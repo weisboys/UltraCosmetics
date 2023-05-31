@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 
 public class ToggleMorphSelfViewButton implements Button {
@@ -19,7 +20,7 @@ public class ToggleMorphSelfViewButton implements Button {
             selfViewStack = ItemFactory.getItemStackFromConfig("Categories.Self-View-Item.When-Disabled");
             toggle = true;
         }
-        String msg = MessageManager.getMessage((toggle ? "Enable" : "Disable") + "-Third-Person-View");
+        Component msg = MessageManager.getMessage((toggle ? "Enable" : "Disable") + "-Third-Person-View");
         return ItemFactory.rename(selfViewStack, msg);
     }
 

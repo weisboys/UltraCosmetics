@@ -3,4 +3,5 @@ dependencies {
     implementation project(':core')
     // Last version of WorldGuard compiled with Java 8
     implementation 'com.sk89q.worldguard:worldguard-bukkit:7.0.3'
+    implementation "net.kyori:adventure-text-minimessage:4.13.1"
 }

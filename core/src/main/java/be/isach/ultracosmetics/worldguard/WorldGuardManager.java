@@ -117,6 +117,23 @@ public class WorldGuardManager {
         return categories == null || !categories.contains(category);
     }
 
+    public void noCosmeticsRegionEntered(UltraPlayer ultraPlayer) {
+        if (ultraPlayer.clear()) {
+            MessageManager.send(ultraPlayer.getBukkitPlayer(), "Region-Disabled");
+        }
+    }
+
+    public void restrictedCosmeticsChange(UltraPlayer ultraPlayer, Set<Category> restrictions) {
+        Player bukkitPlayer = ultraPlayer.getBukkitPlayer();
+        for (Category cat : restrictions) {
+            if (ultraPlayer.removeCosmetic(cat)) {
+                MessageManager.send(bukkitPlayer, "Region-Disabled-Category",
+                        Placeholder.unparsed("category", cat.getMessagesName())
+                );
+            }
+        }
+    }
+
     public void showroomFlagChange(UltraPlayer ultraPlayer, boolean newValue) {
         if (!newValue) {
             for (Category cat : Category.values()) {

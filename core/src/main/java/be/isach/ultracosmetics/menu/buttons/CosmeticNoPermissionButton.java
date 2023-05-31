@@ -1,11 +1,13 @@
 package be.isach.ultracosmetics.menu.buttons;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -13,24 +15,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CosmeticNoPermissionButton extends CosmeticButton {
-    private final String name = SettingsManager.getConfig().getString("No-Permission.Custom-Item.Name");
-    private final List<String> lore = SettingsManager.getConfig().getStringList("No-Permission.Custom-Item.Lore");
+    private final String name;
+    private final List<String> lore = new ArrayList<>();
     private final ItemStack stack = ItemFactory.getItemStackFromConfig("No-Permission.Custom-Item.Type");
 
     public CosmeticNoPermissionButton(UltraCosmetics ultraCosmetics, CosmeticType<?> cosmeticType) {
         super(ultraCosmetics, cosmeticType, true);
+        MiniMessage mm = MessageManager.getMiniMessage();
+        String rawName = SettingsManager.getConfig().getString("No-Permission.Custom-Item.Name", "");
+        this.name = MessageManager.toLegacy(mm.deserialize(rawName, Placeholder.component("cosmetic", cosmeticType.getName())));
+        for (String item : SettingsManager.getConfig().getStringList("No-Permission.Custom-Item.Lore")) {
+            lore.add(MessageManager.toLegacy(mm.deserialize(item)));
+        }
     }
 
     @Override
     public ItemStack getBaseItem(UltraPlayer ultraPlayer) {
         ItemStack stack = this.stack.clone();
-        String name = ChatColor.translateAlternateColorCodes('&', this.name).replace("{cosmetic-name}", cosmeticType.getName());
         ItemFactory.rename(stack, name);
         ItemMeta meta = stack.getItemMeta();
-        List<String> lore = new ArrayList<>();
-        for (String line : this.lore) {
-            lore.add(ChatColor.translateAlternateColorCodes('&', line));
-        }
         meta.setLore(lore);
         stack.setItemMeta(meta);
         return stack;

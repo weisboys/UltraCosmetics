@@ -224,11 +224,13 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         } else {
             rename = armorStand;
         }
+        Component newName;
         if (getOwner().getPetName(getType()) != null) {
-            rename.setCustomName(MessageManager.toLegacy(getOwner().getPetName(getType())));
+            newName = getOwner().getPetName(getType());
         } else {
-            rename.setCustomName(getType().getEntityName(getPlayer()));
+            newName = getType().getEntityName(getPlayer());
         }
+        rename.setCustomName(MessageManager.toLegacy(newName));
     }
 
     @Override

@@ -14,7 +14,9 @@ import be.isach.ultracosmetics.menu.buttons.NextPageButton;
 import be.isach.ultracosmetics.menu.buttons.PreviousPageButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -68,7 +70,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
         lastUsedPages.put(player.getUUID(), page);
 
-        Inventory inventory = createInventory(getSize(), maxPages == 1 ? getName() : getName(page, player));
+        Inventory inventory = createInventory(maxPages == 1 ? getName() : getName(page, player));
         boolean hasUnlockable = hasUnlockable(player);
 
         // Cosmetic types.
@@ -156,8 +158,8 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @param page The page to open.
      * @return The name of the menu with page detailed.
      */
-    protected String getName(int page, UltraPlayer ultraPlayer) {
-        return getName() + " " + ChatColor.GRAY + "" + ChatColor.ITALIC + "(" + page + "/" + getMaxPages(ultraPlayer) + ")";
+    protected Component getName(int page, UltraPlayer ultraPlayer) {
+        return getName().append(Component.text("(" + page + "/" + getMaxPages(ultraPlayer) + ")", NamedTextColor.GRAY, TextDecoration.ITALIC));
     }
 
     @Override
@@ -175,7 +177,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @return The name of the menu.
      */
     @Override
-    protected String getName() {
+    protected Component getName() {
         return MessageManager.getMessage("Menu." + category.getConfigPath() + ".Title");
     }
 

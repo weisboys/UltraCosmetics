@@ -30,7 +30,7 @@ public class VanishChecker extends BukkitRunnable {
         for (UltraPlayer ultraPlayer : pm.getUltraPlayers()) {
             Player player = ultraPlayer.getBukkitPlayer();
             if (PlayerAffectingCosmetic.isVanished(player) && ultraPlayer.hasCosmeticsEquipped()) {
-                player.sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
+                MessageManager.send(player, "Not-Allowed-In-Vanish");
                 playersToClear.add(ultraPlayer);
             }
         }

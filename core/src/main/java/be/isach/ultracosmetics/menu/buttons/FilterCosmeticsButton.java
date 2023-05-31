@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 
 public class FilterCosmeticsButton implements Button {
@@ -15,7 +16,7 @@ public class FilterCosmeticsButton implements Button {
 
     @Override
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
-        String filterItemName;
+        Component filterItemName;
         if (ultraPlayer.isFilteringByOwned()) {
             filterItemName = MessageManager.getMessage("Disable-Filter-By-Owned");
         } else {

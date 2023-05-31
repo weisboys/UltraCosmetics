@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureLocation;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.version.VersionManager;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -99,14 +100,14 @@ public class SubCommandTreasure extends SubCommand {
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
         // Don't accept equal to world boundaries because treasure chests have to place blocks on player Y-1 through Y+1
         if (y >= vm.getWorldMaxHeight(world) || y <= vm.getWorldMinHeight(world)) {
-            sender.sendMessage(MessageManager.getMessage("Chest-Location.Invalid"));
+            MessageManager.send(sender, "Chest-Location.Invalid");
             return;
         }
 
         Location location = new Location(world, x + 0.5, y, z + 0.5);
         Block block = location.getBlock();
         if (!isAir(block)) {
-            sender.sendMessage(MessageManager.getMessage("Chest-Location.In-Ground"));
+            MessageManager.send(sender, "Chest-Location.In-Ground");
             for (int i = y; i < vm.getWorldMaxHeight(world); i++) {
                 if (isAir(block.getWorld().getBlockAt(x, i, z))) {
                     suggest(x, i, z, sender);
@@ -117,7 +118,7 @@ public class SubCommandTreasure extends SubCommand {
         }
 
         if (isAir(block.getRelative(BlockFace.DOWN))) {
-            sender.sendMessage(MessageManager.getMessage("Chest-Location.In-Air"));
+            MessageManager.send(sender, "Chest-Location.In-Air");
             for (int i = y; i > vm.getWorldMinHeight(world); i--) {
                 if (!isAir(block.getWorld().getBlockAt(x, i, z))) {
                     // we found the ground, back up 1
@@ -133,12 +134,14 @@ public class SubCommandTreasure extends SubCommand {
 
     private boolean checkWorld(CommandSender sender, World world) {
         if (SettingsManager.isAllowedWorld(world)) return true;
-        sender.sendMessage(MessageManager.getMessage("World-Disabled"));
+        MessageManager.send(sender, "World-Disabled");
         return false;
     }
 
     private void suggest(int x, int y, int z, CommandSender sender) {
-        sender.sendMessage(MessageManager.getMessage("Chest-Location.Suggestion").replace("%location%", x + "," + y + "," + z));
+        MessageManager.send(sender, "Chest-Location.Suggestion",
+                Placeholder.unparsed("location", x + "," + y + "," + z)
+        );
     }
 
     private boolean isAir(Block block) {

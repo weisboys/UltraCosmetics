@@ -7,6 +7,9 @@ import be.isach.ultracosmetics.events.loot.UCMoneyRewardEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 
 public class MoneyLoot implements Loot {
@@ -25,8 +28,11 @@ public class MoneyLoot implements Loot {
         // Spawn a firework if the player got more than 3/4 of the money they could have.
         boolean firework = money > 3 * SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max") / 4;
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Money.Message.enabled");
-        String[] name = MessageManager.getMessage("Treasure-Chests-Loot.Money").replace("%money%", money + "").split("\n");
-        String msg = getConfigMessage("TreasureChests.Loots.Money.Message.message").replace("%money%", String.valueOf(money));
+        TagResolver.Single moneyPlaceholder = Placeholder.unparsed("money", String.valueOf(money));
+        String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Money", moneyPlaceholder).split("\n");
+        Component msg = MessageManager.getMessage("Treasure-Chests-Loot-Messages.Money", moneyPlaceholder,
+                Placeholder.unparsed("name", player.getBukkitPlayer().getName())
+        );
         return new LootReward(name, XMaterial.SUNFLOWER.parseItem(), msg, toOthers, firework);
     }
 }

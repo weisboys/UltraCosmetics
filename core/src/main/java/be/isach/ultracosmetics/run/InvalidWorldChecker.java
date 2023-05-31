@@ -33,7 +33,7 @@ public class InvalidWorldChecker extends BukkitRunnable {
                 ultraPlayer.removeMenuItem();
                 ultraPlayer.withPreserveEquipped(() -> {
                     if (ultraPlayer.clear()) {
-                        ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
+                        MessageManager.send(p, "World-Disabled");
                     }
                 });
             }

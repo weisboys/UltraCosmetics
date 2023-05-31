@@ -9,7 +9,6 @@ import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.MathUtils;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
@@ -91,7 +90,7 @@ public class GadgetParachute extends Gadget implements Updatable {
         Area checkArea = new Area(loc1, loc2);
 
         if (!checkArea.isEmpty()) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-Enough-Space"));
+            MessageManager.send(getPlayer(), "Gadgets.Rocket.Not-Enough-Space");
             return false;
         }
         return true;

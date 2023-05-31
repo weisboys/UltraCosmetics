@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.menu.buttons.ToggleGadgetsButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -45,9 +46,9 @@ public class MenuGadgets extends CosmeticMenu<GadgetType> {
 
         loreList.add("");
         int ammo = player.getAmmo(gadgetType);
-        loreList.add(MessageManager.getMessage("Ammo").replace("%ammo%", "" + ammo));
+        loreList.add(MessageManager.getLegacyMessage("Ammo", Placeholder.unparsed("ammo", String.valueOf(ammo))));
         if (ultraCosmetics.getEconomyHandler().isUsingEconomy()) {
-            loreList.add(MessageManager.getMessage("Right-Click-Buy-Ammo"));
+            loreList.add(MessageManager.getLegacyMessage("Right-Click-Buy-Ammo"));
         }
 
         if (SettingsManager.getConfig().getBoolean("Ammo-System-For-Gadgets.Show-Ammo-In-Menu-As-Item-Amount")

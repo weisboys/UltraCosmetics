@@ -11,7 +11,8 @@ import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XTag;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -22,9 +23,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XTag;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -66,12 +64,12 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
         if (GadgetDiscoBall.DISCO_BALLS.size() > 0) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.DiscoBall.Already-Active"));
+            MessageManager.send(getPlayer(), "Gadgets.DiscoBall.Already-Active");
             return false;
         }
         Area area = new Area(getPlayer().getLocation(), 0, 4);
         if (!area.isEmpty()) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.DiscoBall.Not-Space-Above"));
+            MessageManager.send(getPlayer(), "Gadgets.DiscoBall.Not-Space-Above");
             return false;
         }
         return true;
@@ -111,7 +109,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         i2 += 0.4;
 
         XTag<XMaterial> tag = null;
-        Map<Block,XMaterial> updates = new HashMap<>();
+        Map<Block, XMaterial> updates = new HashMap<>();
         for (Block b : BlockUtils.getBlocksInRadius(armorStand.getEyeLocation().add(-.5d, -.5d, -.5d), 10, false)) {
             XMaterial mat = XMaterial.matchXMaterial(b.getType());
             if (XTag.WOOL.isTagged(mat)) {
@@ -158,9 +156,9 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
 
         float ratio = length / particles;
         Vector v = link.multiply(ratio);
-        if (!dust)
+        if (!dust) {
             MathUtils.rotateAroundAxisX(v, i);
-        else {
+        } else {
             MathUtils.rotateAroundAxisZ(v, i2 / 5);
             MathUtils.rotateAroundAxisX(v, i2 / 5);
         }

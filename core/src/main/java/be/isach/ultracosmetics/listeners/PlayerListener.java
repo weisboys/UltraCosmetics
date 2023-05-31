@@ -9,8 +9,10 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Firework;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -57,14 +59,20 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onJoin(final PlayerJoinEvent event) {
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            pm.getUltraPlayer(event.getPlayer()).giveMenuItem();
+            ultraPlayer.giveMenuItem();
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
             if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
-                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED + ChatColor.BOLD + "An update is available: " + ultraCosmetics.getUpdateChecker().getSpigotVersion());
-                event.getPlayer().sendMessage(MessageManager.getMessage("Prefix") + ChatColor.RED + ChatColor.BOLD + "Use " + ChatColor.YELLOW + "/uc update" + ChatColor.RED + ChatColor.BOLD + " to install the update.");
+                Component prefix = MessageManager.getMessage("Prefix");
+                ultraPlayer.sendMessage(prefix.append(Component.text("An update is available: "
+                        + ultraCosmetics.getUpdateChecker().getSpigotVersion(), NamedTextColor.RED, TextDecoration.BOLD)));
+                Component use = Component.text("Use ", NamedTextColor.RED, TextDecoration.BOLD);
+                Component command = Component.text("/uc update", NamedTextColor.YELLOW);
+                Component toInstall = Component.text(" to install the update.", NamedTextColor.RED, TextDecoration.BOLD);
+                ultraPlayer.sendMessage(prefix.append(use).append(command).append(toInstall));
             }
         }
     }
@@ -92,7 +100,7 @@ public class PlayerListener implements Listener {
             ultraPlayer.removeMenuItem();
             ultraPlayer.withPreserveEquipped(() -> {
                 if (ultraPlayer.clear()) {
-                    ultraPlayer.getBukkitPlayer().sendMessage(MessageManager.getMessage("World-Disabled"));
+                    MessageManager.send(ultraPlayer.getBukkitPlayer(), "World-Disabled");
                 }
             });
         }
@@ -186,7 +194,7 @@ public class PlayerListener implements Listener {
         UltraPlayer player = pm.getUltraPlayer(event.getPlayer());
         if (player.hasCosmeticsEquipped()) {
             event.setCancelled(true);
-            event.getPlayer().sendMessage(MessageManager.getMessage("Disabled-Command-Message"));
+            MessageManager.send(event.getPlayer(), "Disabled-Command-Message");
         }
     }
 

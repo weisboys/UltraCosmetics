@@ -96,7 +96,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         if (!owner.isPreserveEquipped()) {
             Component typeName = getTypeName();
             if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                typeName.style(Style.empty());
+                typeName = typeName.style(Style.empty());
             }
             TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), typeName);
             Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Equip", typeNamePlaceholder);
@@ -119,7 +119,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         if (!owner.isPreserveEquipped()) {
             Component typeName = getTypeName();
             if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                typeName.style(Style.empty());
+                typeName = typeName.style(Style.empty());
             }
             TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), typeName);
             Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Unequip", typeNamePlaceholder);

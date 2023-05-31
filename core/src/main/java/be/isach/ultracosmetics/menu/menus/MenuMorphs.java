@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.menu.menus;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
@@ -36,7 +37,7 @@ public class MenuMorphs extends CosmeticMenu<MorphType> {
         List<String> lore = itemMeta.getLore();
         lore.add("");
         if (cosmeticType.canUseSkill()) {
-            lore.add(cosmeticType.getSkill());
+            lore.add(MessageManager.toLegacy(cosmeticType.getSkill()));
             lore.add("");
             itemMeta.setLore(lore);
         }

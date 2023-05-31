@@ -384,7 +384,7 @@ public class UltraPlayer {
             getBukkitPlayer().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
             return;
         }
-        TagResolver.Single pricePlaceholder = Placeholder.component("price", Component.text(price));
+        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
         ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
 
         PurchaseData pd = new PurchaseData();
@@ -402,7 +402,7 @@ public class UltraPlayer {
             ultraCosmetics.getMenus().openMainMenu(this);
         });
         pd.setOnCancel(() -> ultraCosmetics.getMenus().openMainMenu(this));
-        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getLegacyMessage("Buy-Treasure-Key"), pd);
+        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
         Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> getBukkitPlayer().openInventory(mp.getInventory(this)), 1);
     }
 
@@ -556,9 +556,13 @@ public class UltraPlayer {
         PlayerUtils.removeItems(getBukkitPlayer(), menuItem::isSimilar);
     }
 
-    public void sendMessage(Object message) {
-        if (message.toString().isEmpty()) return;
-        getBukkitPlayer().sendMessage(message.toString());
+    public void sendMessage(String message) {
+        if (message.isEmpty()) return;
+        getBukkitPlayer().sendMessage(message);
+    }
+
+    public void sendMessage(Component message) {
+        MessageManager.getAudiences().player(getBukkitPlayer()).sendMessage(message);
     }
 
     /**

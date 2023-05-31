@@ -1,18 +1,18 @@
 package be.isach.ultracosmetics.treasurechests.loot;
 
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
-
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 
 public class LootReward {
     private final String[] name;
     private final ItemStack stack;
-    private final String message;
+    private final Component message;
     private final boolean broadcast;
     private final boolean firework;
     private final CosmeticType<?> cosmetic;
 
-    public LootReward(String[] name, ItemStack stack, String message, boolean broadcast, boolean firework, CosmeticType<?> cosmetic) {
+    public LootReward(String[] name, ItemStack stack, Component message, boolean broadcast, boolean firework, CosmeticType<?> cosmetic) {
         this.name = name;
         this.stack = stack;
         this.message = message;
@@ -21,7 +21,7 @@ public class LootReward {
         this.cosmetic = cosmetic;
     }
 
-    public LootReward(String[] name, ItemStack stack, String message, boolean broadcast, boolean firework) {
+    public LootReward(String[] name, ItemStack stack, Component message, boolean broadcast, boolean firework) {
         this(name, stack, message, broadcast, firework, null);
     }
 
@@ -33,7 +33,7 @@ public class LootReward {
         return stack;
     }
 
-    public String getMessage() {
+    public Component getMessage() {
         return message;
     }
 

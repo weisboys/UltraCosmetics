@@ -3,4 +3,5 @@ dependencies {
     implementation project(':core')
     // WG 6.2.2 was the last version before major API changes
     implementation 'com.sk89q.worldguard:worldguard-legacy:6.2'
+    implementation "net.kyori:adventure-text-minimessage:4.13.1"
 }

@@ -13,6 +13,7 @@ import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -48,13 +49,13 @@ public class TreasureChest implements Listener {
     private final List<Block> unopenedChests = new ArrayList<>();
     private final StructureRollback chestRollback = new StructureRollback();
     private final UUID owner;
-    private TreasureRandomizer randomGenerator;
-    private Location center;
+    private final TreasureRandomizer randomGenerator;
+    private final Location center;
     private final Particles particleEffect;
     private int chestsLeft = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
-    private Player player;
-    private Set<Item> items = new HashSet<>();
-    private Set<ArmorStand> holograms = new HashSet<>();
+    private final Player player;
+    private final Set<Item> items = new HashSet<>();
+    private final Set<ArmorStand> holograms = new HashSet<>();
     private boolean stopping;
     private boolean cooldown = false;
     private final TreasureChestDesign design;
@@ -172,7 +173,9 @@ public class TreasureChest implements Listener {
             for (int i = 0; i < chestsLeft; i++) {
                 LootReward reward = randomGenerator.giveRandomThing(this);
                 String[] names = reward.getName();
-                getPlayer().sendMessage(MessageManager.getMessage("You-Won-Treasure-Chests").replace("%name%", names[names.length - 1]));
+                MessageManager.send(getPlayer(), "You-Won-Treasure-Chests",
+                        Placeholder.unparsed("name", names[names.length - 1])
+                );
             }
             return;
         }

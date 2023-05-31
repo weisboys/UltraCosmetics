@@ -31,7 +31,7 @@ public class SubCommandMenu extends SubCommand {
     @Override
     protected void onExePlayer(Player sender, String[] args) {
         if (!SettingsManager.isAllowedWorld(sender.getWorld())) {
-            sender.sendMessage(MessageManager.getMessage("World-Disabled"));
+            MessageManager.send(sender, "World-Disabled");
             return;
         }
 
@@ -59,7 +59,7 @@ public class SubCommandMenu extends SubCommand {
                 return;
             }
             if (ultraPlayer.getCurrentPet() == null) {
-                sender.sendMessage(MessageManager.getMessage("Active-Pet-Needed"));
+                MessageManager.send(sender, "Active-Pet-Needed");
                 return;
             }
             RenamePetButton.renamePet(ultraCosmetics, ultraPlayer, menus.getCategoryMenu(Category.PETS));

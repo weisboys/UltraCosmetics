@@ -19,12 +19,12 @@ import java.util.Arrays;
 public class EquipWholeSuitButton implements Button {
     private final SuitCategory category;
     private final String name;
-    private final String lore = MessageManager.getMessage("Suits.Whole-Equip-Lore");
+    private final String lore = MessageManager.getLegacyMessage("Suits.Whole-Equip-Lore");
     private final UltraCosmetics ultraCosmetics;
 
     public EquipWholeSuitButton(SuitCategory category, UltraCosmetics ultraCosmetics) {
         this.category = category;
-        this.name = MessageManager.getMessage("Suits." + category.getConfigName() + ".whole-equip");
+        this.name = MessageManager.getLegacyMessage("Suits." + category.getConfigName() + ".whole-equip");
         this.ultraCosmetics = ultraCosmetics;
     }
 

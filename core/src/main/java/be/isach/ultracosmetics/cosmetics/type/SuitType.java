@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Color;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -36,7 +37,7 @@ public class SuitType extends CosmeticType<Suit> {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return MessageManager.getMessage("Suits." + getConfigName() + "." + slot.toString().toLowerCase() + "-name");
     }
 

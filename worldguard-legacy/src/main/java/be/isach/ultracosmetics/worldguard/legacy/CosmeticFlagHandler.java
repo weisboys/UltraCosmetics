@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.worldguard.legacy;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
@@ -54,20 +53,14 @@ public class CosmeticFlagHandler extends Handler {
         UltraPlayer ultraPlayer = playerManager.getUltraPlayer(player);
         State currentValue = toSet.queryState(wrappedPlayer, cosmeticsFlag);
         if (currentValue == State.DENY) {
-            if (ultraPlayer.clear()) {
-                player.sendMessage(MessageManager.getMessage("Region-Disabled"));
-            }
+            ultraCosmetics.getWorldGuardManager().noCosmeticsRegionEntered(ultraPlayer);
             // This is effectively what DENY represents for the `uc-cosmetics` flag
             lastCategoryFlagValue = ALL_CATEGORIES;
             return true;
         }
         Set<Category> categoryValue = toSet.queryValue(wrappedPlayer, categoryFlag);
         Set<Category> needsUpdating = compareSets(categoryValue, lastCategoryFlagValue);
-        for (Category cat : needsUpdating) {
-            if (ultraPlayer.removeCosmetic(cat)) {
-                player.sendMessage(MessageManager.getMessage("Region-Disabled-Category").replace("%category%", cat.getMessagesName()));
-            }
-        }
+        ultraCosmetics.getWorldGuardManager().restrictedCosmeticsChange(ultraPlayer, needsUpdating);
         // [== ALLOW] is NOT the same as [!= DENY], queryState returns null if unset.
         boolean newShowroomState = toSet.queryState(wrappedPlayer, showroomFlag) == State.ALLOW;
         if (lastShowroomFlagValue == null || lastShowroomFlagValue != newShowroomState) {

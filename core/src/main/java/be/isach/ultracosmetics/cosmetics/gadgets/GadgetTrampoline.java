@@ -60,7 +60,7 @@ public class GadgetTrampoline extends Gadget implements Updatable {
         Area checkArea = new Area(loc1, loc2);
 
         if (!checkArea.isEmpty() || !BlockUtils.isAir(ladder1.getType()) || !BlockUtils.isAir(ladder2.getType())) {
-            event.getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-Enough-Space"));
+            MessageManager.send(getPlayer(), "Gadgets.Rocket.Not-Enough-Space");
             return false;
         }
         return true;
