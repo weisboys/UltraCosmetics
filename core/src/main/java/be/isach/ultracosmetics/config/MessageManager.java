@@ -21,6 +21,7 @@ import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 /**
  * Message manager.
@@ -31,7 +32,7 @@ import java.util.Map.Entry;
 public class MessageManager {
     private static MessageManager instance;
     private final SettingsManager messagesConfig;
-    private final MiniMessage minimessage;
+    private final MiniMessage miniMessage;
     private final BukkitAudiences audiences = BukkitAudiences.create(UltraCosmeticsData.get().getPlugin());
     // should be set to true by the time anybody else can read this
     private boolean success = false;
@@ -43,13 +44,10 @@ public class MessageManager {
         String langFile = "messages_" + UltraCosmeticsData.get().getLanguage();
         messagesConfig = new SettingsManager(langFile);
         if (!messagesConfig.success()) {
-            minimessage = null;
+            miniMessage = null;
             return;
         }
-        Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("messages/" + langFile + ".yml");
-        loadMessages(YamlConfiguration.loadConfiguration(reader));
-        messagesConfig.save();
-        minimessage = MiniMessage.builder()
+        miniMessage = MiniMessage.builder()
                 .tags(TagResolver.builder()
                         .resolver(StandardTags.color())
                         .resolver(StandardTags.decorations())
@@ -58,9 +56,12 @@ public class MessageManager {
                         .resolver(StandardTags.newline())
                         .resolver(StandardTags.rainbow())
                         .resolver(StandardTags.reset())
+                        .resolver(Placeholder.component("prefix", Component.text(messagesConfig.getString("Prefix"))))
                         .build())
-                .tags(Placeholder.component("prefix", Component.text(messagesConfig.getString("Prefix"))))
                 .build();
+        Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("messages/" + langFile + ".yml");
+        loadMessages(YamlConfiguration.loadConfiguration(reader));
+        messagesConfig.save();
         success = true;
     }
 
@@ -68,7 +69,16 @@ public class MessageManager {
         if (!messagesConfig.fileConfiguration.isString(messagePath)) {
             throw new IllegalArgumentException("No such message key: " + messagePath);
         }
-        return minimessage.deserialize(messagesConfig.getString(messagePath), placeholders);
+        return miniMessage.deserialize(messagesConfig.getString(messagePath), placeholders);
+    }
+
+    private void addMessageInternal(String path, String message) {
+        if (messagesConfig.addDefault(path, message)) {
+            // Has its own if-block to avoid the dead code warning
+            if (CosmeticType.GENERATE_MISSING_MESSAGES) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Adding message " + path);
+            }
+        }
     }
 
     /**
@@ -91,7 +101,7 @@ public class MessageManager {
             minimessageMigration();
         }
         for (String key : defaults.getKeys(true)) {
-            addMessage(key, defaults.getString(key));
+            addMessageInternal(key, defaults.getString(key));
         }
     }
 
@@ -173,10 +183,13 @@ public class MessageManager {
         log.write(SmartLogger.LogLevel.WARNING, "Your messages file is using legacy color codes, it will be upgraded now");
         ConfigurationSection config = messagesConfig.fileConfiguration;
         LegacyComponentSerializer deserializer = LegacyComponentSerializer.legacyAmpersand();
+        Pattern percentVarPattern = Pattern.compile("%(\\w+)%");
         for (String key : config.getKeys(true)) {
-            config.set(key, minimessage.serialize(deserializer.deserialize(config.getString(key))));
+            if (!config.isString(key)) continue;
+            String raw = config.getString(key);
+            raw = percentVarPattern.matcher(raw).replaceAll("<$1>");
+            config.set(key, miniMessage.serialize(deserializer.deserialize(raw)));
         }
-        save();
     }
 
     public static boolean load() {
@@ -199,12 +212,7 @@ public class MessageManager {
      * @param message The config value.
      */
     public static void addMessage(String path, String message) {
-        if (getInstance().messagesConfig.addDefault(path, message)) {
-            // Has its own if-block to avoid the dead code warning
-            if (CosmeticType.GENERATE_MISSING_MESSAGES) {
-                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Adding message " + path);
-            }
-        }
+        getInstance().addMessageInternal(path, message);
     }
 
     /**
@@ -234,7 +242,7 @@ public class MessageManager {
     }
 
     public static MiniMessage getMiniMessage() {
-        return getInstance().minimessage;
+        return getInstance().miniMessage;
     }
 
     public static void save() {
