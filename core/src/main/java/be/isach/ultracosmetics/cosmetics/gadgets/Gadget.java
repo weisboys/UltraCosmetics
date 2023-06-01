@@ -222,7 +222,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             return false;
         }
         // Case sensitivity causes issues with hex color codes for some reason
-        return stack.getItemMeta().getDisplayName().toLowerCase().endsWith(MessageManager.toLegacy(getItemDisplayName()));
+        return stack.getItemMeta().getDisplayName().toLowerCase().endsWith(MessageManager.toLegacy(getTypeName()).toLowerCase());
     }
 
     @Override
