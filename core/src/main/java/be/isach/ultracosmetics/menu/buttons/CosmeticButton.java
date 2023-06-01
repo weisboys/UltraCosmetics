@@ -67,7 +67,7 @@ public abstract class CosmeticButton implements Button {
         this.price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
         this.ignoreTooltip = ignoreTooltip;
         this.itemName = MessageManager.getLegacyMessage("Buy-Cosmetic-Description",
-                Placeholder.unparsed("place", String.valueOf(price)),
+                Placeholder.unparsed("price", String.valueOf(price)),
                 Placeholder.component("gadgetname", cosmeticType.getName())
         );
         this.clickToPurchaseLore = MessageManager.getLegacyMessage("Click-To-Purchase", Placeholder.unparsed("price", String.valueOf(price)));
@@ -140,7 +140,10 @@ public abstract class CosmeticButton implements Button {
                 }, 5);
             });
             pd.setOnCancel(() -> data.getMenu().refresh(ultraPlayer));
-            MenuPurchase mp = new MenuPurchase(ultraCosmetics, Component.text("Purchase ").append(cosmeticType.getName()), pd);
+            Component title = MessageManager.getMessage("Menu.Purchase-Cosmetic.Title",
+                    Placeholder.component("cosmetic", cosmeticType.getName())
+            );
+            MenuPurchase mp = new MenuPurchase(ultraCosmetics, title, pd);
             ultraPlayer.getBukkitPlayer().openInventory(mp.getInventory(ultraPlayer));
             return false; // We just opened another inventory, don't close it
         } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getDeactivateTooltip())) {

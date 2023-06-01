@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.events.loot.UCAmmoRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.util.WeightedSet;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -59,7 +60,7 @@ public class AmmoLoot implements Loot {
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Message.enabled");
         Component message = MessageManager.getMessage("Treasure-Chests-Loot-Messages.Ammo",
                 Placeholder.unparsed("ammo", String.valueOf(ammo)),
-                Placeholder.component("cosmetic", filterColors(g.getName())),
+                Placeholder.component("cosmetic", TextUtil.filterPlaceholderColors(g.getName())),
                 Placeholder.unparsed("player", player.getBukkitPlayer().getName())
         );
         return new LootReward(name, g.getItemStack(), message, toOthers, firework, g);

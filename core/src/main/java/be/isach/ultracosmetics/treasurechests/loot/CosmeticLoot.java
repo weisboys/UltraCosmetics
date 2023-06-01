@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.events.loot.UCCosmeticRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.util.WeightedSet;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -46,7 +47,7 @@ public class CosmeticLoot implements Loot {
         pm.setPermission(player, cosmetic);
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots." + catName + ".Message.enabled");
         Component message = MessageManager.getMessage("Treasure-Chests-Loot-Messages." + catName,
-                Placeholder.component("cosmetic", filterColors(cosmetic.getName())),
+                Placeholder.component("cosmetic", TextUtil.filterPlaceholderColors(cosmetic.getName())),
                 Placeholder.unparsed("name", player.getBukkitPlayer().getName())
         );
         return new LootReward(name, cosmetic.getItemStack(), message, toOthers, true, cosmetic);

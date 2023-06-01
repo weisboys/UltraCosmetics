@@ -67,12 +67,12 @@ public class PlayerListener implements Listener {
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
             if (event.getPlayer().hasPermission("ultracosmetics.updatenotify")) {
                 Component prefix = MessageManager.getMessage("Prefix");
-                ultraPlayer.sendMessage(prefix.append(Component.text("An update is available: "
+                ultraPlayer.sendMessage(Component.empty().append(prefix).append(Component.text("An update is available: "
                         + ultraCosmetics.getUpdateChecker().getSpigotVersion(), NamedTextColor.RED, TextDecoration.BOLD)));
                 Component use = Component.text("Use ", NamedTextColor.RED, TextDecoration.BOLD);
                 Component command = Component.text("/uc update", NamedTextColor.YELLOW);
                 Component toInstall = Component.text(" to install the update.", NamedTextColor.RED, TextDecoration.BOLD);
-                ultraPlayer.sendMessage(prefix.append(use).append(command).append(toInstall));
+                ultraPlayer.sendMessage(Component.empty().append(prefix).append(use).append(command).append(toInstall));
             }
         }
     }

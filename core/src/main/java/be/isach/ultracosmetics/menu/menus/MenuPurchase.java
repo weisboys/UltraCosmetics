@@ -53,6 +53,6 @@ public class MenuPurchase extends Menu {
 
     @Override
     protected Component getName() {
-        return name == null ? Component.text("Purchase") : name;
+        return name;
     }
 }

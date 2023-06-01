@@ -1,16 +1,15 @@
 package be.isach.ultracosmetics.cosmetics;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.events.UCCosmeticEquipEvent;
 import be.isach.ultracosmetics.events.UCCosmeticUnequipEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
@@ -72,7 +71,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             MessageManager.send(player, "Region-Disabled");
             return;
         } else if (state == CosmeticRegionState.BLOCKED_CATEGORY) {
-            TagResolver.Single placeholder = Placeholder.component("category", MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title").style(Style.empty()));
+            TagResolver.Single placeholder = Placeholder.component("category", TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
             MessageManager.send(player, "Region-Disabled-Category", placeholder);
             return;
         }
@@ -94,11 +93,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         this.equipped = true;
 
         if (!owner.isPreserveEquipped()) {
-            Component typeName = getTypeName();
-            if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                typeName = typeName.style(Style.empty());
-            }
-            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), typeName);
+            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
             Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Equip", typeNamePlaceholder);
             MessageManager.getAudiences().player(player).sendMessage(appendActivateMessage(activateMessage));
         }
@@ -117,11 +112,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         Bukkit.getPluginManager().callEvent(event);
 
         if (!owner.isPreserveEquipped()) {
-            Component typeName = getTypeName();
-            if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                typeName = typeName.style(Style.empty());
-            }
-            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), typeName);
+            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
             Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Unequip", typeNamePlaceholder);
             MessageManager.getAudiences().player(getPlayer()).sendMessage(appendActivateMessage(activateMessage));
         }

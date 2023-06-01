@@ -276,7 +276,8 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     protected Component appendActivateMessage(Component base) {
         Component name = getOwner().getPetName(getType());
         if (name == null) return base;
-        return base.append(Component.text(" (", NamedTextColor.GRAY)).append(name).append(Component.text(")", NamedTextColor.GRAY));
+        return Component.empty().append(base).append(Component.text(" (", NamedTextColor.GRAY))
+                .append(name).append(Component.text(")", NamedTextColor.GRAY));
     }
 
     public boolean isCustomEntity() {

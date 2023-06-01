@@ -12,12 +12,12 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PlayerUtils;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
@@ -148,12 +148,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             String leftRounded = DECIMAL_FORMAT.format(left);
             double decimalRoundedValue = Double.parseDouble(leftRounded);
             if (decimalRoundedValue == 0) {
-                Component gadgetName = getTypeName();
-                if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                    gadgetName = gadgetName.style(Style.empty());
-                }
                 String message = MessageManager.getLegacyMessage("Gadgets.Gadget-Ready-ActionBar",
-                        Placeholder.component("gadgetname", gadgetName)
+                        Placeholder.component("gadgetname", TextUtil.stripColor(getTypeName()))
                 );
                 ActionBar.sendActionBar(getPlayer(), message);
                 play(XSound.BLOCK_NOTE_BLOCK_HAT, getPlayer(), 1.4f, 1.5f);
@@ -193,7 +189,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             return getTypeName();
         }
         Component ammo = Component.text(getOwner().getAmmo(getType()) + " ", NamedTextColor.WHITE, TextDecoration.BOLD);
-        return ammo.append(getTypeName());
+        return Component.empty().append(ammo).append(getTypeName());
     }
 
     public void updateItemStack() {
@@ -267,12 +263,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         if (coolDown > 0) {
             String timeLeft = new DecimalFormat("#.#").format(coolDown);
             if (getType().getCountdown() > 1) {
-                Component gadgetName = getTypeName();
-                if (!UltraCosmeticsData.get().arePlaceholdersColored()) {
-                    gadgetName = gadgetName.style(Style.empty());
-                }
                 MessageManager.send(getPlayer(), "Gadgets.Countdown-Message",
-                        Placeholder.component("gadgetname", gadgetName),
+                        Placeholder.component("gadgetname", TextUtil.stripColor(getTypeName())),
                         Placeholder.unparsed("time", String.valueOf(timeLeft))
                 );
             }

@@ -33,7 +33,7 @@ public class ToggleCosmeticButton extends CosmeticButton {
         if (deactivate) {
             toggle = cosmeticType.getCategory().getDeactivateTooltip();
         }
-        Component name = toggle.appendSpace().append(cosmeticType.getName());
+        Component name = Component.empty().append(toggle).appendSpace().append(cosmeticType.getName());
         name = modifyName(name, ultraPlayer);
         ItemStack stack = ItemFactory.rename(cosmeticType.getItemStack(), name);
         if (deactivate) {

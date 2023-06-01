@@ -49,6 +49,8 @@ Menu:
     Button:
       Showcase: '&c&lRename the pet to &f&l%name% &c&lfor &e&l$%price%'
     Title: '&lRename Pet'
+  Purchase-Cosmetic:
+    Title: '&lPurchase %cosmetic%'
   Rename-Pet:
     Button:
       Name: '&c&lClick to rename: %petname%'

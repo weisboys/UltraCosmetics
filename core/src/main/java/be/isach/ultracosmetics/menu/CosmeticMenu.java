@@ -142,7 +142,8 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @return The name of the menu with page detailed.
      */
     protected Component getName(int page, UltraPlayer ultraPlayer) {
-        return getName().appendSpace().append(Component.text("(" + page + "/" + getMaxPages(ultraPlayer) + ")", NamedTextColor.GRAY, TextDecoration.ITALIC));
+        return Component.empty().append(getName()).appendSpace()
+                .append(Component.text("(" + page + "/" + getMaxPages(ultraPlayer) + ")", NamedTextColor.GRAY, TextDecoration.ITALIC));
     }
 
     @Override

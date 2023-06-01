@@ -10,7 +10,7 @@ import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-import net.kyori.adventure.text.format.Style;
+import be.isach.ultracosmetics.util.TextUtil;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
@@ -106,7 +106,8 @@ public class WorldGuardManager {
         if (blockedCategories == null) return;
         for (Category category : blockedCategories) {
             if (blockedCategories.contains(category) && uc.getPlayerManager().getUltraPlayer(player).removeCosmetic(category)) {
-                TagResolver.Single placeholder = Placeholder.component("category", MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title").style(Style.empty()));
+                TagResolver.Single placeholder = Placeholder.component("category",
+                        TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
                 MessageManager.send(player, "Region-Disabled-Category", placeholder);
             }
         }

@@ -33,7 +33,7 @@ public class EquipWholeSuitButton implements Button {
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
         ItemStack wholeEquipStack = XMaterial.HOPPER.parseItem();
         ItemMeta wholeEquipMeta = wholeEquipStack.getItemMeta();
-        Component displayName = Category.SUITS_HELMET.getActivateTooltip().appendSpace().append(name);
+        Component displayName = Component.empty().append(Category.SUITS_HELMET.getActivateTooltip()).appendSpace().append(name);
         wholeEquipMeta.setDisplayName(MessageManager.toLegacy(displayName));
         wholeEquipMeta.setLore(Arrays.asList("", lore, ""));
         wholeEquipStack.setItemMeta(wholeEquipMeta);
