@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -153,12 +154,12 @@ public enum Category {
         return name().charAt(0) + name().substring(1).toLowerCase().replace("_", "-");
     }
 
-    public String getActivateTooltip() {
-        return MessageManager.getLegacyMessage("Menu." + configPath + ".Button.Tooltip-Equip");
+    public Component getActivateTooltip() {
+        return MessageManager.getMessage("Menu." + configPath + ".Button.Tooltip-Equip");
     }
 
-    public String getDeactivateTooltip() {
-        return MessageManager.getLegacyMessage("Menu." + configPath + ".Button.Tooltip-Unequip");
+    public Component getDeactivateTooltip() {
+        return MessageManager.getMessage("Menu." + configPath + ".Button.Tooltip-Unequip");
     }
 
     public String getChatPlaceholder() {

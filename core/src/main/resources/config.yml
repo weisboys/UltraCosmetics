@@ -418,7 +418,7 @@ No-Permission:
   Custom-Item:
     enabled: false
     Type: BARRIER
-    Name: '&c&l{cosmetic-name}'
+    Name: '<red><bold><cosmetic>'
     Lore:
       - ''
       - '&c&lYou do not have permission for this!'

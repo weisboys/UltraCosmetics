@@ -15,6 +15,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -50,11 +51,10 @@ public abstract class CosmeticButton implements Button {
         this.cosmeticType = cosmeticType;
         this.price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
         this.ignoreTooltip = ignoreTooltip;
-        String itemName = MessageManager.getLegacyMessage("Buy-Cosmetic-Description",
+        this.itemName = MessageManager.getLegacyMessage("Buy-Cosmetic-Description",
                 Placeholder.unparsed("place", String.valueOf(price)),
                 Placeholder.component("gadgetname", cosmeticType.getName())
         );
-        this.itemName = itemName;
         this.clickToPurchaseLore = MessageManager.getLegacyMessage("Click-To-Purchase", Placeholder.unparsed("price", String.valueOf(price)));
     }
 
@@ -158,7 +158,7 @@ public abstract class CosmeticButton implements Button {
     protected void handleRightClick(ClickData clickData) {
     }
 
-    protected boolean startsWithColorless(String a, String b) {
-        return ChatColor.stripColor(a).startsWith(ChatColor.stripColor(b));
+    protected boolean startsWithColorless(String a, Component b) {
+        return ChatColor.stripColor(a).startsWith(PlainTextComponentSerializer.plainText().serialize(b));
     }
 }

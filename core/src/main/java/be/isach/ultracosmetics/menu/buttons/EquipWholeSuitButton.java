@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -18,13 +19,13 @@ import java.util.Arrays;
 
 public class EquipWholeSuitButton implements Button {
     private final SuitCategory category;
-    private final String name;
+    private final Component name;
     private final String lore = MessageManager.getLegacyMessage("Suits.Whole-Equip-Lore");
     private final UltraCosmetics ultraCosmetics;
 
     public EquipWholeSuitButton(SuitCategory category, UltraCosmetics ultraCosmetics) {
         this.category = category;
-        this.name = MessageManager.getLegacyMessage("Suits." + category.getConfigName() + ".whole-equip");
+        this.name = MessageManager.getMessage("Suits." + category.getConfigName() + ".whole-equip");
         this.ultraCosmetics = ultraCosmetics;
     }
 
@@ -32,7 +33,8 @@ public class EquipWholeSuitButton implements Button {
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
         ItemStack wholeEquipStack = XMaterial.HOPPER.parseItem();
         ItemMeta wholeEquipMeta = wholeEquipStack.getItemMeta();
-        wholeEquipMeta.setDisplayName(Category.SUITS_HELMET.getActivateTooltip() + " " + name);
+        Component displayName = Category.SUITS_HELMET.getActivateTooltip().appendSpace().append(name);
+        wholeEquipMeta.setDisplayName(MessageManager.toLegacy(displayName));
         wholeEquipMeta.setLore(Arrays.asList("", lore, ""));
         wholeEquipStack.setItemMeta(wholeEquipMeta);
         return wholeEquipStack;

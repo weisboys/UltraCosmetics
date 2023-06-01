@@ -47,29 +47,56 @@ public class MessageManager {
             miniMessage = null;
             return;
         }
-        miniMessage = MiniMessage.builder()
-                .tags(TagResolver.builder()
-                        .resolver(StandardTags.color())
-                        .resolver(StandardTags.decorations())
-                        .resolver(StandardTags.font())
-                        .resolver(StandardTags.gradient())
-                        .resolver(StandardTags.newline())
-                        .resolver(StandardTags.rainbow())
-                        .resolver(StandardTags.reset())
-                        .resolver(Placeholder.component("prefix", Component.text(messagesConfig.getString("Prefix"))))
-                        .build())
-                .build();
+
         Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("messages/" + langFile + ".yml");
         loadMessages(YamlConfiguration.loadConfiguration(reader));
         messagesConfig.save();
+        miniMessage = buildMinimessage(true);
         success = true;
     }
 
-    private @NotNull Component getMessageInternal(String messagePath, TagResolver.Single... placeholders) {
+    private MiniMessage buildMinimessage(boolean includePrefix) {
+        TagResolver.Builder tagBuilder = TagResolver.builder()
+                .resolver(StandardTags.color())
+                .resolver(StandardTags.decorations())
+                .resolver(StandardTags.font())
+                .resolver(StandardTags.gradient())
+                .resolver(StandardTags.newline())
+                .resolver(StandardTags.rainbow())
+                .resolver(StandardTags.reset());
+        if (includePrefix) {
+            tagBuilder.resolver(Placeholder.parsed("prefix", messagesConfig.getString("Prefix") + "<reset>"));
+        }
+        return MiniMessage.builder().tags(tagBuilder.build()).build();
+    }
+
+    private void checkMessageExists(String messagePath) {
         if (!messagesConfig.fileConfiguration.isString(messagePath)) {
             throw new IllegalArgumentException("No such message key: " + messagePath);
         }
+    }
+
+    private @NotNull Component getMessageInternal(String messagePath, TagResolver.Single... placeholders) {
+        checkMessageExists(messagePath);
         return miniMessage.deserialize(messagesConfig.getString(messagePath), placeholders);
+    }
+
+    private String getLegacyMessageInternal(String messagePath, TagResolver.Single... placeholders) {
+        checkMessageExists(messagePath);
+        String raw = messagesConfig.getString(messagePath);
+        if (!raw.contains("\n")) {
+            return toLegacy(getMessageInternal(messagePath, placeholders));
+        }
+        // We have to do it line by line or the formatting won't carry over
+        // into lore correctly.
+        String[] parts = raw.split("\n");
+        Component lastComponent = miniMessage.deserialize(parts[0], placeholders);
+        StringBuilder result = new StringBuilder(toLegacy(lastComponent));
+        for (int i = 1; i < parts.length; i++) {
+            lastComponent = miniMessage.deserialize(parts[i], placeholders).applyFallbackStyle(lastComponent.style());
+            result.append('\n').append(toLegacy(lastComponent));
+        }
+        return result.toString();
     }
 
     private void addMessageInternal(String path, String message) {
@@ -179,6 +206,8 @@ public class MessageManager {
     }
 
     private void minimessageMigration() {
+        // Prefix hasn't been converted yet, so don't use it.
+        MiniMessage miniMessage = buildMinimessage(false);
         SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
         log.write(SmartLogger.LogLevel.WARNING, "Your messages file is using legacy color codes, it will be upgraded now");
         ConfigurationSection config = messagesConfig.fileConfiguration;
@@ -186,9 +215,17 @@ public class MessageManager {
         Pattern percentVarPattern = Pattern.compile("%(\\w+)%");
         for (String key : config.getKeys(true)) {
             if (!config.isString(key)) continue;
-            String raw = config.getString(key);
-            raw = percentVarPattern.matcher(raw).replaceAll("<$1>");
-            config.set(key, miniMessage.serialize(deserializer.deserialize(raw)));
+            // Doing it line by line prevents weird behavior like this:
+            //    <italic><gray>TSUNAMI!
+            //    </gray></italic><italic><gray>Run for your life!
+            String[] raw = config.getString(key).split("\n");
+            String[] converted = new String[raw.length];
+            for (int i = 0; i < raw.length; i++) {
+                converted[i] = miniMessage.serialize(deserializer.deserialize(raw[i]));
+            }
+            // Replace percents AFTER MiniMessage conversion, because MiniMessage
+            // will escape placeholders it doesn't recognize at the moment.
+            config.set(key, percentVarPattern.matcher(String.join("\n", converted)).replaceAll("<$1>"));
         }
     }
 
@@ -230,7 +267,7 @@ public class MessageManager {
     }
 
     public static String getLegacyMessage(String messagePath, TagResolver.Single... placeholders) {
-        return toLegacy(getMessage(messagePath, placeholders));
+        return getInstance().getLegacyMessageInternal(messagePath, placeholders);
     }
 
     public static void send(CommandSender sender, String messagePath, TagResolver.Single... placeholders) {

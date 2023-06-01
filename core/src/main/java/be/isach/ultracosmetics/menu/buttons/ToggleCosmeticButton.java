@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -24,13 +25,14 @@ public class ToggleCosmeticButton extends CosmeticButton {
 
     @Override
     protected ItemStack getBaseItem(UltraPlayer ultraPlayer) {
-        String toggle = cosmeticType.getCategory().getActivateTooltip();
+        Component toggle = cosmeticType.getCategory().getActivateTooltip();
+
         boolean deactivate = ultraPlayer.hasCosmetic(cosmeticType.getCategory()) && ultraPlayer.getCosmetic(cosmeticType.getCategory()).getType() == cosmeticType;
 
         if (deactivate) {
             toggle = cosmeticType.getCategory().getDeactivateTooltip();
         }
-        ItemStack stack = ItemFactory.rename(cosmeticType.getItemStack(), toggle + " " + cosmeticType.getName());
+        ItemStack stack = ItemFactory.rename(cosmeticType.getItemStack(), toggle.appendSpace().append(cosmeticType.getName()));
         if (deactivate) {
             ItemFactory.addGlow(stack);
         }
