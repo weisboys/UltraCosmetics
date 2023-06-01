@@ -23,7 +23,6 @@ import org.bukkit.permissions.Permission;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,7 +110,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     private final String configName;
-    private final String description;
+    private final List<String> description;
     private final Class<? extends T> clazz;
     private final Category category;
     private final XMaterial material;
@@ -130,7 +129,8 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.addMessage(getConfigPath() + ".Description", "Description");
         }
-        description = MessageManager.getLegacyMessage(getCategory().getConfigPath() + "." + configName + ".Description");
+        Component colors = MessageManager.getMiniMessage().deserialize(SettingsManager.getConfig().getString("Description-Style", ""));
+        this.description = MessageManager.getLore(getCategory().getConfigPath() + "." + configName + ".Description", colors.style());
         if (registerPerm) {
             registerPermission();
         }
@@ -174,10 +174,6 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         return permission;
     }
 
-    public String getDescriptionAsString() {
-        return description;
-    }
-
     public Class<? extends T> getClazz() {
         return clazz;
     }
@@ -205,7 +201,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
      * @return The description as a list.
      */
     public List<String> getDescription() {
-        return Arrays.asList(getDescriptionAsString().split("\n"));
+        return description;
     }
 
     /**

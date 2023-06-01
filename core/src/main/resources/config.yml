@@ -506,3 +506,7 @@ ChestSort-Hook: true
 # If Towny is installed, UltraCosmetics will prevent Towny from removing UC's pets and mounts.
 # If Towny is not installed, this has no effect.
 Towny-Hook: true
+
+# The description style to use in the menus. Use MiniMessage formatting:
+# https://docs.advntr.dev/minimessage/format.html#minimessage-format
+Description-Style: "<gray><italic>"

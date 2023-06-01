@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.util.SmartLogger;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
@@ -18,7 +19,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
@@ -81,22 +84,20 @@ public class MessageManager {
         return miniMessage.deserialize(messagesConfig.getString(messagePath), placeholders);
     }
 
-    private String getLegacyMessageInternal(String messagePath, TagResolver.Single... placeholders) {
+    private List<String> getLoreInternal(String messagePath, Style defaultStyle, TagResolver.Single... placeholders) {
         checkMessageExists(messagePath);
-        String raw = messagesConfig.getString(messagePath);
-        if (!raw.contains("\n")) {
-            return toLegacy(getMessageInternal(messagePath, placeholders));
-        }
         // We have to do it line by line or the formatting won't carry over
         // into lore correctly.
-        String[] parts = raw.split("\n");
-        Component lastComponent = miniMessage.deserialize(parts[0], placeholders);
-        StringBuilder result = new StringBuilder(toLegacy(lastComponent));
-        for (int i = 1; i < parts.length; i++) {
-            lastComponent = miniMessage.deserialize(parts[i], placeholders).applyFallbackStyle(lastComponent.style());
-            result.append('\n').append(toLegacy(lastComponent));
+        String[] parts = messagesConfig.getString(messagePath).split("\n");
+        Style lastStyle = defaultStyle == null ? Style.empty() : defaultStyle;
+        Component component;
+        List<String> result = new ArrayList<>();
+        for (String part : parts) {
+            component = miniMessage.deserialize(part, placeholders).applyFallbackStyle(lastStyle);
+            result.add(toLegacy(component));
+            lastStyle = component.style();
         }
-        return result.toString();
+        return result;
     }
 
     private void addMessageInternal(String path, String message) {
@@ -267,7 +268,11 @@ public class MessageManager {
     }
 
     public static String getLegacyMessage(String messagePath, TagResolver.Single... placeholders) {
-        return getInstance().getLegacyMessageInternal(messagePath, placeholders);
+        return toLegacy(getMessage(messagePath, placeholders));
+    }
+
+    public static List<String> getLore(String messagePath, Style defaultStyle, TagResolver.Single... placeholders) {
+        return getInstance().getLoreInternal(messagePath, defaultStyle, placeholders);
     }
 
     public static void send(CommandSender sender, String messagePath, TagResolver.Single... placeholders) {
