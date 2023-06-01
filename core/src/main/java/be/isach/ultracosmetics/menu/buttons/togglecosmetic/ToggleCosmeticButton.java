@@ -1,8 +1,9 @@
-package be.isach.ultracosmetics.menu.buttons;
+package be.isach.ultracosmetics.menu.buttons.togglecosmetic;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.menu.buttons.CosmeticButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
@@ -32,7 +33,9 @@ public class ToggleCosmeticButton extends CosmeticButton {
         if (deactivate) {
             toggle = cosmeticType.getCategory().getDeactivateTooltip();
         }
-        ItemStack stack = ItemFactory.rename(cosmeticType.getItemStack(), toggle.appendSpace().append(cosmeticType.getName()));
+        Component name = toggle.appendSpace().append(cosmeticType.getName());
+        name = modifyName(name, ultraPlayer);
+        ItemStack stack = ItemFactory.rename(cosmeticType.getItemStack(), name);
         if (deactivate) {
             ItemFactory.addGlow(stack);
         }
@@ -42,6 +45,7 @@ public class ToggleCosmeticButton extends CosmeticButton {
             loreList.add("");
             loreList.addAll(cosmeticType.getDescription());
         }
+        modifyLore(loreList, ultraPlayer);
 
         if (showPermissionInLore) {
             loreList.add("");
@@ -56,7 +60,47 @@ public class ToggleCosmeticButton extends CosmeticButton {
             loreList.add(ChatColor.translateAlternateColorCodes('&', permissionLore));
         }
         meta.setLore(loreList);
+        meta = modifyMeta(meta, ultraPlayer);
         stack.setItemMeta(meta);
+        stack.setAmount(getAmount(ultraPlayer));
         return stack;
+    }
+
+    /**
+     * Change the display name being applied to the item, i.e. append to it
+     *
+     * @param base the current item name
+     * @return the new item name
+     */
+    protected Component modifyName(Component base, UltraPlayer ultraPlayer) {
+        return base;
+    }
+
+    /**
+     * Change the lore that's going to be applied to the item.
+     * Changes should be made directly to the list.
+     *
+     * @param lore the current lore
+     */
+    protected void modifyLore(List<String> lore, UltraPlayer ultraPlayer) {
+    }
+
+    /**
+     * Change anything else about the item meta, OTHER THAN name or lore.
+     * Changes should be made directly to the ItemMeta given.
+     *
+     * @param meta the current meta
+     */
+    protected ItemMeta modifyMeta(ItemMeta meta, UltraPlayer ultraPlayer) {
+        return meta;
+    }
+
+    /**
+     * Changes the amount the item should appear as
+     *
+     * @return the new amount
+     */
+    protected int getAmount(UltraPlayer ultraPlayer) {
+        return 1;
     }
 }

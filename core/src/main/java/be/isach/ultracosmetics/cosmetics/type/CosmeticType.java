@@ -175,7 +175,6 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     public String getDescriptionAsString() {
-        UltraCosmeticsData.get().getPlugin().getSmartLogger().write(description);
         return description;
     }
 

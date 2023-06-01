@@ -19,7 +19,6 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,8 +80,6 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
             if (shouldHideItem(player, cosmeticType)) continue;
             CosmeticButton button = CosmeticButton.fromType(cosmeticType, player, ultraCosmetics);
-            ItemStack stack = button.getDisplayItem(player);
-            filterItem(stack, cosmeticType, player);
             putItem(inventory, slot, button, player);
         }
 
@@ -138,20 +135,6 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
     protected int getItemsPerPage() {
         return 21;
-    }
-
-    /**
-     * This method can be overridden
-     * to modify an itemstack of a
-     * category being placed in the
-     * inventory. The given itemstack
-     * should be modified directly.
-     *
-     * @param itemStack    Item Stack being placed.
-     * @param cosmeticType The Cosmetic Type.
-     * @param player       The Inventory Opener.
-     */
-    protected void filterItem(ItemStack itemStack, T cosmeticType, UltraPlayer player) {
     }
 
     /**

@@ -5,10 +5,18 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.cosmetics.type.MorphType;
+import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.menu.PurchaseData;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleEmoteCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleGadgetCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleMorphCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.TogglePetCosmeticButton;
 import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -39,8 +47,15 @@ public abstract class CosmeticButton implements Button {
         if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled") && !ultraPlayer.canEquip(cosmeticType)) {
             return new CosmeticNoPermissionButton(ultraCosmetics, cosmeticType);
         }
-        if (cosmeticType instanceof GadgetType) {
-            return new ToggleGadgetCosmeticButton(ultraCosmetics, (GadgetType) cosmeticType);
+        switch (cosmeticType.getCategory()) {
+            case PETS:
+                return new TogglePetCosmeticButton(ultraCosmetics, (PetType) cosmeticType);
+            case GADGETS:
+                return new ToggleGadgetCosmeticButton(ultraCosmetics, (GadgetType) cosmeticType);
+            case MORPHS:
+                return new ToggleMorphCosmeticButton(ultraCosmetics, (MorphType) cosmeticType);
+            case EMOTES:
+                return new ToggleEmoteCosmeticButton(ultraCosmetics, (EmoteType) cosmeticType);
         }
         return new ToggleCosmeticButton(ultraCosmetics, cosmeticType);
     }

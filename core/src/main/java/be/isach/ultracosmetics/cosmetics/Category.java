@@ -25,19 +25,19 @@ import java.util.stream.Collectors;
  */
 public enum Category {
 
-    PETS("Pets", "%petname%", "pets", "pe", true, () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
-    GADGETS("Gadgets", "%gadgetname%", "gadgets", "g", true),
-    EFFECTS("Particle-Effects", "%effectname%", "particleeffects", "ef", true),
-    MOUNTS("Mounts", "%mountname%", "mounts", "mou", true),
-    MORPHS("Morphs", "%morphname%", "morphs", "mor", true, () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
-    HATS("Hats", "%hatname%", "hats", "h", true),
+    PETS("Pets", "petname", "pets", "pe", true, () -> UltraCosmeticsData.get().getServerVersion().isMobChipAvailable()),
+    GADGETS("Gadgets", "gadgetname", "gadgets", "g", true),
+    EFFECTS("Particle-Effects", "effectname", "particleeffects", "ef", true),
+    MOUNTS("Mounts", "mountname", "mounts", "mou", true),
+    MORPHS("Morphs", "morphname", "morphs", "mor", true, () -> Bukkit.getPluginManager().isPluginEnabled("LibsDisguises")),
+    HATS("Hats", "hatname", "hats", "h", true),
     SUITS_HELMET(ArmorSlot.HELMET),
     SUITS_CHESTPLATE(ArmorSlot.CHESTPLATE),
     SUITS_LEGGINGS(ArmorSlot.LEGGINGS),
     SUITS_BOOTS(ArmorSlot.BOOTS),
-    EMOTES("Emotes", "%emotename%", "emotes", "e", true),
-    PROJECTILE_EFFECTS("Projectile-Effects", "%projectile-effectname%", "projectileeffects", "p", false),
-    DEATH_EFFECTS("Death-Effects", "%death-effectname%", "deatheffects", "d", false),
+    EMOTES("Emotes", "emotename", "emotes", "e", true),
+    PROJECTILE_EFFECTS("Projectile-Effects", "projectile-effectname", "projectileeffects", "p", false),
+    DEATH_EFFECTS("Death-Effects", "death-effectname", "deatheffects", "d", false),
     ;
 
     // Avoids counting suit categories multiple times since they share settings
@@ -101,7 +101,7 @@ public enum Category {
     }
 
     private Category(ArmorSlot slot) {
-        this("Suits", "%suitname%", "suits", "suits_" + slot.toString().toLowerCase().charAt(0), true);
+        this("Suits", "suitname", "suits", "suits_" + slot.toString().toLowerCase().charAt(0), true);
     }
 
     /**
