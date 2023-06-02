@@ -1,1800 +1,1846 @@
-Prefix: '&l&o装饰品 >&r'
-No-Permission: '%prefix% &c&l你没有权限！'
-Cosmetic-Disabled: '%prefix% &c&l这个装饰品已被禁用！'
-Invalid-Gadget: '%prefix% &c&l无效的小工具！'
-Invalid-Pet: '%prefix% &c&l无效宠物！'
-Invalid-Mount: '%prefix% &c&l无效的载具！'
-Invalid-Effect: '%prefix% &c&l无效的效果！'
-Invalid-Morph: '%prefix% &c&l无效伪装！'
-Invalid-Hat: '%prefix% &c&l无效头饰！'
-Invalid-Suit: '%prefix% &c&l无效衣装！'
-Invalid-Emote: '%prefix% &c&l无效表情！'
-Invalid-Menu: '%prefix% &c&l无效菜单！'
-Ammo: '&7你的可使用次数: &e%ammo%'
-Purchase: '&a&l购买'
-Cancel: '&c&l取消'
-Buy-Ammo-Description: '&e&l购买 %amount% %gadgetname% 次使用次数 &e&l需要花费 $%price%'
-Buy-Cosmetic-Description: '&e&l购买 %gadgetname% &e&l需花费 $%price%'
-Right-Click-Buy-Ammo: '&7右键即可购买使用次数'
-Click-To-Purchase: '&e右键即可花费 $%price% &e来购买'
-Not-Enough-Money: '%prefix% &c&l你没有足够的金钱！'
-Successful-Purchase: '%prefix% &a&l购买成功！'
-Buy-Treasure-Key: '&l购买一把宝藏钥匙'
-Treasure-Keys: '&7&l宝藏钥匙'
-Treasure-Chests: '&6&l宝藏箱'
-Dont-Have-Key: '&4&l你需要一把钥匙！'
-Click-Open-Chest: '&a点击以打开一个箱子'
-Click-Buy-Key: '&a点击以购买一把钥匙'
-Left-Click-Open-Chest: '&a左键点击以打开一个箱子'
-Right-Click-Simple: '&a右键即可获得装饰品'
-Your-Keys: '&7&o你的钥匙数: &f&l%keys%'
-Buy-Treasure-Key-ItemName: '&e&l1把 &7&l宝藏钥匙 &e&l需要花费 $%price%'
-You-Won-Treasure-Chests: '%prefix% &f&l你赢得了: %name%!'
-Treasure-Chest-Occupied: '%prefix% &c&l所有宝藏点都已被占用，请稍等并重试。'
-No-Ammo: '%prefix% &c&l你没有在此小道具上可用的使用次数'
+Prefix: <italic><bold>装饰品 >
+No-Permission: <prefix> <bold><red>你没有权限！
+Cosmetic-Disabled: <prefix> <bold><red>这个装饰品已被禁用！
+Invalid-Gadget: <prefix> <bold><red>无效的小工具！
+Invalid-Pet: <prefix> <bold><red>无效宠物！
+Invalid-Mount: <prefix> <bold><red>无效的载具！
+Invalid-Effect: <prefix> <bold><red>无效的效果！
+Invalid-Morph: <prefix> <bold><red>无效伪装！
+Invalid-Hat: <prefix> <bold><red>无效头饰！
+Invalid-Suit: <prefix> <bold><red>无效衣装！
+Invalid-Emote: <prefix> <bold><red>无效表情！
+Invalid-Menu: <prefix> <bold><red>无效菜单！
+Ammo: '<gray>你的可使用次数: </gray><yellow><ammo>'
+Purchase: <bold><green>购买
+Cancel: <bold><red>取消
+Buy-Ammo-Description: <bold><yellow>购买 <amount> <gadgetname> 次使用次数 </yellow></bold><bold><yellow>需要花费 $<price>
+Buy-Cosmetic-Description: <bold><yellow>购买 <gadgetname> </yellow></bold><bold><yellow>需花费 $<price>
+Right-Click-Buy-Ammo: <gray>右键即可购买使用次数
+Click-To-Purchase: <yellow>右键即可花费 $<price> </yellow><yellow>来购买
+Not-Enough-Money: <prefix> <bold><red>你没有足够的金钱！
+Successful-Purchase: <prefix> <bold><green>购买成功！
+Buy-Treasure-Key: <bold>购买一把宝藏钥匙
+Treasure-Keys: <bold><gray>宝藏钥匙
+Treasure-Chests: <bold><gold>宝藏箱
+Dont-Have-Key: <bold><dark_red>你需要一把钥匙！
+Click-Open-Chest: <green>点击以打开一个箱子
+Click-Buy-Key: <green>点击以购买一把钥匙
+Left-Click-Open-Chest: <green>左键点击以打开一个箱子
+Right-Click-Simple: <green>右键即可获得装饰品
+Your-Keys: '<italic><gray>你的钥匙数: </gray></italic><bold><white><keys>'
+Buy-Treasure-Key-ItemName: <bold><yellow>1把 </yellow></bold><bold><gray>宝藏钥匙 </gray></bold><bold><yellow>需要花费 $<price>
+You-Won-Treasure-Chests: '<prefix> <bold><white>你赢得了: <name>!'
+Treasure-Chest-Occupied: <prefix> <bold><red>所有宝藏点都已被占用，请稍等并重试。
+No-Ammo: <prefix> <bold><red>你没有在此小道具上可用的使用次数
 Clear:
-  Cosmetics: '&c&l清除所有装饰品'
-  Gadgets: '&c&l清除当前使用的小道具'
-  Pets: '&c&l清除当前宠物'
-  Mounts: '&c&l清除当前载具'
-  Particle-Effects: '&c&l清除当前效果'
-  Morphs: '&c&l清除当前伪装'
-  Hats: '&c&l清除当前头饰'
-  Suits: '&c&l清除当前衣装'
-  Emotes: '&c&l清除当前表情'
-  Projectile-Effects: '&c&lClear current projectile effect'
-  Death-Effects: '&c&lClear current death effect'
+  Cosmetics: <bold><red>清除所有装饰品
+  Gadgets: <bold><red>清除当前使用的小道具
+  Pets: <bold><red>清除当前宠物
+  Mounts: <bold><red>清除当前载具
+  Particle-Effects: <bold><red>清除当前效果
+  Morphs: <bold><red>清除当前伪装
+  Hats: <bold><red>清除当前头饰
+  Suits: <bold><red>清除当前衣装
+  Emotes: <bold><red>清除当前表情
+  Projectile-Effects: <bold><red>Clear current projectile effect
+  Death-Effects: <bold><red>Clear current death effect
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: '&c&l重命名宠物到 &f&l%name% &c&l需要花费 &e&l$%price%'
-    Title: '&l重命名宠物'
+      Showcase: <bold><red>重命名宠物到 </red></bold><bold><white><name> </white></bold><bold><red>需要花费 </red></bold><bold><yellow>$<price>
+    Title: <bold>重命名宠物
+  Purchase-Cosmetic:
+    Title: <bold>Purchase <cosmetic>
   Rename-Pet:
     Button:
-      Name: '&c&l点击以重命名: %petname%'
+      Name: '<bold><red>点击以重命名: <petname>'
     Placeholder: 宠物名
     Title: 重命名宠物
   Main:
-    Title: '&l主菜单'
+    Title: <bold>主菜单
     Button:
-      Name: '&c&l主菜单'
+      Name: <bold><red>主菜单
   Pets:
-    Title: '&l宠物'
+    Title: <bold>宠物
     Button:
-      Name: '&a&l宠物'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l生成'
-      Tooltip-Unequip: '&c&l取消生成'
+      Name: <bold><green>宠物
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>生成
+      Tooltip-Unequip: <bold><red>取消生成
   Gadgets:
-    Title: '&l小道具'
+    Title: <bold>小道具
     Button:
-      Name: '&9&l小道具'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l激活'
-      Tooltip-Unequip: '&c&l取消激活'
+      Name: <bold><blue>小道具
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>激活
+      Tooltip-Unequip: <bold><red>取消激活
   Mounts:
-    Title: '&l载具'
+    Title: <bold>载具
     Button:
-      Name: '&6&l载具'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l生成'
-      Tooltip-Unequip: '&c&l取消生成'
+      Name: <bold><gold>载具
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>生成
+      Tooltip-Unequip: <bold><red>取消生成
   Morphs:
-    Title: '&l伪装'
+    Title: <bold>伪装
     Button:
-      Name: '&2&l伪装'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l伪装成'
-      Tooltip-Unequip: '&c&l取消伪装 从'
+      Name: <bold><dark_green>伪装
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>伪装成
+      Tooltip-Unequip: <bold><red>取消伪装 从
   Hats:
-    Title: '&l头饰'
+    Title: <bold>头饰
     Button:
-      Name: '&d&l头饰'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l装备'
-      Tooltip-Unequip: '&c&l取消装备'
+      Name: <bold><light_purple>头饰
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>装备
+      Tooltip-Unequip: <bold><red>取消装备
   Particle-Effects:
-    Title: '&l粒子效果'
+    Title: <bold>粒子效果
     Button:
-      Name: '&b&l粒子效果'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l召唤'
-      Tooltip-Unequip: '&c&l取消召唤'
+      Name: <bold><aqua>粒子效果
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>召唤
+      Tooltip-Unequip: <bold><red>取消召唤
   Suits:
-    Title: '&l衣装'
+    Title: <bold>衣装
     Button:
-      Name: '&3&l衣装'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l装备'
-      Tooltip-Unequip: '&c&l取消装备'
+      Name: <bold><dark_aqua>衣装
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>装备
+      Tooltip-Unequip: <bold><red>取消装备
   Emotes:
-    Title: '&l表情'
+    Title: <bold>表情
     Button:
-      Name: '&e&l表情'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&l装备'
-      Tooltip-Unequip: '&c&l取消装备'
+      Name: <bold><yellow>表情
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>装备
+      Tooltip-Unequip: <bold><red>取消装备
   Projectile-Effects:
-    Title: '&lProjectile Effects'
+    Title: <bold>Projectile Effects
     Button:
-      Name: '&5&lProjectile Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: <bold><dark_purple>Projectile Effects
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Unequip: <bold><red>Unequip
   Death-Effects:
-    Title: '&lDeath Effects'
+    Title: <bold>Death Effects
     Button:
-      Name: '&c&lDeath Effects'
-      Lore: '&7Unlocked: &f%unlocked%'
-      Tooltip-Equip: '&b&lEquip'
-      Tooltip-Unequip: '&c&lUnequip'
+      Name: <bold><red>Death Effects
+      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Unequip: <bold><red>Unequip
   Buy-Ammo:
-    Title: '&l购买使用次数'
+    Title: <bold>购买使用次数
   Misc:
     Button:
-      Previous-Page: '&c&l上一页'
-      Next-Page: '&a&l下一页'
+      Previous-Page: <bold><red>上一页
+      Next-Page: <bold><green>下一页
 Chest-Location:
-  Not-Enough-Space: '%prefix% &c&l这里没有足够的空间来召唤宝藏箱！'
-  Region-Disabled: '%prefix% &c&l你不能在这里打开一个宝藏箱！'
-  Invalid: '%prefix% &c&l这不是一个可用地点'
-  In-Air: '%prefix% &c&l该地点不在地面上！'
-  In-Ground: '%prefix% &c&l该地点在地下！'
-  Suggestion: '%prefix% &a你指的是 %location%?'
-  Dismount-First: '%prefix% &c&l你必须先从载具上下来才能打开箱子'
-  Too-Close-To-Entity: '%prefix% &c&lYou are too close to another entity!'
-Active-Pet-Needed: '&c&l你需要召唤一只宠物才能重命名它'
+  Not-Enough-Space: <prefix> <bold><red>这里没有足够的空间来召唤宝藏箱！
+  Region-Disabled: <prefix> <bold><red>你不能在这里打开一个宝藏箱！
+  Invalid: <prefix> <bold><red>这不是一个可用地点
+  In-Air: <prefix> <bold><red>该地点不在地面上！
+  In-Ground: <prefix> <bold><red>该地点在地下！
+  Suggestion: <prefix> <green>你指的是 <location>?
+  Dismount-First: <prefix> <bold><red>你必须先从载具上下来才能打开箱子
+  Too-Close-To-Entity: <prefix> <bold><red>You are too close to another entity!
+Active-Pet-Needed: <bold><red>你需要召唤一只宠物才能重命名它
 Treasure-Chests-Loot:
   Ammo: |-
-    &9Ammo
-    %ammo% %cosmetic%
+    <blue>Ammo
+    <ammo> <cosmetic>
   Money: |-
-    &eMoney
-    &e&l$%money%
-  Nothing: '&c&l空'
-  Pets: "&aPet\n%cosmetic%"
-  Mounts: "&6Mount\n%cosmetic%"
-  Particle-Effects: "&bParticle Effect\n%cosmetic%"
-  Morphs: "&2Morph\n%cosmetic%"
-  Hats: "&dHat\n%cosmetic%"
-  Gadgets: "&9Gadget\n%cosmetic%"
-  Suits: "&3Suit\n%cosmetic%"
-  Emotes: "&eEmote\n%cosmetic%"
-  Death-Effects: "&cDeath Effect\n%cosmetic%"
-  Projectile-Effects: "&5Projectile Effect\n%cosmetic%"
-Disable-Gadgets: '&c&l关闭小道具'
-Disable-Gadgets-Lore: '&c禁用小工具及它们的效果对您的影响'
-Enable-Gadgets: '&a&l启用小道具'
-Enable-Gadgets-Lore: '&c启用小工具及它们的效果对您的影响'
-Disable-Third-Person-View: '&c&l禁用伪装的第三人视图'
-Enable-Third-Person-View: '&a&l启用伪装的第三人视图'
-Disable-Filter-By-Owned: '&c&l改为向所有人展示'
-Enable-Filter-By-Owned: '&c&l将筛选器改为已拥有的'
-Disable-Treasure-Notification: '&c&l宝藏通知关闭'
-Enable-Treasure-Notification: '&c&l宝藏通知开启'
-Gadgets-Enabled-Needed: '%prefix% &c&l你需要启用小道具！'
+    <yellow>Money
+    <bold><yellow>$<money>
+  Nothing: <bold><red>空
+  Pets: |-
+    <green>Pet
+    <cosmetic>
+  Mounts: |-
+    <gold>Mount
+    <cosmetic>
+  Particle-Effects: |-
+    <aqua>Particle Effect
+    <cosmetic>
+  Morphs: |-
+    <dark_green>Morph
+    <cosmetic>
+  Hats: |-
+    <light_purple>Hat
+    <cosmetic>
+  Gadgets: |-
+    <blue>Gadget
+    <cosmetic>
+  Suits: |-
+    <dark_aqua>Suit
+    <cosmetic>
+  Emotes: |-
+    <yellow>Emote
+    <cosmetic>
+  Death-Effects: |-
+    <red>Death Effect
+    <cosmetic>
+  Projectile-Effects: |-
+    <dark_purple>Projectile Effect
+    <cosmetic>
+Treasure-Chests-Loot-Messages:
+  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
+  Money: <prefix> <bold><gold><name> found $<money>
+  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
+  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
+  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
+  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
+  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
+  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
+  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
+  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
+  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+No-Permission-Lore:
+  'true': '<gray>Permission: </gray><bold><green>Yes!'
+  'false': '<gray>Permission: </gray><bold><dark_red>No!'
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+Disable-Gadgets: <bold><red>关闭小道具
+Disable-Gadgets-Lore: <red>禁用小工具及它们的效果对您的影响
+Enable-Gadgets: <bold><green>启用小道具
+Enable-Gadgets-Lore: <red>启用小工具及它们的效果对您的影响
+Disable-Third-Person-View: <bold><red>禁用伪装的第三人视图
+Enable-Third-Person-View: <bold><green>启用伪装的第三人视图
+Disable-Filter-By-Owned: <bold><red>改为向所有人展示
+Enable-Filter-By-Owned: <bold><red>将筛选器改为已拥有的
+Disable-Treasure-Notification: <bold><red>宝藏通知关闭
+Enable-Treasure-Notification: <bold><red>宝藏通知开启
+Gadgets-Enabled-Needed: <prefix> <bold><red>你需要启用小道具！
 Gadgets:
-  Equip: '%prefix% &9你装配了 %gadgetname%'
-  Unequip: '%prefix% &9你去下了 %gadgetname%'
-  Countdown-Message: '%prefix% &c&l你不能在 &c&l%time%&c&l 秒内使用 %gadgetname%！'
+  Equip: <prefix> <blue>你装配了 <gadgetname>
+  Unequip: <prefix> <blue>你去下了 <gadgetname>
+  Countdown-Message: <prefix> <bold><red>你不能在 </red></bold><bold><red><time></red></bold><bold><red> 秒内使用 <gadgetname>！
   PaintballGun:
-    name: '&b&l颜料彩弹枪'
-    Description: '&7&obiu biu biu!!!'
+    name: <bold><aqua>颜料彩弹枪
+    Description: biu biu biu!!!
   BatBlaster:
-    name: '&7&l蝙蝠冲击波'
+    name: <bold><gray>蝙蝠冲击波
     Description: |-
-      &7&o发射一波又一波的蝙蝠
-      &7&o对付你不喜欢的人!
+      发射一波又一波的蝙蝠
+      对付你不喜欢的人!
   MelonThrower:
-    name: '&a&l西瓜投手'
-    Wait-For-Finish: '%prefix% &c&l先等你之前发射的西瓜爆炸吧！'
-    Description: '&7&o奇怪的乐趣！'
+    name: <bold><green>西瓜投手
+    Wait-For-Finish: <prefix> <bold><red>先等你之前发射的西瓜爆炸吧！
+    Description: 奇怪的乐趣！
   EtherealPearl:
-    name: '&5&l空灵珍珠'
+    name: <bold><dark_purple>空灵珍珠
     Description: |-
-      &7&o坐在你专属的空灵珍珠上
-      &7&o遨游天际！
+      坐在你专属的空灵珍珠上
+      遨游天际！
   FleshHook:
-    name: '&7&l肉钩'
+    name: <bold><gray>肉钩
     Description: |-
-      &7&o通过向他们投掷钩子
-      &7&o把他们拉到你身边
-      &7&o来结交新的朋友!
+      通过向他们投掷钩子
+      把他们拉到你身边
+      来结交新的朋友!
   DiscoBall:
-    name: '&d&l迪斯科灯球'
-    Already-Active: '&c&l已经有一个在使用中的迪斯科灯球了！'
-    Not-Space-Above: '&c&l你的头上没有足够的空间！'
-    Description: '&7&o舞蹈吧！'
+    name: <bold><light_purple>迪斯科灯球
+    Already-Active: <bold><red>已经有一个在使用中的迪斯科灯球了！
+    Not-Space-Above: <bold><red>你的头上没有足够的空间！
+    Description: 舞蹈吧！
   ColorBomb:
-    name: '&d&l颜料炸弹'
-    Description: '&7&o一个多彩的炸弹！'
+    name: <bold><light_purple>颜料炸弹
+    Description: 一个多彩的炸弹！
   Chickenator:
-    name: '&f&l鸡爪'
-    Description: '&7&o1.发射! 2.嘣! 3.肯德基!'
+    name: <bold><white>鸡爪
+    Description: 1.发射! 2.嘣! 3.肯德基!
   PortalGun:
-    name: '&c&l传送门 &9&l枪'
-    No-Block-Range: '%prefix% &c&l所指的方向内没有方块！'
-    Different-Worlds: '%prefix% &c&l传送没都必须在同一个世界内！'
-    Description: '&7&o蛋糕就是个谎言！'
+    name: <bold><red>传送门 </red></bold><bold><blue>枪
+    No-Block-Range: <prefix> <bold><red>所指的方向内没有方块！
+    Different-Worlds: <prefix> <bold><red>传送没都必须在同一个世界内！
+    Description: 蛋糕就是个谎言！
   BlizzardBlaster:
-    name: '&b&l暴风雪冲击波'
-    Description: '&7&o让其下雪吧!'
+    name: <bold><aqua>暴风雪冲击波
+    Description: 让其下雪吧!
   ThorHammer:
-    name: '&f&l雷神之锤'
-    Description: '&7&o获得真正的喵喵锤!'
+    name: <bold><white>雷神之锤
+    Description: 获得真正的喵喵锤!
   SmashDown:
-    name: '&c&l向下砸'
-    Description: '&7&o他的名字是......约翰-塞纳（John Cena）！'
+    name: <bold><red>向下砸
+    Description: 他的名字是......约翰-塞纳（John Cena）！
   ExplosiveSheep:
-    name: '&4&l会爆炸的羊'
-    Already-Active: '&c&l已经召唤过一只爆炸羊了！'
+    name: <bold><dark_red>会爆炸的羊
+    Already-Active: <bold><red>已经召唤过一只爆炸羊了！
     Description: |-
-      &7&o你确定它该像那样
-      &7&o闪烁吗?
+      你确定它该像那样
+      闪烁吗?
   AntiGravity:
-    name: '&d&l反重力'
+    name: <bold><light_purple>反重力
     Description: |-
-      &7&o不喜欢重力？
-      &7&o那这就是为你量身定制的！
+      不喜欢重力？
+      那这就是为你量身定制的！
   Tsunami:
-    name: '&9&l海啸'
+    name: <bold><blue>海啸
     Description: |-
-      &7&o海啸!
-      &7&o逃命啊!
+      海啸!
+      逃命啊!
   Rocket:
-    name: '&4&l火箭'
-    Not-Enough-Space: '%prefix% &c&l你头上的空间不足！'
-    Not-On-Ground: '%prefix% &c&l你必须站在地上！'
-    Takeoff: '&4&l起飞!!'
-    LaunchAborted: '&c&l发射取消!'
-    Description: '&7&o休斯顿，我们遇到了一个问题...'
+    name: <bold><dark_red>火箭
+    Not-Enough-Space: <prefix> <bold><red>你头上的空间不足！
+    Not-On-Ground: <prefix> <bold><red>你必须站在地上！
+    Takeoff: <bold><dark_red>起飞!!
+    LaunchAborted: <bold><red>发射取消!
+    Description: 休斯顿，我们遇到了一个问题...
   BlackHole:
-    name: '&1&l黑洞'
-    Description: '&7&o你不该被它抓住!'
+    name: <bold><dark_blue>黑洞
+    Description: 你不该被它抓住!
   TNT:
     name: '&4&lT&f&lN&4&lT'
     Description: |-
-      &7&o把一些人炸起来!
-      &7&o嘣!
+      把一些人炸起来!
+      嘣!
   FunGun:
-    name: '&6&l趣枪'
-    Description: '&7&o哇！这把枪好好玩！'
+    name: <bold><gold>趣枪
+    Description: 哇！这把枪好好玩！
   Parachute:
-    name: '&f&l降落伞'
-    Description: '&7&o杰罗尼姆噢！'
+    name: <bold><white>降落伞
+    Description: 杰罗尼姆噢！
   QuakeGun:
-    name: '&5&l地震 &d&l枪'
+    name: <bold><dark_purple>地震 </dark_purple></bold><bold><light_purple>枪
     Description: |-
-      &7&o获得一把真正的轨道枪
-      &7&o并打击玩家和生物！
+      获得一把真正的轨道枪
+      并打击玩家和生物！
   GhostParty:
-    name: '&f&l鬼魂派对'
+    name: <bold><white>鬼魂派对
     Description: |-
-      &7&o你要叫谁？
-      &7&o幽灵破坏者！
+      你要叫谁？
+      幽灵破坏者！
   Firework:
-    name: '&c&l烟花'
+    name: <bold><red>烟花
     Description: |-
-      &7&o想庆祝?
-      &7&o放朵烟花吧!
+      想庆祝?
+      放朵烟花吧!
   ChristmasTree:
-    name: '&2&l圣诞树'
-    Click-On-Block: '%prefix% &c&l请对准方块点击！'
+    name: <bold><dark_green>圣诞树
+    Click-On-Block: <prefix> <bold><red>请对准方块点击！
     Description: |-
-      &7&o这里有一颗
-      &7&o圣诞树给你!
+      这里有一颗
+      圣诞树给你!
   FreezeCannon:
-    name: '&b&l冷冻炮'
-    Description: '&7&o把地板变成溜冰场！'
+    name: <bold><aqua>冷冻炮
+    Description: 把地板变成溜冰场！
   Snowball:
-    name: '&f&l雪球'
+    name: <bold><white>雪球
     Description: |-
-      &7&o通过向他人扔雪球来
-      &7&o过节!
+      通过向他人扔雪球来
+      过节!
   PartyPopper:
-    name: '&e&l礼花'
+    name: <bold><yellow>礼花
     Description: |-
-      &7&o通过向空中喷洒五彩纸屑
-      &7&o来庆祝!
+      通过向空中喷洒五彩纸屑
+      来庆祝!
   Trampoline:
-    name: '&9&l蹦床'
+    name: <bold><blue>蹦床
     Description: |-
-      &7&o建造一个蹦床，
-      &7&o并用它将你和你的朋友
-      &7&o送入空中！
-  Gadget-Ready-ActionBar: '%gadgetname% &f&l已就绪！'
-  Lore: '&9小道具'
+      建造一个蹦床，
+      并用它将你和你的朋友
+      送入空中！
+  Gadget-Ready-ActionBar: <gadgetname> <bold><white>已就绪！
+  Lore: <blue>小道具
 Mounts:
   DruggedHorse:
-    menu-name: '&2&l嗑药的马'
-    entity-displayname: '&l%playername%的嗑药马'
-    Description: '&7&o这太过分了！'
+    menu-name: <bold><dark_green>嗑药的马
+    entity-displayname: <bold><playername>的嗑药马
+    Description: 这太过分了！
   InfernalHorror:
-    menu-name: '&4&l地狱恐惧'
-    entity-displayname: '&l%playername%的地狱恐惧'
-    Description: '&7&o这个载具直接来自... 地狱!'
+    menu-name: <bold><dark_red>地狱恐惧
+    entity-displayname: <bold><playername>的地狱恐惧
+    Description: 这个载具直接来自... 地狱!
   GlacialSteed:
-    menu-name: '&b&l冰川骏马'
-    entity-displayname: '&l%playername%的冰川骏马'
-    Description: '&7&o这个载具来自北极'
+    menu-name: <bold><aqua>冰川骏马
+    entity-displayname: <bold><playername>的冰川骏马
+    Description: 这个载具来自北极
   WalkingDead:
-    menu-name: '&2&l行走死亡'
-    entity-displayname: '&l%playername%的行走死亡'
-    Description: '&7&o呜...'
+    menu-name: <bold><dark_green>行走死亡
+    entity-displayname: <bold><playername>的行走死亡
+    Description: 呜...
   MountOfFire:
-    menu-name: '&c&l火之坐骑'
-    entity-displayname: '&l%playername%的火之载具'
-    Description: '&7&o冥王的坐骑！'
+    menu-name: <bold><red>火之坐骑
+    entity-displayname: <bold><playername>的火之载具
+    Description: 冥王的坐骑！
   MountOfWater:
-    menu-name: '&9&l水之坐骑'
-    entity-displayname: '&l%playername%的水之坐骑'
-    Description: '&7&o波塞冬坐骑！'
+    menu-name: <bold><blue>水之坐骑
+    entity-displayname: <bold><playername>的水之坐骑
+    Description: 波塞冬坐骑！
   EcologistHorse:
-    menu-name: '&a&l生态马'
-    entity-displayname: '&l%playername%的生态马'
-    Description: '&7&o成为一名生态学家！'
+    menu-name: <bold><green>生态马
+    entity-displayname: <bold><playername>的生态马
+    Description: 成为一名生态学家！
   NyanSheep:
-    menu-name: '&4&l咩咩&6&l羊'
-    entity-displayname: '&l%playername%的咩咩羊'
+    menu-name: <bold><dark_red>咩咩</dark_red></bold><bold><gold>羊
+    entity-displayname: <bold><playername>的咩咩羊
     Description: |-
-      &4&l咩 &6&l咩 &e&l咩
-      &a&l咩 &3&l咩 &9&l咩
+      <bold><dark_red>咩 </dark_red></bold><bold><gold>咩 </gold></bold><bold><yellow>咩
+      <bold><green>咩 </green></bold><bold><dark_aqua>咩 </dark_aqua></bold><bold><blue>咩
   Snake:
-    menu-name: '&6&l蛇'
-    entity-displayname: '&l%playername%的蛇'
-    Description: '&7&o小心！它可能会咬人...'
+    menu-name: <bold><gold>蛇
+    entity-displayname: <bold><playername>的蛇
+    Description: 小心！它可能会咬人...
   Dragon:
-    menu-name: '&5&l龙'
-    entity-displayname: '&l%playername%的龙'
-    Description: '&7&o成为一个龙骑士！'
+    menu-name: <bold><dark_purple>龙
+    entity-displayname: <bold><playername>的龙
+    Description: 成为一个龙骑士！
   HypeCart:
-    menu-name: '&7&l超级车'
-    entity-displayname: '&l%playername%的超级车'
+    menu-name: <bold><gray>超级车
+    entity-displayname: <bold><playername>的超级车
     Description: |-
-      &7&o想开F1赛车？
-      &7&o现在你可以了！
+      想开F1赛车？
+      现在你可以了！
   Slime:
-    menu-name: '&a&l史莱姆'
-    entity-displayname: '&l%playername%的史莱姆'
-    Description: '&7&o啪嗒！啪嗒！'
+    menu-name: <bold><green>史莱姆
+    entity-displayname: <bold><playername>的史莱姆
+    Description: 啪嗒！啪嗒！
   Spider:
-    menu-name: '&8&l蜘蛛'
-    entity-displayname: '&l%playername%的蜘蛛'
-    Description: '&7&o你就是蜘蛛骑士！'
+    menu-name: <bold><dark_gray>蜘蛛
+    entity-displayname: <bold><playername>的蜘蛛
+    Description: 你就是蜘蛛骑士！
   Rudolph:
-    menu-name: '&f&l鲁道&4&l夫'
-    entity-displayname: '&l%playername%的鲁道夫'
+    menu-name: <bold><white>鲁道</white></bold><bold><dark_red>夫
+    entity-displayname: <bold><playername>的鲁道夫
     Description: |-
-      &7&o没有驯鹿鲁道夫的圣诞节
-      &7&o会是什么样的?
+      没有驯鹿鲁道夫的圣诞节
+      会是什么样的?
   MoltenSnake:
-    menu-name: '&c&l熔蛇'
-    entity-displayname: '&l%playername%的熔蛇'
+    menu-name: <bold><red>熔蛇
+    entity-displayname: <bold><playername>的熔蛇
     Description: |-
-      &7&o在地球的深处，
-      &7&o存在着一种神话般的熔蛇
-      &7&o它将永远为你服务
+      在地球的深处，
+      存在着一种神话般的熔蛇
+      它将永远为你服务
   Strider:
-    menu-name: '&c&l炽足兽'
-    entity-displayname: '&l%playername%的炽足兽'
+    menu-name: <bold><red>炽足兽
+    entity-displayname: <bold><playername>的炽足兽
     Description: |-
-      &7&o神秘的立方体生物
-      &7&o可以直接在岩浆上行走
-    Held-Item-Lore: '&7&oStrider food on a stick!'
+      神秘的立方体生物
+      可以直接在岩浆上行走
+    Held-Item-Lore: <italic><gray>Strider food on a stick!
   Horse:
-    menu-name: '&7&l马'
-    entity-displayname: '&l%playername%的马'
-    Description: '&7&o你的第一匹标准马'
+    menu-name: <bold><gray>马
+    entity-displayname: <bold><playername>的马
+    Description: 你的第一匹标准马
   Donkey:
-    menu-name: '&8&l驴'
-    entity-displayname: '&l%playername%的驴'
-    Description: '&7&o年轻人的第一个lv（驴）！'
+    menu-name: <bold><dark_gray>驴
+    entity-displayname: <bold><playername>的驴
+    Description: 年轻人的第一个lv（驴）！
   Mule:
-    menu-name: '&8&l骡子'
-    entity-displayname: '&l%playername%的骡子'
-    Description: '&7&o你的第一匹国标骡子'
+    menu-name: <bold><dark_gray>骡子
+    entity-displayname: <bold><playername>的骡子
+    Description: 你的第一匹国标骡子
   Pig:
-    menu-name: '&d&lPig'
-    entity-displayname: '&l%playername%''s Pig'
-    Description: '&7&oOink!'
-    Held-Item-Lore: '&7&oPig food on a stick!'
-  Equip: '%prefix% &9你召唤了 %mountname%'
-  Unequip: '%prefix% &9你收回了 %mountname%'
-  Cant-Spawn: '%prefix% &c&l怪物不能在这里生成！'
-  Not-Enough-Room: '%prefix% &c&l这里的空间不足以召唤一个坐骑'
+    menu-name: <bold><light_purple>Pig
+    entity-displayname: <bold><playername>'s Pig
+    Description: Oink!
+    Held-Item-Lore: <italic><gray>Pig food on a stick!
+  SlimeSnake:
+    menu-name: <bold><red>Slime Snake
+    entity-displayname: <bold><playername>'s Slime Snake
+    Description: |-
+      This type of snake comes straight from
+      the hidden "Secret Swamps of Sliminess".
+      This one will serve you eternally.
+  Equip: <prefix> <blue>你召唤了 <mountname>
+  Unequip: <prefix> <blue>你收回了 <mountname>
+  Cant-Spawn: <prefix> <bold><red>怪物不能在这里生成！
+  Not-Enough-Room: <prefix> <bold><red>这里的空间不足以召唤一个坐骑
 Particle-Effects:
-  Equip: '%prefix% &9你召唤了 %effectname%'
-  Unequip: '%prefix% &9你取消召唤了 %effectname%'
+  Equip: <prefix> <blue>你召唤了 <effectname>
+  Unequip: <prefix> <blue>你取消召唤了 <effectname>
   RainCloud:
-    name: '&9&l雨云'
+    name: <bold><blue>雨云
     Description: |-
-      &7&o天气预报告诉我
-      &7&o他在下雨.
+      天气预报告诉我
+      他在下雨.
   SnowCloud:
-    name: '&f&l雪云'
+    name: <bold><white>雪云
     Description: |-
-      &7&o天气预报告诉我
-      &7&o他在下雪.
+      天气预报告诉我
+      他在下雪.
   BloodHelix:
-    name: '&4&l血色螺旋体'
+    name: <bold><dark_red>血色螺旋体
     Description: |-
-      &7&o古老的传说说这种魔法
-      &7&o赋予其使用者的血液以力量。
-      &7&o赋予他们神的力量。
+      古老的传说说这种魔法
+      赋予其使用者的血液以力量。
+      赋予他们神的力量。
   FrostLord:
-    name: '&b&l冰霜领主'
-    Description: '&7&o我是全能的 冰霜领主!'
+    name: <bold><aqua>冰霜领主
+    Description: 我是全能的 冰霜领主!
   FlameRings:
-    name: '&c&火焰环'
-    Description: '&7&o小心！它们很烫！'
+    name: <red>&火焰环
+    Description: 小心！它们很烫！
   GreenSparks:
-    name: '&a&l绿色火花'
-    Description: '&7&o小小的、绿色的火花!'
+    name: <bold><green>绿色火花
+    Description: 小小的、绿色的火花!
   InLove:
-    name: '&c&l坠入爱河'
-    Description: '&7&o天哪我坠入爱河了！'
+    name: <bold><red>坠入爱河
+    Description: 天哪我坠入爱河了！
   FrozenWalk:
-    name: '&b&l冰霜行者'
-    Description: '&7&o我的脚好冷！'
+    name: <bold><aqua>冰霜行者
+    Description: 我的脚好冷！
   Enchanted:
-    name: '&7&l附魔'
-    Description: '&7&o成为一个万能的附魔者！'
+    name: <bold><gray>附魔
+    Description: 成为一个万能的附魔者！
   Music:
-    name: '&9&l音乐'
-    Description: '&7&o很多音乐！'
+    name: <bold><blue>音乐
+    Description: 很多音乐！
   Inferno:
-    name: '&4&l地狱'
-    Description: '&7&o圣诞老人他自己创造了这个效果！'
+    name: <bold><dark_red>地狱
+    Description: 圣诞老人他自己创造了这个效果！
   AngelWings:
-    name: '&f&l天使之翼'
-    Description: '&7&o成为一个天使吧！'
+    name: <bold><white>天使之翼
+    Description: 成为一个天使吧！
   RainbowWings:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw &f&lWings'
-    Description: '&7&oWings, but full of color!'
+    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w </dark_purple></bold><bold><white>Wings
+    Description: Wings, but full of color!
   SuperHero:
-    name: '&4&l超级英雄'
-    Description: '&7&o成为一个超人吧！'
+    name: <bold><dark_red>超级英雄
+    Description: 成为一个超人吧！
   SantaHat:
-    name: '&4&l圣诞老人 &f&l的帽子'
-    Description: '&7&o成为一个圣诞老人！'
+    name: <bold><dark_red>圣诞老人 </dark_red></bold><bold><white>的帽子
+    Description: 成为一个圣诞老人！
   CrushedCandyCane:
-    name: '&4&l粉碎的 &f&l糖果 &4&l棍'
+    name: <bold><dark_red>粉碎的 </dark_red></bold><bold><white>糖果 </white></bold><bold><dark_red>棍
     Description: |-
-      &7&o没有太多的
-      &7&o圣诞糖果。不要听信
-      &7&o你的牙医.
+      没有太多的
+      圣诞糖果。不要听信
+      你的牙医.
   EnderAura:
-    name: '&d&l末影光环'
+    name: <bold><light_purple>末影光环
     Description: |-
-      &7&o这些神秘的粒子附着在
-      &7&o最富传奇色彩的玩家身上!
+      这些神秘的粒子附着在
+      最富传奇色彩的玩家身上!
   FlameFairy:
-    name: '&6&l火焰精灵'
-    Description: '&7&o嘿！！'
+    name: <bold><gold>火焰精灵
+    Description: 嘿！！
   MagicalRods:
-    name: '&8&l魔杖'
-    Description: '&7&o也许这些魔杖能保护你！'
+    name: <bold><dark_gray>魔杖
+    Description: 也许这些魔杖能保护你！
   FireWaves:
-    name: '&e&l火浪'
-    Description: '&7&o有人说这些火浪起到了保护作用...'
+    name: <bold><yellow>火浪
+    Description: 有人说这些火浪起到了保护作用...
   CursedHalo:
-    name: '&5&lCursed Halo'
+    name: <bold><dark_purple>Cursed Halo
     Description: |-
-      &7&oIt brings great misfortune to
-      &7&oanyone who dares to wear it.
+      It brings great misfortune to
+      anyone who dares to wear it.
   VolcanicHalo:
-    name: '&c&lVolcanic Halo'
+    name: <bold><red>Volcanic Halo
     Description: |-
-      &7&oA halo composed of
-      &7&oeternal flames.
+      A halo composed of
+      eternal flames.
   CursedFootprints:
-    name: '&5&lCursed Footprints'
+    name: <bold><dark_purple>Cursed Footprints
     Description: |-
-      &7&oLeaves a trail of
-      &7&odark energy behind.
+      Leaves a trail of
+      dark energy behind.
   SpringFootprints:
-    name: '&a&lSpring Footprints'
+    name: <bold><green>Spring Footprints
     Description: |-
-      &7&oLeaves a trail of
-      &7&ogreen particles behind.
+      Leaves a trail of
+      green particles behind.
   ShadowFootprints:
-    name: '&7&lShadow Footprints'
+    name: <bold><gray>Shadow Footprints
     Description: |-
-      &7&oLeaves a trail of
-      &7&osmoke behind.
+      Leaves a trail of
+      smoke behind.
   Notes:
-    name: '&6&lNotes'
-    Description: '&7&oNotes above your head.'
+    name: <bold><gold>Notes
+    Description: Notes above your head.
   Hearts:
-    name: '&c&lHearts'
-    Description: '&7&oHearts above your head.'
+    name: <bold><red>Hearts
+    Description: Hearts above your head.
   EnderFootprints:
-    name: '&d&lEnder Footprints'
+    name: <bold><light_purple>Ender Footprints
     Description: |-
-      &7&oLeaves a trail of
-      &7&odragon breath behind.
+      Leaves a trail of
+      dragon breath behind.
   ArcaneFlame:
-    name: '&b&lArcane Flame'
-    Description: '&7&oBlue flame above your head.'
+    name: <bold><aqua>Arcane Flame
+    Description: Blue flame above your head.
   DivineHalo:
-    name: '&e&lDivine Halo'
+    name: <bold><yellow>Divine Halo
     Description: |-
-      &7&oA halo composed of
-      &7&oglowing light.
+      A halo composed of
+      glowing light.
   SnowFootprints:
-    name: '&f&lSnow Footprints'
+    name: <bold><white>Snow Footprints
     Description: |-
-      &7&oLeaves a trail of
-      &7&osnow behind.
+      Leaves a trail of
+      snow behind.
 Pets:
   Piggy:
-    menu-name: '&d&l猪仔'
-    entity-displayname: '&l%playername%的猪仔'
-    Description: '&7&o哼！哼！'
+    menu-name: <bold><light_purple>猪仔
+    entity-displayname: <bold><playername>的猪仔
+    Description: 哼！哼！
   Sheep:
-    menu-name: '&f&l羊'
-    entity-displayname: '&l%playername%的羊'
-    Description: '&7&o咩，咩'
+    menu-name: <bold><white>羊
+    entity-displayname: <bold><playername>的羊
+    Description: 咩，咩
   EasterBunny:
-    menu-name: '&6&l复活节兔'
-    entity-displayname: '&l%playername%的复活节兔'
-    Description: '&7&o到复活节了吗'
+    menu-name: <bold><gold>复活节兔
+    entity-displayname: <bold><playername>的复活节兔
+    Description: 到复活节了吗
   Cow:
-    menu-name: '&c&l牛'
-    entity-displayname: '&l%playername%的牛'
-    Description: '&7&o哞!'
+    menu-name: <bold><red>牛
+    entity-displayname: <bold><playername>的牛
+    Description: 哞!
   Kitty:
-    menu-name: '&9&lKitty猫'
-    entity-displayname: '&l%playername%的Kitty猫'
-    Description: '&7&o喵~'
+    menu-name: <bold><blue>Kitty猫
+    entity-displayname: <bold><playername>的Kitty猫
+    Description: 喵~
   Dog:
-    menu-name: '&7&l狗'
-    entity-displayname: '&l%playername%的狗'
-    Description: '&7&o汪！'
+    menu-name: <bold><gray>狗
+    entity-displayname: <bold><playername>的狗
+    Description: 汪！
   Chick:
-    menu-name: '&e&l鸡'
-    entity-displayname: '&l%playername%的鸡'
-    Description: '&7&o咯咯哒！'
+    menu-name: <bold><yellow>鸡
+    entity-displayname: <bold><playername>的鸡
+    Description: 咯咯哒！
   Wither:
-    menu-name: '&8&l凋零'
-    entity-displayname: '&l%playername%的凋零'
-    Description: '&7&o为我小心......'
+    menu-name: <bold><dark_gray>凋零
+    entity-displayname: <bold><playername>的凋零
+    Description: 为我小心......
   Pumpling:
-    menu-name: '&6&l小南瓜'
-    entity-displayname: '&l%playername%的小南瓜'
-    Description: '&7&o只是一个漂浮的小南瓜'
+    menu-name: <bold><gold>小南瓜
+    entity-displayname: <bold><playername>的小南瓜
+    Description: 只是一个漂浮的小南瓜
   ChristmasElf:
-    menu-name: '&a&l圣诞精灵'
-    entity-displayname: '&l%playername%的圣诞精灵'
-    Description: '&7&o我可以给你做礼物！'
+    menu-name: <bold><green>圣诞精灵
+    entity-displayname: <bold><playername>的圣诞精灵
+    Description: 我可以给你做礼物！
   Mooshroom:
-    menu-name: '&4&l哞菇'
-    entity-displayname: '&l%playername%的哞菇'
-    Description: '&7&o哞!'
+    menu-name: <bold><dark_red>哞菇
+    entity-displayname: <bold><playername>的哞菇
+    Description: 哞!
   IronGolem:
-    menu-name: '&7&l铁傀儡'
-    entity-displayname: '&l%playername%的铁傀儡'
-    Description: '&7&o我喜欢花'
+    menu-name: <bold><gray>铁傀儡
+    entity-displayname: <bold><playername>的铁傀儡
+    Description: 我喜欢花
   Snowman:
-    menu-name: '&f&l雪人'
-    entity-displayname: '&l%playername%的雪人'
-    Description: '&7&obiu biu biu'
+    menu-name: <bold><white>雪人
+    entity-displayname: <bold><playername>的雪人
+    Description: biu biu biu
   Villager:
-    menu-name: '&a&l村民'
-    entity-displayname: '&l%playername%的村民'
-    Description: '&7&o哼哼哼哼哼哼'
+    menu-name: <bold><green>村民
+    entity-displayname: <bold><playername>的村民
+    Description: 哼哼哼哼哼哼
   Bat:
-    menu-name: '&8&l蝙蝠'
-    entity-displayname: '&l%playername%的蝙蝠'
-    Description: '&7&o我喜欢黑暗的地方'
+    menu-name: <bold><dark_gray>蝙蝠
+    entity-displayname: <bold><playername>的蝙蝠
+    Description: 我喜欢黑暗的地方
   PolarBear:
-    menu-name: '&b&l北极熊'
-    entity-displayname: '&l%playername%的北极熊'
-    Description: '&7&o我更倾向于冷的地方'
+    menu-name: <bold><aqua>北极熊
+    entity-displayname: <bold><playername>的北极熊
+    Description: 我更倾向于冷的地方
   Llama:
-    menu-name: '&7&l羊驼'
-    entity-displayname: '&l%playername%的羊驼'
-    Description: '&7&o需要我带些什么吗？'
+    menu-name: <bold><gray>羊驼
+    entity-displayname: <bold><playername>的羊驼
+    Description: 需要我带些什么吗？
   Parrot:
-    menu-name: '&a&l鹦鹉'
-    entity-displayname: '&l%playername%的鹦鹉'
-    Description: '&7&oPolly想要饼干吗？'
+    menu-name: <bold><green>鹦鹉
+    entity-displayname: <bold><playername>的鹦鹉
+    Description: Polly想要饼干吗？
   Vex:
-    menu-name: '&7&l恼鬼'
-    entity-displayname: '&l%playername%的恼鬼'
-    Description: '&7&o吁~~~~~！'
+    menu-name: <bold><gray>恼鬼
+    entity-displayname: <bold><playername>的恼鬼
+    Description: 吁~~~~~！
   Panda:
-    menu-name: '&a&l熊猫'
-    entity-displayname: '&l%playername%的熊猫'
-    Description: '&7&o喜欢竹子！'
+    menu-name: <bold><green>熊猫
+    entity-displayname: <bold><playername>的熊猫
+    Description: 喜欢竹子！
   Fox:
-    menu-name: '&d&l狐狸'
-    entity-displayname: '&l%playername%的狐狸'
-    Description: '&7&o狐狸说什么了？'
+    menu-name: <bold><light_purple>狐狸
+    entity-displayname: <bold><playername>的狐狸
+    Description: 狐狸说什么了？
   Axolotl:
-    menu-name: '&5&l美西螈'
-    entity-displayname: '&l%playername%的美西螈'
-    Description: '&7&o好可爱！'
+    menu-name: <bold><dark_purple>美西螈
+    entity-displayname: <bold><playername>的美西螈
+    Description: 好可爱！
   Piglin:
-    menu-name: '&6&l黄金商人'
-    entity-displayname: '&l%playername%的黄金商人'
-    Description: '&7&o与黄金交易！'
+    menu-name: <bold><gold>黄金商人
+    entity-displayname: <bold><playername>的黄金商人
+    Description: 与黄金交易！
   Slime:
-    menu-name: '&a&l史莱姆'
-    entity-displayname: '&l%playername%的史莱姆'
-    Description: '&7&o压扁...'
+    menu-name: <bold><green>史莱姆
+    entity-displayname: <bold><playername>的史莱姆
+    Description: 压扁...
   Bee:
-    menu-name: '&e&l蜜蜂'
-    entity-displayname: '&l%playername%的蜜蜂'
-    Description: '&7&o*嗞* *嗞*'
+    menu-name: <bold><yellow>蜜蜂
+    entity-displayname: <bold><playername>的蜜蜂
+    Description: '*嗞* *嗞*'
   Goat:
-    menu-name: '&f&l山羊'
-    entity-displayname: '&l%playername%的山羊'
-    Description: '&7&o叭！'
+    menu-name: <bold><white>山羊
+    entity-displayname: <bold><playername>的山羊
+    Description: 叭！
   Silverfish:
-    menu-name: '&7&l蠹虫'
-    entity-displayname: '&l%playername%的蠹虫'
-    Description: '&7&o潜伏在墙中...'
+    menu-name: <bold><gray>蠹虫
+    entity-displayname: <bold><playername>的蠹虫
+    Description: 潜伏在墙中...
   Horse:
-    menu-name: '&a&l马'
-    entity-displayname: '&l%playername%的马'
-    Description: '&7&o*咴*'
+    menu-name: <bold><green>马
+    entity-displayname: <bold><playername>的马
+    Description: '*咴*'
   Blaze:
-    menu-name: '&c&l烈焰'
-    entity-displayname: '&l%playername%的烈焰'
-    Description: '&7&o会飞且很烫！'
+    menu-name: <bold><red>烈焰
+    entity-displayname: <bold><playername>的烈焰
+    Description: 会飞且很烫！
   Creeper:
-    menu-name: '&a&l苦力怕'
-    entity-displayname: '&l%playername%的苦力怕'
-    Description: '&7&o喜欢炸掉你最爱的东西...'
+    menu-name: <bold><green>苦力怕
+    entity-displayname: <bold><playername>的苦力怕
+    Description: 喜欢炸掉你最爱的东西...
   Enderman:
-    menu-name: '&5&l末影人'
-    entity-displayname: '&l%playername%的末影人'
-    Description: '&7&o别看着它，不然他会追杀你！'
+    menu-name: <bold><dark_purple>末影人
+    entity-displayname: <bold><playername>的末影人
+    Description: 别看着它，不然他会追杀你！
   Skeleton:
-    menu-name: '&f&l骷髅'
-    entity-displayname: '&l%playername%的骷髅'
-    Description: '&7&o小心，它会尝试向你射箭！'
+    menu-name: <bold><white>骷髅
+    entity-displayname: <bold><playername>的骷髅
+    Description: 小心，它会尝试向你射箭！
   Zombie:
-    menu-name: '&2&l僵尸'
-    entity-displayname: '&l%playername%的僵尸'
-    Description: '&7&o快！把你的村民藏起来！'
+    menu-name: <bold><dark_green>僵尸
+    entity-displayname: <bold><playername>的僵尸
+    Description: 快！把你的村民藏起来！
   Frog:
-    menu-name: '&2&l青蛙'
-    entity-displayname: '&l%playername%的青蛙'
-    Description: '&7&o不喜欢萤火虫'
+    menu-name: <bold><dark_green>青蛙
+    entity-displayname: <bold><playername>的青蛙
+    Description: 不喜欢萤火虫
   Warden:
-    menu-name: '&3&l坚守者'
-    entity-displayname: '&l%playername%的坚守者'
-    Description: '&7&oMinecraft中最恐怖的怪物！'
+    menu-name: <bold><dark_aqua>坚守者
+    entity-displayname: <bold><playername>的坚守者
+    Description: Minecraft中最恐怖的怪物！
   Allay:
-    menu-name: '&a&l轻灵'
-    entity-displayname: '&l%playername%的轻灵'
-    Description: '&7&o一个新的朋友！'
+    menu-name: <bold><green>轻灵
+    entity-displayname: <bold><playername>的轻灵
+    Description: 一个新的朋友！
   Cod:
-    menu-name: '&7&l鳕鱼'
-    entity-displayname: '&l%playername%的鳕鱼'
-    Description: '&7&o它们不是陆地生物！'
+    menu-name: <bold><gray>鳕鱼
+    entity-displayname: <bold><playername>的鳕鱼
+    Description: 它们不是陆地生物！
   Donkey:
-    menu-name: '&7&l驴'
-    entity-displayname: '&l%playername%的驴'
-    Description: '&7&o可以帮你带着所有物品！'
+    menu-name: <bold><gray>驴
+    entity-displayname: <bold><playername>的驴
+    Description: 可以帮你带着所有物品！
   GlowSquid:
-    menu-name: '&3&l发光鱿鱼'
-    entity-displayname: '&l%playername%的发光鱿鱼'
-    Description: '&7&o它会发光耶！'
+    menu-name: <bold><dark_aqua>发光鱿鱼
+    entity-displayname: <bold><playername>的发光鱿鱼
+    Description: 它会发光耶！
   Mule:
-    menu-name: '&7&l骡子'
-    entity-displayname: '&l%playername%的骡子'
-    Description: '&7&o差不多就是个驴！'
+    menu-name: <bold><gray>骡子
+    entity-displayname: <bold><playername>的骡子
+    Description: 差不多就是个驴！
   Pufferfish:
-    menu-name: '&e&l河豚'
-    entity-displayname: '&l%playername%的河豚'
-    Description: '&7&o这玩意可碰不得'
+    menu-name: <bold><yellow>河豚
+    entity-displayname: <bold><playername>的河豚
+    Description: 这玩意可碰不得
   Ocelot:
-    menu-name: '&e&l豹猫'
-    entity-displayname: '&l%playername%的豹猫'
-    Description: '&7&o小心...它们很害羞哒！'
+    menu-name: <bold><yellow>豹猫
+    entity-displayname: <bold><playername>的豹猫
+    Description: 小心...它们很害羞哒！
   Salmon:
-    menu-name: '&c&l鲑鱼'
-    entity-displayname: '&l%playername%的鲑鱼'
-    Description: '&7&o这玩意可好吃了！'
+    menu-name: <bold><red>鲑鱼
+    entity-displayname: <bold><playername>的鲑鱼
+    Description: 这玩意可好吃了！
   SkeletonHorse:
-    menu-name: '&f&l骷髅马'
-    entity-displayname: '&l%playername%的骷髅马'
-    Description: '&7&o小心雷电骑士！'
+    menu-name: <bold><white>骷髅马
+    entity-displayname: <bold><playername>的骷髅马
+    Description: 小心雷电骑士！
   Squid:
-    menu-name: '&0&l鱿鱼'
-    entity-displayname: '&l%playername%的鱿鱼'
-    Description: '&7&o不要吓到它们，不然水要变黑！'
+    menu-name: <bold><black>鱿鱼
+    entity-displayname: <bold><playername>的鱿鱼
+    Description: 不要吓到它们，不然水要变黑！
   Strider:
-    menu-name: '&c&l炽足兽'
-    entity-displayname: '&l%playername%的炽足兽'
-    Description: '&7&o岩浆行者！'
+    menu-name: <bold><red>炽足兽
+    entity-displayname: <bold><playername>的炽足兽
+    Description: 岩浆行者！
   Tadpole:
-    menu-name: '&8&l蝌蚪'
-    entity-displayname: '&l%playername%的蝌蚪'
-    Description: '&7&o它会长成大青蛙的！'
+    menu-name: <bold><dark_gray>蝌蚪
+    entity-displayname: <bold><playername>的蝌蚪
+    Description: 它会长成大青蛙的！
   TropicalFish:
-    menu-name: '&e&l热带鱼'
-    entity-displayname: '&l%playername%的热带鱼'
-    Description: '&7&o一个多彩的鱼！'
+    menu-name: <bold><yellow>热带鱼
+    entity-displayname: <bold><playername>的热带鱼
+    Description: 一个多彩的鱼！
   Turtle:
-    menu-name: '&2&l海龟'
-    entity-displayname: '&l%playername%的海龟'
-    Description: '&7&o它们有些能活到150岁！'
+    menu-name: <bold><dark_green>海龟
+    entity-displayname: <bold><playername>的海龟
+    Description: 它们有些能活到150岁！
   WanderingTrader:
-    menu-name: '&1&l流浪商人'
-    entity-displayname: '&l%playername%的流浪商人'
-    Description: '&7&o流浪并出售他的好东西！'
+    menu-name: <bold><dark_blue>流浪商人
+    entity-displayname: <bold><playername>的流浪商人
+    Description: 流浪并出售他的好东西！
   CaveSpider:
-    menu-name: '&2&l洞穴蜘蛛'
-    entity-displayname: '&l%playername%的洞穴蜘蛛'
-    Description: '&7&o蜘蛛，但是带毒！'
+    menu-name: <bold><dark_green>洞穴蜘蛛
+    entity-displayname: <bold><playername>的洞穴蜘蛛
+    Description: 蜘蛛，但是带毒！
   Dolphin:
-    menu-name: '&b&l海豚'
-    entity-displayname: '&l%playername%的海豚'
-    Description: '&7&o海洋里最开心的生物！'
+    menu-name: <bold><aqua>海豚
+    entity-displayname: <bold><playername>的海豚
+    Description: 海洋里最开心的生物！
   Spider:
-    menu-name: '&8&lSpider'
-    entity-displayname: '&l%playername%''s Spider'
-    Description: '&7&oYour friendly neighborhood spider!'
+    menu-name: <bold><dark_gray>Spider
+    entity-displayname: <bold><playername>'s Spider
+    Description: Your friendly neighborhood spider!
   ZombifiedPiglin:
-    menu-name: '&d&lZombified Piglin'
-    entity-displayname: '&l%playername%''s Zombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    menu-name: <bold><light_purple>Zombified Piglin
+    entity-displayname: <bold><playername>'s Zombified Piglin
+    Description: Attack it and all of them will be after you!
   Drowned:
-    menu-name: '&3&lDrowned'
-    entity-displayname: '&l%playername%''s Drowned'
-    Description: '&7&oAn underwater zombie!'
+    menu-name: <bold><dark_aqua>Drowned
+    entity-displayname: <bold><playername>'s Drowned
+    Description: An underwater zombie!
   ElderGuardian:
-    menu-name: '&3&lElder Guardian'
-    entity-displayname: '&l%playername%''s Elder Guardian'
-    Description: '&7&oGuards ancient temples!'
+    menu-name: <bold><dark_aqua>Elder Guardian
+    entity-displayname: <bold><playername>'s Elder Guardian
+    Description: Guards ancient temples!
   Endermite:
-    menu-name: '&5&lEndermite'
-    entity-displayname: '&l%playername%''s Endermite'
-    Description: '&7&oAttracts Endermen!'
+    menu-name: <bold><dark_purple>Endermite
+    entity-displayname: <bold><playername>'s Endermite
+    Description: Attracts Endermen!
   Evoker:
-    menu-name: '&7&lEvoker'
-    entity-displayname: '&l%playername%''s Evoker'
-    Description: '&7&oSummons Vexes for a living!'
+    menu-name: <bold><gray>Evoker
+    entity-displayname: <bold><playername>'s Evoker
+    Description: Summons Vexes for a living!
   Ghast:
-    menu-name: '&f&lGhast'
-    entity-displayname: '&l%playername%''s Ghast'
-    Description: '&7&o*Demonic screaming*'
+    menu-name: <bold><white>Ghast
+    entity-displayname: <bold><playername>'s Ghast
+    Description: '*Demonic screaming*'
   Guardian:
-    menu-name: '&3&lGuardian'
-    entity-displayname: '&l%playername%''s Guardian'
-    Description: '&7&oHates squids!'
+    menu-name: <bold><dark_aqua>Guardian
+    entity-displayname: <bold><playername>'s Guardian
+    Description: Hates squids!
   Hoglin:
-    menu-name: '&c&lHoglin'
-    entity-displayname: '&l%playername%''s Hoglin'
-    Description: '&7&oA pig, but in angry.'
+    menu-name: <bold><red>Hoglin
+    entity-displayname: <bold><playername>'s Hoglin
+    Description: A pig, but in angry.
   Husk:
-    menu-name: '&e&lHusk'
-    entity-displayname: '&l%playername%''s Husk'
-    Description: '&7&oA zombie, but sandy.'
+    menu-name: <bold><yellow>Husk
+    entity-displayname: <bold><playername>'s Husk
+    Description: A zombie, but sandy.
   MagmaCube:
-    menu-name: '&4&lMagma Cube'
-    entity-displayname: '&l%playername%''s Magma Cube'
-    Description: '&7&oA very hot cube!'
+    menu-name: <bold><dark_red>Magma Cube
+    entity-displayname: <bold><playername>'s Magma Cube
+    Description: A very hot cube!
   Phantom:
-    menu-name: '&1&lPhantom'
-    entity-displayname: '&l%playername%''s Phantom'
-    Description: '&7&oHates players that don''t sleep!'
+    menu-name: <bold><dark_blue>Phantom
+    entity-displayname: <bold><playername>'s Phantom
+    Description: Hates players that don't sleep!
   PiglinBrute:
-    menu-name: '&6&lPiglin Brute'
-    entity-displayname: '&l%playername%''s Piglin Brute'
-    Description: '&7&oA pretty buff Piglin!'
+    menu-name: <bold><gold>Piglin Brute
+    entity-displayname: <bold><playername>'s Piglin Brute
+    Description: A pretty buff Piglin!
   Pillager:
-    menu-name: '&7&lPillager'
-    entity-displayname: '&l%playername%''s Pillager'
-    Description: '&7&oLikes to pillage villages!'
+    menu-name: <bold><gray>Pillager
+    entity-displayname: <bold><playername>'s Pillager
+    Description: Likes to pillage villages!
   Ravager:
-    menu-name: '&8&lRavager'
-    entity-displayname: '&l%playername%''s Ravager'
-    Description: '&7&oA Pillager''s favorite companion!'
+    menu-name: <bold><dark_gray>Ravager
+    entity-displayname: <bold><playername>'s Ravager
+    Description: A Pillager's favorite companion!
   Shulker:
-    menu-name: '&5&lShulker'
-    entity-displayname: '&l%playername%''s Shulker'
-    Description: '&7&oLikes to hide!'
+    menu-name: <bold><dark_purple>Shulker
+    entity-displayname: <bold><playername>'s Shulker
+    Description: Likes to hide!
   Stray:
-    menu-name: '&8&lStray'
-    entity-displayname: '&l%playername%''s Stray'
-    Description: '&7&oA freezing cold skeleton!'
+    menu-name: <bold><dark_gray>Stray
+    entity-displayname: <bold><playername>'s Stray
+    Description: A freezing cold skeleton!
   Vindicator:
-    menu-name: '&7&lVindicator'
-    entity-displayname: '&l%playername%''s Vindicator'
-    Description: '&7&oDon''t underestimate their strength!'
+    menu-name: <bold><gray>Vindicator
+    entity-displayname: <bold><playername>'s Vindicator
+    Description: Don't underestimate their strength!
   Witch:
-    menu-name: '&5&lWitch'
-    entity-displayname: '&l%playername%''s Witch'
-    Description: '&7&oLoves black cats!'
+    menu-name: <bold><dark_purple>Witch
+    entity-displayname: <bold><playername>'s Witch
+    Description: Loves black cats!
   WitherSkeleton:
-    menu-name: '&8&lWither Skeleton'
-    entity-displayname: '&l%playername%''s Wither Skeleton'
-    Description: '&7&oThe reason why Looting exists.'
+    menu-name: <bold><dark_gray>Wither Skeleton
+    entity-displayname: <bold><playername>'s Wither Skeleton
+    Description: The reason why Looting exists.
   Zoglin:
-    menu-name: '&c&lZoglin'
-    entity-displayname: '&l%playername%''s Zoglin'
-    Description: '&7&oA zombified Hoglin!'
+    menu-name: <bold><red>Zoglin
+    entity-displayname: <bold><playername>'s Zoglin
+    Description: A zombified Hoglin!
   ZombieVillager:
-    menu-name: '&2&lZombie Villager'
-    entity-displayname: '&l%playername%''s Zombie Villager'
-    Description: '&7&oA Villager Trader''s dream!'
+    menu-name: <bold><dark_green>Zombie Villager
+    entity-displayname: <bold><playername>'s Zombie Villager
+    Description: A Villager Trader's dream!
   ZombieHorse:
-    menu-name: '&2&lZombie Horse'
-    entity-displayname: '&l%playername%''s Zombie Horse'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    menu-name: <bold><dark_green>Zombie Horse
+    entity-displayname: <bold><playername>'s Zombie Horse
+    Description: The rarest horse in Minecraft!
   Illusioner:
-    menu-name: '&1&lIllusioner'
-    entity-displayname: '&l%playername%''s Illusioner'
-    Description: '&7&oOnly spawnable with commands!'
-  Equip: '%prefix% &9你召唤了 %petname%'
-  Unequip: '%prefix% &9你收回了 %petname%'
+    menu-name: <bold><dark_blue>Illusioner
+    entity-displayname: <bold><playername>'s Illusioner
+    Description: Only spawnable with commands!
+  Equip: <prefix> <blue>你召唤了 <petname>
+  Unequip: <prefix> <blue>你收回了 <petname>
 Morphs:
   Blaze:
-    name: '&6&l烈焰'
-    skill: '&e潜行&7 即可: &a起飞'
-    Description: '&7&oIt might be hot on there...'
+    name: <bold><gold>烈焰
+    skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>起飞'
+    Description: It might be hot on there...
   Chicken:
-    name: '&f&l鸡'
-    skill: '&e潜行&7 即可: &a下蛋'
-    Description: '&7&oBecome a chicken!'
+    name: <bold><white>鸡
+    skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>下蛋'
+    Description: Become a chicken!
   Slime:
-    name: '&a&l史莱姆'
-    skill: '&e潜行&7 即可: &a蹦蹦跳跳'
-    Description: '&7&oSplat splat!'
+    name: <bold><green>史莱姆
+    skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>蹦蹦跳跳'
+    Description: Splat splat!
   Pig:
-    name: '&d&l猪'
-    skill: '&e碰撞&7 即可: &a弹起玩家'
-    Description: '&7&oMust hold your carrot!'
+    name: <bold><light_purple>猪
+    skill: '<yellow>碰撞</yellow><gray> 即可: </gray><green>弹起玩家'
+    Description: Must hold your carrot!
   Enderman:
-    name: '&5&l末影人'
-    skill: '&e二段跳&7 即可:&a传送'
+    name: <bold><dark_purple>末影人
+    skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>传送'
     Description: |-
-      &7&oI go from there to
-      &7&othere, then you lost me...
+      I go from there to
+      there, then you lost me...
   Bat:
-    name: '&8&l蝙蝠'
-    skill: '&e二段跳&7 即可:&a扇动翅膀'
-    Description: '&7&oBecome a bat!'
+    name: <bold><dark_gray>蝙蝠
+    skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>扇动翅膀'
+    Description: Become a bat!
   Creeper:
-    name: '&a&l苦力怕'
-    skill: '&e潜行&7 即可: &a引爆'
-    charging: '&a&l充能中: %chargelevel%/100'
-    release-to-explode: '&f&l释放即爆炸！'
-    Description: '&7&oHey What''sssssss up?'
+    name: <bold><green>苦力怕
+    skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>引爆'
+    charging: '<bold><green>充能中: <chargelevel>/100'
+    release-to-explode: <bold><white>释放即爆炸！
+    Description: Hey What'sssssss up?
   Snowman:
-    name: '&f&l雪人'
-    skill: '&e左键点击&7 即可 &a发射雪球'
-    Description: '&7&oBecome Olaf!'
-  Equip: '%prefix% &9你伪装成了 %morphname%'
-  Unequip: '%prefix% &9你取消了伪装从 %morphname%'
+    name: <bold><white>雪人
+    skill: '<yellow>左键点击</yellow><gray> 即可 </gray><green>发射雪球'
+    Description: Become Olaf!
+  Equip: <prefix> <blue>你伪装成了 <morphname>
+  Unequip: <prefix> <blue>你取消了伪装从 <morphname>
   WitherSkeleton:
-    name: '&8&l凋零骷髅'
-    skill: '&e潜行&7 即可发射: &a骨头炸弹'
+    name: <bold><dark_gray>凋零骷髅
+    skill: '<yellow>潜行</yellow><gray> 即可发射: </gray><green>骨头炸弹'
     Description: |-
-      &7&oJust a regular skeleton...
-      &7&obut from the Nether!
+      Just a regular skeleton...
+      but from the Nether!
   ElderGuardian:
-    name: '&8&l远古守卫者'
-    skill: '&e左键点击&7 发射: &a激光'
-    Description: '&7&oBecome an Elder Guardian!!'
+    name: <bold><dark_gray>远古守卫者
+    skill: '<yellow>左键点击</yellow><gray> 发射: </gray><green>激光'
+    Description: Become an Elder Guardian!!
   Cow:
-    name: '&8&l牛'
-    skill: '&e左键点击&7 即可: &a哞~'
-    Description: '&7&oMoooo!'
+    name: <bold><dark_gray>牛
+    skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>哞~'
+    Description: Moooo!
   Sheep:
-    name: '&f&l羊'
-    skill: '&e左键点击&7 即可: &a改变颜色'
-    Description: '&7&oBaaaa, baa'
+    name: <bold><white>羊
+    skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>改变颜色'
+    Description: Baaaa, baa
   Mooshroom:
-    name: '&c&l哞菇'
-    skill: '&e潜行&7 即可: &a扔出蘑菇煲'
-    Description: '&7&oMoooo!'
+    name: <bold><red>哞菇
+    skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>扔出蘑菇煲'
+    Description: Moooo!
   Villager:
-    name: '&a&l村民'
-    skill: '&e左键点击&7 即可: &a扔出绿宝石'
-    Description: '&7&oHmmmmmmmmm'
+    name: <bold><green>村民
+    skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>扔出绿宝石'
+    Description: Hmmmmmmmmm
   Witch:
-    name: '&5&l女巫'
-    skill: '&e左键点击&7 即可: &a扔出药水'
-    Description: '&7&oMuahahahahaha'
+    name: <bold><dark_purple>女巫
+    skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>扔出药水'
+    Description: Muahahahahaha
   PolarBear:
-    name: '&f&lPolar Bear'
-    skill: '&e左键点击&7 即可召唤: &a召唤暴风雪'
-    Description: '&7&oI prefer cold areas'
+    name: <bold><white>Polar Bear
+    skill: '<yellow>左键点击</yellow><gray> 即可召唤: </gray><green>召唤暴风雪'
+    Description: I prefer cold areas
   Llama:
-    name: '&3&l羊驼'
-    skill: '&e左键点击&7 即可: &a吐口水'
-    Description: '&7&oNeed me to carry anything?'
+    name: <bold><dark_aqua>羊驼
+    skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>吐口水'
+    Description: Need me to carry anything?
   Parrot:
-    name: '&a&l鹦鹉'
-    skill: '&e二段跳&7 即可:&a扇动翅膀'
-    Description: '&7&oPolly want a cracker?'
+    name: <bold><green>鹦鹉
+    skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>扇动翅膀'
+    Description: Polly want a cracker?
   Allay:
-    name: '&a&lAllay'
-    skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&oA new friend!'
+    name: <bold><green>Allay
+    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
+    Description: A new friend!
   Axolotl:
-    name: '&5&lAxolotl'
-    skill: '&eLeft-Click&7 for cute sounds'
-    Description: '&7&oSooo cute!'
+    name: <bold><dark_purple>Axolotl
+    skill: <yellow>Left-Click</yellow><gray> for cute sounds
+    Description: Sooo cute!
   Bee:
-    name: '&e&lBee'
-    skill: '&eDouble Jump&7 to: &aFlap'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    name: <bold><yellow>Bee
+    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
+    Description: '*bzzzz* *bzzzz*'
   Cat:
-    name: '&e&lCat'
-    skill: '&eLeft-Click&7 to: &aMeow'
-    Description: '&7&oBasically a tiny tiger'
+    name: <bold><yellow>Cat
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Meow'
+    Description: Basically a tiny tiger
   CaveSpider:
-    name: '&e&lCave Spider'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oA spider, but poisonous!'
+    name: <bold><yellow>Cave Spider
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: A spider, but poisonous!
   Cod:
-    name: '&e&lCod'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oPrefers water over land!'
+    name: <bold><yellow>Cod
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Prefers water over land!
   Dolphin:
-    name: '&e&lDolphin'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oThe happiest creature of the seas!'
+    name: <bold><yellow>Dolphin
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: The happiest creature of the seas!
   Donkey:
-    name: '&7&lDonkey'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oCan carry all your stuff!'
+    name: <bold><gray>Donkey
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Can carry all your stuff!
   Drowned:
-    name: '&3&lDrowned'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAn underwater zombie!'
+    name: <bold><dark_aqua>Drowned
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: An underwater zombie!
   Endermite:
-    name: '&5&lEndermite'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oAttracts Endermen!'
+    name: <bold><dark_purple>Endermite
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Attracts Endermen!
   Evoker:
-    name: '&7&lEvoker'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oSummons Vexes for a living!'
+    name: <bold><gray>Evoker
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Summons Vexes for a living!
   Frog:
-    name: '&2&lFrog'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oDoesn''t like fireflies!'
+    name: <bold><dark_green>Frog
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Doesn't like fireflies!
   Fox:
-    name: '&d&lFox'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oWhat does the fox say?'
+    name: <bold><light_purple>Fox
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: What does the fox say?
   GlowSquid:
-    name: '&3&lGlow Squid'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oIt glows!'
+    name: <bold><dark_aqua>Glow Squid
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: It glows!
   Goat:
-    name: '&f&lGoat'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oBAAAA!'
+    name: <bold><white>Goat
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: BAAAA!
   Guardian:
-    name: '&3&lGuardian'
-    skill: '&eLeft-Click&7 to: &aTODO'
-    Description: '&7&oHates squids!'
+    name: <bold><dark_aqua>Guardian
+    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    Description: Hates squids!
   Wolf:
-    name: '&7&lWolf'
-    Description: '&7&oWoof!'
+    name: <bold><gray>Wolf
+    Description: Woof!
   IronGolem:
-    name: '&7&lIron Golem'
-    Description: '&7&oHates zombies!'
+    name: <bold><gray>Iron Golem
+    Description: Hates zombies!
   Wither:
-    name: '&8&lWither'
-    Description: '&7&oWatch out for me...'
+    name: <bold><dark_gray>Wither
+    Description: Watch out for me...
   Skeleton:
-    name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    name: <bold><gray>Skeleton
+    Description: Very good archer!
   Zombie:
-    name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    name: <bold><dark_green>Zombie
+    Description: Brains!!!
   Squid:
-    name: '&d&lSquid'
-    Description: '&7&oBloop Bloop!'
+    name: <bold><light_purple>Squid
+    Description: Bloop Bloop!
   Spider:
-    name: '&8&lSpider'
-    Description: '&7&oHISS...'
+    name: <bold><dark_gray>Spider
+    Description: HISS...
   Ghast:
-    name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    name: <bold><white>Ghast
+    Description: '*high-pitched scream*'
   MagmaCube:
-    name: '&c&lMagma Cube'
-    Description: '&7&oA very hot cube!'
+    name: <bold><red>Magma Cube
+    Description: A very hot cube!
   Horse:
-    name: '&a&lHorse'
-    Description: '&7&o*fhrrrrhh*'
+    name: <bold><green>Horse
+    Description: '*fhrrrrhh*'
   Warden:
-    name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    name: <bold><dark_aqua>Warden
+    Description: Be quiet...
   Tadpole:
-    name: '&8&lTadpole'
-    Description: '&7&oWill grow into a frog!'
+    name: <bold><dark_gray>Tadpole
+    Description: Will grow into a frog!
   Piglin:
-    name: '&6&lPiglin'
-    Description: '&7&oDeals with gold!'
+    name: <bold><gold>Piglin
+    Description: Deals with gold!
   Strider:
-    name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    name: <bold><red>Strider
+    Description: I hate water!
   Hoglin:
-    name: '&c&lHoglin'
-    Description: '&7&oA pig, but in angry.'
+    name: <bold><red>Hoglin
+    Description: A pig, but in angry.
   PiglinBrute:
-    name: '&6&lPiglin Brute'
-    Description: '&7&oA pretty buff Piglin!'
+    name: <bold><gold>Piglin Brute
+    Description: A pretty buff Piglin!
   Zoglin:
-    name: '&c&lZoglin'
-    Description: '&7&oA zombified Hoglin!'
+    name: <bold><red>Zoglin
+    Description: A zombified Hoglin!
   ZombifiedPiglin:
-    name: '&d&lZombified Piglin'
-    Description: '&7&oAttack it and all of them will be after you!'
+    name: <bold><light_purple>Zombified Piglin
+    Description: Attack it and all of them will be after you!
   Panda:
-    name: '&a&lPanda'
-    Description: '&7&oLikes bamboo!'
+    name: <bold><green>Panda
+    Description: Likes bamboo!
   Ocelot:
-    name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    name: <bold><yellow>Ocelot
+    Description: King of the jungle
   WanderingTrader:
-    name: '&1&lWandering Trader'
-    Description: '&7&oWanders around trying to sell his stuff!'
+    name: <bold><dark_blue>Wandering Trader
+    Description: Wanders around trying to sell his stuff!
   Pillager:
-    name: '&7&lPillager'
-    Description: '&7&oLikes to pillage villages!'
+    name: <bold><gray>Pillager
+    Description: Likes to pillage villages!
   Ravager:
-    name: '&8&lRavager'
-    Description: '&7&oA Pillager''s favorite companion!'
+    name: <bold><dark_gray>Ravager
+    Description: A Pillager's favorite companion!
   Pufferfish:
-    name: '&e&lPufferfish'
-    Description: '&7&oDoesn''t like to be touched!'
+    name: <bold><yellow>Pufferfish
+    Description: Doesn't like to be touched!
   Salmon:
-    name: '&c&lSalmon'
-    Description: '&7&oThey''re very tasty!'
+    name: <bold><red>Salmon
+    Description: They're very tasty!
   TropicalFish:
-    name: '&e&lTropical Fish'
-    Description: '&7&oA colorful fish!'
+    name: <bold><yellow>Tropical Fish
+    Description: A colorful fish!
   Turtle:
-    name: '&a&lTurtle'
-    Description: '&7&oTake your time.'
+    name: <bold><green>Turtle
+    Description: Take your time.
   Phantom:
-    name: '&1&lPhantom'
-    Description: '&7&oHates players that don''t sleep!'
+    name: <bold><dark_blue>Phantom
+    Description: Hates players that don't sleep!
   Illusioner:
-    name: '&1&lIllusioner'
-    Description: '&7&oOnly spawnable with commands!'
+    name: <bold><dark_blue>Illusioner
+    Description: Only spawnable with commands!
   Vex:
-    name: '&7&lVex'
-    Description: '&7&oYAAHH Ehehhehe!'
+    name: <bold><gray>Vex
+    Description: YAAHH Ehehhehe!
   Vindicator:
-    name: '&7&lVindicator'
-    Description: '&7&oDon''t underestimate their strength!'
+    name: <bold><gray>Vindicator
+    Description: Don't underestimate their strength!
   Mule:
-    name: '&8&lMule'
-    Description: '&7&oYour standard, everyday mule'
+    name: <bold><dark_gray>Mule
+    Description: Your standard, everyday mule
   SkeletonHorse:
-    name: '&f&lSkeleton Horse'
-    Description: '&7&oLook out for lightning strikes!'
+    name: <bold><white>Skeleton Horse
+    Description: Look out for lightning strikes!
   ZombieHorse:
-    name: '&2&lZombie Horse'
-    Description: '&7&oThe rarest horse in Minecraft!'
+    name: <bold><dark_green>Zombie Horse
+    Description: The rarest horse in Minecraft!
   Shulker:
-    name: '&5&lShulker'
-    Description: '&7&oLikes to hide!'
+    name: <bold><dark_purple>Shulker
+    Description: Likes to hide!
 Hats:
-  Equip: '%prefix% &9你装备了 %hatname% &9头饰!'
-  Unequip: '%prefix% &9你取下了 %hatname% &9头饰！'
+  Equip: <prefix> <blue>你装备了 <hatname> </blue><blue>头饰!
+  Unequip: <prefix> <blue>你取下了 <hatname> </blue><blue>头饰！
   Astronaut:
-    Name: '&7&l宇航员'
-    Description: '&7&o休斯顿，我们遇到了个问题'
+    Name: <bold><gray>宇航员
+    Description: 休斯顿，我们遇到了个问题
   Scared:
-    Name: '&4&l惊吓'
-    Description: '&7&o天呐，那个吓到我了！'
+    Name: <bold><dark_red>惊吓
+    Description: 天呐，那个吓到我了！
   Angel:
-    Name: '&f&l天使'
-    Description: '&7&o当你从天堂掉下来时受伤了吗？'
+    Name: <bold><white>天使
+    Description: 当你从天堂掉下来时受伤了吗？
   Embarassed:
-    Name: '&7&l尴尬'
-    Description: '&7&o我对此有点尴尬。'
+    Name: <bold><gray>尴尬
+    Description: 我对此有点尴尬。
   Kissy:
-    Name: '&c&l亲亲'
-    Description: '&7&o想要一个亲亲吗？'
+    Name: <bold><red>亲亲
+    Description: 想要一个亲亲吗？
   Sad:
-    Name: '&9&l悲伤'
-    Description: '&7&o我很伤心。'
+    Name: <bold><blue>悲伤
+    Description: 我很伤心。
   Cool:
-    Name: '&6&l酷'
-    Description: '&7&o我是一个很酷的家伙。'
+    Name: <bold><gold>酷
+    Description: 我是一个很酷的家伙。
   Surprised:
-    Name: '&4&l惊喜'
-    Description: '&7&o哇，没想到啊！'
+    Name: <bold><dark_red>惊喜
+    Description: 哇，没想到啊！
   Dead:
-    Name: '&8&l死'
-    Description: '&7&o需要补给'
+    Name: <bold><dark_gray>死
+    Description: 需要补给
   Crying:
-    Name: '&9&l哭'
-    Description: '&7&o我每时每刻都在哭'
+    Name: <bold><blue>哭
+    Description: 我每时每刻都在哭
   BigSmile:
-    Name: '&6&l巨型史莱姆'
-    Description: '&7&o因为我真的很开心！'
+    Name: <bold><gold>巨型史莱姆
+    Description: 因为我真的很开心！
   Wink:
-    Name: '&e&l眨眼'
-    Description: '&7&o你知道我的意思 ;)'
+    Name: <bold><yellow>眨眼
+    Description: 你知道我的意思 ;)
   Derp:
-    Name: '&3&l得瑟'
-    Description: '&7&o得瑟得瑟到处得瑟'
+    Name: <bold><dark_aqua>得瑟
+    Description: 得瑟得瑟到处得瑟
   Smile:
-    Name: '&e&l微笑'
-    Description: '&7&o因为我开心'
+    Name: <bold><yellow>微笑
+    Description: 因为我开心
   Iron:
-    Name: '&7&l铁'
-    Description: '&7&o跟铁一样坚硬！'
+    Name: <bold><gray>铁
+    Description: 跟铁一样坚硬！
   Gold:
-    Name: '&e&l金'
-    Description: '&7&o我的宝贝！'
+    Name: <bold><yellow>金
+    Description: 我的宝贝！
   Diamond:
-    Name: '&b&l钻石'
-    Description: '&7&o这真的很结实！'
+    Name: <bold><aqua>钻石
+    Description: 这真的很结实！
   CommandBlock:
-    Name: '&7&l命令方块'
-    Description: '&7&o用它来统治世界吧！'
+    Name: <bold><gray>命令方块
+    Description: 用它来统治世界吧！
   Music:
-    Name: '&9&l音乐'
-    Description: '&7&o你真是个音乐家'
+    Name: <bold><blue>音乐
+    Description: 你真是个音乐家
   Squid:
-    Name: '&3&l鱿鱼'
-    Description: '&7&o噗，噗！'
+    Name: <bold><dark_aqua>鱿鱼
+    Description: 噗，噗！
   GlowSquid:
-    Name: '&b&lGlow Squid'
-    Description: '&7&oLight up the ocean!'
+    Name: <bold><aqua>Glow Squid
+    Description: Light up the ocean!
   Chicken:
-    Name: '&f&l鸡'
-    Description: '&7&o咯咯咯哒！'
+    Name: <bold><white>鸡
+    Description: 咯咯咯哒！
   Blaze:
-    Name: '&6&l火焰'
-    Description: '&7&o小心火焰！'
+    Name: <bold><gold>火焰
+    Description: 小心火焰！
   Piston:
-    Name: '&7&l活塞'
-    Description: '&7&o你有红石吗？'
+    Name: <bold><gray>活塞
+    Description: 你有红石吗？
   Sheep:
-    Name: '&f&l羊'
-    Description: '&7&o咩，咩'
+    Name: <bold><white>羊
+    Description: 咩，咩
   Pig:
-    Name: '&d&l猪'
-    Description: '&7&o哼！哼！'
+    Name: <bold><light_purple>猪
+    Description: 哼！哼！
   Cow:
-    Name: '&a&lCow'
-    Description: '&7&oMoooo!'
+    Name: <bold><green>Cow
+    Description: Moooo!
   Mooshroom:
-    Name: '&c&lMooshroom'
-    Description: '&7&oMoooo!'
+    Name: <bold><red>Mooshroom
+    Description: Moooo!
   BrownMooshroom:
-    Name: '&b&lBrown Mooshroom'
-    Description: '&7&oMoooo!'
+    Name: <bold><aqua>Brown Mooshroom
+    Description: Moooo!
   Moobloom:
-    Name: '&e&lMoobloom'
-    Description: '&7&oVery rare cow!'
+    Name: <bold><yellow>Moobloom
+    Description: Very rare cow!
   ChestnutHorse:
-    Name: '&2&lChestnut Horse'
-    Description: '&7&oDon''t forget the saddle!'
+    Name: <bold><dark_green>Chestnut Horse
+    Description: Don't forget the saddle!
   Golem:
-    Name: '&7&l傀儡'
-    Description: '&7&o我是你的保安。'
+    Name: <bold><gray>傀儡
+    Description: 我是你的保安。
   CopperGolem:
-    Name: '&6&lCopper Golem'
-    Description: '&7&oMade out of 100% copper.'
+    Name: <bold><gold>Copper Golem
+    Description: Made out of 100% copper.
   Enderman:
-    Name: '&5&l末影人'
-    Description: '&7&o我在这，现在我又在这！'
+    Name: <bold><dark_purple>末影人
+    Description: 我在这，现在我又在这！
   EndermanKing:
-    Name: '&d&lEnderman King'
-    Description: '&7&oKing of the endermen'
+    Name: <bold><light_purple>Enderman King
+    Description: King of the endermen
   Slime:
-    Name: '&a&lSlime'
-    Description: '&7&oVery slimy'
+    Name: <bold><green>Slime
+    Description: Very slimy
   Creeper:
-    Name: '&2&lCreeper'
-    Description: '&7&oScare your friends!'
+    Name: <bold><dark_green>Creeper
+    Description: Scare your friends!
   Skeleton:
-    Name: '&7&lSkeleton'
-    Description: '&7&oVery good archer!'
+    Name: <bold><gray>Skeleton
+    Description: Very good archer!
   Zombie:
-    Name: '&2&lZombie'
-    Description: '&7&oBrains!!!'
+    Name: <bold><dark_green>Zombie
+    Description: Brains!!!
   Drowned:
-    Name: '&3&lDrowned'
-    Description: '&7&oUnderwater zombie'
+    Name: <bold><dark_aqua>Drowned
+    Description: Underwater zombie
   Strider:
-    Name: '&c&lStrider'
-    Description: '&7&oI hate water!'
+    Name: <bold><red>Strider
+    Description: I hate water!
   WitherSkeleton:
-    Name: '&7&lWither Skeleton'
-    Description: '&7&oGuardian of the nether fortress'
+    Name: <bold><gray>Wither Skeleton
+    Description: Guardian of the nether fortress
   Ghast:
-    Name: '&f&lGhast'
-    Description: '&7&o*high-pitched scream*'
+    Name: <bold><white>Ghast
+    Description: '*high-pitched scream*'
   Warden:
-    Name: '&3&lWarden'
-    Description: '&7&oBe quiet...'
+    Name: <bold><dark_aqua>Warden
+    Description: Be quiet...
   Witch:
-    Name: '&5&lWitch'
-    Description: '&7&oPlease try my potion!'
+    Name: <bold><dark_purple>Witch
+    Description: Please try my potion!
   Guardian:
-    Name: '&3&lGuardian'
-    Description: '&7&oProtect the ocean monuments!'
+    Name: <bold><dark_aqua>Guardian
+    Description: Protect the ocean monuments!
   ShepherdVillager:
-    Name: '&e&lShepherd Villager'
-    Description: '&7&oThe Lonely Shepherd'
+    Name: <bold><yellow>Shepherd Villager
+    Description: The Lonely Shepherd
   FletcherVillager:
-    Name: '&a&lFletcher Villager'
-    Description: '&7&oI make arrows.'
+    Name: <bold><green>Fletcher Villager
+    Description: I make arrows.
   LibrarianVillager:
-    Name: '&6&lLibrarian Villager'
-    Description: '&7&oKnowledge is power.'
+    Name: <bold><gold>Librarian Villager
+    Description: Knowledge is power.
   Bee:
-    Name: '&e&lBee'
-    Description: '&7&oBe careful!'
+    Name: <bold><yellow>Bee
+    Description: Be careful!
   Fox:
-    Name: '&6&lFox'
-    Description: '&7&oFast and smart!'
+    Name: <bold><gold>Fox
+    Description: Fast and smart!
   SnowFox:
-    Name: '&f&lSnow Fox'
-    Description: '&7&oSnowy biomes are my home.'
+    Name: <bold><white>Snow Fox
+    Description: Snowy biomes are my home.
   Ocelot:
-    Name: '&e&lOcelot'
-    Description: '&7&oKing of the jungle'
+    Name: <bold><yellow>Ocelot
+    Description: King of the jungle
   Frog:
-    Name: '&2&lFrog'
-    Description: '&7&oEats whatever bugs him.'
+    Name: <bold><dark_green>Frog
+    Description: Eats whatever bugs him.
   AxolotlPink:
-    Name: '&d&lPink Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: <bold><light_purple>Pink Axolotl
+    Description: The cutest predator
   AxolotlBlue:
-    Name: '&9&lBlue Axolotl'
-    Description: '&7&oThe cutest predator'
+    Name: <bold><blue>Blue Axolotl
+    Description: The cutest predator
   Turtle:
-    Name: '&a&lTurtle'
-    Description: '&7&oTake your time.'
+    Name: <bold><green>Turtle
+    Description: Take your time.
   Clownfish:
-    Name: '&6&lClownfish'
-    Description: '&7&oYou found him!'
+    Name: <bold><gold>Clownfish
+    Description: You found him!
   BlackCat:
-    Name: '&2&lBlack Cat'
-    Description: '&7&oA witch''s best friend.'
+    Name: <bold><dark_green>Black Cat
+    Description: A witch's best friend.
   Allay:
-    Name: '&b&lAllay'
-    Description: '&7&oThe little helper'
+    Name: <bold><aqua>Allay
+    Description: The little helper
   Bat:
-    Name: '&5&lBat'
-    Description: '&7&oEnjoy the nightlife.'
+    Name: <bold><dark_purple>Bat
+    Description: Enjoy the nightlife.
   Glare:
-    Name: '&2&lGlare'
-    Description: '&7&oIt hates the darkness.'
+    Name: <bold><dark_green>Glare
+    Description: It hates the darkness.
   Rana:
-    Name: '&a&lRana'
-    Description: '&7&oFroggy hat!'
+    Name: <bold><green>Rana
+    Description: Froggy hat!
   MCD-Steve:
-    Name: '&9&lSteve'
-    Description: '&7&oThe best skin'
+    Name: <bold><blue>Steve
+    Description: The best skin
   MCD-Alex:
-    Name: '&6&lAlex'
-    Description: '&7&oSteve''s friend'
+    Name: <bold><gold>Alex
+    Description: Steve's friend
   MCD-QuestGiver:
-    Name: '&5&lQuest Giver'
-    Description: '&7&oI have a quest for you.'
+    Name: <bold><dark_purple>Quest Giver
+    Description: I have a quest for you.
   MCD-LuxuryMerchant:
-    Name: '&6&lLuxury Merchant'
-    Description: '&7&oI sell gems.'
+    Name: <bold><gold>Luxury Merchant
+    Description: I sell gems.
   MCD-Necromancer:
-    Name: '&b&lNecromancer'
-    Description: '&7&oSummon the undead!'
+    Name: <bold><aqua>Necromancer
+    Description: Summon the undead!
   MCD-NamelessOne:
-    Name: '&2&lNameless One'
-    Description: '&7&oPowerful necromancer'
+    Name: <bold><dark_green>Nameless One
+    Description: Powerful necromancer
   MCD-StrayKnight:
-    Name: '&7&lStray Knight'
-    Description: '&7&oA lonely knight...'
+    Name: <bold><gray>Stray Knight
+    Description: A lonely knight...
   MCD-AncientGuardian:
-    Name: '&5&lAncient Guardian'
-    Description: '&7&oThe oldest guardian'
+    Name: <bold><dark_purple>Ancient Guardian
+    Description: The oldest guardian
   MCD-KeyGolem:
-    Name: '&6&lKey Golem'
-    Description: '&7&oUnlock every door!'
+    Name: <bold><gold>Key Golem
+    Description: Unlock every door!
   MCD-ArchIllager:
-    Name: '&3&lArch Illager'
-    Description: '&7&oLeader of the Illagers'
+    Name: <bold><dark_aqua>Arch Illager
+    Description: Leader of the Illagers
   MCD-SunkenSkeleton:
-    Name: '&2&lSunken Skeleton'
-    Description: '&7&oUnderwater skeleton'
+    Name: <bold><dark_green>Sunken Skeleton
+    Description: Underwater skeleton
   MCD-TheWildfire:
-    Name: '&4&lThe Wildfire'
-    Description: '&7&oHovering inferno'
+    Name: <bold><dark_red>The Wildfire
+    Description: Hovering inferno
   Mario:
-    Name: '&4&l马里奥'
-    Description: '&7&o是——我！马里奥！'
+    Name: <bold><dark_red>马里奥
+    Description: 是——我！马里奥！
   Luigi:
-    Name: '&2&l路吉'
-    Description: '&7&o路吉时间到！'
+    Name: <bold><dark_green>路吉
+    Description: 路吉时间到！
   Batman:
-    Name: '&8&l蝙蝠侠'
-    Description: '&7&o我是蝙蝠侠！'
+    Name: <bold><dark_gray>蝙蝠侠
+    Description: 我是蝙蝠侠！
   Chest:
-    Name: '&6&l箱子'
-    Description: '&7&o打开，和关上'
+    Name: <bold><gold>箱子
+    Description: 打开，和关上
   Skull:
-    Name: '&f&l头颅'
-    Description: '&7&o谁现在没头了？'
+    Name: <bold><white>头颅
+    Description: 谁现在没头了？
   JackOLantern:
-    Name: '&6&l杰克-O''-灯笼'
-    Description: '&7&o一个小小的南瓜'
+    Name: <bold><gold>杰克-O'-灯笼
+    Description: 一个小小的南瓜
   Ghost:
-    Name: '&f&l鬼魂'
-    Description: '&7&o对你来说太吓人了'
+    Name: <bold><white>鬼魂
+    Description: 对你来说太吓人了
   ScaryClown:
-    Name: '&4&l可怕的小丑'
-    Description: '&7&o希望你不会害怕小丑'
+    Name: <bold><dark_red>可怕的小丑
+    Description: 希望你不会害怕小丑
   Santa:
-    Name: '&4&l圣诞老人'
-    Description: '&7&o吼吼吼！圣诞快乐！'
+    Name: <bold><dark_red>圣诞老人
+    Description: 吼吼吼！圣诞快乐！
   Snowman:
-    Name: '&f&l雪人'
-    Description: '&7&oI don''t have a skull... or bones'
+    Name: <bold><white>雪人
+    Description: I don't have a skull... or bones
   Present:
-    Name: '&c&l礼物'
-    Description: '&7&o来自圣诞老人，给你！'
+    Name: <bold><red>礼物
+    Description: 来自圣诞老人，给你！
   Elf:
-    Name: '&a&l精灵'
-    Description: '&7&o我为圣诞老人工作！'
+    Name: <bold><green>精灵
+    Description: 我为圣诞老人工作！
   Bedrock:
-    Name: '&8&l基岩'
-    Description: '&7&o无法破坏！'
+    Name: <bold><dark_gray>基岩
+    Description: 无法破坏！
   RedCrewmate:
-    Name: '&4&l红船员'
-    Description: '&7&o红衣可疑！'
+    Name: <bold><dark_red>红船员
+    Description: 红衣可疑！
   BlueCrewmate:
-    Name: '&1&l蓝船员'
-    Description: '&7&o蓝衣可疑！'
+    Name: <bold><dark_blue>蓝船员
+    Description: 蓝衣可疑！
   GreenCrewmate:
-    Name: '&2&l绿船员'
-    Description: '&7&o绿衣可疑！'
+    Name: <bold><dark_green>绿船员
+    Description: 绿衣可疑！
   CyanCrewmate:
-    Name: '&b&l青船员'
-    Description: '&7&o青衣可疑！'
+    Name: <bold><aqua>青船员
+    Description: 青衣可疑！
   LimeCrewmate:
-    Name: '&a&l浅绿色'
-    Description: '&7&o浅绿可疑！'
+    Name: <bold><green>浅绿色
+    Description: 浅绿可疑！
   YellowCrewmate:
-    Name: '&e&l黄船员'
-    Description: '&7&o黄衣可疑！'
+    Name: <bold><yellow>黄船员
+    Description: 黄衣可疑！
   OrangeCrewmate:
-    Name: '&6&l橙船员'
-    Description: '&7&o橙衣可疑!'
+    Name: <bold><gold>橙船员
+    Description: 橙衣可疑!
   PurpleCrewmate:
-    Name: '&5&l紫船员'
-    Description: '&7&o紫衣可疑！'
+    Name: <bold><dark_purple>紫船员
+    Description: 紫衣可疑！
   BlackCrewmate:
-    Name: '&0&l黑船员'
-    Description: '&7&o黑衣可疑！'
+    Name: <bold><black>黑船员
+    Description: 黑衣可疑！
   WhiteCrewmate:
-    Name: '&f&l白船员'
-    Description: '&7&o白衣可疑！'
+    Name: <bold><white>白船员
+    Description: 白衣可疑！
   PinkCrewmate:
-    Name: '&d&l粉船员'
-    Description: '&7&o粉衣可疑！'
+    Name: <bold><light_purple>粉船员
+    Description: 粉衣可疑！
   BrownCrewmate:
-    Name: '&8&l棕船员'
-    Description: '&7&o棕衣可疑！'
+    Name: <bold><dark_gray>棕船员
+    Description: 棕衣可疑！
   FrogPrince:
-    Name: '&2&lFrog Prince'
-    Description: '&7&oKiss me!'
+    Name: <bold><dark_green>Frog Prince
+    Description: Kiss me!
   Notch:
-    Name: '&f&lNotch'
-    Description: '&7&oCreator of Minecraft'
+    Name: <bold><white>Notch
+    Description: Creator of Minecraft
   KitsuneMask:
-    Name: '&c&lKitsune Mask'
-    Description: '&7&oWhite fox mask'
+    Name: <bold><red>Kitsune Mask
+    Description: White fox mask
   Goblin:
-    Name: '&9&lGoblin'
-    Description: '&7&oSneaky!'
+    Name: <bold><blue>Goblin
+    Description: Sneaky!
   Unicorn:
-    Name: '&d&lUnicorn'
-    Description: '&7&oBe magical!'
+    Name: <bold><light_purple>Unicorn
+    Description: Be magical!
   Ogre:
-    Name: '&2&lOgre'
-    Description: '&7&oI''m hungry.'
+    Name: <bold><dark_green>Ogre
+    Description: I'm hungry.
   GreenDragon:
-    Name: '&a&lGreen Dragon'
-    Description: '&7&oBe a dragon.'
+    Name: <bold><green>Green Dragon
+    Description: Be a dragon.
   GigaChad:
-    Name: '&7&lGigaChad'
-    Description: '&7&oEmbrace masculinity!'
+    Name: <bold><gray>GigaChad
+    Description: Embrace masculinity!
   Anubis:
-    Name: '&6&lAnubis'
-    Description: '&7&oAncient Egyptian god'
+    Name: <bold><gold>Anubis
+    Description: Ancient Egyptian god
   Bread:
-    Name: '&f&l面包'
-    Description: '&7&o现烤'
+    Name: <bold><white>面包
+    Description: 现烤
   Cheese:
-    Name: '&e&l奶酪'
-    Description: '&7&o说茄子（Cheese）！'
+    Name: <bold><yellow>奶酪
+    Description: 说茄子（Cheese）！
   Pancakes:
-    Name: '&f&l煎饼'
-    Description: '&7&o有糖浆更好！'
+    Name: <bold><white>煎饼
+    Description: 有糖浆更好！
   Cake:
-    Name: '&c&l蛋糕'
-    Description: '&7&o嗯，蛋糕。'
+    Name: <bold><red>蛋糕
+    Description: 嗯，蛋糕。
   Cookie:
-    Name: '&6&l曲奇'
-    Description: '&7&o里面有巧克力碎！'
+    Name: <bold><gold>曲奇
+    Description: 里面有巧克力碎！
   CandyCane:
-    Name: '&c&l糖果 &f&l手杖'
-    Description: '&7&o对牙有点不友好'
+    Name: <bold><red>糖果 </red></bold><bold><white>手杖
+    Description: 对牙有点不友好
   Chocolate:
-    Name: '&a&l巧克力'
-    Description: '&7&o别把这个拿来喂狗！'
+    Name: <bold><green>巧克力
+    Description: 别把这个拿来喂狗！
   WhiteChocolate:
-    Name: '&f&l白巧克力'
-    Description: '&7&o多了点丝滑'
+    Name: <bold><white>白巧克力
+    Description: 多了点丝滑
   Apple:
-    Name: '&4&l苹果'
-    Description: '&7&o不是苹果公司'
+    Name: <bold><dark_red>苹果
+    Description: 不是苹果公司
   Melon:
-    Name: '&a&l西瓜'
-    Description: '&7&o别把这个往你头上砸'
+    Name: <bold><green>西瓜
+    Description: 别把这个往你头上砸
   CarvedPumpkin:
-    Name: '&6&l雕刻南瓜'
-    Description: '&7&o谁关掉了这个？'
+    Name: <bold><gold>雕刻南瓜
+    Description: 谁关掉了这个？
   Strawberry:
-    Name: '&c&l草莓'
-    Description: '&7&o他们长在树上吗？'
+    Name: <bold><red>草莓
+    Description: 他们长在树上吗？
   Coconut:
-    Name: '&f&l椰子'
-    Description: '&7&o乐园'
+    Name: <bold><white>椰子
+    Description: 乐园
   Taco:
-    Name: '&e&l塔可'
-    Description: '&7&o我们去整点塔可！'
+    Name: <bold><yellow>塔可
+    Description: 我们去整点塔可！
   Bacon:
-    Name: '&f&l培根'
-    Description: '&7&o所有东西跟培根一起都会变得更好。'
+    Name: <bold><white>培根
+    Description: 所有东西跟培根一起都会变得更好。
   Fries:
-    Name: '&6&l薯条'
-    Description: '&7&o汉堡最好的朋友'
+    Name: <bold><gold>薯条
+    Description: 汉堡最好的朋友
   Hamburger:
-    Name: '&6&l汉堡'
-    Description: '&7&o经典的快餐！'
+    Name: <bold><gold>汉堡
+    Description: 经典的快餐！
   Popcorn:
-    Name: '&6&l爆米花'
-    Description: '&7&o经典的电影零食！'
+    Name: <bold><gold>爆米花
+    Description: 经典的电影零食！
   WhiteDonut:
-    Name: '&f&l白色甜甜圈'
-    Description: '&7&o像个甜甜圈，但是是白色的！'
+    Name: <bold><white>白色甜甜圈
+    Description: 像个甜甜圈，但是是白色的！
   PinkDonut:
-    Name: '&d&l粉色甜甜圈'
-    Description: '&7&o家人的最爱'
+    Name: <bold><light_purple>粉色甜甜圈
+    Description: 家人的最爱
   ChocolateDonut:
-    Name: '&a&l巧克力甜甜圈'
-    Description: '&7&o一个更好的甜甜圈！'
+    Name: <bold><green>巧克力甜甜圈
+    Description: 一个更好的甜甜圈！
   Pie:
-    Name: '&4&l派'
-    Description: '&7&o我喜欢派'
+    Name: <bold><dark_red>派
+    Description: 我喜欢派
   A:
     Name: '&6&lA'
-    Description: '&7&o字母表中的第一个字母！'
+    Description: 字母表中的第一个字母！
   B:
     Name: '&4&lB'
-    Description: '&7&o字母表中的第二个字母！'
+    Description: 字母表中的第二个字母！
   C:
     Name: '&2&lC'
-    Description: '&7&o字母表中的第三个字母！'
+    Description: 字母表中的第三个字母！
   D:
     Name: '&b&lD'
-    Description: '&7&o字母表中的第四个字母！'
+    Description: 字母表中的第四个字母！
   E:
     Name: '&e&lE'
-    Description: '&7&o字母表中的第五个字母！'
+    Description: 字母表中的第五个字母！
   F:
     Name: '&5&lF'
-    Description: '&7&o字母表中的第六个字母！'
+    Description: 字母表中的第六个字母！
   G:
     Name: '&d&lG'
-    Description: '&7&o字母表中的第七个字母！'
+    Description: 字母表中的第七个字母！
   H:
     Name: '&a&lH'
-    Description: '&7&o字母表中的第八个字母！'
+    Description: 字母表中的第八个字母！
   I:
     Name: '&6&lI'
-    Description: '&7&o字母表中的第九个字母！'
+    Description: 字母表中的第九个字母！
   J:
     Name: '&4&lJ'
-    Description: '&7&o字母表中的第十个字母！'
+    Description: 字母表中的第十个字母！
   K:
     Name: '&2&lK'
-    Description: '&7&o字母表中的第十一个字母！'
+    Description: 字母表中的第十一个字母！
   L:
     Name: '&b&lL'
-    Description: '&7&o字母表中的第十二个字母！'
+    Description: 字母表中的第十二个字母！
   M:
     Name: '&e&lM'
-    Description: '&7&o字母表中的第十三个字母！'
+    Description: 字母表中的第十三个字母！
   N:
     Name: '&5&lN'
-    Description: '&7&o字母表中的第十四个字母！'
+    Description: 字母表中的第十四个字母！
   O:
     Name: '&d&lO'
-    Description: '&7&o字母表中的第十五个字母！'
+    Description: 字母表中的第十五个字母！
   P:
     Name: '&a&lP'
-    Description: '&7&o字母表中的第十六个字母！'
+    Description: 字母表中的第十六个字母！
   Q:
     Name: '&6&lQ'
-    Description: '&7&o字母表中的第十七个字母！'
+    Description: 字母表中的第十七个字母！
   R:
     Name: '&4&lR'
-    Description: '&7&o字母表中的第十八个字母！'
+    Description: 字母表中的第十八个字母！
   S:
     Name: '&2&lS'
-    Description: '&7&o字母表中的第十九个字母！'
+    Description: 字母表中的第十九个字母！
   T:
     Name: '&b&lT'
-    Description: '&7&o字母表中的第二十个字母！'
+    Description: 字母表中的第二十个字母！
   U:
     Name: '&e&lU'
-    Description: '&7&o字母表中的第二十一个字母！'
+    Description: 字母表中的第二十一个字母！
   V:
     Name: '&5&lV'
-    Description: '&7&o字母表中的第二十二个字母！'
+    Description: 字母表中的第二十二个字母！
   W:
     Name: '&d&lW'
-    Description: '&7&o字母表中的第二十三个字母！'
+    Description: 字母表中的第二十三个字母！
   X:
     Name: '&a&lX'
-    Description: '&7&o字母表中的第二十四个字母！'
+    Description: 字母表中的第二十四个字母！
   Y:
     Name: '&6&lY'
-    Description: '&7&o字母表中的第二十五个字母！'
+    Description: 字母表中的第二十五个字母！
   Z:
     Name: '&4&lZ'
-    Description: '&7&o字母表中的第二十六个字母！'
+    Description: 字母表中的第二十六个字母！
 Suits:
   Rave:
-    whole-equip: '&f&l全 &b&l套&a&l狂&e&l欢&6&l服 &f&l衣装'
-    helmet-name: '&b&l狂&a&l欢&e&l节 &f&l头盔'
-    chestplate-name: '&b&l狂&a&l欢&e&l节 &f&l衣服'
-    leggings-name: '&b&l狂&a&l欢&e&l节 &f&l裤子'
-    boots-name: '&b&l狂&a&l欢&e&l节 &f&l靴子'
-    Description: '&7&这惊人的颜色！'
+    whole-equip: <bold><white>全 </white></bold><bold><aqua>套</aqua></bold><bold><green>狂</green></bold><bold><yellow>欢</yellow></bold><bold><gold>服 </gold></bold><bold><white>衣装
+    helmet-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>头盔
+    chestplate-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>衣服
+    leggings-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>裤子
+    boots-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>靴子
+    Description: <gray>&这惊人的颜色！
   Astronaut:
-    whole-equip: '&f&l全套 &f&l宇航员 &f&l制服'
-    helmet-name: '&f&l宇航员 &f&l头盔'
-    chestplate-name: '&f&l宇航员 &f&l衣服'
-    leggings-name: '&f&l宇航员 &f&l裤子'
-    boots-name: '&f&l宇航员 &f&l靴子'
-    Description: '&7&o休斯顿？'
+    whole-equip: <bold><white>全套 </white></bold><bold><white>宇航员 </white></bold><bold><white>制服
+    helmet-name: <bold><white>宇航员 </white></bold><bold><white>头盔
+    chestplate-name: <bold><white>宇航员 </white></bold><bold><white>衣服
+    leggings-name: <bold><white>宇航员 </white></bold><bold><white>裤子
+    boots-name: <bold><white>宇航员 </white></bold><bold><white>靴子
+    Description: 休斯顿？
   Diamond:
-    whole-equip: '&f&l全套 &b&l钻石 &f&l衣装'
-    helmet-name: '&b&l钻石 &f&l头盔'
-    chestplate-name: '&b&l钻石 &f&l衣服'
-    leggings-name: '&b&l钻石 &f&l裤子'
-    boots-name: '&b&l钻石 &f&l靴子'
+    whole-equip: <bold><white>全套 </white></bold><bold><aqua>钻石 </aqua></bold><bold><white>衣装
+    helmet-name: <bold><aqua>钻石 </aqua></bold><bold><white>头盔
+    chestplate-name: <bold><aqua>钻石 </aqua></bold><bold><white>衣服
+    leggings-name: <bold><aqua>钻石 </aqua></bold><bold><white>裤子
+    boots-name: <bold><aqua>钻石 </aqua></bold><bold><white>靴子
     Description: |-
-      &7&o穿着这套惊人的衣服
-      &7&o展示你的挖掘技能!
+      穿着这套惊人的衣服
+      展示你的挖掘技能!
   Santa:
-    whole-equip: '&f&l全套 &4&l圣诞老人 &f&l衣装'
-    helmet-name: '&4&l圣诞老人 &f&l帽子'
-    chestplate-name: '&4&l圣诞老人 &f&l衣服'
-    leggings-name: '&4&l圣诞老人 &f&l裤子'
-    boots-name: '&4&l圣诞老人 &f&l靴子'
-    Description: '&7&o成为圣诞老人并送出礼物！'
+    whole-equip: <bold><white>全套 </white></bold><bold><dark_red>圣诞老人 </dark_red></bold><bold><white>衣装
+    helmet-name: <bold><dark_red>圣诞老人 </dark_red></bold><bold><white>帽子
+    chestplate-name: <bold><dark_red>圣诞老人 </dark_red></bold><bold><white>衣服
+    leggings-name: <bold><dark_red>圣诞老人 </dark_red></bold><bold><white>裤子
+    boots-name: <bold><dark_red>圣诞老人 </dark_red></bold><bold><white>靴子
+    Description: 成为圣诞老人并送出礼物！
   Frozen:
-    whole-equip: '&f&l全套 &b&l冰霜 &f&l衣装'
-    helmet-name: '&b&l冰霜 &f&l头盔'
-    chestplate-name: '&b&l冰霜 &f&l衣服'
-    leggings-name: '&b&l冰霜 &f&l裤子'
-    boots-name: '&b&l冰霜 &f&l靴子'
+    whole-equip: <bold><white>全套 </white></bold><bold><aqua>冰霜 </aqua></bold><bold><white>衣装
+    helmet-name: <bold><aqua>冰霜 </aqua></bold><bold><white>头盔
+    chestplate-name: <bold><aqua>冰霜 </aqua></bold><bold><white>衣服
+    leggings-name: <bold><aqua>冰霜 </aqua></bold><bold><white>裤子
+    boots-name: <bold><aqua>冰霜 </aqua></bold><bold><white>靴子
     Description: |-
-      &7&o这套衣服属于
-      &7&o冰霜之地的主人!
+      这套衣服属于
+      冰霜之地的主人!
   Cursed:
-    whole-equip: '&f&lwhole &5&lCursed &f&lsuit'
-    helmet-name: '&5&lCursed &f&lHelmet'
-    chestplate-name: '&5&lCursed &f&lChestplate'
-    leggings-name: '&5&lCursed &f&lLeggings'
-    boots-name: '&5&lCursed &f&lBoots'
-    Description: '&7&oMysterious and spooky.'
+    whole-equip: <bold><white>whole </white></bold><bold><dark_purple>Cursed </dark_purple></bold><bold><white>suit
+    helmet-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Helmet
+    chestplate-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Chestplate
+    leggings-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Leggings
+    boots-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Boots
+    Description: Mysterious and spooky.
   Slime:
-    whole-equip: '&f&lwhole &a&lSlime &f&lsuit'
-    helmet-name: '&a&lSlime &f&lHelmet'
-    chestplate-name: '&a&lSlime &f&lChestplate'
-    leggings-name: '&a&lSlime &f&lLeggings'
-    boots-name: '&a&lSlime &f&lBoots'
+    whole-equip: <bold><white>whole </white></bold><bold><green>Slime </green></bold><bold><white>suit
+    helmet-name: <bold><green>Slime </green></bold><bold><white>Helmet
+    chestplate-name: <bold><green>Slime </green></bold><bold><white>Chestplate
+    leggings-name: <bold><green>Slime </green></bold><bold><white>Leggings
+    boots-name: <bold><green>Slime </green></bold><bold><white>Boots
     Description: |-
-      &7&oSlimy green suit.
-      &7&oThe slimes will love it!
-  Equip: '%prefix% &9你穿上了 %suitname%!'
-  Unequip: '%prefix% &9你脱下了 %suitname%!'
-  Suit-Part-Lore: '&9衣装部分'
-  Whole-Equip-Lore: '&7&o穿上全套衣服'
+      Slimy green suit.
+      The slimes will love it!
+  Equip: <prefix> <blue>你穿上了 <suitname>!
+  Unequip: <prefix> <blue>你脱下了 <suitname>!
+  Suit-Part-Lore: <blue>衣装部分
+  Whole-Equip-Lore: <italic><gray>穿上全套衣服
   Must-Remove: [ ]
 Emotes:
-  Equip: '%prefix% &9你使用了 %emotename%'
-  Unequip: '%prefix% &9你卸下了 %emotename%'
+  Equip: <prefix> <blue>你使用了 <emotename>
+  Unequip: <prefix> <blue>你卸下了 <emotename>
   Cry:
-    Name: '&9&l哭'
-    Description: '&7&o你真的很伤心吗? :('
+    Name: <bold><blue>哭
+    Description: 你真的很伤心吗? :(
   Angry:
-    Name: '&c&l生气'
-    Description: '&7&o向其他玩家展示你的愤怒'
+    Name: <bold><red>生气
+    Description: 向其他玩家展示你的愤怒
   Happy:
-    Name: '&e&l开心'
-    Description: '&7&o别发愁，开心点！'
+    Name: <bold><yellow>开心
+    Description: 别发愁，开心点！
   Cheeky:
-    Name: '&6&l厚脸皮'
-    Description: '&7&o你喜欢厚脸皮？那这个表情是你的！'
+    Name: <bold><gold>厚脸皮
+    Description: 你喜欢厚脸皮？那这个表情是你的！
   Love:
-    Name: '&4&l爱'
-    Description: '&7&o你有一双漂亮的眼睛，你知道吗？'
+    Name: <bold><dark_red>爱
+    Description: 你有一双漂亮的眼睛，你知道吗？
   DealWithIt:
-    Name: '&7&l处理一下'
-    Description: '&7&o你想炫耀吗？那这个表情就是问你准备的！'
+    Name: <bold><gray>处理一下
+    Description: 你想炫耀吗？那这个表情就是问你准备的！
   Cool:
-    Name: '&9&l酷'
-    Description: '&7&o保持酷，兄弟！'
+    Name: <bold><blue>酷
+    Description: 保持酷，兄弟！
   Surprised:
-    Name: '&6&l惊喜的'
-    Description: '&7&o噢天呐!!!'
+    Name: <bold><gold>惊喜的
+    Description: 噢天呐!!!
   Wink:
-    Name: '&a&l眨眼'
-    Description: '&7&o快乐吗？让别人知道你只是在开玩笑'
+    Name: <bold><green>眨眼
+    Description: 快乐吗？让别人知道你只是在开玩笑
   RaiseEyebrows:
-    Name: '&3&lRaise Eyebrows'
-    Description: '&7&oSurprised?'
+    Name: <bold><dark_aqua>Raise Eyebrows
+    Description: Surprised?
   ScaryCandle:
-    Name: '&5&lScary Candle'
-    Description: '&7&oHappy Halloween!'
+    Name: <bold><dark_purple>Scary Candle
+    Description: Happy Halloween!
   GlowingPumpkin:
-    Name: '&6&lGlowing Pumpkin'
-    Description: '&7&oJack O''Slime'
+    Name: <bold><gold>Glowing Pumpkin
+    Description: Jack O'Slime
   LovestruckAllay:
-    Name: '&b&lLovestruck Allay'
-    Description: '&7&oAre we falling in love?'
+    Name: <bold><aqua>Lovestruck Allay
+    Description: Are we falling in love?
 Projectile-Effects:
-  Equip: '%prefix% &9You equipped %projectile-effectname%'
-  Unequip: '%prefix% &9You unequipped %projectile-effectname%'
+  Equip: <prefix> <blue>You equipped %projectile-effectname%
+  Unequip: <prefix> <blue>You unequipped %projectile-effectname%
   Rainbow:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
-    Description: '&7&oRainbow-colored particles'
+    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w
+    Description: Rainbow-colored particles
   Christmas:
-    name: '&4&lChrist&f&lmas'
-    Description: '&7&oMerry Christmas!'
+    name: <bold><dark_red>Christ</dark_red></bold><bold><white>mas
+    Description: Merry Christmas!
   RedstoneHelix:
-    name: '&4&lRedstone Helix'
-    Description: '&7&oRotating, red particles'
+    name: <bold><dark_red>Redstone Helix
+    Description: Rotating, red particles
   FlameHelix:
-    name: '&c&lFlame Helix'
-    Description: '&7&oRotating flames'
+    name: <bold><red>Flame Helix
+    Description: Rotating flames
   CursedHelix:
-    name: '&5&lCursed Helix'
-    Description: '&7&oRotating, purple particles'
+    name: <bold><dark_purple>Cursed Helix
+    Description: Rotating, purple particles
   SoulFireHelix:
-    name: '&b&lSoul Fire Helix'
-    Description: '&7&oRotating, cyan flames'
+    name: <bold><aqua>Soul Fire Helix
+    Description: Rotating, cyan flames
   Spark:
-    name: '&f&lSpark'
-    Description: '&7&oSparkling, white stars'
+    name: <bold><white>Spark
+    Description: Sparkling, white stars
   Redstone:
-    name: '&4&lRedstone'
-    Description: '&7&oSmall, red clouds'
+    name: <bold><dark_red>Redstone
+    Description: Small, red clouds
   Flame:
-    name: '&c&lFlame'
-    Description: '&7&oSmall flames'
+    name: <bold><red>Flame
+    Description: Small flames
   Water:
-    name: '&9&lWater'
-    Description: '&7&oBlue waterdrops'
+    name: <bold><blue>Water
+    Description: Blue waterdrops
   Witch:
-    name: '&5&lWitch'
-    Description: '&7&oPurple crosses'
+    name: <bold><dark_purple>Witch
+    Description: Purple crosses
   Emerald:
-    name: '&2&lEmerald'
-    Description: '&7&oGreen stars'
+    name: <bold><dark_green>Emerald
+    Description: Green stars
   Note:
-    name: '&e&lNote'
-    Description: '&7&oColorful notes'
+    name: <bold><yellow>Note
+    Description: Colorful notes
   Love:
-    name: '&d&lLove'
-    Description: '&7&oRed hearts'
+    name: <bold><light_purple>Love
+    Description: Red hearts
   Lava:
-    name: '&4&lLava'
-    Description: '&7&oLava bubbles'
+    name: <bold><dark_red>Lava
+    Description: Lava bubbles
   Snow:
-    name: '&f&lSnow'
-    Description: '&7&oSnowball particles'
+    name: <bold><white>Snow
+    Description: Snowball particles
   Slime:
-    name: '&a&lSlime'
-    Description: '&7&oSlimeball particles'
+    name: <bold><green>Slime
+    Description: Slimeball particles
   Crit:
-    name: '&7&lCrit'
-    Description: '&7&oLight brown crosses'
+    name: <bold><gray>Crit
+    Description: Light brown crosses
   MagicCrit:
-    name: '&3&lMagic Crit'
-    Description: '&7&oCyan stars'
+    name: <bold><dark_aqua>Magic Crit
+    Description: Cyan stars
   Explosion:
-    name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    name: <bold><dark_red>Explosion
+    Description: BOOM!
   Cloud:
-    name: '&f&lCloud'
-    Description: '&7&oWhite clouds'
+    name: <bold><white>Cloud
+    Description: White clouds
   Smoke:
-    name: '&7&lSmoke'
-    Description: '&7&oSmall, gray clouds'
+    name: <bold><gray>Smoke
+    Description: Small, gray clouds
   Portal:
-    name: '&5&lPortal'
-    Description: '&7&oSmall, purple clouds'
+    name: <bold><dark_purple>Portal
+    Description: Small, purple clouds
   DragonBreath:
-    name: '&d&lDragon Breath'
-    Description: '&7&oSmall, purple clouds'
+    name: <bold><light_purple>Dragon Breath
+    Description: Small, purple clouds
   SquidInk:
-    name: '&9&lSquid Ink'
-    Description: '&7&oBlack clouds'
+    name: <bold><blue>Squid Ink
+    Description: Black clouds
   SoulFireFlame:
-    name: '&b&lSoul Fire Flame'
-    Description: '&7&oSmall, cyan flames'
+    name: <bold><aqua>Soul Fire Flame
+    Description: Small, cyan flames
   Snowflake:
-    name: '&f&lSnowflake'
-    Description: '&7&oSmall, white clouds'
+    name: <bold><white>Snowflake
+    Description: Small, white clouds
   GlowSquid:
-    name: '&3&lGlow Squid'
-    Description: '&7&oTeal stars'
+    name: <bold><dark_aqua>Glow Squid
+    Description: Teal stars
   GlowSquidInk:
-    name: '&3&lGlow Squid Ink'
-    Description: '&7&oAquamarine clouds'
+    name: <bold><dark_aqua>Glow Squid Ink
+    Description: Aquamarine clouds
   Scrape:
-    name: '&2&lScrape'
-    Description: '&7&oTeal stars'
+    name: <bold><dark_green>Scrape
+    Description: Teal stars
   WaxOff:
-    name: '&f&lWax Off'
-    Description: '&7&oWhite stars'
+    name: <bold><white>Wax Off
+    Description: White stars
   WaxOn:
-    name: '&6&lWax On'
-    Description: '&7&oOrange stars'
+    name: <bold><gold>Wax On
+    Description: Orange stars
   SculkSoul:
-    name: '&b&lSculk Soul'
-    Description: '&7&oCyan souls'
+    name: <bold><aqua>Sculk Soul
+    Description: Cyan souls
 Death-Effects:
-  Equip: '%prefix% &9You equipped %death-effectname%'
-  Unequip: '%prefix% &9You unequipped %death-effectname%'
+  Equip: <prefix> <blue>You equipped %death-effectname%
+  Unequip: <prefix> <blue>You unequipped %death-effectname%
   Explosion:
-    name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    name: <bold><dark_red>Explosion
+    Description: BOOM!
   Firework:
-    name: '&7&lFirework Rocket'
+    name: <bold><gray>Firework Rocket
     Description: |-
-      &7&oCongratulations!
-      &7&oYou... died?
+      Congratulations!
+      You... died?
   Lightning:
-    name: '&f&lLightning'
-    Description: '&7&o⚡ ZAP!'
-Enabled-SelfMorphView: '%prefix% &9你启用了第一人称伪装视角'
-Disabled-SelfMorphView: '%prefix% &9你禁用了第一人称伪装视角'
-Enabled-Gadgets: '%prefix% &9您启用了小工具！'
-Disabled-Gadgets: '%prefix% &9你禁用了小道具！'
-Not-Allowed-From-Console: '&c&l这不能从控制台执行！'
-World-Disabled: '%prefix% &c&l装饰品在这个世界已被禁用！'
-Region-Disabled: '%prefix% &c&l装饰品在这个区域已被禁用！'
-Region-Disabled-Category: '%prefix% &c&l%category% 的装饰品在这个区域已被禁用！'
-Disabled-Command-Message: '%prefix% &c&l当你佩戴装饰品时你不能使用该指令！'
-Not-Allowed-In-Vanish: '%prefix% &c&l你在隐身时不能使用装饰品！'
+    name: <bold><white>Lightning
+    Description: '⚡ ZAP!'
+Enabled-SelfMorphView: <prefix> <blue>你启用了第一人称伪装视角
+Disabled-SelfMorphView: <prefix> <blue>你禁用了第一人称伪装视角
+Enabled-Gadgets: <prefix> <blue>您启用了小工具！
+Disabled-Gadgets: <prefix> <blue>你禁用了小道具！
+Not-Allowed-From-Console: <bold><red>这不能从控制台执行！
+World-Disabled: <prefix> <bold><red>装饰品在这个世界已被禁用！
+Region-Disabled: <prefix> <bold><red>装饰品在这个区域已被禁用！
+Region-Disabled-Category: <prefix> <bold><red><category> 的装饰品在这个区域已被禁用！
+Disabled-Command-Message: <prefix> <bold><red>当你佩戴装饰品时你不能使用该指令！
+Not-Allowed-In-Vanish: <prefix> <bold><red>你在隐身时不能使用装饰品！
 Too-Long: Too long, try again
-Cannot-Disable-Gadgets: '%prefix% &c&lYou cannot disable gadgets.'
+Cannot-Disable-Gadgets: <prefix> <bold><red>You cannot disable gadgets.
 Must-Remove:
-  Hats: '%prefix% &c&l你需要先移除您的头盔才能佩戴头饰！'
+  Hats: <prefix> <bold><red>你需要先移除您的头盔才能佩戴头饰！
   Suits:
-    HELMET: '%prefix% &c&l你必须移除你的头盔才能穿上衣装头盔！'
-    CHESTPLATE: '%prefix% &c&l你必须移除你的胸甲才能穿上衣装胸甲'
-    LEGGINGS: '%prefix% &c&l你必须移除你的护腿才能穿上衣装裤子！'
-    BOOTS: '%prefix% &c&l你必须移除你的靴子才能穿上衣装靴子！'
-  Emotes: '%prefix% &c&l你需要先移除您的头盔才能使用表情！'
-  Gadgets: '%prefix% &c&lYou must clear hotbar slot %slot% to equip a gadget!'
-  Mounts: '%prefix% &c&lYou must clear hotbar slot %slot% to equip this mount!'
+    HELMET: <prefix> <bold><red>你必须移除你的头盔才能穿上衣装头盔！
+    CHESTPLATE: <prefix> <bold><red>你必须移除你的胸甲才能穿上衣装胸甲
+    LEGGINGS: <prefix> <bold><red>你必须移除你的护腿才能穿上衣装裤子！
+    BOOTS: <prefix> <bold><red>你必须移除你的靴子才能穿上衣装靴子！
+  Emotes: <prefix> <bold><red>你需要先移除您的头盔才能使用表情！
+  Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
+  Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
