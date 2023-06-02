@@ -6,12 +6,11 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.emotes.Emote;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
-
-import com.cryptomorin.xseries.XMaterial;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -259,7 +258,7 @@ public class EmoteType extends CosmeticType<Emote> {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return MessageManager.getMessage("Emotes." + getConfigName() + ".Name");
     }
 

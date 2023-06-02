@@ -1,9 +1,11 @@
 package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -60,14 +62,14 @@ public abstract class Menu implements Listener {
         open(player);
     }
 
-    protected Inventory createInventory(int size, String name) {
-        Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), getName());
+    protected Inventory createInventory(Component name) {
+        Inventory inventory = Bukkit.createInventory(new CosmeticsInventoryHolder(), getSize(), MessageManager.toLegacy(name));
         ((CosmeticsInventoryHolder) inventory.getHolder()).setInventory(inventory);
         return inventory;
     }
 
     public Inventory getInventory(UltraPlayer player) {
-        Inventory inventory = createInventory(getSize(), getName());
+        Inventory inventory = createInventory(getName());
         putItems(inventory, player);
         fillInventory(inventory);
         return inventory;
@@ -151,5 +153,5 @@ public abstract class Menu implements Listener {
 
     protected abstract int getSize();
 
-    protected abstract String getName();
+    protected abstract Component getName();
 }

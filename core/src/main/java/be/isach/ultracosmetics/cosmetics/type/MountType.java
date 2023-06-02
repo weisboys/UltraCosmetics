@@ -9,6 +9,8 @@ import be.isach.ultracosmetics.cosmetics.mounts.*;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -57,12 +59,14 @@ public class MountType extends CosmeticEntType<Mount> {
     }
 
     @Override
-    public String getName() {
+    public Component getName() {
         return MessageManager.getMessage("Mounts." + getConfigName() + ".menu-name");
     }
 
-    public String getName(Player player) {
-        return MessageManager.getMessage("Mounts." + getConfigName() + ".entity-displayname").replace("%playername%", player.getName());
+    public Component getName(Player player) {
+        return MessageManager.getMessage("Mounts." + getConfigName() + ".entity-displayname",
+                Placeholder.unparsed("playername", player.getName())
+        );
     }
 
     public int getRepeatDelay() {

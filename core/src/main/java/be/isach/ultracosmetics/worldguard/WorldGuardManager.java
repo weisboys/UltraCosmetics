@@ -10,8 +10,10 @@ import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.util.TextUtil;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.InvocationTargetException;
@@ -97,15 +99,16 @@ public class WorldGuardManager {
     public void doCosmeticCheck(Player player, UltraCosmetics uc) {
         if (flagManager == null) return;
         if (!flagManager.flagCheck(UCFlag.COSMETICS, player) && uc.getPlayerManager().getUltraPlayer(player).clear()) {
-            player.sendMessage(MessageManager.getMessage("Region-Disabled"));
+            MessageManager.send(player, "Region-Disabled");
             return;
         }
         Set<Category> blockedCategories = flagManager.categoryFlagCheck(player);
         if (blockedCategories == null) return;
         for (Category category : blockedCategories) {
             if (blockedCategories.contains(category) && uc.getPlayerManager().getUltraPlayer(player).removeCosmetic(category)) {
-                player.sendMessage(MessageManager.getMessage("Region-Disabled-Category")
-                        .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
+                TagResolver.Single placeholder = Placeholder.component("category",
+                        TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
+                MessageManager.send(player, "Region-Disabled-Category", placeholder);
             }
         }
     }
@@ -113,6 +116,23 @@ public class WorldGuardManager {
     protected boolean categoryFlagCheck(Player player, Category category) {
         Set<Category> categories = flagManager.categoryFlagCheck(player);
         return categories == null || !categories.contains(category);
+    }
+
+    public void noCosmeticsRegionEntered(UltraPlayer ultraPlayer) {
+        if (ultraPlayer.clear()) {
+            MessageManager.send(ultraPlayer.getBukkitPlayer(), "Region-Disabled");
+        }
+    }
+
+    public void restrictedCosmeticsChange(UltraPlayer ultraPlayer, Set<Category> restrictions) {
+        Player bukkitPlayer = ultraPlayer.getBukkitPlayer();
+        for (Category cat : restrictions) {
+            if (ultraPlayer.removeCosmetic(cat)) {
+                MessageManager.send(bukkitPlayer, "Region-Disabled-Category",
+                        Placeholder.unparsed("category", cat.getMessagesName())
+                );
+            }
+        }
     }
 
     public void showroomFlagChange(UltraPlayer ultraPlayer, boolean newValue) {

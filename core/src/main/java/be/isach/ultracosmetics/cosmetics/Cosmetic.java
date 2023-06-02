@@ -9,8 +9,10 @@ import be.isach.ultracosmetics.events.UCCosmeticUnequipEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.worldguard.CosmeticRegionState;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
@@ -33,7 +35,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     protected boolean equipped;
     protected final T cosmeticType;
     private final UUID ownerUniqueId;
-    private final String typeName;
+    private final Component typeName;
 
     public Cosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         if (owner == null || owner.getBukkitPlayer() == null) {
@@ -50,27 +52,27 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
     public final void equip() {
         Player player = getPlayer();
         if (!cosmeticType.isEnabled()) {
-            player.sendMessage(MessageManager.getMessage("Cosmetic-Disabled"));
+            MessageManager.send(player, "Cosmetic-Disabled");
             return;
         }
 
         if (!owner.canEquip(cosmeticType)) {
-            player.sendMessage(MessageManager.getMessage("No-Permission"));
+            MessageManager.send(player, "No-Permission");
             return;
         }
 
         if (PlayerAffectingCosmetic.isVanished(player) && SettingsManager.getConfig().getBoolean("Prevent-Cosmetics-In-Vanish")) {
             owner.clear();
-            player.sendMessage(MessageManager.getMessage("Not-Allowed-In-Vanish"));
+            MessageManager.send(player, "Not-Allowed-In-Vanish");
             return;
         }
         CosmeticRegionState state = ultraCosmetics.getWorldGuardManager().allowedCosmeticsState(player, category);
         if (state == CosmeticRegionState.BLOCKED_ALL) {
-            player.sendMessage(MessageManager.getMessage("Region-Disabled"));
+            MessageManager.send(player, "Region-Disabled");
             return;
         } else if (state == CosmeticRegionState.BLOCKED_CATEGORY) {
-            player.sendMessage(MessageManager.getMessage("Region-Disabled-Category")
-                    .replace("%category%", ChatColor.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title"))));
+            TagResolver.Single placeholder = Placeholder.component("category", TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
+            MessageManager.send(player, "Region-Disabled-Category", placeholder);
             return;
         }
 
@@ -91,7 +93,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         this.equipped = true;
 
         if (!owner.isPreserveEquipped()) {
-            owner.sendMessage(filterPlaceholders(getCategory().getActivateMessage()));
+            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
+            Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Equip", typeNamePlaceholder);
+            MessageManager.getAudiences().player(player).sendMessage(appendActivateMessage(activateMessage));
         }
 
         if (this instanceof Updatable) {
@@ -108,7 +112,9 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         Bukkit.getPluginManager().callEvent(event);
 
         if (!owner.isPreserveEquipped()) {
-            owner.sendMessage(filterPlaceholders(getCategory().getDeactivateMessage()));
+            TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
+            Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Unequip", typeNamePlaceholder);
+            MessageManager.getAudiences().player(getPlayer()).sendMessage(appendActivateMessage(activateMessage));
         }
 
         HandlerList.unregisterAll(this);
@@ -180,12 +186,12 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         return cosmeticType;
     }
 
-    public String getTypeName() {
+    public Component getTypeName() {
         return typeName;
     }
 
-    protected String filterPlaceholders(String message) {
-        return message.replace(getCategory().getChatPlaceholder(), TextUtil.filterPlaceHolder(getTypeName()));
+    protected Component appendActivateMessage(Component base) {
+        return base;
     }
 
     protected String getOptionPath(String key) {

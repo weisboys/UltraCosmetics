@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
 import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
@@ -66,10 +67,12 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
             if (charge < 5) {
                 ActionBar.clearActionBar(getPlayer());
             } else {
-                ActionBar.sendActionBar(getPlayer(), MessageManager.getMessage("Morphs.Creeper.charging").replace("%chargelevel%", charge + ""));
+                ActionBar.sendActionBar(getPlayer(), MessageManager.getLegacyMessage("Morphs.Creeper.charging",
+                        Placeholder.unparsed("chargelevel", String.valueOf(charge)))
+                );
             }
         } else if (charge == 100) {
-            ActionBar.sendActionBar(getPlayer(), MessageManager.getMessage("Morphs.Creeper.release-to-explode"));
+            ActionBar.sendActionBar(getPlayer(), MessageManager.getLegacyMessage("Morphs.Creeper.release-to-explode"));
         }
     }
 }

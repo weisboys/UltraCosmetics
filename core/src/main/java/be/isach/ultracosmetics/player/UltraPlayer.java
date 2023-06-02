@@ -30,6 +30,10 @@ import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.messages.ActionBar;
+import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -190,8 +194,8 @@ public class UltraPlayer {
         otherSymbols.setPatternSeparator('.');
         final DecimalFormat decimalFormat = new DecimalFormat("0.0", otherSymbols);
         String timeLeft = decimalFormat.format(currentCooldown) + "s";
-
-        ActionBar.sendActionBar(getBukkitPlayer(), type.getName() + ChatColor.WHITE + " " + stringBuilder + ChatColor.WHITE + " " + timeLeft);
+        String name = BukkitComponentSerializer.legacy().serialize(type.getName());
+        ActionBar.sendActionBar(getBukkitPlayer(), name + ChatColor.WHITE + " " + stringBuilder + ChatColor.WHITE + " " + timeLeft);
     }
 
     /**
@@ -380,8 +384,8 @@ public class UltraPlayer {
             getBukkitPlayer().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
             return;
         }
-
-        ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, ChatColor.translateAlternateColorCodes('&', (MessageManager.getMessage("Buy-Treasure-Key-ItemName")).replace("%price%", String.valueOf(price))));
+        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
+        ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
 
         PurchaseData pd = new PurchaseData();
         pd.setPrice(price);
@@ -424,8 +428,10 @@ public class UltraPlayer {
      * @param petType The pet type.
      * @return The pet name.
      */
-    public String getPetName(PetType petType) {
-        return colorizePetName(cosmeticsProfile.getPetName(petType));
+    public Component getPetName(PetType petType) {
+        String rawName = cosmeticsProfile.getPetName(petType);
+        if (rawName == null) return null;
+        return MessageManager.getMiniMessage().deserialize(cosmeticsProfile.getPetName(petType));
     }
 
     /**
@@ -435,13 +441,11 @@ public class UltraPlayer {
      * @param amount The ammo amount to give.
      */
     public void addAmmo(GadgetType type, int amount) {
-        if (UltraCosmeticsData.get().isAmmoEnabled()) {
-            cosmeticsProfile.addAmmo(type, amount);
-            Gadget gadget = getCurrentGadget();
-            if (gadget == null) return;
-            getBukkitPlayer().getInventory().setItem(SettingsManager.getConfig().getInt("Gadget-Slot"),
-                    ItemFactory.create(gadget.getType().getMaterial(),
-                            ChatColor.WHITE + "" + ChatColor.BOLD + getAmmo(gadget.getType()) + " " + gadget.getType().getName(), MessageManager.getMessage("Gadgets.Lore")));
+        if (!UltraCosmeticsData.get().isAmmoEnabled()) return;
+        cosmeticsProfile.addAmmo(type, amount);
+        Gadget gadget = getCurrentGadget();
+        if (gadget != null) {
+            gadget.equipItem();
         }
     }
 
@@ -459,9 +463,9 @@ public class UltraPlayer {
         cosmeticsProfile.setGadgetsEnabled(enabled);
 
         if (enabled) {
-            getBukkitPlayer().sendMessage(MessageManager.getMessage("Enabled-Gadgets"));
+            MessageManager.send(getBukkitPlayer(), "Enabled-Gadgets");
         } else {
-            getBukkitPlayer().sendMessage(MessageManager.getMessage("Disabled-Gadgets"));
+            MessageManager.send(getBukkitPlayer(), "Disabled-Gadgets");
         }
     }
 
@@ -480,9 +484,9 @@ public class UltraPlayer {
     public void setSeeSelfMorph(boolean enabled) {
         cosmeticsProfile.setSeeSelfMorph(enabled);
         if (enabled) {
-            getBukkitPlayer().sendMessage(MessageManager.getMessage("Enabled-SelfMorphView"));
+            MessageManager.send(getBukkitPlayer(), "Enabled-SelfMorphView");
         } else {
-            getBukkitPlayer().sendMessage(MessageManager.getMessage("Disabled-SelfMorphView"));
+            MessageManager.send(getBukkitPlayer(), "Disabled-SelfMorphView");
         }
         if (hasCosmetic(Category.MORPHS)) {
             getCurrentMorph().setSeeSelf(enabled);
@@ -552,9 +556,13 @@ public class UltraPlayer {
         PlayerUtils.removeItems(getBukkitPlayer(), menuItem::isSimilar);
     }
 
-    public void sendMessage(Object message) {
-        if (message.toString().isEmpty()) return;
-        getBukkitPlayer().sendMessage(message.toString());
+    public void sendMessage(String message) {
+        if (message.isEmpty()) return;
+        getBukkitPlayer().sendMessage(message);
+    }
+
+    public void sendMessage(Component message) {
+        MessageManager.getAudiences().player(getBukkitPlayer()).sendMessage(message);
     }
 
     /**
@@ -650,17 +658,5 @@ public class UltraPlayer {
 
     public CosmeticsProfile getProfile() {
         return cosmeticsProfile;
-    }
-
-    public static String colorizePetName(String name) {
-        if (name == null) return null;
-        String newName = name;
-        StringBuilder pattern = new StringBuilder("&#");
-        for (int i = 0; i < 6; i++) {
-            pattern.append("([\\da-fA-F])");
-        }
-        newName = newName.replaceAll(pattern.toString(), "&x&$1&$2&$3&$4&$5&$6");
-        newName = ChatColor.translateAlternateColorCodes('&', newName);
-        return newName;
     }
 }

@@ -1,25 +1,10 @@
 package be.isach.ultracosmetics.command;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.command.subcommands.SubCommandClear;
-import be.isach.ultracosmetics.command.subcommands.SubCommandGadgets;
-import be.isach.ultracosmetics.command.subcommands.SubCommandGive;
-import be.isach.ultracosmetics.command.subcommands.SubCommandMenu;
-import be.isach.ultracosmetics.command.subcommands.SubCommandMigrate;
-import be.isach.ultracosmetics.command.subcommands.SubCommandPermission;
-import be.isach.ultracosmetics.command.subcommands.SubCommandReload;
-import be.isach.ultracosmetics.command.subcommands.SubCommandRename;
-import be.isach.ultracosmetics.command.subcommands.SubCommandReward;
-import be.isach.ultracosmetics.command.subcommands.SubCommandSelfView;
-import be.isach.ultracosmetics.command.subcommands.SubCommandToggle;
-import be.isach.ultracosmetics.command.subcommands.SubCommandTreasure;
-import be.isach.ultracosmetics.command.subcommands.SubCommandTreasureNotification;
-import be.isach.ultracosmetics.command.subcommands.SubCommandTroubleshoot;
-import be.isach.ultracosmetics.command.subcommands.SubCommandUpdate;
+import be.isach.ultracosmetics.command.subcommands.*;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Problem;
-
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -65,7 +50,7 @@ public class CommandManager implements CommandExecutor {
         List<SubCommand> available = new ArrayList<>();
         commands.stream().filter(c -> sender.hasPermission(c.getPermission())).forEach(available::add);
         if (available.size() < 1) {
-            sender.sendMessage(MessageManager.getMessage("No-Permission"));
+            MessageManager.send(sender, "No-Permission");
             return;
         }
         sender.sendMessage("");
@@ -125,7 +110,7 @@ public class CommandManager implements CommandExecutor {
             if (meCommand.is(args[0])) {
 
                 if (!sender.hasPermission(meCommand.getPermission())) {
-                    sender.sendMessage(MessageManager.getMessage("No-Permission"));
+                    MessageManager.send(sender, "No-Permission");
                     return true;
                 }
 

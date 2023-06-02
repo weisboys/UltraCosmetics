@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -26,7 +27,7 @@ public abstract class MountHeldItem extends Mount implements UnmovableItemProvid
 
         heldItem = new ItemStack(getHeldItemMaterial());
         ItemMeta meta = heldItem.getItemMeta();
-        String loreString = MessageManager.getMessage(getOptionPath("Held-Item-Lore"));
+        String loreString = MessageManager.getLegacyMessage(getOptionPath("Held-Item-Lore"));
         meta.setLore(Arrays.asList(loreString.split("\n")));
         heldItem.setItemMeta(meta);
     }
@@ -49,7 +50,9 @@ public abstract class MountHeldItem extends Mount implements UnmovableItemProvid
         getOwner().removeCosmetic(Category.GADGETS);
         getOwner().removeCosmetic(Category.MOUNTS);
         if (getPlayer().getInventory().getItem(slot) != null) {
-            getPlayer().sendMessage(MessageManager.getMessage("Must-Remove.Mounts").replace("%slot%", String.valueOf(slot + 1)));
+            MessageManager.send(getPlayer(), "Must-Remove.Mounts",
+                    Placeholder.unparsed("slot", String.valueOf(slot + 1))
+            );
             return false;
         }
         getPlayer().getInventory().setItem(slot, heldItem);

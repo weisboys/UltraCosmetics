@@ -7,7 +7,8 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Effect;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
@@ -16,9 +17,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -63,7 +61,7 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
     protected boolean checkRequirements(PlayerInteractEvent event) {
         // Check if the current melon has finished exploding.
         if (melon != null && melon.isValid()) {
-            event.getPlayer().sendMessage(MessageManager.getMessage("Gadgets.MelonThrower.Wait-For-Finish"));
+            MessageManager.send(getPlayer(), "Gadgets.MelonThrower.Wait-For-Finish");
             return false;
         }
         return true;

@@ -9,6 +9,9 @@ import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.LazyTag;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -21,12 +24,10 @@ public class OpenCosmeticMenuButton implements Button {
     private final Category category;
     private final PermissionManager pm;
     private final Menus menus;
-    private final String rawLore;
     private final ItemStack baseStack;
 
     public OpenCosmeticMenuButton(UltraCosmetics ultraCosmetics, Category category) {
         this.category = category;
-        this.rawLore = MessageManager.getMessage("Menu." + category.getConfigPath() + ".Button.Lore");
         this.baseStack = category.getItemStack();
         this.pm = ultraCosmetics.getPermissionManager();
         this.menus = ultraCosmetics.getMenus();
@@ -35,10 +36,9 @@ public class OpenCosmeticMenuButton implements Button {
     @Override
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
         ItemStack stack = baseStack.clone();
-        String lore = rawLore;
-        if (lore.contains("%unlocked%")) {
-            lore = lore.replace("%unlocked%", calculateUnlocked(ultraPlayer.getBukkitPlayer()));
-        }
+        String lore = MessageManager.getLegacyMessage("Menu." + category.getConfigPath() + ".Button.Lore",
+                TagResolver.resolver("unlocked", new LazyTag(() -> Component.text(calculateUnlocked(ultraPlayer.getBukkitPlayer()))))
+        );
         List<String> loreList = new ArrayList<>();
         loreList.add("");
         loreList.addAll(Arrays.asList(lore.split("\n")));

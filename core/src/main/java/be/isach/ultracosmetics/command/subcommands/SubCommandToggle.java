@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -72,7 +71,7 @@ public class SubCommandToggle extends SubCommand {
         }
 
         if (!SettingsManager.isAllowedWorld(target.getBukkitPlayer().getWorld())) {
-            sender.sendMessage(MessageManager.getMessage("World-Disabled"));
+            MessageManager.send(sender, "World-Disabled");
             return;
         }
 

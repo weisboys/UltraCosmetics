@@ -7,11 +7,12 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.inventory.ItemStack;
 
 public class KeysButton extends TreasureButton {
-    private final String itemName = MessageManager.getMessage("Treasure-Keys");
-    private final String yourKeysMessage = MessageManager.getMessage("Your-Keys");
+    private final String itemName = MessageManager.getLegacyMessage("Treasure-Keys");
 
     public KeysButton(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
@@ -19,8 +20,11 @@ public class KeysButton extends TreasureButton {
 
     @Override
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
+        Component yourKeysMessage = MessageManager.getMessage("Your-Keys",
+                Placeholder.unparsed("keys", String.valueOf(ultraPlayer.getKeys()))
+        );
         return ItemFactory.create(XMaterial.TRIPWIRE_HOOK, itemName, "",
-                yourKeysMessage.replace("%keys%", String.valueOf(ultraPlayer.getKeys())), buyKeyMessage);
+                MessageManager.toLegacy(yourKeysMessage), buyKeyMessage);
     }
 
     @Override

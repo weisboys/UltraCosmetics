@@ -140,7 +140,6 @@ TreasureChests:
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found $%money%'
     Gadgets-Ammo:
       Enabled: true
       Min: 20
@@ -148,67 +147,56 @@ TreasureChests:
       Chance: 60
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found %ammo% %cosmetic% ammo'
     Gadgets:
       Enabled: true
       Chance: 20
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found gadget %cosmetic%'
     Mounts:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Pets:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Morphs:
       Enabled: true
       Chance: 4
       Message:
         enabled: true
-        message: '%prefix% &6&l%name% found legendary %cosmetic%'
     Particle-Effects:
       Enabled: true
       Chance: 4
       Message:
         enabled: true
-        message: '%prefix% &6&l%name% found legendary %cosmetic%'
     Hats:
       Enabled: true
       Chance: 10
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Suits:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Emotes:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Projectile-Effects:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Death-Effects:
       Enabled: true
       Chance: 5
       Message:
         enabled: false
-        message: '%prefix% &6&l%name% found rare %cosmetic%'
     Commands:
       shoutout:
         Name: '&d&lShoutout'
@@ -425,15 +413,12 @@ Menu-Item:
 # List for type: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 No-Permission:
   Show-In-Lore: true
-  Lore-Message-Yes: '&o&7Permission: &a&lYes!'
-  Lore-Message-No: '&o&7Permission: &4&lNo!'
-  Lore-Message-Showroom: '&o&7Permission: &6Usable in showroom'
   Dont-Show-Item: false
   Allow-Purchase: false
   Custom-Item:
     enabled: false
     Type: BARRIER
-    Name: '&c&l{cosmetic-name}'
+    Name: '<red><bold><cosmetic>'
     Lore:
       - ''
       - '&c&lYou do not have permission for this!'
@@ -521,3 +506,7 @@ ChestSort-Hook: true
 # If Towny is installed, UltraCosmetics will prevent Towny from removing UC's pets and mounts.
 # If Towny is not installed, this has no effect.
 Towny-Hook: true
+
+# The description style to use in the menus. Use MiniMessage formatting:
+# https://docs.advntr.dev/minimessage/format.html#minimessage-format
+Description-Style: "<gray><italic>"

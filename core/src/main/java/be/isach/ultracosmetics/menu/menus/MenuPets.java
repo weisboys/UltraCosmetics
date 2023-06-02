@@ -7,10 +7,7 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.menu.buttons.RenamePetButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import org.bukkit.ChatColor;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 /**
  * Pet {@link be.isach.ultracosmetics.menu.Menu Menu}.
@@ -37,15 +34,5 @@ public class MenuPets extends CosmeticMenu<PetType> {
         }
         int slot = inventory.getSize() - (getCategory().hasGoBackArrow() ? 4 : 6);
         putItem(inventory, slot, new RenamePetButton(ultraCosmetics), player);
-    }
-
-
-    @Override
-    protected void filterItem(ItemStack itemStack, PetType cosmeticType, UltraPlayer player) {
-        if (player.getPetName(cosmeticType) != null) {
-            ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName(itemMeta.getDisplayName() + ChatColor.GRAY + " (" + player.getPetName(cosmeticType) + ChatColor.GRAY + ")");
-            itemStack.setItemMeta(itemMeta);
-        }
     }
 }

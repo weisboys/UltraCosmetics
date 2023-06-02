@@ -9,9 +9,11 @@ import be.isach.ultracosmetics.events.loot.UCCosmeticRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.util.WeightedSet;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class CosmeticLoot implements Loot {
@@ -39,11 +41,15 @@ public class CosmeticLoot implements Loot {
         Bukkit.getPluginManager().callEvent(event);
 
         String catName = category.getConfigPath();
-        String[] name = MessageManager.getMessage("Treasure-Chests-Loot." + catName).replace("%cosmetic%", cosmetic.getName()).split("\n");
+        String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot." + catName,
+                Placeholder.component("cosmetic", cosmetic.getName())
+        ).split("\n");
         pm.setPermission(player, cosmetic);
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots." + catName + ".Message.enabled");
-        String message = getConfigMessage("TreasureChests.Loots." + catName + ".Message.message")
-                .replace("%cosmetic%", UltraCosmeticsData.get().arePlaceholdersColored() ? cosmetic.getName() : ChatColor.stripColor(cosmetic.getName()));
+        Component message = MessageManager.getMessage("Treasure-Chests-Loot-Messages." + catName,
+                Placeholder.component("cosmetic", TextUtil.filterPlaceholderColors(cosmetic.getName())),
+                Placeholder.unparsed("name", player.getBukkitPlayer().getName())
+        );
         return new LootReward(name, cosmetic.getItemStack(), message, toOthers, true, cosmetic);
     }
 

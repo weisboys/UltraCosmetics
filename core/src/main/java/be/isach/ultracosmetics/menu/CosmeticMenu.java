@@ -14,10 +14,11 @@ import be.isach.ultracosmetics.menu.buttons.NextPageButton;
 import be.isach.ultracosmetics.menu.buttons.PreviousPageButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -68,7 +69,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
         lastUsedPages.put(player.getUUID(), page);
 
-        Inventory inventory = createInventory(getSize(), maxPages == 1 ? getName() : getName(page, player));
+        Inventory inventory = createInventory(maxPages == 1 ? getName() : getName(page, player));
         boolean hasUnlockable = hasUnlockable(player);
 
         // Cosmetic types.
@@ -79,8 +80,6 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
             if (shouldHideItem(player, cosmeticType)) continue;
             CosmeticButton button = CosmeticButton.fromType(cosmeticType, player, ultraCosmetics);
-            ItemStack stack = button.getDisplayItem(player);
-            filterItem(stack, cosmeticType, player);
             putItem(inventory, slot, button, player);
         }
 
@@ -139,25 +138,12 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     }
 
     /**
-     * This method can be overridden
-     * to modify an itemstack of a
-     * category being placed in the
-     * inventory. The given itemstack
-     * should be modified directly.
-     *
-     * @param itemStack    Item Stack being placed.
-     * @param cosmeticType The Cosmetic Type.
-     * @param player       The Inventory Opener.
-     */
-    protected void filterItem(ItemStack itemStack, T cosmeticType, UltraPlayer player) {
-    }
-
-    /**
      * @param page The page to open.
      * @return The name of the menu with page detailed.
      */
-    protected String getName(int page, UltraPlayer ultraPlayer) {
-        return getName() + " " + ChatColor.GRAY + "" + ChatColor.ITALIC + "(" + page + "/" + getMaxPages(ultraPlayer) + ")";
+    protected Component getName(int page, UltraPlayer ultraPlayer) {
+        return Component.empty().append(getName()).appendSpace()
+                .append(Component.text("(" + page + "/" + getMaxPages(ultraPlayer) + ")", NamedTextColor.GRAY, TextDecoration.ITALIC));
     }
 
     @Override
@@ -175,7 +161,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
      * @return The name of the menu.
      */
     @Override
-    protected String getName() {
+    protected Component getName() {
         return MessageManager.getMessage("Menu." + category.getConfigPath() + ".Title");
     }
 

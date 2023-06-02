@@ -284,7 +284,7 @@ public class UltraCosmetics extends JavaPlugin {
         }
 
         // Init Message manager.
-        if (!MessageManager.success()) {
+        if (!MessageManager.load()) {
             getSmartLogger().write(LogLevel.ERROR, "Failed to load messages.yml, shutting down to protect data.");
             getSmartLogger().write(LogLevel.ERROR, "Please run messages.yml through a YAML checker site.");
             activeProblems.add(Problem.BAD_MESSAGES);

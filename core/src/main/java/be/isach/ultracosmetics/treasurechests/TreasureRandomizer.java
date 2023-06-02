@@ -18,6 +18,8 @@ import be.isach.ultracosmetics.treasurechests.loot.NothingLoot;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.WeightedSet;
 import com.cryptomorin.xseries.XSound;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -131,24 +133,23 @@ public class TreasureRandomizer {
         EntitySpawner.spawnFireworks(loc.clone().add(0.5, 0, 0.5), randomColor(), randomColor(), FireworkEffect.Type.BALL);
     }
 
-    private void broadcast(String message, boolean toOthers) {
-        if (message == null || message.isEmpty()) return;
+    private void broadcast(Component message, boolean toOthers) {
+        if (message == null) return;
         UltraCosmetics ultraCosmetics = UltraCosmeticsData.get().getPlugin();
-        message = message.replace("%name%", player.getName());
         if (ultraCosmetics.getDiscordHook() != null) {
-            ultraCosmetics.getDiscordHook().sendLootMessage(player, message.replace("%prefix%", ""));
+            ultraCosmetics.getDiscordHook().sendLootMessage(player, MessageManager.toLegacy(message));
         }
-        message = message.replace("%prefix%", MessageManager.getMessage("Prefix"));
+        BukkitAudiences audiences = MessageManager.getAudiences();
         if (!toOthers) {
             if (forceMessageToOwner) {
-                player.sendMessage(message);
+                audiences.player(player).sendMessage(message);
             }
             return;
         }
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player == this.player || (SettingsManager.isAllowedWorld(player.getWorld())
                     && ultraCosmetics.getPlayerManager().getUltraPlayer(player).isTreasureNotifying())) {
-                player.sendMessage(message);
+                audiences.player(player).sendMessage(message);
             }
         }
     }

@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.command;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -148,7 +147,7 @@ public abstract class SubCommand {
      * @param commandSender The sender who needs to be informed about this
      */
     protected void notAllowed(CommandSender commandSender) {
-        commandSender.sendMessage(MessageManager.getMessage("Not-Allowed-From-Console"));
+        MessageManager.send(commandSender, "Not-Allowed-From-Console");
     }
 
     protected void badUsage(CommandSender sender) {

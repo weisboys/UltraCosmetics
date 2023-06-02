@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.menu.buttons.PurchaseCancelButton;
 import be.isach.ultracosmetics.menu.buttons.PurchaseConfirmButton;
 import be.isach.ultracosmetics.menu.buttons.PurchaseShowcaseButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.Inventory;
 
 /**
@@ -14,10 +15,10 @@ import org.bukkit.inventory.Inventory;
  */
 public class MenuPurchase extends Menu {
 
-    private String name;
+    private Component name;
     private PurchaseData purchaseData;
 
-    public MenuPurchase(UltraCosmetics ultraCosmetics, String name, PurchaseData purchaseData) {
+    public MenuPurchase(UltraCosmetics ultraCosmetics, Component name, PurchaseData purchaseData) {
         super(ultraCosmetics);
         this.name = name;
         this.purchaseData = purchaseData;
@@ -51,7 +52,7 @@ public class MenuPurchase extends Menu {
     }
 
     @Override
-    protected String getName() {
-        return name == null ? "Purchase" : name;
+    protected Component getName() {
+        return name;
     }
 }

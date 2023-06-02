@@ -2,11 +2,13 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -56,14 +58,18 @@ public class ItemFactory {
         return rename(material.parseItem(), displayName, lore);
     }
 
-    public static ItemStack rename(ItemStack itemstack, String displayName) {
-        return rename(itemstack, displayName, (String[]) null);
+    public static ItemStack create(XMaterial material, Component displayName, String... lore) {
+        return create(material, MessageManager.toLegacy(displayName), lore);
+    }
+
+    public static ItemStack rename(ItemStack itemStack, Component displayName, String... lore) {
+        return rename(itemStack, MessageManager.toLegacy(displayName), lore);
     }
 
     public static ItemStack rename(ItemStack itemstack, String displayName, String... lore) {
         ItemMeta meta = itemstack.getItemMeta();
         meta.setDisplayName(displayName);
-        if (lore != null) {
+        if (lore != null && lore.length > 0) {
             List<String> finalLore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
             for (String s : lore) {
                 if (s == null) continue;

@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -24,7 +23,7 @@ public class SubCommandSelfView extends SubCommand {
     @Override
     protected void onExePlayer(Player sender, String[] args) {
         if (!SettingsManager.isAllowedWorld(sender.getWorld())) {
-            sender.sendMessage(MessageManager.getMessage("World-Disabled"));
+            MessageManager.send(sender, "World-Disabled");
             return;
         }
 

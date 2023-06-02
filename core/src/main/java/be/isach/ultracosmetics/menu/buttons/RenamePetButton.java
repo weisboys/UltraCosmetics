@@ -13,6 +13,8 @@ import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.wesjd.anvilgui.AnvilGUI;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -20,8 +22,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Collections;
 
 public class RenamePetButton implements Button {
-    private final String name = MessageManager.getMessage("Menu.Rename-Pet.Button.Name");
-    private final String activePetNeeded = MessageManager.getMessage("Active-Pet-Needed");
+    private final Component activePetNeeded = MessageManager.getMessage("Active-Pet-Needed");
     private final ItemStack stack = ItemFactory.getItemStackFromConfig("Categories.Rename-Pet-Item");
     private final UltraCosmetics ultraCosmetics;
 
@@ -34,14 +35,17 @@ public class RenamePetButton implements Button {
         if (ultraPlayer.getCurrentPet() == null) {
             return ItemFactory.rename(this.stack.clone(), activePetNeeded);
         }
-        return ItemFactory.rename(this.stack.clone(), name.replace("%petname%", ultraPlayer.getCurrentPet().getType().getName()));
+        Component name = MessageManager.getMessage("Menu.Rename-Pet.Button.Name",
+                Placeholder.component("petname", ultraPlayer.getCurrentPet().getTypeName())
+        );
+        return ItemFactory.rename(this.stack.clone(), name);
     }
 
     @Override
     public void onClick(ClickData clickData) {
         UltraPlayer player = clickData.getClicker();
         if (player.getCurrentPet() == null) {
-            player.getBukkitPlayer().sendMessage(activePetNeeded);
+            player.sendMessage(activePetNeeded);
             player.getBukkitPlayer().closeInventory();
             return;
         }
@@ -51,12 +55,12 @@ public class RenamePetButton implements Button {
     public static void renamePet(UltraCosmetics ultraCosmetics, final UltraPlayer ultraPlayer, Menu returnMenu) {
         new AnvilGUI.Builder().plugin(ultraCosmetics)
                 .itemLeft(XMaterial.PAPER.parseItem())
-                .text(MessageManager.getMessage("Menu.Rename-Pet.Placeholder"))
-                .title(MessageManager.getMessage("Menu.Rename-Pet.Title"))
+                .text(MessageManager.getLegacyMessage("Menu.Rename-Pet.Placeholder"))
+                .title(MessageManager.getLegacyMessage("Menu.Rename-Pet.Title"))
                 .onComplete(completion -> {
                     String text = completion.getText();
                     if (text.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
-                        return Collections.singletonList(AnvilGUI.ResponseAction.replaceInputText(MessageManager.getMessage("Too-Long")));
+                        return Collections.singletonList(AnvilGUI.ResponseAction.replaceInputText(MessageManager.getLegacyMessage("Too-Long")));
                     }
                     if (!text.isEmpty() && ultraCosmetics.getEconomyHandler().isUsingEconomy()
                             && SettingsManager.getConfig().getBoolean("Pets-Rename.Requires-Money.Enabled")) {
@@ -69,10 +73,11 @@ public class RenamePetButton implements Button {
     }
 
     public static Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name, Menu returnMenu) {
-        final String formattedName = UltraPlayer.colorizePetName(name);
         int price = SettingsManager.getConfig().getInt("Pets-Rename.Requires-Money.Price");
-        ItemStack showcaseItem = ItemFactory.create(XMaterial.NAME_TAG, MessageManager.getMessage("Menu.Purchase-Rename.Button.Showcase")
-                .replace("%price%", String.valueOf(price)).replace("%name%", formattedName));
+        Component renameTitle = MessageManager.getMessage("Menu.Purchase-Rename.Button.Showcase",
+                Placeholder.unparsed("price", String.valueOf(price)),
+                Placeholder.component("name", MessageManager.getMiniMessage().deserialize(name)));
+        ItemStack showcaseItem = ItemFactory.create(XMaterial.NAME_TAG, renameTitle);
 
         PurchaseData purchaseData = new PurchaseData();
         purchaseData.setPrice(price);

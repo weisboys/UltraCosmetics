@@ -15,6 +15,7 @@ import be.isach.ultracosmetics.menu.buttons.ToggleGadgetsButton;
 import be.isach.ultracosmetics.menu.buttons.ToggleMorphSelfViewButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.SmartLogger;
+import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -26,7 +27,7 @@ import java.io.IOException;
 public class CustomMainMenu extends Menu {
     private final File customMenuFile;
     private final YamlConfiguration config = new YamlConfiguration();
-    private final String title = MessageManager.getMessage("Menu.Main.Title");
+    private final Component title = MessageManager.getMessage("Menu.Main.Title");
 
     public CustomMainMenu(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
@@ -118,7 +119,7 @@ public class CustomMainMenu extends Menu {
     }
 
     @Override
-    protected String getName() {
+    protected Component getName() {
         return title;
     }
 

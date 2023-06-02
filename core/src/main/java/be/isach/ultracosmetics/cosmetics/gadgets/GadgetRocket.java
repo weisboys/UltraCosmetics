@@ -48,7 +48,7 @@ public class GadgetRocket extends Gadget implements Updatable {
     private boolean launching;
     private ArmorStand armorStand;
     // key is used for easy access for contains() checks
-    private List<FallingBlock> fallingBlocks = new ArrayList<>();
+    private final List<FallingBlock> fallingBlocks = new ArrayList<>();
     private Entity playerVehicle = null;
     private int height;
     private RocketTask activeTask = null;
@@ -108,7 +108,7 @@ public class GadgetRocket extends Gadget implements Updatable {
 
                     stop();
 
-                    sendTitle(MessageManager.getMessage("Gadgets.Rocket.Takeoff"));
+                    sendTitle(MessageManager.getLegacyMessage("Gadgets.Rocket.Takeoff"));
                     play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
 
                     final FallingBlock top = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 3, 0), QUARTZ_BLOCK);
@@ -176,11 +176,11 @@ public class GadgetRocket extends Gadget implements Updatable {
         if (activeTask != null) return false;
         height = Area.findMaxY(getPlayer().getLocation(), 1);
         if (height < 25) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-Enough-Space"));
+            MessageManager.send(getPlayer(), "Gadgets.Rocket.Not-Enough-Space");
             return false;
         }
         if (!getPlayer().isOnGround()) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-On-Ground"));
+            MessageManager.send(getPlayer(), "Gadgets.Rocket.Not-On-Ground");
             return false;
         }
         return true;

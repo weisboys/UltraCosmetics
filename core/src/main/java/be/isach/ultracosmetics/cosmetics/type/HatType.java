@@ -6,12 +6,11 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.hats.Hat;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
-
-import com.cryptomorin.xseries.XMaterial;
 
 /**
  * Hat types.
@@ -49,7 +48,7 @@ public class HatType extends CosmeticType<Hat> {
      * @return the HatType Name (in Menu).
      */
     @Override
-    public String getName() {
+    public Component getName() {
         return MessageManager.getMessage("Hats." + getConfigName() + ".Name");
     }
 

@@ -8,7 +8,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PortalLoc;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -17,8 +17,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.List;
 
@@ -32,8 +30,8 @@ public class GadgetPortalGun extends Gadget implements Updatable {
     private static final double CIRCLE_STEP = (2 * Math.PI) / 20;
     private boolean teleported = false;
 
-    private PortalLoc red = new PortalLoc(255, 0, 0);
-    private PortalLoc blue = new PortalLoc(31, 0, 127);
+    private final PortalLoc red = new PortalLoc(255, 0, 0);
+    private final PortalLoc blue = new PortalLoc(31, 0, 127);
 
     public GadgetPortalGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -106,7 +104,9 @@ public class GadgetPortalGun extends Gadget implements Updatable {
         }
 
         // 'distanceSquared' is faster than 'distance', and sqrt(1) == 1 anyway
-        if (playerLoc.getWorld() != getPlayer().getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) return false;
+        if (playerLoc.getWorld() != getPlayer().getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) {
+            return false;
+        }
         teleported = true;
         Location loc = dest.getLocation().clone();
         BlockFace destFace = dest.getFace();
@@ -122,7 +122,7 @@ public class GadgetPortalGun extends Gadget implements Updatable {
         if (red.getLocation().getWorld() != blue.getLocation().getWorld()) {
             red.clear();
             blue.clear();
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.PortalGun.Different-Worlds"));
+            MessageManager.send(getPlayer(), "Gadgets.PortalGun.Different-Worlds");
             return;
         }
         if (!portalTeleportCheck(red, blue)) {
@@ -164,7 +164,7 @@ public class GadgetPortalGun extends Gadget implements Updatable {
     protected boolean checkRequirements(PlayerInteractEvent event) {
         List<Block> sight = getPlayer().getLastTwoTargetBlocks(null, 20);
         if (sight.size() < 2 || BlockUtils.isAir(sight.get(1).getType())) {
-            getPlayer().sendMessage(MessageManager.getMessage("Gadgets.PortalGun.No-Block-Range"));
+            MessageManager.send(getPlayer(), "Gadgets.PortalGun.No-Block-Range");
             return false;
         }
         return true;

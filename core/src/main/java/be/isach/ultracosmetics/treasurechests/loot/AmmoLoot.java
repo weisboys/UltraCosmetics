@@ -10,9 +10,11 @@ import be.isach.ultracosmetics.events.loot.UCAmmoRewardEvent;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
+import be.isach.ultracosmetics.util.TextUtil;
 import be.isach.ultracosmetics.util.WeightedSet;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class AmmoLoot implements Loot {
@@ -47,14 +49,20 @@ public class AmmoLoot implements Loot {
         Bukkit.getPluginManager().callEvent(event);
         ammo = event.getAmmo();
 
-        String[] name = MessageManager.getMessage("Treasure-Chests-Loot.Ammo").replace("%cosmetic%", g.getName()).replace("%ammo%", String.valueOf(ammo)).split("\n");
+        String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Ammo",
+                Placeholder.component("cosmetic", g.getName()),
+                Placeholder.unparsed("ammo", String.valueOf(ammo))
+        ).split("\n");
 
         player.addAmmo(g, ammo);
         // if the player received more than half of what they could have, send a firework
         boolean firework = ammo > (ammoMax - ammoMin) / 2 + ammoMin;
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Message.enabled");
-        String message = getConfigMessage("TreasureChests.Loots.Gadgets-Ammo.Message.message").replace("%ammo%", String.valueOf(ammo))
-                .replace("%cosmetic%", (UltraCosmeticsData.get().arePlaceholdersColored()) ? g.getName() : ChatColor.stripColor(g.getName()));
+        Component message = MessageManager.getMessage("Treasure-Chests-Loot-Messages.Ammo",
+                Placeholder.unparsed("ammo", String.valueOf(ammo)),
+                Placeholder.component("cosmetic", TextUtil.filterPlaceholderColors(g.getName())),
+                Placeholder.unparsed("player", player.getBukkitPlayer().getName())
+        );
         return new LootReward(name, g.getItemStack(), message, toOthers, firework, g);
     }
 

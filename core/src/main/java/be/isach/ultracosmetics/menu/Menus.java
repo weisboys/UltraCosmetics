@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.SmartLogger;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
@@ -87,10 +88,11 @@ public class Menus {
      * Opens Ammo Purchase Menu.
      */
     public void openAmmoPurchaseMenu(GadgetType type, UltraPlayer player, Runnable menuReturnFunc) {
-        String itemName = MessageManager.getMessage("Buy-Ammo-Description");
-        itemName = itemName.replace("%amount%", String.valueOf(type.getResultAmmoAmount()));
-        itemName = itemName.replace("%price%", String.valueOf(type.getAmmoPrice()));
-        itemName = itemName.replace("%gadgetname%", type.getName());
+        String itemName = MessageManager.getLegacyMessage("Buy-Ammo-Description",
+                Placeholder.unparsed("amount", String.valueOf(type.getResultAmmoAmount())),
+                Placeholder.unparsed("price", String.valueOf(type.getAmmoPrice())),
+                Placeholder.component("gadgetname", type.getName())
+        );
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
         PurchaseData pd = new PurchaseData();
         pd.setPrice(type.getAmmoPrice());

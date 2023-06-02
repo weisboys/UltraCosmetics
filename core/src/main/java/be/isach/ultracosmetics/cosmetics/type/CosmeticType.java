@@ -11,21 +11,18 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
+import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.permissions.Permission;
 
-import com.cryptomorin.xseries.XMaterial;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +37,9 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     // For use when adding new cosmetics
     public static final boolean GENERATE_MISSING_MESSAGES = false;
     private static final Permission ALL_PERMISSION = new Permission("ultracosmetics.allcosmetics");
-    private static final Map<String,Permission> registeredPermissions = new HashMap<>();
-    private static final Map<Category,List<CosmeticType<?>>> VALUES = new HashMap<>();
-    private static final Map<Category,List<CosmeticType<?>>> ENABLED = new HashMap<>();
+    private static final Map<String, Permission> registeredPermissions = new HashMap<>();
+    private static final Map<Category, List<CosmeticType<?>>> VALUES = new HashMap<>();
+    private static final Map<Category, List<CosmeticType<?>>> ENABLED = new HashMap<>();
     private static final YamlConfiguration customConfig = new YamlConfiguration();
 
     static {
@@ -113,7 +110,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     private final String configName;
-    private final String description;
+    private final List<String> description;
     private final Class<? extends T> clazz;
     private final Category category;
     private final XMaterial material;
@@ -132,7 +129,8 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.addMessage(getConfigPath() + ".Description", "Description");
         }
-        description = MessageManager.getMessage(getCategory().getConfigPath() + "." + configName + ".Description");
+        Component colors = MessageManager.getMiniMessage().deserialize(SettingsManager.getConfig().getString("Description-Style", ""));
+        this.description = MessageManager.getLore(getCategory().getConfigPath() + "." + configName + ".Description", colors.style());
         if (registerPerm) {
             registerPermission();
         }
@@ -164,7 +162,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         return SettingsManager.getConfig().getBoolean(category.getConfigPath() + "." + configName + ".Enabled");
     }
 
-    public String getName() {
+    public Component getName() {
         return MessageManager.getMessage(category.getConfigPath() + "." + configName + ".name");
     }
 
@@ -174,10 +172,6 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
 
     public Permission getPermission() {
         return permission;
-    }
-
-    public String getDescriptionAsString() {
-        return description;
     }
 
     public Class<? extends T> getClazz() {
@@ -207,17 +201,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
      * @return The description as a list.
      */
     public List<String> getDescription() {
-        return Arrays.asList(ChatColor.translateAlternateColorCodes('&', getDescriptionAsString()).split("\n"));
-    }
-
-    /**
-     * Transforms the description from a String to a list.
-     * With colors.
-     *
-     * @return The description as a list.
-     */
-    public List<String> getDescriptionColored() {
-        return Arrays.asList(getDescriptionAsString().split("\n"));
+        return description;
     }
 
     /**

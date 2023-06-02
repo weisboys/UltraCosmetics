@@ -79,7 +79,7 @@ public class TreasureChestManager implements Listener {
             }
         }
         if (locations.size() == 0) {
-            player.sendMessage(MessageManager.getMessage("Treasure-Chest-Occupied"));
+            MessageManager.send(player, "Treasure-Chest-Occupied");
             return;
         }
         TreasureLocation tloc = locations.get(random.nextInt(locations.size()));
@@ -99,7 +99,7 @@ public class TreasureChestManager implements Listener {
         }
 
         if (player.getVehicle() != null) {
-            player.sendMessage(MessageManager.getMessage("Chest-Location.Dismount-First"));
+            MessageManager.send(player, "Chest-Location.Dismount-First");
             return;
         }
 
@@ -110,20 +110,20 @@ public class TreasureChestManager implements Listener {
         Area area = new Area(targetLoc, range, 1);
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
-            player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
+            MessageManager.send(player, "Chest-Location.Not-Enough-Space");
             return;
         }
 
         Area placeArea = new Area(targetLoc.clone().subtract(0, 1, 0), large ? 3 : 2, 0);
         if (StructureRollback.isBlockRollingBackInArea(placeArea)) {
-            player.sendMessage(MessageManager.getMessage("Chest-Location.Not-Enough-Space"));
+            MessageManager.send(player, "Chest-Location.Not-Enough-Space");
             return;
         }
 
         for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, range, range, range)) {
             if (shouldPush(ultraPlayer, ent)) {
                 player.closeInventory();
-                player.sendMessage(MessageManager.getMessage("Chest-Location.Too-Close-To-Entity"));
+                MessageManager.send(player, "Chest-Location.Too-Close-To-Entity");
                 return;
             }
         }
@@ -131,7 +131,7 @@ public class TreasureChestManager implements Listener {
         Block block = targetLoc.getBlock();
         if (!BlockUtils.isAir(block.getRelative(BlockFace.UP).getType())
                 || BlockUtils.isAir(block.getRelative(BlockFace.DOWN).getType())) {
-            player.sendMessage(MessageManager.getMessage("Gadgets.Rocket.Not-On-Ground"));
+            MessageManager.send(player, "Gadgets.Rocket.Not-On-Ground");
             return;
         }
 
@@ -143,7 +143,7 @@ public class TreasureChestManager implements Listener {
 
         if (!ultraCosmetics.getWorldGuardManager().areChestsAllowedHere(player)) {
             player.closeInventory();
-            player.sendMessage(MessageManager.getMessage("Chest-Location.Region-Disabled"));
+            MessageManager.send(player, "Chest-Location.Region-Disabled");
             if (preLoc != null) {
                 player.teleport(preLoc);
             }

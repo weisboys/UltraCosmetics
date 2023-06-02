@@ -2,7 +2,9 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
@@ -19,14 +21,14 @@ public class CommandReward {
     private final ItemStack stack;
     private final int chance;
     private boolean messageEnabled;
-    private String message;
+    private Component message;
     private final List<String> commands;
 
     public CommandReward(String path) {
         CustomConfiguration config = UltraCosmeticsData.get().getPlugin().getConfig();
         chance = config.getInt(path + ".Chance");
         messageEnabled = config.getBoolean(path + ".Message.enabled");
-        message = config.getString(path + ".Message.message");
+        message = MessageManager.getMiniMessage().deserialize(config.getString(path + ".Message.message", ""));
         commands = config.getStringList(path + ".Commands");
         stack = ItemFactory.getItemStackFromConfig(path + ".Material");
         name = ChatColor.translateAlternateColorCodes('&', config.getString(path + ".Name"));
@@ -65,18 +67,8 @@ public class CommandReward {
      *
      * @return the message to be sent
      */
-    public String getMessage() {
+    public Component getMessage() {
         return message;
-    }
-
-    /**
-     * Sets the message to be sent when the chest is opened.
-     *
-     * @param message the message to be sent
-     * @see #getMessage()
-     */
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     /**

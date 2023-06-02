@@ -1,7 +1,8 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
 /**
  * Package: be.isach.ultracosmetics.util
@@ -11,7 +12,12 @@ import org.bukkit.ChatColor;
  */
 public class TextUtil {
 
-    public static String filterPlaceHolder(String placeHolderReplacement) {
-        return UltraCosmeticsData.get().arePlaceholdersColored() ? placeHolderReplacement : ChatColor.stripColor(placeHolderReplacement);
+    public static Component filterPlaceholderColors(Component placeholder) {
+        if (UltraCosmeticsData.get().arePlaceholdersColored()) return placeholder;
+        return stripColor(placeholder);
+    }
+
+    public static Component stripColor(Component component) {
+        return Component.text(PlainTextComponentSerializer.plainText().serialize(component));
     }
 }

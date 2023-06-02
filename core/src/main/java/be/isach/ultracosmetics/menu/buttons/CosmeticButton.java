@@ -5,14 +5,25 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
+import be.isach.ultracosmetics.cosmetics.type.EmoteType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.cosmetics.type.MorphType;
+import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.menu.PurchaseData;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleEmoteCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleGadgetCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleMorphCosmeticButton;
+import be.isach.ultracosmetics.menu.buttons.togglecosmetic.TogglePetCosmeticButton;
 import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
@@ -27,7 +38,7 @@ public abstract class CosmeticButton implements Button {
     private final int price;
     private final boolean ignoreTooltip;
     private final boolean allowPurchase = SettingsManager.getConfig().getBoolean("No-Permission.Allow-Purchase");
-    private final String noPermissionMessage = MessageManager.getMessage("No-Permission");
+    private final Component noPermissionMessage = MessageManager.getMessage("No-Permission");
     private final String clickToPurchaseLore;
     private final String itemName;
     private ItemStack stack = null;
@@ -36,8 +47,15 @@ public abstract class CosmeticButton implements Button {
         if (SettingsManager.getConfig().getBoolean("No-Permission.Custom-Item.enabled") && !ultraPlayer.canEquip(cosmeticType)) {
             return new CosmeticNoPermissionButton(ultraCosmetics, cosmeticType);
         }
-        if (cosmeticType instanceof GadgetType) {
-            return new ToggleGadgetCosmeticButton(ultraCosmetics, (GadgetType) cosmeticType);
+        switch (cosmeticType.getCategory()) {
+            case PETS:
+                return new TogglePetCosmeticButton(ultraCosmetics, (PetType) cosmeticType);
+            case GADGETS:
+                return new ToggleGadgetCosmeticButton(ultraCosmetics, (GadgetType) cosmeticType);
+            case MORPHS:
+                return new ToggleMorphCosmeticButton(ultraCosmetics, (MorphType) cosmeticType);
+            case EMOTES:
+                return new ToggleEmoteCosmeticButton(ultraCosmetics, (EmoteType) cosmeticType);
         }
         return new ToggleCosmeticButton(ultraCosmetics, cosmeticType);
     }
@@ -48,11 +66,11 @@ public abstract class CosmeticButton implements Button {
         this.cosmeticType = cosmeticType;
         this.price = SettingsManager.getConfig().getInt(cosmeticType.getConfigPath() + ".Purchase-Price");
         this.ignoreTooltip = ignoreTooltip;
-        String itemName = MessageManager.getMessage("Buy-Cosmetic-Description");
-        itemName = itemName.replace("%price%", String.valueOf(price));
-        itemName = itemName.replace("%gadgetname%", cosmeticType.getName());
-        this.itemName = itemName;
-        this.clickToPurchaseLore = MessageManager.getMessage("Click-To-Purchase").replace("%price%", String.valueOf(price));
+        this.itemName = MessageManager.getLegacyMessage("Buy-Cosmetic-Description",
+                Placeholder.unparsed("price", String.valueOf(price)),
+                Placeholder.component("gadgetname", cosmeticType.getName())
+        );
+        this.clickToPurchaseLore = MessageManager.getLegacyMessage("Click-To-Purchase", Placeholder.unparsed("price", String.valueOf(price)));
     }
 
     @Override
@@ -122,7 +140,10 @@ public abstract class CosmeticButton implements Button {
                 }, 5);
             });
             pd.setOnCancel(() -> data.getMenu().refresh(ultraPlayer));
-            MenuPurchase mp = new MenuPurchase(ultraCosmetics, "Purchase " + cosmeticType.getName(), pd);
+            Component title = MessageManager.getMessage("Menu.Purchase-Cosmetic.Title",
+                    Placeholder.component("cosmetic", cosmeticType.getName())
+            );
+            MenuPurchase mp = new MenuPurchase(ultraCosmetics, title, pd);
             ultraPlayer.getBukkitPlayer().openInventory(mp.getInventory(ultraPlayer));
             return false; // We just opened another inventory, don't close it
         } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getDeactivateTooltip())) {
@@ -155,7 +176,7 @@ public abstract class CosmeticButton implements Button {
     protected void handleRightClick(ClickData clickData) {
     }
 
-    protected boolean startsWithColorless(String a, String b) {
-        return ChatColor.stripColor(a).startsWith(ChatColor.stripColor(b));
+    protected boolean startsWithColorless(String a, Component b) {
+        return ChatColor.stripColor(a).startsWith(PlainTextComponentSerializer.plainText().serialize(b));
     }
 }

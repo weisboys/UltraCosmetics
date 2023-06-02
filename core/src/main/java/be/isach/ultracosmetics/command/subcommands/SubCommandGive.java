@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.util.MathUtils;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -83,7 +82,7 @@ public class SubCommandGive extends SubCommand {
         }
         GadgetType gadgetType = CosmeticType.valueOf(Category.GADGETS, args[2].toUpperCase());
         if (gadgetType == null) {
-            sender.sendMessage(MessageManager.getMessage("Invalid-Gadget"));
+            MessageManager.send(sender, "Invalid-Gadget");
             return;
         }
 
