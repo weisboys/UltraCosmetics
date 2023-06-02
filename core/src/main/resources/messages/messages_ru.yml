@@ -1709,7 +1709,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Вы одели %projectile-effectname%
   Unequip: <prefix> <blue>Вы сняли %projectile-effectname%
   Rainbow:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w
+    name: <bold><rainbow>Rainbow
     Description: Радужные частицы
   Christmas:
     name: <bold><dark_red>Рожде</dark_red></bold><bold><white>ство
