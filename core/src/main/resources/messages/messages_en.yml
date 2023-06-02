@@ -13,10 +13,8 @@ Invalid-Menu: <prefix> <bold><red>Invalid Menu!
 Ammo: '<gray>Your ammo: </gray><yellow><ammo>'
 Purchase: <bold><green>PURCHASE
 Cancel: <bold><red>CANCEL
-Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo </yellow></bold><bold><yellow>for
-  $<price>
-Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> </yellow></bold><bold><yellow>for
-  $<price>
+Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo </yellow></bold><bold><yellow>for $<price>
+Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> </yellow></bold><bold><yellow>for $<price>
 Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
 Click-To-Purchase: <yellow>Click to purchase for $<price>
 Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
@@ -30,11 +28,9 @@ Click-Buy-Key: <green>Click to buy a key
 Left-Click-Open-Chest: <green>Left-click to open a chest
 Right-Click-Simple: <green>Right-click to just get cosmetics
 Your-Keys: '<italic><gray>Your keys: </gray></italic><bold><white><keys>'
-Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Treasure Key
-  </gray></bold><bold><yellow>for $<price>
+Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Treasure Key </gray></bold><bold><yellow>for $<price>
 You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
-Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please
-  wait and try again
+Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
 Clear:
   Cosmetics: <bold><red>Clear cosmetics
@@ -51,8 +47,7 @@ Clear:
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: <bold><red>Rename the pet to </red></bold><bold><white><name> </white></bold><bold><red>for
-        </red></bold><bold><yellow>$<price>
+      Showcase: <bold><red>Rename the pet to </red></bold><bold><white><name> </white></bold><bold><red>for </red></bold><bold><yellow>$<price>
     Title: <bold>Rename Pet
   Purchase-Cosmetic:
     Title: <bold>Purchase <cosmetic>
@@ -148,8 +143,7 @@ Chest-Location:
   In-Air: <prefix> <bold><red>That location is not on the ground!
   In-Ground: <prefix> <bold><red>That location is in the ground!
   Suggestion: <prefix> <green>Maybe you meant <location>?
-  Dismount-First: <prefix> <bold><red>You must dismount your vehicle before opening
-    a chest.
+  Dismount-First: <prefix> <bold><red>You must dismount your vehicle before opening a chest.
   Too-Close-To-Entity: <prefix> <bold><red>You are too close to another entity!
 Active-Pet-Needed: <bold><red>You need to spawn a pet to rename it
 Treasure-Chests-Loot:
@@ -221,8 +215,7 @@ Gadgets-Enabled-Needed: <prefix> <bold><red>You need to enable gadgets!
 Gadgets:
   Equip: <prefix> <blue>You equipped <gadgetname>
   Unequip: <prefix> <blue>You unequipped <gadgetname>
-  Countdown-Message: <prefix> <bold><red>You can't use <gadgetname> </red></bold><bold><red>for
-    <time>s!
+  Countdown-Message: <prefix> <bold><red>You can't use <gadgetname> </red></bold><bold><red>for <time>s!
   PaintballGun:
     name: <bold><aqua>Paintball Gun
     Description: PEW PEW PEW PEW!!!
@@ -380,8 +373,7 @@ Mounts:
     entity-displayname: <bold><playername>'s Ecologist Horse
     Description: Become an ecologist!
   NyanSheep:
-    menu-name: <bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n
-      </yellow></bold><bold><green>Sh</green></bold><bold><aqua>ee</aqua></bold><bold><light_purple>p
+    menu-name: <bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n </yellow></bold><bold><green>Sh</green></bold><bold><aqua>ee</aqua></bold><bold><light_purple>p
     entity-displayname: <bold><playername>'s Nyan Sheep
     Description: |-
       <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
@@ -503,8 +495,7 @@ Particle-Effects:
     name: <bold><white>Angel Wings
     Description: Become an angel!
   RainbowWings:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w
-      </dark_purple></bold><bold><white>Wings
+    name: <bold><rainbow>Rainbow</rainbow> <white>Wings
     Description: Wings, but full of color!
   SuperHero:
     name: <bold><dark_red>Super Hero
@@ -1614,16 +1605,11 @@ Hats:
     Description: The twenty-sixth letter in the alphabet!
 Suits:
   Rave:
-    whole-equip: <bold><white>whole </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e
-      </gold></bold><bold><white>suit
-    helmet-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e
-      </gold></bold><bold><white>Helmet
-    chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e
-      </gold></bold><bold><white>Chestplate
-    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e
-      </gold></bold><bold><white>Leggings
-    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e
-      </gold></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>suit
+    helmet-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Helmet
+    chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Chestplate
+    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Leggings
+    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Boots
     Description: Such amazing colors!
   Astronaut:
     whole-equip: <bold><white>whole </white></bold><bold><white>Astronaut </white></bold><bold><white>suit
@@ -1677,7 +1663,7 @@ Suits:
   Unequip: <prefix> <blue>You unequipped <suitname>!
   Suit-Part-Lore: <blue>Suits Part
   Whole-Equip-Lore: <italic><gray>Equip the whole suit!
-  Must-Remove: []
+  Must-Remove: [ ]
 Emotes:
   Equip: <prefix> <blue>You equipped <emotename>
   Unequip: <prefix> <blue>You unequipped <emotename>
@@ -1724,7 +1710,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>You equipped %projectile-effectname%
   Unequip: <prefix> <blue>You unequipped %projectile-effectname%
   Rainbow:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w
+    name: <bold><rainbow>Rainbow
     Description: Rainbow-colored particles
   Christmas:
     name: <bold><dark_red>Christ</dark_red></bold><bold><white>mas
@@ -1835,7 +1821,7 @@ Death-Effects:
       You... died?
   Lightning:
     name: <bold><white>Lightning
-    Description: ⚡ ZAP!
+    Description: '⚡ ZAP!'
 Enabled-SelfMorphView: <prefix> <blue>You enabled self view for morphs!
 Disabled-SelfMorphView: <prefix> <blue>You disabled self view for morphs!
 Enabled-Gadgets: <prefix> <blue>You enabled gadgets!
@@ -1843,10 +1829,8 @@ Disabled-Gadgets: <prefix> <blue>You disabled gadgets!
 Not-Allowed-From-Console: <bold><red>This can't be executed from console!
 World-Disabled: <prefix> <bold><red>Cosmetics are disabled in this world!
 Region-Disabled: <prefix> <bold><red>Cosmetics are disabled in this area!
-Region-Disabled-Category: <prefix> <bold><red><category> cosmetics are disabled in
-  this area!
-Disabled-Command-Message: <prefix> <bold><red>You can't use this command while cosmetics
-  are equipped!
+Region-Disabled-Category: <prefix> <bold><red><category> cosmetics are disabled in this area!
+Disabled-Command-Message: <prefix> <bold><red>You can't use this command while cosmetics are equipped!
 Not-Allowed-In-Vanish: <prefix> <bold><red>You can't use cosmetics while in vanish!
 Too-Long: Too long, try again
 Cannot-Disable-Gadgets: <prefix> <bold><red>You cannot disable gadgets.
@@ -1854,8 +1838,7 @@ Must-Remove:
   Hats: <prefix> <bold><red>You must remove your helmet to equip a hat!
   Suits:
     HELMET: <prefix> <bold><red>You must remove your helmet to equip a suit helmet!
-    CHESTPLATE: <prefix> <bold><red>You must remove your chestplate to equip a suit
-      chestplate!
+    CHESTPLATE: <prefix> <bold><red>You must remove your chestplate to equip a suit chestplate!
     LEGGINGS: <prefix> <bold><red>You must remove your leggings to equip suit leggings!
     BOOTS: <prefix> <bold><red>You must remove your boots to equip suit boots!
   Emotes: <prefix> <bold><red>You must remove your helmet to equip an emote!
