@@ -495,7 +495,7 @@ Particle-Effects:
     name: <bold><white>Angel Wings
     Description: Become an angel!
   RainbowWings:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w </dark_purple></bold><bold><white>Wings
+    name: <bold><rainbow>Rainbow</rainbow> <white>Wings
     Description: Wings, but full of color!
   SuperHero:
     name: <bold><dark_red>Super Hero
@@ -1710,7 +1710,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>You equipped %projectile-effectname%
   Unequip: <prefix> <blue>You unequipped %projectile-effectname%
   Rainbow:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>i</yellow></bold><bold><green>n</green></bold><bold><aqua>b</aqua></bold><bold><blue>o</blue></bold><bold><dark_purple>w
+    name: <bold><rainbow>Rainbow
     Description: Rainbow-colored particles
   Christmas:
     name: <bold><dark_red>Christ</dark_red></bold><bold><white>mas

@@ -497,7 +497,7 @@ Particle-Effects:
     name: <bold><white>Engelsflügel
     Description: Werde ein Engel!
   RainbowWings:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>e</gold></bold><bold><yellow>g</yellow></bold><bold><green>e</green></bold><bold><aqua>n</aqua></bold><bold><blue>b</blue></bold><bold><dark_purple>o</dark_purple></bold><bold><dark_red>g</dark_red></bold><bold><gold>e</gold></bold><bold><yellow>n</yellow></bold><bold><white>flügel
+    name: <bold><rainbow>Regenbogen</rainbow> <white>flügel
     Description: Flügel, aber voller Farbe!
   SuperHero:
     name: <bold><dark_red>Superheld
@@ -1712,7 +1712,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Du hast %projectile-effectname% </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast %projectile-effectname% </blue><blue>entfernt
   Rainbow:
-    name: <bold><dark_red>R</dark_red></bold><bold><gold>e</gold></bold><bold><yellow>g</yellow></bold><bold><green>e</green></bold><bold><aqua>n</aqua></bold><bold><blue>b</blue></bold><bold><dark_purple>o</dark_purple></bold><bold><dark_red>g</dark_red></bold><bold><gold>e</gold></bold><bold><yellow>n
+    name: <bold><rainbow>Regenbogen
     Description: Regenbogenfarbige Partikel
   Christmas:
     name: <bold><dark_red>Weih</dark_red></bold><bold><white>nachten
