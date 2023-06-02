@@ -495,7 +495,7 @@ Particle-Effects:
     name: <bold><white>Ailes d'Ange
     Description: Deviens un ange !
   RainbowWings:
-    name: Ailes arc-en-ciel
+    name: <bold><rainbow>Rainbow</rainbow> <white>Wings
     Description: Des ailes, mais de pleins de couleurs!
   SuperHero:
     name: <bold><dark_red>Super Héros
@@ -1710,7 +1710,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Tu as équipé %projectile-effectname%
   Unequip: <prefix> <blue>Tu as déséquipé %projectile-effectname%
   Rainbow:
-    name: '&4&lR&6&la&e&li&a&ln&b&lb&9&lo&5&lw'
+    name: <bold><rainbow>Rainbow
     Description: Particules de couleur arc-en-ciel
   Christmas:
     name: <bold><dark_red>No</dark_red></bold><bold><white>ël
