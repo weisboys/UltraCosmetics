@@ -3,9 +3,6 @@ package be.isach.ultracosmetics.worldguard.legacy;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.worldguard.IFlagManager;
 import be.isach.ultracosmetics.worldguard.UCFlag;
-
-import org.bukkit.entity.Player;
-
 import com.sk89q.worldguard.bukkit.RegionContainer;
 import com.sk89q.worldguard.bukkit.RegionQuery;
 import com.sk89q.worldguard.bukkit.WGBukkit;
@@ -14,6 +11,7 @@ import com.sk89q.worldguard.protection.flags.SetFlag;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 import com.sk89q.worldguard.session.Session;
 import com.sk89q.worldguard.session.handler.Handler;
+import org.bukkit.entity.Player;
 
 import java.util.Set;
 
@@ -55,7 +53,7 @@ public class FlagManager implements IFlagManager {
     public static class Factory extends Handler.Factory<CosmeticFlagHandler> {
         @Override
         public CosmeticFlagHandler create(Session session) {
-            return new CosmeticFlagHandler(session, UCFlag.COSMETICS.getFlag(), CATEGORY_FLAG);
+            return new CosmeticFlagHandler(session, UCFlag.COSMETICS.getFlag(), UCFlag.SHOWROOM.getFlag(), CATEGORY_FLAG);
         }
     }
 }

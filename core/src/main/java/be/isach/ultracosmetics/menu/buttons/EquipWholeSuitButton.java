@@ -43,7 +43,7 @@ public class EquipWholeSuitButton implements Button {
         UltraPlayer player = clickData.getClicker();
         for (ArmorSlot armorSlot : ArmorSlot.values()) {
             SuitType type = category.getPiece(armorSlot);
-            if (ultraCosmetics.getPermissionManager().hasPermission(player, type)) {
+            if (player.canEquip(type)) {
                 if (player.hasCosmetic(type.getCategory()) && player.getCosmetic(type.getCategory()).getType() == type) {
                     continue;
                 }

@@ -10,7 +10,7 @@ import org.bukkit.block.Block;
 import java.util.function.Function;
 
 public class Area {
-    private static final boolean DEBUG = SettingsManager.getConfig().getBoolean("Area-Debug");
+    private final boolean DEBUG = SettingsManager.getConfig().getBoolean("Area-Debug");
     protected final World world;
     protected final int x1, y1, z1;
     protected final int x2, y2, z2;

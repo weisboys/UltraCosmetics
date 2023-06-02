@@ -72,10 +72,10 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
         PermissionManager pm = ultraCosmetics.getPermissionManager();
         int i = 0;
         for (SuitCategory cat : SuitCategory.enabled()) {
-            if (pm.hasPermission(player, cat.getHelmet())
-                    || pm.hasPermission(player, cat.getChestplate())
-                    || pm.hasPermission(player, cat.getLeggings())
-                    || pm.hasPermission(player, cat.getBoots())) {
+            if (player.canEquip(cat.getHelmet())
+                    || player.canEquip(cat.getChestplate())
+                    || player.canEquip(cat.getLeggings())
+                    || player.canEquip(cat.getBoots())) {
                 i++;
             }
         }
@@ -86,10 +86,10 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
     protected boolean hasUnlockable(UltraPlayer player) {
         PermissionManager pm = ultraCosmetics.getPermissionManager();
         for (SuitCategory cat : SuitCategory.enabled()) {
-            if (!pm.hasPermission(player, cat.getHelmet())
-                    || !pm.hasPermission(player, cat.getChestplate())
-                    || !pm.hasPermission(player, cat.getLeggings())
-                    || !pm.hasPermission(player, cat.getBoots())) {
+            if (!player.canEquip(cat.getHelmet())
+                    || !player.canEquip(cat.getChestplate())
+                    || !player.canEquip(cat.getLeggings())
+                    || !player.canEquip(cat.getBoots())) {
                 return true;
             }
         }

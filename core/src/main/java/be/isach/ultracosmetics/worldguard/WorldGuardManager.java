@@ -4,11 +4,12 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
+import be.isach.ultracosmetics.cosmetics.Cosmetic;
+import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -33,7 +34,7 @@ public class WorldGuardManager {
         try {
             flagManager = (IFlagManager) Class.forName(path + "FlagManager").getConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                | InvocationTargetException e) {
+                 | InvocationTargetException e) {
             e.printStackTrace();
             return;
         } catch (NoClassDefFoundError | NoSuchMethodError | NoSuchMethodException | ClassNotFoundException e) {
@@ -88,6 +89,11 @@ public class WorldGuardManager {
         return flagManager.flagCheck(UCFlag.TREASURE, player);
     }
 
+    public boolean isInShowroom(Player player) {
+        if (flagManager == null) return false;
+        return flagManager.flagCheck(UCFlag.SHOWROOM, player);
+    }
+
     public void doCosmeticCheck(Player player, UltraCosmetics uc) {
         if (flagManager == null) return;
         if (!flagManager.flagCheck(UCFlag.COSMETICS, player) && uc.getPlayerManager().getUltraPlayer(player).clear()) {
@@ -107,6 +113,21 @@ public class WorldGuardManager {
     protected boolean categoryFlagCheck(Player player, Category category) {
         Set<Category> categories = flagManager.categoryFlagCheck(player);
         return categories == null || !categories.contains(category);
+    }
+
+    public void showroomFlagChange(UltraPlayer ultraPlayer, boolean newValue) {
+        if (!newValue) {
+            for (Category cat : Category.values()) {
+                Cosmetic<?> cosmetic = ultraPlayer.getCosmetic(cat);
+                if (cosmetic == null) continue;
+                if (!ultraCosmetics.getPermissionManager().hasPermission(ultraPlayer, cosmetic.getType())) {
+                    ultraPlayer.removeCosmetic(cat);
+                }
+            }
+        }
+        if (ultraPlayer.hasCosmetic(Category.GADGETS)) {
+            Bukkit.getScheduler().runTask(ultraCosmetics, () -> ultraPlayer.getCurrentGadget().equipItem());
+        }
     }
 
     public boolean isHooked() {

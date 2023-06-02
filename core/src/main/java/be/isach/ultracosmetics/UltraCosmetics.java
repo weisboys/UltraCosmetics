@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.config.FunctionalConfigLoader;
 import be.isach.ultracosmetics.config.ManualCommentConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
-import be.isach.ultracosmetics.config.TreasureManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.economy.EconomyHandler;
@@ -28,6 +27,7 @@ import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.run.InvalidWorldChecker;
 import be.isach.ultracosmetics.run.VanishChecker;
+import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.util.ArmorStandManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
@@ -132,6 +132,7 @@ public class UltraCosmetics extends JavaPlugin {
     private ChestSortHook chestSortHook;
 
     private UnmovableItemListener unmovableItemListener;
+    private TreasureChestManager treasureChestManager;
 
     /**
      * Manages WorldGuard flags.
@@ -290,8 +291,7 @@ public class UltraCosmetics extends JavaPlugin {
             return;
         }
 
-        // reward.yml & design.yml
-        new TreasureManager(this);
+        treasureChestManager = new TreasureChestManager(this);
 
         // Register Listeners.
         registerListeners();
@@ -508,6 +508,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         for (String key : defaults.getKeys(true)) {
             if (key.startsWith("TreasureChests.Loots.Commands.")) continue;
+            if (key.startsWith("TreasureChests.Locations.default")) continue;
             config.addDefault(key, defaults.get(key), defaults.comments(key));
         }
         for (String key : defaults.getConfigurationSection("TreasureChests.Loots").getKeys(false)) {
@@ -697,6 +698,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public UnmovableItemListener getUnmovableItemListener() {
         return unmovableItemListener;
+    }
+
+    public TreasureChestManager getTreasureChestManager() {
+        return treasureChestManager;
     }
 
     public CustomConfiguration loadConfiguration(FunctionalConfigLoader loaderFunc) {

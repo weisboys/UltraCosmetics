@@ -14,7 +14,6 @@ import be.isach.ultracosmetics.menu.buttons.NextPageButton;
 import be.isach.ultracosmetics.menu.buttons.PreviousPageButton;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ItemFactory;
 import org.bukkit.ChatColor;
 import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
@@ -103,7 +102,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
         }
 
         putItems(inventory, player, page);
-        ItemFactory.fillInventory(inventory);
+        fillInventory(inventory);
         player.getBukkitPlayer().openInventory(inventory);
     }
 
@@ -211,7 +210,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
 
     protected boolean shouldHideItem(UltraPlayer player, CosmeticType<?> cosmeticType) {
-        if ((hideNoPermissionItems || player.isFilteringByOwned()) && !pm.hasPermission(player, cosmeticType)) {
+        if ((hideNoPermissionItems || player.isFilteringByOwned()) && !player.canEquip(cosmeticType)) {
             return true;
         }
         return cosmeticType instanceof CosmeticEntType
@@ -220,8 +219,9 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     }
 
     protected boolean hasUnlockable(UltraPlayer player) {
+        if (ultraCosmetics.getWorldGuardManager().isInShowroom(player.getBukkitPlayer())) return false;
         for (CosmeticType<?> type : CosmeticType.enabledOf(category)) {
-            if (!pm.hasPermission(player, type)) {
+            if (!player.canEquip(type)) {
                 return true;
             }
         }

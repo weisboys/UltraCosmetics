@@ -20,6 +20,7 @@ public class MenuItemHandler implements UnmovableItemProvider {
     private final UltraPlayerManager pm;
     private final int slot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
     private final boolean menuOnClick = SettingsManager.getConfig().getBoolean("Menu-Item.Open-Menu-On-Inventory-Click");
+    private final ItemStack menuItem = ItemFactory.getMenuItem();
 
     public MenuItemHandler(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -33,7 +34,7 @@ public class MenuItemHandler implements UnmovableItemProvider {
 
     @Override
     public boolean itemMatches(ItemStack stack) {
-        return ItemFactory.getMenuItem().isSimilar(stack);
+        return menuItem.isSimilar(stack);
     }
 
     @Override

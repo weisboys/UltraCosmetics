@@ -16,6 +16,7 @@ public class ToggleCosmeticButton extends CosmeticButton {
     private final boolean showPermissionInLore = SettingsManager.getConfig().getBoolean("No-Permission.Show-In-Lore");
     private final String permissionYes = SettingsManager.getConfig().getString("No-Permission.Lore-Message-Yes");
     private final String permissionNo = SettingsManager.getConfig().getString("No-Permission.Lore-Message-No");
+    private final String permissionShowroom = SettingsManager.getConfig().getString("No-Permission.Lore-Message-Showroom");
 
     public ToggleCosmeticButton(UltraCosmetics ultraCosmetics, CosmeticType<?> cosmeticType) {
         super(ultraCosmetics, cosmeticType, false);
@@ -42,7 +43,14 @@ public class ToggleCosmeticButton extends CosmeticButton {
 
         if (showPermissionInLore) {
             loreList.add("");
-            String permissionLore = pm.hasPermission(ultraPlayer, cosmeticType) ? permissionYes : permissionNo;
+            String permissionLore;
+            if (ultraCosmetics.getPermissionManager().hasPermission(ultraPlayer, cosmeticType)) {
+                permissionLore = permissionYes;
+            } else if (ultraCosmetics.getWorldGuardManager().isInShowroom(ultraPlayer.getBukkitPlayer())) {
+                permissionLore = permissionShowroom;
+            } else {
+                permissionLore = permissionNo;
+            }
             loreList.add(ChatColor.translateAlternateColorCodes('&', permissionLore));
         }
         meta.setLore(loreList);

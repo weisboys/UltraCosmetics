@@ -427,6 +427,7 @@ No-Permission:
   Show-In-Lore: true
   Lore-Message-Yes: '&o&7Permission: &a&lYes!'
   Lore-Message-No: '&o&7Permission: &4&lNo!'
+  Lore-Message-Showroom: '&o&7Permission: &6Usable in showroom'
   Dont-Show-Item: false
   Allow-Purchase: false
   Custom-Item:

@@ -68,6 +68,7 @@ public class UltraPlayer {
     private final CosmeticsProfile cosmeticsProfile;
 
     private final boolean allowDisableGadgets = SettingsManager.getConfig().getBoolean("Categories.Gadgets.Allow-Disable-Gadgets", true);
+    private final boolean menuItemEnabled = SettingsManager.getConfig().getBoolean("Menu-Item.Enabled");
 
     /**
      * Specifies if the player can currently be hit by any other gadget.
@@ -139,6 +140,17 @@ public class UltraPlayer {
      */
     public boolean canUse(CosmeticType<?> type) {
         return getCooldown(type) == 0;
+    }
+
+    /**
+     * Checks if the player can equip a cosmetic, whether due to permissions or a showroom.
+     *
+     * @param type the type of cosmetic to check for
+     * @return true if the cosmetic can be equipped
+     */
+    public boolean canEquip(CosmeticType<?> type) {
+        return ultraCosmetics.getWorldGuardManager().isInShowroom(getBukkitPlayer())
+                || ultraCosmetics.getPermissionManager().hasPermission(this, type);
     }
 
     /**
@@ -517,24 +529,25 @@ public class UltraPlayer {
      * Gives the Menu Item.
      */
     public void giveMenuItem() {
-        if (getBukkitPlayer() == null) return;
+        if (!menuItemEnabled || getBukkitPlayer() == null) return;
         removeMenuItem();
         ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Menu-Item");
         int slot = section.getInt("Slot");
         ItemStack slotItem = getBukkitPlayer().getInventory().getItem(slot);
+        ItemStack menuItem = ItemFactory.getMenuItem();
         if (slotItem != null) {
-            if (!slotItem.isSimilar(ItemFactory.getMenuItem())) {
+            if (!slotItem.isSimilar(menuItem)) {
                 getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
             }
         }
-        getBukkitPlayer().getInventory().setItem(slot, ItemFactory.getMenuItem());
+        getBukkitPlayer().getInventory().setItem(slot, menuItem);
     }
 
     /**
      * Removes the menu Item.
      */
     public void removeMenuItem() {
-        if (getBukkitPlayer() == null) return;
+        if (!menuItemEnabled || getBukkitPlayer() == null) return;
         ItemStack menuItem = ItemFactory.getMenuItem();
         PlayerUtils.removeItems(getBukkitPlayer(), menuItem::isSimilar);
     }
@@ -635,9 +648,6 @@ public class UltraPlayer {
         this.clientBrand = brand;
     }
 
-    /*
-     * Internal use only
-     */
     public CosmeticsProfile getProfile() {
         return cosmeticsProfile;
     }

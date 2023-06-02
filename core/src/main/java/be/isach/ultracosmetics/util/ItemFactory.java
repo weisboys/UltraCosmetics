@@ -15,7 +15,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -37,7 +36,6 @@ public class ItemFactory {
     private static final List<XMaterial> DYES = new ArrayList<>(16);
     private static final List<XMaterial> STAINED_GLASS = new ArrayList<>(16);
     private static final FixedMetadataValue UNPICKABLE_META = new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true);
-    private static final ItemStack MENU_ITEM;
 
     static {
         for (XMaterial mat : XMaterial.VALUES) {
@@ -47,20 +45,12 @@ public class ItemFactory {
                 STAINED_GLASS.add(mat);
             }
         }
-        ItemStack itemStack = getItemStackFromConfig("Fill-Blank-Slots-With-Item.Item");
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(ChatColor.GRAY + "");
-        itemStack.setItemMeta(itemMeta);
-        fillerItem = itemStack;
-
-        MENU_ITEM = createMenuItem();
     }
 
     private ItemFactory() {
     }
 
     private static boolean noticePrinted = false;
-    public static final ItemStack fillerItem;
 
     public static ItemStack create(XMaterial material, String displayName, String... lore) {
         return rename(material.parseItem(), displayName, lore);
@@ -105,15 +95,6 @@ public class ItemFactory {
 
     public static Item createUnpickableItemVariance(XMaterial material, Location loc, Random random, double variance) {
         return spawnUnpickableItem(material.parseItem(), loc, new Vector(random.nextDouble() - 0.5, random.nextDouble() / 2.0, random.nextDouble() - 0.5).multiply(variance));
-    }
-
-    public static void fillInventory(Inventory inventory) {
-        if (SettingsManager.getConfig().getBoolean("Fill-Blank-Slots-With-Item.Enabled")) {
-            for (int i = 0; i < inventory.getSize(); i++) {
-                if (inventory.getItem(i) == null
-                        || inventory.getItem(i).getType() == Material.AIR) inventory.setItem(i, fillerItem);
-            }
-        }
     }
 
     public static ItemStack getItemStackFromConfig(String path) {
@@ -161,9 +142,11 @@ public class ItemFactory {
         int model = section.getInt("Custom-Model-Data");
         ItemStack stack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Menu-Item.Type"), name);
         ItemMeta meta = stack.getItemMeta();
-        String lore = ChatColor.translateAlternateColorCodes('&', section.getString("Lore"));
-        meta.setLore(Arrays.asList(lore.split("\n")));
-
+        String rawLore = section.getString("Lore", "");
+        if (!rawLore.equals("")) {
+            String lore = ChatColor.translateAlternateColorCodes('&', rawLore);
+            meta.setLore(Arrays.asList(lore.split("\n")));
+        }
         if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && model != 0) {
             meta.setCustomModelData(model);
         }
@@ -173,7 +156,10 @@ public class ItemFactory {
     }
 
     public static ItemStack getMenuItem() {
-        return MENU_ITEM.clone();
+        if (!SettingsManager.getConfig().getBoolean("Menu-Item.Enabled")) {
+            return null;
+        }
+        return createMenuItem();
     }
 
 
