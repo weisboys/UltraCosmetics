@@ -198,8 +198,8 @@ Treasure-Chests-Loot-Messages:
   Death-Effects: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
   Projectile-Effects: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
 No-Permission-Lore:
-  'true': '<gray>Permission : </gray><bold><green>Oui !'
-  'false': '<gray>Permission : </gray><bold><dark_red>Non !'
+  'true': '<gray>Permission: </gray><bold><green>Yes!'
+  'false': '<gray>Permission: </gray><bold><dark_red>No!'
   Showroom: '<gray>Permission : </gray><gold>Utilisable en showroom'
 Disable-Gadgets: <bold><red>Désactiver les gadgets
 Disable-Gadgets-Lore: <red>Désactive l'utilisation des gadgets et leurs effets sur toi
