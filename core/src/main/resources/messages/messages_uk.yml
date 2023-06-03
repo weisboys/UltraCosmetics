@@ -198,8 +198,8 @@ Treasure-Chests-Loot-Messages:
   Death-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
 No-Permission-Lore:
-  'true': '<gray>Дозволи: </gray><bold><green>Так!'
-  'false': '<gray>Дозволи: </gray><bold><dark_red>Ні!'
+  'true': '<gray>Permission: </gray><bold><green>Yes!'
+  'false': '<gray>Permission: </gray><bold><dark_red>No!'
   Showroom: '<gray>Дозволи: </gray><gold>Може бути використане в показі'
 Disable-Gadgets: <bold><red>Вимкнути гаджети
 Disable-Gadgets-Lore: <red>Вимкнення використання гаджетів та їхній вплив на вас
