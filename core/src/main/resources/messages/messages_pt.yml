@@ -193,10 +193,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>Desabilitar bugigangas
 Disable-Gadgets-Lore: <red>Desativa o uso de gadgets e os efeitos deles em você
 Enable-Gadgets: <bold><green>Ativar cosmeticos
@@ -1840,3 +1837,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>You must remove your helmet to equip an emote!
   Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+Permission-Lore:
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
+  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
