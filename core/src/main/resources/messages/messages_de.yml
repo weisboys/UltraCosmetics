@@ -197,10 +197,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>Gadgets deaktivieren
 Disable-Gadgets-Lore: <red>Gadgets und dessen Effekte auf dich deaktivieren
 Enable-Gadgets: <bold><green>Gadgets aktivieren
@@ -1846,3 +1843,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Du musst deinen Helm entfernen, um ein Emote auszurüsten!
   Gadgets: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!
   Mounts: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!
+Permission-Lore:
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
+  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
