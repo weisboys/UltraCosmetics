@@ -197,10 +197,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>Отключить гаджеты
 Disable-Gadgets-Lore: <red>Возможности использования гаджетов и их влияние на вас
 Enable-Gadgets: <bold><green>Включить гаджеты
@@ -1843,3 +1840,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Вы должны снять шлем, чтобы экипировать эмоцию!
   Gadgets: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы использовать гаджет!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+Permission-Lore:
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
+  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
