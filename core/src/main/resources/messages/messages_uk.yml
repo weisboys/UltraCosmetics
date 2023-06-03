@@ -50,7 +50,7 @@ Menu:
       Showcase: <bold><red>Перейменуйте тваринку </red></bold><bold><white><name> </white></bold><bold><red>за </red></bold><bold><yellow><price>₴
     Title: <bold>Перейменувати тваринку
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Придбати <cosmetic>
   Rename-Pet:
     Button:
       Name: '<bold><red>Клік для перейменування: <petname>'
@@ -185,22 +185,22 @@ Treasure-Chests-Loot:
     <dark_purple>Ефект снаряду
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> знайшов <ammo> боєприпаси <cosmetic>
+  Money: <prefix> <bold><gold><name> знайдено <money>₴
+  Pets: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Mounts: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Particle-Effects: <prefix> <bold><gold><name> знайшов легендарний <cosmetic>
+  Morphs: <prefix> <bold><gold><name> знайшов легендарний <cosmetic>
+  Hats: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Gadgets: <prefix> <bold><gold><name> знайшов гаджет <cosmetic>
+  Suits: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Emotes: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Death-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
+  Projectile-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
 No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  'true': '<gray>Дозволи: </gray><bold><green>Так!'
+  'false': '<gray>Дозволи: </gray><bold><dark_red>Ні!'
+  Showroom: '<gray>Дозволи: </gray><gold>Може бути використане в показі'
 Disable-Gadgets: <bold><red>Вимкнути гаджети
 Disable-Gadgets-Lore: <red>Вимкнення використання гаджетів та їхній вплив на вас
 Enable-Gadgets: <bold><green>Увімкнути гаджети
@@ -438,12 +438,12 @@ Mounts:
     Description: Хрю!
     Held-Item-Lore: <italic><gray>Корм для свиней на паличці!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Слайм Змія
+    entity-displayname: <bold>Слайм Змія гравця <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Цей тип змії прямо з
+      прихованих "Секретні доповнення до Слаймінсу".
+      Цей підійде вам вічно.
   Equip: <prefix> <blue>Ви заспавнили <mountname>
   Unequip: <prefix> <blue>Ви задеспавнили <mountname>
   Cant-Spawn: <prefix> <bold><red>Монстри не можуть тут спавнитись!
@@ -495,7 +495,7 @@ Particle-Effects:
     name: <bold><white>Ангельські крила
     Description: Стань ангелом!
   RainbowWings:
-    name: <bold><dark_red>В</dark_red></bold><bold><gold>е</gold></bold><bold><yellow>с</yellow></bold><bold><green>е</green></bold><bold><aqua>л</aqua></bold><bold><blue>к</blue></bold><bold><dark_purple>о</dark_purple></bold><bold><dark_red>в</dark_red></bold><bold><gold>і </gold></bold><bold><white>Крила
+    name: <bold><rainbow>Веселкові</rainbow> <white>Крила
     Description: Крила, сповнені кольорів!
   SuperHero:
     name: <bold><dark_red>Супергерой
@@ -1710,7 +1710,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Ви активували %projectile-effectname%
   Unequip: <prefix> <blue>Ви деактивували %projectile-effectname%
   Rainbow:
-    name: <bold><dark_red>В</dark_red></bold><bold><gold>к</gold></bold><bold><yellow>с</yellow></bold><bold><green>е</green></bold><bold><aqua>л</aqua></bold><bold><blue>к</blue></bold><bold><dark_purple>а
+    name: <bold><rainbow>Вкселка
     Description: Райдужні частинки
   Christmas:
     name: <bold><dark_red>Різ</dark_red></bold><bold><white>дво

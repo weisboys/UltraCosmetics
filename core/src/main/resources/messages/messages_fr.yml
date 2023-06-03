@@ -50,7 +50,7 @@ Menu:
       Showcase: <bold><red>Renommer le familier en </red></bold><bold><white><name> </white></bold><bold><red>pour </red></bold><bold><yellow><price>$
     Title: <bold>Renommer le familier de compagnie
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Achat <cosmetic>
   Rename-Pet:
     Button:
       Name: '<bold><red>Clique pour renommer : <petname>'
@@ -185,22 +185,22 @@ Treasure-Chests-Loot:
     <dark_purple>Effet de projectile
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name>à trouvé <ammo> <cosmetic> munitions
+  Money: <prefix> <bold><gold><name> a trouvé <money>$
+  Pets: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Mounts: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Particle-Effects: <prefix> <bold><gold><name> a trouvé <cosmetic> légendaire
+  Morphs: <prefix> <bold><gold><name> a trouvé <cosmetic> légendaire
+  Hats: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Gadgets: <prefix> <bold><gold><name> a trouvé <cosmetic> gadget
+  Suits: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Emotes: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Death-Effects: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
+  Projectile-Effects: <prefix> <bold><gold><name> a trouvé <cosmetic> rare
 No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  'true': '<gray>Permission : </gray><bold><green>Oui !'
+  'false': '<gray>Permission : </gray><bold><dark_red>Non !'
+  Showroom: '<gray>Permission : </gray><gold>Utilisable en showroom'
 Disable-Gadgets: <bold><red>Désactiver les gadgets
 Disable-Gadgets-Lore: <red>Désactive l'utilisation des gadgets et leurs effets sur toi
 Enable-Gadgets: <bold><green>Activer les gadgets
@@ -438,12 +438,12 @@ Mounts:
     Description: Oink !
     Held-Item-Lore: <italic><gray>Nourriture de cochons sur un bâton!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Serpent visqueux
+    entity-displayname: <bold>Serpent visqueux de <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Ce type de serpent vient tout droit de
+      les "marais secrets de Sliminess" cachés.
+      Celui-ci vous servira éternellement.
   Equip: <prefix> <blue>Tu as fait apparaître <mountname>
   Unequip: <prefix> <blue>Tu as fait disparaître <mountname>
   Cant-Spawn: <prefix> <bold><red>Les monstres ne peuvent pas apparaître ici !
@@ -495,7 +495,7 @@ Particle-Effects:
     name: <bold><white>Ailes d'Ange
     Description: Deviens un ange !
   RainbowWings:
-    name: <bold><rainbow>Rainbow</rainbow> <white>Wings
+    name: <bold>Ailes <rainbow>arc-en-ciel</rainbow>
     Description: Des ailes, mais de pleins de couleurs!
   SuperHero:
     name: <bold><dark_red>Super Héros
@@ -1710,7 +1710,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Tu as équipé %projectile-effectname%
   Unequip: <prefix> <blue>Tu as déséquipé %projectile-effectname%
   Rainbow:
-    name: <bold><rainbow>Rainbow
+    name: <bold><rainbow>arc-en-Ciel
     Description: Particules de couleur arc-en-ciel
   Christmas:
     name: <bold><dark_red>No</dark_red></bold><bold><white>ël
