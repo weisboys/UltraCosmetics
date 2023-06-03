@@ -197,10 +197,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> знайшов рідкісний <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Дозволи: </gray><gold>Може бути використане в показі'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>Вимкнути гаджети
 Disable-Gadgets-Lore: <red>Вимкнення використання гаджетів та їхній вплив на вас
 Enable-Gadgets: <bold><green>Увімкнути гаджети
@@ -1844,3 +1841,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Ви повинні зняти шолом, щоб активувати емоцію!
   Gadgets: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації гаджету!
   Mounts: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації транспорту!
+Permission-Lore:
+  Showroom: '<gray>Дозволи: </gray><gold>Може бути використане в показі'
+  Permission-No: '<gray>Дозволи: </gray><bold><dark_red>Ні!'
+  Permission-Yes: '<gray>Дозволи: </gray><bold><green>Так!'
