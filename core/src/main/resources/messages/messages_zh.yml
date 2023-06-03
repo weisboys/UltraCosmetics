@@ -197,10 +197,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>关闭小道具
 Disable-Gadgets-Lore: <red>禁用小工具及它们的效果对您的影响
 Enable-Gadgets: <bold><green>启用小道具
@@ -1844,3 +1841,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>你需要先移除您的头盔才能使用表情！
   Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+Permission-Lore:
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
+  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
