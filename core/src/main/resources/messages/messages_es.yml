@@ -197,10 +197,7 @@ Treasure-Chests-Loot-Messages:
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
   Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
   Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-No-Permission-Lore:
-  'true': '<gray>Permission: </gray><bold><green>Yes!'
-  'false': '<gray>Permission: </gray><bold><dark_red>No!'
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+No-Permission-Lore: [ ]
 Disable-Gadgets: <bold><red>Deshabilitar Gadgets
 Disable-Gadgets-Lore: <red>Deshabilita el uso de gadgets y efectos en ti
 Enable-Gadgets: <bold><green>Habilitar Gadgets
@@ -1843,3 +1840,7 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Debes quitarte el casco para equipar este emote!
   Gadgets: <prefix> <bold><red>Tienes que limpiar el slot <slot> de tu inventario para equipar el gadget!
   Mounts: <prefix> <bold><red>Tienes que limpiar el slot <slot> de tu inventario para equipar esa montura!
+Permission-Lore:
+  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
+  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
