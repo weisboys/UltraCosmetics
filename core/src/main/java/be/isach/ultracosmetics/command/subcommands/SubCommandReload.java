@@ -14,7 +14,7 @@ public class SubCommandReload extends SubCommand {
 
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
-        sender.sendMessage(ChatColor.RED + "Warning: this may cause bad bugs to occur. If you experience issues, please restart the server.");
+        sender.sendMessage(ChatColor.YELLOW + "Reloading now. If you experience issues, please report them and restart the server.");
         ultraCosmetics.getLogger().info("Shutting down...");
         ultraCosmetics.shutdown();
         CosmeticType.removeAllTypes();

@@ -1,8 +1,5 @@
 package be.isach.ultracosmetics.util;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Version.
  *
@@ -11,32 +8,37 @@ import java.util.regex.Pattern;
  */
 public class Version implements Comparable<Version> {
 
-    // Searches version string for something like "d.d" or "d.d.d" and so on where d is one or more digits
-    private static final Pattern VERSION_PATTERN = Pattern.compile("(?:\\d+\\.)+\\d+");
-
     // only numbers (ex. 2.6.1)
     private final String version;
-    // full version (ex. 2.6.1-RELEASE)
-    private final String versionString;
+    // classifier (ex. RELEASE)
+    private final String classifier;
+    private final String gitHash;
+
+
+    public Version(String version, String classifier, String gitHash) {
+        if (version == null) {
+            throw new IllegalArgumentException("Version can not be null");
+        }
+        this.version = version;
+        this.classifier = classifier;
+        this.gitHash = gitHash;
+    }
+
+    public Version(String version) {
+        this(version, "RELEASE", null);
+    }
 
     public final String get() {
         return this.version;
     }
 
     public String getFull() {
-        return versionString;
-    }
-
-    public Version(String version) {
-        if (version == null) {
-            throw new IllegalArgumentException("Version can not be null");
+        StringBuilder builder = new StringBuilder(version);
+        builder.append('-').append(classifier);
+        if (gitHash != null) {
+            builder.append(" (commit ").append(gitHash).append(')');
         }
-        Matcher matcher = VERSION_PATTERN.matcher(version);
-        if (!matcher.find()) {
-            throw new IllegalArgumentException("Could not parse version string: '" + version + "'");
-        }
-        this.version = matcher.group();
-        this.versionString = version;
+        return builder.toString();
     }
 
     @Override
@@ -59,12 +61,10 @@ public class Version implements Comparable<Version> {
     }
 
     public boolean isDev() {
-        return versionString.toLowerCase().contains("dev");
+        return classifier.toLowerCase().contains("dev");
     }
 
     public boolean isRelease() {
-        // Versions from Spigot do not contain -DEV or -RELEASE classifiers,
-        // so just assume it's a release version if it doesn't say otherwise.
         return !isDev();
     }
 

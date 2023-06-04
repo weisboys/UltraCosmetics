@@ -1,12 +1,14 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.BufferedInputStream;
@@ -15,6 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
@@ -54,7 +57,11 @@ public class UpdateManager extends BukkitRunnable {
 
     public UpdateManager(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
-        this.currentVersion = new Version(ultraCosmetics.getDescription().getVersion());
+        Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("build_info.yml");
+        YamlConfiguration buildInfo = YamlConfiguration.loadConfiguration(reader);
+        String classifier = buildInfo.getString("classifier");
+        String gitHash = buildInfo.getString("git-hash");
+        this.currentVersion = new Version(ultraCosmetics.getDescription().getVersion(), classifier, gitHash);
     }
 
     /**
@@ -73,7 +80,6 @@ public class UpdateManager extends BukkitRunnable {
         String spigotVersionString = fetchSpigotVersion();
         if (spigotVersionString == null) {
             status = "Cannot update, unknown version";
-
             return;
         }
         spigotVersion = new Version(spigotVersionString);
@@ -115,7 +121,7 @@ public class UpdateManager extends BukkitRunnable {
         if (jsonVersion == null) {
             return null;
         }
-        String version = jsonVersion.get("name").toString();
+        String version = jsonVersion.get("name").getAsString();
         return version;
     }
 
