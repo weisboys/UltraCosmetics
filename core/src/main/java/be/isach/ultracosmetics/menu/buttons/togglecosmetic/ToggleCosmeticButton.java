@@ -1,13 +1,13 @@
 package be.isach.ultracosmetics.menu.buttons.togglecosmetic;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.menu.buttons.CosmeticButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
-import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -16,9 +16,9 @@ import java.util.List;
 
 public class ToggleCosmeticButton extends CosmeticButton {
     private final boolean showPermissionInLore = SettingsManager.getConfig().getBoolean("No-Permission.Show-In-Lore");
-    private final String permissionYes = SettingsManager.getConfig().getString("No-Permission.Lore-Message-Yes");
-    private final String permissionNo = SettingsManager.getConfig().getString("No-Permission.Lore-Message-No");
-    private final String permissionShowroom = SettingsManager.getConfig().getString("No-Permission.Lore-Message-Showroom");
+    private final Component permissionYes = MessageManager.getMessage("Permission-Lore.Permission-Yes");
+    private final Component permissionNo = MessageManager.getMessage("Permission-Lore.Permission-No");
+    private final Component permissionShowroom = MessageManager.getMessage("Permission-Lore.Showroom");
 
     public ToggleCosmeticButton(UltraCosmetics ultraCosmetics, CosmeticType<?> cosmeticType) {
         super(ultraCosmetics, cosmeticType, false);
@@ -49,7 +49,7 @@ public class ToggleCosmeticButton extends CosmeticButton {
 
         if (showPermissionInLore) {
             loreList.add("");
-            String permissionLore;
+            Component permissionLore;
             if (ultraCosmetics.getPermissionManager().hasPermission(ultraPlayer, cosmeticType)) {
                 permissionLore = permissionYes;
             } else if (ultraCosmetics.getWorldGuardManager().isInShowroom(ultraPlayer.getBukkitPlayer())) {
@@ -57,7 +57,7 @@ public class ToggleCosmeticButton extends CosmeticButton {
             } else {
                 permissionLore = permissionNo;
             }
-            loreList.add(ChatColor.translateAlternateColorCodes('&', permissionLore));
+            loreList.add(MessageManager.toLegacy(permissionLore));
         }
         meta.setLore(loreList);
         meta = modifyMeta(meta, ultraPlayer);

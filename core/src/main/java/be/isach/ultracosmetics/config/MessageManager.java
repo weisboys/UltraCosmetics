@@ -228,6 +228,42 @@ public class MessageManager {
             // will escape placeholders it doesn't recognize at the moment.
             config.set(key, percentVarPattern.matcher(String.join("\n", converted)).replaceAll("<$1>"));
         }
+
+        ConfigurationSection customItem = SettingsManager.getConfig().getConfigurationSection("No-Permission.Custom-Item");
+        String name = customItem.getString("Name", "");
+        String convertedName = miniMessage.serialize(deserializer.deserialize(name));
+        customItem.set("Name", convertedName.replace("{cosmetic-name}", "<cosmetic>"));
+        List<String> lore = new ArrayList<>();
+        for (String loreItem : customItem.getStringList("Lore")) {
+            lore.add(miniMessage.serialize(deserializer.deserialize(loreItem)));
+        }
+        customItem.set("Lore", lore);
+        migrateConfigStrings(miniMessage, deserializer);
+    }
+
+    private void migrateConfigStrings(MiniMessage miniMessage, LegacyComponentSerializer deserializer) {
+        ConfigurationSection loots = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Loots");
+        for (String key : loots.getKeys(false)) {
+            String path = key + ".Message.message";
+            if (loots.isString(path)) {
+                messagesConfig.set("Treasure-Chests-Loot-Messages." + key, miniMessage.serialize(deserializer.deserialize(loots.getString(path))));
+                loots.set(path, null);
+            }
+        }
+        ConfigurationSection noPermission = SettingsManager.getConfig().getConfigurationSection("No-Permission");
+        for (String key : new String[] {"Yes", "No", "Showroom"}) {
+            String path = "Lore-Message-" + key;
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Checking " + path);
+            if (noPermission.isString(path)) {
+                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Found " + path);
+                String newKey = key;
+                if (!key.equals("Showroom")) {
+                    newKey = "Permission-" + key;
+                }
+                messagesConfig.set("Permission-Lore." + newKey, miniMessage.serialize(deserializer.deserialize(noPermission.getString(path))));
+                noPermission.set(path, null);
+            }
+        }
     }
 
     public static boolean load() {
