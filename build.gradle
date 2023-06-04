@@ -9,7 +9,8 @@ allprojects {
     idea.module.downloadSources = true
 
     group = 'be.isach'
-    version = '3.2.1-RELEASE'
+    version = '3.2.1'
+    def classifier = 'RELEASE'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
@@ -41,13 +42,15 @@ allprojects {
         inputs.property("version", project.version)
 
         filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
-                'VERSION' : project.version,
-                'GIT-HASH': getGitHash()
+                'VERSION'   : project.version,
+                'CLASSIFIER': classifier,
+                'GIT-HASH'  : getGitHash()
         ]
     }
 
     afterEvaluate {
         jar {
+            archiveClassifier = classifier
             dependsOn configurations.shaded
             from configurations.shaded.collect {
                 it.isDirectory() ?
@@ -67,7 +70,7 @@ subprojects.each {
 
 dependencies {
     subprojects.each { p ->
-        if (p.name.equals("core")) {
+        if (p.name == "core") {
             shaded(project(path: ':core', configuration: 'shadow'))
             return;
         }
@@ -178,12 +181,13 @@ abstract class VersionedObfTask extends DefaultTask {
     def go() {
         def nms = subproj.name
         def mcVer = subproj.getProperty("remapMcVersion")
+        def filename = project.tasks.jar.archiveFileName.get()
         project.exec {
             workingDir project.buildDir
             commandLine 'java', '-cp', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar' + File.pathSeparator + ext.homeDir + "/.m2/repository/org/spigotmc/spigot/$mcVer-R0.1-SNAPSHOT/spigot-$mcVer-R0.1-SNAPSHOT-remapped-mojang.jar",
                     'net.md_5.specialsource.SpecialSource', '--live', '--only', "be/isach/ultracosmetics/$nms", '-q',
-                    '-i', 'libs/' + project.name + '-' + project.version + '.jar',
-                    '-o', 'libs/obfuscated-donotuse-' + project.name + '-' + project.version + '.jar',
+                    '-i', 'libs/' + filename,
+                    '-o', 'libs/obfuscated-donotuse-' + filename,
                     '-m', ext.homeDir + "/.m2/repository/org/spigotmc/minecraft-server/$mcVer-R0.1-SNAPSHOT/minecraft-server-$mcVer-R0.1-SNAPSHOT-maps-mojang.txt",
                     '--reverse'
         }
@@ -191,8 +195,8 @@ abstract class VersionedObfTask extends DefaultTask {
             workingDir project.buildDir
             commandLine 'java', '-cp', ext.toolingDir + '/tooling/specialsource/SpecialSource.jar' + File.pathSeparator + ext.homeDir + "/.m2/repository/org/spigotmc/spigot/$mcVer-R0.1-SNAPSHOT/spigot-$mcVer-R0.1-SNAPSHOT-remapped-obf.jar",
                     'net.md_5.specialsource.SpecialSource', '--live', '--only', "be/isach/ultracosmetics/$nms", '-q',
-                    '-i', 'libs/obfuscated-donotuse-' + project.name + '-' + project.version + '.jar',
-                    '-o', 'libs/' + project.name + '-' + project.version + '.jar',
+                    '-i', 'libs/obfuscated-donotuse-' + filename,
+                    '-o', 'libs/' + filename,
                     '-m', ext.homeDir + "/.m2/repository/org/spigotmc/minecraft-server/$mcVer-R0.1-SNAPSHOT/minecraft-server-$mcVer-R0.1-SNAPSHOT-maps-spigot.csrg"
         }
     }
