@@ -2,20 +2,21 @@ package be.isach.ultracosmetics.menu.buttons;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CommandButton implements Button {
     private final ItemStack stack;
@@ -53,14 +54,17 @@ public class CommandButton implements Button {
             throw new IllegalArgumentException("Invalid amount: " + amount);
         }
         stack.setAmount(amount);
+        MiniMessage mm = MessageManager.getMiniMessage();
         if (section.isString("Name")) {
-            String name = ChatColor.translateAlternateColorCodes('&', section.getString("Name"));
+            String name = MessageManager.toLegacy(mm.deserialize(section.getString("Name")));
             ItemFactory.rename(stack, name);
         }
         ItemMeta meta = stack.getItemMeta();
-        if (section.isList("Lore")) {
-            List<String> lore = section.getStringList("Lore");
-            lore = lore.stream().map(s -> ChatColor.translateAlternateColorCodes('&', s)).collect(Collectors.toList());
+        if (section.isString("Lore")) {
+            List<String> lore = new ArrayList<>();
+            for (String line : section.getString("Lore").split("\n")) {
+                lore.add(MessageManager.toLegacy(mm.deserialize(line)));
+            }
             meta.setLore(lore);
         }
         if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && section.isInt("CustomModelData")) {

@@ -199,24 +199,22 @@ TreasureChests:
         enabled: false
     Commands:
       shoutout:
-        Name: '&d&lShoutout'
+        Name: '<bold><purple>Shoutout'
         Material: NETHER_STAR
         Enabled: false
         Chance: 100
         Message:
           enabled: false
-          message: '%prefix% &6&l%name% found a rare shoutout!'
         Cancel-If-Permission: 'no'
         Commands:
           - 'say %name% is awesome!'
       flower:
-        Name: '&e&lFlower'
+        Name: '<bold><yellow>Flower'
         Material: YELLOW_FLOWER
         Enabled: false
         Chance: 100
         Message:
           enabled: false
-          message: '%prefix% &6&l%name% found a flower!'
         Cancel-If-Permission: 'example.yellowflower'
         Commands:
           - 'give %name% yellow_flower 1'
@@ -398,11 +396,11 @@ Menu-Item:
   Enabled: false
   Slot: 3
   Type: ENDER_CHEST
-  Displayname: '&6&lCosmetics'
+  Displayname: '<bold><gold>Cosmetics'
   # Lore to apply to the menu item. Set to '' to disable
   Lore: |-
-    &aRight-click with this
-    &ato open the menu
+    <green>Right-click with this
+    <green>to open the menu
   # Custom model data for the menu item. Only supported on MC >= 1.14.4 (when it was added)
   Custom-Model-Data: 0
   # Whether to open cosmetics menu when the menu item is clicked from the player's inventory
@@ -419,9 +417,7 @@ No-Permission:
     enabled: false
     Type: BARRIER
     Name: '<red><bold><cosmetic>'
-    Lore:
-      - ''
-      - '&c&lYou do not have permission for this!'
+    Lore: '\n<red><bold>You do not have permission for this!\n'
 
 # If set to true, in messages the cosmetics' names
 # won't be colored.

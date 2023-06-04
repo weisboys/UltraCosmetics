@@ -26,7 +26,7 @@ public class CommandLoot implements Loot {
         for (String command : reward.getCommands()) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%name%", playerName));
         }
-        String[] name = new String[] {reward.getName().replace("%name%", playerName)};
+        String[] name = new String[] {reward.getName()};
 
         return new LootReward(name, reward.getItemStack(), reward.getMessage(), reward.isMessageEnabled(), true);
     }

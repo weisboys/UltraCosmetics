@@ -41,6 +41,8 @@ import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.WorldGuardManager;
 import com.cryptomorin.xseries.XMaterial;
 import me.libraryaddict.disguise.DisguiseConfig;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
 import org.bstats.charts.SimplePie;
@@ -290,6 +292,7 @@ public class UltraCosmetics extends JavaPlugin {
             activeProblems.add(Problem.BAD_MESSAGES);
             return;
         }
+        migrateConfigToMiniMessage();
 
         treasureChestManager = new TreasureChestManager(this);
 
@@ -596,6 +599,37 @@ public class UltraCosmetics extends JavaPlugin {
         }
 
         upgradeIdsToMaterials();
+    }
+
+    private void migrateConfigToMiniMessage() {
+        migrateKeyToMiniMessage("Menu-Item.Displayname");
+        migrateKeyToMiniMessage("Menu-Item.Lore");
+        migrateKeyToMiniMessage("No-Permission.Custom-Item.Name");
+        migrateKeyToMiniMessage("No-Permission.Custom-Item.Lore");
+        ConfigurationSection commands = config.getConfigurationSection("TreasureChests.Loots.Commands");
+        for (String key : commands.getKeys(false)) {
+            migrateKeyToMiniMessage(commands.getCurrentPath() + "." + key + ".Name");
+        }
+    }
+
+    private void migrateKeyToMiniMessage(String path) {
+        String raw;
+        if (config.isString(path)) {
+            raw = config.getString(path);
+        } else if (config.isList(path)) {
+            raw = String.join("\n", config.getStringList(path));
+        } else {
+            return;
+        }
+        if (!raw.contains("&")) return;
+        MiniMessage mm = MessageManager.getMiniMessage();
+        LegacyComponentSerializer deserializer = LegacyComponentSerializer.legacyAmpersand();
+        String[] parts = raw.split("\n");
+        StringBuilder builder = new StringBuilder(mm.serialize(deserializer.deserialize(parts[0])));
+        for (int i = 1; i < parts.length; i++) {
+            builder.append("\n").append(mm.serialize(deserializer.deserialize(parts[i])));
+        }
+        config.set(path, builder.toString());
     }
 
     /**

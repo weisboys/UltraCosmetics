@@ -5,7 +5,7 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -26,12 +26,13 @@ public class CommandReward {
 
     public CommandReward(String path) {
         CustomConfiguration config = UltraCosmeticsData.get().getPlugin().getConfig();
+        MiniMessage mm = MessageManager.getMiniMessage();
+        name = MessageManager.toLegacy(mm.deserialize(config.getString(path + ".Name")));
+        stack = ItemFactory.getItemStackFromConfig(path + ".Material");
         chance = config.getInt(path + ".Chance");
         messageEnabled = config.getBoolean(path + ".Message.enabled");
-        message = MessageManager.getMiniMessage().deserialize(config.getString(path + ".Message.message", ""));
+        message = mm.deserialize(config.getString(path + ".Message.message", ""));
         commands = config.getStringList(path + ".Commands");
-        stack = ItemFactory.getItemStackFromConfig(path + ".Material");
-        name = ChatColor.translateAlternateColorCodes('&', config.getString(path + ".Name"));
     }
 
     /**

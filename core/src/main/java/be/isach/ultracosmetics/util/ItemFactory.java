@@ -9,7 +9,7 @@ import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 import net.kyori.adventure.text.Component;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -25,7 +25,6 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -74,7 +73,7 @@ public class ItemFactory {
             for (String s : lore) {
                 if (s == null) continue;
                 for (String line : s.split("\n")) {
-                    finalLore.add(ChatColor.translateAlternateColorCodes('&', line));
+                    finalLore.add(line);
                 }
             }
             meta.setLore(finalLore);
@@ -144,14 +143,18 @@ public class ItemFactory {
 
     private static ItemStack createMenuItem() {
         ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Menu-Item");
-        String name = ChatColor.translateAlternateColorCodes('&', section.getString("Displayname"));
+        MiniMessage mm = MessageManager.getMiniMessage();
+        String name = MessageManager.toLegacy(mm.deserialize(section.getString("Displayname")));
         int model = section.getInt("Custom-Model-Data");
         ItemStack stack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Menu-Item.Type"), name);
         ItemMeta meta = stack.getItemMeta();
         String rawLore = section.getString("Lore", "");
         if (!rawLore.equals("")) {
-            String lore = ChatColor.translateAlternateColorCodes('&', rawLore);
-            meta.setLore(Arrays.asList(lore.split("\n")));
+            List<String> lore = new ArrayList<>();
+            for (String line : rawLore.split("\n")) {
+                lore.add(MessageManager.toLegacy(mm.deserialize(line)));
+            }
+            meta.setLore(lore);
         }
         if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && model != 0) {
             meta.setCustomModelData(model);

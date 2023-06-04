@@ -24,7 +24,7 @@ public class CosmeticNoPermissionButton extends CosmeticButton {
         MiniMessage mm = MessageManager.getMiniMessage();
         String rawName = SettingsManager.getConfig().getString("No-Permission.Custom-Item.Name", "");
         this.name = MessageManager.toLegacy(mm.deserialize(rawName, Placeholder.component("cosmetic", cosmeticType.getName())));
-        for (String item : SettingsManager.getConfig().getStringList("No-Permission.Custom-Item.Lore")) {
+        for (String item : SettingsManager.getConfig().getString("No-Permission.Custom-Item.Lore", "").split("\n")) {
             lore.add(MessageManager.toLegacy(mm.deserialize(item)));
         }
     }
