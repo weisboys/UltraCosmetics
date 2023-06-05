@@ -50,7 +50,7 @@ Menu:
       Showcase: <bold><red>Haustier umbenennen zu </red></bold><bold><white><name> </white></bold><bold><red>für </red></bold><bold><yellow>$<price>
     Title: <bold>Haustier umbenennen
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: '<bold>Kaufen: <cosmetic>'
   Rename-Pet:
     Button:
       Name: '<bold><red>Klicken: <petname> umbenennen'
@@ -185,22 +185,22 @@ Treasure-Chests-Loot:
     <dark_purple>Projektileffekt
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> hat <ammo> <cosmetic> Munition gefunden
+  Money: <prefix> <bold><gold><name> hat $<money> gefunden
+  Pets: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Mounts: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Particle-Effects: '<prefix> <bold><gold><name> hat etwas legendäres gefunden: <cosmetic>'
+  Morphs: '<prefix> <bold><gold><name> hat etwas legendäres gefunden: <cosmetic>'
+  Hats: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Gadgets: <prefix> <bold><gold><name> hat das Gadget <cosmetic> gefunden
+  Suits: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Emotes: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Death-Effects: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
+  Projectile-Effects: '<prefix> <bold><gold><name> hat etwas seltenes gefunden: <cosmetic>'
 Permission-Lore:
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
-  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
-  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
+  Showroom: '<gray>Berechtigung: </gray><gold>Im Showroom verwendbar'
+  Permission-No: '<gray>Berechtigung: </gray><bold><dark_red>Nein!'
+  Permission-Yes: '<gray>Berechtigung: </gray><bold><green>Ja!'
 Disable-Gadgets: <bold><red>Gadgets deaktivieren
 Disable-Gadgets-Lore: <red>Gadgets und dessen Effekte auf dich deaktivieren
 Enable-Gadgets: <bold><green>Gadgets aktivieren
@@ -440,12 +440,12 @@ Mounts:
     Description: '&7&oOink!'
     Held-Item-Lore: <italic><gray>Schweinefutter auf einem Stock!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Schleim-Schlange
+    entity-displayname: <bold><playername>'s Schleim-Schlange
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Diese Art von Schlange kommt direkt aus den
+      versteckten "geheimen Sümpfen der Schleimigkeit".
+      Diese wird dir ewig dienen.
   Equip: <prefix> <blue>Du hast <mountname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <mountname> </blue><blue>entfernt
   Cant-Spawn: <prefix> <bold><red>Monster können hier nicht spawnen!
