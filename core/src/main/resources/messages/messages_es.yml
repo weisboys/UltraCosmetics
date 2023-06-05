@@ -437,7 +437,7 @@ Mounts:
     Description: '&7&oOink!'
     Held-Item-Lore: <italic><gray>Comida de cerdo en un palo!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
+    menu-name: <bold><red>Serpiente de limo
     entity-displayname: <bold><playername>'s Slime Snake
     Description: |-
       This type of snake comes straight from
