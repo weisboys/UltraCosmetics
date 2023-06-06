@@ -227,10 +227,10 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     @Override
     public void handleInteract(PlayerInteractEvent event) {
-        if (handledThisTick) return;
-        handledThisTick = true;
         Player player = event.getPlayer();
         event.setCancelled(true);
+        if (handledThisTick) return;
+        handledThisTick = true;
         UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(player);
 
         if (ultraPlayer.getCurrentTreasureChest() != null) return;
