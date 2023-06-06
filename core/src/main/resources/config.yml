@@ -506,3 +506,6 @@ Towny-Hook: true
 # The description style to use in the menus. Use MiniMessage formatting:
 # https://docs.advntr.dev/minimessage/format.html#minimessage-format
 Description-Style: "<gray><italic>"
+
+# Whether running `/uc` by itself should open the main menu instead of displaying the help message.
+Open-Menu-On-Base-Command: false
