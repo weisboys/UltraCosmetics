@@ -50,6 +50,7 @@ public class AmmoLoot implements Loot {
         ammo = event.getAmmo();
 
         String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Ammo",
+                Placeholder.unparsed("name", player.getBukkitPlayer().getName()),
                 Placeholder.component("cosmetic", g.getName()),
                 Placeholder.unparsed("ammo", String.valueOf(ammo))
         ).split("\n");

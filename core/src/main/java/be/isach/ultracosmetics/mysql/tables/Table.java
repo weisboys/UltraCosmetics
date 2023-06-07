@@ -1,10 +1,12 @@
 package be.isach.ultracosmetics.mysql.tables;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 import be.isach.ultracosmetics.mysql.query.StandardQuery;
+import be.isach.ultracosmetics.util.SmartLogger;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -14,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.UUID;
+import java.util.function.BiConsumer;
 
 public abstract class Table {
     private final DataSource dataSource;
@@ -119,5 +122,27 @@ public abstract class Table {
                     + Character.digit(s.charAt(i + 1), 16));
         }
         return data;
+    }
+
+    protected void ifParseable(String category, String type, BiConsumer<Category, CosmeticType<?>> storeFunc) {
+        Category cat;
+        try {
+            cat = Category.valueOf(category.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(SmartLogger.LogLevel.WARNING,
+                    "Ignoring cosmetic with unknown category: " + category);
+            return;
+        }
+        ifParseable(cat, type, storeFunc);
+    }
+
+    protected void ifParseable(Category cat, String type, BiConsumer<Category, CosmeticType<?>> storeFunc) {
+        CosmeticType<?> cosmetic = cat.valueOfType(type);
+        if (cosmetic == null) {
+            UltraCosmeticsData.get().getPlugin().getSmartLogger().write(SmartLogger.LogLevel.WARNING,
+                    "Ignoring unknown cosmetic '" + cat + ":" + type + "'");
+            return;
+        }
+        storeFunc.accept(cat, cosmetic);
     }
 }

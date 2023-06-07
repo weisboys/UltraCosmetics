@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.mysql.tables;
 
-import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.mysql.column.Column;
 import be.isach.ultracosmetics.mysql.column.ForeignKeyConstraint;
@@ -12,11 +11,10 @@ import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 import be.isach.ultracosmetics.mysql.query.StandardQuery;
 
+import javax.sql.DataSource;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import javax.sql.DataSource;
 
 public class UnlockedTable extends Table {
     private final PlayerDataTable playerData;
@@ -45,11 +43,8 @@ public class UnlockedTable extends Table {
     public Set<CosmeticType<?>> getAllUnlocked(UUID uuid) {
         return select("category, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Set<CosmeticType<?>> unlocked = new HashSet<>();
-            CosmeticType<?> type;
             while (r.next()) {
-                type = Category.valueOf(r.getString("category").toUpperCase()).valueOfType(r.getString("type"));
-                if (type == null) continue;
-                unlocked.add(type);
+                ifParseable(r.getString("category"), r.getString("type"), (c, t) -> unlocked.add(t));
             }
             return unlocked;
         }, true);

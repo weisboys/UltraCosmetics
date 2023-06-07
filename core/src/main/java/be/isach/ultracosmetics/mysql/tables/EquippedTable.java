@@ -12,12 +12,11 @@ import be.isach.ultracosmetics.mysql.query.InnerJoin;
 import be.isach.ultracosmetics.mysql.query.InsertQuery;
 import be.isach.ultracosmetics.mysql.query.InsertValue;
 
+import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
-
-import javax.sql.DataSource;
 
 public class EquippedTable extends Table {
     private final PlayerDataTable playerData;
@@ -41,13 +40,11 @@ public class EquippedTable extends Table {
         tableInfo.add(new UniqueConstraint("uuid", "category"));
     }
 
-    public Map<Category,CosmeticType<?>> getEquipped(UUID uuid) {
+    public Map<Category, CosmeticType<?>> getEquipped(UUID uuid) {
         return select(getWrappedName() + ".category, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
-            Map<Category,CosmeticType<?>> equipped = new HashMap<>();
+            Map<Category, CosmeticType<?>> equipped = new HashMap<>();
             while (r.next()) {
-                Category cat = Category.valueOf(r.getString("category").toUpperCase());
-                CosmeticType<?> type = cat.valueOfType(r.getString("type"));
-                equipped.put(cat, type);
+                ifParseable(r.getString("category"), r.getString("type"), equipped::put);
             }
             return equipped;
         }, true);
@@ -69,12 +66,12 @@ public class EquippedTable extends Table {
     /*
      * Only used for migration
      */
-    public void setAllEquipped(UUID uuid, Map<Category,CosmeticType<?>> equipped) {
+    public void setAllEquipped(UUID uuid, Map<Category, CosmeticType<?>> equipped) {
         clearAllEquipped(uuid);
         if (equipped.size() == 0) return;
         InsertQuery query = insert("uuid", "id", "category");
         InsertValue uuidVal = insertUUID(uuid);
-        for (Entry<Category,CosmeticType<?>> entry : equipped.entrySet()) {
+        for (Entry<Category, CosmeticType<?>> entry : equipped.entrySet()) {
             query.insert(uuidVal, cosmeticTable.subqueryFor(entry.getValue(), true), new InsertValue(cleanCategoryName(entry.getKey())));
         }
         query.updateOnDuplicate().execute();

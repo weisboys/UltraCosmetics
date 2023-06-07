@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.mysql.tables;
 
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.mysql.column.Column;
 import be.isach.ultracosmetics.mysql.column.ForeignKeyConstraint;
@@ -47,7 +46,8 @@ public class AmmoTable extends Table {
         return select("ammo, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Map<GadgetType, Integer> ammo = new HashMap<>();
             while (r.next()) {
-                ammo.put(CosmeticType.valueOf(Category.GADGETS, r.getString("type")), r.getInt("ammo"));
+                int ammoAmount = r.getInt("ammo");
+                ifParseable(Category.GADGETS, r.getString("type"), (c, t) -> ammo.put((GadgetType) t, ammoAmount));
             }
             return ammo;
         }, true);

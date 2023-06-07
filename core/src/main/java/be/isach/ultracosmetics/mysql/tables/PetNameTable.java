@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.mysql.tables;
 
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.mysql.column.Column;
 import be.isach.ultracosmetics.mysql.column.ForeignKeyConstraint;
@@ -48,7 +47,8 @@ public class PetNameTable extends Table {
         return select("name, type").uuid(uuid).innerJoin(new InnerJoin(cosmeticTable.getWrappedName(), "id")).getResults(r -> {
             Map<PetType, String> names = new HashMap<>();
             while (r.next()) {
-                names.put(CosmeticType.valueOf(Category.PETS, r.getString("type")), r.getString("name"));
+                String name = r.getString("name");
+                ifParseable(Category.PETS, r.getString("type"), (c, t) -> names.put((PetType) t, name));
             }
             return names;
         }, true);

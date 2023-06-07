@@ -150,7 +150,10 @@ public class PlayerData {
                 value = s.getString(key);
             }
             if (value == null || value.equals("none")) continue;
-            enabledCosmetics.put(cat, cat.valueOfType(value));
+            CosmeticType<?> cosmetic = cat.valueOfType(value);
+            if (cosmetic != null) {
+                enabledCosmetics.put(cat, cosmetic);
+            }
         }
         if (changed) sm.save();
     }
