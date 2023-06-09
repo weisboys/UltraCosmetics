@@ -1707,8 +1707,8 @@ Emotes:
     Name: <bold><aqua>Закоханий Еллей
     Description: Ми закохуємося?
 Projectile-Effects:
-  Equip: <prefix> <blue>You equipped %projectile-effectname%
-  Unequip: <prefix> <blue>You unequipped %projectile-effectname%
+  Equip: <prefix> <blue>Ви одягнули <projectile-effectname>
+  Unequip: <prefix> <blue>Ви зняли <projectile-effectname>
   Rainbow:
     name: <bold><rainbow>Вкселка
     Description: Райдужні частинки
@@ -1809,8 +1809,8 @@ Projectile-Effects:
     name: <bold><aqua>Скалк Соул
     Description: Блакитні душі
 Death-Effects:
-  Equip: <prefix> <blue>You equipped %death-effectname%
-  Unequip: <prefix> <blue>You unequipped %death-effectname%
+  Equip: <prefix> <blue>Ви одягнули <death-effectname>
+  Unequip: <prefix> <blue>Ви зняли <death-effectname>
   Explosion:
     name: <bold><dark_red>Вибух
     Description: БУУУМ!
