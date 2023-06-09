@@ -66,7 +66,7 @@ public class SubCommandToggle extends SubCommand {
 
         UltraPlayer target = ultraCosmetics.getPlayerManager().getUltraPlayer(targetPlayer);
         if (target == null) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "Invalid player.");
+            error(sender, "Invalid player.");
             return;
         }
 
@@ -77,13 +77,13 @@ public class SubCommandToggle extends SubCommand {
 
         Optional<Category> categories = Arrays.stream(Category.values()).filter(category -> category.isEnabled() && category.toString().toLowerCase().startsWith(type)).findFirst();
         if (!categories.isPresent()) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "Invalid category.");
+            error(sender, "Invalid category.");
             return;
         }
         Category category = categories.get();
         CosmeticType<?> matchingType = findCosmetic(category, cosm);
         if (matchingType == null) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "Invalid cosmetic.");
+            error(sender, "Invalid cosmetic.");
             return;
         }
         if (target.getCosmetic(category) != null && matchingType == target.getCosmetic(category).getType()) {

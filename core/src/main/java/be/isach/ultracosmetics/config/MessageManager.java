@@ -213,7 +213,7 @@ public class MessageManager {
         log.write(SmartLogger.LogLevel.WARNING, "Your messages file is using legacy color codes, it will be upgraded now");
         ConfigurationSection config = messagesConfig.fileConfiguration;
         LegacyComponentSerializer deserializer = LegacyComponentSerializer.legacyAmpersand();
-        Pattern percentVarPattern = Pattern.compile("%(\\w+)%");
+        Pattern percentVarPattern = Pattern.compile("%([\\w-]+)%");
         for (String key : config.getKeys(true)) {
             if (!config.isString(key)) continue;
             // Doing it line by line prevents weird behavior like this:

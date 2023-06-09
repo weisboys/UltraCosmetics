@@ -3,8 +3,10 @@ package be.isach.ultracosmetics.command;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public abstract class SubCommand {
 
+    private final Component prefix = MessageManager.getMessage("Prefix");
     private final String name;
     private final String description;
     private final Permission permission;
@@ -159,6 +162,8 @@ public abstract class SubCommand {
     }
 
     protected void error(CommandSender sender, String error) {
-        sender.sendMessage(ChatColor.RED.toString() + ChatColor.BOLD + error);
+        MessageManager.getAudiences().sender(sender).sendMessage(
+                Component.empty().append(prefix).appendSpace().append(Component.text(error, NamedTextColor.RED, TextDecoration.BOLD))
+        );
     }
 }
