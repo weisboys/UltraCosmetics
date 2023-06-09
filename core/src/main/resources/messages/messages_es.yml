@@ -1706,8 +1706,8 @@ Emotes:
     Name: <bold><aqua>Amoroso
     Description: Nos estamos enamorando?
 Projectile-Effects:
-  Equip: <prefix> <blue>You equipped %projectile-effectname%
-  Unequip: <prefix> <blue>You unequipped %projectile-effectname%
+  Equip: <prefix> <blue>Equipaste <projectile-effectname>
+  Unequip: <prefix> <blue>Desequipaste <projectile-effectname>
   Rainbow:
     name: <bold><dark_red>A</dark_red></bold><bold><gold>r</gold></bold><bold><yellow>c</yellow></bold><bold><green>o</green></bold><bold><aqua>i</aqua></bold><bold><blue>r</blue></bold><bold><dark_purple>i</dark_purple></bold><bold><dark_red>s
     Description: Particulas de Arcoiris
@@ -1808,8 +1808,8 @@ Projectile-Effects:
     name: <bold><aqua>Alma de Sculk
     Description: Almas Cian
 Death-Effects:
-  Equip: <prefix> <blue>You equipped %death-effectname%
-  Unequip: <prefix> <blue>You unequipped %death-effectname%
+  Equip: <prefix> <blue>Equipaste <death-effectname>
+  Unequip: <prefix> <blue>Desequipaste <death-effectname>
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
