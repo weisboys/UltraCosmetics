@@ -1709,8 +1709,8 @@ Emotes:
     Name: <bold><aqua>Verliebter Hilfsgeist
     Description: Verlieben wir uns?
 Projectile-Effects:
-  Equip: <prefix> <blue>Du hast %projectile-effectname% </blue><blue>ausgerüstet
-  Unequip: <prefix> <blue>Du hast %projectile-effectname% </blue><blue>entfernt
+  Equip: <prefix> <blue>You equipped %projectile-effectname%
+  Unequip: <prefix> <blue>You unequipped %projectile-effectname%
   Rainbow:
     name: <bold><rainbow>Regenbogen
     Description: Regenbogenfarbige Partikel
@@ -1811,8 +1811,8 @@ Projectile-Effects:
     name: <bold><aqua>Sculk-Seele
     Description: Türkise Seelen
 Death-Effects:
-  Equip: <prefix> <blue>Du hast %death-effectname% </blue><blue>ausgerüstet
-  Unequip: <prefix> <blue>Du hast %death-effectname% </blue><blue>entfernt
+  Equip: <prefix> <blue>You equipped %death-effectname%
+  Unequip: <prefix> <blue>You unequipped %death-effectname%
   Explosion:
     name: '&4&lExplosion'
     Description: BUMM!
