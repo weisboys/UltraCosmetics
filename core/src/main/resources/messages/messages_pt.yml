@@ -1703,8 +1703,8 @@ Emotes:
     Name: <bold><aqua>Lovestruck Allay
     Description: Are we falling in love?
 Projectile-Effects:
-  Equip: <prefix> <blue>You equipped %projectile-effectname%
-  Unequip: <prefix> <blue>You unequipped %projectile-effectname%
+  Equip: <prefix> <blue>You equipped <projectile-effectname>
+  Unequip: <prefix> <blue>You unequipped <projectile-effectname>
   Rainbow:
     name: <bold><rainbow>Rainbow
     Description: Rainbow-colored particles
@@ -1805,8 +1805,8 @@ Projectile-Effects:
     name: <bold><aqua>Sculk Soul
     Description: Cyan souls
 Death-Effects:
-  Equip: <prefix> <blue>You equipped %death-effectname%
-  Unequip: <prefix> <blue>You unequipped %death-effectname%
+  Equip: <prefix> <blue>You equipped <death-effectname>
+  Unequip: <prefix> <blue>You unequipped <death-effectname>
   Explosion:
     name: <bold><dark_red>Explosion
     Description: BOOM!
