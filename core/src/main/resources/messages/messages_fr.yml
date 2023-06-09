@@ -1707,8 +1707,8 @@ Emotes:
     Name: '&b&lLovestruck Allay'
     Description: Sommes-nous en train de tomber amoureux ?
 Projectile-Effects:
-  Equip: <prefix> <blue>Tu as équipé %projectile-effectname%
-  Unequip: <prefix> <blue>Tu as déséquipé %projectile-effectname%
+  Equip: <prefix> <blue>Tu as équipé <projectile-effectname>
+  Unequip: <prefix> <blue>Tu as déséquipé <projectile-effectname>
   Rainbow:
     name: <bold><rainbow>arc-en-Ciel
     Description: Particules de couleur arc-en-ciel
@@ -1809,8 +1809,8 @@ Projectile-Effects:
     name: <aqua>&Âme de lSculk
     Description: Âmes cyan
 Death-Effects:
-  Equip: <prefix> <blue>Tu as équipé %death-effectname%
-  Unequip: <prefix> <blue>Tu as déséquipé %death-effectname%
+  Equip: <prefix> <blue>Tu as équipé <death-effectname>
+  Unequip: <prefix> <blue>Tu as déséquipé <death-effectname>
   Explosion:
     name: '&4&lExplosion'
     Description: '&7&oBOOM!'
