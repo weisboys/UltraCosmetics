@@ -1706,8 +1706,8 @@ Emotes:
     Name: <bold><aqua>Успокоение от влюбленности
     Description: Мы влюбленны?
 Projectile-Effects:
-  Equip: <prefix> <blue>Вы экипированы <projectile-effectname>
-  Unequip: <prefix> <blue>Вы сняти экипировку <projectile-effectname>
+  Equip: <prefix> <blue>Вы одели <projectile-effectname>
+  Unequip: <prefix> <blue>Вы сняли <projectile-effectname>
   Rainbow:
     name: <bold><rainbow>Rainbow
     Description: Радужные частицы
@@ -1808,8 +1808,8 @@ Projectile-Effects:
     name: <bold><aqua>Скалковые души
     Description: Циановые души
 Death-Effects:
-  Equip: <prefix> <blue>Вы экипированы <death-effectname>
-  Unequip: <prefix> <blue>Вы сняти экипировку <death-effectname>
+  Equip: <prefix> <blue>Вы одели <death-effectname>
+  Unequip: <prefix> <blue>Вы сняли <death-effectname>
   Explosion:
     name: <bold><dark_red>Взрыв
     Description: БУУУУМ!
