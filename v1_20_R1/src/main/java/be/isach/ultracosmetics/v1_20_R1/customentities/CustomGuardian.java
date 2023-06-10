@@ -10,7 +10,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Guardian;
 import net.minecraft.world.level.Level;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftArmorStand;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftArmorStand;
 import org.bukkit.entity.ArmorStand;
 
 /**

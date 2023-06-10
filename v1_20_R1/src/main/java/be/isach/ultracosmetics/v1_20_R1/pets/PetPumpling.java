@@ -8,7 +8,7 @@ import be.isach.ultracosmetics.v1_20_R1.customentities.Pumpling;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,7 +22,7 @@ public class PetPumpling extends CustomEntityPet {
 
     @Override
     public LivingEntity getNewEntity() {
-        return new Pumpling(EntityType.ZOMBIE, ((CraftPlayer) getPlayer()).getHandle().getLevel());
+        return new Pumpling(EntityType.ZOMBIE, ((CraftPlayer) getPlayer()).getHandle().level());
     }
 
     @Override

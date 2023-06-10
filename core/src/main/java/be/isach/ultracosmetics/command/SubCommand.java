@@ -22,7 +22,6 @@ import java.util.List;
  */
 public abstract class SubCommand {
 
-    private final Component prefix = MessageManager.getMessage("Prefix");
     private final String name;
     private final String description;
     private final Permission permission;
@@ -163,7 +162,7 @@ public abstract class SubCommand {
 
     protected void error(CommandSender sender, String error) {
         MessageManager.getAudiences().sender(sender).sendMessage(
-                Component.empty().append(prefix).appendSpace().append(Component.text(error, NamedTextColor.RED, TextDecoration.BOLD))
+                Component.empty().append(MessageManager.getMessage("Prefix")).appendSpace().append(Component.text(error, NamedTextColor.RED, TextDecoration.BOLD))
         );
     }
 }

@@ -6,7 +6,7 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.v1_20_R1.customentities.CustomSlime;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 
 /**
  * @author RadBuilder
@@ -23,6 +23,6 @@ public class MountSlime extends MountCustomEntity {
 
     @Override
     public LivingEntity getNewEntity() {
-        return new CustomSlime(EntityType.SLIME, ((CraftPlayer) getPlayer()).getHandle().getLevel());
+        return new CustomSlime(EntityType.SLIME, ((CraftPlayer) getPlayer()).getHandle().level());
     }
 }

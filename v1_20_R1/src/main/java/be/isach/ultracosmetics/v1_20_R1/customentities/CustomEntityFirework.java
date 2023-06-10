@@ -5,7 +5,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.level.Level;
-import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 /**
@@ -28,7 +28,7 @@ public class CustomEntityFirework extends FireworkRocketEntity {
             return;
         }
 
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             gone = true;
 
             if (players != null) {
@@ -37,7 +37,7 @@ public class CustomEntityFirework extends FireworkRocketEntity {
                         (((CraftPlayer) player).getHandle()).connection.send(new ClientboundEntityEventPacket(this, (byte) 17));
                     }
                 } else {
-                    level.broadcastEntityEvent(this, (byte) 17);
+                    level().broadcastEntityEvent(this, (byte) 17);
                 }
             }
             ((Entity) this).discard();

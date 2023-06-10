@@ -16,8 +16,9 @@ public enum ServerVersion {
     v1_15("1.15.2", null, 0),
     v1_16("1.16.5", null, 0),
     v1_17("1.17.1", null, 0),
-    v1_18("1.18.2", "eaeedbff51b16ead3170906872fda334", 2),
+    v1_18("1.18.2", null, 0),
     v1_19("1.19.4", "3009edc0fff87fa34680686663bd59df", 3),
+    v1_20("1.20", "34f399b4f2033891290b7f0700e9e47b", 1),
     NEW("???", null, 0),
     ;
 
@@ -27,7 +28,7 @@ public enum ServerVersion {
     // which is more often than actual NMS revisions happen. You can find this
     // value by checking the source code of this method:
     // org.bukkit.craftbukkit.util.CraftMagicNumbers#getMappingsVersion
-    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#240
+    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#242
     // getMappingsVersion was added in 1.13.2, earlier versions don't have it.
     private final String mappingsVersion;
     // The NMS revision the corresponding module is built for, or 0 for no module.
@@ -39,6 +40,8 @@ public enum ServerVersion {
         this.nmsRevision = nmsRevision;
         if (name.equals("???")) {
             id = 0;
+        } else if (name.indexOf('.') == name.lastIndexOf('.')) {
+            id = Integer.parseInt(name.substring(name.indexOf('.') + 1));
         } else {
             id = Integer.parseInt(name.substring(name.indexOf('.') + 1, name.lastIndexOf('.')));
         }

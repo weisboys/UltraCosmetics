@@ -57,8 +57,9 @@ public class RenamePetButton implements Button {
                 .itemLeft(XMaterial.PAPER.parseItem())
                 .text(MessageManager.getLegacyMessage("Menu.Rename-Pet.Placeholder"))
                 .title(MessageManager.getLegacyMessage("Menu.Rename-Pet.Title"))
-                .onComplete(completion -> {
-                    String text = completion.getText();
+                .onClick((slot, state) -> {
+                    if (slot != AnvilGUI.Slot.OUTPUT) return Collections.emptyList();
+                    String text = state.getText();
                     if (text.length() > MySqlConnectionManager.MAX_NAME_SIZE) {
                         return Collections.singletonList(AnvilGUI.ResponseAction.replaceInputText(MessageManager.getLegacyMessage("Too-Long")));
                     }

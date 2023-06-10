@@ -145,7 +145,7 @@ public class CustomEntities {
 
         wEntity.setJumping(wPassenger.isJumping());
 
-        if (wPassenger.isJumping() && entity.isOnGround()) {
+        if (wPassenger.isJumping() && entity.onGround()) {
             Vec3 v = entity.getDeltaMovement();
             Vec3 v2 = new Vec3(v.x(), 0.4D, v.z());
             entity.setDeltaMovement(v2);
