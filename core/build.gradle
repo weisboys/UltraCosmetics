@@ -54,6 +54,7 @@ shadowJar {
     exclude 'me/gamercoder215/mobchip/abstraction/v1_13_R1/*'
     exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R1/*'
     exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R2/*'
+    exclude 'me/gamercoder215/mobchip/abstraction/v1_18_R1/*'
     relocate('com.zaxxer.hikari', path + '.hikari')
     relocate('com.cryptomorin.xseries', path + '.xseries')
     relocate('org.bstats', path + '.metrics')

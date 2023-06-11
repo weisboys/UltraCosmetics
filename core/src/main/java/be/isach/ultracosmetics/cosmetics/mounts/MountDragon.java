@@ -40,6 +40,7 @@ public class MountDragon extends Mount {
 
     @Override
     public void onUpdate() {
+        brain.getBody().setHurtTime(20);
         if (SettingsManager.getConfig().getBoolean("Mounts." + getType().getConfigName() + ".Stationary")) return;
 
         float yaw = getPlayer().getLocation().getYaw();
