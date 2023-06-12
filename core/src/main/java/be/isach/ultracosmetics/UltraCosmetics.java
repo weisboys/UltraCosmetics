@@ -270,7 +270,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         // Beginning of boot log. basic informations.
         getSmartLogger().write("-------------------------------------------------------------------");
-        getSmartLogger().write("Thanks for using UltraCosmetics! Version: " + updateChecker.getCurrentVersion().getFull());
+        getSmartLogger().write("Thanks for using UltraCosmetics! Version: " + updateChecker.getCurrentVersion().versionClassifierCommit());
         getSmartLogger().write("Plugin by Datatags. Original Author: iSach");
         getSmartLogger().write("Link: https://bit.ly/UltraCosmetics");
 
@@ -475,7 +475,7 @@ public class UltraCosmetics extends JavaPlugin {
         } else {
             nms = "NMS-less " + (sv.isAtLeast(ServerVersion.v1_13) ? "flattening" : "legacy");
         }
-        String version = updateChecker.getCurrentVersion().getFull();
+        String version = updateChecker.getCurrentVersion().versionWithClassifier();
         metrics.addCustomChart(new DrilldownPie("uc_by_mc", () -> {
             Map<String, Map<String, Integer>> map = new HashMap<>();
             Map<String, Integer> entry = new HashMap<>();
@@ -490,9 +490,7 @@ public class UltraCosmetics extends JavaPlugin {
             map.put(version, entry);
             return map;
         }));
-        metrics.addCustomChart(new SimplePie("mysql_enabled", () -> {
-            return getConfig().getBoolean("MySQL.Enabled") ? "true" : "false";
-        }));
+        metrics.addCustomChart(new SimplePie("mysql_enabled", () -> String.valueOf(getConfig().getBoolean("MySQL.Enabled"))));
     }
 
     private boolean setUpConfig() {

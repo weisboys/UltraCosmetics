@@ -20,7 +20,7 @@ public class SubCommandUpdate extends SubCommand {
             sender.sendMessage(ChatColor.RED + "Version checking must be enabled to update.");
             return;
         }
-        sender.sendMessage(ChatColor.GREEN + "Current version: " + updateManager.getCurrentVersion().getFull());
+        sender.sendMessage(ChatColor.GREEN + "Current version: " + updateManager.getCurrentVersion().versionClassifierCommit());
         if (args.length > 1 && args[1].equalsIgnoreCase("force")) {
             sender.sendMessage(ChatColor.RED + "Ignoring version check and downloading anyway. This is not recommended and may result in a downgrade.");
         } else {

@@ -30,7 +30,7 @@ public class SubCommandTroubleshoot extends SubCommand {
 
     public static void sendSupportMessage(CommandSender sender) {
         sender.sendMessage("");
-        String version = UltraCosmeticsData.get().getPlugin().getUpdateChecker().getCurrentVersion().getFull();
+        String version = UltraCosmeticsData.get().getPlugin().getUpdateChecker().getCurrentVersion().versionClassifierCommit();
         sender.sendMessage("You are running UC " + version + " on " + Bukkit.getName() + " " + Bukkit.getVersion());
         sender.sendMessage(ChatColor.GREEN + "If you need help, join the Discord for support: https://discord.gg/mDSbzGPykk");
         sender.sendMessage(ChatColor.GREEN + "When you join, share a screenshot of this message.");

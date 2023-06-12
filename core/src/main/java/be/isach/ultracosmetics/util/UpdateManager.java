@@ -97,7 +97,7 @@ public class UpdateManager extends BukkitRunnable {
         }
 
         outdated = true;
-        status = "New version available on Spigot: " + spigotVersion.get();
+        status = "New version available on Spigot: " + spigotVersion.numbersOnly();
     }
 
     public boolean update() {
@@ -176,7 +176,7 @@ public class UpdateManager extends BukkitRunnable {
         try {
             URL url = new URL(RESOURCE_URL + "download");
             in = new BufferedInputStream(url.openStream());
-            File outputFile = new File(Bukkit.getUpdateFolderFile(), "UltraCosmetics-" + spigotVersion.get() + "-RELEASE.jar");
+            File outputFile = new File(Bukkit.getUpdateFolderFile(), "UltraCosmetics-" + spigotVersion.numbersOnly() + "-RELEASE.jar");
             outputFile.getParentFile().mkdirs();
             fout = new FileOutputStream(outputFile);
 

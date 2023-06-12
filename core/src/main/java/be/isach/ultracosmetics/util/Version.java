@@ -28,11 +28,15 @@ public class Version implements Comparable<Version> {
         this(version, "RELEASE", null);
     }
 
-    public final String get() {
+    public final String numbersOnly() {
         return this.version;
     }
 
-    public String getFull() {
+    public String versionWithClassifier() {
+        return version + "-" + classifier;
+    }
+
+    public String versionClassifierCommit() {
         StringBuilder builder = new StringBuilder(version);
         builder.append('-').append(classifier);
         if (gitHash != null) {
@@ -43,8 +47,8 @@ public class Version implements Comparable<Version> {
 
     @Override
     public int compareTo(Version otherVersion) {
-        String[] thisParts = this.get().split("\\.");
-        String[] thatParts = otherVersion.get().split("\\.");
+        String[] thisParts = this.numbersOnly().split("\\.");
+        String[] thatParts = otherVersion.numbersOnly().split("\\.");
         int length = Math.max(thisParts.length, thatParts.length);
         for (int i = 0; i < length; i++) {
             int thisPart = i < thisParts.length ?
@@ -80,6 +84,6 @@ public class Version implements Comparable<Version> {
 
     @Override
     public String toString() {
-        return get();
+        return numbersOnly();
     }
 }
