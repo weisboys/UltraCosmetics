@@ -1,29 +1,31 @@
 package be.isach.ultracosmetics.util;
 
+import org.bukkit.Bukkit;
+
 /**
  * Created by Sacha on 6/03/16.
  */
 public enum ServerVersion {
 
     // Do not supply a mapping version when there is no NMS module.
-    v1_8("1.8.8", null, 0),
-    v1_9("1.9.4", null, 0),
-    v1_10("1.10.2", null, 0),
-    v1_11("1.11.2", null, 0),
-    v1_12("1.12.2", null, 0),
-    v1_13("1.13.2", null, 0),
-    v1_14("1.14.4", null, 0),
-    v1_15("1.15.2", null, 0),
-    v1_16("1.16.5", null, 0),
-    v1_17("1.17.1", null, 0),
-    v1_18("1.18.2", null, 0),
-    v1_19("1.19.4", "3009edc0fff87fa34680686663bd59df", 3),
-    v1_20("1.20", "34f399b4f2033891290b7f0700e9e47b", 1),
-    NEW("???", null, 0),
+    v1_8("1.8.8", 8, null, 0),
+    v1_9("1.9.4", 9, null, 0),
+    v1_10("1.10.2", 10, null, 0),
+    v1_11("1.11.2", 11, null, 0),
+    v1_12("1.12.2", 12, null, 0),
+    v1_13("1.13.2", 13, null, 0),
+    v1_14("1.14.4", 14, null, 0),
+    v1_15("1.15.2", 15, null, 0),
+    v1_16("1.16.5", 16, null, 0),
+    v1_17("1.17.1", 17, null, 0),
+    v1_18("1.18.2", 18, null, 0),
+    v1_19("1.19.4", 19, "3009edc0fff87fa34680686663bd59df", 3),
+    v1_20("1.20", 20, "34f399b4f2033891290b7f0700e9e47b", 1),
+    NEW("???", 0, null, 0),
     ;
 
-    private final int id;
     private final String name;
+    private final int id;
     // mappingsVersion is a random string that is changed whenever NMS changes
     // which is more often than actual NMS revisions happen. You can find this
     // value by checking the source code of this method:
@@ -34,17 +36,11 @@ public enum ServerVersion {
     // The NMS revision the corresponding module is built for, or 0 for no module.
     private final int nmsRevision;
 
-    private ServerVersion(String name, String mappingsVersion, int nmsRevision) {
+    private ServerVersion(String name, int id, String mappingsVersion, int nmsRevision) {
         this.name = name;
+        this.id = id;
         this.mappingsVersion = mappingsVersion;
         this.nmsRevision = nmsRevision;
-        if (name.equals("???")) {
-            id = 0;
-        } else if (name.indexOf('.') == name.lastIndexOf('.')) {
-            id = Integer.parseInt(name.substring(name.indexOf('.') + 1));
-        } else {
-            id = Integer.parseInt(name.substring(name.indexOf('.') + 1, name.lastIndexOf('.')));
-        }
     }
 
     public String getName() {
@@ -82,7 +78,7 @@ public enum ServerVersion {
     }
 
     public boolean isMobChipAvailable() {
-        return isAtLeast(v1_13) && this != NEW;
+        return isAtLeast(v1_13) && this != NEW && !isMobchipEdgeCase();
     }
 
     public boolean isNmsSupported() {
@@ -93,4 +89,11 @@ public enum ServerVersion {
         //noinspection UnnecessaryToStringCall
         return toString() + "_R" + nmsRevision;
     }
+
+    public static boolean isMobchipEdgeCase() {
+        String rawVersion = Bukkit.getVersion();
+        String version = rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
+        return version.equals("1.19");
+    }
+
 }

@@ -63,8 +63,6 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -139,7 +137,7 @@ public class UltraCosmetics extends JavaPlugin {
     /**
      * Manages WorldGuard flags.
      */
-    private WorldGuardManager worldGuardManager = new WorldGuardManager(this);
+    private final WorldGuardManager worldGuardManager = new WorldGuardManager(this);
 
     private boolean legacyMessagePrinted = false;
     private boolean enableFinished = false;
@@ -151,7 +149,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     private Set<Problem> loadTimeProblems = new HashSet<>();
 
-    private List<String> supportedLanguages = new ArrayList<>();
+    private final List<String> supportedLanguages = new ArrayList<>();
 
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
@@ -370,7 +368,7 @@ public class UltraCosmetics extends JavaPlugin {
         armorStandManager = new ArmorStandManager(this);
 
         if (getServer().getPluginManager().isPluginEnabled("DiscordSRV")
-                && !SettingsManager.getConfig().getString("DiscordSRV-Loot-Channel").equals("0")) {
+                && !SettingsManager.getConfig().getString("DiscordSRV-Loot-Channel", "0").equals("0")) {
             discordHook = new DiscordSRVHook();
             getSmartLogger().write();
             getSmartLogger().write("Hooked into DiscordSRV");
@@ -506,9 +504,10 @@ public class UltraCosmetics extends JavaPlugin {
         if (defaults == null) return false;
 
         configMigration();
+        boolean lootCommandsPresent = config.isConfigurationSection("TreasureChests.Loots.Commands");
 
         for (String key : defaults.getKeys(true)) {
-            if (key.startsWith("TreasureChests.Loots.Commands.")) continue;
+            if (key.startsWith("TreasureChests.Loots.Commands.") && lootCommandsPresent) continue;
             if (key.startsWith("TreasureChests.Locations.default")) continue;
             config.addDefault(key, defaults.get(key), defaults.comments(key));
         }
@@ -520,28 +519,6 @@ public class UltraCosmetics extends JavaPlugin {
         }
         config.set("Disabled-Items", null);
         config.set("Menu-Item.Data", null);
-
-        if (!config.isConfigurationSection("TreasureChests.Loots.Commands")) {
-            ConfigurationSection section = config.createSection("TreasureChests.Loots.Commands.shoutout");
-            section.set("Name", "&d&lShoutout");
-            section.set("Material", "NETHER_STAR");
-            section.set("Enabled", false);
-            section.set("Chance", 100);
-            section.set("Message.enabled", false);
-            section.set("Message.message", "%prefix% &6&l%name% found a rare shoutout!");
-            section.set("Cancel-If-Permission", "no");
-            section.set("Commands", Collections.singletonList("say %name% is awesome!"));
-
-            section = config.createSection("TreasureChests.Loots.Commands.flower");
-            section.set("Name", "&e&lFlower");
-            section.set("Material", "YELLOW_FLOWER");
-            section.set("Enabled", false);
-            section.set("Chance", 100);
-            section.set("Message.enabled", false);
-            section.set("Message.message", "%prefix% &6&l%name% found a flower!");
-            section.set("Cancel-If-Permission", "example.yellowflower");
-            section.set("Commands", Arrays.asList("give %name% yellow_flower 1", "lp user %name% permission set example.yellowflower true"));
-        }
 
         config.set("Supported-Languages", supportedLanguages, "Languages supported by this version of UltraCosmetics.", "This is not a configurable list, just informative.");
 
