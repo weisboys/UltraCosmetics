@@ -35,7 +35,8 @@ public class PetPumpling extends CustomEntityPet {
 
     @Override
     public void onUpdate() {
-        getNMSEntity().remainingFireTicks = 0;
+        // Is this necesssary?
+        getNMSEntity().setRemainingFireTicks(0);
         Particles.FLAME.display(0.2f, 0.2f, 0.2f, ((Zombie) getEntity()).getEyeLocation(), 3);
         // this doesn't seem to work when just in setupEntity()
         getNMSEntity().setInvisible(true);
