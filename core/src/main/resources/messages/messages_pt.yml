@@ -440,6 +440,10 @@ Mounts:
       This type of snake comes straight from
       the hidden "Secret Swamps of Sliminess".
       This one will serve you eternally.
+  Camel:
+    menu-name: <bold><gold>Camel
+    entity-displayname: <bold><playername>'s Camel
+    Description: Your standard, everyday camel
   Equip: <prefix> <blue>Você invocou <mountname>
   Unequip: <prefix> <blue>Você invocou <mountname>
   Cant-Spawn: <prefix> <bold><red>Monsters não podem nascer aqui!
@@ -873,6 +877,10 @@ Pets:
     menu-name: <bold><dark_blue>Illusioner
     entity-displayname: <bold><playername>'s Illusioner
     Description: Only spawnable with commands!
+  Sniffer:
+    menu-name: <bold><green>Sniffer
+    entity-displayname: <bold><playername>'s Sniffer
+    Description: Can smell pottery!
   Equip: <prefix> <blue>You spawned <petname>
   Unequip: <prefix> <blue>You despawned <petname>
 Morphs:

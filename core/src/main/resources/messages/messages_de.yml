@@ -446,6 +446,10 @@ Mounts:
       Diese Art von Schlange kommt direkt aus den
       versteckten "geheimen Sümpfen der Schleimigkeit".
       Diese wird dir ewig dienen.
+  Camel:
+    menu-name: <bold><gold>Camel
+    entity-displayname: <bold><playername>'s Camel
+    Description: Your standard, everyday camel
   Equip: <prefix> <blue>Du hast <mountname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <mountname> </blue><blue>entfernt
   Cant-Spawn: <prefix> <bold><red>Monster können hier nicht spawnen!
@@ -879,6 +883,10 @@ Pets:
     menu-name: <bold><dark_blue>Illusionist
     entity-displayname: <bold><playername>'s Illusionist
     Description: Nur mit Befehlen spawnbar!
+  Sniffer:
+    menu-name: <bold><green>Sniffer
+    entity-displayname: <bold><playername>'s Sniffer
+    Description: Can smell pottery!
   Equip: <prefix> <blue>Du hast <petname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <petname> </blue><blue>entfernt
 Morphs:
