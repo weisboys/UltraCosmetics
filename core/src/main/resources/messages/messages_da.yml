@@ -419,7 +419,7 @@ Mounts:
     Description: |-
       A mysterious cube-shaped mob
       capable of walking straight over lava.
-    Held-Item-Lore: <italic><gray>Strider food on a stick!
+    Held-Item-Lore: Strider food on a stick!
   Horse:
     menu-name: <bold><gray>Horse
     entity-displayname: <bold><playername>'s Horse
@@ -436,7 +436,7 @@ Mounts:
     menu-name: <bold><light_purple>Pig
     entity-displayname: <bold><playername>'s Pig
     Description: Oink!
-    Held-Item-Lore: <italic><gray>Pig food on a stick!
+    Held-Item-Lore: Pig food on a stick!
   SlimeSnake:
     menu-name: <bold><red>Slime Snake
     entity-displayname: <bold><playername>'s Slime Snake
