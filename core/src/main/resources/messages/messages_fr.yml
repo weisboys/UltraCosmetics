@@ -444,6 +444,10 @@ Mounts:
       Ce type de serpent vient tout droit de
       les "marais secrets de Sliminess" cachés.
       Celui-ci vous servira éternellement.
+  Camel:
+    menu-name: <bold><gold>Camel
+    entity-displayname: <bold><playername>'s Camel
+    Description: Your standard, everyday camel
   Equip: <prefix> <blue>Tu as fait apparaître <mountname>
   Unequip: <prefix> <blue>Tu as fait disparaître <mountname>
   Cant-Spawn: <prefix> <bold><red>Les monstres ne peuvent pas apparaître ici !
@@ -877,6 +881,10 @@ Pets:
     menu-name: '&1&lIllusioner'
     entity-displayname: <bold>L'illusionner de <playername>
     Description: Ne peut apparaître qu'avec des commandes !
+  Sniffer:
+    menu-name: <bold><green>Sniffer
+    entity-displayname: <bold><playername>'s Sniffer
+    Description: Can smell pottery!
   Equip: <prefix> <blue>Tu as fait apparaître <petname>
   Unequip: <prefix> <blue>Tu as fait disparaître <petname>
 Morphs:
