@@ -444,6 +444,10 @@ Mounts:
       Цей тип змії прямо з
       прихованих "Секретні доповнення до Слаймінсу".
       Цей підійде вам вічно.
+  Camel:
+    menu-name: <bold><gold>Camel
+    entity-displayname: <bold><playername>'s Camel
+    Description: Your standard, everyday camel
   Equip: <prefix> <blue>Ви заспавнили <mountname>
   Unequip: <prefix> <blue>Ви задеспавнили <mountname>
   Cant-Spawn: <prefix> <bold><red>Монстри не можуть тут спавнитись!
@@ -877,6 +881,10 @@ Pets:
     menu-name: <bold><dark_blue>Ілюзіоніст
     entity-displayname: "<bold>Іллюзіоніст гравця \n<playername>"
     Description: Тільки доступний через команди!
+  Sniffer:
+    menu-name: <bold><green>Sniffer
+    entity-displayname: <bold><playername>'s Sniffer
+    Description: Can smell pottery!
   Equip: <prefix> <blue>Ви заспавнили <petname>
   Unequip: <prefix> <blue>Ви задеспавнили <petname>
 Morphs:
