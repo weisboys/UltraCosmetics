@@ -419,7 +419,7 @@ Mounts:
     Description: |-
       神秘的立方体生物
       可以直接在岩浆上行走
-    Held-Item-Lore: <italic><gray>Strider food on a stick!
+    Held-Item-Lore: Strider food on a stick!
   Horse:
     menu-name: <bold><gray>马
     entity-displayname: <bold><playername>的马
@@ -436,7 +436,7 @@ Mounts:
     menu-name: <bold><light_purple>Pig
     entity-displayname: <bold><playername>'s Pig
     Description: Oink!
-    Held-Item-Lore: <italic><gray>Pig food on a stick!
+    Held-Item-Lore: Pig food on a stick!
   SlimeSnake:
     menu-name: <bold><red>Slime Snake
     entity-displayname: <bold><playername>'s Slime Snake
