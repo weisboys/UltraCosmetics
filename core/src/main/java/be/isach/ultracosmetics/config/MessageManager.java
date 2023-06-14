@@ -253,9 +253,7 @@ public class MessageManager {
         ConfigurationSection noPermission = SettingsManager.getConfig().getConfigurationSection("No-Permission");
         for (String key : new String[] {"Yes", "No", "Showroom"}) {
             String path = "Lore-Message-" + key;
-            UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Checking " + path);
             if (noPermission.isString(path)) {
-                UltraCosmeticsData.get().getPlugin().getSmartLogger().write("Found " + path);
                 String newKey = key;
                 if (!key.equals("Showroom")) {
                     newKey = "Permission-" + key;
