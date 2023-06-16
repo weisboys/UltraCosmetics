@@ -447,9 +447,9 @@ Mounts:
       versteckten "geheimen Sümpfen der Schleimigkeit".
       Diese wird dir ewig dienen.
   Camel:
-    menu-name: <bold><gold>Camel
-    entity-displayname: <bold><playername>'s Camel
-    Description: Your standard, everyday camel
+    menu-name: <bold><gold>Kamel
+    entity-displayname: <bold><playername>'s Kamel
+    Description: Dein normales, alltägliches Kamel
   Equip: <prefix> <blue>Du hast <mountname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <mountname> </blue><blue>entfernt
   Cant-Spawn: <prefix> <bold><red>Monster können hier nicht spawnen!
@@ -884,9 +884,9 @@ Pets:
     entity-displayname: <bold><playername>'s Illusionist
     Description: Nur mit Befehlen spawnbar!
   Sniffer:
-    menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    menu-name: <bold><green>Schnüffler
+    entity-displayname: <bold><playername>'s Schnüffler
+    Description: Kann Keramik riechen!
   Equip: <prefix> <blue>Du hast <petname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <petname> </blue><blue>entfernt
 Morphs:
