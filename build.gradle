@@ -10,7 +10,7 @@ allprojects {
 
     group = 'be.isach'
     version = '3.3'
-    def classifier = 'DEV-b2'
+    def classifier = 'RELEASE'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
