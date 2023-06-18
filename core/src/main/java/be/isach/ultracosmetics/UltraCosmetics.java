@@ -227,12 +227,12 @@ public class UltraCosmetics extends JavaPlugin {
             return;
         }
 
+        updateChecker = new UpdateManager(this);
         // Start update checker ASAP so if there's a problem that can be
         // resolved by updating, the user knows there's an update.
         // (We can't start it before the config loader because we need config settings.)
         if (SettingsManager.getConfig().getBoolean("Check-For-Updates")) {
             getSmartLogger().write("Checking for update...");
-            updateChecker = new UpdateManager(this);
             updateChecker.runTaskAsynchronously(this);
         }
 
