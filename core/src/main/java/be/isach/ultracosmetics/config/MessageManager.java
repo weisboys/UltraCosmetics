@@ -12,6 +12,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
+import net.kyori.adventure.text.serializer.ComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
@@ -207,12 +208,14 @@ public class MessageManager {
     }
 
     private void minimessageMigration() {
-        // Prefix hasn't been converted yet, so don't use it.
-        MiniMessage miniMessage = buildMinimessage(false);
         SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
         log.write(SmartLogger.LogLevel.WARNING, "Your messages file is using legacy color codes, it will be upgraded now");
+        // Prefix hasn't been converted yet, so don't use it.
+        migration(LegacyComponentSerializer.legacyAmpersand(), buildMinimessage(false));
+    }
+
+    private void migration(ComponentSerializer<Component, ?, String> deserializer, ComponentSerializer<Component, ?, String> serializer) {
         ConfigurationSection config = messagesConfig.fileConfiguration;
-        LegacyComponentSerializer deserializer = LegacyComponentSerializer.legacyAmpersand();
         Pattern percentVarPattern = Pattern.compile("%([\\w-]+)%");
         for (String key : config.getKeys(true)) {
             if (!config.isString(key)) continue;
@@ -222,9 +225,9 @@ public class MessageManager {
             String[] raw = config.getString(key).split("\n");
             String[] converted = new String[raw.length];
             for (int i = 0; i < raw.length; i++) {
-                converted[i] = miniMessage.serialize(deserializer.deserialize(raw[i]));
+                converted[i] = serializer.serialize(deserializer.deserialize(raw[i]));
             }
-            // Replace percents AFTER MiniMessage conversion, because MiniMessage
+            // Replace percents AFTER conversion, because MiniMessage
             // will escape placeholders it doesn't recognize at the moment.
             config.set(key, percentVarPattern.matcher(String.join("\n", converted)).replaceAll("<$1>"));
         }
@@ -241,12 +244,12 @@ public class MessageManager {
         migrateConfigStrings(miniMessage, deserializer);
     }
 
-    private void migrateConfigStrings(MiniMessage miniMessage, LegacyComponentSerializer deserializer) {
+    private void migrateConfigStrings(ComponentSerializer<Component, ?, String> serializer, ComponentSerializer<Component, ?, String> deserializer) {
         ConfigurationSection loots = SettingsManager.getConfig().getConfigurationSection("TreasureChests.Loots");
         for (String key : loots.getKeys(false)) {
             String path = key + ".Message.message";
             if (loots.isString(path)) {
-                messagesConfig.set("Treasure-Chests-Loot-Messages." + key, miniMessage.serialize(deserializer.deserialize(loots.getString(path))));
+                messagesConfig.set("Treasure-Chests-Loot-Messages." + key, serializer.serialize(deserializer.deserialize(loots.getString(path))));
                 loots.set(path, null);
             }
         }
@@ -258,7 +261,7 @@ public class MessageManager {
                 if (!key.equals("Showroom")) {
                     newKey = "Permission-" + key;
                 }
-                messagesConfig.set("Permission-Lore." + newKey, miniMessage.serialize(deserializer.deserialize(noPermission.getString(path))));
+                messagesConfig.set("Permission-Lore." + newKey, serializer.serialize(deserializer.deserialize(noPermission.getString(path))));
                 noPermission.set(path, null);
             }
         }

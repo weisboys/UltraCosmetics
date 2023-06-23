@@ -38,6 +38,7 @@ public class GadgetParachute extends Gadget implements Updatable {
 
     @Override
     public void onRightClick() {
+        killParachute();
         Location loc = getPlayer().getLocation();
 
         getPlayer().teleport(loc.add(0, 35, 0));
