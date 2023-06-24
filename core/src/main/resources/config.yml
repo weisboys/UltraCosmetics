@@ -437,7 +437,7 @@ Remove-Gadget-With-Drop: false
 
 # Allows for players to auto-equip on join cosmetics they had before disconnecting.
 # Supports both flatfile and SQL, choosing SQL when possible.
-Auto-Equip-Cosmetics: false
+Auto-Equip-Cosmetics: true
 
 # When enabled, prints why area checks failed to the console
 Area-Debug: false
