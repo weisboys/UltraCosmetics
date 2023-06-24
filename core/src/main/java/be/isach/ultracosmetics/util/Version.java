@@ -1,5 +1,8 @@
 package be.isach.ultracosmetics.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Version.
  *
@@ -25,7 +28,18 @@ public class Version implements Comparable<Version> {
     }
 
     public Version(String version) {
-        this(version, "RELEASE", null);
+        this(findVersion(version), findClassifier(version), null);
+    }
+
+    private static String findVersion(String version) {
+        Matcher matcher = Pattern.compile("\\d+(?:\\.\\d+)+").matcher(version);
+        matcher.find();
+        return matcher.group();
+    }
+
+    private static String findClassifier(String version) {
+        if (!version.contains("-")) return "RELEASE";
+        return version.split("-", 2)[1];
     }
 
     public final String numbersOnly() {
