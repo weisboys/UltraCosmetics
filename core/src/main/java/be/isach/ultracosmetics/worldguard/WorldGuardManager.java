@@ -57,7 +57,7 @@ public class WorldGuardManager {
         if (!Bukkit.getPluginManager().isPluginEnabled("WorldGuard")) {
             log.write(LogLevel.ERROR, "WorldGuard is not enabled yet! Is WorldGuard up to date? Is another plugin interfering with the load order?");
             log.write(LogLevel.ERROR, "WorldGuard support will be disabled.");
-            UltraCosmeticsData.get().getPlugin().addProblem(Problem.WORLDGUARD_HOOK_FAILURE);
+            ultraCosmetics.addProblem(Problem.WORLDGUARD_HOOK_FAILURE);
             return;
         }
         flagManager.registerPhase2();

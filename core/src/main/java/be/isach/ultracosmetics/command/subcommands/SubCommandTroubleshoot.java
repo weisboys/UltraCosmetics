@@ -3,10 +3,14 @@ package be.isach.ultracosmetics.command.subcommands;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.command.SubCommand;
+import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.Problem;
+import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Set;
 
@@ -23,7 +27,11 @@ public class SubCommandTroubleshoot extends SubCommand {
             sender.sendMessage(ChatColor.GREEN + "UltraCosmetics is not currently aware of any problems :)");
         } else {
             sender.sendMessage(ChatColor.RED + "UltraCosmetics currently has " + problems.size() + " minor problems.");
-            problems.forEach(p -> sender.sendMessage(ChatColor.YELLOW + p.getDescription()));
+            if (sender instanceof Player) {
+                sender.sendMessage(ChatColor.RED + "(Click on a problem to see its wiki page)");
+            }
+            Audience audience = MessageManager.getAudiences().sender(sender);
+            problems.forEach(p -> audience.sendMessage(p.getSummary().color(NamedTextColor.YELLOW)));
         }
         sendSupportMessage(sender);
     }
