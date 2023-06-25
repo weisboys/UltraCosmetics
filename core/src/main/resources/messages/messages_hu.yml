@@ -1,21 +1,21 @@
-Prefix: <italic><bold>Cosmetics >
-No-Permission: <prefix> <bold><red>You don't have the permission!
-Cosmetic-Disabled: <prefix> <bold><red>This cosmetic is disabled!
-Invalid-Gadget: <prefix> <bold><red>Invalid Gadget!
-Invalid-Pet: <prefix> <bold><red>Invalid Pet!
-Invalid-Mount: <prefix> <bold><red>Invalid Mount!
-Invalid-Effect: <prefix> <bold><red>Invalid Effect!
-Invalid-Morph: <prefix> <bold><red>Invalid Morph!
-Invalid-Hat: <prefix> <bold><red>Invalid Hat!
-Invalid-Suit: <prefix> <bold><red>Invalid Suit!
-Invalid-Emote: <prefix> <bold><red>Invalid Emote!
-Invalid-Menu: <prefix> <bold><red>Invalid Menu!
-Ammo: '<gray>Your ammo: </gray><yellow><ammo>'
-Purchase: <bold><green>PURCHASE
-Cancel: <bold><red>CANCEL
-Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo </yellow></bold><bold><yellow>for $<price>
-Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> </yellow></bold><bold><yellow>for $<price>
-Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
+Prefix: <italic><bold>Kozmetikumok >
+No-Permission: <prefix> <bold><red>Nincs engedélyed!
+Cosmetic-Disabled: <prefix> <bold><red>Ez a kozmetikum le van tiltva!
+Invalid-Gadget: <prefix> <bold><red>Érvénytelen Kütyü!
+Invalid-Pet: <prefix> <bold><red>Érvénytelen Kisállat!
+Invalid-Mount: <prefix> <bold><red>Érvénytelen Állat!
+Invalid-Effect: <prefix> <bold><red>Érvénytelen Effekt!
+Invalid-Morph: <prefix> <bold><red>Érvénytelen Morph!
+Invalid-Hat: <prefix> <bold><red>Érvénytelen Kalap!
+Invalid-Suit: <prefix> <bold><red>Érvénytelen Ruha!
+Invalid-Emote: <prefix> <bold><red>Érvénytelen Érzelem!
+Invalid-Menu: <prefix> <bold><red>Érvénytelen Menü!
+Ammo: '<gray>Töltényed: </gray><yellow><ammo>'
+Purchase: <bold><green>MEGVÁSÁRLÁS
+Cancel: <bold><red>MÉGSE
+Buy-Ammo-Description: '<bold><yellow> Vásárlás <amount> <gadgetname> töltényt </yellow></bold><bold><yellow>a következőért: $<price>'
+Buy-Cosmetic-Description: '<bold><yellow>Vásárlás <gadgetname> </yellow></bold><bold><yellow>a következőért: $<price>'
+Right-Click-Buy-Ammo: <gray>Jobb Katt a Töltény Vásárlásához
 Click-To-Purchase: <yellow>Click to purchase for $<price>
 Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
 Successful-Purchase: <prefix> <bold><green>Successful purchase!
@@ -54,26 +54,26 @@ Menu:
   Rename-Pet:
     Button:
       Name: '<bold><red>Click to rename: <petname>'
-    Placeholder: Pet Name
-    Title: Rename pet
+    Placeholder: Kisállat Neve
+    Title: Kisállat átnevezése
   Main:
-    Title: <bold>Main Menu
+    Title: <bold>Főmenü
     Button:
-      Name: <bold><red>Main Menu
+      Name: <bold><red>Főmenü
   Pets:
-    Title: <bold>Pets
+    Title: <bold>Kisállatok
     Button:
-      Name: <bold><green>Pets
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Name: <bold><green>Kisállatok
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Leidézés
+      Tooltip-Unequip: <bold><red>Visszaidézés
   Gadgets:
-    Title: <bold>Gadgets
+    Title: <bold>Kütyük
     Button:
-      Name: <bold><blue>Gadgets
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Activate
-      Tooltip-Unequip: <bold><red>Deactivate
+      Name: <bold><blue>Kütyük
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Aktiválás
+      Tooltip-Unequip: <bold><red>Deaktiválás
   Mounts:
     Title: <bold>Mounts
     Button:
@@ -134,8 +134,8 @@ Menu:
     Title: <bold>Buy Ammo
   Misc:
     Button:
-      Previous-Page: <bold><red>Previous Page
-      Next-Page: <bold><green>Next Page
+      Previous-Page: <bold><red>Előző oldal
+      Next-Page: <bold><green>Következő oldal
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
   Region-Disabled: <prefix> <bold><red>You can't open a chest here!
@@ -971,7 +971,7 @@ Morphs:
   Allay:
     name: <bold><green>Allay
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: A new friend!
+    Description: Egy új barát!
   Axolotl:
     name: <bold><dark_purple>Axolotl
     skill: <yellow>Left-Click</yellow><gray> for cute sounds
@@ -985,9 +985,9 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Meow'
     Description: Basically a tiny tiger
   CaveSpider:
-    name: <bold><yellow>Cave Spider
+    name: <bold><yellow>Bányapók
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: A spider, but poisonous!
+    Description: Egy pók, viszont mérgező!
   Cod:
     name: <bold><yellow>Cod
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
@@ -1036,11 +1036,11 @@ Morphs:
     name: <bold><gray>Wolf
     Description: Woof!
   IronGolem:
-    name: <bold><gray>Iron Golem
+    name: <bold><gray>Vasgólem
     Description: Hates zombies!
   Wither:
     name: <bold><dark_gray>Wither
-    Description: Watch out for me...
+    Description: Vigyázz velem...
   Skeleton:
     name: <bold><gray>Skeleton
     Description: Very good archer!
@@ -1048,10 +1048,10 @@ Morphs:
     name: <bold><dark_green>Zombie
     Description: Brains!!!
   Squid:
-    name: <bold><light_purple>Squid
+    name: <bold><light_purple>Polip
     Description: Bloop Bloop!
   Spider:
-    name: <bold><dark_gray>Spider
+    name: <bold><dark_gray>Pók
     Description: HISS...
   Ghast:
     name: <bold><white>Ghast
@@ -1060,7 +1060,7 @@ Morphs:
     name: <bold><red>Magma Cube
     Description: A very hot cube!
   Horse:
-    name: <bold><green>Horse
+    name: <bold><green>Ló
     Description: '*fhrrrrhh*'
   Warden:
     name: <bold><dark_aqua>Warden
@@ -1091,9 +1091,9 @@ Morphs:
     Description: Likes bamboo!
   Ocelot:
     name: <bold><yellow>Ocelot
-    Description: King of the jungle
+    Description: A Dzsungel Királya
   WanderingTrader:
-    name: <bold><dark_blue>Wandering Trader
+    name: <bold><dark_blue>Vándorfalusi
     Description: Wanders around trying to sell his stuff!
   Pillager:
     name: <bold><gray>Pillager
