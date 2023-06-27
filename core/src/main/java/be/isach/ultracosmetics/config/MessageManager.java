@@ -234,14 +234,14 @@ public class MessageManager {
 
         ConfigurationSection customItem = SettingsManager.getConfig().getConfigurationSection("No-Permission.Custom-Item");
         String name = customItem.getString("Name", "");
-        String convertedName = miniMessage.serialize(deserializer.deserialize(name));
+        String convertedName = serializer.serialize(deserializer.deserialize(name));
         customItem.set("Name", convertedName.replace("{cosmetic-name}", "<cosmetic>"));
         List<String> lore = new ArrayList<>();
         for (String loreItem : customItem.getStringList("Lore")) {
-            lore.add(miniMessage.serialize(deserializer.deserialize(loreItem)));
+            lore.add(serializer.serialize(deserializer.deserialize(loreItem)));
         }
         customItem.set("Lore", lore);
-        migrateConfigStrings(miniMessage, deserializer);
+        migrateConfigStrings(serializer, deserializer);
     }
 
     private void migrateConfigStrings(ComponentSerializer<Component, ?, String> serializer, ComponentSerializer<Component, ?, String> deserializer) {

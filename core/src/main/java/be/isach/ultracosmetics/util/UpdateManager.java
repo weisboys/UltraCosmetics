@@ -238,10 +238,14 @@ public class UpdateManager extends BukkitRunnable {
         String[] tmvParts = thisMinecraftVersion.split("\\.");
         String[] supportedParts = supportedVersions[supportedVersions.length - 1].split("\\.");
         for (int i = 0; i < tmvParts.length; i++) {
-            if (Integer.parseInt(tmvParts[i]) > Integer.parseInt(supportedParts[i])) {
-                return false;
-            }
+            int tmvPart = Integer.parseInt(tmvParts[i]);
+            int supportedPart = Integer.parseInt(supportedParts[i]);
+            // For the first non-equal parts, if the new version is greater than this version, new version wins
+            if (supportedPart > tmvPart) return true;
+            // Or, if the new version is less than this version (??), this version wins.
+            if (supportedPart < tmvPart) return false;
         }
+        // If all parts are equal, new version wins.
         return true;
     }
 
