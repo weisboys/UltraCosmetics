@@ -883,7 +883,7 @@ Pets:
   Sniffer:
     menu-name: <bold><green>Sniffer
     entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    Description: '¡Puedes oler alfarería!'
   Equip: <prefix> <blue>Spawneaste <petname>
   Unequip: <prefix> <blue>Despawneaste <petname>
 Morphs:
