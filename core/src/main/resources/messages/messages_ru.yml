@@ -50,7 +50,7 @@ Menu:
       Showcase: <bold><red>Переименовать питомца на </red></bold><bold><white><name> </white></bold><bold><red>за </red></bold><bold><yellow>$<price>
     Title: <bold>Переименовать питомца
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Покупка <cosmetic>
   Rename-Pet:
     Button:
       Name: '<bold><red>Нажмите, чтобы переименовать: <petname>'
@@ -185,22 +185,22 @@ Treasure-Chests-Loot:
     <dark_purple>Эффект снаряда
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> найдено <ammo> <cosmetic> боеприпасов
+  Money: <prefix> <bold><gold><name> найдено $<money>
+  Pets: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Mounts: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Particle-Effects: <prefix> <bold><gold><name> найден легендарный <cosmetic>
+  Morphs: <prefix> <bold><gold><name> найден легендарный <cosmetic>
+  Hats: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Gadgets: <prefix> <bold><gold><name> найден гаджет <cosmetic>
+  Suits: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Emotes: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Death-Effects: <prefix> <bold><gold><name> найден редкий <cosmetic>
+  Projectile-Effects: <prefix> <bold><gold><name> найден редкий <cosmetic>
 Permission-Lore:
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
-  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
-  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
+  Showroom: '<gray>Разрешение: </gray><gold>Доступно для демонстрации'
+  Permission-No: '<gray>Разрешение: </gray><bold><dark_red>Нет!'
+  Permission-Yes: '<gray>Разрешение: </gray><bold><green>Да!'
 Disable-Gadgets: <bold><red>Отключить гаджеты
 Disable-Gadgets-Lore: <red>Возможности использования гаджетов и их влияние на вас
 Enable-Gadgets: <bold><green>Включить гаджеты
@@ -1717,7 +1717,7 @@ Projectile-Effects:
   Equip: <prefix> <blue>Вы одели <projectile-effectname>
   Unequip: <prefix> <blue>Вы сняли <projectile-effectname>
   Rainbow:
-    name: <bold><rainbow>Rainbow
+    name: <bold><rainbow>Радуга
     Description: Радужные частицы
   Christmas:
     name: <bold><dark_red>Рожде</dark_red></bold><bold><white>ство
@@ -1850,4 +1850,4 @@ Must-Remove:
     BOOTS: <prefix> <bold><red>Вы должны снять свои ботинки, чтобы надеть ботинки костюма!
   Emotes: <prefix> <bold><red>Вы должны снять шлем, чтобы экипировать эмоцию!
   Gadgets: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы использовать гаджет!
-  Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+  Mounts: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы экипировать этот транспорт!

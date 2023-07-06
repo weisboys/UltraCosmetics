@@ -1652,18 +1652,18 @@ Suits:
       这套衣服属于
       冰霜之地的主人!
   Cursed:
-    whole-equip: <bold><white>whole </white></bold><bold><dark_purple>Cursed </dark_purple></bold><bold><white>suit
-    helmet-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Helmet
-    chestplate-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Chestplate
-    leggings-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Leggings
-    boots-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><dark_purple>Cursed </dark_purple><white>suit
+    helmet-name: <bold><dark_purple>Cursed </dark_purple><white>Helmet
+    chestplate-name: <bold><dark_purple>Cursed </dark_purple><white>Chestplate
+    leggings-name: <bold><dark_purple>Cursed </dark_purple><white>Leggings
+    boots-name: <bold><dark_purple>Cursed </dark_purple><white>Boots
     Description: Mysterious and spooky.
   Slime:
-    whole-equip: <bold><white>whole </white></bold><bold><green>Slime </green></bold><bold><white>suit
-    helmet-name: <bold><green>Slime </green></bold><bold><white>Helmet
-    chestplate-name: <bold><green>Slime </green></bold><bold><white>Chestplate
-    leggings-name: <bold><green>Slime </green></bold><bold><white>Leggings
-    boots-name: <bold><green>Slime </green></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><green>Slime </green><white>suit
+    helmet-name: <bold><green>Slime </green><white>Helmet
+    chestplate-name: <bold><green>Slime </green><white>Chestplate
+    leggings-name: <bold><green>Slime </green><white>Leggings
+    boots-name: <bold><green>Slime </green><white>Boots
     Description: |-
       Slimy green suit.
       The slimes will love it!
@@ -1721,7 +1721,7 @@ Projectile-Effects:
     name: <bold><rainbow>Rainbow
     Description: Rainbow-colored particles
   Christmas:
-    name: <bold><dark_red>Christ</dark_red></bold><bold><white>mas
+    name: <bold><dark_red>Christ</dark_red><white>mas
     Description: Merry Christmas!
   RedstoneHelix:
     name: <bold><dark_red>Redstone Helix

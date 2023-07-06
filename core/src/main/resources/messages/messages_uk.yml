@@ -447,7 +447,7 @@ Mounts:
   Camel:
     menu-name: <bold><gold>Camel
     entity-displayname: <bold><playername>'s Camel
-    Description: Your standard, everyday camel
+    Description: Ваш стандартний повсякденний верблюд
   Equip: <prefix> <blue>Ви заспавнили <mountname>
   Unequip: <prefix> <blue>Ви задеспавнили <mountname>
   Cant-Spawn: <prefix> <bold><red>Монстри не можуть тут спавнитись!
@@ -884,7 +884,7 @@ Pets:
   Sniffer:
     menu-name: <bold><green>Sniffer
     entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    Description: Чути запах кераміки!
   Equip: <prefix> <blue>Ви заспавнили <petname>
   Unequip: <prefix> <blue>Ви задеспавнили <petname>
 Morphs:

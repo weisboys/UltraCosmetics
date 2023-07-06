@@ -369,11 +369,11 @@ Mounts:
     entity-displayname: <bold><playername> Cavalo Ecologista
     Description: Torne-se um ecologista!
   NyanSheep:
-    menu-name: <bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n </yellow></bold><bold><green>Sh</green></bold><bold><aqua>ee</aqua></bold><bold><light_purple>p
+    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Sh</green><aqua>ee</aqua><light_purple>p
     entity-displayname: <bold><playername>'s Nyan Sheep
     Description: |-
-      <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
-      <bold><green>nyan </green></bold><bold><dark_aqua>nyan </dark_aqua></bold><bold><blue>nyan
+      <bold><dark_red>Nyan </dark_red><gold>nyan </gold><yellow>nyan
+      <bold><green>nyan </green><dark_aqua>nyan </dark_aqua><blue>nyan
   Snake:
     menu-name: <bold><gold>Scobra
     entity-displayname: <bold><playername>'s Snake
@@ -501,7 +501,7 @@ Particle-Effects:
     name: <bold><dark_red>Super Herói
     Description: Tornar-se Superpermanente!
   SantaHat:
-    name: <bold><dark_red>Santa </dark_red></bold><bold><white>Hat
+    name: <bold><dark_red>Santa </dark_red><white>Hat
     Description: Become Santa!
   CrushedCandyCane:
     name: <bold><dark_red>Destruído </dark_red></bold><bold><white>Candy </white></bold><bold><dark_red>Cane
@@ -1134,8 +1134,8 @@ Morphs:
     name: <bold><dark_purple>Shulker
     Description: Likes to hide!
 Hats:
-  Equip: <prefix> <blue>You equipped <hatname> </blue><blue>hat!
-  Unequip: <prefix> <blue>You unequipped <hatname> </blue><blue>hat!
+  Equip: <prefix> <blue>You equipped <hatname> hat!
+  Unequip: <prefix> <blue>You unequipped <hatname> hat!
   Astronaut:
     Name: <bold><gray>Astronaut
     Description: Houston, we have got a problem.
@@ -1479,7 +1479,7 @@ Hats:
     Name: <bold><gold>Cookie
     Description: Chocolate chips included!
   CandyCane:
-    Name: <bold><red>Candy </red></bold><bold><white>Cane
+    Name: <bold><red>Candy </red><white>Cane
     Description: A bit of tooth-breaking
   Chocolate:
     Name: <bold><green>Chocolate
@@ -1609,57 +1609,57 @@ Hats:
     Description: The twenty-sixth letter in the alphabet!
 Suits:
   Rave:
-    whole-equip: <bold><white>whole </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>suit
-    helmet-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Helmet
-    chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Chestplate
-    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Leggings
-    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>suit
+    helmet-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Helmet
+    chestplate-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Chestplate
+    leggings-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Leggings
+    boots-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Boots
     Description: Such amazing colors!
   Astronaut:
-    whole-equip: <bold><white>whole </white></bold><bold><white>Astronaut </white></bold><bold><white>suit
-    helmet-name: <bold><white>Astronaut </white></bold><bold><white>Helmet
-    chestplate-name: <bold><white>Astronaut </white></bold><bold><white>Chestplate
-    leggings-name: <bold><white>Astronaut </white></bold><bold><white>Leggings
-    boots-name: <bold><white>Astronaut </white></bold><bold><white>Boots
+    whole-equip: <bold><white>whole Astronaut suit
+    helmet-name: <bold><white>Astronaut Helmet
+    chestplate-name: <bold><white>Astronaut Chestplate
+    leggings-name: <bold><white>Astronaut Leggings
+    boots-name: <bold><white>Astronaut Boots
     Description: Houston?
   Diamond:
-    whole-equip: <bold><white>whole </white></bold><bold><aqua>Diamond </aqua></bold><bold><white>suit
-    helmet-name: <bold><aqua>Diamond </aqua></bold><bold><white>Helmet
-    chestplate-name: <bold><aqua>Diamond </aqua></bold><bold><white>Chestplate
-    leggings-name: <bold><aqua>Diamond </aqua></bold><bold><white>Leggings
-    boots-name: <bold><aqua>Diamond </aqua></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><aqua>Diamond </aqua><white>suit
+    helmet-name: <bold><aqua>Diamond </aqua><white>Helmet
+    chestplate-name: <bold><aqua>Diamond </aqua><white>Chestplate
+    leggings-name: <bold><aqua>Diamond </aqua><white>Leggings
+    boots-name: <bold><aqua>Diamond </aqua><white>Boots
     Description: |-
       Show your Mining skills
       with this amazing outfit!
   Santa:
-    whole-equip: <bold><white>whole </white></bold><bold><dark_red>Santa </dark_red></bold><bold><white>suit
-    helmet-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Helmet
-    chestplate-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Chestplate
-    leggings-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Leggings
-    boots-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><dark_red>Santa </dark_red><white>suit
+    helmet-name: <bold><dark_red>Santa </dark_red><white>Helmet
+    chestplate-name: <bold><dark_red>Santa </dark_red><white>Chestplate
+    leggings-name: <bold><dark_red>Santa </dark_red><white>Leggings
+    boots-name: <bold><dark_red>Santa </dark_red><white>Boots
     Description: Become Santa and deliver presents!
   Frozen:
-    whole-equip: <bold><white>whole </white></bold><bold><aqua>Frozen </aqua></bold><bold><white>suit
-    helmet-name: <bold><aqua>Frozen </aqua></bold><bold><white>Helmet
-    chestplate-name: <bold><aqua>Frozen </aqua></bold><bold><white>Chestplate
-    leggings-name: <bold><aqua>Frozen </aqua></bold><bold><white>Leggings
-    boots-name: <bold><aqua>Frozen </aqua></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><aqua>Frozen </aqua><white>suit
+    helmet-name: <bold><aqua>Frozen </aqua><white>Helmet
+    chestplate-name: <bold><aqua>Frozen </aqua><white>Chestplate
+    leggings-name: <bold><aqua>Frozen </aqua><white>Leggings
+    boots-name: <bold><aqua>Frozen </aqua><white>Boots
     Description: |-
       This suit belongs to the
       Lord of the Frozen Lands!
   Cursed:
-    whole-equip: <bold><white>whole </white></bold><bold><dark_purple>Cursed </dark_purple></bold><bold><white>suit
-    helmet-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Helmet
-    chestplate-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Chestplate
-    leggings-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Leggings
-    boots-name: <bold><dark_purple>Cursed </dark_purple></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><dark_purple>Cursed </dark_purple><white>suit
+    helmet-name: <bold><dark_purple>Cursed </dark_purple><white>Helmet
+    chestplate-name: <bold><dark_purple>Cursed </dark_purple><white>Chestplate
+    leggings-name: <bold><dark_purple>Cursed </dark_purple><white>Leggings
+    boots-name: <bold><dark_purple>Cursed </dark_purple><white>Boots
     Description: Mysterious and spooky.
   Slime:
-    whole-equip: <bold><white>whole </white></bold><bold><green>Slime </green></bold><bold><white>suit
-    helmet-name: <bold><green>Slime </green></bold><bold><white>Helmet
-    chestplate-name: <bold><green>Slime </green></bold><bold><white>Chestplate
-    leggings-name: <bold><green>Slime </green></bold><bold><white>Leggings
-    boots-name: <bold><green>Slime </green></bold><bold><white>Boots
+    whole-equip: <bold><white>whole </white><green>Slime </green><white>suit
+    helmet-name: <bold><green>Slime </green><white>Helmet
+    chestplate-name: <bold><green>Slime </green><white>Chestplate
+    leggings-name: <bold><green>Slime </green><white>Leggings
+    boots-name: <bold><green>Slime </green><white>Boots
     Description: |-
       Slimy green suit.
       The slimes will love it!
@@ -1717,7 +1717,7 @@ Projectile-Effects:
     name: <bold><rainbow>Rainbow
     Description: Rainbow-colored particles
   Christmas:
-    name: <bold><dark_red>Christ</dark_red></bold><bold><white>mas
+    name: <bold><dark_red>Christ</dark_red><white>mas
     Description: Merry Christmas!
   RedstoneHelix:
     name: <bold><dark_red>Redstone Helix

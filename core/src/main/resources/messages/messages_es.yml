@@ -50,7 +50,7 @@ Menu:
       Showcase: <bold><red>Renombrar la mascota a </red></bold><bold><white><name> </white></bold><bold><red>por </red></bold><bold><yellow>$<price>
     Title: <bold>Renombrar mascota
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Comprar <cosmetic>
   Rename-Pet:
     Button:
       Name: '<bold><red>Click para renombrar: <petname>'
@@ -883,7 +883,7 @@ Pets:
   Sniffer:
     menu-name: <bold><green>Sniffer
     entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    Description: '¡Puedes oler alfarería!'
   Equip: <prefix> <blue>Spawneaste <petname>
   Unequip: <prefix> <blue>Despawneaste <petname>
 Morphs:
@@ -1158,7 +1158,7 @@ Hats:
     Name: <bold><blue>Triste
     Description: Estoy tan triste...
   Cool:
-    Name: '&6&lCool'
+    Name: <bold><gold>Cool
     Description: Soy tan Cool!.
   Surprised:
     Name: <bold><dark_red>Sorprendido
@@ -1176,7 +1176,7 @@ Hats:
     Name: <bold><yellow>Guiño
     Description: Ya sabes que quiero decir ;)
   Derp:
-    Name: '&3&lDerp'
+    Name: <bold><dark_aqua>Derp
     Description: Derp Derp Derp
   Smile:
     Name: <bold><yellow>Sonrisa
@@ -1198,75 +1198,75 @@ Hats:
     Description: Eres tan musical.
   Squid:
     Name: <bold><dark_aqua>Calamar
-    Description: '&7&oBloop Bloop!'
+    Description: Bloop Bloop!
   GlowSquid:
     Name: <bold><aqua>Calamar Brillante
     Description: '¡Ilumina el oceano!'
   Chicken:
     Name: <bold><white>Pollo
-    Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
+    Description: Bwwaaaaaaaaaaaakkkkk!
   Blaze:
-    Name: '&6&lBlaze'
+    Name: <bold><gold>Blaze
     Description: Cuidado con el fuego!
   Piston:
-    Name: '&7&lPiston'
+    Name: <bold><gray>Piston
     Description: Ya tienes la redstone??
   Sheep:
     Name: <bold><white>Oveja
-    Description: '&7&oBaaaa, baa'
+    Description: Baaaa, baa
   Pig:
     Name: <bold><light_purple>Cerdo
-    Description: '&7&oOink Oink!'
+    Description: Oink Oink!
   Cow:
     Name: <bold><green>Vaca
-    Description: '&7&oMoooo!'
+    Description: Moooo!
   Mooshroom:
     Name: <bold><red>Vaca Mooshroom
-    Description: '&7&oMoooo!'
+    Description: Moooo!
   BrownMooshroom:
     Name: <bold><aqua>Vaca Champimarron
-    Description: '&7&oMoooo!'
+    Description: Moooo!
   Moobloom:
-    Name: '&e&lMoobloom'
+    Name: <bold><yellow>Moobloom
     Description: Vaca muy rara!
   ChestnutHorse:
     Name: <bold><dark_green>Caballo castaño
     Description: '¡No olvides la montura!'
   Golem:
-    Name: '&7&lGolem'
+    Name: <bold><gray>Golem
     Description: Soy tu guardia.
   CopperGolem:
     Name: <bold><gold>Golem de Cobre
     Description: Hecho con 100% de cobre.
   Enderman:
-    Name: '&5&lEnderman'
+    Name: <bold><dark_purple>Enderman
     Description: Estoy aca, Ahora estoy alla.
   EndermanKing:
     Name: <bold><light_purple>Enderman Rey
     Description: Rey de los endermen
   Slime:
-    Name: '&a&lSlime'
+    Name: <bold><green>Slime
     Description: Muy slimy
   Creeper:
-    Name: '&2&lCreeper'
+    Name: <bold><dark_green>Creeper
     Description: Asusta a tus amigos!
   Skeleton:
     Name: <bold><gray>Esqueleto
     Description: Muy buen arquero!
   Zombie:
-    Name: '&2&lZombie'
+    Name: <bold><dark_green>Zombie
     Description: Cerebrooooos!!!
   Drowned:
     Name: <bold><dark_aqua>Ahogado
     Description: Un zombie subacuatico
   Strider:
-    Name: '&c&lStrider'
+    Name: <bold><red>Strider
     Description: Odio el agua!
   WitherSkeleton:
     Name: <bold><gray>Esqueleto Wither
     Description: Guardián de las Fortalezas del Nether
   Ghast:
-    Name: '&f&lGhast'
+    Name: <bold><white>Ghast
     Description: '*grito extremadamente agudo*'
   Warden:
     Name: '&3&lWarden'
@@ -1317,22 +1317,22 @@ Hats:
     Name: <bold><dark_green>Gato Negro
     Description: El mejor amigo de una Bruja.
   Allay:
-    Name: '&b&lAllay'
+    Name: <bold><aqua>Allay
     Description: El pequeño ayudante
   Bat:
     Name: <bold><dark_purple>Murcielago
     Description: Disfruta de la vida nocturna.
   Glare:
-    Name: '&2&lGlare'
+    Name: <bold><dark_green>Glare
     Description: Odia la oscuridad.
   Rana:
-    Name: '&a&lRana'
+    Name: <bold><green>Rana
     Description: Sombrero de Froggy!
   MCD-Steve:
-    Name: '&9&lSteve'
+    Name: <bold><blue>Steve
     Description: La mejor skin
   MCD-Alex:
-    Name: '&6&lAlex'
+    Name: <bold><gold>Alex
     Description: Amiga de Steve
   MCD-QuestGiver:
     Name: <bold><dark_purple>Da Misiones
@@ -1341,7 +1341,7 @@ Hats:
     Name: <bold><gold>Comerciante de lujo
     Description: Vendo gemas.
   MCD-Necromancer:
-    Name: '&b&lNecromancer'
+    Name: <bold><aqua>Necromancer
     Description: '¡Invoca a los no muertos!'
   MCD-NamelessOne:
     Name: <bold><dark_green>El Sin Nombre
@@ -1365,13 +1365,13 @@ Hats:
     Name: <bold><dark_red>Incendio Forestal
     Description: Infierno Flotante
   Mario:
-    Name: '&4&lMario'
+    Name: <bold><dark_red>Mario
     Description: It is me! Mario!
   Luigi:
-    Name: '&2&lLuigi'
-    Description: '&7&oLuigi time!'
+    Name: <bold><dark_green>Luigi
+    Description: Luigi time!
   Batman:
-    Name: '&8&lBatman'
+    Name: <bold><dark_gray>Batman
     Description: Yo... soy... Batman!
   Chest:
     Name: <bold><gold>Cofre
@@ -1384,15 +1384,15 @@ Hats:
     Description: Un poquito calabaza
   Ghost:
     Name: <bold><white>Fantasma
-    Description: '&7&o2spooky4u'
+    Description: 2spooky4u
   ScaryClown:
     Name: <bold><dark_red>Payaso Aterrador
     Description: Espero que no te den miedo los payasos.
   Santa:
-    Name: '&4&lSanta'
+    Name: <bold><dark_red>Santa
     Description: Oh oh oh! Feliz Navidad!
   Snowman:
-    Name: '&f&lSnowman'
+    Name: <bold><white>Snowman
     Description: No tengo craneo... ni huesos
   Present:
     Name: <bold><red>Regalo
@@ -1401,7 +1401,7 @@ Hats:
     Name: <bold><green>Elfo
     Description: Trabajo para Santa!
   Bedrock:
-    Name: '&8&lBedrock'
+    Name: <bold><dark_gray>Bedrock
     Description: Irrompible!
   RedCrewmate:
     Name: <bold><dark_red>Tripulante Rojo
@@ -1443,13 +1443,13 @@ Hats:
     Name: <bold><dark_green>Príncipe Rana
     Description: Besame!
   Notch:
-    Name: '&f&lNotch'
+    Name: <bold><white>Notch
     Description: Creador de Minecraft
   KitsuneMask:
     Name: <bold><red>Máscara Kitsune
     Description: Máscara de zorro blanco
   Goblin:
-    Name: '&9&lGoblin'
+    Name: <bold><blue>Goblin
     Description: Furtivo!
   Unicorn:
     Name: <bold><light_purple>Unicornio
@@ -1461,10 +1461,10 @@ Hats:
     Name: <bold><green>Dragón Verde
     Description: Sé un dragón.
   GigaChad:
-    Name: '&7&lGigaChad'
-    Description: '&7&oEmbrace masculinity!'
+    Name: <bold><gray>GigaChad
+    Description: Embrace masculinity!
   Anubis:
-    Name: '&6&lAnubis'
+    Name: <bold><gold>Anubis
     Description: Antiguo dio egipcio
   Bread:
     Name: <bold><white>Pan
@@ -1485,7 +1485,7 @@ Hats:
     Name: <bold><red>Barra de </red></bold><bold><white>caramelo
     Description: El verdadero Rompe-Dientes
   Chocolate:
-    Name: '&a&lChocolate'
+    Name: <bold><green>Chocolate
     Description: No alimentes a tu perro con esto!
   WhiteChocolate:
     Name: <bold><white>Chocolate Blanco
@@ -1494,7 +1494,7 @@ Hats:
     Name: <bold><dark_red>Manzana
     Description: Steve Jobs Español?
   Melon:
-    Name: '&a&lMelon'
+    Name: <bold><green>Chocolate
     Description: No lo rompas con tu cabeza
   CarvedPumpkin:
     Name: <bold><gold>Calabaza tallada
@@ -1506,10 +1506,10 @@ Hats:
     Name: <bold><white>Coco
     Description: Paraiso
   Taco:
-    Name: '&e&lTaco'
+    Name: <bold><yellow>Taco
     Description: Vamos por unos tacos wey!
   Bacon:
-    Name: '&f&lBacon'
+    Name: <bold><white>Tocino
     Description: Todo es mejor con tocino
   Fries:
     Name: <bold><gold>Papas Fritas
@@ -1533,83 +1533,83 @@ Hats:
     Name: <bold><dark_red>Tarta
     Description: Me encanta la tarta
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: La primera letra en el alfabeto!
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: La segunda letra en el alfabeto!
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: La tercer letra en el alfabeto!
   D:
-    Name: '&b&lD'
-    Description: <blue>La cuarta letra en el alfabeto!
+    Name: <bold><aqua>D
+    Description: La cuarta letra en el alfabeto!
   E:
-    Name: '&e&lE'
-    Description: <blue>La quinta letra en el alfabeto!
+    Name: <bold><yellow>E
+    Description: La quinta letra en el alfabeto!
   F:
-    Name: '&5&lF'
-    Description: <blue>La sexta letra en el alfabeto!
+    Name: <bold><dark_purple>F
+    Description: La sexta letra en el alfabeto!
   G:
-    Name: '&d&lG'
-    Description: <blue>La septima letra en el alfabeto!
+    Name: <bold><light_purple>G
+    Description: La septima letra en el alfabeto!
   H:
-    Name: '&a&lH'
-    Description: <blue>La octava letra en el alfabeto!
+    Name: <bold><green>H
+    Description: La octava letra en el alfabeto!
   I:
-    Name: '&6&lI'
-    Description: <blue>La novena letra en el alfabeto!
+    Name: <bold><gold>I
+    Description: La novena letra en el alfabeto!
   J:
-    Name: '&4&lJ'
-    Description: <blue>La decima letra en el alfabeto!
+    Name: <bold><dark_red>J
+    Description: La decima letra en el alfabeto!
   K:
-    Name: '&2&lK'
-    Description: <blue>La undecima letra en el alfabeto!
+    Name: <bold><dark_green>K
+    Description: La undecima letra en el alfabeto!
   L:
-    Name: '&b&lL'
-    Description: <blue>La duodecima letra en el alfabeto!
+    Name: <bold><aqua>L
+    Description: La duodecima letra en el alfabeto!
   M:
-    Name: '&e&lM'
-    Description: <blue>La decimotercera letra en el alfabeto!
+    Name: <bold><yellow>M
+    Description: La decimotercera letra en el alfabeto!
   N:
-    Name: '&5&lN'
-    Description: <blue>La decimocuarta letra en el alfabeto!
+    Name: <bold><dark_purple>N
+    Description: La decimocuarta letra en el alfabeto!
   O:
-    Name: '&d&lO'
-    Description: <blue>La decimoquinta letra en el alfabeto!
+    Name: <bold><light_purple>O
+    Description: La decimoquinta letra en el alfabeto!
   P:
-    Name: '&a&lP'
-    Description: <blue>La decimosexta letra en el alfabeto!
+    Name: <bold><green>P
+    Description: La decimosexta letra en el alfabeto!
   Q:
-    Name: '&6&lQ'
-    Description: <blue>La decimoseptima letra en el alfabeto!
+    Name: <bold><gold>Q
+    Description: La decimoseptima letra en el alfabeto!
   R:
-    Name: '&4&lR'
-    Description: <blue>La decimooctava letra en el alfabeto!
+    Name: <bold><dark_red>R
+    Description: La decimooctava letra en el alfabeto!
   S:
-    Name: '&2&lS'
-    Description: <blue>La decimonovena letra en el alfabeto!
+    Name: <bold><dark_green>S
+    Description: La decimonovena letra en el alfabeto!
   T:
-    Name: '&b&lT'
-    Description: <blue>La vigesima letra en el alfabeto!
+    Name: <bold><aqua>T
+    Description: La vigesima letra en el alfabeto!
   U:
-    Name: '&e&lU'
-    Description: <blue>La vigesimaprimera letra en el alfabeto!
+    Name: <bold><yellow>U
+    Description: La vigesimaprimera letra en el alfabeto!
   V:
-    Name: '&5&lV'
-    Description: <blue>La vigesimasegunda letra en el alfabeto!
+    Name: <bold><dark_purple>V
+    Description: La vigesimasegunda letra en el alfabeto!
   W:
-    Name: '&d&lW'
-    Description: <blue>La vigesimatercer letra en el alfabeto!
+    Name: <bold><light_purple>W
+    Description: La vigesimatercer letra en el alfabeto!
   X:
-    Name: '&a&lX'
-    Description: <blue>La vigesimacuarta letra en el alfabeto!
+    Name: <bold><green>X
+    Description: La vigesimacuarta letra en el alfabeto!
   Y:
-    Name: '&6&lY'
-    Description: <blue>La vigesimaquinta letra en el alfabeto!
+    Name: <bold><gold>Y
+    Description: La vigesimaquinta letra en el alfabeto!
   Z:
-    Name: '&4&lZ'
-    Description: <blue>La vigesimasexta letra en el alfabeto!
+    Name: <bold><dark_red>Z
+    Description: La vigesimasexta letra en el alfabeto!
 Suits:
   Rave:
     whole-equip: <bold><white>Traje </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>completo
