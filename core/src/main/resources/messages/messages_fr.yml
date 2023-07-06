@@ -11,10 +11,10 @@ Invalid-Suit: <prefix> <bold><red>Costume invalide !
 Invalid-Emote: <prefix> <bold><red>Émote Invalide !
 Invalid-Menu: <prefix> <bold><red>Menu invalide !
 Ammo: '<gray>Vos munitions: </gray><yellow><ammo>'
-Purchase: <bold><green>Achat
+Purchase: <bold><green>ACHETER
 Cancel: <bold><red>ANNULER
-Buy-Ammo-Description: <bold><yellow>Acheter <amount> rechages de <gadgetname> </yellow></bold><bold><yellow>pour $<price>
-Buy-Cosmetic-Description: <bold><yellow>Acheter <gadgetname> </yellow></bold><bold><yellow>pour $<price>
+Buy-Ammo-Description: <bold><yellow>Acheter <amount> recharges de <gadgetname> </yellow></bold><bold><yellow>pour <price>$
+Buy-Cosmetic-Description: <bold><yellow>Acheter <gadgetname> </yellow></bold><bold><yellow>pour <price>$
 Right-Click-Buy-Ammo: <gray>Clic droit pour acheter des munitions
 Click-To-Purchase: <yellow>Clique pour acheter pour <price>$
 Not-Enough-Money: <prefix> <bold><red>Tu n'as pas assez d'argent !
@@ -40,7 +40,7 @@ Clear:
   Particle-Effects: <bold><red>Retirer l'effet actuel
   Morphs: <bold><red>Retirer la transformation actuel
   Hats: <bold><red>Retirer le chapeau actuel
-  Suits: <bold><red>Retirer les vetments actuels
+  Suits: <bold><red>Retirer le costume actuel
   Emotes: <bold><red>Retirer l'emote actuel
   Projectile-Effects: <bold><red>Retirer l'effet de projectile actuel
   Death-Effects: <bold><red>Retirer l'effet de mort actuel
@@ -63,14 +63,14 @@ Menu:
   Pets:
     Title: <bold>Familiers
     Button:
-      Name: <bold><green>AFamiliers
+      Name: <bold><green>Familiers
       Lore: '<gray>Déverouillé: </gray><white><unlocked>'
-      Tooltip-Equip: '&b&lSpawn'
-      Tooltip-Unequip: '&c&lDespawn'
+      Tooltip-Equip: <bold><aqua>Spawn
+      Tooltip-Unequip: <bold><red>Despawn
   Gadgets:
-    Title: '&lGadgets'
+    Title: <bold>Gadgets
     Button:
-      Name: '&9&lGadgets'
+      Name: <bold><blue>Gadgets
       Lore: '<gray>Déverouillé: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Activer
       Tooltip-Unequip: <bold><red>Désactiver
@@ -79,8 +79,8 @@ Menu:
     Button:
       Name: <bold><gold>Montures
       Lore: '<gray>Déverouillé: </gray><white><unlocked>'
-      Tooltip-Equip: '&b&lSpawn'
-      Tooltip-Unequip: <bold><red>Disparaître
+      Tooltip-Equip: <bold><aqua>Spawn
+      Tooltip-Unequip: <bold><red>Despawn
   Morphs:
     Title: <bold>Transformations
     Button:
@@ -158,7 +158,7 @@ Treasure-Chests-Loot:
     <green>Animal de compagnie:
     <cosmetic>
   Mounts: |-
-    <gold>Le Mont
+    <gold>Monture
     <cosmetic>
   Particle-Effects: |-
     <aqua>Effet des particules
@@ -256,13 +256,13 @@ Gadgets:
     Different-Worlds: <prefix> <bold><red>Les portails doivent être dans le même monde !
     Description: Le gâteau est un mensonge !
   BlizzardBlaster:
-    name: '&b&lBlizzard Blaster'
+    name: <bold><aqua>Blizzard Blaster
     Description: Qu'il neige !
   ThorHammer:
     name: <bold><white>Marteau de Thor
     Description: Obtiens le vrai Mjölnir !
   SmashDown:
-    name: '&c&lSmashDown'
+    name: <bold><red>SmashDown
     Description: AND HIS NAME IS... JOHN CENA!
   ExplosiveSheep:
     name: <bold><dark_red>Mouton explosif
@@ -276,7 +276,7 @@ Gadgets:
       Tu n'aimes pas la gravité ?
       Alors, ce gadget est fait pour toi !
   Tsunami:
-    name: '&9&lTsunami'
+    name: <bold><blue>Tsunami
     Description: |-
       TSUNAMI !
       Sauve qui peut !
@@ -291,26 +291,26 @@ Gadgets:
     name: <bold><dark_blue>Trou Noir
     Description: Ne te fais pas prendre !
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       Fais sauter quelques personnes !
       Boum !
   FunGun:
-    name: '&6&lFun Gun'
+    name: <bold><gold>Fun Gun
     Description: Woow ! Tant de fun dans un gun !
   Parachute:
-    name: '&f&lParachute'
+    name: <bold><white>Parachute
     Description: GERONIMOOO !
   QuakeGun:
-    name: '&5&lQuake &d&lGun'
+    name: <bold><dark_purple>Quake </dark_purple></bold><bold><light_purple>Gun
     Description: |-
       Obtiens un véritable Rail Gun
       et tire sur les joueurs et les mobs !
   GhostParty:
     name: <bold><white>Fête fantôme
     Description: |-
-      &7&oWho you gonna call?
-      &7&oGHOST BUSTERS!
+      Qui vas-tu appeler ?
+      LE CHASSEUR DE FANTÔMES !
   Firework:
     name: <bold><red>Feu d'artifice
     Description: |-
@@ -326,7 +326,7 @@ Gadgets:
     name: <bold><aqua>Canon à glace
     Description: Transformez le sol en une patinoire !
   Snowball:
-    name: <white>&Boule de neige
+    name: <bold><white>Boule de neige
     Description: |-
       Joins-toi à la fête en
       jetant de la neige sur les gens !
@@ -336,13 +336,13 @@ Gadgets:
       Célèbre en lançant des confettis
       dans les airs !
   Trampoline:
-    name: '&9&lTrampoline'
+    name: <bold><blue>Trampoline
     Description: |-
       Construis un trampoline
       qui t'envoie toi et tes
       amis dans les airs !
   Gadget-Ready-ActionBar: <gadgetname> <bold><white>est prêt !
-  Lore: '&9Gadget'
+  Lore: <blue>Gadget
 Mounts:
   DruggedHorse:
     menu-name: <bold><dark_green>Cheval dopé
@@ -359,7 +359,7 @@ Mounts:
   WalkingDead:
     menu-name: <bold><dark_green>Mort-vivant
     entity-displayname: <bold>Mort-vivant de <playername>
-    Description: '&7&oGraaaaw...'
+    Description: Graaaaw...
   MountOfFire:
     menu-name: <bold><red>Monture du Feu
     entity-displayname: <bold>Monture du Feu de <playername>
@@ -376,24 +376,24 @@ Mounts:
     menu-name: <bold><green>Mo</green></bold><bold><aqua>ut</aqua></bold><bold><light_purple>on </light_purple></bold><bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n
     entity-displayname: <bold>Mouton Nyan de <playername>
     Description: |-
-      &4&lNyan &6&lnyan &e&lnyan
-      &a&lnyan &3&lnyan &9&lnyan
+      <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
+      <bold><green>nyan </green></bold><bold><dark_aqua>nyan </dark_aqua></bold><bold><blue>nyan
   Snake:
     menu-name: <bold><gold>Serpent
     entity-displayname: <bold>Serpent de <playername>
     Description: Attention ! Il peut mordre...
   Dragon:
-    menu-name: '&5&lDragon'
+    menu-name: <bold><dark_purple>Dragon
     entity-displayname: <bold>Dragon de <playername>
     Description: Deviens un chevaucheur de dragon !
   HypeCart:
-    menu-name: '&7&lHypeCart'
+    menu-name: <bold><gray>HypeCart
     entity-displayname: <bold>HypeCart de <playername>
     Description: |-
       Tu as déjà voulu conduire une F1 ?
       Maintenant tu peux !
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
     Description: Splat ! Splat !
   Spider:
@@ -401,7 +401,7 @@ Mounts:
     entity-displayname: <bold>Araignée de <playername>
     Description: Tu es le chevaucheur d'araignée !
   Rudolph:
-    menu-name: '&f&lRudolp&4&lh'
+    menu-name: <bold><white>Rudolp</white></bold><bold><dark_red>h
     entity-displayname: <bold>Rudolph de <playername>
     Description: |-
       Que serait Noël
@@ -419,7 +419,7 @@ Mounts:
     Description: |-
       Une créature mystérieuse en forme de cube
       capable de marcher directement au-dessus de la lave.
-    Held-Item-Lore: <italic><gray>Nourrir sur un bâton!
+    Held-Item-Lore: <italic><gray>Nourriture d'Arpenteur sur un bâton !
   Horse:
     menu-name: <bold><gray>Cheval
     entity-displayname: <bold>Cheval de <playername>
@@ -429,7 +429,7 @@ Mounts:
     entity-displayname: <bold>Âne de <playername>
     Description: Votre banale, âne de toujours
   Mule:
-    menu-name: '&8&lMule'
+    menu-name: <bold><dark_gray>Mule
     entity-displayname: <bold>Mule de <playername>
     Description: Votre banal, mulet de toujours
   Pig:
@@ -441,8 +441,7 @@ Mounts:
     menu-name: <bold><red>Serpent visqueux
     entity-displayname: <bold>Serpent visqueux de <playername>
     Description: |-
-      Ce type de serpent vient tout droit de
-      les "marais secrets de Sliminess" cachés.
+      Ce type de serpent vient tout droit des "marais secrets de Sliminess".
       Celui-ci vous servira éternellement.
   Camel:
     menu-name: <bold><gold>Chameau
@@ -469,8 +468,8 @@ Particle-Effects:
     name: <bold><dark_red>Hélix de Sang
     Description: |-
       <italic><gray>Une légende ancienne dit que cette magie 
-      <italic><gray>rend\ \ le sang de son utilisateur puissant, 
-      <italic><gray>lui donnant des pouvoirs\ \ divins...
+      <italic><gray>rend le sang de son utilisateur puissant, 
+      <italic><gray>lui donnant des pouvoirs divins...
   FrostLord:
     name: <bold><aqua>Seigneur des Glaces
     Description: Je suis le tout-puissant Seigneur des Glaces !
@@ -508,19 +507,19 @@ Particle-Effects:
     name: <bold><white>Chapeau du </white></bold><bold><dark_red>Père Noël
     Description: Deviens le Père Noël!
   CrushedCandyCane:
-    name: <bold><dark_red>Sucre </dark_red></bold><light_purple>'Orge </light_purple><bold><dark_red>écrasé
+    name: <bold><dark_red>Sucre </dark_red></bold>d'Orge <bold><dark_red>écrasé
     Description: |-
       Il n'y a jamais assez de
-      <bold><gray>oconfiseries de Noël. N'écoute pas
-      votre dentiste.
+      confiseries de Noël. N'écoute pas
+      ton dentiste.
   EnderAura:
-    name: '&d&lEnder Aura'
+    name: <bold><light_purple>Ender Aura
     Description: |-
       Ces particules mystiques s'attachent
       seulement aux joueurs les plus légendaires !
   FlameFairy:
     name: <bold><gold>Fée des flammes
-    Description: '&7&oHEY!!'
+    Description: HEY!!
   MagicalRods:
     name: <bold><dark_gray>Barres magiques
     Description: Puisse ces barres magiques te protéger !
@@ -533,7 +532,7 @@ Particle-Effects:
       Il apporte un grand malheur à
       toute personne qui ose le porter.
   VolcanicHalo:
-    name: <red>&Halo volcanique
+    name: <bold><red>Halo volcanique
     Description: |-
       Un halo composé de
       flammes eternal.
@@ -553,7 +552,7 @@ Particle-Effects:
       Laisse une trace de
       fumée derrière.
   Notes:
-    name: '&6&lNotes'
+    name: <bold><gold>Notes
     Description: Notes au-dessus de votre tête.
   Hearts:
     name: <bold><red>Coeurs
@@ -606,7 +605,7 @@ Pets:
     entity-displayname: <bold>Poussin de <playername>
     Description: Cot cot !!
   Wither:
-    menu-name: '&8&lWither'
+    menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold>Wither de <playername>
     Description: Faites attention à moi...
   Pumpling:
@@ -632,7 +631,7 @@ Pets:
   Villager:
     menu-name: <bold><green>Villageois
     entity-displayname: <bold>Villageois de <playername>
-    Description: '&7&oHmmmmmmmmm'
+    Description: Hmmmmmmmmm
   Bat:
     menu-name: <bold><dark_gray>Chauves-Souris
     entity-displayname: <bold>Chauves-Souris de <playername>
@@ -650,19 +649,19 @@ Pets:
     entity-displayname: <bold>Perroquet de <playername>
     Description: Un biscuit ?
   Vex:
-    menu-name: '&7&lVex'
+    menu-name: <bold><gray>Vex
     entity-displayname: <bold>Vex de <playername>
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: YAAHH Ehehhehe!
   Panda:
-    menu-name: '&a&lPanda'
+    menu-name: <bold><green>Panda
     entity-displayname: <bold>Panda de <playername>
     Description: Aime les bambous !
   Fox:
     menu-name: <bold><light_purple>Renard
     entity-displayname: <bold>Renard de <playername>
-    Description: '&7&oWhat does the fox say?'
+    Description: Que dit le renard ?
   Axolotl:
-    menu-name: '&5&lAxolotl'
+    menu-name: <bold><dark_purple>Axolotl
     entity-displayname: <bold>Axolotl de <playername>
     Description: Siii mignon !
   Piglin:
@@ -670,13 +669,13 @@ Pets:
     entity-displayname: <bold>Marchand d'or de <playername>
     Description: Des affaires en or !
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
     Description: Plop...
   Bee:
     menu-name: <bold><yellow>Abeille
     entity-displayname: <bold>Abeille de <playername>
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '*bzzzz* *bzzzz*'
   Goat:
     menu-name: <bold><white>Chèvre
     entity-displayname: <bold>Chèvre de <playername>
@@ -690,15 +689,15 @@ Pets:
     entity-displayname: <bold>Cheval de <playername>
     Description: 'Tagada-tagada'
   Blaze:
-    menu-name: '&c&lBlaze'
+    menu-name: <bold><red>Blaze
     entity-displayname: <bold>Blaze de <playername>
     Description: Volant et chaud !
   Creeper:
-    menu-name: '&a&lCreeper'
+    menu-name: <bold><green>Creeper
     entity-displayname: <bold>Creeper de <playername>
     Description: Il aime exploser ton stuff préféré...
   Enderman:
-    menu-name: '&5&lEnderman'
+    menu-name: <bold><dark_purple>Enderman
     entity-displayname: <bold>Enderman de <playername>
     Description: Ne le regarde pas ou il te chassera !
   Skeleton:
@@ -706,7 +705,7 @@ Pets:
     entity-displayname: <bold>Squelette de <playername>
     Description: Attention, il va essayer de te tirer dessus !
   Zombie:
-    menu-name: '&2&lZombie'
+    menu-name: <bold><dark_green>Zombie
     entity-displayname: <bold>Zombie de <playername>
     Description: Vite ! Cache tes villageois !
   Frog:
@@ -714,11 +713,11 @@ Pets:
     entity-displayname: <bold>Grenouille de <playername>
     Description: N'aime pas les lucioles !
   Warden:
-    menu-name: '&3&lWarden'
-    entity-displayname: <bold>CWarden de <playername>
+    menu-name: <bold><dark_aqua>Warden
+    entity-displayname: <bold>Warden de <playername>
     Description: Le mob le plus effrayant de Minecraft !
   Allay:
-    menu-name: '&a&lAllay'
+    menu-name: <bold><green>Allay
     entity-displayname: <bold>Allay de <playername>
     Description: Un nouvel ami !
   Cod:
@@ -730,11 +729,11 @@ Pets:
     entity-displayname: <bold>Âne de <playername>
     Description: Peut transporter toutes vos affaires!
   GlowSquid:
-    menu-name: <bold><dark_aqua>Calamar Lumineux
-    entity-displayname: <bold> Calamar Lumineux de <playername>
+    menu-name: <bold><dark_aqua>Poulpe Lumineux
+    entity-displayname: <bold> Poulpe Lumineux de <playername>
     Description: C'est lumineux!
   Mule:
-    menu-name: '&7&lMule'
+    menu-name: <bold><gray>Mule
     entity-displayname: <bold>Mule de <playername>
     Description: Fondamentalement un âne!
   Pufferfish:
@@ -742,7 +741,7 @@ Pets:
     entity-displayname: <bold>Poisson-globe de <playername>
     Description: N'aime pas être touché !
   Ocelot:
-    menu-name: '&e&lOcelot'
+    menu-name: <bold><yellow>Ocelot
     entity-displayname: <bold>Ocelot de <playername>
     Description: Attention ! Il est vraiment mignon !
   Salmon:
@@ -754,24 +753,24 @@ Pets:
     entity-displayname: <bold>Cheval Squelette de <playername>
     Description: Attention aux coups de foudre !
   Squid:
-    menu-name: <bold><black>Calamar
-    entity-displayname: <bold>Calamar de <playername>
+    menu-name: <bold><black>Poulpe
+    entity-displayname: <bold>Poulpe de <playername>
     Description: Ne l'effrayez pas ou l'eau devient noire!
   Strider:
     menu-name: <bold><red>Arpenteur
     entity-displayname: <bold>Arpenteur de <playername>
     Description: Marche sur la lave !
   Tadpole:
-    menu-name: '&8&lTadpole'
-    entity-displayname: <bold>Turtue de <playername>
+    menu-name: <bold><dark_gray>Têtard
+    entity-displayname: <bold>Têtard de <playername>
     Description: Se transforme en grenouille !
   TropicalFish:
-    menu-name: <yellow>&Poissons tropicaux
+    menu-name: <bold><yellow>Poissons tropicaux
     entity-displayname: <bold>Poisson Tropical de <playername>
     Description: Une bombe colorée !
   Turtle:
     menu-name: <bold><dark_green>Tortue
-    entity-displayname: <bold>Turtue de <playername>
+    entity-displayname: <bold>Tortue de <playername>
     Description: La plupart d'entre eux ont plus de 150 ans !
   WanderingTrader:
     menu-name: <bold><dark_blue>Marchand errant
@@ -779,19 +778,19 @@ Pets:
     Description: Il se balade partout en essayant de vendre ses affaires !
   CaveSpider:
     menu-name: <bold><dark_green>Araignée des cavernes
-    entity-displayname: <bold>Araignée de <playername>
+    entity-displayname: <bold>Araignée venimeuse de <playername>
     Description: Une araignée, mais toxique!
   Dolphin:
-    menu-name: <aqua>&Dauphin
-    entity-displayname: <bold><playername> Dauphin
+    menu-name: <bold><aqua>Dauphin
+    entity-displayname: <bold>Dauphin de <playername>
     Description: La créature la plus heureuse de la mer!
   Spider:
     menu-name: <bold><dark_gray>Araignée
     entity-displayname: <bold>Araignée de <playername>
     Description: Votre araignée de quartier amicale !
   ZombifiedPiglin:
-    menu-name: <bold><light_purple>Porcelet Zombifié
-    entity-displayname: <bold>Piglin zombifié de <playername>
+    menu-name: <bold><light_purple>Cochon Zombifié
+    entity-displayname: <bold>Cochon Zombifié de <playername>
     Description: Attaquez-le et tous seront après vous !
   Drowned:
     menu-name: <bold><dark_aqua>Noyé
@@ -802,73 +801,73 @@ Pets:
     entity-displayname: <bold>Grand Gardien de <playername>
     Description: Gardes les anciens temples !
   Endermite:
-    menu-name: '&5&lEndermite'
+    menu-name: <bold><dark_purple>Endermite
     entity-displayname: <bold>Endermite de <playername>
-    Description: Attracte les Endermen !
+    Description: Attire les Endermen !
   Evoker:
-    menu-name: '&7&lEvoker'
-    entity-displayname: <bold>Araignée de <playername>
+    menu-name: <bold><gray>Évocateur
+    entity-displayname: <bold>Évocateur de <playername>
     Description: Invoque des Vexes pour vivre!
   Ghast:
-    menu-name: '&f&lGhast'
-    entity-displayname: <bold>Chèvre de <playername>
+    menu-name: <bold><white>Ghast
+    entity-displayname: <bold>Ghast de <playername>
     Description: '*Cri démoniaque*'
   Guardian:
-    menu-name: '&3&lGuardian'
-    entity-displayname: <bold>CWarden de <playername>
-    Description: Hait les calamars !
+    menu-name: <bold><dark_aqua>Gardien
+    entity-displayname: <bold>Warden de <playername>
+    Description: Hait les poulpes !
   Hoglin:
-    menu-name: '&c&lHoglin'
-    entity-displayname: <bold><playername> Dauphin
+    menu-name: <bold><red>Hoglin
+    entity-displayname: <bold>Hoglin de <playername>
     Description: Un cochon, mais en colère.
   Husk:
-    menu-name: '&e&lHusk'
-    entity-displayname: <bold>Cheval de <playername>
-    Description: Un zombie, mais sable.
+    menu-name: <bold><yellow>Zombie Momifié
+    entity-displayname: <bold>Zombie momifié de <playername>
+    Description: Un zombie, mais momifié.
   MagmaCube:
-    menu-name: '&4&lMagma Cube'
-    entity-displayname: <bold>Mule de <playername>
+    menu-name: <bold><dark_red>Magma Cube
+    entity-displayname: <bold>Magma cube de <playername>
     Description: Un cube très chaud !
   Phantom:
     menu-name: <bold><dark_blue>Fantôme
-    entity-displayname: <bold>Chèvre de <playername>
+    entity-displayname: <bold>Phantom de <playername>
     Description: Hait les joueurs qui ne dorment pas!
   PiglinBrute:
-    menu-name: '&6&lPiglin Brute'
-    entity-displayname: <bold>Mule de <playername>
+    menu-name: <bold><gold>Piglin Brute
+    entity-displayname: <bold>Piglin Brute de <playername>
     Description: Un joli cochon !
   Pillager:
     menu-name: <bold><gray>Pilleur
-    entity-displayname: <bold>Villageois de <playername>
-    Description: J'aime au pillage des villages!
+    entity-displayname: <bold>Pillard de <playername>
+    Description: Aime piller des villages !
   Ravager:
-    menu-name: '&8&lRavager'
-    entity-displayname: <bold>Villageois de <playername>
+    menu-name: <bold><dark_gray>Ravageur
+    entity-displayname: <bold>Ravageur de <playername>
     Description: Le compagnon préféré du Pillard!
   Shulker:
-    menu-name: '&5&lShulker'
-    entity-displayname: <bold>Araignée de <playername>
-    Description: J'aime à cacher !
+    menu-name: <bold><dark_purple>Shulker
+    entity-displayname: <bold>Shulker de <playername>
+    Description: Aime se cacher !
   Stray:
-    menu-name: <bold><dark_gray>Serrage
-    entity-displayname: <bold>Allay de <playername>
-    Description: Un squelette froid glacial!
+    menu-name: <bold><dark_gray>Vagabond
+    entity-displayname: <bold>Vagabon de <playername>
+    Description: Un squelette glacial !
   Vindicator:
-    menu-name: <bold><gray>Indicateur VT
-    entity-displayname: <bold>Villageois de <playername>
+    menu-name: <bold><gray>Vindicateur
+    entity-displayname: <bold>Vindicateur de <playername>
     Description: Ne sous-estimez pas leurs forces !
   Witch:
     menu-name: <bold><dark_purple>Sorcière
-    entity-displayname: <bold>Wither de <playername>
+    entity-displayname: <bold>Sorcière de <playername>
     Description: Aime les chats noirs !
   WitherSkeleton:
     menu-name: <bold><dark_gray>Squelette Wither
     entity-displayname: <bold>Squelette Wither de <playername>
     Description: La raison pour laquelle il existe un butin.
   Zoglin:
-    menu-name: '&c&lZoglin'
+    menu-name: <bold><red>Zoglin
     entity-displayname: <bold>Zoglin de <playername>
-    Description: A Hoglin zombifié !
+    Description: Un Hoglin zombifié !
   ZombieVillager:
     menu-name: <bold><dark_green>Villageois Zombie
     entity-displayname: <bold>Zombie villageois de <playername>
@@ -878,18 +877,18 @@ Pets:
     entity-displayname: <bold>Cheval zombie de <playername>
     Description: Le cheval le plus rare de Minecraft !
   Illusioner:
-    menu-name: '&1&lIllusioner'
-    entity-displayname: <bold>L'illusionner de <playername>
+    menu-name: <bold><dark_blue>Illusionniste
+    entity-displayname: <bold>L'Illusionniste de <playername>
     Description: Ne peut apparaître qu'avec des commandes !
   Sniffer:
     menu-name: <bold><green>Renifleur
     entity-displayname: <bold>Renifleur de <playername>
-    Description: Vous pouvez sentir la poterie !
+    Description: Ça sent la poterie !
   Equip: <prefix> <blue>Tu as fait apparaître <petname>
   Unequip: <prefix> <blue>Tu as fait disparaître <petname>
 Morphs:
   Blaze:
-    name: '&6&lBlaze'
+    name: <bold><gold>Blaze
     skill: '<yellow>Sneak</yellow><gray> pour : </gray><green>Voler'
     Description: Il fait peut être chaud là-bas...
   Chicken:
@@ -897,7 +896,7 @@ Morphs:
     skill: '<yellow>Sneak</yellow><gray> pour : </gray><green>Pondre de oeufs'
     Description: Deviens un poulet !
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     skill: '<yellow>Sneak</yellow><gray> pour : </gray><green>Rebondir'
     Description: Splat splat !
   Pig:
@@ -905,18 +904,18 @@ Morphs:
     skill: '<yellow>Collision </yellow><gray>vers: </gray><green>Rebondir les joueurs'
     Description: Doit tenir votre carotte !
   Enderman:
-    name: '&5&lEnderman'
+    name: <bold><dark_purple>Enderman
     skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Téléporter'
     Description: |-
       Je passe de là à
-      <green>utre, puis vous m'avez perdu...
+      là, puis vous m'avez perdu...
   Bat:
     name: <bold><dark_gray>Chauves-Souris
-    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Rabat'
+    skill: '<yellow>Double saut </yellow><gray>vers : </gray><green>Battre des ailes'
     Description: Devenez une chauve-souris !
   Creeper:
-    name: '&a&lCreeper'
-    skill: '<yellow>S''accroupir </yellow><gray>pour: </gray><green>Détoner'
+    name: <bold><green>Creeper
+    skill: '<yellow>S''accroupir </yellow><gray>pour: </gray><green>Exploser'
     charging: '<bold><green>En cours de chargement: <chargelevel>/100'
     release-to-explode: <bold><white>Relâchez pour exploser !
     Description: Hey quoi de neuf ?
@@ -938,7 +937,7 @@ Morphs:
     Description: Deviens un Grand gardien !!
   Cow:
     name: <bold><dark_gray>Vache
-    skill: '<yellow>Clic-Gauche </yellow><gray>pour : </gray><green>Meow'
+    skill: '<yellow>Clic-Gauche </yellow><gray>pour : </gray><green>Meuh'
     Description: Meuuuuh !
   Sheep:
     name: <bold><white>Mouton
@@ -951,11 +950,11 @@ Morphs:
   Villager:
     name: <bold><green>Villageois
     skill: '<yellow>Clic-Gauche</yellow><gray> pour : </gray><green>Lancer une émeraude'
-    Description: '&7&oHmmmmmmmmm'
+    Description: Hmmmmmmmmm
   Witch:
     name: <bold><dark_purple>Sorcière
     skill: '<yellow>Clic-Gauche</yellow><gray>pour : </gray><green>Lancer des potions'
-    Description: '&7&oMuahahahahaha'
+    Description: Muahahahahaha
   PolarBear:
     name: <bold><white>Ours polaire
     skill: '<yellow>Clic-Gauche</yellow><gray> pour : </gray><green>Blizzard'
@@ -966,11 +965,11 @@ Morphs:
     Description: Besoin de moi pour transporter quelque chose ?
   Parrot:
     name: <bold><green>Perroquet
-    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Rabat'
+    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Battre des ailes'
     Description: Polly veut un craquer ?
   Allay:
-    name: '&a&lAllay'
-    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Rabat'
+    name: <bold><green>Allay
+    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Battre des ailes'
     Description: Un nouvel ami !
   Axolotl:
     name: <bold><dark_purple>Axolot
@@ -978,14 +977,14 @@ Morphs:
     Description: Siii mignon !
   Bee:
     name: <bold><yellow>Abeille
-    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Rabat'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    skill: '<yellow>Double saut </yellow><gray>vers: </gray><green>Battre des ailes'
+    Description: '*bzzzz* *bzzzz*'
   Cat:
     name: <bold><yellow>Chat
     skill: '<yellow>Clic-Gauche</yellow><gray> pour : </gray><green>Meow'
     Description: Basiquement un petit tigre
   CaveSpider:
-    name: <yellow>&Araignée Venimeusex
+    name: <bold><yellow>Araignée Venimeuse
     skill: '<yellow>Clic-Gauche</yellow><gray> pour : </gray><green>À Faire'
     Description: Une araignée, mais toxique!
   Cod:
@@ -993,7 +992,7 @@ Morphs:
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Préfère l'eau à la terre !
   Dolphin:
-    name: <yellow>&Dauphin
+    name: <bold><yellow>Dauphin
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: La créature la plus heureuse de la mer !
   Donkey:
@@ -1005,11 +1004,11 @@ Morphs:
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Un zombie noyé !
   Endermite:
-    name: '&5&lEndermite'
+    name: <bold><dark_purple>Endermite
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Attire les Endermites !
   Evoker:
-    name: '&7&lEvoker'
+    name: <bold><gray>Evoker
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Invoque des Vexes pour vivre !
   Frog:
@@ -1021,7 +1020,7 @@ Morphs:
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Que dit le renard ?
   GlowSquid:
-    name: <bold><dark_aqua>Calamar Brillant
+    name: <bold><dark_aqua>Poulpe Brillant
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: C'est brillant !
   Goat:
@@ -1029,9 +1028,9 @@ Morphs:
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
     Description: Mêêêêêh !
   Guardian:
-    name: '&3&lGuardian'
+    name: <bold><dark_aqua>Guardian
     skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>À Faire'
-    Description: Déteste les calamars !
+    Description: Déteste les poulpes !
   Wolf:
     name: <bold><gray>Loup
     Description: Wouaf !
@@ -1039,58 +1038,58 @@ Morphs:
     name: <bold><gray>Golem de fer
     Description: Déteste les zombies !
   Wither:
-    name: '&8&lWither'
+    name: <bold><dark_gray>Wither
     Description: Faites attention à moi...
   Skeleton:
     name: <bold><gray>Squelette
     Description: Très bon archer !
   Zombie:
-    name: '&2&lZombie'
+    name: <bold><dark_green>Zombie
     Description: Cerveaux !!!
   Squid:
-    name: <bold><light_purple>Calamar
+    name: <bold><light_purple>Poulpe
     Description: Bloop Bloop !
   Spider:
     name: <bold><dark_gray>Araignée
-    Description: '&7&oHISS...'
+    Description: HISS...
   Ghast:
-    name: '&f&lGhast'
+    name: <bold><white>Ghast
     Description: '*Cri fort*'
   MagmaCube:
-    name: '&c&lMagma Cube'
+    name: <bold><red>Magma Cube
     Description: Un cube très chaud !
   Horse:
     name: <bold><green>Cheval
     Description: 'Tagada-tagada'
   Warden:
-    name: '&3&lWarden'
+    name: <bold><dark_aqua>Warden
     Description: Être silencieux...
   Tadpole:
     name: <bold><dark_gray>Têtard
     Description: Deviendra une grenouille !
   Piglin:
-    name: '&6&lPiglin'
+    name: <bold><gold>Piglin
     Description: Des affaires en OR !
   Strider:
     name: <bold><red>Arpenteur
     Description: Je déteste l'eau !
   Hoglin:
-    name: '&c&lHoglin'
+    name: <bold><red>Hoglin
     Description: Un cochon, mais en colère.
   PiglinBrute:
-    name: '&6&lPiglin Brute'
+    name: <bold><gold>Piglin Brute
     Description: Un joli Piglin Brute !
   Zoglin:
-    name: '&c&lZoglin'
+    name: <bold><red>Zoglin
     Description: Un Hoglin zombifié !
   ZombifiedPiglin:
     name: <bold><light_purple>Piglin Zombifié
     Description: Attaquez-le et tous seront après vous !
   Panda:
-    name: '&a&lPanda'
+    name: <bold><green>Panda
     Description: Aime le bambou !
   Ocelot:
-    name: '&e&lOcelot'
+    name: <bold><yellow>Ocelot
     Description: Roi de la Jungle
   WanderingTrader:
     name: <bold><dark_blue>Marchand errant
@@ -1099,7 +1098,7 @@ Morphs:
     name: <bold><gray>Pilleur
     Description: Aime piller les villages !
   Ravager:
-    name: '&8&lRavager'
+    name: <bold><dark_gray>Ravageur
     Description: Le compagnon préféré d'un Pillard !
   Pufferfish:
     name: <bold><yellow>Poisson-globe
@@ -1114,19 +1113,19 @@ Morphs:
     name: <bold><green>Tortue
     Description: Prenez votre temps.
   Phantom:
-    name: <bold><dark_blue>Fantôme
+    name: <bold><dark_blue>Phantom
     Description: Déteste les joueurs qui ne dorment pas !
   Illusioner:
-    name: '&1&lIllusioner'
+    name: <bold><dark_blue>Illusionniste
     Description: Ne peut apparaître qu'avec des commandes !
   Vex:
-    name: '&7&lVex'
+    name: <bold><gray>Vex
     Description: YAAHH Ehehhehe !
   Vindicator:
     name: <bold><gray>Vindicateur
     Description: Ne sous-estimez pas leurs forces !
   Mule:
-    name: '&8&lMule'
+    name: <bold><dark_gray>Mule
     Description: Votre banal mulet, de toujours
   SkeletonHorse:
     name: <bold><white>Cheval Squelette
@@ -1135,7 +1134,7 @@ Morphs:
     name: <bold><dark_green>Cheval Zombie
     Description: Le cheval le plus rare de Minecraft !
   Shulker:
-    name: '&5&lShulker'
+    name: <bold><dark_purple>Shulker
     Description: Aime se cacher !
 Hats:
   Equip: <prefix> <blue>Tu as équipé <hatname> !
@@ -1148,7 +1147,7 @@ Hats:
     Description: Oh dieu, ça m'a fait peur !
   Angel:
     Name: <bold><white>Ange
-    Description: Cela a-t-il mal quand vous êtes tombé du paradis ?
+    Description: Cela a-t-il fait mal quand vous êtes tombé du paradis ?
   Embarassed:
     Name: <bold><gray>Embarassé
     Description: Je suis un peu embarrassé par cela.
@@ -1166,10 +1165,10 @@ Hats:
     Description: Waouh, je ne m'attendais pas à ça !
   Dead:
     Name: <bold><dark_gray>Mort
-    Description: A été rekt
+    Description: A été tué
   Crying:
     Name: <bold><blue>lpleurs
-    Description: '&7&oI cri evrytiem'
+    Description: Je pleur tout l'temp
   BigSmile:
     Name: <bold><gold>Grand sourire
     Description: Parce que je suis tellement heureux !
@@ -1198,19 +1197,19 @@ Hats:
     Name: <bold><blue>Musique
     Description: Vous êtes tellement musical.
   Squid:
-    Name: <bold><dark_aqua>Calamar
+    Name: <bold><dark_aqua>Poulpe
     Description: Bloop Bloop !
   GlowSquid:
-    Name: <bold><aqua>Calamar Brillant
+    Name: <bold><aqua>Poulpe Brillant
     Description: Allumez l'océan !
   Chicken:
     Name: <bold><white>Poulet
     Description: Cooooottt !
   Blaze:
-    Name: '&6&lBlaze'
+    Name: <bold><gold>Blaze
     Description: Attention au feu !
   Piston:
-    Name: '&7&lPiston'
+    Name: <bold><gray>Piston
     Description: Avez-vous de la redstone ?
   Sheep:
     Name: <bold><white>Mouton
@@ -1225,37 +1224,37 @@ Hats:
     Name: <bold><red>Champimeuh
     Description: Meuuuuh !
   BrownMooshroom:
-    Name: <bold><aqua>marron mooshroom
+    Name: <bold><aqua>Champimeuh marron
     Description: Meuuuuh !
   Moobloom:
-    Name: '&e&lMoobloom'
+    Name: <bold><yellow>Moobloom
     Description: Vache très rare !
   ChestnutHorse:
     Name: <bold><dark_green>Cheval alezan
     Description: N'oubliez pas la selle !
   Golem:
-    Name: '&7&lGolem'
+    Name: <bold><gray>Golem
     Description: Je suis votre garde.
   CopperGolem:
     Name: <bold><gold>Golem de cuivre
     Description: Fabriqué à partir de 100% de cuivre.
   Enderman:
-    Name: '&5&lEnderman'
+    Name: <bold><dark_purple>Enderman
     Description: Maintenant je suis là, maintenant je suis là !
   EndermanKing:
-    Name: '&d&lEnderman King'
+    Name: <bold><light_purple>Enderman King
     Description: Roi des Endermans
   Slime:
-    Name: '&a&lSlime'
+    Name: <bold><green>Slime
     Description: Très visqueux
   Creeper:
-    Name: '&2&lCreeper'
+    Name: <bold><dark_green>Creeper
     Description: Effrayez vos amis !
   Skeleton:
     Name: <bold><gray>Squelette
     Description: Très bon archer !
   Zombie:
-    Name: '&2&lZombie'
+    Name: <bold><dark_green>Zombie
     Description: Cerveaux !!!
   Drowned:
     Name: <bold><dark_aqua>Noyé
@@ -1267,16 +1266,16 @@ Hats:
     Name: <bold><gray>Squelette Wither
     Description: Gardien de la forteresse du Nether
   Ghast:
-    Name: '&f&lGhast'
+    Name: <bold><white>Ghast
     Description: '*Cri fort*'
   Warden:
-    Name: '&3&lWarden'
+    Name: <bold><dark_aqua>Warden
     Description: Être silencieux...
   Witch:
     Name: <bold><dark_purple>Sorcière
     Description: Essayez ma potion s'il te plaît !
   Guardian:
-    Name: '&3&lGuardian'
+    Name: <bold><dark_aqua>Guardian
     Description: Protégez les monuments de l'océan !
   ShepherdVillager:
     Name: <bold><yellow>Villageois de bergers
@@ -1297,7 +1296,7 @@ Hats:
     Name: <bold><white>Renard de neige
     Description: Les biomes enneigés sont ma maison.
   Ocelot:
-    Name: '&e&lOcelot'
+    Name: <bold><yellow>Ocelot
     Description: Roi de la jungle
   Frog:
     Name: <bold><dark_green>Grenouille
@@ -1306,7 +1305,7 @@ Hats:
     Name: <bold><light_purple>Axolot rose
     Description: Le Prédateur le plus mignon
   AxolotlBlue:
-    Name: <bold><blue>Axolol bleu
+    Name: <bold><blue>Axolotl bleu
     Description: Le Prédateur le plus mignon
   Turtle:
     Name: <bold><green>Tortue
@@ -1318,22 +1317,22 @@ Hats:
     Name: <bold><dark_green>Chat Noir
     Description: Le meilleur ami d'une sorcière.
   Allay:
-    Name: '&b&lAllay'
+    Name: <bold><aqua>Allay
     Description: Le petit assistant
   Bat:
     Name: <bold><dark_purple>Chauves-Souris
     Description: Profitez de la vie nocturne.
   Glare:
-    Name: '&2&lGlare'
+    Name: <bold><dark_green>Glare
     Description: Il déteste l'obscurité.
   Rana:
-    Name: '&a&lRana'
+    Name: <bold><green>Rana
     Description: Chapeau Grenouille !
   MCD-Steve:
-    Name: '&9&lSteve'
+    Name: <bold><blue>Steve
     Description: La meilleure peau
   MCD-Alex:
-    Name: '&6&lAlex'
+    Name: <bold><gold>Alex
     Description: L'ami de Steve
   MCD-QuestGiver:
     Name: <bold><dark_purple>Donneur de quête
@@ -1352,12 +1351,12 @@ Hats:
     Description: Un chevalier solitaire...
   MCD-AncientGuardian:
     Name: <bold><dark_purple>Ancien gardien
-    Description: 7&<italic>Le plus ancien gardien
+    Description: Le plus ancien gardien
   MCD-KeyGolem:
-    Name: '&6&lKey Golem'
+    Name: <bold><gold>Golem clé
     Description: Déverrouillez toutes les portes !
   MCD-ArchIllager:
-    Name: '&3&lArch Illager'
+    Name: <bold><dark_aqua>Arch-Illageois
     Description: Chef des Illagers
   MCD-SunkenSkeleton:
     Name: <bold><dark_green>Squelette coulé
@@ -1366,13 +1365,13 @@ Hats:
     Name: <bold><dark_red>Le feu de forêt
     Description: Brasier planant
   Mario:
-    Name: '&4&lMario'
-    Description: '&7&oIt''s-a me! Mario!'
+    Name: <bold><dark_red>Mario
+    Description: It's-a me! Mario!
   Luigi:
-    Name: '&2&lLuigi'
-    Description: '&7&oLuigi time!'
+    Name: <bold><dark_green>Luigi
+    Description: Luigi time!
   Batman:
-    Name: '&8&lBatman'
+    Name: <bold><dark_gray>Batman
     Description: Je suis Batman !
   Chest:
     Name: <bold><gold>Coffre
@@ -1385,7 +1384,7 @@ Hats:
     Description: Une petite citrouille
   Ghost:
     Name: <bold><white>Fantôme
-    Description: '&7&o2spooky4u'
+    Description: 2spooky4u
   ScaryClown:
     Name: <bold><dark_red>Clown effrayant
     Description: J'espère que vous n'avez pas peur des clowns.
@@ -1396,13 +1395,13 @@ Hats:
     Name: <bold><white>Bonhomme de neige
     Description: Je n'ai pas de crâne... ni d'os
   Present:
-    Name: '&c&lPresent'
+    Name: <bold><red>Cadeau
     Description: Du Père Noël, à vous !
   Elf:
     Name: <bold><green>Elfe
     Description: Je travaille pour le Père Noël !
   Bedrock:
-    Name: '&8&lBedrock'
+    Name: <bold><dark_gray>Bedrock
     Description: Incassable !
   RedCrewmate:
     Name: <bold><dark_red>Coéquipier rouge
@@ -1444,25 +1443,25 @@ Hats:
     Name: <bold><dark_green>Prince grenouille
     Description: Embrasse-moi !
   Notch:
-    Name: '&f&lNotch'
+    Name: <bold><white>Notch
     Description: Créateur de Minecraft
   KitsuneMask:
     Name: <bold><red>Masque Kitsune
     Description: Masque de renard blanc
   Goblin:
-    Name: '&9&lGoblin'
+    Name: <bold><blue>Goblin
     Description: Sournois !
   Unicorn:
-    Name: '&d&lUnicorn'
+    Name: <bold><light_purple>Licorne
     Description: Soyez magique !
   Ogre:
-    Name: '&2&lOgre'
+    Name: <bold><dark_green>Ogre
     Description: J'ai faim.
   GreenDragon:
     Name: <bold><green>Dragon vert
     Description: Soyez un dragon.
   GigaChad:
-    Name: '&7&lGigaChad'
+    Name: <bold><gray>GigaChad
     Description: Adoptez la masculinité !
   Anubis:
     Name: '&6&lAnubis'
@@ -1480,7 +1479,7 @@ Hats:
     Name: <bold><red>Gâteau
     Description: Mmmm, gâteau.
   Cookie:
-    Name: '&6&lCookie'
+    Name: <bold><gold>Cookie
     Description: Pépites de chocolat incluses !
   CandyCane:
     Name: <bold><red>Bonbon </red></bold><bold><white>Cane
@@ -1495,7 +1494,7 @@ Hats:
     Name: <bold><dark_red>Pomme
     Description: Pas la société
   Melon:
-    Name: '&a&lMelon'
+    Name: <bold><green>Melon
     Description: Ne l'écrasez pas avec votre tête
   CarvedPumpkin:
     Name: <bold><gold>Citrouille sculptée
@@ -1510,16 +1509,16 @@ Hats:
     Name: '&e&lTaco'
     Description: Allons-y pour des tacos !
   Bacon:
-    Name: '&f&lBacon'
+    Name: <bold><white>Bacon
     Description: Tout est meilleur avec du bacon.
   Fries:
     Name: <bold><gold>Frites
     Description: Le meilleur ami du hamburger
   Hamburger:
-    Name: '&6&lHamburger'
+    Name: <bold><gold>Hamburger
     Description: Le fast-food classique !
   Popcorn:
-    Name: '&6&lPopcorn'
+    Name: <bold><gold>Popcorn
     Description: Le goûter classique du cinéma !
   WhiteDonut:
     Name: <bold><white>Beignet blanc
@@ -1531,8 +1530,8 @@ Hats:
     Name: <bold><green>Beignet au chocolat
     Description: Un meilleur beignet !
   Pie:
-    Name: '&4&lPie'
-    Description: J'aime la pie
+    Name: <bold><dark_red>Tarte
+    Description: J'aime les tartes
   A:
     Name: '&6&lA'
     Description: La première lettre de l'alphabet !
@@ -1613,55 +1612,55 @@ Hats:
     Description: La vingt-sixième lettre de l'alphabet !
 Suits:
   Rave:
-    whole-equip: <bold><white>ensemble </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>costume
+    whole-equip: <bold><white>Costume </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>en entier
     helmet-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Casque
     chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Plastron
-    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><underlined><yellow>i</yellow></underlined><bold><gold>e </gold></bold><bold><white>Jambières
-    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><underlined><yellow>i</yellow></underlined><bold><gold>e </gold></bold><bold><white>Bottes
+    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Jambières
+    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Bottes
     Description: Des couleurs incroyables !
   Astronaut:
-    whole-equip: <white>&Costume </white><bold><white>d'Astronaute </white></bold><yellow>ntier
+    whole-equip: <bold><white>Costume </white></bold><bold><white>d'Astronaute </white></bold><bold><white>en entier
     helmet-name: <bold><white>Casque </white></bold><bold><white>d'Astronaute
     chestplate-name: <bold><white>Plastron </white></bold><bold><white>d'Astronaute
     leggings-name: <bold><white>Jambière </white></bold><bold><white>d'Astronaute
     boots-name: <bold><white>Bottes </white></bold><bold><white>d'Astronaute
     Description: Houston ?
   Diamond:
-    whole-equip: <bold><white>Costume </white></bold><bold><aqua>de Diamant </aqua></bold><bold><white>entier
-    helmet-name: <bold><aqua>Casque </aqua></bold><light_purple>e diamant
-    chestplate-name: <bold><aqua>Plastron </aqua></bold><bold><white>de diamant
-    leggings-name: <bold><aqua>Jambière </aqua></bold><light_purple>e diamant
-    boots-name: <bold><aqua>Bottes </aqua></bold><light_purple>e diamant
+    whole-equip: <bold><white>Costume </white></bold><bold><aqua>en Diamant </aqua></bold><bold><white>en entier
+    helmet-name: <bold><aqua>Casque </aqua></bold><bold><white>en diamant
+    chestplate-name: <bold><aqua>Plastron </aqua></bold><bold><white>en diamant
+    leggings-name: <bold><aqua>Jambière </aqua></bold><bold><white>en diamant
+    boots-name: <bold><aqua>Bottes </aqua></bold><bold><white>en diamant
     Description: |-
       Montrez vos compétences minières
       avec cette superbe tenue !
   Santa:
-    whole-equip: <bold><white>Costume </white></bold><bold><dark_red>de Père Nöel </dark_red></bold><bold><white>entier
-    helmet-name: <bold><white>Casque </white></bold><bold><dark_red>du Père Noël
+    whole-equip: <bold><white>Costume </white></bold><bold><dark_red>de Père Noël </dark_red></bold><bold><white>en entier
+    helmet-name: <bold><dark_red>Casque </dark_red></bold><bold><white>du Père Noël
     chestplate-name: <bold><dark_red>Plastron </dark_red></bold><bold><white>du Père Nöel
-    leggings-name: <bold><dark_red>Jambière </dark_red></bold><light_purple>u Père Nöel
+    leggings-name: <bold><dark_red>Jambière </dark_red></bold><bold><white>du Père Noël
     boots-name: <bold><dark_red>Bottes </dark_red></bold><bold><white>du Père Noël
     Description: Devenez le Père Noël et offrez des cadeaux !
   Frozen:
-    whole-equip: <bold><white>Costume </white></bold><bold><aqua>glacé </aqua></bold><bold><white>entier
+    whole-equip: <bold><white>Costume </white></bold><bold><aqua>glacé </aqua></bold><bold><white>en entier
     helmet-name: <bold><aqua>Casque </aqua></bold><bold><white>glacé
     chestplate-name: <bold><aqua>Plastron </aqua></bold><bold><white>glacé
     leggings-name: <bold><aqua>Jambière </aqua></bold><bold><white>glacé
     boots-name: <bold><aqua>Bottes </aqua></bold><bold><white>glacé
     Description: |-
-      Ce costume appartient à la
+      Ce costume appartient au
       seigneur des terres gelées !
   Cursed:
-    whole-equip: <bold><white>Costume </white></bold><bold><dark_purple>maudit </dark_purple></bold><bold><white>entier
+    whole-equip: <bold><white>Costume </white></bold><bold><dark_purple>maudit </dark_purple></bold><bold><white>en entier
     helmet-name: <bold><dark_purple>Casque </dark_purple></bold><bold><white>maudit
     chestplate-name: <bold><dark_purple>Plastron </dark_purple></bold><bold><white>maudit
     leggings-name: <bold><dark_purple>Jambière </dark_purple></bold><bold><white>maudite
     boots-name: <bold><dark_purple>Bottes </dark_purple></bold><bold><white>maudites
     Description: Mystérieux et effrayant.
   Slime:
-    whole-equip: <bold><white>Costume </white></bold><bold><green>visqueux </green></bold><bold><white>entier
+    whole-equip: <bold><white>Costume </white></bold><bold><green>visqueux </green></bold><bold><white>en entier
     helmet-name: <bold><green>Casque </green></bold><bold><white>visqueux
-    chestplate-name: <bold><green>Plastron </green></bold><bold><white>vase
+    chestplate-name: <bold><green>Plastron </green></bold><bold><white>visqueux
     leggings-name: <bold><green>Jambière </green></bold><bold><white>visqueuse
     boots-name: <bold><green>Bottes </green></bold><bold><white>visqueuses
     Description: |-
@@ -1679,7 +1678,7 @@ Emotes:
     Name: <bold><blue>Pleure
     Description: Es-tu vraiment triste ? :(
   Angry:
-    Name: <red>&Furieux
+    Name: <bold><red>Furieux
     Description: Montrez votre rage aux autres joueurs !
   Happy:
     Name: <bold><yellow>Heureux
@@ -1694,7 +1693,7 @@ Emotes:
     Name: <bold><gray>Faites avec
     Description: Envie de vous montrer ? Cette emote est pour vous !
   Cool:
-    Name: '&9&lCool'
+    Name: <bold><blue>Cool
     Description: Reste cool mec !
   Surprised:
     Name: <bold><gold>Surprise
@@ -1710,15 +1709,15 @@ Emotes:
     Description: Joyeux Halloween !
   GlowingPumpkin:
     Name: <bold><gold>Citrouille rayonnante
-    Description: '&7&oJack O''Slime'
+    Description: Jack O'Slime
   LovestruckAllay:
-    Name: '&b&lLovestruck Allay'
+    Name: <bold><aqua>Lovestruck Allay
     Description: Sommes-nous en train de tomber amoureux ?
 Projectile-Effects:
   Equip: <prefix> <blue>Tu as équipé <projectile-effectname>
   Unequip: <prefix> <blue>Tu as déséquipé <projectile-effectname>
   Rainbow:
-    name: <bold><rainbow>arc-en-Ciel
+    name: <bold><rainbow>Arc-en-Ciel
     Description: Particules de couleur arc-en-ciel
   Christmas:
     name: <bold><dark_red>No</dark_red></bold><bold><white>ël
@@ -1739,10 +1738,10 @@ Projectile-Effects:
     name: <bold><white>Étincelle
     Description: Étoiles blanches scintillantes
   Redstone:
-    name: '&4&lRedstone'
+    name: <bold><dark_red>Redstone
     Description: Petits nuages rouges
   Flame:
-    name: '&c&lFlame'
+    name: <bold><red>Flame
     Description: Petites flammes
   Water:
     name: <bold><blue>Eau
@@ -1754,7 +1753,7 @@ Projectile-Effects:
     name: <bold><dark_green>Émeraude
     Description: Etoiles vertes
   Note:
-    name: '&e&lNote'
+    name: <bold><yellow>Note
     Description: Notes colorées
   Love:
     name: <bold><light_purple>Amour
@@ -1766,16 +1765,16 @@ Projectile-Effects:
     name: <bold><white>Neige
     Description: Particules de boule de neige
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     Description: Particules de Slimeball
   Crit:
-    name: '&7&lCrit'
+    name: <bold><gray>Crit
     Description: Croix marron clair
   MagicCrit:
     name: <bold><dark_aqua>Critique magique
     Description: Étoiles cyan
   Explosion:
-    name: '&4&lExplosion'
+    name: <bold><dark_red>Explosion
     Description: BOOM !
   Cloud:
     name: <bold><white>Nuage
@@ -1790,7 +1789,7 @@ Projectile-Effects:
     name: <bold><light_purple>Souffle du Dragon
     Description: Petits, nuages violets
   SquidInk:
-    name: <bold><blue>Encre Squid
+    name: <bold><blue>Encre de poulpe
     Description: Nuages noirs
   SoulFireFlame:
     name: <bold><aqua>Feu de feu lÂme
@@ -1799,10 +1798,10 @@ Projectile-Effects:
     name: <bold><white>Flocon de neige
     Description: Petits, nuages violets
   GlowSquid:
-    name: <bold><dark_aqua>Calamar Lumineux
+    name: <bold><dark_aqua>Poulpe Lumineux
     Description: Etoiles turbulentes
   GlowSquidInk:
-    name: <bold><dark_aqua>Calamar Lumineux
+    name: <bold><dark_aqua>Encre de Poulpe Lumineux
     Description: Nuages Aquamarine
   Scrape:
     name: <bold><dark_green>Rayer
@@ -1820,7 +1819,7 @@ Death-Effects:
   Equip: <prefix> <blue>Tu as équipé <death-effectname>
   Unequip: <prefix> <blue>Tu as déséquipé <death-effectname>
   Explosion:
-    name: '&4&lExplosion'
+    name: <bold><dark_red>Explosion
     Description: '&7&oBOOM!'
   Firework:
     name: <bold><gray>Fusée d'artifice
@@ -1829,7 +1828,7 @@ Death-Effects:
       Vous... êtes mort?
   Lightning:
     name: <bold><white>Foudre
-    Description: '&7&o⚡ ZAP!'
+    Description: '⚡ ZAP!'
 Enabled-SelfMorphView: <prefix> <blue>Vous avez activé l'auto-affichage pour les morphes !
 Disabled-SelfMorphView: <prefix> <blue>Vous avez désactivé l'auto-affichage pour les morphes !
 Enabled-Gadgets: <prefix> <blue>Vous avez activé les gadgets !
