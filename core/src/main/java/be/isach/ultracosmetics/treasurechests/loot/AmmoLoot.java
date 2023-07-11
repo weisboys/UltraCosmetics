@@ -62,7 +62,7 @@ public class AmmoLoot implements Loot {
         Component message = MessageManager.getMessage("Treasure-Chests-Loot-Messages.Ammo",
                 Placeholder.unparsed("ammo", String.valueOf(ammo)),
                 Placeholder.component("cosmetic", TextUtil.filterPlaceholderColors(g.getName())),
-                Placeholder.unparsed("player", player.getBukkitPlayer().getName())
+                Placeholder.unparsed("name", player.getBukkitPlayer().getName())
         );
         return new LootReward(name, g.getItemStack(), message, toOthers, firework, g);
     }
