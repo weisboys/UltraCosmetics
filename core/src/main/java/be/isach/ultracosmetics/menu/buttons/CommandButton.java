@@ -60,10 +60,18 @@ public class CommandButton implements Button {
             ItemFactory.rename(stack, name);
         }
         ItemMeta meta = stack.getItemMeta();
-        if (section.isString("Lore")) {
+        boolean loreIsString = section.isString("Lore");
+        boolean loreIsList = section.isList("Lore");
+        if (loreIsString || loreIsList) {
             List<String> lore = new ArrayList<>();
-            for (String line : section.getString("Lore").split("\n")) {
-                lore.add(MessageManager.toLegacy(mm.deserialize(line)));
+            if (loreIsString) {
+                for (String line : section.getString("Lore").split("\n")) {
+                    lore.add(MessageManager.toLegacy(mm.deserialize(line)));
+                }
+            } else {
+                for (String line : section.getStringList("Lore")) {
+                    lore.add(MessageManager.toLegacy(mm.deserialize(line)));
+                }
             }
             meta.setLore(lore);
         }
