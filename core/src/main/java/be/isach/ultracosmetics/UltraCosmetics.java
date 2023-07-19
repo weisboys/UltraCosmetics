@@ -507,7 +507,10 @@ public class UltraCosmetics extends JavaPlugin {
         boolean lootCommandsPresent = config.isConfigurationSection("TreasureChests.Loots.Commands");
 
         for (String key : defaults.getKeys(true)) {
-            if (key.startsWith("TreasureChests.Loots.Commands.") && lootCommandsPresent) continue;
+            if (key.startsWith("TreasureChests.Loots.Commands.") && lootCommandsPresent
+                    && !key.endsWith("Overall-Chance")) {
+                continue;
+            }
             if (key.startsWith("TreasureChests.Locations.default")) continue;
             config.addDefault(key, defaults.get(key), defaults.comments(key));
         }

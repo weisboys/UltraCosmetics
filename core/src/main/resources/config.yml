@@ -198,6 +198,12 @@ TreasureChests:
       Message:
         enabled: false
     Commands:
+      # Overall chance of any command being selected as a reward.
+      # If greater than 0, commands will be entered into the randomizer as a whole
+      # using this chance, and the weights defined in each command will only choose between other commands.
+      # Otherwise, (default) each command will be entered into the randomizer directly,
+      # each with its own defined weight.
+      Overall-Chance: 0
       shoutout:
         Name: '<bold><purple>Shoutout'
         Material: NETHER_STAR

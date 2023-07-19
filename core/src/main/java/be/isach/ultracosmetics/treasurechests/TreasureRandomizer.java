@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.loot.AmmoLoot;
 import be.isach.ultracosmetics.treasurechests.loot.CommandLoot;
+import be.isach.ultracosmetics.treasurechests.loot.CommandLootContainer;
 import be.isach.ultracosmetics.treasurechests.loot.CosmeticLoot;
 import be.isach.ultracosmetics.treasurechests.loot.Loot;
 import be.isach.ultracosmetics.treasurechests.loot.LootReward;
@@ -24,6 +25,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
@@ -55,17 +57,7 @@ public class TreasureRandomizer {
         if (!ammo.isEmpty() && canAddAmmo) {
             lootTypes.add(ammo, AMMO_CHANCE);
         }
-        CustomConfiguration config = UltraCosmeticsData.get().getPlugin().getConfig();
-        for (String key : config.getConfigurationSection("TreasureChests.Loots.Commands").getKeys(false)) {
-            String path = "TreasureChests.Loots.Commands." + key;
-            if (config.getBoolean(path + ".Enabled")) {
-                String cancelPermission = config.getString(path + ".Cancel-If-Permission");
-                if (cancelPermission.equals("no") || !player.hasPermission(cancelPermission)) {
-                    CommandReward reward = new CommandReward(path);
-                    lootTypes.add(new CommandLoot(reward), reward.getChance());
-                }
-            }
-        }
+        initializeCommandLoot();
 
         for (Category cat : Category.values()) {
             setupChance(cat);
@@ -78,6 +70,31 @@ public class TreasureRandomizer {
 
     public TreasureRandomizer(final Player player, Location location) {
         this(player, location, false);
+    }
+
+    private void initializeCommandLoot() {
+        CustomConfiguration config = UltraCosmeticsData.get().getPlugin().getConfig();
+        ConfigurationSection commandLootConfig = config.getConfigurationSection("TreasureChests.Loots.Commands");
+        int globalCommandWeight = commandLootConfig.getInt("Overall-Chance", 0);
+        CommandLootContainer container = null;
+        if (globalCommandWeight > 0) {
+            container = new CommandLootContainer();
+            lootTypes.add(container, globalCommandWeight);
+        }
+        for (String key : commandLootConfig.getKeys(false)) {
+            if (!commandLootConfig.isConfigurationSection(key) || !commandLootConfig.getBoolean(key + ".Enabled")) {
+                continue;
+            }
+            String cancelPermission = commandLootConfig.getString(key + ".Cancel-If-Permission");
+            if (cancelPermission.equals("no") || !player.hasPermission(cancelPermission)) {
+                CommandReward reward = new CommandReward("TreasureChests.Loots.Commands." + key);
+                if (container == null) {
+                    lootTypes.add(new CommandLoot(reward), reward.getChance());
+                } else {
+                    container.addCommandLoot(new CommandLoot(reward), reward.getChance());
+                }
+            }
+        }
     }
 
     private void setupChance(Category category) {

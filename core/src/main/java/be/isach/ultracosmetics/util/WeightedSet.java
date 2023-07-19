@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Function;
 
 public class WeightedSet<T> {
-    private Map<T,Integer> map = new HashMap<>();
+    private Map<T, Integer> map = new HashMap<>();
 
     public WeightedSet() {
     }
@@ -26,9 +26,9 @@ public class WeightedSet<T> {
         int sum = map.values().stream().mapToInt(k -> k).sum();
         if (sum < 1) return null;
         int index = ThreadLocalRandom.current().nextInt(sum);
-        for (Entry<T,Integer> entry : map.entrySet()) {
+        for (Entry<T, Integer> entry : map.entrySet()) {
             index -= entry.getValue();
-            if (index <= 0) {
+            if (index < 0) {
                 return entry.getKey();
             }
         }
@@ -44,7 +44,7 @@ public class WeightedSet<T> {
         map.clear();
     }
 
-    public void filter(Function<T,Boolean> filterFunc) {
+    public void filter(Function<T, Boolean> filterFunc) {
         map.keySet().removeIf(filterFunc::apply);
     }
 
