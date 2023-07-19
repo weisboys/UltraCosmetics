@@ -15,4 +15,8 @@ public class CommandLootContainer implements Loot {
     public void addCommandLoot(CommandLoot commandLoot, int weight) {
         loot.add(commandLoot, weight);
     }
+
+    public int getSize() {
+        return loot.size();
+    }
 }

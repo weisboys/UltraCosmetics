@@ -79,7 +79,6 @@ public class TreasureRandomizer {
         CommandLootContainer container = null;
         if (globalCommandWeight > 0) {
             container = new CommandLootContainer();
-            lootTypes.add(container, globalCommandWeight);
         }
         for (String key : commandLootConfig.getKeys(false)) {
             if (!commandLootConfig.isConfigurationSection(key) || !commandLootConfig.getBoolean(key + ".Enabled")) {
@@ -94,6 +93,9 @@ public class TreasureRandomizer {
                     container.addCommandLoot(new CommandLoot(reward), reward.getChance());
                 }
             }
+        }
+        if (container != null && container.getSize() > 0) {
+            lootTypes.add(container, globalCommandWeight);
         }
     }
 
