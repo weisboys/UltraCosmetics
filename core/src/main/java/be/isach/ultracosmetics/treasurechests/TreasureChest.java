@@ -51,6 +51,7 @@ public class TreasureChest implements Listener {
     private final UUID owner;
     private final TreasureRandomizer randomGenerator;
     private final Location center;
+    private final Block centerBlock;
     private final Particles particleEffect;
     private int chestsLeft = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
     private final Player player;
@@ -89,11 +90,11 @@ public class TreasureChest implements Listener {
 
         this.player = getPlayer();
 
-        Block centerPossibleBlock = player.getLocation().getBlock();
-        center = centerPossibleBlock.getLocation();
+        centerBlock = player.getLocation().getBlock();
+        center = centerBlock.getLocation();
         rollback = new StructureRollback(new Area(center.clone().subtract(0, 1, 0), large ? 3 : 2, 3));
-        if (!BlockUtils.isAir(centerPossibleBlock.getType())) {
-            rollback.setToRestore(centerPossibleBlock, Material.AIR);
+        if (!BlockUtils.isAir(centerBlock.getType())) {
+            rollback.setToRestore(centerBlock, Material.AIR);
         }
 
         if (pm.getUltraPlayer(getPlayer()).getCurrentMorph() != null) {
@@ -161,7 +162,7 @@ public class TreasureChest implements Listener {
 
     @EventHandler
     public void onMove(PlayerMoveEvent event) {
-        if (event.getPlayer() == getPlayer() && !event.getFrom().getBlock().equals(event.getTo().getBlock())) {
+        if (event.getPlayer() == getPlayer() && !event.getTo().getBlock().equals(centerBlock)) {
             event.setCancelled(true);
             event.getPlayer().teleport(event.getFrom());
         }
@@ -181,7 +182,7 @@ public class TreasureChest implements Listener {
         }
 
         for (final Block b : unopenedChests) {
-            openChest(b);
+            setLidPosition(b, true);
             randomGenerator.setLocation(b.getLocation().clone().add(0.0D, 1.0D, 0.0D));
             LootReward reward = randomGenerator.giveRandomThing(this);
 
@@ -221,12 +222,16 @@ public class TreasureChest implements Listener {
         return items.contains(entity) || holograms.contains(entity);
     }
 
-    protected void openChest(Block block) {
+    public static void setLidPosition(Block block, boolean open) {
         // Lidded API didn't exist until 1.16,
         // and EnderChest wasn't lidded until 1.19!
         try {
             Lidded state = (Lidded) block.getState();
-            state.open();
+            if (open) {
+                state.open();
+            } else {
+                state.close();
+            }
             ((BlockState) state).update();
         } catch (NoClassDefFoundError | ClassCastException ignored) {
         }
@@ -245,7 +250,7 @@ public class TreasureChest implements Listener {
         if (!unopenedChests.contains(block)) return;
         if (event.getPlayer() != getPlayer() || cooldown) return;
 
-        openChest(block);
+        setLidPosition(block, true);
         Location loc = block.getLocation();
         randomGenerator.setLocation(loc.clone().add(0.0D, 1.0D, 0.0D));
         LootReward reward = randomGenerator.giveRandomThing(this);
