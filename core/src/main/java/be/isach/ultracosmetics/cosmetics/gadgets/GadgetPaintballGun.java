@@ -42,7 +42,7 @@ public class GadgetPaintballGun extends Gadget {
     static {
         String ending = SettingsManager.getConfig().getString("Gadgets.PaintballGun.Block-Type", "_TERRACOTTA").toUpperCase();
         for (XMaterial mat : XMaterial.VALUES) {
-            if (mat.name().endsWith(ending)) {
+            if (mat.isSupported() && mat.name().endsWith(ending)) {
                 PAINT_BLOCKS.add(mat);
             }
         }
