@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.player;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.listeners.ClientBrandListener;
-import be.isach.ultracosmetics.util.SmartLogger;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -32,7 +31,7 @@ public class UltraPlayerManager {
         // This should overwrite any existing UltraPlayer
         UltraPlayer old = playerCache.put(uuid, new UltraPlayer(uuid, ultraCosmetics));
         if (old != null) {
-            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Removed stale UltraPlayer, potential memory leak?");
+            //ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Removed stale UltraPlayer, potential memory leak?");
         }
     }
 

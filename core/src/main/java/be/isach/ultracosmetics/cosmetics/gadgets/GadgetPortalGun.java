@@ -57,7 +57,9 @@ public class GadgetPortalGun extends Gadget implements Updatable {
 
         BlockFace face = getBlockFace(sight.get(0), target);
         Location loc = target.getRelative(face).getLocation().add(0.5, 0.5, 0.5);
-        loc.add(face.getDirection().multiply(-0.25));
+        // BlockFace#getDirection does not exist in 1.8
+        Vector faceVector = new Vector(face.getModX(), face.getModY(), face.getModZ());
+        loc.add(faceVector.multiply(-0.25));
         portalLoc.setLocation(loc);
         portalLoc.setFace(face);
     }
