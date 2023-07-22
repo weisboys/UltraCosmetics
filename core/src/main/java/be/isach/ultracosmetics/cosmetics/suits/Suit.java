@@ -23,7 +23,16 @@ public abstract class Suit extends ArmorCosmetic<SuitType> {
 
     @Override
     protected void scheduleTask() {
-        runTaskTimerAsynchronously(getUltraCosmetics(), 0, 1);
+        if (isAsync()) {
+            runTaskTimerAsynchronously(getUltraCosmetics(), 0, 1);
+        } else {
+            // Default implementation is sync
+            super.scheduleTask();
+        }
+    }
+
+    protected boolean isAsync() {
+        return true;
     }
 
     @Override
