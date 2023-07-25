@@ -8,7 +8,9 @@ import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ServerVersion;
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
@@ -166,7 +168,8 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
     public void onInteract(PlayerInteractEvent event) {
         if (event.getPlayer() != getPlayer() || !event.hasItem()) return;
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-        if (event.getItem().getType().name().endsWith("_" + getArmorSlot())) {
+        Material itemType = event.getItem().getType();
+        if (itemType.name().endsWith("_" + getArmorSlot()) || (itemType == XMaterial.ELYTRA.parseMaterial() && getArmorSlot() == ArmorSlot.CHESTPLATE)) {
             event.setUseItemInHand(Event.Result.DENY);
         }
         if (isItemThis(event.getItem())) {

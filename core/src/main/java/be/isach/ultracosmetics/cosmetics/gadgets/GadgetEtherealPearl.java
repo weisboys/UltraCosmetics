@@ -62,10 +62,13 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         getPlayer().teleport(getPlayer().getLocation().add(0, 5, 0));
         // Teleportation can cause the pearl to hit the player in the same tick
         if (pearl == null) return;
+        if (!pearl.setPassenger(getPlayer())) {
+            pearl.remove();
+            return;
+        }
         if (!getPlayer().getAllowFlight()) {
             getPlayer().setAllowFlight(true);
         }
-        pearl.setPassenger(getPlayer());
         running = true;
     }
 
