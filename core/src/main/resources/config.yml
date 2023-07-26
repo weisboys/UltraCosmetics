@@ -342,6 +342,9 @@ Pets-Are-Babies: true
 # Are pets prevented from making sounds?
 Pets-Are-Silent: false
 
+# Show names over pets' heads?
+Show-Pets-Names: true
+
 # Are gadgets prevented from making sounds?
 Gadgets-Are-Silent: false
 

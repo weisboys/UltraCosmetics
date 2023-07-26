@@ -51,6 +51,7 @@ import java.util.function.Function;
  * @since 03-08-2015
  */
 public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
+    protected final boolean showName = SettingsManager.getConfig().getBoolean("Show-Pets-Names", true);
 
     /**
      * List of items popping out from Pet.
@@ -105,18 +106,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
             ((Tameable) entity).setTamed(true);
         }
 
-        if (useArmorStandNameTag()) {
-            armorStand = (ArmorStand) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.ARMOR_STAND);
-            armorStand.setVisible(false);
-            armorStand.setSmall(true);
-            armorStand.setMarker(useMarkerArmorStand());
-            armorStand.setCustomNameVisible(true);
-            FixedMetadataValue metadataValue = new FixedMetadataValue(getUltraCosmetics(), "C_AD_ArmorStand");
-            armorStand.setMetadata("C_AD_ArmorStand", metadataValue);
-            entity.setPassenger(armorStand);
-        } else {
-            getEntity().setCustomNameVisible(true);
-        }
+        setupNameTag();
 
         // Must run AFTER setting the entity to a baby
         clearPathfinders();
@@ -217,7 +207,24 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         return items;
     }
 
+    protected void setupNameTag() {
+        if (!showName) return;
+        if (!useArmorStandNameTag()) {
+            getEntity().setCustomNameVisible(true);
+            return;
+        }
+        armorStand = (ArmorStand) entity.getWorld().spawnEntity(entity.getLocation(), EntityType.ARMOR_STAND);
+        armorStand.setVisible(false);
+        armorStand.setSmall(true);
+        armorStand.setMarker(useMarkerArmorStand());
+        armorStand.setCustomNameVisible(true);
+        FixedMetadataValue metadataValue = new FixedMetadataValue(getUltraCosmetics(), "C_AD_ArmorStand");
+        armorStand.setMetadata("C_AD_ArmorStand", metadataValue);
+        entity.setPassenger(armorStand);
+    }
+
     public void updateName() {
+        if (!showName) return;
         Entity rename;
         if (armorStand == null) {
             rename = entity;
