@@ -78,56 +78,56 @@ Menu:
     Title: <bold>Mounts
     Button:
       Name: <bold><gold>Mounts
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Leidézés
+      Tooltip-Unequip: <bold><red>Visszaidézés
   Morphs:
     Title: <bold>Morphs
     Button:
       Name: <bold><dark_green>Morphs
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Morph into
       Tooltip-Unequip: <bold><red>Unmorph from
   Hats:
     Title: <bold>Hats
     Button:
       Name: <bold><light_purple>Hats
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
   Particle-Effects:
     Title: <bold>Particle Effects
     Button:
       Name: <bold><aqua>Particle Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Summon
       Tooltip-Unequip: <bold><red>Unsummon
   Suits:
     Title: <bold>Suits
     Button:
       Name: <bold><dark_aqua>Suits
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
   Emotes:
     Title: <bold>Emotes
     Button:
       Name: <bold><yellow>Emotes
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
   Projectile-Effects:
     Title: <bold>Projectile Effects
     Button:
       Name: <bold><dark_purple>Projectile Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
   Death-Effects:
     Title: <bold>Death Effects
     Button:
       Name: <bold><red>Death Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
   Buy-Ammo:
