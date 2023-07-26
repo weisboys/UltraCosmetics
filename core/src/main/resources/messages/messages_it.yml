@@ -1,8 +1,8 @@
 Prefix: <italic><bold>Cosmetici >
 No-Permission: <prefix> <bold><red>Non hai il permesso!
 Cosmetic-Disabled: <prefix> <bold><red>Questo cosmetico è disabilitato!
-Invalid-Gadget: <prefix> <bold><red>Invalid Gadget!
-Invalid-Pet: <prefix> <bold><red>Invalid Pet!
+Invalid-Gadget: <prefix> <bold><red>Gadget non valido!
+Invalid-Pet: <prefix> <bold><red>Pet non valido!
 Invalid-Mount: <prefix> <bold><red>Invalid Mount!
 Invalid-Effect: <prefix> <bold><red>Invalid Effect!
 Invalid-Morph: <prefix> <bold><red>Invalid Morph!
@@ -29,21 +29,21 @@ Left-Click-Open-Chest: <green>Left-click to open a chest
 Right-Click-Simple: <green>Right-click to just get cosmetics
 Your-Keys: '<italic><gray>Your keys: </gray></italic><bold><white><keys>'
 Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Treasure Key </gray><yellow>for $<price>
-You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
-Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
-No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
+You-Won-Treasure-Chests: '<prefix> <bold><white>Hai vinto: <name>!'
+Treasure-Chest-Occupied: <prefix> <bold><red>Tutti i luoghi del tesoro sono pieni, si prega di attendere e riprovare
+No-Ammo: <prefix> <bold><red>Non hai nessuna munizioni per questo gadget!
 Clear:
   Cosmetics: <bold><red>Rimuovi Cosmetici
-  Gadgets: <bold><red>Clear current gadget
+  Gadgets: <bold><red>Rimuovi il gadget corrente
   Pets: <bold><red>Clear current pet
   Mounts: <bold><red>Clear current mount
   Particle-Effects: <bold><red>Clear current effect
   Morphs: <bold><red>Clear current morph
-  Hats: <bold><red>Clear current hat
-  Suits: <bold><red>Clear current suit
-  Emotes: <bold><red>Clear current emote
-  Projectile-Effects: <bold><red>Clear current projectile effect
-  Death-Effects: <bold><red>Clear current death effect
+  Hats: <bold><red>Cancella il cappello corrente
+  Suits: <bold><red>Cancella l'abito corrente
+  Emotes: <bold><red>Cancella l'emote corrente
+  Projectile-Effects: <bold><red>Cancella l'effetto attuale delle freccie
+  Death-Effects: <bold><red>Cancella l'effetto morte corrente
 Menu:
   Purchase-Rename:
     Button:
