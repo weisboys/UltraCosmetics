@@ -6,6 +6,8 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -20,8 +22,8 @@ public class CommandReward {
     private final String name;
     private final ItemStack stack;
     private final int chance;
+    private final String rawMessage;
     private boolean messageEnabled;
-    private Component message;
     private final List<String> commands;
 
     public CommandReward(String path) {
@@ -31,7 +33,7 @@ public class CommandReward {
         stack = ItemFactory.getItemStackFromConfig(path + ".Material");
         chance = config.getInt(path + ".Chance");
         messageEnabled = config.getBoolean(path + ".Message.enabled");
-        message = mm.deserialize(config.getString(path + ".Message.message", ""));
+        rawMessage = config.getString(path + ".Message.message");
         commands = config.getStringList(path + ".Commands");
     }
 
@@ -47,14 +49,14 @@ public class CommandReward {
     }
 
     /**
-     * @return true if the message from {@link #getMessage()} will be sent
+     * @return true if the message from {@link #getMessage(Player)} will be sent
      */
     public boolean isMessageEnabled() {
         return messageEnabled;
     }
 
     /**
-     * @param messageEnabled if true, the message from {@link #getMessage()} will be sent
+     * @param messageEnabled if true, the message from {@link #getMessage(Player)} will be sent
      * @see #isMessageEnabled()
      */
     public void setMessageEnabled(boolean messageEnabled) {
@@ -68,8 +70,11 @@ public class CommandReward {
      *
      * @return the message to be sent
      */
-    public Component getMessage() {
-        return message;
+    public Component getMessage(Player player) {
+        if (rawMessage == null) return null;
+        return MessageManager.getMiniMessage().deserialize(rawMessage,
+                Placeholder.unparsed("name", player.getName())
+        );
     }
 
     /**
