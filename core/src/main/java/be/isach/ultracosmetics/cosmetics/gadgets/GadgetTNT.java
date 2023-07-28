@@ -6,8 +6,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -15,8 +16,6 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -71,26 +70,25 @@ public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
 
     @EventHandler
     public void onEntityExplode(EntityExplodeEvent event) {
-        if (entities.remove(event.getEntity())) {
-            event.setCancelled(true);
-            Particles.EXPLOSION_HUGE.display(event.getEntity().getLocation());
-            play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer(), 1.4f, 1.5f);
+        if (!entities.remove(event.getEntity())) return;
+        event.setCancelled(true);
+        Particles.EXPLOSION_HUGE.display(event.getEntity().getLocation());
+        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer(), 1.4f, 1.5f);
 
-            for (Entity ent : event.getEntity().getNearbyEntities(3, 3, 3)) {
-                if (canAffect(ent)) {
-                    double dX = event.getEntity().getLocation().getX() - ent.getLocation().getX();
-                    double dY = event.getEntity().getLocation().getY() - ent.getLocation().getY();
-                    double dZ = event.getEntity().getLocation().getZ() - ent.getLocation().getZ();
-                    double yaw = Math.atan2(dZ, dX);
-                    double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-                    double X = Math.sin(pitch) * Math.cos(yaw);
-                    double Y = Math.sin(pitch) * Math.sin(yaw);
-                    double Z = Math.cos(pitch);
+        Player player = getPlayer();
+        for (Entity ent : event.getEntity().getNearbyEntities(3, 3, 3)) {
+            if (!canAffect(ent, player)) continue;
+            double dX = event.getEntity().getLocation().getX() - ent.getLocation().getX();
+            double dY = event.getEntity().getLocation().getY() - ent.getLocation().getY();
+            double dZ = event.getEntity().getLocation().getZ() - ent.getLocation().getZ();
+            double yaw = Math.atan2(dZ, dX);
+            double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+            double X = Math.sin(pitch) * Math.cos(yaw);
+            double Y = Math.sin(pitch) * Math.sin(yaw);
+            double Z = Math.cos(pitch);
 
-                    Vector vector = new Vector(X, Z, Y);
-                    MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
-                }
-            }
+            Vector vector = new Vector(X, Z, Y);
+            MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
         }
     }
 

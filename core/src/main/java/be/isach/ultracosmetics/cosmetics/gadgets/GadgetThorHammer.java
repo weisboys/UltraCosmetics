@@ -12,6 +12,7 @@ import be.isach.ultracosmetics.util.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -69,8 +70,9 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
         if (hammer != event.getItem()) return;
         event.setCancelled(true);
 
-        if (event.getPlayer() != getPlayer()) {
-            if (v != null && canAffect(event.getPlayer())) {
+        Player player = getPlayer();
+        if (event.getPlayer() != player) {
+            if (v != null && canAffect(event.getPlayer(), player)) {
                 MathUtils.applyVelocity(event.getPlayer(), v);
             }
             return;

@@ -7,7 +7,7 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -19,8 +19,6 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,9 +54,10 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
 
             List<Entity> nearbyEntities = firework.getNearbyEntities(0.5d, 0.5d, 0.5d);
 
+            Player player = getPlayer();
             for (Entity entity : nearbyEntities) {
                 if ((entity instanceof Player || entity instanceof Creature)
-                        && entity != getPlayer() && canAffect(entity)) {
+                        && entity != player && canAffect(entity, player)) {
                     MathUtils.applyVelocity(entity, new Vector(0, 1, 0));
                     Particles.FLAME.display(entity.getLocation(), 60, 0.4f);
                     UltraCosmeticsData.get().getVersionManager().getModule().spawnFirework(location, FIREWORK_EFFECT);

@@ -18,6 +18,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.FallingBlock;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
@@ -115,8 +116,9 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
                         fb.setVelocity(new Vector(0, 0.3f, 0));
                         fb.setDropItem(false);
                         fallingBlocks.add(fb);
-                        fb.getNearbyEntities(1, 1, 1).stream().filter(ent -> ent != getPlayer()
-                                        && !(ent instanceof FallingBlock) && canAffect(ent))
+                        Player player = getPlayer();
+                        fb.getNearbyEntities(1, 1, 1).stream().filter(ent -> ent != player
+                                        && !(ent instanceof FallingBlock) && canAffect(ent, player))
                                 .forEach(ent -> MathUtils.applyVelocity(ent, new Vector(0, 0.5, 0)));
                     });
                 }

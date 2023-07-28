@@ -40,7 +40,7 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
     public void onTakeUpMelon(org.bukkit.event.player.PlayerPickupItemEvent event) {
         if (melonSlices.contains(event.getItem())
                 && event.getItem().getTicksLived() > 5
-                && canAffect(event.getPlayer())) {
+                && canAffect(event.getPlayer(), getPlayer())) {
             event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5 * 20, 2));
             play(XSound.ENTITY_PLAYER_BURP, getPlayer().getLocation(), 1.4f, 1.5f);
             event.getItem().remove();

@@ -13,6 +13,7 @@ import com.cryptomorin.xseries.messages.ActionBar;
 import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 /**
@@ -42,20 +43,20 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
                 Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
                 XSound.ENTITY_GENERIC_EXPLODE.play(getPlayer(), 1.4f, 1.5f);
 
-                for (Entity ent : getPlayer().getNearbyEntities(3, 3, 3)) {
-                    if (canAffect(ent)) {
-                        double dX = getPlayer().getLocation().getX() - ent.getLocation().getX();
-                        double dY = getPlayer().getLocation().getY() - ent.getLocation().getY();
-                        double dZ = getPlayer().getLocation().getZ() - ent.getLocation().getZ();
-                        double yaw = Math.atan2(dZ, dX);
-                        double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-                        double x = Math.sin(pitch) * Math.cos(yaw);
-                        double y = Math.sin(pitch) * Math.sin(yaw);
-                        double z = Math.cos(pitch);
+                Player player = getPlayer();
+                for (Entity ent : player.getNearbyEntities(3, 3, 3)) {
+                    if (!canAffect(ent, player)) continue;
+                    double dX = getPlayer().getLocation().getX() - ent.getLocation().getX();
+                    double dY = getPlayer().getLocation().getY() - ent.getLocation().getY();
+                    double dZ = getPlayer().getLocation().getZ() - ent.getLocation().getZ();
+                    double yaw = Math.atan2(dZ, dX);
+                    double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+                    double x = Math.sin(pitch) * Math.cos(yaw);
+                    double y = Math.sin(pitch) * Math.sin(yaw);
+                    double z = Math.cos(pitch);
 
-                        Vector vector = new Vector(x, z, y);
-                        MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
-                    }
+                    Vector vector = new Vector(x, z, y);
+                    MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
                 }
                 ActionBar.clearActionBar(getPlayer());
                 charge = 0;

@@ -8,15 +8,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.XTag;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
-import com.cryptomorin.xseries.XTag;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,15 +53,15 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
 
         Particles effect;
         switch (RANDOM.nextInt(5)) {
-        default:
-            effect = Particles.FIREWORKS_SPARK;
-            break;
-        case 3:
-            effect = Particles.FLAME;
-            break;
-        case 4:
-            effect = Particles.SPELL_WITCH;
-            break;
+            default:
+                effect = Particles.FIREWORKS_SPARK;
+                break;
+            case 3:
+                effect = Particles.FLAME;
+                break;
+            case 4:
+                effect = Particles.SPELL_WITCH;
+                break;
         }
 
         effect.display(bomb.getLocation(), 1, 0.2f);
@@ -87,8 +85,9 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
             items.add(item);
             play(XSound.ENTITY_CHICKEN_EGG, item.getLocation(), 0.2f, 1.0f);
 
+            Player player = getPlayer();
             for (Entity entity : bomb.getNearbyEntities(1.5, 1, 1.5)) {
-                if (entity instanceof Player && canAffect(entity)) {
+                if (entity instanceof Player && canAffect(entity, player)) {
                     MathUtils.applyVelocity(entity, new Vector(0, 0.5, 0).add(MathUtils.getRandomCircleVector().multiply(0.1)));
                 }
             }

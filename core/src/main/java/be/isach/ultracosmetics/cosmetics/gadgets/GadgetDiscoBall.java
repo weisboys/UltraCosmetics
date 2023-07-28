@@ -19,6 +19,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -126,8 +127,9 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
 
         BlockUtils.setToRestore(updates, 4);
 
+        Player player = getPlayer();
         for (Entity ent : loc.getWorld().getNearbyEntities(armorStand.getEyeLocation().add(-.5d, -.5d, -.5d), 7.5, 7.5, 7.5)) {
-            if (ent.isOnGround() && canAffect(ent)) {
+            if (ent.isOnGround() && canAffect(ent, player)) {
                 MathUtils.applyVelocity(ent, new Vector(0, 0.3, 0));
             }
         }

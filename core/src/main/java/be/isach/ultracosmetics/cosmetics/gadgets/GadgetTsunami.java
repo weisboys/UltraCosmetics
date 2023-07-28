@@ -7,10 +7,10 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -53,8 +53,9 @@ public class GadgetTsunami extends Gadget implements PlayerAffectingCosmetic {
             }
             if (isAffectingPlayersEnabled()) {
                 Bukkit.getScheduler().runTask(getUltraCosmetics(), () -> {
-                    for (final Entity ent : getPlayer().getWorld().getNearbyEntities(loc, 0.6, 0.6, 0.6)) {
-                        if (!cooldownJump.contains(ent) && ent != getPlayer() && canAffect(ent)) {
+                    Player player = getPlayer();
+                    for (final Entity ent : player.getWorld().getNearbyEntities(loc, 0.6, 0.6, 0.6)) {
+                        if (!cooldownJump.contains(ent) && ent != player && canAffect(ent, player)) {
                             MathUtils.applyVelocity(ent, new Vector(0, 1, 0).add(v.clone().multiply(2)));
                             cooldownJump.add(ent);
                             Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> cooldownJump.remove(ent), 20);

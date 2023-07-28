@@ -10,14 +10,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.metadata.MetadataValue;
 
 public interface PlayerAffectingCosmetic {
-    public default boolean canAffect(Entity entity) {
+    public default boolean canAffect(Entity entity, Player owner) {
         if (!isAffectingPlayersEnabled()) return false;
         if (entity.hasMetadata("NPC") || entity.hasMetadata("Pet") || entity.hasMetadata("Mount")) return false;
         if (entity instanceof Player) {
             Player target = (Player) entity;
             // alternate NPC check
             if (Bukkit.getPlayer(target.getUniqueId()) == null) return false;
-            if (isVanished(target)) return false;
+            if (isHidden(target, owner)) return false;
             UltraPlayer ultraPlayer = getSelf().getUltraCosmetics().getPlayerManager().getUltraPlayer(target);
             if (!ultraPlayer.hasGadgetsEnabled() || ultraPlayer.getCurrentTreasureChest() != null) {
                 return false;
@@ -35,6 +35,12 @@ public interface PlayerAffectingCosmetic {
     public default boolean isAffectingPlayersEnabled() {
         CosmeticType<?> type = getSelf().getType();
         return SettingsManager.getConfig().getBoolean(type.getCategory().getConfigPath() + "." + type.getConfigName() + ".Affect-Players");
+    }
+
+    public static boolean isHidden(Player target, Player from) {
+        // Bukkit API
+        if (!target.canSee(from) || !from.canSee(target)) return true;
+        return isVanished(target);
     }
 
     public static boolean isVanished(Player target) {

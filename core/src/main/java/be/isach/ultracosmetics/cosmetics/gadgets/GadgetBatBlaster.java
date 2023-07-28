@@ -8,15 +8,13 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Bat;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.Iterator;
 
@@ -81,8 +79,9 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
             if (playerStartLoc != null) {
                 bat.setVelocity(playerStartLoc.getDirection().clone().multiply(0.5D).add(rand));
             }
-            for (Player other : getPlayer().getWorld().getPlayers()) {
-                if (other == getPlayer() || !canAffect(other) || !hitPlayer(bat.getLocation(), other)) {
+            Player player = getPlayer();
+            for (Player other : player.getWorld().getPlayers()) {
+                if (other == player || !canAffect(other, player) || !hitPlayer(bat.getLocation(), other)) {
                     continue;
                 }
                 Vector v = bat.getLocation().getDirection();

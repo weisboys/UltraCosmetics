@@ -7,15 +7,13 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-
+import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.EntityEffect;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.util.Vector;
-
-import com.cryptomorin.xseries.XMaterial;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -47,13 +45,13 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
             return;
         }
 
-        if (event.getPlayer() == getPlayer() || !canAffect(event.getPlayer())) {
+        Player hitter = getPlayer();
+        if (event.getPlayer() == hitter || !canAffect(event.getPlayer(), hitter)) {
             return;
         }
         event.getItem().remove();
         final Player HIT = event.getPlayer();
         HIT.playEffect(EntityEffect.HURT);
-        Player hitter = getPlayer();
         double dX = HIT.getLocation().getX() - hitter.getLocation().getX();
         double dY = HIT.getLocation().getY() - hitter.getLocation().getY();
         double dZ = HIT.getLocation().getZ() - hitter.getLocation().getZ();

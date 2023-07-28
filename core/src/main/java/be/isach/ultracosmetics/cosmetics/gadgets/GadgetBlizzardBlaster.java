@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
@@ -54,7 +53,7 @@ public class GadgetBlizzardBlaster extends Gadget implements PlayerAffectingCosm
             }
 
             for (int i = 0; i < 3; i++) {
-                UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendBlizzard(getPlayer(), location, this::canAffect, vector);
+                UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendBlizzard(getPlayer(), location, entity -> canAffect(entity, getPlayer()), vector);
             }
 
             location.add(vector);
