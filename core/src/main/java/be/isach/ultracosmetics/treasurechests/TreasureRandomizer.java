@@ -35,8 +35,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * Created by sacha on 19/08/15.
  */
 public class TreasureRandomizer {
-    private static final int MONEY_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Chance");
-    private static final int AMMO_CHANCE = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Chance");
+    private final int moneyChance = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Chance");
+    private final int ammoChance = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Chance");
     private final WeightedSet<Loot> lootTypes = new WeightedSet<>();
     private Location loc;
     private final Player player;
@@ -55,7 +55,7 @@ public class TreasureRandomizer {
                 && SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Gadgets-Ammo.Enabled");
         ammo = new AmmoLoot(player);
         if (!ammo.isEmpty() && canAddAmmo) {
-            lootTypes.add(ammo, AMMO_CHANCE);
+            lootTypes.add(ammo, ammoChance);
         }
         initializeCommandLoot();
 
@@ -64,7 +64,7 @@ public class TreasureRandomizer {
         }
 
         if (UltraCosmeticsData.get().useMoneyTreasureLoot()) {
-            lootTypes.add(money, MONEY_CHANCE);
+            lootTypes.add(money, moneyChance);
         }
     }
 
@@ -134,7 +134,7 @@ public class TreasureRandomizer {
         if (loot instanceof CosmeticLoot && ((CosmeticLoot) loot).getCategory() == Category.GADGETS) {
             ammo.add((GadgetType) reward.getCosmetic());
             if (canAddAmmo && !lootTypes.contains(ammo)) {
-                lootTypes.add(ammo, AMMO_CHANCE);
+                lootTypes.add(ammo, ammoChance);
             }
         }
 
