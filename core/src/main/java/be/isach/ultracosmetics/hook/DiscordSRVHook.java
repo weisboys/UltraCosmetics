@@ -1,10 +1,6 @@
 package be.isach.ultracosmetics.hook;
 
 import be.isach.ultracosmetics.config.SettingsManager;
-
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-
 import github.scarsz.discordsrv.DiscordSRV;
 import github.scarsz.discordsrv.dependencies.jda.api.EmbedBuilder;
 import github.scarsz.discordsrv.dependencies.jda.api.MessageBuilder;
@@ -12,6 +8,8 @@ import github.scarsz.discordsrv.dependencies.jda.api.entities.Message;
 import github.scarsz.discordsrv.dependencies.jda.api.entities.MessageEmbed;
 import github.scarsz.discordsrv.dependencies.jda.api.entities.TextChannel;
 import github.scarsz.discordsrv.util.DiscordUtil;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 public class DiscordSRVHook {
 
