@@ -41,21 +41,21 @@ public class PermissionPrinter {
         String dateString = date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT));
 
         writer.println("UltraCosmetics v" + ultraCosmetics.getDescription().getVersion() + " permissions.");
+        writer.println();
         writer.println("Generated automatically on " + dateString);
         writer.println();
-        writer.println();
-        writer.println("General permissions, enabled by default:");
+        writer.println("### General permissions, enabled by default:");
         writer.println("  - ultracosmetics.receivechest");
         writer.println("  - ultracosmetics.openmenu");
         writer.println();
-        writer.println("Treasure Chests:");
+        writer.println("### Treasure Chests:");
         writer.println("  - ultracosmetics.treasurechests.buykey (enabled by default)");
         writer.println();
-        writer.println("Bypass perms:");
+        writer.println("### Bypass perms:");
         writer.println("  - ultracosmetics.bypass.disabledcommands");
         writer.println("  - ultracosmetics.bypass.cooldown (granted to no one by default)");
         writer.println();
-        writer.println("Commands:");
+        writer.println("### Commands:");
         writer.println("  - ultracosmetics.command.*");
         for (SubCommand subCommand : ultraCosmetics.getCommandManager().getCommands()) {
             writer.print("  - " + subCommand.getPermission().getName());
@@ -65,21 +65,21 @@ public class PermissionPrinter {
             writer.println();
         }
         writer.println();
-        writer.println("Other:");
+        writer.println("### Other:");
         writer.println("  - ultracosmetics.allcosmetics");
         writer.println("  - ultracosmetics.updatenotify");
 
         for (Category cat : Category.values()) {
             if (cat.isSuits()) continue;
             writer.println();
-            writer.println(cat.getConfigPath() + ":");
+            writer.println("### " + cat.getConfigPath().replace("-", " ") + ":");
             writer.println("  - " + cat.getPermission() + ".*");
             for (CosmeticType<?> type : cat.getValues()) {
                 writer.println("  - " + type.getPermission().getName());
             }
         }
         writer.println();
-        writer.println("Suits:");
+        writer.println("### Suits:");
         writer.println("  - ultracosmetics.suits.*");
         for (SuitCategory cat : SuitCategory.values()) {
             writer.println("  - ultracosmetics.suits." + cat.getConfigName().toLowerCase() + ".*");
@@ -87,7 +87,6 @@ public class PermissionPrinter {
                 writer.println("    - " + suitType.getPermission().getName());
             }
         }
-        writer.println();
 
         writer.close();
     }
