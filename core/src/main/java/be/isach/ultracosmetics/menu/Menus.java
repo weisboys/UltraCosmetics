@@ -26,7 +26,7 @@ public class Menus {
 
     private final UltraCosmetics ultraCosmetics;
     private final Map<Category, CosmeticMenu<?>> categoryMenus = new HashMap<>();
-    private final MenuMain mainMenu;
+    private Menu mainMenu;
     private final CustomMainMenu customMainMenu;
 
     public Menus(UltraCosmetics ultraCosmetics) {
@@ -62,6 +62,10 @@ public class Menus {
         new CosmeticsInventoryHolder();
     }
 
+    public void setMainMenu(Menu menu) {
+        this.mainMenu = menu;
+    }
+
     /**
      * Opens UC's main menu OR runs the custom main menu command specified in config.yml
      *
@@ -82,6 +86,10 @@ public class Menus {
 
     public CosmeticMenu<?> getCategoryMenu(Category category) {
         return categoryMenus.get(category);
+    }
+
+    public void setCategoryMenu(Category category, CosmeticMenu<?> menu) {
+        categoryMenus.put(category, menu);
     }
 
     /**
