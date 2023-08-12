@@ -2,13 +2,14 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
+    apply plugin: 'maven-publish'
 
     eclipse.classpath.downloadJavadoc = true
     eclipse.classpath.downloadSources = true
     idea.module.downloadJavadoc = true
     idea.module.downloadSources = true
 
-    group = 'be.isach'
+    group = 'be.isach.UltraCosmetics'
     version = '3.4'
     def classifier = 'DEV-b1'
 

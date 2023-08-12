@@ -21,10 +21,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OpenCosmeticMenuButton implements Button {
-    private final Category category;
-    private final PermissionManager pm;
-    private final Menus menus;
-    private final ItemStack baseStack;
+    protected final Category category;
+    protected final PermissionManager pm;
+    protected final Menus menus;
+    protected final ItemStack baseStack;
 
     public OpenCosmeticMenuButton(UltraCosmetics ultraCosmetics, Category category) {
         this.category = category;
@@ -48,7 +48,7 @@ public class OpenCosmeticMenuButton implements Button {
         return stack;
     }
 
-    private String calculateUnlocked(Player player) {
+    protected String calculateUnlocked(Player player) {
         int unlocked = 0;
         int total;
         if (category.isSuits()) {

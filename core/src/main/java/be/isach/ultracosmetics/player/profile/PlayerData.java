@@ -104,7 +104,7 @@ public class PlayerData {
     public void loadFromFile() {
         SettingsManager sm = SettingsManager.getData(uuid);
         if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled() && sm.fileConfiguration.isConfigurationSection("enabled")) {
-            cosmeticsFromFile(sm);
+            loadEquippedFromFile(sm);
         }
 
         for (CosmeticType<?> pet : CosmeticType.enabledOf(Category.PETS)) {
@@ -134,7 +134,7 @@ public class PlayerData {
         filterByOwned = sm.getBoolean(ProfileKey.FILTER_OWNED.getFileKey(), false);
     }
 
-    private void cosmeticsFromFile(SettingsManager sm) {
+    private void loadEquippedFromFile(SettingsManager sm) {
         ConfigurationSection s = sm.fileConfiguration.getConfigurationSection("enabled");
         boolean changed = false;
         for (Category cat : Category.values()) {

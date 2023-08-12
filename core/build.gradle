@@ -63,3 +63,14 @@ shadowJar {
     relocate('me.gamercoder215.mobchip', path + '.mobchip')
     relocate('net.kyori.adventure', path + '.adventure')
 }
+
+publishing {
+    publications {
+        jar(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+}
