@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Предыдущая страница
       Next-Page: <bold><green>Следующая страница
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Недостаточно места в инвентаре для сундука с сокровищами!
   Region-Disabled: <prefix> <bold><red>Ты не можешь открыть сундук с сокровищами в данном месте
