@@ -21,6 +21,7 @@ import be.isach.ultracosmetics.listeners.PriorityListener;
 import be.isach.ultracosmetics.listeners.UnmovableItemListener;
 import be.isach.ultracosmetics.menu.CosmeticsInventoryHolder;
 import be.isach.ultracosmetics.menu.Menus;
+import be.isach.ultracosmetics.menu.menus.CustomMainMenu;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
@@ -150,6 +151,8 @@ public class UltraCosmetics extends JavaPlugin {
     private Set<Problem> loadTimeProblems = new HashSet<>();
 
     private final List<String> supportedLanguages = new ArrayList<>();
+
+    private final List<UCAddon> addons = new ArrayList<>();
 
     /**
      * Called when plugin is loaded. Used for registering WorldGuard flags as recommended in API documentation.
@@ -393,6 +396,7 @@ public class UltraCosmetics extends JavaPlugin {
         setupMetrics();
 
         this.menus = new Menus(this);
+        setupCustomMainMenu();
 
         try {
             config.save(file);
@@ -438,6 +442,29 @@ public class UltraCosmetics extends JavaPlugin {
         playerManager.dispose();
 
         UltraCosmeticsData.get().getVersionManager().getModule().disable();
+    }
+
+    public void reload() {
+        getLogger().info("Shutting down...");
+        shutdown();
+        CosmeticType.removeAllTypes();
+        getLogger().info("Starting up...");
+        start();
+        for (UCAddon addon : addons) {
+            addon.reload(this);
+        }
+    }
+
+    /**
+     * Addons registered with this function will be notified after UC finishes reloading.
+     *
+     * @param addon The addon to register
+     */
+    public void registerAddon(UCAddon addon) {
+        if (addons.contains(addon)) {
+            throw new IllegalArgumentException("This addon has already been registered!");
+        }
+        addons.add(addon);
     }
 
     /**
@@ -608,6 +635,20 @@ public class UltraCosmetics extends JavaPlugin {
             builder.append("\n").append(mm.serialize(deserializer.deserialize(parts[i])));
         }
         config.set(path, builder.toString());
+    }
+
+    private void setupCustomMainMenu() {
+        File customFile = CustomMainMenu.getFile(this);
+        if (!customFile.exists()) {
+            saveResource(customFile.getName(), false);
+        }
+        CustomMainMenu customMenu = null;
+        try {
+            customMenu = new CustomMainMenu(this);
+        } catch (IllegalArgumentException e) {
+            getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Failed to load custom main menu, please run it through a YAML checker");
+        }
+        menus.setMainMenu(customMenu);
     }
 
     /**

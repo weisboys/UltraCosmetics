@@ -43,7 +43,7 @@ public abstract class Menu implements Listener {
      * Key: Item
      * Value: ClickRunnable to call when item is clicked.
      */
-    private final Map<Inventory, Map<ItemStack, Button>> clickRunnableMap = new HashMap<>();
+    protected final Map<Inventory, Map<ItemStack, Button>> clickRunnableMap = new HashMap<>();
     private final boolean fillEmpty = SettingsManager.getConfig().getBoolean("Fill-Blank-Slots-With-Item.Enabled");
 
     private final ItemStack fillerItem = getFillerItem();

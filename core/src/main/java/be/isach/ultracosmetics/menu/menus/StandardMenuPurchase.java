@@ -1,7 +1,7 @@
 package be.isach.ultracosmetics.menu.menus;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.menu.Menu;
+import be.isach.ultracosmetics.menu.MenuPurchase;
 import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.menu.buttons.PurchaseCancelButton;
 import be.isach.ultracosmetics.menu.buttons.PurchaseConfirmButton;
@@ -12,16 +12,13 @@ import org.bukkit.inventory.Inventory;
 
 /**
  * Created by sacha on 04/04/2017.
+ * <p>
+ * Standard implementation of MenuPurchase
  */
-public class MenuPurchase extends Menu {
+public class StandardMenuPurchase extends MenuPurchase {
 
-    private Component name;
-    private PurchaseData purchaseData;
-
-    public MenuPurchase(UltraCosmetics ultraCosmetics, Component name, PurchaseData purchaseData) {
-        super(ultraCosmetics);
-        this.name = name;
-        this.purchaseData = purchaseData;
+    public StandardMenuPurchase(UltraCosmetics ultraCosmetics, Component name, PurchaseData purchaseData) {
+        super(ultraCosmetics, name, purchaseData);
     }
 
     @Override
@@ -44,15 +41,5 @@ public class MenuPurchase extends Menu {
                 putItem(inventory, j, cancelButton, player);
             }
         }
-    }
-
-    @Override
-    protected int getSize() {
-        return 54;
-    }
-
-    @Override
-    protected Component getName() {
-        return name;
     }
 }

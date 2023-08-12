@@ -19,8 +19,9 @@ import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
+import be.isach.ultracosmetics.menu.MenuPurchase;
+import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.menu.PurchaseData;
-import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.mysql.SqlCache;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.player.profile.FileCosmeticsProfile;
@@ -397,12 +398,13 @@ public class UltraPlayer {
             pd.setPrice(event.getPrice());
             return true;
         });
+        Menus menus = ultraCosmetics.getMenus();
         pd.setOnPurchase(() -> {
             addKey();
-            ultraCosmetics.getMenus().openMainMenu(this);
+            menus.openMainMenu(this);
         });
-        pd.setOnCancel(() -> ultraCosmetics.getMenus().openMainMenu(this));
-        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
+        pd.setOnCancel(() -> menus.openMainMenu(this));
+        MenuPurchase mp = menus.getMenuPurchaseFactory().createPurchaseMenu(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
         Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> getBukkitPlayer().openInventory(mp.getInventory(this)), 1);
     }
 

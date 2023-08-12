@@ -7,8 +7,9 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.menu.Menu;
+import be.isach.ultracosmetics.menu.MenuPurchase;
+import be.isach.ultracosmetics.menu.MenuPurchaseFactory;
 import be.isach.ultracosmetics.menu.PurchaseData;
-import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.mysql.MySqlConnectionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
@@ -93,7 +94,8 @@ public class RenamePetButton implements Button {
             purchaseData.setOnCancel(() -> returnMenu.open(ultraPlayer));
         }
 
-        MenuPurchase menu = new MenuPurchase(UltraCosmeticsData.get().getPlugin(), MessageManager.getMessage("Menu.Purchase-Rename.Title"), purchaseData);
+        MenuPurchaseFactory mpFactory = UltraCosmeticsData.get().getPlugin().getMenus().getMenuPurchaseFactory();
+        MenuPurchase menu = mpFactory.createPurchaseMenu(UltraCosmeticsData.get().getPlugin(), MessageManager.getMessage("Menu.Purchase-Rename.Title"), purchaseData);
         return menu.getInventory(ultraPlayer);
     }
 }

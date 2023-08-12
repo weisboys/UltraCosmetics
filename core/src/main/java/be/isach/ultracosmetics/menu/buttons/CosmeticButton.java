@@ -11,13 +11,14 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
+import be.isach.ultracosmetics.menu.MenuPurchase;
+import be.isach.ultracosmetics.menu.MenuPurchaseFactory;
 import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleCosmeticButton;
 import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleEmoteCosmeticButton;
 import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleGadgetCosmeticButton;
 import be.isach.ultracosmetics.menu.buttons.togglecosmetic.ToggleMorphCosmeticButton;
 import be.isach.ultracosmetics.menu.buttons.togglecosmetic.TogglePetCosmeticButton;
-import be.isach.ultracosmetics.menu.menus.MenuPurchase;
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
@@ -143,7 +144,8 @@ public abstract class CosmeticButton implements Button {
             Component title = MessageManager.getMessage("Menu.Purchase-Cosmetic.Title",
                     Placeholder.component("cosmetic", cosmeticType.getName())
             );
-            MenuPurchase mp = new MenuPurchase(ultraCosmetics, title, pd);
+            MenuPurchaseFactory mpFactory = ultraCosmetics.getMenus().getMenuPurchaseFactory();
+            MenuPurchase mp = mpFactory.createPurchaseMenu(ultraCosmetics, title, pd);
             ultraPlayer.getBukkitPlayer().openInventory(mp.getInventory(ultraPlayer));
             return false; // We just opened another inventory, don't close it
         } else if (startsWithColorless(clicked.getItemMeta().getDisplayName(), cosmeticType.getCategory().getDeactivateTooltip())) {

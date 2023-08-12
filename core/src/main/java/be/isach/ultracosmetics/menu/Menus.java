@@ -7,12 +7,10 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.util.SmartLogger;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,7 +25,7 @@ public class Menus {
     private final UltraCosmetics ultraCosmetics;
     private final Map<Category, CosmeticMenu<?>> categoryMenus = new HashMap<>();
     private Menu mainMenu;
-    private final CustomMainMenu customMainMenu;
+    private MenuPurchaseFactory menuPurchaseFactory = StandardMenuPurchase::new;
 
     public Menus(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -46,17 +44,6 @@ public class Menus {
         categoryMenus.put(Category.SUITS_LEGGINGS, ms);
         categoryMenus.put(Category.SUITS_BOOTS, ms);
         this.mainMenu = new MenuMain(ultraCosmetics);
-        File customFile = CustomMainMenu.getFile(ultraCosmetics);
-        if (!customFile.exists()) {
-            ultraCosmetics.saveResource(customFile.getName(), false);
-        }
-        CustomMainMenu customMenu = null;
-        try {
-            customMenu = new CustomMainMenu(ultraCosmetics);
-        } catch (IllegalArgumentException e) {
-            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Failed to load custom main menu, please run it through a YAML checker");
-        }
-        customMainMenu = customMenu;
         // Load the class so it's available on disable, when we can't load more classes.
         // Sometimes this happens when hotswapping the jar
         new CosmeticsInventoryHolder();
@@ -75,10 +62,6 @@ public class Menus {
         if (ultraCosmetics.getConfig().getBoolean("Categories.Back-To-Main-Menu-Custom-Command.Enabled")) {
             String command = ultraCosmetics.getConfig().getString("Categories.Back-To-Main-Menu-Custom-Command.Command").replace("/", "").replace("{player}", ultraPlayer.getBukkitPlayer().getName()).replace("{playeruuid}", ultraPlayer.getUUID().toString());
             Bukkit.dispatchCommand(ultraCosmetics.getServer().getConsoleSender(), command);
-            return;
-        }
-        if (customMainMenu != null && customMainMenu.isEnabled()) {
-            customMainMenu.open(ultraPlayer);
             return;
         }
         mainMenu.open(ultraPlayer);
@@ -110,7 +93,15 @@ public class Menus {
             menuReturnFunc.run();
         });
         pd.setOnCancel(menuReturnFunc);
-        MenuPurchase mp = new MenuPurchase(ultraCosmetics, MessageManager.getMessage("Menu.Buy-Ammo.Title"), pd);
+        MenuPurchase mp = menuPurchaseFactory.createPurchaseMenu(ultraCosmetics, MessageManager.getMessage("Menu.Buy-Ammo.Title"), pd);
         player.getBukkitPlayer().openInventory(mp.getInventory(player));
+    }
+
+    public MenuPurchaseFactory getMenuPurchaseFactory() {
+        return menuPurchaseFactory;
+    }
+
+    public void setMenuPurchaseFactory(MenuPurchaseFactory factory) {
+        this.menuPurchaseFactory = factory;
     }
 }
