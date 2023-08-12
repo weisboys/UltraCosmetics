@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>上一页
       Next-Page: <bold><green>下一页
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>这里没有足够的空间来召唤宝藏箱！
   Region-Disabled: <prefix> <bold><red>你不能在这里打开一个宝藏箱！
