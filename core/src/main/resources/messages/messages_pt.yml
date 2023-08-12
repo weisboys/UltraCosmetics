@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Página anterior
       Next-Page: <bold><green>Próxima página
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Não há espaço suficiente para um baú do tesouro!
   Region-Disabled: <prefix><bold><red>Você não pode abrir um baú aqui!
