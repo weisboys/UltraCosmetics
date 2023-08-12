@@ -121,21 +121,22 @@ Menu:
     Button:
       Name: <bold><dark_purple>Projectile Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Tooltip-Equip: <bold><aqua>Ota käyttöön
+      Tooltip-Unequip: <bold><red>Poista käytöstä
   Death-Effects:
     Title: <bold>Death Effects
     Button:
       Name: <bold><red>Death Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Tooltip-Equip: <bold><aqua>Ota käyttöön
+      Tooltip-Unequip: <bold><red>Poista käytöstä
   Buy-Ammo:
     Title: <bold>Osta ammuksia
   Misc:
     Button:
       Previous-Page: <bold><red>Edellinen sivu
       Next-Page: <bold><green>Seuraava sivu
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
   Region-Disabled: <prefix><red>&Et voi avata arkkua tässä!
@@ -394,7 +395,7 @@ Mounts:
       Now you can!
   Slime:
     menu-name: <bold><green>Lima
-    entity-displayname: <bold><playername>'s Slime
+    entity-displayname: '&l%playername%''s Slime'
     Description: '&7&oSplat! Splat!'
   Spider:
     menu-name: <bold><dark_gray>Hämähäkki
@@ -422,7 +423,7 @@ Mounts:
     Held-Item-Lore: Strider food on a stick!
   Horse:
     menu-name: <bold><gray>Horse
-    entity-displayname: <bold><playername>'s Horse
+    entity-displayname: '&l%playername%''s Horse'
     Description: Your standard, everyday horse
   Donkey:
     menu-name: <bold><dark_gray>Donkey
@@ -433,7 +434,7 @@ Mounts:
     entity-displayname: <bold><playername>'s Mule
     Description: Your standard, everyday mule
   Pig:
-    menu-name: <bold><light_purple>Pig
+    menu-name: <bold><light_purple>Possu
     entity-displayname: <bold><playername>'s Pig
     Description: Oink!
     Held-Item-Lore: Pig food on a stick!
@@ -786,7 +787,7 @@ Pets:
     entity-displayname: <bold><playername>'s Dolphin
     Description: The happiest creature of the seas!
   Spider:
-    menu-name: <bold><dark_gray>Spider
+    menu-name: <bold><dark_gray>Hämähäkki
     entity-displayname: <bold><playername>'s Spider
     Description: Your friendly neighborhood spider!
   ZombifiedPiglin:
@@ -858,11 +859,11 @@ Pets:
     entity-displayname: <bold><playername>'s Vindicator
     Description: Don't underestimate their strength!
   Witch:
-    menu-name: <bold><dark_purple>Witch
+    menu-name: <bold><dark_purple>Noita
     entity-displayname: <bold><playername>'s Witch
     Description: Loves black cats!
   WitherSkeleton:
-    menu-name: <bold><dark_gray>Wither Skeleton
+    menu-name: '&8&lWither Skeleton'
     entity-displayname: <bold><playername>'s Wither Skeleton
     Description: The reason why Looting exists.
   Zoglin:
@@ -939,7 +940,7 @@ Morphs:
   Cow:
     name: <bold><dark_gray>Lehmä
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Moo'
-    Description: Moooo!
+    Description: '&7&oMoooo!'
   Sheep:
     name: <bold><white>Lammas
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Change Colors'
@@ -947,11 +948,11 @@ Morphs:
   Mooshroom:
     name: '&c&lMooshroom'
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Soup Throw'
-    Description: Moooo!
+    Description: '&7&oMoooo!'
   Villager:
     name: <bold><green>Villageri
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Emerald Throw'
-    Description: Hmmmmmmmmm
+    Description: '&7&oHmmmmmmmmm'
   Witch:
     name: <bold><dark_purple>Noita
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Potion Throw'
@@ -969,15 +970,15 @@ Morphs:
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: Polly want a cracker?
   Allay:
-    name: <bold><green>Allay
+    name: '&a&lAllay'
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: A new friend!
   Axolotl:
-    name: <bold><dark_purple>Axolotl
+    name: '&5&lAxolotl'
     skill: <yellow>Left-Click</yellow><gray> for cute sounds
     Description: Sooo cute!
   Bee:
-    name: <bold><yellow>Bee
+    name: '&e&lBee'
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: '*bzzzz* *bzzzz*'
   Cat:
@@ -1013,11 +1014,11 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Summons Vexes for a living!
   Frog:
-    name: <bold><dark_green>Frog
+    name: <bold><dark_green>Sammakko
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Doesn't like fireflies!
   Fox:
-    name: <bold><light_purple>Fox
+    name: '&d&lFox'
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: What does the fox say?
   GlowSquid:
@@ -1025,7 +1026,7 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: It glows!
   Goat:
-    name: <bold><white>Goat
+    name: '&f&lGoat'
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: BAAAA!
   Guardian:
@@ -1034,24 +1035,24 @@ Morphs:
     Description: Hates squids!
   Wolf:
     name: <bold><gray>Wolf
-    Description: Woof!
+    Description: '&7&oWoof!'
   IronGolem:
     name: <bold><gray>Iron Golem
     Description: Hates zombies!
   Wither:
-    name: <bold><dark_gray>Wither
+    name: <bold><dark_gray>Witheri
     Description: Watch out for me...
   Skeleton:
     name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    name: <bold><dark_green>Zombie
+    name: '&2&lZombie'
     Description: Brains!!!
   Squid:
     name: <bold><light_purple>Squid
-    Description: Bloop Bloop!
+    Description: '&7&oBloop Bloop!'
   Spider:
-    name: <bold><dark_gray>Spider
+    name: <bold><dark_gray>Hämähäkki
     Description: HISS...
   Ghast:
     name: <bold><white>Ghast
@@ -1060,10 +1061,10 @@ Morphs:
     name: <bold><red>Magma Cube
     Description: A very hot cube!
   Horse:
-    name: <bold><green>Horse
-    Description: '*fhrrrrhh*'
+    name: <bold><green>Hevonen
+    Description: '&7&o*fhrrrrhh*'
   Warden:
-    name: <bold><dark_aqua>Warden
+    name: '&3&lWarden'
     Description: Be quiet...
   Tadpole:
     name: <bold><dark_gray>Tadpole
@@ -1087,7 +1088,7 @@ Morphs:
     name: <bold><light_purple>Zombified Piglin
     Description: Attack it and all of them will be after you!
   Panda:
-    name: <bold><green>Panda
+    name: '&a&lPanda'
     Description: Likes bamboo!
   Ocelot:
     name: <bold><yellow>Ocelot
@@ -1120,7 +1121,7 @@ Morphs:
     name: <bold><dark_blue>Illusioner
     Description: Only spawnable with commands!
   Vex:
-    name: <bold><gray>Vex
+    name: '&7&lVex'
     Description: YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Vindicator
@@ -1220,13 +1221,13 @@ Hats:
     Description: '&7&oOink Oink!'
   Cow:
     Name: <bold><green>Cow
-    Description: Moooo!
+    Description: '&7&oMoooo!'
   Mooshroom:
-    Name: <bold><red>Mooshroom
-    Description: Moooo!
+    Name: '&c&lMooshroom'
+    Description: '&7&oMoooo!'
   BrownMooshroom:
     Name: <bold><aqua>Brown Mooshroom
-    Description: Moooo!
+    Description: '&7&oMoooo!'
   Moobloom:
     Name: <bold><yellow>Moobloom
     Description: Very rare cow!
@@ -1246,7 +1247,7 @@ Hats:
     Name: <bold><light_purple>Enderman King
     Description: King of the endermen
   Slime:
-    Name: <bold><green>Slime
+    Name: <bold><green>Lima
     Description: Very slimy
   Creeper:
     Name: <bold><dark_green>Creeper
@@ -1255,7 +1256,7 @@ Hats:
     Name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    Name: <bold><dark_green>Zombie
+    Name: '&2&lZombie'
     Description: Brains!!!
   Drowned:
     Name: <bold><dark_aqua>Drowned
@@ -1270,10 +1271,10 @@ Hats:
     Name: <bold><white>Ghast
     Description: '*high-pitched scream*'
   Warden:
-    Name: <bold><dark_aqua>Warden
+    Name: '&3&lWarden'
     Description: Be quiet...
   Witch:
-    Name: <bold><dark_purple>Witch
+    Name: <bold><dark_purple>Noita
     Description: Please try my potion!
   Guardian:
     Name: <bold><dark_aqua>Guardian
@@ -1288,7 +1289,7 @@ Hats:
     Name: <bold><gold>Librarian Villager
     Description: Knowledge is power.
   Bee:
-    Name: <bold><yellow>Bee
+    Name: '&e&lBee'
     Description: Be careful!
   Fox:
     Name: <bold><gold>Fox
@@ -1300,7 +1301,7 @@ Hats:
     Name: <bold><yellow>Ocelot
     Description: King of the jungle
   Frog:
-    Name: <bold><dark_green>Frog
+    Name: <bold><dark_green>Sammakko
     Description: Eats whatever bugs him.
   AxolotlPink:
     Name: <bold><light_purple>Pink Axolotl
@@ -1748,7 +1749,7 @@ Projectile-Effects:
     name: <bold><blue>Water
     Description: Blue waterdrops
   Witch:
-    name: <bold><dark_purple>Witch
+    name: <bold><dark_purple>Noita
     Description: Purple crosses
   Emerald:
     name: <bold><dark_green>Emerald
@@ -1766,7 +1767,7 @@ Projectile-Effects:
     name: <bold><white>Snow
     Description: Snowball particles
   Slime:
-    name: <bold><green>Slime
+    name: <bold><green>Lima
     Description: Slimeball particles
   Crit:
     name: <bold><gray>Crit

@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Pagina Anterior
       Next-Page: <bold><green>Proxima Pagina
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>No hay suficiente espacio para poner el cofre!
   Region-Disabled: <prefix> <bold><red>No puedes abrir un cofre aqui!

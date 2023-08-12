@@ -121,21 +121,22 @@ Menu:
     Button:
       Name: <bold><dark_purple>Projectile Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Tooltip-Equip: <bold><aqua>装备
+      Tooltip-Unequip: <bold><red>取消装备
   Death-Effects:
     Title: <bold>Death Effects
     Button:
       Name: <bold><red>Death Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Tooltip-Equip: <bold><aqua>装备
+      Tooltip-Unequip: <bold><red>取消装备
   Buy-Ammo:
     Title: <bold>购买使用次数
   Misc:
     Button:
       Previous-Page: <bold><red>上一页
       Next-Page: <bold><green>下一页
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>这里没有足够的空间来召唤宝藏箱！
   Region-Disabled: <prefix> <bold><red>你不能在这里打开一个宝藏箱！
@@ -433,7 +434,7 @@ Mounts:
     entity-displayname: <bold><playername>的骡子
     Description: 你的第一匹国标骡子
   Pig:
-    menu-name: <bold><light_purple>Pig
+    menu-name: <bold><light_purple>猪
     entity-displayname: <bold><playername>'s Pig
     Description: Oink!
     Held-Item-Lore: Pig food on a stick!
@@ -786,8 +787,8 @@ Pets:
     entity-displayname: <bold><playername>的海豚
     Description: 海洋里最开心的生物！
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
+    menu-name: <bold><dark_gray>蜘蛛
+    entity-displayname: <bold><playername>的蜘蛛
     Description: Your friendly neighborhood spider!
   ZombifiedPiglin:
     menu-name: <bold><light_purple>Zombified Piglin
@@ -858,11 +859,11 @@ Pets:
     entity-displayname: <bold><playername>'s Vindicator
     Description: Don't underestimate their strength!
   Witch:
-    menu-name: <bold><dark_purple>Witch
+    menu-name: <bold><dark_purple>女巫
     entity-displayname: <bold><playername>'s Witch
     Description: Loves black cats!
   WitherSkeleton:
-    menu-name: <bold><dark_gray>Wither Skeleton
+    menu-name: <bold><dark_gray>凋零骷髅
     entity-displayname: <bold><playername>'s Wither Skeleton
     Description: The reason why Looting exists.
   Zoglin:
@@ -939,19 +940,19 @@ Morphs:
   Cow:
     name: <bold><dark_gray>牛
     skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>哞~'
-    Description: Moooo!
+    Description: 哞!
   Sheep:
     name: <bold><white>羊
     skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>改变颜色'
-    Description: Baaaa, baa
+    Description: 咩，咩
   Mooshroom:
     name: <bold><red>哞菇
     skill: '<yellow>潜行</yellow><gray> 即可: </gray><green>扔出蘑菇煲'
-    Description: Moooo!
+    Description: 哞!
   Villager:
     name: <bold><green>村民
     skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>扔出绿宝石'
-    Description: Hmmmmmmmmm
+    Description: 哼哼哼哼哼哼
   Witch:
     name: <bold><dark_purple>女巫
     skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>扔出药水'
@@ -959,27 +960,27 @@ Morphs:
   PolarBear:
     name: <bold><white>Polar Bear
     skill: '<yellow>左键点击</yellow><gray> 即可召唤: </gray><green>召唤暴风雪'
-    Description: I prefer cold areas
+    Description: 我更倾向于冷的地方
   Llama:
     name: <bold><dark_aqua>羊驼
     skill: '<yellow>左键点击</yellow><gray> 即可: </gray><green>吐口水'
-    Description: Need me to carry anything?
+    Description: 需要我带些什么吗？
   Parrot:
     name: <bold><green>鹦鹉
     skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>扇动翅膀'
-    Description: Polly want a cracker?
+    Description: Polly想要饼干吗？
   Allay:
-    name: <bold><green>Allay
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: A new friend!
+    name: <bold><green>轻灵
+    skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>扇动翅膀'
+    Description: 一个新的朋友！
   Axolotl:
-    name: <bold><dark_purple>Axolotl
+    name: <bold><dark_purple>美西螈
     skill: <yellow>Left-Click</yellow><gray> for cute sounds
-    Description: Sooo cute!
+    Description: 好可爱！
   Bee:
-    name: <bold><yellow>Bee
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: '*bzzzz* *bzzzz*'
+    name: <bold><yellow>蜜蜂
+    skill: '<yellow>二段跳</yellow><gray> 即可:</gray><green>扇动翅膀'
+    Description: '*嗞* *嗞*'
   Cat:
     name: <bold><yellow>Cat
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Meow'
@@ -987,19 +988,19 @@ Morphs:
   CaveSpider:
     name: <bold><yellow>Cave Spider
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: A spider, but poisonous!
+    Description: 蜘蛛，但是带毒！
   Cod:
     name: <bold><yellow>Cod
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Prefers water over land!
+    Description: 它们不是陆地生物！
   Dolphin:
     name: <bold><yellow>Dolphin
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: The happiest creature of the seas!
+    Description: 海洋里最开心的生物！
   Donkey:
-    name: <bold><gray>Donkey
+    name: <bold><gray>驴
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Can carry all your stuff!
+    Description: 可以帮你带着所有物品！
   Drowned:
     name: <bold><dark_aqua>Drowned
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
@@ -1013,45 +1014,45 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Summons Vexes for a living!
   Frog:
-    name: <bold><dark_green>Frog
+    name: <bold><dark_green>青蛙
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Doesn't like fireflies!
+    Description: 不喜欢萤火虫
   Fox:
-    name: <bold><light_purple>Fox
+    name: <bold><light_purple>狐狸
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: What does the fox say?
+    Description: 狐狸说什么了？
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
+    name: <bold><dark_aqua>发光鱿鱼
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: It glows!
+    Description: 它会发光耶！
   Goat:
-    name: <bold><white>Goat
+    name: <bold><white>山羊
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: BAAAA!
+    Description: 叭！
   Guardian:
     name: <bold><dark_aqua>Guardian
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Hates squids!
   Wolf:
     name: <bold><gray>Wolf
-    Description: Woof!
+    Description: 汪！
   IronGolem:
-    name: <bold><gray>Iron Golem
+    name: <bold><gray>铁傀儡
     Description: Hates zombies!
   Wither:
-    name: <bold><dark_gray>Wither
-    Description: Watch out for me...
+    name: <bold><dark_gray>凋零
+    Description: 为我小心......
   Skeleton:
     name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    name: <bold><dark_green>Zombie
+    name: <bold><dark_green>僵尸
     Description: Brains!!!
   Squid:
     name: <bold><light_purple>Squid
-    Description: Bloop Bloop!
+    Description: 噗，噗！
   Spider:
-    name: <bold><dark_gray>Spider
+    name: <bold><dark_gray>蜘蛛
     Description: HISS...
   Ghast:
     name: <bold><white>Ghast
@@ -1060,14 +1061,14 @@ Morphs:
     name: <bold><red>Magma Cube
     Description: A very hot cube!
   Horse:
-    name: <bold><green>Horse
-    Description: '*fhrrrrhh*'
+    name: <bold><green>马
+    Description: '*咴*'
   Warden:
-    name: <bold><dark_aqua>Warden
+    name: <bold><dark_aqua>坚守者
     Description: Be quiet...
   Tadpole:
-    name: <bold><dark_gray>Tadpole
-    Description: Will grow into a frog!
+    name: <bold><dark_gray>蝌蚪
+    Description: 它会长成大青蛙的！
   Piglin:
     name: <bold><gold>Piglin
     Description: Deals with gold!
@@ -1087,14 +1088,14 @@ Morphs:
     name: <bold><light_purple>Zombified Piglin
     Description: Attack it and all of them will be after you!
   Panda:
-    name: <bold><green>Panda
+    name: <bold><green>熊猫
     Description: Likes bamboo!
   Ocelot:
     name: <bold><yellow>Ocelot
     Description: King of the jungle
   WanderingTrader:
-    name: <bold><dark_blue>Wandering Trader
-    Description: Wanders around trying to sell his stuff!
+    name: <bold><dark_blue>流浪商人
+    Description: 流浪并出售他的好东西！
   Pillager:
     name: <bold><gray>Pillager
     Description: Likes to pillage villages!
@@ -1102,14 +1103,14 @@ Morphs:
     name: <bold><dark_gray>Ravager
     Description: A Pillager's favorite companion!
   Pufferfish:
-    name: <bold><yellow>Pufferfish
-    Description: Doesn't like to be touched!
+    name: <bold><yellow>河豚
+    Description: 这玩意可碰不得
   Salmon:
-    name: <bold><red>Salmon
-    Description: They're very tasty!
+    name: <bold><red>鲑鱼
+    Description: 这玩意可好吃了！
   TropicalFish:
-    name: <bold><yellow>Tropical Fish
-    Description: A colorful fish!
+    name: <bold><yellow>热带鱼
+    Description: 一个多彩的鱼！
   Turtle:
     name: <bold><green>Turtle
     Description: Take your time.
@@ -1120,17 +1121,17 @@ Morphs:
     name: <bold><dark_blue>Illusioner
     Description: Only spawnable with commands!
   Vex:
-    name: <bold><gray>Vex
-    Description: YAAHH Ehehhehe!
+    name: <bold><gray>恼鬼
+    Description: 吁~~~~~！
   Vindicator:
     name: <bold><gray>Vindicator
     Description: Don't underestimate their strength!
   Mule:
-    name: <bold><dark_gray>Mule
-    Description: Your standard, everyday mule
+    name: <bold><dark_gray>骡子
+    Description: 你的第一匹国标骡子
   SkeletonHorse:
-    name: <bold><white>Skeleton Horse
-    Description: Look out for lightning strikes!
+    name: <bold><white>骷髅马
+    Description: 小心雷电骑士！
   ZombieHorse:
     name: <bold><dark_green>Zombie Horse
     Description: The rarest horse in Minecraft!
@@ -1220,13 +1221,13 @@ Hats:
     Description: 哼！哼！
   Cow:
     Name: <bold><green>Cow
-    Description: Moooo!
+    Description: 哞!
   Mooshroom:
-    Name: <bold><red>Mooshroom
-    Description: Moooo!
+    Name: <bold><red>哞菇
+    Description: 哞!
   BrownMooshroom:
     Name: <bold><aqua>Brown Mooshroom
-    Description: Moooo!
+    Description: 哞!
   Moobloom:
     Name: <bold><yellow>Moobloom
     Description: Very rare cow!
@@ -1246,7 +1247,7 @@ Hats:
     Name: <bold><light_purple>Enderman King
     Description: King of the endermen
   Slime:
-    Name: <bold><green>Slime
+    Name: <bold><green>史莱姆
     Description: Very slimy
   Creeper:
     Name: <bold><dark_green>Creeper
@@ -1255,7 +1256,7 @@ Hats:
     Name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    Name: <bold><dark_green>Zombie
+    Name: <bold><dark_green>僵尸
     Description: Brains!!!
   Drowned:
     Name: <bold><dark_aqua>Drowned
@@ -1270,10 +1271,10 @@ Hats:
     Name: <bold><white>Ghast
     Description: '*high-pitched scream*'
   Warden:
-    Name: <bold><dark_aqua>Warden
+    Name: <bold><dark_aqua>坚守者
     Description: Be quiet...
   Witch:
-    Name: <bold><dark_purple>Witch
+    Name: <bold><dark_purple>女巫
     Description: Please try my potion!
   Guardian:
     Name: <bold><dark_aqua>Guardian
@@ -1288,7 +1289,7 @@ Hats:
     Name: <bold><gold>Librarian Villager
     Description: Knowledge is power.
   Bee:
-    Name: <bold><yellow>Bee
+    Name: <bold><yellow>蜜蜂
     Description: Be careful!
   Fox:
     Name: <bold><gold>Fox
@@ -1300,7 +1301,7 @@ Hats:
     Name: <bold><yellow>Ocelot
     Description: King of the jungle
   Frog:
-    Name: <bold><dark_green>Frog
+    Name: <bold><dark_green>青蛙
     Description: Eats whatever bugs him.
   AxolotlPink:
     Name: <bold><light_purple>Pink Axolotl
@@ -1748,7 +1749,7 @@ Projectile-Effects:
     name: <bold><blue>Water
     Description: Blue waterdrops
   Witch:
-    name: <bold><dark_purple>Witch
+    name: <bold><dark_purple>女巫
     Description: Purple crosses
   Emerald:
     name: <bold><dark_green>Emerald
@@ -1766,7 +1767,7 @@ Projectile-Effects:
     name: <bold><white>Snow
     Description: Snowball particles
   Slime:
-    name: <bold><green>Slime
+    name: <bold><green>史莱姆
     Description: Slimeball particles
   Crit:
     name: <bold><gray>Crit
@@ -1799,7 +1800,7 @@ Projectile-Effects:
     name: <bold><white>Snowflake
     Description: Small, white clouds
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
+    name: <bold><dark_aqua>发光鱿鱼
     Description: Teal stars
   GlowSquidInk:
     name: <bold><dark_aqua>Glow Squid Ink

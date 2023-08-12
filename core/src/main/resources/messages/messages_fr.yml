@@ -16,7 +16,7 @@ Cancel: <bold><red>ANNULER
 Buy-Ammo-Description: <bold><yellow>Acheter <amount> recharges de <gadgetname> </yellow></bold><bold><yellow>pour <price>$
 Buy-Cosmetic-Description: <bold><yellow>Acheter <gadgetname> </yellow></bold><bold><yellow>pour <price>$
 Right-Click-Buy-Ammo: <gray>Clic droit pour acheter des munitions
-Click-To-Purchase: <yellow>Clique pour acheter pour <price>$
+Click-To-Purchase: <yellow>Clic pour acheter pour <price>$
 Not-Enough-Money: <prefix> <bold><red>Tu n'as pas assez d'argent !
 Successful-Purchase: <prefix> <bold><green>Achat réussi !
 Buy-Treasure-Key: <bold>Acheter une clé de coffre aux trésors
@@ -24,7 +24,7 @@ Treasure-Keys: <bold><gray>Clés de coffre aux trésors
 Treasure-Chests: <bold><gold>Coffres aux trésors
 Dont-Have-Key: <bold><dark_red>Tu as besoin d'une clé !
 Click-Open-Chest: <green>Clique pour ouvrir un coffre
-Click-Buy-Key: <green>Clique pour acheter une clé
+Click-Buy-Key: <green>Clic pour acheter une clé
 Left-Click-Open-Chest: <green>Clic gauche pour ouvrir un coffre
 Right-Click-Simple: <green>Clic droit pour juste obtenir des cosmétiques
 Your-Keys: '<italic><gray>Vos clés : </gray></italic><bold><white><keys>'
@@ -53,7 +53,7 @@ Menu:
     Title: <bold>Achat <cosmetic>
   Rename-Pet:
     Button:
-      Name: '<bold><red>Clique pour renommer : <petname>'
+      Name: '<bold><red>Clic pour renommer : <petname>'
     Placeholder: Nom du familier
     Title: Renommer le familier
   Main:
@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Page précédente
       Next-Page: <bold><green>Page suivante
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Il n'y a pas assez de place pour un coffre au trésor !
   Region-Disabled: <prefix> <bold><red>Tu ne peux pas ouvrir un coffre ici !
@@ -921,7 +922,7 @@ Morphs:
     Description: Hey quoi de neuf ?
   Snowman:
     name: <bold><white>Bonhomme de neige
-    skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>Lancer une boule de neige'
+    skill: '<yellow>Clic-Gauche </yellow><gray>pour : </gray><green> Lancer une boule de neige'
     Description: Devenez Olaf !
   Equip: <prefix> <blue>Vous vous êtes transformé en <morphname>
   Unequip: <prefix> <blue>Vous êtes revenu en <morphname>
@@ -941,7 +942,7 @@ Morphs:
     Description: Meuuuuh !
   Sheep:
     name: <bold><white>Mouton
-    skill: '<yellow>Clic-Gauche </yellow><gray>pour: </gray><green>Changer les couleurs'
+    skill: '<yellow>Clic-Gauche</yellow><gray>pour : </gray><green>Changer les couleurs'
     Description: Bêêêêêh
   Mooshroom:
     name: <bold><red>Champimeuh
