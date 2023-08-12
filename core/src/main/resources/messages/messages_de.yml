@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Vorherige Seite
       Next-Page: <bold><green>Nächste Seite
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Hier ist nicht genug Platz für eine Schatztruhe!
   Region-Disabled: <prefix> <bold><red>Du kannst hier keine Truhe öffnen!
