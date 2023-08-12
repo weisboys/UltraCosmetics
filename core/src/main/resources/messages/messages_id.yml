@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Halaman Sebelumnya
       Next-Page: <bold><green>Halaman Selanjutnya
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Tidak ada cukup ruang untuk membuka kotak kosmetik!
   Region-Disabled: <prefix> <bold><red>Anda tidak dapat membuka kotak kosmetik disini!
