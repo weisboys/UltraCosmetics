@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Попередня сторінка
       Next-Page: <bold><green>Наступна сторінка
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Тут недостатньо місця для скриньки!
   Region-Disabled: <prefix> <bold><red>Ви не можете відкрити тут скриньку!
