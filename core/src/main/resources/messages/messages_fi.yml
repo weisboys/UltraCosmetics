@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Edellinen sivu
       Next-Page: <bold><green>Seuraava sivu
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
   Region-Disabled: <prefix><red>&Et voi avata arkkua tässä!
