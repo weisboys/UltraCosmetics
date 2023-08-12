@@ -136,6 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Előző oldal
       Next-Page: <bold><green>Következő oldal
+  Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
   Region-Disabled: <prefix> <bold><red>You can't open a chest here!
