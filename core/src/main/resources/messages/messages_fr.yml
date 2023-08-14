@@ -1,5 +1,5 @@
 Prefix: <italic><bold>Cosmétiques >
-No-Permission: <prefix> <bold><red>Tu n'as pas la permission !
+No-Permission: <bold><red>Tu n'as pas la permission !
 Cosmetic-Disabled: <prefix> <bold><red>Ce cosmétique est désactivé !
 Invalid-Gadget: <prefix> <bold><red>Gadget invalide !
 Invalid-Pet: <prefix> <bold><red>Familier invalide !
@@ -136,7 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Page précédente
       Next-Page: <bold><green>Page suivante
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>DESACTIVER
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Il n'y a pas assez de place pour un coffre au trésor !
   Region-Disabled: <prefix> <bold><red>Tu ne peux pas ouvrir un coffre ici !
@@ -242,7 +242,7 @@ Gadgets:
       vers toi !
   DiscoBall:
     name: <bold><light_purple>Boule Disco
-    Already-Active: <bold><red>Il y a déjà une boule disco active !
+    Already-Active: <bold><red>Il y a déjà une boule disco activée !
     Not-Space-Above: <bold><red>Il n'y a pas assez de place au-dessus de toi !
     Description: Danse !
   ColorBomb:
@@ -1811,7 +1811,7 @@ Projectile-Effects:
     name: <bold><white>Wax désactivé
     Description: Étoiles blanches
   WaxOn:
-    name: <bold><white>Wax désactivé
+    name: <bold><gold>Wax activé
     Description: Étoiles Orange
   SculkSoul:
     name: <aqua>&Âme de lSculk
