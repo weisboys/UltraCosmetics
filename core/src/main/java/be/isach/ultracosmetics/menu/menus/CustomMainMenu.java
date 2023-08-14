@@ -30,7 +30,7 @@ public class CustomMainMenu extends Menu {
     private final Component title = MessageManager.getMessage("Menu.Main.Title");
 
     public CustomMainMenu(UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics);
+        super("main", ultraCosmetics);
         customMenuFile = getFile(ultraCosmetics);
         try {
             config.load(customMenuFile);

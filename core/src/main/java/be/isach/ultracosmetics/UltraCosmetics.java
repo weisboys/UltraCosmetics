@@ -648,7 +648,9 @@ public class UltraCosmetics extends JavaPlugin {
         } catch (IllegalArgumentException e) {
             getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Failed to load custom main menu, please run it through a YAML checker");
         }
-        menus.setMainMenu(customMenu);
+        if (customMenu.isEnabled()) {
+            menus.setMainMenu(customMenu);
+        }
     }
 
     /**

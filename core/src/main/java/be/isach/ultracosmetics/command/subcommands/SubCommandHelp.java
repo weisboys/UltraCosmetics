@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.command.subcommands;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.config.MessageManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -33,8 +32,8 @@ public class SubCommandHelp extends SubCommand {
     public void showHelp(CommandSender sender, int page) {
         List<SubCommand> available = new ArrayList<>();
         commandManager.getCommands().stream().filter(c -> sender.hasPermission(c.getPermission())).forEach(available::add);
-        if (available.size() < 1) {
-            MessageManager.send(sender, "No-Permission");
+        if (available.isEmpty()) {
+            CommandManager.sendNoPermissionMessage(sender);
             return;
         }
         sender.sendMessage("");

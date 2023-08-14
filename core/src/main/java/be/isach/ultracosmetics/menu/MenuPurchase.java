@@ -8,7 +8,7 @@ public abstract class MenuPurchase extends Menu {
     protected final PurchaseData purchaseData;
 
     public MenuPurchase(UltraCosmetics ultraCosmetics, Component name, PurchaseData purchaseData) {
-        super(ultraCosmetics);
+        super("purchase", ultraCosmetics);
         this.purchaseData = purchaseData;
         this.name = name;
     }

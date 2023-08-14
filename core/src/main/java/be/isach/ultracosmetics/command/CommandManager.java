@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Problem;
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -55,7 +56,7 @@ public class CommandManager implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Set<Problem> problems = ultraCosmetics.getSevereProblems();
-        if (problems.size() > 0) {
+        if (!problems.isEmpty()) {
             sender.sendMessage(ChatColor.RED + "Plugin is currently disabled because:");
             Audience audience = MessageManager.getAudiences().sender(sender);
             problems.forEach(p -> audience.sendMessage(p.getSummary().color(NamedTextColor.RED)));
@@ -76,7 +77,7 @@ public class CommandManager implements CommandExecutor {
             if (meCommand.is(args[0])) {
 
                 if (!sender.hasPermission(meCommand.getPermission())) {
-                    MessageManager.send(sender, "No-Permission");
+                    sendNoPermissionMessage(sender);
                     return true;
                 }
 
@@ -114,5 +115,11 @@ public class CommandManager implements CommandExecutor {
         registerCommand(new SubCommandTroubleshoot(ultraCosmetics));
         registerCommand(new SubCommandPermission(ultraCosmetics));
         registerCommand(new SubCommandRename(ultraCosmetics));
+    }
+
+    public static void sendNoPermissionMessage(CommandSender sender) {
+        Component prefix = MessageManager.getMessage("Prefix");
+        Component noPermission = MessageManager.getMessage("No-Permission");
+        MessageManager.getAudiences().sender(sender).sendMessage(Component.empty().append(prefix).append(noPermission));
     }
 }

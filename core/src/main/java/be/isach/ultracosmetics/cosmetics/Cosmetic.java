@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
@@ -57,7 +58,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         }
 
         if (!owner.canEquip(cosmeticType)) {
-            MessageManager.send(player, "No-Permission");
+            CommandManager.sendNoPermissionMessage(player);
             return;
         }
 

@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -17,6 +18,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,9 +34,16 @@ import java.util.Set;
  * @since 07-05-2016
  */
 public abstract class Menu implements Listener {
+    private static final Permission ALL_MENUS_PERMISSION = new Permission("ultracosmetics.menu.all", PermissionDefault.TRUE);
+
+    static {
+        Bukkit.getPluginManager().addPermission(ALL_MENUS_PERMISSION);
+    }
+
+    private static final Map<String, Permission> REGISTERED_PERMISSIONS = new HashMap<>();
 
     /**
-     * UltraCosmetcs Instance.
+     * UltraCosmetics Instance.
      */
     protected final UltraCosmetics ultraCosmetics;
 
@@ -47,14 +57,29 @@ public abstract class Menu implements Listener {
     private final boolean fillEmpty = SettingsManager.getConfig().getBoolean("Fill-Blank-Slots-With-Item.Enabled");
 
     private final ItemStack fillerItem = getFillerItem();
+    protected final Permission permission;
 
-    public Menu(UltraCosmetics ultraCosmetics) {
+    public Menu(String name, UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
 
         ultraCosmetics.getServer().getPluginManager().registerEvents(this, ultraCosmetics);
+        this.permission = registerPermission(name);
+    }
+
+    private Permission registerPermission(String strPerm) {
+        return REGISTERED_PERMISSIONS.computeIfAbsent(strPerm, s -> {
+            Permission perm = new Permission("ultracosmetics.menu." + s);
+            Bukkit.getPluginManager().addPermission(perm);
+            perm.addParent(ALL_MENUS_PERMISSION, true);
+            return perm;
+        });
     }
 
     public void open(UltraPlayer player) {
+        if (!player.getBukkitPlayer().hasPermission(permission)) {
+            CommandManager.sendNoPermissionMessage(player.getBukkitPlayer());
+            return;
+        }
         player.getBukkitPlayer().openInventory(getInventory(player));
     }
 
@@ -73,6 +98,10 @@ public abstract class Menu implements Listener {
         putItems(inventory, player);
         fillInventory(inventory);
         return inventory;
+    }
+
+    public Permission getPermission() {
+        return permission;
     }
 
     protected void putItem(Inventory inventory, int slot, Button button, UltraPlayer ultraPlayer) {

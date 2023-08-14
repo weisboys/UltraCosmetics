@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
@@ -50,7 +51,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     private final boolean hideNoPermissionItems = SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item");
 
     public CosmeticMenu(UltraCosmetics ultraCosmetics, Category category) {
-        super(ultraCosmetics);
+        super(category.getConfigPath(), ultraCosmetics);
         this.category = category;
     }
 
@@ -62,6 +63,10 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     public void open(UltraPlayer player, int page) {
         if (!category.isEnabled()) {
             throw new IllegalStateException("Cannot show menu for disabled category");
+        }
+        if (!player.getBukkitPlayer().hasPermission(permission)) {
+            CommandManager.sendNoPermissionMessage(player.getBukkitPlayer());
+            return;
         }
         final int maxPages = getMaxPages(player);
         if (page > maxPages) {

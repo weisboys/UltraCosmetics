@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.menu.buttons.OpenChestButton;
 import be.isach.ultracosmetics.menu.buttons.OpenCosmeticMenuButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import net.kyori.adventure.text.Component;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 /**
@@ -21,12 +22,54 @@ import org.bukkit.inventory.Inventory;
  */
 public class MenuMain extends Menu {
     private final Component title = MessageManager.getMessage("Menu.Main.Title");
-    private int[] layout;
 
     public MenuMain(UltraCosmetics ultraCosmetics) {
-        super(ultraCosmetics);
+        super("main", ultraCosmetics);
+    }
 
-        switch (Category.enabledSize()) {
+    @Override
+    public void open(UltraPlayer player) {
+        if (!UltraCosmeticsData.get().areTreasureChestsEnabled() && Category.enabledSize() == 1) {
+            getUltraCosmetics().getMenus().getCategoryMenu(Category.enabled().get(0)).open(player);
+            return;
+        }
+        super.open(player);
+    }
+
+    @Override
+    protected void putItems(Inventory inventory, UltraPlayer player) {
+        Player bukkitPlayer = player.getBukkitPlayer();
+        int visible = countVisibleCategories(bukkitPlayer);
+        int[] layout = makeLayout(visible);
+        int i = 0;
+        boolean foundSuits = false;
+        for (Category category : Category.enabled()) {
+            if (!canSee(bukkitPlayer, category)) continue;
+            // Avoid counting suits categories as different menu items
+            if (category.isSuits()) {
+                if (foundSuits) continue;
+                foundSuits = true;
+            }
+            putItem(inventory, layout[i++], new OpenCosmeticMenuButton(getUltraCosmetics(), category), player);
+        }
+        putItem(inventory, inventory.getSize() - 5, new ClearCosmeticButton(), player);
+        if (UltraCosmeticsData.get().areTreasureChestsEnabled()) {
+            putItem(inventory, 5, new KeysButton(ultraCosmetics), player);
+            putItem(inventory, 3, new OpenChestButton(ultraCosmetics), player);
+        }
+    }
+
+    protected boolean canSee(Player player, Category category) {
+        return player.hasPermission("ultracosmetics.menu." + category.getConfigPath());
+    }
+
+    protected int countVisibleCategories(Player player) {
+        return (int) Category.enabled().stream().filter(c -> canSee(player, c)).count();
+    }
+
+    protected int[] makeLayout(int visible) {
+        int[] layout = null;
+        switch (visible) {
             case 10:
                 layout = new int[] {9, 11, 13, 15, 17, 27, 29, 31, 33, 35};
                 break;
@@ -64,36 +107,7 @@ public class MenuMain extends Menu {
                 layout[i] += 9;
             }
         }
-    }
-
-    @Override
-    public void open(UltraPlayer player) {
-        if (!UltraCosmeticsData.get().areTreasureChestsEnabled() && Category.enabledSize() == 1) {
-            getUltraCosmetics().getMenus().getCategoryMenu(Category.enabled().get(0)).open(player);
-            return;
-        }
-        super.open(player);
-    }
-
-    @Override
-    protected void putItems(Inventory inventory, UltraPlayer player) {
-        if (Category.enabledSize() > 0) {
-            int i = 0;
-            boolean foundSuits = false;
-            for (Category category : Category.enabled()) {
-                // Avoid counting suits categories as different menu items
-                if (category.isSuits()) {
-                    if (foundSuits) continue;
-                    foundSuits = true;
-                }
-                putItem(inventory, layout[i++], new OpenCosmeticMenuButton(getUltraCosmetics(), category), player);
-            }
-        }
-        putItem(inventory, inventory.getSize() - 5, new ClearCosmeticButton(), player);
-        if (UltraCosmeticsData.get().areTreasureChestsEnabled()) {
-            putItem(inventory, 5, new KeysButton(ultraCosmetics), player);
-            putItem(inventory, 3, new OpenChestButton(ultraCosmetics), player);
-        }
+        return layout;
     }
 
     @Override

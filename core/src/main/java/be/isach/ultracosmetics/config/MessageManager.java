@@ -129,6 +129,10 @@ public class MessageManager {
         if (messagesConfig.getString("Prefix") != null && messagesConfig.getString("Prefix").startsWith("&")) {
             minimessageMigration();
         }
+        String noPermissionMessage = messagesConfig.getString("No-Permission");
+        if (noPermissionMessage != null && noPermissionMessage.startsWith("<prefix> ")) {
+            messagesConfig.set("No-Permission", noPermissionMessage.substring(9));
+        }
         for (String key : defaults.getKeys(true)) {
             addMessageInternal(key, defaults.getString(key));
         }
