@@ -1,5 +1,5 @@
 Prefix: <italic><bold>Kosmetik >
-No-Permission: <prefix> <bold><red>Dafür hast du keine Rechte!
+No-Permission: <bold><red>Dafür hast du keine Rechte!
 Cosmetic-Disabled: <prefix> <bold><red>Dieses Item ist deaktiviert!
 Invalid-Gadget: <prefix> <bold><red>Ungültiges Gadget!
 Invalid-Pet: <prefix> <bold><red>Ungültiges Haustier!
@@ -136,7 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Vorherige Seite
       Next-Page: <bold><green>Nächste Seite
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>DEAKTIVIERT
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Hier ist nicht genug Platz für eine Schatztruhe!
   Region-Disabled: <prefix> <bold><red>Du kannst hier keine Truhe öffnen!
