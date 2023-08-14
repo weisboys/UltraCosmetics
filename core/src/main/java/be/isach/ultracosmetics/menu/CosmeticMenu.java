@@ -60,6 +60,9 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     }
 
     public void open(UltraPlayer player, int page) {
+        if (!category.isEnabled()) {
+            throw new IllegalStateException("Cannot show menu for disabled category");
+        }
         final int maxPages = getMaxPages(player);
         if (page > maxPages) {
             page = maxPages;

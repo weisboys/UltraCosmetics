@@ -45,7 +45,7 @@ public class Menus {
         categoryMenus.put(Category.SUITS_BOOTS, ms);
         this.mainMenu = new MenuMain(ultraCosmetics);
         // Load the class so it's available on disable, when we can't load more classes.
-        // Sometimes this happens when hotswapping the jar
+        // Otherwise sometimes errors occur when hotswapping the jar
         new CosmeticsInventoryHolder();
     }
 
