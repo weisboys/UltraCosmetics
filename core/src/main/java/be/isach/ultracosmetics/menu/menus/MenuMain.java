@@ -60,7 +60,7 @@ public class MenuMain extends Menu {
     }
 
     protected boolean canSee(Player player, Category category) {
-        return player.hasPermission("ultracosmetics.menu." + category.getConfigPath());
+        return player.hasPermission(ultraCosmetics.getMenus().getCategoryMenu(category).getPermission());
     }
 
     protected int countVisibleCategories(Player player) {
