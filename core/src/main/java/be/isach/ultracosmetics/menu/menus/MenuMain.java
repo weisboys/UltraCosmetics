@@ -114,6 +114,7 @@ public class MenuMain extends Menu {
                 break;
             case 0:
                 layout = new int[] {};
+                break;
         }
 
         if (UltraCosmeticsData.get().areTreasureChestsEnabled() && layout != null) {
