@@ -11,7 +11,7 @@ allprojects {
 
     group = 'be.isach.UltraCosmetics'
     version = '3.4'
-    def classifier = 'DEV-b2'
+    def classifier = 'DEV-b3'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
