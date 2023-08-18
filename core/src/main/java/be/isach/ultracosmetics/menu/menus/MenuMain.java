@@ -40,6 +40,7 @@ public class MenuMain extends Menu {
     protected void putItems(Inventory inventory, UltraPlayer player) {
         Player bukkitPlayer = player.getBukkitPlayer();
         int visible = countVisibleCategories(bukkitPlayer);
+
         int[] layout = makeLayout(visible);
         int i = 0;
         boolean foundSuits = false;
@@ -64,7 +65,18 @@ public class MenuMain extends Menu {
     }
 
     protected int countVisibleCategories(Player player) {
-        return (int) Category.enabled().stream().filter(c -> canSee(player, c)).count();
+        int total = 0;
+        boolean suits = false;
+        for (Category category : Category.enabled()) {
+            if (category.isSuits()) {
+                if (suits) continue;
+                suits = true;
+            }
+            if (canSee(player, category)) {
+                total++;
+            }
+        }
+        return total;
     }
 
     protected int[] makeLayout(int visible) {
@@ -100,6 +112,8 @@ public class MenuMain extends Menu {
             case 1:
                 layout = new int[] {22};
                 break;
+            case 0:
+                layout = new int[] {};
         }
 
         if (UltraCosmeticsData.get().areTreasureChestsEnabled() && layout != null) {

@@ -34,10 +34,15 @@ import java.util.Set;
  * @since 07-05-2016
  */
 public abstract class Menu implements Listener {
-    private static final Permission ALL_MENUS_PERMISSION = new Permission("ultracosmetics.menu.all", PermissionDefault.TRUE);
+    private static final Permission ALL_MENUS_PERMISSION = registerAllPermission();
 
-    static {
-        Bukkit.getPluginManager().addPermission(ALL_MENUS_PERMISSION);
+    private static Permission registerAllPermission() {
+        Permission perm = Bukkit.getPluginManager().getPermission("ultracosmetics.menu.all");
+        if (perm == null) {
+            perm = new Permission("ultracosmetics.menu.all", PermissionDefault.TRUE);
+            Bukkit.getPluginManager().addPermission(perm);
+        }
+        return perm;
     }
 
     private static final Map<String, Permission> REGISTERED_PERMISSIONS = new HashMap<>();
@@ -68,9 +73,13 @@ public abstract class Menu implements Listener {
 
     private Permission registerPermission(String strPerm) {
         return REGISTERED_PERMISSIONS.computeIfAbsent(strPerm, s -> {
-            Permission perm = new Permission("ultracosmetics.menu." + s);
-            Bukkit.getPluginManager().addPermission(perm);
-            perm.addParent(ALL_MENUS_PERMISSION, true);
+            String name = "ultracosmetics.menu." + s;
+            Permission perm = Bukkit.getPluginManager().getPermission(name);
+            if (perm == null) {
+                perm = new Permission("ultracosmetics.menu." + s);
+                Bukkit.getPluginManager().addPermission(perm);
+                perm.addParent(ALL_MENUS_PERMISSION, true);
+            }
             return perm;
         });
     }
