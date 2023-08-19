@@ -221,8 +221,9 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         if (stack == null || stack.getType() != getItemStack().getType() || !stack.hasItemMeta() || !stack.getItemMeta().hasDisplayName()) {
             return false;
         }
-        // Case sensitivity causes issues with hex color codes for some reason
-        return stack.getItemMeta().getDisplayName().toLowerCase().endsWith(MessageManager.toLegacy(getTypeName()).toLowerCase());
+
+        // Case sensitivity causes issues with hex color codes for some reason, even with MiniMessage
+        return stack.getItemMeta().getDisplayName().toLowerCase().equals(MessageManager.toLegacy(getItemDisplayName()).toLowerCase());
     }
 
     @Override
