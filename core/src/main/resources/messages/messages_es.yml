@@ -43,7 +43,7 @@ Clear:
   Suits: <bold><red>Quitar traje activo
   Emotes: <bold><red>Quitar emoticon activo
   Projectile-Effects: <bold><red>Borrar el proyectil actual
-  Death-Effects: <red>&Quitar efecto de muerte actual
+  Death-Effects: <bold><red>Quitar efecto de muerte actual
 Menu:
   Purchase-Rename:
     Button:
@@ -68,9 +68,9 @@ Menu:
       Tooltip-Equip: <bold><aqua>Spawnear
       Tooltip-Unequip: <bold><red>Despawnear
   Gadgets:
-    Title: '&lGadgets'
+    Title: <bold>Gadgets
     Button:
-      Name: '&9&lGadgets'
+      Name: <bold><blue>Gadgets
       Lore: '<gray>Desbloqueaste: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Activar
       Tooltip-Unequip: <bold><red>Desactivar
@@ -171,8 +171,8 @@ Treasure-Chests-Loot:
     <light_purple>Sombrero
     <cosmetic>
   Gadgets: |-
-    &9Gadget
-    %cosmetic%
+    <blue>Gadget
+    <cosmetic>
   Suits: |-
     <dark_aqua>Traje
     <cosmetic>
@@ -211,15 +211,15 @@ Enable-Third-Person-View: <bold><green>Habilitar vista de transformaciones en te
 Disable-Filter-By-Owned: '<bold><red>Filtro: Mostrar todo'
 Enable-Filter-By-Owned: '<bold><red>Filtro: Mostrar solo los desbloqueados'
 Disable-Treasure-Notification: <bold><red>Notificaciones de cofres del tesoro deshabilitados
-Enable-Treasure-Notification: '&c&lTreasure notifications enabled'
-Gadgets-Enabled-Needed: <prefix> <red>&Tienes que habilitar los gadgets para eso!
+Enable-Treasure-Notification: <bold><red>Treasure notifications enabled
+Gadgets-Enabled-Needed: <prefix> <bold><red>Tienes que habilitar los gadgets para eso!
 Gadgets:
   Equip: <prefix> <blue>Equipaste <gadgetname>
   Unequip: <prefix> <blue>Desequipaste <gadgetname>
   Countdown-Message: <prefix> <bold><red> No puedes usar <gadgetname> </red></bold><bold><red>por <time>s!
   PaintballGun:
     name: <bold><aqua>Pistola de Paintball
-    Description: '&7&oPEW PEW PEW PEW!!!'
+    Description: <italic><gray>PEW PEW PEW PEW!!!
   BatBlaster:
     name: <bold><gray>Lanza Murcielagos
     Description: |-
@@ -248,21 +248,21 @@ Gadgets:
     name: <bold><light_purple>Bomba de Colores
     Description: Una bomba de colores!
   Chickenator:
-    name: '&f&lChickenator'
+    name: <bold><white>Chickenator
     Description: 1.Dispara! 2.Boom! 3.KFC!
   PortalGun:
-    name: '&c&lPortal &9&lGun'
+    name: <bold><red>Portal </red></bold><bold><blue>Gun
     No-Block-Range: <prefix> <bold><red>No hay BLOQUES en rango!
     Different-Worlds: <prefix> <bold><red>Los portales tienen que estar en el mismo mundo!
-    Description: '&7&oThe cake is a lie!'
+    Description: <italic><gray>The cake is a lie!
   BlizzardBlaster:
-    name: '&b&lBlizzard Blaster'
+    name: <bold><aqua>Blizzard Blaster
     Description: '¡Deja que nieve!'
   ThorHammer:
     name: <bold><white>Martillo de Thor
     Description: Obten el Mjölnir!
   SmashDown:
-    name: '&c&lSmashDown'
+    name: <bold><red>SmashDown
     Description: Y SU NOMBRE ES...JOHN CENA!
   ExplosiveSheep:
     name: <bold><dark_red>Oveja Explosiva
@@ -276,7 +276,7 @@ Gadgets:
       No te gusta la gravedad?
       Entonces, este gadget es para ti!
   Tsunami:
-    name: '&9&lTsunami'
+    name: <bold><blue>Tsunami
     Description: |-
       TSUNAMI!
       Corre por tu vida!
@@ -291,18 +291,18 @@ Gadgets:
     name: <bold><dark_blue>Agujero Negro
     Description: Mejor que no te dejes capturar por el!
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       Explota a algunos jugadores!
       KABOOM!
   FunGun:
-    name: '&6&lFun Gun'
+    name: <bold><gold>Fun Gun
     Description: Woow! Mucha diversion en una pistola!
   Parachute:
     name: <bold><white>Paracaidas
-    Description: '&7&oGERONIMOOO!'
+    Description: <italic><gray>GERONIMOOO!
   QuakeGun:
-    name: '&5&lQuake &d&lGun'
+    name: <bold><dark_purple>Quake </dark_purple></bold><bold><light_purple>Gun
     Description: |-
       Una Rail Gun real
       Disparale a jugadores y mobs!
@@ -342,24 +342,24 @@ Gadgets:
       que envia a ti y a tus
       amigos en el aire!
   Gadget-Ready-ActionBar: <gadgetname> <bold><white>esta listo!
-  Lore: '&9Gadget'
+  Lore: <blue>Gadget
 Mounts:
   DruggedHorse:
     menu-name: <bold><dark_green>Caballo Nauseabundo
     entity-displayname: <bold>Caballo Nauseabundo de <playername>
     Description: Esto es demasiado...:S!
   InfernalHorror:
-    menu-name: '&4&lInfernal Horror'
+    menu-name: <bold><dark_red>Infernal Horror
     entity-displayname: <bold>Infernal Horror de <playername>
     Description: Esta montura viene directo del mismisimo infierno!
   GlacialSteed:
-    menu-name: '&b&lGlacial Steed'
+    menu-name: <bold><aqua>Glacial Steed
     entity-displayname: <bold>Glacial Steed de <playername>
     Description: Esta montura viene desde el Polo Norte!
   WalkingDead:
-    menu-name: '&2&lWalking Dead'
+    menu-name: <bold><dark_green>Walking Dead
     entity-displayname: <bold>Walking Dead de <playername>
-    Description: '&7&oGraaaaw...'
+    Description: <italic><gray>Graaaaw...
   MountOfFire:
     menu-name: <bold><red>Montura de Fuego
     entity-displayname: <bold>Montura de Fuego de <playername>
@@ -373,11 +373,11 @@ Mounts:
     entity-displayname: <bold>Caballo Ecologista de <playername>
     Description: Conviertete en ecologista!
   NyanSheep:
-    menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
+    menu-name: <bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n </yellow></bold><bold><green>Sh</green></bold><bold><aqua>ee</aqua></bold><bold><light_purple>p
     entity-displayname: <bold>Nyan Sheep de <playername>
     Description: |-
-      &4&lNyan &6&lnyan &e&lnyan
-      &a&lnyan &3&lnyan &9&lnyan
+      <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
+      <bold><green>nyan </green></bold><bold><dark_aqua>nyan </dark_aqua></bold><bold><blue>nyan
   Snake:
     menu-name: <bold><gold>Serpiente
     entity-displayname: <bold>Serpiente de <playername>
@@ -387,21 +387,21 @@ Mounts:
     entity-displayname: <bold>Dragón de <playername>
     Description: Conviertete en domador de Dragones!
   HypeCart:
-    menu-name: '&7&lHypeCart'
+    menu-name: <bold><gray>HypeCart
     entity-displayname: <bold>HypeCart de <playername>
     Description: |-
       Siempre quisiste conducir una Formula 1?
       Ahora puedes!
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
-    Description: '&7&oSplat! Splat!'
+    Description: <italic><gray>Splat! Splat!
   Spider:
     menu-name: <bold><dark_gray>Araña
     entity-displayname: <bold>Araña de <playername>
     Description: Conviertete en Spider-Jockey!
   Rudolph:
-    menu-name: '&f&lRudolp&4&lh'
+    menu-name: <bold><white>Rudolp</white></bold><bold><dark_red>h
     entity-displayname: <bold>Rudolph de <playername>
     Description: |-
       Que seria de Navidad
@@ -435,7 +435,7 @@ Mounts:
   Pig:
     menu-name: <bold><light_purple>Cerdo
     entity-displayname: Cerdo de <bold><playername>
-    Description: '&7&oOink!'
+    Description: <italic><gray>Oink!
     Held-Item-Lore: <italic><gray>Comida de cerdo en un palo!
   SlimeSnake:
     menu-name: <bold><red>Serpiente de limo
@@ -472,7 +472,7 @@ Particle-Effects:
       empodera la sangre del usuario,
       otorgandole poderes de un Dios...
   FrostLord:
-    name: '&b&lFrost Lord'
+    name: <bold><aqua>Frost Lord
     Description: Yo soy el TodoPoderoso Frostlord!
   FlameRings:
     name: <bold><red>Aros de Fuego
@@ -484,7 +484,7 @@ Particle-Effects:
     name: <bold><red>Enamorado
     Description: OMG estoy enamorado!!!
   FrozenWalk:
-    name: '&b&lFrozen Walk'
+    name: <bold><aqua>Frozen Walk
     Description: Mis pies estan demasiado frios!
   Enchanted:
     name: <bold><gray>Hechicero
@@ -493,7 +493,7 @@ Particle-Effects:
     name: <bold><blue>Musica
     Description: Mucha musica!!
   Inferno:
-    name: '&4&lInferno'
+    name: <bold><dark_red>Inferno
     Description: Efecto creado por Satan mismo!
   AngelWings:
     name: <bold><white>Alas de Angel
@@ -514,13 +514,13 @@ Particle-Effects:
       caramelos de navidad. No escuches
       a tu dentista.
   EnderAura:
-    name: '&d&lEnder Aura'
+    name: <bold><light_purple>Ender Aura
     Description: |-
       Estas particulas misticas se adhieren
       solo a jugadores legendarios!
   FlameFairy:
     name: <bold><gold>Hada de Fuego
-    Description: '&7&oHEY!!'
+    Description: <italic><gray>HEY!!
   MagicalRods:
     name: <bold><dark_gray>Vara Magica
     Description: Que estas varas magicas te protejan!
@@ -578,13 +578,13 @@ Particle-Effects:
       nieve al caminar.
 Pets:
   Piggy:
-    menu-name: '&d&lPiggy'
+    menu-name: <bold><light_purple>Piggy
     entity-displayname: <bold>Piggy de <playername>
-    Description: '&7&oOink! Oink!'
+    Description: <italic><gray>Oink! Oink!
   Sheep:
     menu-name: <bold><white>Oveja
     entity-displayname: <bold>Oveja de <playername>
-    Description: '&7&oBaaaa, baa'
+    Description: <italic><gray>Baaaa, baa
   EasterBunny:
     menu-name: <bold><gold>Conejo de Pascua
     entity-displayname: <bold>Conejo de Pascua de <playername>
@@ -592,25 +592,25 @@ Pets:
   Cow:
     menu-name: <bold><red>Vaca
     entity-displayname: <bold>Vaca de <playername>
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Kitty:
-    menu-name: '&9&lKitty'
+    menu-name: <bold><blue>Kitty
     entity-displayname: <bold>Kitty de <playername>
-    Description: '&7&oMeoooow'
+    Description: <italic><gray>Meoooow
   Dog:
     menu-name: <bold><gray>Doggy
     entity-displayname: <bold>Doggy de <playername>
-    Description: '&7&oWoof!'
+    Description: <italic><gray>Woof!
   Chick:
-    menu-name: '&e&lChick'
+    menu-name: <bold><yellow>Chick
     entity-displayname: <bold>Chick de <playername>
-    Description: '&7&oBwaaaaaaak!!'
+    Description: <italic><gray>Bwaaaaaaak!!
   Wither:
-    menu-name: '&8&lWither'
+    menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold>Wither de <playername>
     Description: Ten cuidado conmigo-...
   Pumpling:
-    menu-name: '&6&lPumpling'
+    menu-name: <bold><gold>Pumpling
     entity-displayname: <bold>Pumpling de <playername>
     Description: Solo una calabaza flotante
   ChristmasElf:
@@ -618,7 +618,7 @@ Pets:
     entity-displayname: <bold>Elfo de <playername>
     Description: Puedo hacer regalos para ti!
   Mooshroom:
-    menu-name: '&4&lMooshroom'
+    menu-name: <bold><dark_red>Mooshroom
     entity-displayname: <bold>Mooshroom de <playername>
     Description: '&7&oMoooo!'
   IronGolem:
@@ -626,9 +626,9 @@ Pets:
     entity-displayname: <bold>Golem de <playername>
     Description: Me encantan las flores
   Snowman:
-    menu-name: '&f&lSnowman'
+    menu-name: <bold><white>Snowman
     entity-displayname: <bold>Snowman de <playername>
-    Description: '&7&oPew pew pew'
+    Description: <italic><gray>Pew pew pew
   Villager:
     menu-name: <bold><green>Aldeano
     entity-displayname: <bold>Aldeano de <playername>
@@ -642,7 +642,7 @@ Pets:
     entity-displayname: <bold>Oso Polar de <playername>
     Description: Prefiero zonas frías
   Llama:
-    menu-name: '&7&lLlama'
+    menu-name: <bold><gray>Llama
     entity-displayname: <bold>Llama de <playername>
     Description: Necesitas que lleve algo?
   Parrot:
@@ -650,19 +650,19 @@ Pets:
     entity-displayname: <bold>Loro de <playername>
     Description: Polly quiere una galleta?
   Vex:
-    menu-name: '&7&lVex'
+    menu-name: <bold><gray>Vex
     entity-displayname: <bold>Vex de <playername>
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: <italic><gray>YAAHH Ehehhehe!
   Panda:
-    menu-name: '&a&lPanda'
+    menu-name: <bold><green>Panda
     entity-displayname: <bold>Panda de <playername>
     Description: Le gusta el Bamboo!
   Fox:
-    menu-name: '&d&lFox'
+    menu-name: <bold><light_purple>Fox
     entity-displayname: <bold>Fox de <playername>
-    Description: '&7&oWhat does the fox say?'
+    Description: <italic><gray>What does the fox say?
   Axolotl:
-    menu-name: '&5&lAxolotl'
+    menu-name: <bold><dark_purple>Axolotl
     entity-displayname: <bold>Axolotl de <playername>
     Description: Muy Lindo!
   Piglin:
@@ -672,33 +672,33 @@ Pets:
   Slime:
     menu-name: '&a&lSlime'
     entity-displayname: <bold>Slime de <playername>
-    Description: '&7&oSquish...'
+    Description: <italic><gray>Squish...
   Bee:
     menu-name: <bold><yellow>Abeja
     entity-displayname: <bold>Abeja de <playername>
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '<italic><gray>*bzzzz* *bzzzz*'
   Goat:
     menu-name: <bold><white>Cabra
     entity-displayname: <bold>Cabra de <playername>
-    Description: '&7&oBAAAA!'
+    Description: <italic><gray>BAAAA!
   Silverfish:
-    menu-name: '&7&lSilverfish'
+    menu-name: <bold><gray>Silverfish
     entity-displayname: <bold>Silverfish de <playername>
     Description: Ocultandome en las paredes...
   Horse:
     menu-name: <bold><green>Caballo
     entity-displayname: <bold>Caballo de <playername>
-    Description: '&7&o*fhrrrrhh*'
+    Description: '<italic><gray>*fhrrrrhh*'
   Blaze:
-    menu-name: '&c&lBlaze'
+    menu-name: <bold><red>Blaze
     entity-displayname: <bold>Blaze de <playername>
     Description: Volador y caliente!
   Creeper:
-    menu-name: '&a&lCreeper'
+    menu-name: <bold><green>Creeper
     entity-displayname: <bold>Creeper de <playername>
     Description: Le encanta explotar tus cosas favoritas...
   Enderman:
-    menu-name: '&5&lEnderman'
+    menu-name: <bold><dark_purple>Enderman
     entity-displayname: <bold>Enderman de <playername>
     Description: No le mires a los ojos o te perseguira!
   Skeleton:
@@ -706,7 +706,7 @@ Pets:
     entity-displayname: <bold>Esqueleto de <playername>
     Description: Cuidado, va a tratar de dispararte!
   Zombie:
-    menu-name: '&2&lZombie'
+    menu-name: <bold><dark_green>Zombie
     entity-displayname: <bold>Zombie de <playername>
     Description: Rapido! Oculta tus Aldeanos!
   Frog:
@@ -714,11 +714,11 @@ Pets:
     entity-displayname: <bold>Rana de <playername>
     Description: No le gusta las luciernagas!
   Warden:
-    menu-name: '&3&lWarden'
+    menu-name: <bold><dark_aqua>Warden
     entity-displayname: <bold>Warden de <playername>
     Description: '¡El mob mas aterrador de Minecraft!'
   Allay:
-    menu-name: '&a&lAllay'
+    menu-name: <bold><green>Allay
     entity-displayname: <bold>Allay de <playername>
     Description: Un nuevo amigo!
   Cod:
@@ -746,7 +746,7 @@ Pets:
     entity-displayname: <bold>Ocelote de <playername>
     Description: Cuidado...son muy tímidos!
   Salmon:
-    menu-name: '&c&lSalmon'
+    menu-name: <bold><red>Salmon
     entity-displayname: <bold>Salmón de <playername>
     Description: '¡Son muy sabrosos!'
   SkeletonHorse:
@@ -766,7 +766,7 @@ Pets:
     entity-displayname: <bold>Renacuajo de <playername>
     Description: '¡Crecerá en una Rana!'
   TropicalFish:
-    menu-name: <yellow>&Pez Tropical
+    menu-name: <bold><yellow>Pez Tropical
     entity-displayname: <bold>Pez Tropical de <playername>
     Description: Un pez de colores!
   Turtle:
@@ -802,11 +802,11 @@ Pets:
     entity-displayname: <bold>Elder Guardian de <playername>
     Description: Guardianes de templos antiguos!
   Endermite:
-    menu-name: '&5&lEndermite'
+    menu-name: <bold><dark_purple>Endermite
     entity-displayname: <bold>Endermita de <playername>
     Description: Atrae Endermans!
   Evoker:
-    menu-name: '&7&lEvoker'
+    menu-name: <bold><gray>Evoker
     entity-displayname: <bold>Evoker de<playername>
     Description: Invoca Vexes por instinto!
   Ghast:
@@ -818,11 +818,11 @@ Pets:
     entity-displayname: <bold>Guardián de <playername>
     Description: Odia a los Calamares!
   Hoglin:
-    menu-name: '&c&lHoglin'
+    menu-name: <bold><red>Hoglin
     entity-displayname: <bold>Hoglin de <playername>
     Description: Un cerdo, pero enojado.
   Husk:
-    menu-name: '&e&lHusk'
+    menu-name: <bold><yellow>Husk
     entity-displayname: <bold>Husk de <playername>
     Description: Un Zombie, pero de la arena.
   MagmaCube:
@@ -830,7 +830,7 @@ Pets:
     entity-displayname: <bold>Cubo de Magma de <playername>
     Description: Un cubo muy caliente!
   Phantom:
-    menu-name: '&1&lPhantom'
+    menu-name: <bold><dark_blue>Phantom
     entity-displayname: <bold>Phantom de <playername>
     Description: Odia a quienes no duermen!
   PiglinBrute:
@@ -838,19 +838,19 @@ Pets:
     entity-displayname: <bold>Piglin Bruto de <playername>
     Description: Un Piglin fuertisimo!
   Pillager:
-    menu-name: '&7&lPillager'
+    menu-name: <bold><gray>Pillager
     entity-displayname: <bold>Pillager de <playername>
     Description: Le encanta saquear Aldeas!
   Ravager:
-    menu-name: '&8&lRavager'
+    menu-name: <bold><dark_gray>Ravager
     entity-displayname: <bold>Ravager de <playername>
     Description: El acompañante favorito de los Pillagers!
   Shulker:
-    menu-name: '&5&lShulker'
+    menu-name: <bold><dark_purple>Shulker
     entity-displayname: <bold>Shulker de <playername>
     Description: Le gusta esconderse!
   Stray:
-    menu-name: '&8&lStray'
+    menu-name: <bold><dark_gray>Stray
     entity-displayname: <bold>Stray de <playername>
     Description: Un esqueleto congeladamente frio!
   Vindicator:
@@ -866,7 +866,7 @@ Pets:
     entity-displayname: <bold>Esqueleto Wither de <playername>
     Description: La razón por la que el Saqueo existe.
   Zoglin:
-    menu-name: '&c&lZoglin'
+    menu-name: <bold><red>Zoglin
     entity-displayname: <bold>Zoglin de <playername>
     Description: Un Hoglin Zombificado!
   ZombieVillager:
@@ -878,7 +878,7 @@ Pets:
     entity-displayname: <bold>Caballo Zombie de <playername>
     Description: '¡El caballo más raro de Minecraft!'
   Illusioner:
-    menu-name: '&1&lIllusioner'
+    menu-name: <bold><dark_blue>Illusioner
     entity-displayname: <bold>Illusioner de <playername>
     Description: Spawneable solamente con comandos!
   Sniffer:
@@ -889,7 +889,7 @@ Pets:
   Unequip: <prefix> <blue>Despawneaste <petname>
 Morphs:
   Blaze:
-    name: '&6&lBlaze'
+    name: <bold><gold>Blaze
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Volar'
     Description: Puede que esté caliente ahí...
   Chicken:
@@ -901,7 +901,7 @@ Morphs:
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Saltar'
     Description: Splat! Splat!
   Pig:
-    name: '&d&lPig'
+    name: <bold><light_purple>Pig
     skill: '<yellow>Colisiona</yellow><gray> para: </gray><green>Rebotar a Jugadores'
     Description: Sosten tu zanahoria!
   Enderman:
@@ -933,7 +933,7 @@ Morphs:
       Un esqueleto normal...
       pero del Nether!
   ElderGuardian:
-    name: '&8&lElder Guardian'
+    name: <bold><dark_gray>Elder Guardian
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Laser'
     Description: Conviértete en un Elder Guardian!!
   Cow:
@@ -955,13 +955,13 @@ Morphs:
   Witch:
     name: <bold><dark_purple>Bruja
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Lanzar Pociones'
-    Description: '&7&oMuahahahahaha'
+    Description: <italic><gray>Muahahahahaha
   PolarBear:
     name: <bold><white>Oso Polar
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Tormenta de nieve'
     Description: Prefiero zonas frías
   Llama:
-    name: '&3&lLlama'
+    name: <bold><dark_aqua>Llama
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Escupir'
     Description: Necesitas que lleve algo?
   Parrot:
@@ -1052,7 +1052,7 @@ Morphs:
     Description: '&7&oBloop Bloop!'
   Spider:
     name: <bold><dark_gray>Araña
-    Description: '&7&oHISS...'
+    Description: <italic><gray>HISS...
   Ghast:
     name: '&f&lGhast'
     Description: '*grito extremadamente agudo*'
@@ -1069,7 +1069,7 @@ Morphs:
     name: <bold><dark_gray>Renacuajo
     Description: '¡Crecerá en una Rana!'
   Piglin:
-    name: '&6&lPiglin'
+    name: <bold><gold>Piglin
     Description: Ofertas con Oro!
   Strider:
     name: '&c&lStrider'
@@ -1147,13 +1147,13 @@ Hats:
     Name: <bold><dark_red>Asustado
     Description: Oh gawd, eso me asusto!
   Angel:
-    Name: '&f&lAngel'
+    Name: <bold><white>Angel
     Description: Dolio cuando te caiste del cielo?
   Embarassed:
     Name: <bold><gray>Verguenza
     Description: Me da verguenza eso...
   Kissy:
-    Name: '&c&lKissy'
+    Name: <bold><red>Kissy
     Description: Quieres que nos besemos?
   Sad:
     Name: <bold><blue>Triste
@@ -1381,7 +1381,7 @@ Hats:
     Name: <bold><white>Calavera
     Description: Quien esta sin cabeza ahora??
   JackOLantern:
-    Name: '&6&lJack-O''-Lantern'
+    Name: <bold><gold>Jack-O'-Lantern
     Description: Un poquito calabaza
   Ghost:
     Name: <bold><white>Fantasma
@@ -1625,7 +1625,7 @@ Suits:
     chestplate-name: <bold><white>Pechera </white></bold><bold><white>Astronauta
     leggings-name: <bold><white>Pantalones </white></bold><bold><white>Astronauta
     boots-name: <bold><white>Botas </white></bold><bold><white>Astronauta
-    Description: '&7&oHouston?'
+    Description: <italic><gray>Houston?
   Diamond:
     whole-equip: <bold><white>Traje </white></bold><bold><aqua>Diamante </aqua></bold><bold><white>completo
     helmet-name: <bold><white>Casco </white></bold><bold><aqua>Diamante
@@ -1683,18 +1683,18 @@ Emotes:
     Description: Muestra tu furia a los otros jugadores!
   Happy:
     Name: <bold><yellow>Feliz
-    Description: '&7&oDon''t worry, be happy!'
+    Description: <italic><gray>Don't worry, be happy!
   Cheeky:
-    Name: '&6&lCheeky'
+    Name: <bold><gold>Cheeky
     Description: Te gusta ser burlon? Este emote es para ti!
   Love:
     Name: <bold><dark_red>Amor
     Description: Tienes hermosos ojos, lo sabias?
   DealWithIt:
-    Name: '&7&lDeal With it'
+    Name: <bold><gray>Deal With it
     Description: Tienes ganas de presumir? Este emote es para ti!!
   Cool:
-    Name: '&9&lCool'
+    Name: <bold><blue>Cool
     Description: Siempre Cool!
   Surprised:
     Name: <bold><gold>Sorprendido
@@ -1710,7 +1710,7 @@ Emotes:
     Description: Feliz Halloween!
   GlowingPumpkin:
     Name: <bold><gold>Calabaza Brillante
-    Description: '&7&oJack O''Slime'
+    Description: <italic><gray>Jack O'Slime
   LovestruckAllay:
     Name: <bold><aqua>Amoroso
     Description: Nos estamos enamorando?
@@ -1739,7 +1739,7 @@ Projectile-Effects:
     name: <bold><white>Chispas
     Description: Estrellas blancas brillantes
   Redstone:
-    name: '&4&lRedstone'
+    name: <bold><dark_red>Redstone
     Description: Nubes rojas y pequeñas
   Flame:
     name: <bold><red>Llamas
@@ -1760,7 +1760,7 @@ Projectile-Effects:
     name: <bold><light_purple>Amor
     Description: Corazones rojos
   Lava:
-    name: '&4&lLava'
+    name: <bold><dark_red>Lava
     Description: Burbujas de Lava
   Snow:
     name: <bold><white>Nieve
@@ -1775,8 +1775,8 @@ Projectile-Effects:
     name: <bold><dark_aqua>Crítico Mágico
     Description: Estrellas cian
   Explosion:
-    name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    name: <bold><dark_red>Explosion
+    Description: <italic><gray>BOOM!
   Cloud:
     name: <bold><white>Nubes
     Description: Nubes blancas
@@ -1784,7 +1784,7 @@ Projectile-Effects:
     name: <bold><gray>Humo
     Description: Nubes grises y pequeñas
   Portal:
-    name: '&5&lPortal'
+    name: <bold><dark_purple>Portal
     Description: Nubes moradas y pequeñas
   DragonBreath:
     name: <bold><light_purple>Aliento de Dragón
@@ -1793,7 +1793,7 @@ Projectile-Effects:
     name: <bold><blue>Tinta de Calamar
     Description: Nubes Negras
   SoulFireFlame:
-    name: <aqua>&Llamas de Almas
+    name: \<aqua>&Llamas de Almas
     Description: Llamas cian, pequeñas
   Snowflake:
     name: <bold><white>Copo de Nieve
@@ -1829,7 +1829,7 @@ Death-Effects:
       Tu... Has muerto?
   Lightning:
     name: <bold><white>Relampago
-    Description: '&7&o⚡ ZAP!'
+    Description: '<italic><gray>⚡ ZAP!'
 Enabled-SelfMorphView: <prefix> <blue>Activaste vista propia de las transformaciones!
 Disabled-SelfMorphView: <prefix> <blue>Desactivaste vista propia de las transformaciones!
 Enabled-Gadgets: <prefix> <blue>Activaste los gadgets!
