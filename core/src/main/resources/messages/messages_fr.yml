@@ -1153,13 +1153,13 @@ Hats:
     Name: <bold><gray>Embarassé
     Description: Je suis un peu embarrassé par cela.
   Kissy:
-    Name: '&c&lKissy'
+    Name: <bold><red>Kissy
     Description: Vous voulez un bisou ?
   Sad:
     Name: <bold><blue>Triste
     Description: <gray>Je suis tellement triste.
   Cool:
-    Name: '&6&lCool'
+    Name: <bold><gold>Cool
     Description: Je suis un gars tellement cool.
   Surprised:
     Name: <bold><dark_red>Surprise
@@ -1177,7 +1177,7 @@ Hats:
     Name: <bold><yellow>Clin d'œil
     Description: Vous savez ce que je veux dire ;)
   Derp:
-    Name: '&3&lDerp'
+    Name: <bold><dark_aqua>Derp
     Description: Derp Derp Derp
   Smile:
     Name: <bold><yellow>Sourire
@@ -1465,7 +1465,7 @@ Hats:
     Name: <bold><gray>GigaChad
     Description: Adoptez la masculinité !
   Anubis:
-    Name: '&6&lAnubis'
+    Name: <bold><gold>Anubis
     Description: Dieu égyptien antique
   Bread:
     Name: <bold><white>Pain
@@ -1507,7 +1507,7 @@ Hats:
     Name: <bold><white>Noix de coco
     Description: Paradis
   Taco:
-    Name: '&e&lTaco'
+    Name: <bold><yellow>Taco
     Description: Allons-y pour des tacos !
   Bacon:
     Name: <bold><white>Bacon
@@ -1534,82 +1534,82 @@ Hats:
     Name: <bold><dark_red>Tarte
     Description: J'aime les tartes
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: La première lettre de l'alphabet !
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: La deuxième lettre de l'alphabet !
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: La troisième lettre de l'alphabet !
   D:
-    Name: '&b&lD'
+    Name: <bold><aqua>D
     Description: La quatrième lettre de l'alphabet !
   E:
-    Name: '&e&lE'
+    Name: <bold><yellow>E
     Description: La cinquième lettre de l'alphabet !
   F:
-    Name: '&5&lF'
+    Name: <bold><dark_purple>F
     Description: La sixième lettre de l'alphabet !
   G:
-    Name: '&d&lG'
+    Name: <bold><light_purple>G
     Description: La septième lettre de l'alphabet !
   H:
-    Name: '&a&lH'
+    Name: <bold><green>H
     Description: La huitième lettre de l'alphabet !
   I:
-    Name: '&6&lI'
+    Name: <bold><gold>I
     Description: La neuvième lettre de l'alphabet !
   J:
-    Name: '&4&lJ'
+    Name: <bold><dark_red>J
     Description: La dixième lettre de l'alphabet !
   K:
-    Name: '&2&lK'
+    Name: <bold><dark_green>K
     Description: La onzième lettre de l'alphabet !
   L:
-    Name: '&b&lL'
+    Name: <bold><aqua>L
     Description: La douzième lettre de l'alphabet !
   M:
-    Name: '&e&lM'
+    Name: <bold><yellow>M
     Description: La treizième lettre de l'alphabet !
   N:
-    Name: '&5&lN'
+    Name: <bold><dark_purple>N
     Description: La quatorzième lettre de l'alphabet !
   O:
-    Name: '&d&lO'
+    Name: <bold><light_purple>O
     Description: La quinzième lettre de l'alphabet !
   P:
-    Name: '&a&lP'
+    Name: <bold><green>P
     Description: La seizième lettre de l'alphabet !
   Q:
-    Name: '&6&lQ'
+    Name: <bold><gold>Q
     Description: La dix-septième lettre de l'alphabet !
   R:
-    Name: '&4&lR'
+    Name: <bold><dark_red>R
     Description: La dix-huitième lettre de l'alphabet !
   S:
-    Name: '&2&lS'
+    Name: <bold><dark_green>S
     Description: La dix-neuvième lettre de l'alphabet !
   T:
-    Name: '&b&lT'
+    Name: <bold><aqua>T
     Description: La vingtième lettre de l'alphabet !
   U:
-    Name: '&e&lU'
+    Name: <bold><yellow>U
     Description: La vingt-première lettre de l'alphabet !
   V:
-    Name: '&5&lV'
+    Name: <bold><dark_purple>V
     Description: La vingt-deuxième lettre de l'alphabet !
   W:
-    Name: '&d&lW'
+    Name: <bold><light_purple>W
     Description: La vingt-troisième lettre de l'alphabet !
   X:
-    Name: '&a&lX'
+    Name: <bold><green>X
     Description: La vingt-quatrième lettre de l'alphabet !
   Y:
-    Name: '&6&lY'
+    Name: <bold><gold>Y
     Description: La vingt-cinquième lettre de l'alphabet !
   Z:
-    Name: '&4&lZ'
+    Name: <bold><dark_red>Z
     Description: La vingt-sixième lettre de l'alphabet !
 Suits:
   Rave:
@@ -1814,14 +1814,14 @@ Projectile-Effects:
     name: <bold><gold>Wax activé
     Description: Étoiles Orange
   SculkSoul:
-    name: <aqua>&Âme de lSculk
+    name: <bold><aqua>Âme de lSculk
     Description: Âmes cyan
 Death-Effects:
   Equip: <prefix> <blue>Tu as équipé <death-effectname>
   Unequip: <prefix> <blue>Tu as déséquipé <death-effectname>
   Explosion:
     name: <bold><dark_red>Explosion
-    Description: '&7&oBOOM!'
+    Description: <italic><gray>BOOM!
   Firework:
     name: <bold><gray>Fusée d'artifice
     Description: |-
