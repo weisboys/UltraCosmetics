@@ -255,7 +255,7 @@ Gadgets:
     name: <bold><red>Portal </red></bold><bold><blue>Gun
     No-Block-Range: <prefix> <bold><red>Keine BLÖCKE in Reichweite!
     Different-Worlds: <prefix> <bold><red>Portale müssen in der gleichen Welt sein!
-    Description: <italic><gray>The cake is a lie!
+    Description: The cake is a lie!
   BlizzardBlaster:
     name: <bold><aqua>Blizzard Blaster
     Description: Lass es schneien!
@@ -301,7 +301,7 @@ Gadgets:
     Description: Woow! Zweifelsohne die beste Kanone!
   Parachute:
     name: <bold><white>Fallschirm
-    Description: <italic><gray>GERONIMOOO!
+    Description: GERONIMOOO!
   QuakeGun:
     name: <bold><dark_purple>Quake </dark_purple></bold><bold><light_purple>Waffe
     Description: |-
@@ -310,8 +310,8 @@ Gadgets:
   GhostParty:
     name: <bold><white>Geisterparty
     Description: |-
-      <italic><gray>Who you gonna call?
-      <italic><gray>GHOST BUSTERS!
+      Who you gonna call?
+      GHOST BUSTERS!
   Firework:
     name: <bold><red>Feuerwerk
     Description: |-
@@ -360,7 +360,7 @@ Mounts:
   WalkingDead:
     menu-name: <bold><dark_green>Walking Dead
     entity-displayname: <bold><playername>'s Walking Dead
-    Description: <italic><gray>Graaaaw...
+    Description: Graaaaw...
   MountOfFire:
     menu-name: <bold><red>Pferd des Feuers
     entity-displayname: <bold><playername>'s Pferd des Feuers
@@ -438,7 +438,7 @@ Mounts:
   Pig:
     menu-name: <bold><light_purple>Schwein
     entity-displayname: <bold><playername>'s Schwein
-    Description: <italic><gray>Oink!
+    Description: Oink!
     Held-Item-Lore: <italic><gray>Schweinefutter auf einem Stock!
   SlimeSnake:
     menu-name: <bold><red>Schleim-Schlange
@@ -523,7 +523,7 @@ Particle-Effects:
       nur an den legendärsten Spielern!
   FlameFairy:
     name: <bold><gold>Flammenfee
-    Description: <italic><gray>HEY!!
+    Description: HEY!!
   MagicalRods:
     name: <bold><dark_gray>Magische Stangen
     Description: Mögen diese magischen Stangen dich schützen!
@@ -583,11 +583,11 @@ Pets:
   Piggy:
     menu-name: <bold><light_purple>Schwein
     entity-displayname: <bold><playername>'s Schwein
-    Description: <italic><gray>Oink! Oink!
+    Description: Oink! Oink!
   Sheep:
     menu-name: <bold><white>Schaf
     entity-displayname: <bold><playername>'s Schaf
-    Description: <italic><gray>Baaaa, baa
+    Description: Baaaa, baa
   EasterBunny:
     menu-name: <bold><gold>Osterhase
     entity-displayname: <bold><playername>'s Osterhase
@@ -607,7 +607,7 @@ Pets:
   Chick:
     menu-name: <bold><yellow>Huhn
     entity-displayname: <bold><playername>'s Huhn
-    Description: <italic><gray>Bwaaaaaaak!!
+    Description: Bwaaaaaaak!!
   Wither:
     menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold><playername>'s Wither
@@ -635,7 +635,7 @@ Pets:
   Villager:
     menu-name: <bold><green>Dorfbewohner
     entity-displayname: <bold><playername>'s Dorfbewohner
-    Description: <italic><gray>Hmmmmmmmmm
+    Description: Hmmmmmmmmm
   Bat:
     menu-name: <bold><dark_gray>Fledermaus
     entity-displayname: <bold><playername>'s Fledermaus
@@ -655,7 +655,7 @@ Pets:
   Vex:
     menu-name: <bold><gray>Plagegeist
     entity-displayname: <bold><playername>'s Plagegeist
-    Description: <italic><gray>YAAHH Ehehhehe!
+    Description: YAAHH Ehehhehe!
   Panda:
     menu-name: <bold><green>Panda
     entity-displayname: <bold><playername>'s Panda
@@ -679,11 +679,11 @@ Pets:
   Bee:
     menu-name: <bold><yellow>Biene
     entity-displayname: <bold><playername>'s Biene
-    Description: '<italic><gray>*bzzzz* *bzzzz*'
+    Description: '*bzzzz* *bzzzz*'
   Goat:
     menu-name: <bold><white>Ziege
     entity-displayname: <bold><playername>'s Ziege
-    Description: <italic><gray>BAAAA!
+    Description: BAAAA!
   Silverfish:
     menu-name: <bold><gray>Silberfischchen
     entity-displayname: <bold><playername>'s Silberfischchen
@@ -691,7 +691,7 @@ Pets:
   Horse:
     menu-name: <bold><green>Pferd
     entity-displayname: <bold><playername>'s Pferd
-    Description: '<italic><gray>*fhrrrrhh*'
+    Description: '*fhrrrrhh*'
   Blaze:
     menu-name: <bold><red>Lohe
     entity-displayname: <bold><playername>'s Lohe
@@ -813,7 +813,7 @@ Pets:
     entity-displayname: <bold><playername>'s Magier
     Description: Beschwört beruflich Plagegeister!
   Ghast:
-    menu-name: '&f&lGhast'
+    menu-name: <bold><white>Ghast
     entity-displayname: <bold><playername>'s Ghast
     Description: '*Dämonisches Gekreische*'
   Guardian:
@@ -908,7 +908,7 @@ Morphs:
     skill: '<yellow>Kollidieren</yellow><gray>: </gray><green>Spieler wegstoßen'
     Description: Du musst eine Karotte halten!
   Enderman:
-    name: '&5&lEnderman'
+    name: <bold><dark_purple>Enderman
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>teleportieren'
     Description: |-
       Ich gehe von da nach da,
@@ -918,7 +918,7 @@ Morphs:
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
     Description: Werde eine Fledermaus!
   Creeper:
-    name: '&a&lCreeper'
+    name: <bold><green>Creeper
     skill: '<yellow>Schleichen</yellow><gray>: </gray><green>explodieren'
     charging: '<bold><green>Aufladen: <chargelevel>/100'
     release-to-explode: <bold><white>Loslassen zum explodieren!
@@ -946,7 +946,7 @@ Morphs:
   Sheep:
     name: <bold><white>Schaf
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Farbe ändern'
-    Description: '&7&oBaaaa, baa'
+    Description: Baaaa, baa
   Mooshroom:
     name: <bold><red>Mooshroom
     skill: '<yellow>Schleichen</yellow><gray>: </gray><green>Suppe werfen'
@@ -954,11 +954,11 @@ Morphs:
   Villager:
     name: <bold><green>Dorfbewohner
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Smaragd werfen'
-    Description: '&7&oHmmmmmmmmm'
+    Description: Hmmmmmmmmm
   Witch:
     name: <bold><dark_purple>Hexe
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Trank werfen'
-    Description: <italic><gray>Muahahahahaha
+    Description: Muahahahahaha
   PolarBear:
     name: <bold><white>Eisbär
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Blizzard'
@@ -976,13 +976,13 @@ Morphs:
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
     Description: Ein neuer Freund!
   Axolotl:
-    name: '&5&lAxolotl'
+    name: <bold><dark_purple>Axolotl
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>niedliche Geräusche'
     Description: Sooo niedlich!
   Bee:
     name: <bold><yellow>Biene
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '*bzzzz* *bzzzz*'
   Cat:
     name: <bold><yellow>Katze
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Miau'
@@ -1008,7 +1008,7 @@ Morphs:
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
     Description: Ein Unterwasser-Zombie!
   Endermite:
-    name: '&5&lEndermite'
+    name: <bold><dark_purple>Endermite
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
     Description: Zieht Endermen an!
   Evoker:
@@ -1030,7 +1030,7 @@ Morphs:
   Goat:
     name: <bold><white>Ziege
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
-    Description: '&7&oBAAAA!'
+    Description: BAAAA!
   Guardian:
     name: <bold><dark_aqua>Wächter
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
@@ -1042,13 +1042,13 @@ Morphs:
     name: <bold><gray>Eisengolem
     Description: Hasst Zombies!
   Wither:
-    name: '&8&lWither'
+    name: <bold><dark_gray>Wither
     Description: Nimm dich vor mir in Acht...
   Skeleton:
     name: <bold><gray>Skelett
     Description: Sehr guter Bogenschütze!
   Zombie:
-    name: '&2&lZombie'
+    name: <bold><dark_green>Zombie
     Description: Gehirne!!!
   Squid:
     name: <bold><light_purple>Tintenfisch
@@ -1057,14 +1057,14 @@ Morphs:
     name: <bold><dark_gray>Spinne
     Description: ZISCH...
   Ghast:
-    name: '&f&lGhast'
+    name: <bold><white>Ghast
     Description: '*schriller Schrei*'
   MagmaCube:
     name: <bold><red>Magmawürfel
     Description: Ein sehr heißer Würfel!
   Horse:
     name: <bold><green>Pferd
-    Description: '&7&o*fhrrrrhh*'
+    Description: '*fhrrrrhh*'
   Warden:
     name: <bold><dark_aqua>Wärter
     Description: Sei leise...
@@ -1078,19 +1078,19 @@ Morphs:
     name: <bold><red>Schreiter
     Description: Ich hasse Wasser!
   Hoglin:
-    name: '&c&lHoglin'
+    name: <bold><red>Hoglin
     Description: Ein Schwein, aber wütend.
   PiglinBrute:
     name: <bold><gold>Piglin-Barbar
     Description: Ein ziemlich muskulöser Piglin!
   Zoglin:
-    name: '&c&lZoglin'
+    name: <bold><red>Zoglin
     Description: Ein zombifizierter Hoglin!
   ZombifiedPiglin:
     name: <bold><light_purple>Zombifizierter Piglin
     Description: Greife es an und alle werden hinter dir her sein!
   Panda:
-    name: '&a&lPanda'
+    name: <bold><green>Panda
     Description: Mag Bambus!
   Ocelot:
     name: <bold><yellow>Ozelot
@@ -1117,14 +1117,14 @@ Morphs:
     name: <bold><green>Schildkröte
     Description: Lass dir Zeit.
   Phantom:
-    name: '&1&lPhantom'
+    name: <bold><dark_blue>Phantom
     Description: Hasst Spieler, die nicht schlafen!
   Illusioner:
     name: <bold><dark_blue>Illusionist
     Description: Nur mit Befehlen spawnbar!
   Vex:
     name: <bold><gray>Plagegeist
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Diener
     Description: Unterschätze nicht ihre Stärke!
@@ -1138,7 +1138,7 @@ Morphs:
     name: <bold><dark_green>Zombiepferd
     Description: Das seltenste Pferd in Minecraft!
   Shulker:
-    name: '&5&lShulker'
+    name: <bold><dark_purple>Shulker
     Description: Versteckt sich gerne!
 Hats:
   Equip: <prefix> <blue>Du hast <hatname> </blue><blue>Hut ausgerüstet!
@@ -1172,7 +1172,7 @@ Hats:
     Description: Du wurdest zerstört
   Crying:
     Name: <bold><blue>Weinen
-    Description: <italic><gray>I cri evrytiem
+    Description: I cri evrytiem
   BigSmile:
     Name: <bold><gold>Großes Lächeln
     Description: Weil ich sehr fröhlich bin!
@@ -1208,7 +1208,7 @@ Hats:
     Description: Erleuchte den Ozean!
   Chicken:
     Name: <bold><white>Huhn
-    Description: <italic><gray>Bwwaaaaaaaaaaaakkkkk!
+    Description: Bwwaaaaaaaaaaaakkkkk!
   Blaze:
     Name: <bold><gold>Lohe
     Description: Pass auf das Feuer auf!
@@ -1217,15 +1217,15 @@ Hats:
     Description: Hast du das Redstone?
   Sheep:
     Name: <bold><white>Schaf
-    Description: '&7&oBaaaa, baa'
+    Description: Baaaa, baa
   Pig:
     Name: <bold><light_purple>Schwein
-    Description: <italic><gray>Oink Oink!
+    Description: Oink Oink!
   Cow:
     Name: <bold><green>Kuh
     Description: Muuuh!
   Mooshroom:
-    Name: '&c&lMooshroom'
+    Name: <bold><red>Mooshroom
     Description: Muuuh!
   BrownMooshroom:
     Name: <bold><aqua>Braune Mooshroom
@@ -1243,7 +1243,7 @@ Hats:
     Name: <bold><gold>Kupfergolem
     Description: Hergestellt aus 100% Kupfer.
   Enderman:
-    Name: '&5&lEnderman'
+    Name: <bold><dark_purple>Enderman
     Description: Jetzt bin ich hier, jetzt bin ich dort!
   EndermanKing:
     Name: <bold><light_purple>Enderman König
@@ -1258,7 +1258,7 @@ Hats:
     Name: <bold><gray>Skelett
     Description: Sehr guter Bogenschütze!
   Zombie:
-    Name: '&2&lZombie'
+    Name: <bold><dark_green>Zombie
     Description: Gehirne!!!
   Drowned:
     Name: <bold><dark_aqua>Ertrunkener
@@ -1370,10 +1370,10 @@ Hats:
     Description: Schwebendes Inferno
   Mario:
     Name: <bold><dark_red>Mario
-    Description: <italic><gray>It's-a me! Mario!
+    Description: It's-a me! Mario!
   Luigi:
     Name: <bold><dark_green>Luigi
-    Description: <italic><gray>Luigi time!
+    Description: Luigi time!
   Batman:
     Name: <bold><dark_gray>Batman
     Description: Ich bin Batman!
@@ -1628,7 +1628,7 @@ Suits:
     chestplate-name: <bold><white>Astronauten</white></bold><bold><white>-Brustpanzer
     leggings-name: <bold><white>Astronauten</white></bold><bold><white>-Hose
     boots-name: <bold><white>Astronauten</white></bold><bold><white>-Stiefel
-    Description: <italic><gray>Houston?
+    Description: Houston?
   Diamond:
     whole-equip: <bold><white>Kompletter </white></bold><bold><aqua>Diamant</aqua></bold><bold><white>-Anzug
     helmet-name: <bold><aqua>Diamant</aqua></bold><bold><white>-Helm
@@ -1686,7 +1686,7 @@ Emotes:
     Description: Zeig den anderen Spielern deine Wut!
   Happy:
     Name: <bold><yellow>Fröhlich
-    Description: <italic><gray>Don't worry, be happy!
+    Description: Don't worry, be happy!
   Cheeky:
     Name: <bold><gold>Frech
     Description: Du bist gerne frech? Nun, dieses Emote ist für dich!
@@ -1710,7 +1710,7 @@ Emotes:
     Description: Überrascht?
   ScaryCandle:
     Name: <bold><dark_purple>Unheimliche Kerze
-    Description: <italic><gray>Happy Halloween!
+    Description: Happy Halloween!
   GlowingPumpkin:
     Name: <bold><gold>Leuchtender Kürbis
     Description: Schleimkürbislaterne
@@ -1823,7 +1823,7 @@ Death-Effects:
   Equip: <prefix> <blue>Du hast <death-effectname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <death-effectname> </blue><blue>entfernt
   Explosion:
-    name: '&4&lExplosion'
+    name: <bold><dark_red>Explosion
     Description: BUMM!
   Firework:
     name: <bold><gray>Feuerwerksrakete

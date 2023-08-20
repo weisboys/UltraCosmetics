@@ -31,7 +31,7 @@ Your-Keys: '<italic><gray>Ваши ключи: </gray></italic><bold><white><key
 Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Ключ от сундука с сокровищами </gray></bold><bold><yellow>за $<price>
 You-Won-Treasure-Chests: '<prefix> <bold><white>Вы выиграли: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Все локации с сокровищами заняты, пожалуйста, попробуйте позже
-No-Ammo: <prefix> <red>&в вашем распоряжении нет боеприпасов для этого гаджета!
+No-Ammo: <prefix> <bold><red>в вашем распоряжении нет боеприпасов для этого гаджета!
 Clear:
   Cosmetics: <bold><red>Очистить используемую косметику
   Gadgets: <bold><red>Очистить выбранный гаджет
@@ -569,7 +569,7 @@ Particle-Effects:
   DivineHalo:
     name: <bold><yellow>Божественный ореол
     Description: |-
-      <gray>&Осияние, состоящее из
+      Осияние, состоящее из
       сияющего света.
   SnowFootprints:
     name: <bold><white>Снежный след
@@ -928,10 +928,10 @@ Morphs:
   Unequip: <prefix> <blue>Вы превратились обратно из <morphname>
   WitherSkeleton:
     name: <bold><dark_gray>Скелет-Иссушитель
-    skill: '&eSneak&7 to: &aBone Bomb'
+    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bone Bomb'
     Description: |-
       Самый обычный скелет...
-      <gray>&но из Ада!
+      но из Ада!
   ElderGuardian:
     name: <bold><dark_gray>Старший хранитель
     skill: '<yellow>Левая кнопка мыши </yellow><gray>для того чтобы: </gray><green>Стрелять лазером'
@@ -1330,7 +1330,7 @@ Hats:
     Name: <bold><green>Рана
     Description: Лягушачья шляпа!
   MCD-Steve:
-    Name: '&9&lSteve'
+    Name: <bold><blue>Steve
     Description: Лучшая внешность
   MCD-Alex:
     Name: <bold><gold>Алекс
@@ -1444,7 +1444,7 @@ Hats:
     Name: <bold><dark_green>Принц-лягушка
     Description: Поцелуй меня!
   Notch:
-    Name: '&f&lNotch'
+    Name: <bold><white>Notch
     Description: Создатель Minecraft
   KitsuneMask:
     Name: <bold><red>Маска Кицунэ
@@ -1534,123 +1534,123 @@ Hats:
     Name: <bold><dark_red>Пирог
     Description: Я люблю пирог
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: 1 в алфавите!
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: 2 буква в алфавите!
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: 3 буква в алфавите!
   D:
-    Name: '&b&lD'
+    Name: <bold><aqua>D
     Description: 4 буква в алфавите!
   E:
-    Name: '&e&lE'
+    Name: <bold><yellow>E
     Description: 5 буква в алфавите!
   F:
-    Name: '&5&lF'
+    Name: <bold><dark_purple>F
     Description: 6 буква в алфавите!
   G:
-    Name: '&d&lG'
+    Name: <bold><light_purple>G
     Description: 7 буква в алфавите!
   H:
-    Name: '&a&lH'
+    Name: <bold><green>H
     Description: 8 буква в алфавите!
   I:
-    Name: '&6&lI'
+    Name: <bold><gold>I
     Description: 9 буква в алфавите!
   J:
-    Name: '&4&lJ'
+    Name: <bold><dark_red>J
     Description: 10 буква в алфавите!
   K:
-    Name: '&2&lK'
+    Name: <bold><dark_green>K
     Description: 11 буква в алфавите!
   L:
-    Name: '&b&lL'
+    Name: <bold><aqua>L
     Description: 12 буква в алфавите!
   M:
-    Name: '&e&lM'
+    Name: <bold><yellow>M
     Description: 13 буква в алфавите!
   N:
-    Name: '&5&lN'
+    Name: <bold><dark_purple>N
     Description: 14 буква в алфавите!
   O:
-    Name: '&d&lO'
+    Name: <bold><light_purple>O
     Description: 15 буква в алфавите!
   P:
-    Name: '&a&lP'
+    Name: <bold><green>P
     Description: 16 буква в алфавите!
   Q:
-    Name: '&6&lQ'
+    Name: <bold><gold>Q
     Description: 17 буква в алфавите!
   R:
-    Name: '&4&lR'
+    Name: <bold><dark_red>R
     Description: 18 буква в алфавите!
   S:
-    Name: '&2&lS'
+    Name: <bold><dark_green>S
     Description: 19 буква в алфавите!
   T:
-    Name: '&b&lT'
+    Name: <bold><aqua>T
     Description: 20 буква в алфавите!
   U:
-    Name: '&e&lU'
+    Name: <bold><yellow>U
     Description: 21 буква в алфавите!
   V:
-    Name: '&5&lV'
+    Name: <bold><dark_purple>V
     Description: 22 буква в алфавите!
   W:
-    Name: '&d&lW'
+    Name: <bold><light_purple>W
     Description: 23 буква в алфавите!
   X:
-    Name: '&a&lX'
+    Name: <bold><green>X
     Description: 24 буква в алфавите!
   Y:
-    Name: '&6&lY'
+    Name: <bold><gold>Y
     Description: 25 буква в алфавите!
   Z:
-    Name: '&4&lZ'
+    Name: <bold><dark_red>Z
     Description: 26 буква в алфавите!
 Suits:
   Rave:
-    whole-equip: '&f&lwhole &b&lR&a&la&e&lv&6&le &f&lsuit'
-    helmet-name: '&b&lR&a&la&e&lv&6&le &f&lHelmet'
-    chestplate-name: '&b&lR&a&la&e&lv&6&le &f&lChestplate'
-    leggings-name: '&b&lR&a&la&e&lv&6&le &f&lLeggings'
-    boots-name: '&b&lR&a&la&e&lv&6&le &f&lBoots'
-    Description: '&7&oSuch amazing colors!'
+    whole-equip: <bold><white>whole </white></bold><bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>suit
+    helmet-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Helmet
+    chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Chestplate
+    leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Leggings
+    boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Boots
+    Description: Such amazing colors!
   Astronaut:
-    whole-equip: '&f&lwhole &f&lAstronaut &f&lsuit'
-    helmet-name: '&f&lAstronaut &f&lHelmet'
-    chestplate-name: '&f&lAstronaut &f&lChestplate'
-    leggings-name: '&f&lAstronaut &f&lLeggings'
-    boots-name: '&f&lAstronaut &f&lBoots'
-    Description: '&7&oHouston?'
+    whole-equip: <bold><white>whole </white></bold><bold><white>Astronaut </white></bold><bold><white>suit
+    helmet-name: <bold><white>Astronaut </white></bold><bold><white>Helmet
+    chestplate-name: <bold><white>Astronaut </white></bold><bold><white>Chestplate
+    leggings-name: <bold><white>Astronaut </white></bold><bold><white>Leggings
+    boots-name: <bold><white>Astronaut </white></bold><bold><white>Boots
+    Description: Houston?
   Diamond:
-    whole-equip: '&f&lwhole &b&lDiamond &f&lsuit'
-    helmet-name: '&b&lDiamond &f&lHelmet'
-    chestplate-name: '&b&lDiamond &f&lChestplate'
-    leggings-name: '&b&lDiamond &f&lLeggings'
-    boots-name: '&b&lDiamond &f&lBoots'
+    whole-equip: <bold><white>whole </white></bold><bold><aqua>Diamond </aqua></bold><bold><white>suit
+    helmet-name: <bold><aqua>Diamond </aqua></bold><bold><white>Helmet
+    chestplate-name: <bold><aqua>Diamond </aqua></bold><bold><white>Chestplate
+    leggings-name: <bold><aqua>Diamond </aqua></bold><bold><white>Leggings
+    boots-name: <bold><aqua>Diamond </aqua></bold><bold><white>Boots
     Description: |-
-      &7&oShow your Mining skills
-      &7&owith this amazing outfit!
+      Show your Mining skills
+      with this amazing outfit!
   Santa:
-    whole-equip: '&f&lwhole &4&lSanta &f&lsuit'
-    helmet-name: '&4&lSanta &f&lHelmet'
-    chestplate-name: '&4&lSanta &f&lChestplate'
-    leggings-name: '&4&lSanta &f&lLeggings'
-    boots-name: '&4&lSanta &f&lBoots'
-    Description: '&7&oBecome Santa and deliver presents!'
+    whole-equip: <bold><white>whole </white></bold><bold><dark_red>Santa </dark_red></bold><bold><white>suit
+    helmet-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Helmet
+    chestplate-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Chestplate
+    leggings-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Leggings
+    boots-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Boots
+    Description: Become Santa and deliver presents!
   Frozen:
-    whole-equip: '&f&lwhole &b&lFrozen &f&lsuit'
-    helmet-name: '&b&lFrozen &f&lHelmet'
-    chestplate-name: '&b&lFrozen &f&lChestplate'
-    leggings-name: '&b&lFrozen &f&lLeggings'
-    boots-name: '&b&lFrozen &f&lBoots'
+    whole-equip: <bold><white>whole </white></bold><bold><aqua>Frozen </aqua></bold><bold><white>suit
+    helmet-name: <bold><aqua>Frozen </aqua></bold><bold><white>Helmet
+    chestplate-name: <bold><aqua>Frozen </aqua></bold><bold><white>Chestplate
+    leggings-name: <bold><aqua>Frozen </aqua></bold><bold><white>Leggings
+    boots-name: <bold><aqua>Frozen </aqua></bold><bold><white>Boots
     Description: |-
-      &7&oThis suit belongs to the
-      &7&oLord of the Frozen Lands!
+      This suit belongs to the
+      Lord of the Frozen Lands!
   Cursed:
     whole-equip: <bold><white>Весь </white></bold><bold><dark_purple>Проклятый </dark_purple></bold><bold><white>подходит
     helmet-name: <bold><dark_purple>Проклятый </dark_purple></bold><bold><white>шлем
@@ -1659,7 +1659,7 @@ Suits:
     boots-name: <bold><dark_purple>Проклятые </dark_purple></bold><bold><white>Сапоги
     Description: Таинственные и жуткие.
   Slime:
-    whole-equip: <bold><white>Весь </white></bold><bold><green>слайм </green></bold><white>&подходит
+    whole-equip: <bold><white>Весь </white><green>слайм </green><white>подходит
     helmet-name: <bold><green>Слизневый </green></bold><bold><white>шлем
     chestplate-name: <bold><green>Слизневый </green></bold><bold><white>нагрудник
     leggings-name: <bold><green>Слизневые </green></bold><bold><white>поножи

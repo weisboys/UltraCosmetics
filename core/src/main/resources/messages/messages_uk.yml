@@ -292,7 +292,7 @@ Gadgets:
     name: <bold><dark_blue>Чорна діра
     Description: Ви не повинні попастися на це!
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       Підірвіть людей!
       КАБУМ!
@@ -332,7 +332,7 @@ Gadgets:
       Приєднуйтесь до святкової забави
       кидаючи снігом у людей!
   PartyPopper:
-    name: '&e&lParty Popper'
+    name: <bold><yellow>Party Popper
     Description: |-
       Святкуйте, підриваючи конфетті у
       повітря!
@@ -492,7 +492,7 @@ Particle-Effects:
     Description: Станьте всемогутнім чарівником!
   Music:
     name: <bold><blue>Музика
-    Description: <gray>&оБагато музики!
+    Description: Багато музики!
   Inferno:
     name: <bold><dark_red>Інферно
     Description: Ефект, створений самим сатаною!
@@ -551,8 +551,8 @@ Particle-Effects:
   ShadowFootprints:
     name: <bold><gray>Тіньові сліди
     Description: |-
-      <italic><gray>Залишає за собою 
-      <italic><gray>sслід диму.
+      Залишає за собою
+      sслід диму.
   Notes:
     name: <bold><gold>Ноти
     Description: Ноти над головою.
@@ -910,7 +910,7 @@ Morphs:
     skill: '<yellow>Подвійний стрибок</yellow><gray> для: </gray><green>телепорту'
     Description: |-
       I переходить звідси до іншого,
-      <gray>&потім ви втрачаєте мене...
+      потім ви втрачаєте мене...
   Bat:
     name: <bold><dark_gray>Кажан
     skill: '<yellow>Подвійний стрибок</yellow><gray> для: </gray><green>Клаптя'
@@ -936,7 +936,7 @@ Morphs:
   ElderGuardian:
     name: <bold><dark_gray>Старший Охоронець
     skill: '<yellow>Лівий клік</yellow><gray> для: </gray><green>лазеру'
-    Description: <gray>&Станьте Старшим Охоронцем!!
+    Description: Станьте Старшим Охоронцем!!
   Cow:
     name: <bold><dark_gray>Корова
     skill: '<yellow>Лівий клік</yellow><gray> для: </gray><green>Муууу'
@@ -1074,7 +1074,7 @@ Morphs:
     Description: Угоди з золотом!
   Strider:
     name: <bold><red>Страйдер
-    Description: <gray>&оЯ ненавиджу воду!
+    Description: Я ненавиджу воду!
   Hoglin:
     name: <bold><red>Хоглін
     Description: Свиня, але розлючена.
@@ -1164,7 +1164,7 @@ Hats:
     Description: Я такий класний.
   Surprised:
     Name: <bold><dark_red>Здивований
-    Description: <gray>&оОго, не очікував цього!
+    Description: Ого, не очікував цього!
   Dead:
     Name: <bold><dark_gray>Мертвий
     Description: Отримав рект
@@ -1242,7 +1242,7 @@ Hats:
     Description: Зроблено з 100% міді.
   Enderman:
     Name: <bold><dark_purple>Ендермен
-    Description: <gray>&оА я вже тут!
+    Description: А я вже тут!
   EndermanKing:
     Name: <bold><light_purple>Король Ендерменів
     Description: Король ендерменів
@@ -1263,10 +1263,10 @@ Hats:
     Description: Підводний зомбі
   Strider:
     Name: <bold><red>Страйдер
-    Description: <gray>&оЯ ненавиджу воду!
+    Description: Я ненавиджу воду!
   WitherSkeleton:
     Name: <bold><gray>Візер скелет
-    Description: <gray>&Охоронець фортеці незеру
+    Description: Охоронець фортеці незеру
   Ghast:
     Name: <bold><white>Гаст
     Description: '*пронизливий крик*'
@@ -1278,7 +1278,7 @@ Hats:
     Description: Скуштуйте, будь ласка, мого зілля!
   Guardian:
     Name: <bold><dark_aqua>Охоронець
-    Description: <gray>&Захищає монументи океану!
+    Description: Захищає монументи океану!
   ShepherdVillager:
     Name: <bold><yellow>Пастух Селянин
     Description: Самотній пастух
@@ -1290,13 +1290,13 @@ Hats:
     Description: Знання - це сила.
   Bee:
     Name: <bold><yellow>Бджола
-    Description: <gray>&оБудьте обережні!
+    Description: Будьте обережні!
   Fox:
     Name: <bold><gold>Лисиця
     Description: Швидка і розумна!
   SnowFox:
     Name: <bold><white>Снігова лисиця
-    Description: <gray>&оСніжні біоми - мій дім.
+    Description: Сніжні біоми - мій дім.
   Ocelot:
     Name: <bold><yellow>Оцелот
     Description: Король джунглів
@@ -1377,7 +1377,7 @@ Hats:
     Description: Я Бетмен!
   Chest:
     Name: <bold><gold>Скриня
-    Description: <gray>&оВідкрити і закрити
+    Description: Відкрити і закрити
   Skull:
     Name: <bold><white>Череп
     Description: Хто тепер безголовий?
@@ -1535,82 +1535,82 @@ Hats:
     Name: <bold><dark_red>Пиріг
     Description: Я люблю пиріг
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: Перша буква в алфавіті!
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: Друга буква в алфавіті!
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: Третя буква в алфавіті!
   D:
-    Name: '&b&lD'
+    Name: <bold><aqua>D
     Description: Четверта буква в алфавіті!
   E:
-    Name: '&e&lE'
+    Name: <bold><yellow>E
     Description: П`ята буква в алфавіті!
   F:
-    Name: '&5&lF'
+    Name: <bold><dark_purple>F
     Description: Шоста буква в алфавіті!
   G:
-    Name: '&d&lG'
+    Name: <bold><light_purple>G
     Description: Сьома буква в алфавіті!
   H:
-    Name: '&a&lH'
+    Name: <bold><green>H
     Description: Восьма буква в алфавіті!
   I:
-    Name: '&6&lI'
+    Name: <bold><gold>I
     Description: Дев`ята буква в алфавіті!
   J:
-    Name: '&4&lJ'
+    Name: <bold><dark_red>J
     Description: Десята буква в алфавіті!
   K:
-    Name: '&2&lK'
+    Name: <bold><dark_green>K
     Description: Одинадцята буква в алфавіті!
   L:
-    Name: '&b&lL'
+    Name: <bold><aqua>L
     Description: Дванадцята буква в алфавіті!
   M:
-    Name: '&e&lM'
+    Name: <bold><yellow>M
     Description: Тринадцята буква в алфавіті!
   N:
-    Name: '&5&lN'
+    Name: <bold><dark_purple>N
     Description: Чотирнадцята буква в алфавіті!
   O:
-    Name: '&d&lO'
+    Name: <bold><light_purple>O
     Description: П`ятнадцята буква в алфавіті!
   P:
-    Name: '&a&lP'
+    Name: <bold><green>P
     Description: Шістнадцята буква в алфавіті!
   Q:
-    Name: '&6&lQ'
+    Name: <bold><gold>Q
     Description: Сімнадцята буква в алфавіті!
   R:
-    Name: '&4&lR'
+    Name: <bold><dark_red>R
     Description: Вісімнадцята буква в алфавіті!
   S:
-    Name: '&2&lS'
+    Name: <bold><dark_green>S
     Description: Дев'ятнадцята буква в алфавіті!
   T:
-    Name: '&b&lT'
+    Name: <bold><aqua>T
     Description: Двадцята буква в алфавіті!
   U:
-    Name: '&e&lU'
+    Name: <bold><yellow>U
     Description: Двадцять перша буква в алфавіті!
   V:
-    Name: '&5&lV'
+    Name: <bold><dark_purple>V
     Description: Двадцять друга буква в алфавіті!
   W:
-    Name: '&d&lW'
+    Name: <bold><light_purple>W
     Description: Двадцять третя буква в алфавіті!
   X:
-    Name: '&a&lX'
+    Name: <bold><green>X
     Description: Двадцять четверта буква в алфавіті!
   Y:
-    Name: '&6&lY'
+    Name: <bold><gold>Y
     Description: Двадцять п`ята буква в алфавіті!
   Z:
-    Name: '&4&lZ'
+    Name: <bold><dark_red>Z
     Description: Двадцять шоста буква в алфавіті!
 Suits:
   Rave:
@@ -1744,13 +1744,13 @@ Projectile-Effects:
     Description: Маленькі червоні хмаринки
   Flame:
     name: <bold><red>Полум`я
-    Description: <gray>&оМаленьке полум'я
+    Description: Маленьке полум'я
   Water:
     name: <bold><blue>Вода
     Description: Блакитні краплі води
   Witch:
     name: <bold><dark_purple>Відьма
-    Description: <gray>&оФіолетові хрести
+    Description: Фіолетові хрести
   Emerald:
     name: <bold><dark_green>Смарагд
     Description: Зелені зірки

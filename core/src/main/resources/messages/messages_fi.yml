@@ -14,7 +14,7 @@ Ammo: '<gray>Sinun ammukset: </gray><yellow><ammo>'
 Purchase: <bold><green>OSTA
 Cancel: <bold><red>PERUUTA
 Buy-Ammo-Description: <bold><yellow>Osta <amount> <gadgetname> ammuksia </yellow></bold><bold><yellow>hintaan <price>$
-Buy-Cosmetic-Description: <yellow>&Osta <gadgetname></yellow><yellow>&hintaan $<price>
+Buy-Cosmetic-Description: <bold><yellow>Osta <gadgetname>hintaan $<price>
 Right-Click-Buy-Ammo: <gray>Oikea Clikkaa ostaaksesi ammuksia
 Click-To-Purchase: <yellow>Click to purchase for $<price>
 Not-Enough-Money: <prefix> <bold><red>Sinulla ei ole tarpeeksi rahaa!
@@ -75,19 +75,19 @@ Menu:
       Tooltip-Equip: <bold><aqua>Aktivoi
       Tooltip-Unequip: <bold><red>Ota pois käytöstä
   Mounts:
-    Title: '&lMounts'
+    Title: <bold>Mounts
     Button:
       Name: <bold><gold>Ratsut
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Käyttöön
       Tooltip-Unequip: <bold><red>Pois käytöstä
   Morphs:
-    Title: '&lMorphs'
+    Title: <bold>Morphs
     Button:
       Name: <bold><dark_green>Olennot
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: '&b&lMorph into'
-      Tooltip-Unequip: '&c&lUnmorph from'
+      Tooltip-Equip: <bold><aqua>Morph into
+      Tooltip-Unequip: <bold><red>Unmorph from
   Hats:
     Title: <bold>Hatut
     Button:
@@ -100,8 +100,8 @@ Menu:
     Button:
       Name: <bold><aqua>Partikkelit
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <aqua>&Ota käyttöön
-      Tooltip-Unequip: <red>&Pois käytöstä
+      Tooltip-Equip: <bold><aqua>Ota käyttöön
+      Tooltip-Unequip: <bold><red>Pois käytöstä
   Suits:
     Title: <bold>Vaatteet
     Button:
@@ -139,7 +139,7 @@ Menu:
   Disabled-Button: <red>DISABLED
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
-  Region-Disabled: <prefix><red>&Et voi avata arkkua tässä!
+  Region-Disabled: <prefix> <bold><red>Et voi avata arkkua tässä!
   Invalid: <prefix> <bold><red>That's not a valid location.
   In-Air: <prefix> <bold><red>That location is not on the ground!
   In-Ground: <prefix> <bold><red>That location is in the ground!
@@ -206,8 +206,8 @@ Disable-Gadgets: <bold><red>Poista lelut käytöstä
 Disable-Gadgets-Lore: <red>Disables use of gadgets and effects of them on you
 Enable-Gadgets: <bold><green>Aktivoi lelut
 Enable-Gadgets-Lore: <green>Enables use of gadgets and effects of them on you
-Disable-Third-Person-View: '&c&lDisable Morphs Third Person View'
-Enable-Third-Person-View: '&a&lEnable Morphs Third Person View'
+Disable-Third-Person-View: <bold><red>Disable Morphs Third Person View
+Enable-Third-Person-View: <bold><green>Enable Morphs Third Person View
 Disable-Filter-By-Owned: <bold><red>Change to Show All
 Enable-Filter-By-Owned: <bold><red>Change to Filter By Owned
 Disable-Treasure-Notification: <bold><red>Treasure notifications disabled
@@ -230,12 +230,12 @@ Gadgets:
     Wait-For-Finish: <prefix> <bold><red>Odota että melooni räjähtää!
     Description: Deliciously fun!
   EtherealPearl:
-    name: '&5&lEthereal Pearl'
+    name: <bold><dark_purple>Ethereal Pearl
     Description: |-
       Take a ride through the skies
       on your very own Ethereal Pearl!
   FleshHook:
-    name: '&7&lFlesh Hook'
+    name: <bold><gray>Flesh Hook
     Description: |-
       Make new friends by throwing a hook
       at them and pulling them
@@ -257,13 +257,13 @@ Gadgets:
     Different-Worlds: <prefix> <bold><red>Portals must be in the same world!
     Description: The cake is a lie!
   BlizzardBlaster:
-    name: '&b&lBlizzard Blaster'
+    name: <bold><aqua>Blizzard Blaster
     Description: Let it snow!
   ThorHammer:
     name: <bold><white>Thorin Vasara
     Description: Get the real Mjölnir!
   SmashDown:
-    name: '&c&lSmashDown'
+    name: <bold><red>SmashDown
     Description: AND HIS NAME IS...JOHN CENA!
   ExplosiveSheep:
     name: <bold><dark_red>Räjähtävä lammas
@@ -277,7 +277,7 @@ Gadgets:
       You don't like gravity?
       Then, this gadget is made for you!
   Tsunami:
-    name: '&9&lTsunami'
+    name: <bold><blue>Tsunami
     Description: |-
       TSUNAMI!
       Run for your life!
@@ -292,18 +292,18 @@ Gadgets:
     name: <bold><dark_blue>Mustaaukko
     Description: You should not get caught by it!
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       Blow some people up!
       KABOOM!
   FunGun:
-    name: '&6&lFun Gun'
+    name: <bold><gold>Fun Gun
     Description: Woow! So much fun in a gun!
   Parachute:
-    name: '&f&lParachute'
+    name: <bold><white>Parachute
     Description: GERONIMOOO!
   QuakeGun:
-    name: '&5&lQuake &d&lGun'
+    name: <bold><dark_purple>Quake </dark_purple></bold><bold><light_purple>Gun
     Description: |-
       Get a real Rail Gun
       and strike players and mobs!
@@ -332,7 +332,7 @@ Gadgets:
       Join in on the festive fun by
       throwing snow at people!
   PartyPopper:
-    name: <yellow>&Konfettitykki
+    name: <bold><yellow>Konfettitykki
     Description: |-
       Celebrate by blasting confetti into
       the air!
@@ -354,13 +354,13 @@ Mounts:
     entity-displayname: <bold><playername>'s Infernal Horror
     Description: This mount comes directly from... hell!
   GlacialSteed:
-    menu-name: '&b&lGlacial Steed'
+    menu-name: <bold><aqua>Glacial Steed
     entity-displayname: <bold><playername>'s Glacial Steed
     Description: This mount comes from North Pole!
   WalkingDead:
-    menu-name: '&2&lWalking Dead'
+    menu-name: <bold><dark_green>Walking Dead
     entity-displayname: <bold><playername>'s Walking Dead
-    Description: '&7&oGraaaaw...'
+    Description: <italic><gray>Graaaaw...
   MountOfFire:
     menu-name: <bold><red>Tuli Hevonen
     entity-displayname: <bold><playername>'s Mount of Fire
@@ -374,11 +374,11 @@ Mounts:
     entity-displayname: <bold><playername>'s Ecologist Horse
     Description: Become an ecologist!
   NyanSheep:
-    menu-name: '&4&lNy&6&la&e&ln &a&lSh&b&lee&d&lp'
+    menu-name: <bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n </yellow></bold><bold><green>Sh</green></bold><bold><aqua>ee</aqua></bold><bold><light_purple>p
     entity-displayname: <bold><playername>'s Nyan Sheep
     Description: |-
-      &4&lNyan &6&lnyan &e&lnyan
-      &a&lnyan &3&lnyan &9&lnyan
+      <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
+      <bold><green>nyan </green></bold><bold><dark_aqua>nyan </dark_aqua></bold><bold><blue>nyan
   Snake:
     menu-name: <bold><gold>Käärme
     entity-displayname: <bold><playername>'s Snake
@@ -395,8 +395,8 @@ Mounts:
       Now you can!
   Slime:
     menu-name: <bold><green>Lima
-    entity-displayname: '&l%playername%''s Slime'
-    Description: '&7&oSplat! Splat!'
+    entity-displayname: <bold><playername>'s Slime
+    Description: <italic><gray>Splat! Splat!
   Spider:
     menu-name: <bold><dark_gray>Hämähäkki
     entity-displayname: <bold><playername>'s Spider
@@ -408,8 +408,8 @@ Mounts:
       What would Christmas be
       without Rudolph the Reindeer?
   MoltenSnake:
-    menu-name: '&c&lMolten Snake'
-    entity-displayname: '&l%playername%''s Molten Snake'
+    menu-name: <bold><red>Molten Snake
+    entity-displayname: <bold><playername>'s Molten Snake
     Description: |-
       Deep under the Earth's surface, there
       exists a mythical species of Molten
@@ -423,7 +423,7 @@ Mounts:
     Held-Item-Lore: Strider food on a stick!
   Horse:
     menu-name: <bold><gray>Horse
-    entity-displayname: '&l%playername%''s Horse'
+    entity-displayname: <bold><playername>'s Horse
     Description: Your standard, everyday horse
   Donkey:
     menu-name: <bold><dark_gray>Donkey
@@ -467,19 +467,19 @@ Particle-Effects:
       The weather forecast
       is telling me it's snowing.
   BloodHelix:
-    name: '&4&lBlood Helix'
+    name: <bold><dark_red>Blood Helix
     Description: |-
       Ancient legend says this magic
       empowers the blood of its user,
       giving them godly powers...
   FrostLord:
-    name: '&b&lFrost Lord'
+    name: <bold><aqua>Frost Lord
     Description: I am The Almighty Frostlord!
   FlameRings:
-    name: '&c&lFlame Rings'
+    name: <bold><red>Flame Rings
     Description: Watch out! They are hot!
   GreenSparks:
-    name: '&a&lGreen Sparks'
+    name: <bold><green>Green Sparks
     Description: Little and green sparkly sparks!
   InLove:
     name: <bold><red>Rakastunut
@@ -494,7 +494,7 @@ Particle-Effects:
     name: <bold><blue>Musiikki
     Description: Much music!
   Inferno:
-    name: '&4&lInferno'
+    name: <bold><dark_red>Inferno
     Description: Effect created by Satan himself!
   AngelWings:
     name: <bold><white>Enkelin siivet
@@ -509,24 +509,24 @@ Particle-Effects:
     name: <bold><dark_red>Joulupukin </dark_red></bold><bold><white>Hattu
     Description: Become Santa!
   CrushedCandyCane:
-    name: '&4&lCrushed &f&lCandy &4&lCane'
+    name: <bold><dark_red>Crushed </dark_red></bold><bold><white>Candy </white></bold><bold><dark_red>Cane
     Description: |-
       There's no such thing as too much
       Christmas Candy. Do not listen
       to your dentist.
   EnderAura:
-    name: '&d&lEnder Aura'
+    name: <bold><light_purple>Ender Aura
     Description: |-
       These mystic particles attach to
       only the most legendary of players!
   FlameFairy:
-    name: '&6&lFlame Fairy'
+    name: <bold><gold>Flame Fairy
     Description: HEY!!
   MagicalRods:
-    name: '&8&lMagical Rods'
+    name: <bold><dark_gray>Magical Rods
     Description: May these magical rods protect you!
   FireWaves:
-    name: '&e&lFire Waves'
+    name: <bold><yellow>Fire Waves
     Description: Some say these waves of fire act as a shield...
   CursedHalo:
     name: <bold><dark_purple>Cursed Halo
@@ -579,7 +579,7 @@ Particle-Effects:
       snow behind.
 Pets:
   Piggy:
-    menu-name: '&d&lPiggy'
+    menu-name: <bold><light_purple>Piggy
     entity-displayname: <bold><playername>'s Piggy
     Description: Oink! Oink!
   Sheep:
@@ -587,56 +587,56 @@ Pets:
     entity-displayname: <bold><playername>'s Sheep
     Description: Baaaa, baa
   EasterBunny:
-    menu-name: '&6&lEaster Bunny'
+    menu-name: <bold><gold>Easter Bunny
     entity-displayname: <bold><playername>'s Easter Bunny
     Description: Is it Easter yet?
   Cow:
     menu-name: <bold><red>Lehmä
     entity-displayname: <bold><playername>'s Cow
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Kitty:
     menu-name: <bold><blue>Kissa
     entity-displayname: <bold><playername>'s Kitty
-    Description: '&7&oMeoooow'
+    Description: <italic><gray>Meoooow
   Dog:
     menu-name: <bold><gray>Koira
     entity-displayname: <bold><playername>'s Dog
-    Description: '&7&oWoof!'
+    Description: <italic><gray>Woof!
   Chick:
-    menu-name: '&e&lChick'
+    menu-name: <bold><yellow>Chick
     entity-displayname: <bold><playername>'s Chick
-    Description: '&7&oBwaaaaaaak!!'
+    Description: <italic><gray>Bwaaaaaaak!!
   Wither:
     menu-name: <bold><dark_gray>Witheri
     entity-displayname: <bold><playername>'s Wither
     Description: Watch out for me...
   Pumpling:
-    menu-name: '&6&lPumpling'
+    menu-name: <bold><gold>Pumpling
     entity-displayname: <bold><playername>'s Pumpling
     Description: Just a little floating pumpkin
   ChristmasElf:
-    menu-name: '&a&lChristmas Elf'
+    menu-name: <bold><green>Christmas Elf
     entity-displayname: <bold><playername>'s Christmas Elf
     Description: I can make presents for you!
   Mooshroom:
-    menu-name: '&4&lMooshroom'
-    entity-displayname: '&l%playername%''s Mooshroom'
-    Description: '&7&oMoooo!'
+    menu-name: <bold><dark_red>Mooshroom
+    entity-displayname: <bold><playername>'s Mooshroom
+    Description: <italic><gray>Moooo!
   IronGolem:
     menu-name: <bold><gray>Iron Golem
     entity-displayname: <bold><playername>'s Iron Golem
     Description: I like flowers
   Snowman:
     menu-name: <bold><white>Lumiukko
-    entity-displayname: '&l%playername%''s Snowman'
-    Description: '&7&oPew pew pew'
+    entity-displayname: <bold><playername>'s Snowman
+    Description: <italic><gray>Pew pew pew
   Villager:
     menu-name: <bold><green>Villageri
-    entity-displayname: '&l%playername%''s Villager'
-    Description: '&7&oHmmmmmmmmm'
+    entity-displayname: <bold><playername>'s Villager
+    Description: <italic><gray>Hmmmmmmmmm
   Bat:
     menu-name: <bold><dark_gray>Lepakko
-    entity-displayname: '&l%playername%''s Bat'
+    entity-displayname: <bold><playername>'s Bat
     Description: I prefer dark areas
   PolarBear:
     menu-name: <bold><aqua>Polar Bear
@@ -644,83 +644,83 @@ Pets:
     Description: I prefer cold areas
   Llama:
     menu-name: <bold><gray>Laama
-    entity-displayname: '&l%playername%''s Llama'
+    entity-displayname: <bold><playername>'s Llama
     Description: Need me to carry anything?
   Parrot:
     menu-name: <bold><green>Papukaijja
-    entity-displayname: '&l%playername%''s Parrot'
+    entity-displayname: <bold><playername>'s Parrot
     Description: Polly want a cracker?
   Vex:
-    menu-name: '&7&lVex'
-    entity-displayname: '&l%playername%''s Vex'
+    menu-name: <bold><gray>Vex
+    entity-displayname: <bold><playername>'s Vex
     Description: YAAHH Ehehhehe!
   Panda:
-    menu-name: '&a&lPanda'
-    entity-displayname: '&l%playername%''s Panda'
+    menu-name: <bold><green>Panda
+    entity-displayname: <bold><playername>'s Panda
     Description: Likes Bamboo!
   Fox:
-    menu-name: '&d&lFox'
-    entity-displayname: '&l%playername%''s Fox'
+    menu-name: <bold><light_purple>Fox
+    entity-displayname: <bold><playername>'s Fox
     Description: What does the fox say?
   Axolotl:
-    menu-name: '&5&lAxolotl'
-    entity-displayname: '&l%playername%''s Axolotl'
+    menu-name: <bold><dark_purple>Axolotl
+    entity-displayname: <bold><playername>'s Axolotl
     Description: Sooo cute!
   Piglin:
-    menu-name: '&6&lGold Dealer'
-    entity-displayname: '&l%playername%''s Gold Dealer'
+    menu-name: <bold><gold>Gold Dealer
+    entity-displayname: <bold><playername>'s Gold Dealer
     Description: Deals with Gold!
   Slime:
-    menu-name: '&a&lSlime'
-    entity-displayname: '&l%playername%''s Slime'
+    menu-name: <bold><green>Slime
+    entity-displayname: <bold><playername>'s Slime
     Description: Squish...
   Bee:
-    menu-name: '&e&lBee'
-    entity-displayname: '&l%playername%''s Bee'
+    menu-name: <bold><yellow>Bee
+    entity-displayname: <bold><playername>'s Bee
     Description: '*bzzzz* *bzzzz*'
   Goat:
-    menu-name: '&f&lGoat'
-    entity-displayname: '&l%playername%''s Goat'
+    menu-name: <bold><white>Goat
+    entity-displayname: <bold><playername>'s Goat
     Description: BAAAA!
   Silverfish:
-    menu-name: '&7&lSilverfish'
-    entity-displayname: '&l%playername%''s Silverfish'
+    menu-name: <bold><gray>Silverfish
+    entity-displayname: <bold><playername>'s Silverfish
     Description: Lurking in the walls...
   Horse:
     menu-name: <bold><green>Hevonen
-    entity-displayname: '&l%playername%''s Horse'
-    Description: '&7&o*fhrrrrhh*'
+    entity-displayname: <bold><playername>'s Horse
+    Description: '<italic><gray>*fhrrrrhh*'
   Blaze:
-    menu-name: '&c&lBlaze'
-    entity-displayname: '&l%playername%''s Blaze'
+    menu-name: <bold><red>Blaze
+    entity-displayname: <bold><playername>'s Blaze
     Description: Flying and hot!
   Creeper:
-    menu-name: '&a&lCreeper'
-    entity-displayname: '&l%playername%''s Creeper'
+    menu-name: <bold><green>Creeper
+    entity-displayname: <bold><playername>'s Creeper
     Description: Likes blowing up your favorite stuff...
   Enderman:
-    menu-name: '&5&lEnderman'
-    entity-displayname: '&l%playername%''s Enderman'
+    menu-name: <bold><dark_purple>Enderman
+    entity-displayname: <bold><playername>'s Enderman
     Description: Don't look at it or it will hunt you!
   Skeleton:
     menu-name: <bold><white>Luuranko
-    entity-displayname: '&l%playername%''s Skeleton'
+    entity-displayname: <bold><playername>'s Skeleton
     Description: Watch out, it will try to shoot you!
   Zombie:
-    menu-name: '&2&lZombie'
-    entity-displayname: '&l%playername%''s Zombie'
+    menu-name: <bold><dark_green>Zombie
+    entity-displayname: <bold><playername>'s Zombie
     Description: Quick! Hide your Villagers!
   Frog:
     menu-name: <bold><dark_green>Sammakko
     entity-displayname: <bold><playername>'s Sammakko
     Description: Doesn't like fireflies!
   Warden:
-    menu-name: '&3&lWarden'
-    entity-displayname: '&l%playername%''s Warden'
+    menu-name: <bold><dark_aqua>Warden
+    entity-displayname: <bold><playername>'s Warden
     Description: The scariest Mob in Minecraft!
   Allay:
-    menu-name: '&a&lAllay'
-    entity-displayname: '&l%playername%''s Allay'
+    menu-name: <bold><green>Allay
+    entity-displayname: <bold><playername>'s Allay
     Description: A new friend!
   Cod:
     menu-name: <bold><gray>Cod
@@ -863,7 +863,7 @@ Pets:
     entity-displayname: <bold><playername>'s Witch
     Description: Loves black cats!
   WitherSkeleton:
-    menu-name: '&8&lWither Skeleton'
+    menu-name: <bold><dark_gray>Wither Skeleton
     entity-displayname: <bold><playername>'s Wither Skeleton
     Description: The reason why Looting exists.
   Zoglin:
@@ -906,7 +906,7 @@ Morphs:
     skill: '<yellow>Collide</yellow><gray> to: </gray><green>Bounce Players'
     Description: Must hold your carrot!
   Enderman:
-    name: '&5&lEnderman'
+    name: <bold><dark_purple>Enderman
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Teleport'
     Description: |-
       I go from there to
@@ -928,31 +928,31 @@ Morphs:
   Equip: <prefix> <blue>You morphed into <morphname>
   Unequip: <prefix> <blue>You unmorphed from <morphname>
   WitherSkeleton:
-    name: '&8&lWither Skeleton'
+    name: <bold><dark_gray>Wither Skeleton
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bone Bomb'
     Description: |-
       Just a regular skeleton...
       but from the Nether!
   ElderGuardian:
-    name: '&8&lElder Guardian'
+    name: <bold><dark_gray>Elder Guardian
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Laser'
     Description: Become an Elder Guardian!!
   Cow:
     name: <bold><dark_gray>Lehmä
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Moo'
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Sheep:
     name: <bold><white>Lammas
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Change Colors'
     Description: Baaaa, baa
   Mooshroom:
-    name: '&c&lMooshroom'
+    name: <bold><red>Mooshroom
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Soup Throw'
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Villager:
     name: <bold><green>Villageri
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Emerald Throw'
-    Description: '&7&oHmmmmmmmmm'
+    Description: <italic><gray>Hmmmmmmmmm
   Witch:
     name: <bold><dark_purple>Noita
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Potion Throw'
@@ -970,15 +970,15 @@ Morphs:
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: Polly want a cracker?
   Allay:
-    name: '&a&lAllay'
+    name: <bold><green>Allay
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: A new friend!
   Axolotl:
-    name: '&5&lAxolotl'
+    name: <bold><dark_purple>Axolotl
     skill: <yellow>Left-Click</yellow><gray> for cute sounds
     Description: Sooo cute!
   Bee:
-    name: '&e&lBee'
+    name: <bold><yellow>Bee
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: '*bzzzz* *bzzzz*'
   Cat:
@@ -1018,7 +1018,7 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Doesn't like fireflies!
   Fox:
-    name: '&d&lFox'
+    name: <bold><light_purple>Fox
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: What does the fox say?
   GlowSquid:
@@ -1026,7 +1026,7 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: It glows!
   Goat:
-    name: '&f&lGoat'
+    name: <bold><white>Goat
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: BAAAA!
   Guardian:
@@ -1035,7 +1035,7 @@ Morphs:
     Description: Hates squids!
   Wolf:
     name: <bold><gray>Wolf
-    Description: '&7&oWoof!'
+    Description: <italic><gray>Woof!
   IronGolem:
     name: <bold><gray>Iron Golem
     Description: Hates zombies!
@@ -1046,11 +1046,11 @@ Morphs:
     name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    name: '&2&lZombie'
+    name: <bold><dark_green>Zombie
     Description: Brains!!!
   Squid:
     name: <bold><light_purple>Squid
-    Description: '&7&oBloop Bloop!'
+    Description: <italic><gray>Bloop Bloop!
   Spider:
     name: <bold><dark_gray>Hämähäkki
     Description: HISS...
@@ -1062,9 +1062,9 @@ Morphs:
     Description: A very hot cube!
   Horse:
     name: <bold><green>Hevonen
-    Description: '&7&o*fhrrrrhh*'
+    Description: '<italic><gray>*fhrrrrhh*'
   Warden:
-    name: '&3&lWarden'
+    name: <bold><dark_aqua>Warden
     Description: Be quiet...
   Tadpole:
     name: <bold><dark_gray>Tadpole
@@ -1088,7 +1088,7 @@ Morphs:
     name: <bold><light_purple>Zombified Piglin
     Description: Attack it and all of them will be after you!
   Panda:
-    name: '&a&lPanda'
+    name: <bold><green>Panda
     Description: Likes bamboo!
   Ocelot:
     name: <bold><yellow>Ocelot
@@ -1121,7 +1121,7 @@ Morphs:
     name: <bold><dark_blue>Illusioner
     Description: Only spawnable with commands!
   Vex:
-    name: '&7&lVex'
+    name: <bold><gray>Vex
     Description: YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Vindicator
@@ -1142,7 +1142,7 @@ Hats:
   Equip: <prefix> <blue>Otit käyttöön <hatname> </blue><blue>hatun!
   Unequip: <prefix> <blue>You unequipped <hatname> hat!
   Astronaut:
-    Name: '&7&lAstronaut'
+    Name: <bold><gray>Astronaut
     Description: Houston, we have got a problem.
   Scared:
     Name: <bold><dark_red>Pelästynyt
@@ -1151,10 +1151,10 @@ Hats:
     Name: <bold><white>Enkeli
     Description: Did it hurt when you fell from heaven?
   Embarassed:
-    Name: '&7&lEmbarassed'
+    Name: <bold><gray>Embarassed
     Description: I'm kinda embarassed by that.
   Kissy:
-    Name: '&c&lKissy'
+    Name: <bold><red>Kissy
     Description: Wanna kiss?
   Sad:
     Name: <bold><blue>Surullinen
@@ -1175,10 +1175,10 @@ Hats:
     Name: <bold><gold>Big Smile
     Description: Because I'm really happy!
   Wink:
-    Name: '&e&lWink'
+    Name: <bold><yellow>Wink
     Description: You know what I mean ;)
   Derp:
-    Name: '&3&lDerp'
+    Name: <bold><dark_aqua>Derp
     Description: Derp Derp Derping all around
   Smile:
     Name: <bold><yellow>Hymyillä
@@ -1200,13 +1200,13 @@ Hats:
     Description: You are so musical.
   Squid:
     Name: <bold><dark_aqua>Mustekala
-    Description: '&7&oBloop Bloop!'
+    Description: <italic><gray>Bloop Bloop!
   GlowSquid:
     Name: <bold><aqua>Glow Squid
     Description: Light up the ocean!
   Chicken:
     Name: <bold><white>Kana
-    Description: '&7&oBwwaaaaaaaaaaaakkkkk!'
+    Description: <italic><gray>Bwwaaaaaaaaaaaakkkkk!
   Blaze:
     Name: <bold><gold>Roihu
     Description: Watch out for the fire!
@@ -1215,19 +1215,19 @@ Hats:
     Description: Have you got the redstone?
   Sheep:
     Name: <bold><white>Lammas
-    Description: '&7&oBaaaa, baa'
+    Description: <italic><gray>Baaaa, baa
   Pig:
     Name: <bold><light_purple>Possu
-    Description: '&7&oOink Oink!'
+    Description: <italic><gray>Oink Oink!
   Cow:
     Name: <bold><green>Cow
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Mooshroom:
-    Name: '&c&lMooshroom'
-    Description: '&7&oMoooo!'
+    Name: <bold><red>Mooshroom
+    Description: <italic><gray>Moooo!
   BrownMooshroom:
     Name: <bold><aqua>Brown Mooshroom
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Moobloom:
     Name: <bold><yellow>Moobloom
     Description: Very rare cow!
@@ -1241,7 +1241,7 @@ Hats:
     Name: <bold><gold>Copper Golem
     Description: Made out of 100% copper.
   Enderman:
-    Name: '&5&lEnderman'
+    Name: <bold><dark_purple>Enderman
     Description: Now I'm here, now I'm there!
   EndermanKing:
     Name: <bold><light_purple>Enderman King
@@ -1256,7 +1256,7 @@ Hats:
     Name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    Name: '&2&lZombie'
+    Name: <bold><dark_green>Zombie
     Description: Brains!!!
   Drowned:
     Name: <bold><dark_aqua>Drowned
@@ -1271,7 +1271,7 @@ Hats:
     Name: <bold><white>Ghast
     Description: '*high-pitched scream*'
   Warden:
-    Name: '&3&lWarden'
+    Name: <bold><dark_aqua>Warden
     Description: Be quiet...
   Witch:
     Name: <bold><dark_purple>Noita
@@ -1289,7 +1289,7 @@ Hats:
     Name: <bold><gold>Librarian Villager
     Description: Knowledge is power.
   Bee:
-    Name: '&e&lBee'
+    Name: <bold><yellow>Bee
     Description: Be careful!
   Fox:
     Name: <bold><gold>Fox
@@ -1367,28 +1367,28 @@ Hats:
     Name: <bold><dark_red>The Wildfire
     Description: Hovering inferno
   Mario:
-    Name: '&4&lMario'
+    Name: <bold><dark_red>Mario
     Description: It's-a me! Mario!
   Luigi:
-    Name: '&2&lLuigi'
+    Name: <bold><dark_green>Luigi
     Description: Luigi time!
   Batman:
-    Name: '&8&lBatman'
+    Name: <bold><dark_gray>Batman
     Description: I'm Batman!
   Chest:
     Name: <bold><gold>Arkku
     Description: Open, and close
   Skull:
-    Name: '&f&lSkull'
+    Name: <bold><white>Skull
     Description: Who is headless now?
   JackOLantern:
-    Name: '&6&lJack-O''-Lantern'
+    Name: <bold><gold>Jack-O'-Lantern
     Description: A little pumpkin
   Ghost:
     Name: <bold><white>Haamu
     Description: 2spooky4u
   ScaryClown:
-    Name: '&4&lScary Clown'
+    Name: <bold><dark_red>Scary Clown
     Description: Hope you are not scared of clowns.
   Santa:
     Name: <bold><dark_red>Joulupukki
@@ -1400,10 +1400,10 @@ Hats:
     Name: <bold><red>Lahja
     Description: From Santa, to you!
   Elf:
-    Name: '&a&lElf'
+    Name: <bold><green>Elf
     Description: I work for Santa!
   Bedrock:
-    Name: '&8&lBedrock'
+    Name: <bold><dark_gray>Bedrock
     Description: Unbreakable!
   RedCrewmate:
     Name: <bold><dark_red>Red Crewmate
@@ -1475,7 +1475,7 @@ Hats:
     Name: <bold><yellow>Juusto
     Description: Say cheese!
   Pancakes:
-    Name: '&f&lPancakes'
+    Name: <bold><white>Pancakes
     Description: Better with syrup!
   Cake:
     Name: <bold><red>Kakku
@@ -1490,31 +1490,31 @@ Hats:
     Name: <bold><green>Suklaa
     Description: Don't feed your dog with this!
   WhiteChocolate:
-    Name: '&f&lWhite Chocolate'
+    Name: <bold><white>White Chocolate
     Description: A bit more creamy
   Apple:
     Name: <bold><dark_red>Omena
     Description: Not the company
   Melon:
-    Name: '&a&lMelon'
+    Name: <bold><green>Melon
     Description: Don't smash it with your head
   CarvedPumpkin:
-    Name: '&6&lCarved Pumpkin'
+    Name: <bold><gold>Carved Pumpkin
     Description: Who turned this thing off?
   Strawberry:
-    Name: '&c&lStrawberry'
+    Name: <bold><red>Strawberry
     Description: Do these grow on trees?
   Coconut:
-    Name: '&f&lCoconut'
+    Name: <bold><white>Coconut
     Description: Paradise
   Taco:
-    Name: '&e&lTaco'
+    Name: <bold><yellow>Taco
     Description: Let's go for some tacos!
   Bacon:
     Name: <bold><white>Pekoni
     Description: Everything's better with bacon.
   Fries:
-    Name: '&6&lFries'
+    Name: <bold><gold>Fries
     Description: Hamburger's best friend
   Hamburger:
     Name: <bold><gold>Hampurilainen
@@ -1523,94 +1523,94 @@ Hats:
     Name: <bold><gold>Popcorni
     Description: The classic movie snack!
   WhiteDonut:
-    Name: '&f&lWhite Donut'
+    Name: <bold><white>White Donut
     Description: Like a donut, but in white!
   PinkDonut:
-    Name: '&d&lPink Donut'
+    Name: <bold><light_purple>Pink Donut
     Description: Homer's favorites
   ChocolateDonut:
-    Name: '&a&lChocolate Donut'
+    Name: <bold><green>Chocolate Donut
     Description: A better donut!
   Pie:
     Name: <bold><dark_red>Piirakka
     Description: I like pie
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: The first letter in the alphabet!
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: The second letter in the alphabet!
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: The third letter in the alphabet!
   D:
-    Name: '&b&lD'
+    Name: <bold><aqua>D
     Description: The fourth letter in the alphabet!
   E:
-    Name: '&e&lE'
+    Name: <bold><yellow>E
     Description: The fifth letter in the alphabet!
   F:
-    Name: '&5&lF'
+    Name: <bold><dark_purple>F
     Description: The sixth letter in the alphabet!
   G:
-    Name: '&d&lG'
+    Name: <bold><light_purple>G
     Description: The seventh letter in the alphabet!
   H:
-    Name: '&a&lH'
+    Name: <bold><green>H
     Description: The eighth letter in the alphabet!
   I:
-    Name: '&6&lI'
+    Name: <bold><gold>I
     Description: The ninth letter in the alphabet!
   J:
-    Name: '&4&lJ'
+    Name: <bold><dark_red>J
     Description: The tenth letter in the alphabet!
   K:
-    Name: '&2&lK'
+    Name: <bold><dark_green>K
     Description: The eleventh letter in the alphabet!
   L:
-    Name: '&b&lL'
+    Name: <bold><aqua>L
     Description: The twelfth letter in the alphabet!
   M:
-    Name: '&e&lM'
+    Name: <bold><yellow>M
     Description: The thirteenth letter in the alphabet!
   N:
-    Name: '&5&lN'
+    Name: <bold><dark_purple>N
     Description: The fourteenth letter in the alphabet!
   O:
-    Name: '&d&lO'
+    Name: <bold><light_purple>O
     Description: The fifteenth letter in the alphabet!
   P:
-    Name: '&a&lP'
+    Name: <bold><green>P
     Description: The sixteenth letter in the alphabet!
   Q:
-    Name: '&6&lQ'
+    Name: <bold><gold>Q
     Description: The seventeenth letter in the alphabet!
   R:
-    Name: '&4&lR'
+    Name: <bold><dark_red>R
     Description: The eighteenth letter in the alphabet!
   S:
-    Name: '&2&lS'
+    Name: <bold><dark_green>S
     Description: The nineteenth letter in the alphabet!
   T:
-    Name: '&b&lT'
+    Name: <bold><aqua>T
     Description: The twentieth letter in the alphabet!
   U:
-    Name: '&e&lU'
+    Name: <bold><yellow>U
     Description: The twenty-first letter in the alphabet!
   V:
-    Name: '&5&lV'
+    Name: <bold><dark_purple>V
     Description: The twenty-second letter in the alphabet!
   W:
-    Name: '&d&lW'
+    Name: <bold><light_purple>W
     Description: The twenty-third letter in the alphabet!
   X:
-    Name: '&a&lX'
+    Name: <bold><green>X
     Description: The twenty-fourth letter in the alphabet!
   Y:
-    Name: '&6&lY'
+    Name: <bold><gold>Y
     Description: The twenty-fifth letter in the alphabet!
   Z:
-    Name: '&4&lZ'
+    Name: <bold><dark_red>Z
     Description: The twenty-sixth letter in the alphabet!
 Suits:
   Rave:
@@ -1686,13 +1686,13 @@ Emotes:
     Name: <bold><yellow>Iloinen
     Description: Don't worry, be happy!
   Cheeky:
-    Name: '&6&lCheeky'
+    Name: <bold><gold>Cheeky
     Description: You like being cheeky? Well, this emote is for you!
   Love:
     Name: <bold><dark_red>Rakastunut
     Description: You have beautiful eyes, do you know that?
   DealWithIt:
-    Name: '&7&lDeal With it'
+    Name: <bold><gray>Deal With it
     Description: Do you feel like showing off? This emote is for you!
   Cool:
     Name: <bold><blue>Cooli
@@ -1701,7 +1701,7 @@ Emotes:
     Name: <bold><gold>Yllättynyt
     Description: OH LORD!!!
   Wink:
-    Name: '&a&lWink'
+    Name: <bold><green>Wink
     Description: Having fun? Let someone know you are in on the joke!
   RaiseEyebrows:
     Name: <bold><dark_aqua>Raise Eyebrows

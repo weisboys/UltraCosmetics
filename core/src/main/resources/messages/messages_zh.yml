@@ -292,7 +292,7 @@ Gadgets:
     name: <bold><dark_blue>黑洞
     Description: 你不该被它抓住!
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       把一些人炸起来!
       嘣!
@@ -476,7 +476,7 @@ Particle-Effects:
     name: <bold><aqua>冰霜领主
     Description: 我是全能的 冰霜领主!
   FlameRings:
-    name: <red>&火焰环
+    name: <bold><red>火焰环
     Description: 小心！它们很烫！
   GreenSparks:
     name: <bold><green>绿色火花
@@ -1535,82 +1535,82 @@ Hats:
     Name: <bold><dark_red>派
     Description: 我喜欢派
   A:
-    Name: '&6&lA'
+    Name: <bold><gold>A
     Description: 字母表中的第一个字母！
   B:
-    Name: '&4&lB'
+    Name: <bold><dark_red>B
     Description: 字母表中的第二个字母！
   C:
-    Name: '&2&lC'
+    Name: <bold><dark_green>C
     Description: 字母表中的第三个字母！
   D:
-    Name: '&b&lD'
+    Name: <bold><aqua>D
     Description: 字母表中的第四个字母！
   E:
-    Name: '&e&lE'
+    Name: <bold><yellow>E
     Description: 字母表中的第五个字母！
   F:
-    Name: '&5&lF'
+    Name: <bold><dark_purple>F
     Description: 字母表中的第六个字母！
   G:
-    Name: '&d&lG'
+    Name: <bold><light_purple>G
     Description: 字母表中的第七个字母！
   H:
-    Name: '&a&lH'
+    Name: <bold><green>H
     Description: 字母表中的第八个字母！
   I:
-    Name: '&6&lI'
+    Name: <bold><gold>I
     Description: 字母表中的第九个字母！
   J:
-    Name: '&4&lJ'
+    Name: <bold><dark_red>J
     Description: 字母表中的第十个字母！
   K:
-    Name: '&2&lK'
+    Name: <bold><dark_green>K
     Description: 字母表中的第十一个字母！
   L:
-    Name: '&b&lL'
+    Name: <bold><aqua>L
     Description: 字母表中的第十二个字母！
   M:
-    Name: '&e&lM'
+    Name: <bold><yellow>M
     Description: 字母表中的第十三个字母！
   N:
-    Name: '&5&lN'
+    Name: <bold><dark_purple>N
     Description: 字母表中的第十四个字母！
   O:
-    Name: '&d&lO'
+    Name: <bold><light_purple>O
     Description: 字母表中的第十五个字母！
   P:
-    Name: '&a&lP'
+    Name: <bold><green>P
     Description: 字母表中的第十六个字母！
   Q:
-    Name: '&6&lQ'
+    Name: <bold><gold>Q
     Description: 字母表中的第十七个字母！
   R:
-    Name: '&4&lR'
+    Name: <bold><dark_red>R
     Description: 字母表中的第十八个字母！
   S:
-    Name: '&2&lS'
+    Name: <bold><dark_green>S
     Description: 字母表中的第十九个字母！
   T:
-    Name: '&b&lT'
+    Name: <bold><aqua>T
     Description: 字母表中的第二十个字母！
   U:
-    Name: '&e&lU'
+    Name: <bold><yellow>U
     Description: 字母表中的第二十一个字母！
   V:
-    Name: '&5&lV'
+    Name: <bold><dark_purple>V
     Description: 字母表中的第二十二个字母！
   W:
-    Name: '&d&lW'
+    Name: <bold><light_purple>W
     Description: 字母表中的第二十三个字母！
   X:
-    Name: '&a&lX'
+    Name: <bold><green>X
     Description: 字母表中的第二十四个字母！
   Y:
-    Name: '&6&lY'
+    Name: <bold><gold>Y
     Description: 字母表中的第二十五个字母！
   Z:
-    Name: '&4&lZ'
+    Name: <bold><dark_red>Z
     Description: 字母表中的第二十六个字母！
 Suits:
   Rave:
@@ -1619,7 +1619,7 @@ Suits:
     chestplate-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>衣服
     leggings-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>裤子
     boots-name: <bold><aqua>狂</aqua></bold><bold><green>欢</green></bold><bold><yellow>节 </yellow></bold><bold><white>靴子
-    Description: <gray>&这惊人的颜色！
+    Description: 这惊人的颜色！
   Astronaut:
     whole-equip: <bold><white>全套 </white></bold><bold><white>宇航员 </white></bold><bold><white>制服
     helmet-name: <bold><white>宇航员 </white></bold><bold><white>头盔
