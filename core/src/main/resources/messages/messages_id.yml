@@ -219,7 +219,7 @@ Gadgets:
   Countdown-Message: <prefix> <bold><red>Anda tidak dapat menggunakan <gadgetname> </red></bold><bold><red>selama <time>s!
   PaintballGun:
     name: <bold><aqua>Senjata Paintball
-    Description: '&7&oPEW PEW PEW PEW!!!'
+    Description: <italic><gray>PEW PEW PEW PEW!!!
   BatBlaster:
     name: <bold><gray>Tembakan Kelelawar
     Description: |-
@@ -263,7 +263,7 @@ Gadgets:
     name: <bold><white>Palu Thor
     Description: Dapatkan Mjölnir sebenarnya!
   SmashDown:
-    name: '&c&lSmashDown'
+    name: <bold><red>SmashDown
     Description: DAN NAMANYA ADALAH...JOHN CENA!
   ExplosiveSheep:
     name: <bold><dark_red>Domba Meledak
@@ -277,7 +277,7 @@ Gadgets:
       Anda tidak suka gravitasi
       Maka, peralatan ini dibuat untuk anda!
   Tsunami:
-    name: '&9&lTsunami'
+    name: <bold><blue>Tsunami
     Description: |-
       TSUNAMI!
       Lari untuk hidup anda!
@@ -292,7 +292,7 @@ Gadgets:
     name: <bold><dark_blue>Lubang Hitam
     Description: Anda tidak boleh sampai terkena oleh itu!
   TNT:
-    name: '&4&lT&f&lN&4&lT'
+    name: <bold><dark_red>T</dark_red></bold><bold><white>N</white></bold><bold><dark_red>T
     Description: |-
       Ledakkan beberapa orang!
       KABOOM!
@@ -301,7 +301,7 @@ Gadgets:
     Description: Woow! Banyak kemeriahan dalam sebuah senjata!
   Parachute:
     name: <bold><white>Parasut
-    Description: '&7&oGERONIMOOO!'
+    Description: <italic><gray>GERONIMOOO!
   QuakeGun:
     name: <bold><light_purple>Tembakan </light_purple></bold><bold><dark_purple>Gempa
     Description: |-
@@ -377,8 +377,8 @@ Mounts:
     menu-name: <bold><green>Do</green></bold><bold><aqua>m</aqua></bold><bold><light_purple>ba </light_purple></bold><bold><dark_red>Ny</dark_red></bold><bold><gold>a</gold></bold><bold><yellow>n
     entity-displayname: <bold><playername>'s Nyan Sheep
     Description: |-
-      &4&lNyan &6&lnyan &e&lnyan
-      &a&lnyan &3&lnyan &9&lnyan
+      <bold><dark_red>Nyan </dark_red></bold><bold><gold>nyan </gold></bold><bold><yellow>nyan
+      <bold><green>nyan </green></bold><bold><dark_aqua>nyan </dark_aqua></bold><bold><blue>nyan
   Snake:
     menu-name: <bold><gold>Ular
     entity-displayname: <bold><playername>'s Snake
@@ -388,21 +388,21 @@ Mounts:
     entity-displayname: <bold><playername>'s Dragon
     Description: Menjadi pengendara naga!
   HypeCart:
-    menu-name: '&7&lHypeCart'
+    menu-name: <bold><gray>HypeCart
     entity-displayname: <bold><playername>'s HypeCart
     Description: |-
       Ingin mengendarai sebuah F1?
       Sekarang anda bisa!
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold><playername>'s Slime
-    Description: '&7&oSplat! Splat!'
+    Description: <italic><gray>Splat! Splat!
   Spider:
     menu-name: <bold><dark_gray>Laba Laba
     entity-displayname: <bold><playername>'s Spider
     Description: ANDA adalah pengendara laba laba!
   Rudolph:
-    menu-name: '&f&lRudolp&4&lh'
+    menu-name: <bold><white>Rudolp</white></bold><bold><dark_red>h
     entity-displayname: <bold><playername>'s Rudolph
     Description: |-
       What would Christmas be
@@ -671,7 +671,7 @@ Pets:
     entity-displayname: <bold><playername>'s Gold Dealer
     Description: Deals with Gold!
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold><playername>'s Slime
     Description: Squish...
   Bee:
@@ -898,7 +898,7 @@ Morphs:
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Lay eggs'
     Description: Become a chicken!
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bounce'
     Description: Splat splat!
   Pig:
@@ -1247,7 +1247,7 @@ Hats:
     Name: <bold><light_purple>Enderman King
     Description: King of the endermen
   Slime:
-    Name: '&a&lSlime'
+    Name: <bold><green>Slime
     Description: Very slimy
   Creeper:
     Name: <bold><dark_green>Creeper
@@ -1767,7 +1767,7 @@ Projectile-Effects:
     name: <bold><white>Snow
     Description: Snowball particles
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     Description: Slimeball particles
   Crit:
     name: <bold><gray>Crit
