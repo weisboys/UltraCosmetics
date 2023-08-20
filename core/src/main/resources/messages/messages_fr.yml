@@ -468,9 +468,9 @@ Particle-Effects:
   BloodHelix:
     name: <bold><dark_red>Hélix de Sang
     Description: |-
-      <italic><gray>Une légende ancienne dit que cette magie 
-      <italic><gray>rend le sang de son utilisateur puissant, 
-      <italic><gray>lui donnant des pouvoirs divins...
+      Une légende ancienne dit que cette magie
+      rend le sang de son utilisateur puissant,
+      lui donnant des pouvoirs divins...
   FrostLord:
     name: <bold><aqua>Seigneur des Glaces
     Description: Je suis le tout-puissant Seigneur des Glaces !
@@ -1821,7 +1821,7 @@ Death-Effects:
   Unequip: <prefix> <blue>Tu as déséquipé <death-effectname>
   Explosion:
     name: <bold><dark_red>Explosion
-    Description: <italic><gray>BOOM!
+    Description: BOOM!
   Firework:
     name: <bold><gray>Fusée d'artifice
     Description: |-
