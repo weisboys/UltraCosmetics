@@ -414,7 +414,7 @@ Mounts:
       Existe una mitica especie de Serpientes
       Fundidas. Esta sirve a su amo por la eternidad.
   Strider:
-    menu-name: '&c&lStrider'
+    menu-name: <bold><red>Strider
     entity-displayname: <bold> Strider de<playername>
     Description: |-
       Un mob misterioso en forma de cubo
@@ -620,7 +620,7 @@ Pets:
   Mooshroom:
     menu-name: <bold><dark_red>Mooshroom
     entity-displayname: <bold>Mooshroom de <playername>
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   IronGolem:
     menu-name: <bold><gray>Golem de Hierro
     entity-displayname: <bold>Golem de <playername>
@@ -670,7 +670,7 @@ Pets:
     entity-displayname: <bold>Dealer de Oro de <playername>
     Description: Ofertas con Oro!
   Slime:
-    menu-name: '&a&lSlime'
+    menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
     Description: <italic><gray>Squish...
   Bee:
@@ -810,7 +810,7 @@ Pets:
     entity-displayname: <bold>Evoker de<playername>
     Description: Invoca Vexes por instinto!
   Ghast:
-    menu-name: '&f&lGhast'
+    menu-name: <bold><white>Ghast
     entity-displayname: <bold>Ghast de <playername>
     Description: '*Grito demoniaco*'
   Guardian:
@@ -897,7 +897,7 @@ Morphs:
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Dropear huevos'
     Description: Conviertete en un pollo!
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Saltar'
     Description: Splat! Splat!
   Pig:
@@ -905,23 +905,23 @@ Morphs:
     skill: '<yellow>Colisiona</yellow><gray> para: </gray><green>Rebotar a Jugadores'
     Description: Sosten tu zanahoria!
   Enderman:
-    name: '&5&lEnderman'
+    name: <bold><dark_purple>Enderman
     skill: '<yellow>Doble Salto</yellow><gray> para: </gray><green>Teletransportar'
     Description: |-
       Voy de aqui hacia
       alla, y ahora... me perdiste...
   Bat:
-    name: '&8&lBat'
+    name: <bold><dark_gray>Bat
     skill: '<yellow>Doble Salto</yellow><gray> para: </gray><green>Flap'
     Description: Conviertete en un murcielago!
   Creeper:
-    name: '&a&lCreeper'
+    name: <bold><green>Creeper
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Detonar'
     charging: '<bold><green>Cargando: <chargelevel>/100'
     release-to-explode: <bold><white>Suelta para explotar!
     Description: Hey! Que passssssa?
   Snowman:
-    name: '&f&lSnowman'
+    name: <bold><white>Snowman
     skill: '<yellow>Click Izquierdo</yellow><gray> para: </gray><green>Tirar bola de nieve'
     Description: Conviertete en Olaf!
   Equip: <prefix> <blue>Transformado en <morphname>
@@ -939,15 +939,15 @@ Morphs:
   Cow:
     name: <bold><dark_gray>Vaca
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Moo'
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Sheep:
     name: <bold><white>Oveja
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Cambiar Colores'
-    Description: '&7&oBaaaa, baa'
+    Description: <italic><gray>Baaaa, baa
   Mooshroom:
     name: <bold><red>Vaca Mooshroom
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Lanzar sopas'
-    Description: '&7&oMoooo!'
+    Description: <italic><gray>Moooo!
   Villager:
     name: <bold><green>Aldeano
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Lanzar Esmeraldas'
@@ -969,17 +969,17 @@ Morphs:
     skill: '<yellow>Double Jump</yellow><gray> para: </gray><green>Flap'
     Description: Polly quiere una galleta?
   Allay:
-    name: '&a&lAllay'
+    name: <bold><green>Allay
     skill: '<yellow>Doble Salto</yellow><gray> para: </gray><green>Flap'
     Description: Un nuevo amigo!
   Axolotl:
-    name: '&5&lAxolotl'
+    name: <bold><dark_purple>Axolotl
     skill: <yellow>Click izquierdo</yellow><gray> para sonidos lindos
     Description: Muy Lindo!
   Bee:
     name: <bold><yellow>Abeja
     skill: '<yellow>Doble Salto</yellow><gray> para: </gray><green>Flap'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '<italic><gray>*bzzzz* *bzzzz*'
   Cat:
     name: <bold><yellow>Gato
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Meow'
@@ -1005,11 +1005,11 @@ Morphs:
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
     Description: Un zombie subacuatico!
   Endermite:
-    name: '&5&lEndermite'
+    name: <bold><dark_purple>Endermite
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
     Description: Atrae a los Enderman!
   Evoker:
-    name: '&7&lEvoker'
+    name: <bold><gray>Evoker
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
     Description: Invoca Vexes por instinto!
   Frog:
@@ -1019,7 +1019,7 @@ Morphs:
   Fox:
     name: <bold><light_purple>Zorro
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
-    Description: '&7&oWhat does the fox say?'
+    Description: <italic><gray>What does the fox say?
   GlowSquid:
     name: <bold><dark_aqua>Calamar Brillante
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
@@ -1027,43 +1027,43 @@ Morphs:
   Goat:
     name: <bold><white>Cabra
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
-    Description: '&7&oBAAAA!'
+    Description: <italic><gray>BAAAA!
   Guardian:
     name: <bold><dark_aqua>Guardián
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
     Description: Odia a los Calamares!
   Wolf:
     name: <bold><gray>Lobo
-    Description: '&7&oWoof!'
+    Description: <italic><gray>Woof!
   IronGolem:
     name: <bold><gray>Golem de Hierro
     Description: Odia los zombies!
   Wither:
-    name: '&8&lWither'
+    name: <bold><dark_gray>Wither
     Description: Ten cuidado conmigo...
   Skeleton:
     name: <bold><gray>Esqueleto
     Description: Muy buen arquero!
   Zombie:
-    name: '&2&lZombie'
+    name: <bold><dark_green>Zombie
     Description: Cerebrooooos!!!
   Squid:
     name: <bold><light_purple>Calamar
-    Description: '&7&oBloop Bloop!'
+    Description: <italic><gray>Bloop Bloop!
   Spider:
     name: <bold><dark_gray>Araña
     Description: <italic><gray>HISS...
   Ghast:
-    name: '&f&lGhast'
+    name: <bold><white>Ghast
     Description: '*grito extremadamente agudo*'
   MagmaCube:
     name: <bold><red>Cubo de Magma
     Description: Un cubo muy caliente!
   Horse:
     name: <bold><green>Caballo
-    Description: '&7&o*fhrrrrhh*'
+    Description: '<italic><gray>*fhrrrrhh*'
   Warden:
-    name: '&3&lWarden'
+    name: <bold><dark_aqua>Warden
     Description: Se cauteloso...
   Tadpole:
     name: <bold><dark_gray>Renacuajo
@@ -1072,22 +1072,22 @@ Morphs:
     name: <bold><gold>Piglin
     Description: Ofertas con Oro!
   Strider:
-    name: '&c&lStrider'
+    name: <bold><red>Strider
     Description: Odio el agua!
   Hoglin:
-    name: '&c&lHoglin'
+    name: <bold><red>Hoglin
     Description: Un cerdo, pero enojado.
   PiglinBrute:
     name: <bold><gold>Piglin Bruto
     Description: Un Piglin fuertisimo!
   Zoglin:
-    name: '&c&lZoglin'
+    name: <bold><red>Zoglin
     Description: Un Hoglin Zombificado!
   ZombifiedPiglin:
     name: <bold><light_purple>Piglin Zombificado
     Description: Atacalo y todos ellos iran detrás de tí!
   Panda:
-    name: '&a&lPanda'
+    name: <bold><green>Panda
     Description: Le gusta el Bamboo!
   Ocelot:
     name: <bold><yellow>Ocelote
@@ -1096,16 +1096,16 @@ Morphs:
     name: <bold><dark_blue>Vendedor Ambulante
     Description: Deambula tratando de vender cosas!
   Pillager:
-    name: '&7&lPillager'
+    name: <bold><gray>Pillager
     Description: Le encanta saquear Aldeas!
   Ravager:
-    name: '&8&lRavager'
+    name: <bold><dark_gray>Ravager
     Description: El acompañante favorito de los Pillagers!
   Pufferfish:
     name: <bold><yellow>Pez globo
     Description: '¡No le gusta que lo toquen!'
   Salmon:
-    name: '&c&lSalmon'
+    name: <bold><red>Salmon
     Description: '¡Son muy sabrosos!'
   TropicalFish:
     name: <bold><yellow>Pez Tropical
@@ -1120,8 +1120,8 @@ Morphs:
     name: <bold><dark_blue>Ilusionista
     Description: Spawneable solamente con comandos!
   Vex:
-    name: '&7&lVex'
-    Description: '&7&oYAAHH Ehehhehe!'
+    name: <bold><gray>Vex
+    Description: <italic><gray>YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Vindicador
     Description: No subestimes su fuerza!
@@ -1135,7 +1135,7 @@ Morphs:
     name: <bold><dark_green>Caballo Zombie
     Description: '¡El caballo más raro de Minecraft!'
   Shulker:
-    name: '&5&lShulker'
+    name: <bold><dark_purple>Shulker
     Description: Le gusta esconderse!
 Hats:
   Equip: '<prefix> <blue>Equipaste el sombrero: <hatname>'
@@ -1270,7 +1270,7 @@ Hats:
     Name: <bold><white>Ghast
     Description: '*grito extremadamente agudo*'
   Warden:
-    Name: '&3&lWarden'
+    Name: <bold><dark_aqua>Warden
     Description: Se cauteloso...
   Witch:
     Name: <bold><dark_purple>Bruja
@@ -1766,7 +1766,7 @@ Projectile-Effects:
     name: <bold><white>Nieve
     Description: Partículas de bolas de nieve
   Slime:
-    name: '&a&lSlime'
+    name: <bold><green>Slime
     Description: Partículas de Slime
   Crit:
     name: <bold><gray>Crítico
@@ -1793,7 +1793,7 @@ Projectile-Effects:
     name: <bold><blue>Tinta de Calamar
     Description: Nubes Negras
   SoulFireFlame:
-    name: \<aqua>&Llamas de Almas
+    name: <bold><aqua>Llamas de Almas
     Description: Llamas cian, pequeñas
   Snowflake:
     name: <bold><white>Copo de Nieve
@@ -1820,8 +1820,8 @@ Death-Effects:
   Equip: <prefix> <blue>Equipaste <death-effectname>
   Unequip: <prefix> <blue>Desequipaste <death-effectname>
   Explosion:
-    name: '&4&lExplosion'
-    Description: '&7&oBOOM!'
+    name: <bold><dark_red>Explosion
+    Description: <italic><gray>BOOM!
   Firework:
     name: <bold><gray>Cohete de fuegos artificiales
     Description: |-
