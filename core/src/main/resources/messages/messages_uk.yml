@@ -551,8 +551,8 @@ Particle-Effects:
   ShadowFootprints:
     name: <bold><gray>Тіньові сліди
     Description: |-
-      <italic><gray>Залишає за собою 
-      <italic><gray>sслід диму.
+      Залишає за собою
+      sслід диму.
   Notes:
     name: <bold><gold>Ноти
     Description: Ноти над головою.
