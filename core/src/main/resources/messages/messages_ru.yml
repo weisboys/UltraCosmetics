@@ -1618,14 +1618,14 @@ Suits:
     chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Chestplate
     leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Leggings
     boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Boots
-    Description: <italic><gray>Such amazing colors!
+    Description: Such amazing colors!
   Astronaut:
     whole-equip: <bold><white>whole </white></bold><bold><white>Astronaut </white></bold><bold><white>suit
     helmet-name: <bold><white>Astronaut </white></bold><bold><white>Helmet
     chestplate-name: <bold><white>Astronaut </white></bold><bold><white>Chestplate
     leggings-name: <bold><white>Astronaut </white></bold><bold><white>Leggings
     boots-name: <bold><white>Astronaut </white></bold><bold><white>Boots
-    Description: <italic><gray>Houston?
+    Description: Houston?
   Diamond:
     whole-equip: <bold><white>whole </white></bold><bold><aqua>Diamond </aqua></bold><bold><white>suit
     helmet-name: <bold><aqua>Diamond </aqua></bold><bold><white>Helmet
@@ -1633,15 +1633,15 @@ Suits:
     leggings-name: <bold><aqua>Diamond </aqua></bold><bold><white>Leggings
     boots-name: <bold><aqua>Diamond </aqua></bold><bold><white>Boots
     Description: |-
-      <italic><gray>Show your Mining skills
-      <italic><gray>with this amazing outfit!
+      Show your Mining skills
+      with this amazing outfit!
   Santa:
     whole-equip: <bold><white>whole </white></bold><bold><dark_red>Santa </dark_red></bold><bold><white>suit
     helmet-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Helmet
     chestplate-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Chestplate
     leggings-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Leggings
     boots-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Boots
-    Description: <italic><gray>Become Santa and deliver presents!
+    Description: Become Santa and deliver presents!
   Frozen:
     whole-equip: <bold><white>whole </white></bold><bold><aqua>Frozen </aqua></bold><bold><white>suit
     helmet-name: <bold><aqua>Frozen </aqua></bold><bold><white>Helmet
@@ -1649,8 +1649,8 @@ Suits:
     leggings-name: <bold><aqua>Frozen </aqua></bold><bold><white>Leggings
     boots-name: <bold><aqua>Frozen </aqua></bold><bold><white>Boots
     Description: |-
-      <italic><gray>This suit belongs to the
-      <italic><gray>Lord of the Frozen Lands!
+      This suit belongs to the
+      Lord of the Frozen Lands!
   Cursed:
     whole-equip: <bold><white>Весь </white></bold><bold><dark_purple>Проклятый </dark_purple></bold><bold><white>подходит
     helmet-name: <bold><dark_purple>Проклятый </dark_purple></bold><bold><white>шлем
