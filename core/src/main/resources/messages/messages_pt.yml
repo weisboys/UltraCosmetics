@@ -318,7 +318,7 @@ Gadgets:
     Click-On-Block: <prefix> <bold><red>Por favor, clique em um bloco!
     Description: |-
       Aqui está um
-      de Natal <italic><gray>Tree para você!
+      de Natal Tree para você!
   FreezeCannon:
     name: <bold><aqua>Canhão de Congelamento
     Description: Transformar o chão em uma ruga!
@@ -432,7 +432,7 @@ Mounts:
   Pig:
     menu-name: <bold><light_purple>Porco
     entity-displayname: <bold><playername>'s Pig
-    Description: <italic><gray>Oink!
+    Description: Oink!
     Held-Item-Lore: <italic><gray>Comida do Strider em uma vara!
   SlimeSnake:
     menu-name: <bold><red>Slime Snake
@@ -517,7 +517,7 @@ Particle-Effects:
       only o mais lendário dos jogadores!
   FlameFairy:
     name: <bold><gold>Flame Fada
-    Description: <italic><gray>HEY!!
+    Description: HEY!!
   MagicalRods:
     name: <bold><dark_gray>Varas Mágicas
     Description: Maio essas varas mágicas protegem você!
@@ -577,7 +577,7 @@ Pets:
   Piggy:
     menu-name: <bold><light_purple>Porco
     entity-displayname: <bold><playername>'s Piggy
-    Description: <italic><gray>Oink! Oink!
+    Description: Oink! Oink!
   Sheep:
     menu-name: <bold><white>Sheep
     entity-displayname: <bold><playername>'s Sheep
