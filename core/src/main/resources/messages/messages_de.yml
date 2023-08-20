@@ -813,7 +813,7 @@ Pets:
     entity-displayname: <bold><playername>'s Magier
     Description: Beschwört beruflich Plagegeister!
   Ghast:
-    menu-name: '&f&lGhast'
+    menu-name: <bold><white>Ghast
     entity-displayname: <bold><playername>'s Ghast
     Description: '*Dämonisches Gekreische*'
   Guardian:
@@ -908,7 +908,7 @@ Morphs:
     skill: '<yellow>Kollidieren</yellow><gray>: </gray><green>Spieler wegstoßen'
     Description: Du musst eine Karotte halten!
   Enderman:
-    name: '&5&lEnderman'
+    name: <bold><dark_purple>Enderman
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>teleportieren'
     Description: |-
       Ich gehe von da nach da,
@@ -918,7 +918,7 @@ Morphs:
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
     Description: Werde eine Fledermaus!
   Creeper:
-    name: '&a&lCreeper'
+    name: <bold><green>Creeper
     skill: '<yellow>Schleichen</yellow><gray>: </gray><green>explodieren'
     charging: '<bold><green>Aufladen: <chargelevel>/100'
     release-to-explode: <bold><white>Loslassen zum explodieren!
@@ -946,7 +946,7 @@ Morphs:
   Sheep:
     name: <bold><white>Schaf
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Farbe ändern'
-    Description: '&7&oBaaaa, baa'
+    Description: <italic><gray>Baaaa, baa
   Mooshroom:
     name: <bold><red>Mooshroom
     skill: '<yellow>Schleichen</yellow><gray>: </gray><green>Suppe werfen'
@@ -954,7 +954,7 @@ Morphs:
   Villager:
     name: <bold><green>Dorfbewohner
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Smaragd werfen'
-    Description: '&7&oHmmmmmmmmm'
+    Description: <italic><gray>Hmmmmmmmmm
   Witch:
     name: <bold><dark_purple>Hexe
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Trank werfen'
@@ -976,13 +976,13 @@ Morphs:
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
     Description: Ein neuer Freund!
   Axolotl:
-    name: '&5&lAxolotl'
+    name: <bold><dark_purple>Axolotl
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>niedliche Geräusche'
     Description: Sooo niedlich!
   Bee:
     name: <bold><yellow>Biene
     skill: '<yellow>Doppelsprung</yellow><gray>: </gray><green>fliegen'
-    Description: '&7&o*bzzzz* *bzzzz*'
+    Description: '<italic><gray>*bzzzz* *bzzzz*'
   Cat:
     name: <bold><yellow>Katze
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>Miau'
@@ -1008,7 +1008,7 @@ Morphs:
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
     Description: Ein Unterwasser-Zombie!
   Endermite:
-    name: '&5&lEndermite'
+    name: <bold><dark_purple>Endermite
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
     Description: Zieht Endermen an!
   Evoker:
@@ -1030,7 +1030,7 @@ Morphs:
   Goat:
     name: <bold><white>Ziege
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
-    Description: '&7&oBAAAA!'
+    Description: <italic><gray>BAAAA!
   Guardian:
     name: <bold><dark_aqua>Wächter
     skill: '<yellow>Linksklick</yellow><gray>: </gray><green>TODO'
@@ -1042,13 +1042,13 @@ Morphs:
     name: <bold><gray>Eisengolem
     Description: Hasst Zombies!
   Wither:
-    name: '&8&lWither'
+    name: <bold><dark_gray>Wither
     Description: Nimm dich vor mir in Acht...
   Skeleton:
     name: <bold><gray>Skelett
     Description: Sehr guter Bogenschütze!
   Zombie:
-    name: '&2&lZombie'
+    name: <bold><dark_green>Zombie
     Description: Gehirne!!!
   Squid:
     name: <bold><light_purple>Tintenfisch
@@ -1057,14 +1057,14 @@ Morphs:
     name: <bold><dark_gray>Spinne
     Description: ZISCH...
   Ghast:
-    name: '&f&lGhast'
+    name: <bold><white>Ghast
     Description: '*schriller Schrei*'
   MagmaCube:
     name: <bold><red>Magmawürfel
     Description: Ein sehr heißer Würfel!
   Horse:
     name: <bold><green>Pferd
-    Description: '&7&o*fhrrrrhh*'
+    Description: '<italic><gray>*fhrrrrhh*'
   Warden:
     name: <bold><dark_aqua>Wärter
     Description: Sei leise...
@@ -1078,19 +1078,19 @@ Morphs:
     name: <bold><red>Schreiter
     Description: Ich hasse Wasser!
   Hoglin:
-    name: '&c&lHoglin'
+    name: <bold><red>Hoglin
     Description: Ein Schwein, aber wütend.
   PiglinBrute:
     name: <bold><gold>Piglin-Barbar
     Description: Ein ziemlich muskulöser Piglin!
   Zoglin:
-    name: '&c&lZoglin'
+    name: <bold><red>Zoglin
     Description: Ein zombifizierter Hoglin!
   ZombifiedPiglin:
     name: <bold><light_purple>Zombifizierter Piglin
     Description: Greife es an und alle werden hinter dir her sein!
   Panda:
-    name: '&a&lPanda'
+    name: <bold><green>Panda
     Description: Mag Bambus!
   Ocelot:
     name: <bold><yellow>Ozelot
@@ -1117,14 +1117,14 @@ Morphs:
     name: <bold><green>Schildkröte
     Description: Lass dir Zeit.
   Phantom:
-    name: '&1&lPhantom'
+    name: <bold><dark_blue>Phantom
     Description: Hasst Spieler, die nicht schlafen!
   Illusioner:
     name: <bold><dark_blue>Illusionist
     Description: Nur mit Befehlen spawnbar!
   Vex:
     name: <bold><gray>Plagegeist
-    Description: '&7&oYAAHH Ehehhehe!'
+    Description: <italic><gray>YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Diener
     Description: Unterschätze nicht ihre Stärke!
@@ -1138,7 +1138,7 @@ Morphs:
     name: <bold><dark_green>Zombiepferd
     Description: Das seltenste Pferd in Minecraft!
   Shulker:
-    name: '&5&lShulker'
+    name: <bold><dark_purple>Shulker
     Description: Versteckt sich gerne!
 Hats:
   Equip: <prefix> <blue>Du hast <hatname> </blue><blue>Hut ausgerüstet!
@@ -1217,7 +1217,7 @@ Hats:
     Description: Hast du das Redstone?
   Sheep:
     Name: <bold><white>Schaf
-    Description: '&7&oBaaaa, baa'
+    Description: <italic><gray>Baaaa, baa
   Pig:
     Name: <bold><light_purple>Schwein
     Description: <italic><gray>Oink Oink!
@@ -1225,7 +1225,7 @@ Hats:
     Name: <bold><green>Kuh
     Description: Muuuh!
   Mooshroom:
-    Name: '&c&lMooshroom'
+    Name: <bold><red>Mooshroom
     Description: Muuuh!
   BrownMooshroom:
     Name: <bold><aqua>Braune Mooshroom
@@ -1243,7 +1243,7 @@ Hats:
     Name: <bold><gold>Kupfergolem
     Description: Hergestellt aus 100% Kupfer.
   Enderman:
-    Name: '&5&lEnderman'
+    Name: <bold><dark_purple>Enderman
     Description: Jetzt bin ich hier, jetzt bin ich dort!
   EndermanKing:
     Name: <bold><light_purple>Enderman König
@@ -1258,7 +1258,7 @@ Hats:
     Name: <bold><gray>Skelett
     Description: Sehr guter Bogenschütze!
   Zombie:
-    Name: '&2&lZombie'
+    Name: <bold><dark_green>Zombie
     Description: Gehirne!!!
   Drowned:
     Name: <bold><dark_aqua>Ertrunkener
@@ -1823,7 +1823,7 @@ Death-Effects:
   Equip: <prefix> <blue>Du hast <death-effectname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <death-effectname> </blue><blue>entfernt
   Explosion:
-    name: '&4&lExplosion'
+    name: <bold><dark_red>Explosion
     Description: BUMM!
   Firework:
     name: <bold><gray>Feuerwerksrakete
