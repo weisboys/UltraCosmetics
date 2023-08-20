@@ -219,7 +219,7 @@ Gadgets:
   Countdown-Message: <prefix> <bold><red>Anda tidak dapat menggunakan <gadgetname> </red></bold><bold><red>selama <time>s!
   PaintballGun:
     name: <bold><aqua>Senjata Paintball
-    Description: <italic><gray>PEW PEW PEW PEW!!!
+    Description: PEW PEW PEW PEW!!!
   BatBlaster:
     name: <bold><gray>Tembakan Kelelawar
     Description: |-
@@ -301,7 +301,7 @@ Gadgets:
     Description: Woow! Banyak kemeriahan dalam sebuah senjata!
   Parachute:
     name: <bold><white>Parasut
-    Description: <italic><gray>GERONIMOOO!
+    Description: GERONIMOOO!
   QuakeGun:
     name: <bold><light_purple>Tembakan </light_purple></bold><bold><dark_purple>Gempa
     Description: |-
@@ -396,7 +396,7 @@ Mounts:
   Slime:
     menu-name: <bold><green>Slime
     entity-displayname: <bold><playername>'s Slime
-    Description: <italic><gray>Splat! Splat!
+    Description: Splat! Splat!
   Spider:
     menu-name: <bold><dark_gray>Laba Laba
     entity-displayname: <bold><playername>'s Spider
