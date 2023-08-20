@@ -219,7 +219,7 @@ Gadgets:
   Countdown-Message: <prefix> <bold><red> No puedes usar <gadgetname> </red></bold><bold><red>por <time>s!
   PaintballGun:
     name: <bold><aqua>Pistola de Paintball
-    Description: <italic><gray>PEW PEW PEW PEW!!!
+    Description: PEW PEW PEW PEW!!!
   BatBlaster:
     name: <bold><gray>Lanza Murcielagos
     Description: |-
@@ -254,7 +254,7 @@ Gadgets:
     name: <bold><red>Portal </red></bold><bold><blue>Gun
     No-Block-Range: <prefix> <bold><red>No hay BLOQUES en rango!
     Different-Worlds: <prefix> <bold><red>Los portales tienen que estar en el mismo mundo!
-    Description: <italic><gray>The cake is a lie!
+    Description: The cake is a lie!
   BlizzardBlaster:
     name: <bold><aqua>Blizzard Blaster
     Description: '¡Deja que nieve!'
@@ -300,7 +300,7 @@ Gadgets:
     Description: Woow! Mucha diversion en una pistola!
   Parachute:
     name: <bold><white>Paracaidas
-    Description: <italic><gray>GERONIMOOO!
+    Description: GERONIMOOO!
   QuakeGun:
     name: <bold><dark_purple>Quake </dark_purple></bold><bold><light_purple>Gun
     Description: |-
@@ -359,7 +359,7 @@ Mounts:
   WalkingDead:
     menu-name: <bold><dark_green>Walking Dead
     entity-displayname: <bold>Walking Dead de <playername>
-    Description: <italic><gray>Graaaaw...
+    Description: Graaaaw...
   MountOfFire:
     menu-name: <bold><red>Montura de Fuego
     entity-displayname: <bold>Montura de Fuego de <playername>
@@ -395,7 +395,7 @@ Mounts:
   Slime:
     menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
-    Description: <italic><gray>Splat! Splat!
+    Description: Splat! Splat!
   Spider:
     menu-name: <bold><dark_gray>Araña
     entity-displayname: <bold>Araña de <playername>
@@ -435,7 +435,7 @@ Mounts:
   Pig:
     menu-name: <bold><light_purple>Cerdo
     entity-displayname: Cerdo de <bold><playername>
-    Description: <italic><gray>Oink!
+    Description: Oink!
     Held-Item-Lore: <italic><gray>Comida de cerdo en un palo!
   SlimeSnake:
     menu-name: <bold><red>Serpiente de limo
@@ -520,7 +520,7 @@ Particle-Effects:
       solo a jugadores legendarios!
   FlameFairy:
     name: <bold><gold>Hada de Fuego
-    Description: <italic><gray>HEY!!
+    Description: HEY!!
   MagicalRods:
     name: <bold><dark_gray>Vara Magica
     Description: Que estas varas magicas te protejan!
@@ -535,8 +535,8 @@ Particle-Effects:
   VolcanicHalo:
     name: <bold><red>Halo Volcánico
     Description: |-
-      <italic><gray>Un anillo de luz compuesto 
-      <italic><gray>de flamas\ \ eternas.
+      Un anillo de luz compuesto
+      de flamas eternas.
   CursedFootprints:
     name: <bold><dark_purple>Huellas Malditas
     Description: |-
@@ -580,11 +580,11 @@ Pets:
   Piggy:
     menu-name: <bold><light_purple>Piggy
     entity-displayname: <bold>Piggy de <playername>
-    Description: <italic><gray>Oink! Oink!
+    Description: Oink! Oink!
   Sheep:
     menu-name: <bold><white>Oveja
     entity-displayname: <bold>Oveja de <playername>
-    Description: <italic><gray>Baaaa, baa
+    Description: Baaaa, baa
   EasterBunny:
     menu-name: <bold><gold>Conejo de Pascua
     entity-displayname: <bold>Conejo de Pascua de <playername>
@@ -592,19 +592,19 @@ Pets:
   Cow:
     menu-name: <bold><red>Vaca
     entity-displayname: <bold>Vaca de <playername>
-    Description: <italic><gray>Moooo!
+    Description: Moooo!
   Kitty:
     menu-name: <bold><blue>Kitty
     entity-displayname: <bold>Kitty de <playername>
-    Description: <italic><gray>Meoooow
+    Description: Meoooow
   Dog:
     menu-name: <bold><gray>Doggy
     entity-displayname: <bold>Doggy de <playername>
-    Description: <italic><gray>Woof!
+    Description: Woof!
   Chick:
     menu-name: <bold><yellow>Chick
     entity-displayname: <bold>Chick de <playername>
-    Description: <italic><gray>Bwaaaaaaak!!
+    Description: Bwaaaaaaak!!
   Wither:
     menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold>Wither de <playername>
@@ -620,7 +620,7 @@ Pets:
   Mooshroom:
     menu-name: <bold><dark_red>Mooshroom
     entity-displayname: <bold>Mooshroom de <playername>
-    Description: <italic><gray>Moooo!
+    Description: Moooo!
   IronGolem:
     menu-name: <bold><gray>Golem de Hierro
     entity-displayname: <bold>Golem de <playername>
@@ -628,7 +628,7 @@ Pets:
   Snowman:
     menu-name: <bold><white>Snowman
     entity-displayname: <bold>Snowman de <playername>
-    Description: <italic><gray>Pew pew pew
+    Description: Pew pew pew
   Villager:
     menu-name: <bold><green>Aldeano
     entity-displayname: <bold>Aldeano de <playername>
@@ -652,7 +652,7 @@ Pets:
   Vex:
     menu-name: <bold><gray>Vex
     entity-displayname: <bold>Vex de <playername>
-    Description: <italic><gray>YAAHH Ehehhehe!
+    Description: YAAHH Ehehhehe!
   Panda:
     menu-name: <bold><green>Panda
     entity-displayname: <bold>Panda de <playername>
@@ -660,7 +660,7 @@ Pets:
   Fox:
     menu-name: <bold><light_purple>Fox
     entity-displayname: <bold>Fox de <playername>
-    Description: <italic><gray>What does the fox say?
+    Description: What does the fox say?
   Axolotl:
     menu-name: <bold><dark_purple>Axolotl
     entity-displayname: <bold>Axolotl de <playername>
@@ -672,15 +672,15 @@ Pets:
   Slime:
     menu-name: <bold><green>Slime
     entity-displayname: <bold>Slime de <playername>
-    Description: <italic><gray>Squish...
+    Description: Squish...
   Bee:
     menu-name: <bold><yellow>Abeja
     entity-displayname: <bold>Abeja de <playername>
-    Description: '<italic><gray>*bzzzz* *bzzzz*'
+    Description: '*bzzzz* *bzzzz*'
   Goat:
     menu-name: <bold><white>Cabra
     entity-displayname: <bold>Cabra de <playername>
-    Description: <italic><gray>BAAAA!
+    Description: BAAAA!
   Silverfish:
     menu-name: <bold><gray>Silverfish
     entity-displayname: <bold>Silverfish de <playername>
@@ -688,7 +688,7 @@ Pets:
   Horse:
     menu-name: <bold><green>Caballo
     entity-displayname: <bold>Caballo de <playername>
-    Description: '<italic><gray>*fhrrrrhh*'
+    Description: '*fhrrrrhh*'
   Blaze:
     menu-name: <bold><red>Blaze
     entity-displayname: <bold>Blaze de <playername>
@@ -939,15 +939,15 @@ Morphs:
   Cow:
     name: <bold><dark_gray>Vaca
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Moo'
-    Description: <italic><gray>Moooo!
+    Description: Moooo!
   Sheep:
     name: <bold><white>Oveja
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Cambiar Colores'
-    Description: <italic><gray>Baaaa, baa
+    Description: Baaaa, baa
   Mooshroom:
     name: <bold><red>Vaca Mooshroom
     skill: '<yellow>Agachate</yellow><gray> para: </gray><green>Lanzar sopas'
-    Description: <italic><gray>Moooo!
+    Description: Moooo!
   Villager:
     name: <bold><green>Aldeano
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Lanzar Esmeraldas'
@@ -955,7 +955,7 @@ Morphs:
   Witch:
     name: <bold><dark_purple>Bruja
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Lanzar Pociones'
-    Description: <italic><gray>Muahahahahaha
+    Description: Muahahahahaha
   PolarBear:
     name: <bold><white>Oso Polar
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Tormenta de nieve'
@@ -979,7 +979,7 @@ Morphs:
   Bee:
     name: <bold><yellow>Abeja
     skill: '<yellow>Doble Salto</yellow><gray> para: </gray><green>Flap'
-    Description: '<italic><gray>*bzzzz* *bzzzz*'
+    Description: '*bzzzz* *bzzzz*'
   Cat:
     name: <bold><yellow>Gato
     skill: '<yellow>Click izquierdo</yellow><gray> para: </gray><green>Meow'
@@ -1019,7 +1019,7 @@ Morphs:
   Fox:
     name: <bold><light_purple>Zorro
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
-    Description: <italic><gray>What does the fox say?
+    Description: What does the fox say?
   GlowSquid:
     name: <bold><dark_aqua>Calamar Brillante
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
@@ -1027,14 +1027,14 @@ Morphs:
   Goat:
     name: <bold><white>Cabra
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
-    Description: <italic><gray>BAAAA!
+    Description: BAAAA!
   Guardian:
     name: <bold><dark_aqua>Guardián
     skill: '<yellow>Click-izquierdo</yellow><gray> para: </gray><green>TODO'
     Description: Odia a los Calamares!
   Wolf:
     name: <bold><gray>Lobo
-    Description: <italic><gray>Woof!
+    Description: Woof!
   IronGolem:
     name: <bold><gray>Golem de Hierro
     Description: Odia los zombies!
@@ -1049,10 +1049,10 @@ Morphs:
     Description: Cerebrooooos!!!
   Squid:
     name: <bold><light_purple>Calamar
-    Description: <italic><gray>Bloop Bloop!
+    Description: Bloop Bloop!
   Spider:
     name: <bold><dark_gray>Araña
-    Description: <italic><gray>HISS...
+    Description: HISS...
   Ghast:
     name: <bold><white>Ghast
     Description: '*grito extremadamente agudo*'
@@ -1061,7 +1061,7 @@ Morphs:
     Description: Un cubo muy caliente!
   Horse:
     name: <bold><green>Caballo
-    Description: '<italic><gray>*fhrrrrhh*'
+    Description: '*fhrrrrhh*'
   Warden:
     name: <bold><dark_aqua>Warden
     Description: Se cauteloso...
@@ -1121,7 +1121,7 @@ Morphs:
     Description: Spawneable solamente con comandos!
   Vex:
     name: <bold><gray>Vex
-    Description: <italic><gray>YAAHH Ehehhehe!
+    Description: YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Vindicador
     Description: No subestimes su fuerza!
@@ -1625,7 +1625,7 @@ Suits:
     chestplate-name: <bold><white>Pechera </white></bold><bold><white>Astronauta
     leggings-name: <bold><white>Pantalones </white></bold><bold><white>Astronauta
     boots-name: <bold><white>Botas </white></bold><bold><white>Astronauta
-    Description: <italic><gray>Houston?
+    Description: Houston?
   Diamond:
     whole-equip: <bold><white>Traje </white></bold><bold><aqua>Diamante </aqua></bold><bold><white>completo
     helmet-name: <bold><white>Casco </white></bold><bold><aqua>Diamante
@@ -1683,7 +1683,7 @@ Emotes:
     Description: Muestra tu furia a los otros jugadores!
   Happy:
     Name: <bold><yellow>Feliz
-    Description: <italic><gray>Don't worry, be happy!
+    Description: Don't worry, be happy!
   Cheeky:
     Name: <bold><gold>Cheeky
     Description: Te gusta ser burlon? Este emote es para ti!
@@ -1710,7 +1710,7 @@ Emotes:
     Description: Feliz Halloween!
   GlowingPumpkin:
     Name: <bold><gold>Calabaza Brillante
-    Description: <italic><gray>Jack O'Slime
+    Description: Jack O'Slime
   LovestruckAllay:
     Name: <bold><aqua>Amoroso
     Description: Nos estamos enamorando?
@@ -1776,7 +1776,7 @@ Projectile-Effects:
     Description: Estrellas cian
   Explosion:
     name: <bold><dark_red>Explosion
-    Description: <italic><gray>BOOM!
+    Description: BOOM!
   Cloud:
     name: <bold><white>Nubes
     Description: Nubes blancas
@@ -1821,7 +1821,7 @@ Death-Effects:
   Unequip: <prefix> <blue>Desequipaste <death-effectname>
   Explosion:
     name: <bold><dark_red>Explosion
-    Description: <italic><gray>BOOM!
+    Description: BOOM!
   Firework:
     name: <bold><gray>Cohete de fuegos artificiales
     Description: |-
@@ -1829,7 +1829,7 @@ Death-Effects:
       Tu... Has muerto?
   Lightning:
     name: <bold><white>Relampago
-    Description: '<italic><gray>⚡ ZAP!'
+    Description: '⚡ ZAP!'
 Enabled-SelfMorphView: <prefix> <blue>Activaste vista propia de las transformaciones!
 Disabled-SelfMorphView: <prefix> <blue>Desactivaste vista propia de las transformaciones!
 Enabled-Gadgets: <prefix> <blue>Activaste los gadgets!
