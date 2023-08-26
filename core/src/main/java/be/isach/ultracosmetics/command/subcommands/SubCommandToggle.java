@@ -33,7 +33,7 @@ public class SubCommandToggle extends SubCommand {
     @Override
     protected void onExePlayer(Player sender, String[] args) {
         if (args.length < 3 || args.length > 4) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + getUsage());
+            badUsage(sender);
             return;
         }
 
@@ -51,7 +51,7 @@ public class SubCommandToggle extends SubCommand {
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
         if (args.length != 4) {
-            sender.sendMessage(MessageManager.getMessage("Prefix") + ERROR_PREFIX + "/uc toggle <type> <cosmetic> <player>");
+            badUsage(sender, "/uc toggle <type> <cosmetic> <player>");
             return;
         }
 

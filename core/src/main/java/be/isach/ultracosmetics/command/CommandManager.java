@@ -120,6 +120,6 @@ public class CommandManager implements CommandExecutor {
     public static void sendNoPermissionMessage(CommandSender sender) {
         Component prefix = MessageManager.getMessage("Prefix");
         Component noPermission = MessageManager.getMessage("No-Permission");
-        MessageManager.getAudiences().sender(sender).sendMessage(Component.empty().append(prefix).append(noPermission));
+        MessageManager.getAudiences().sender(sender).sendMessage(Component.empty().append(prefix).appendSpace().append(noPermission));
     }
 }
