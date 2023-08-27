@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.menu.MenuItemHandler;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.ItemFrame;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -118,7 +117,10 @@ public class UnmovableItemListener implements Listener {
     @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
-        if (!(event.getRightClicked() instanceof ItemFrame)) return;
+        // Prevent losing the item when clicking on an entity.
+        // This can happen in a number of different ways, so we just cancel the event unless it's a player,
+        // because some gadgets target players and so clicking on a player may be useful.
+        if (event.getRightClicked() instanceof Player) return;
         forEachProviderWithItem(event.getPlayer(), event.getPlayer().getItemInHand(), p -> {
             slotCheck(p, event.getPlayer().getInventory().getHeldItemSlot(), event.getPlayer());
             event.setCancelled(true);
