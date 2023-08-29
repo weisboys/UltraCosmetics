@@ -63,6 +63,19 @@ public class UnmovableItemListener implements Listener {
         });
     }
 
+    public boolean isImmovable(Player player, ItemStack itemStack) {
+        // Can't really use lambda methods here since we want to return
+        // when we've found the item.
+        for (UnmovableItemProvider provider : providers) {
+            if (provider.getPlayer() == null || provider.getPlayer() == player) {
+                if (provider.itemMatches(itemStack)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private boolean slotCheck(UnmovableItemProvider provider, int slot, Player player) {
         if (provider.getSlot() != slot) {
             provider.moveItem(slot, player);

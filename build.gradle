@@ -143,6 +143,11 @@ subprojects { subproj ->
             url = 'https://repo.glaremasters.me/repository/towny/'
         }
 
+        // PlayerAuctions
+        maven {
+            url = 'https://repo.olziedev.com/'
+        }
+
         // Vault
         // PEconomy
         maven {

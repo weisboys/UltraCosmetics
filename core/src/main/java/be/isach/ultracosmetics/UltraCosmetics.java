@@ -13,6 +13,7 @@ import be.isach.ultracosmetics.economy.EconomyHandler;
 import be.isach.ultracosmetics.hook.ChestSortHook;
 import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
+import be.isach.ultracosmetics.hook.PlayerAuctionsHook;
 import be.isach.ultracosmetics.hook.TownyHook;
 import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.MainListener;
@@ -52,6 +53,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -69,6 +71,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -131,6 +134,8 @@ public class UltraCosmetics extends JavaPlugin {
     private DiscordSRVHook discordHook;
 
     private ChestSortHook chestSortHook;
+
+    private PlayerAuctionsHook playerAuctionsHook;
 
     private UnmovableItemListener unmovableItemListener;
     private TreasureChestManager treasureChestManager;
@@ -377,20 +382,9 @@ public class UltraCosmetics extends JavaPlugin {
             getSmartLogger().write("Hooked into DiscordSRV");
         }
 
-        if (getServer().getPluginManager().isPluginEnabled("ChestSort")
-                && SettingsManager.getConfig().getBoolean("ChestSort-Hook", true)) {
-            chestSortHook = new ChestSortHook(this);
-            getServer().getPluginManager().registerEvents(chestSortHook, this);
-            getSmartLogger().write();
-            getSmartLogger().write("Hooked into ChestSort");
-        }
-
-        if (getServer().getPluginManager().isPluginEnabled("Towny")
-                && SettingsManager.getConfig().getBoolean("Towny-Hook", true)) {
-            getServer().getPluginManager().registerEvents(new TownyHook(), this);
-            getSmartLogger().write();
-            getSmartLogger().write("Hooked into Towny");
-        }
+        chestSortHook = hookIfEnabled("ChestSort", () -> new ChestSortHook(this));
+        hookIfEnabled("Towny", TownyHook::new);
+        playerAuctionsHook = hookIfEnabled("PlayerAuctions", () -> new PlayerAuctionsHook(this));
 
         // Start up bStats
         setupMetrics();
@@ -465,6 +459,18 @@ public class UltraCosmetics extends JavaPlugin {
             throw new IllegalArgumentException("This addon has already been registered!");
         }
         addons.add(addon);
+    }
+
+    private <T extends Listener> T hookIfEnabled(String pluginName, Supplier<T> hookSupplier) {
+        if (!getServer().getPluginManager().isPluginEnabled(pluginName)
+                || !SettingsManager.getConfig().getBoolean(pluginName + "-Hook", true)) {
+            return null;
+        }
+        T hook = hookSupplier.get();
+        getServer().getPluginManager().registerEvents(hook, this);
+        getSmartLogger().write();
+        getSmartLogger().write("Hooked into " + pluginName);
+        return hook;
     }
 
     /**
