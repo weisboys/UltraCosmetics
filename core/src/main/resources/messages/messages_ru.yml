@@ -136,7 +136,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Предыдущая страница
       Next-Page: <bold><green>Следующая страница
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>ОТКЛЮЧЕНО
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Недостаточно места в инвентаре для сундука с сокровищами!
   Region-Disabled: <prefix> <bold><red>Ты не можешь открыть сундук с сокровищами в данном месте
@@ -438,16 +438,16 @@ Mounts:
     Description: Хрюк!
     Held-Item-Lore: <italic><gray>Корм для свиней на палочке!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Змея из Слизи
+    entity-displayname: <bold>Змея из Слизи игрока <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Этот тип змеи появляется прямо из 
+      скрытых "Секретных Болот Слизи". 
+      Эта будет служить вам вечно.
   Camel:
-    menu-name: <bold><gold>Camel
-    entity-displayname: <bold><playername>'s Camel
-    Description: Your standard, everyday camel
+    menu-name: <bold><gold>Верблюд
+    entity-displayname: <bold>Верблюд игрока <playername>
+    Description: Ваш стандартный, повседневный верблюд
   Equip: <prefix> <blue>Вы заспавнили <mountname>
   Unequip: <prefix> <blue>Вы зареспавнили <mountname>
   Cant-Spawn: <prefix> <bold><red>Монстры не могут спавниться здесь!
@@ -882,9 +882,9 @@ Pets:
     entity-displayname: <bold><playername>' Иллюзионист
     Description: Только с помощью команд!
   Sniffer:
-    menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    menu-name: <bold><green>Нюхач
+    entity-displayname: <bold>Нюхач игрока <playername>
+    Description: Чувствует запах керамики!
   Equip: <prefix> <blue>Показали <petname>
   Unequip: <prefix> <blue>Скрыли <petname>
 Morphs:
@@ -1618,14 +1618,14 @@ Suits:
     chestplate-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Chestplate
     leggings-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Leggings
     boots-name: <bold><aqua>R</aqua></bold><bold><green>a</green></bold><bold><yellow>v</yellow></bold><bold><gold>e </gold></bold><bold><white>Boots
-    Description: Such amazing colors!
+    Description: Такие замечательные цвета!
   Astronaut:
     whole-equip: <bold><white>whole </white></bold><bold><white>Astronaut </white></bold><bold><white>suit
     helmet-name: <bold><white>Astronaut </white></bold><bold><white>Helmet
     chestplate-name: <bold><white>Astronaut </white></bold><bold><white>Chestplate
     leggings-name: <bold><white>Astronaut </white></bold><bold><white>Leggings
     boots-name: <bold><white>Astronaut </white></bold><bold><white>Boots
-    Description: Houston?
+    Description: Хьюстон?
   Diamond:
     whole-equip: <bold><white>whole </white></bold><bold><aqua>Diamond </aqua></bold><bold><white>suit
     helmet-name: <bold><aqua>Diamond </aqua></bold><bold><white>Helmet
@@ -1633,15 +1633,15 @@ Suits:
     leggings-name: <bold><aqua>Diamond </aqua></bold><bold><white>Leggings
     boots-name: <bold><aqua>Diamond </aqua></bold><bold><white>Boots
     Description: |-
-      Show your Mining skills
-      with this amazing outfit!
+      Покажите свое мастерство в шахтерском деле
+      с этим удивительным нарядом!
   Santa:
     whole-equip: <bold><white>whole </white></bold><bold><dark_red>Santa </dark_red></bold><bold><white>suit
     helmet-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Helmet
     chestplate-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Chestplate
     leggings-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Leggings
     boots-name: <bold><dark_red>Santa </dark_red></bold><bold><white>Boots
-    Description: Become Santa and deliver presents!
+    Description: Стань Сантой и доставь подарки!
   Frozen:
     whole-equip: <bold><white>whole </white></bold><bold><aqua>Frozen </aqua></bold><bold><white>suit
     helmet-name: <bold><aqua>Frozen </aqua></bold><bold><white>Helmet
@@ -1649,8 +1649,8 @@ Suits:
     leggings-name: <bold><aqua>Frozen </aqua></bold><bold><white>Leggings
     boots-name: <bold><aqua>Frozen </aqua></bold><bold><white>Boots
     Description: |-
-      This suit belongs to the
-      Lord of the Frozen Lands!
+      Этот костюм принадлежит
+      Лорду Замерзших земель!
   Cursed:
     whole-equip: <bold><white>Весь </white></bold><bold><dark_purple>Проклятый </dark_purple></bold><bold><white>подходит
     helmet-name: <bold><dark_purple>Проклятый </dark_purple></bold><bold><white>шлем
