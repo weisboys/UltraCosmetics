@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Ключ 
 You-Won-Treasure-Chests: '<prefix> <bold><white>Вы выиграли: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Все локации с сокровищами заняты, пожалуйста, попробуйте позже
 No-Ammo: <prefix> <bold><red>в вашем распоряжении нет боеприпасов для этого гаджета!
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Очистить используемую косметику
   Gadgets: <bold><red>Очистить выбранный гаджет
