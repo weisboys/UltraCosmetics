@@ -54,6 +54,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -72,6 +73,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -384,7 +387,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         chestSortHook = hookIfEnabled("ChestSort", () -> new ChestSortHook(this));
         hookIfEnabled("Towny", TownyHook::new);
-        playerAuctionsHook = hookIfEnabled("PlayerAuctions", () -> new PlayerAuctionsHook(this));
+        playerAuctionsHook = hookIfEnabled("PlayerAuctions", () -> new PlayerAuctionsHook(this), 1.24f);
 
         // Start up bStats
         setupMetrics();
@@ -471,6 +474,25 @@ public class UltraCosmetics extends JavaPlugin {
         getSmartLogger().write();
         getSmartLogger().write("Hooked into " + pluginName);
         return hook;
+    }
+
+    private <T extends Listener> T hookIfEnabled(String pluginName, Supplier<T> hookSupplier, float requiredVersion) {
+        if (!getServer().getPluginManager().isPluginEnabled(pluginName)) {
+            return null;
+        }
+        Plugin plugin = getServer().getPluginManager().getPlugin(pluginName);
+        Pattern pattern = Pattern.compile("^\\d+\\.\\d+");
+        Matcher matcher = pattern.matcher(plugin.getDescription().getVersion());
+        if (matcher.find()) {
+            float version = Float.parseFloat(matcher.group());
+            if (version < requiredVersion) {
+                getSmartLogger().write(LogLevel.WARNING, pluginName + " " + requiredVersion + " or later is required for UC to hook it.");
+                return null;
+            }
+        } else {
+            getSmartLogger().write(LogLevel.WARNING, "Failed to parse " + pluginName + " version, hoping it's ok...");
+        }
+        return hookIfEnabled(pluginName, hookSupplier);
     }
 
     /**
