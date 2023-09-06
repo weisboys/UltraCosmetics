@@ -66,7 +66,7 @@ public class SubCommandMenu extends SubCommand {
             return;
         } else if (s.startsWith("b") && UltraCosmeticsData.get().areTreasureChestsEnabled()) {
             sender.closeInventory();
-            ultraCosmetics.getPlayerManager().getUltraPlayer(sender).openKeyPurchaseMenu();
+            menus.openKeyPurchaseMenu(ultraCosmetics.getPlayerManager().getUltraPlayer(sender));
             return;
         }
         Category cat;

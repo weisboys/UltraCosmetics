@@ -94,7 +94,7 @@ public class TreasureChestManager implements Listener {
 
         if (ultraPlayer.getKeys() < 1) {
             player.closeInventory();
-            ultraPlayer.openKeyPurchaseMenu();
+            ultraCosmetics.getMenus().openKeyPurchaseMenu(ultraPlayer);
             return;
         }
 

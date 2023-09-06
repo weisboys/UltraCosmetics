@@ -2,13 +2,19 @@ package be.isach.ultracosmetics.menu;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
+import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
 import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -103,5 +109,42 @@ public class Menus {
 
     public void setMenuPurchaseFactory(MenuPurchaseFactory factory) {
         this.menuPurchaseFactory = factory;
+    }
+
+    /**
+     * Opens the Key Purchase Menu.
+     */
+    public void openKeyPurchaseMenu(UltraPlayer ultraPlayer) {
+        if (!ultraCosmetics.getEconomyHandler().isUsingEconomy()) return;
+        Player player = ultraPlayer.getBukkitPlayer();
+
+        int price = SettingsManager.getConfig().getInt("TreasureChests.Key-Price");
+        if (price < 1) return;
+
+        if (!player.hasPermission("ultracosmetics.treasurechests.buykey")) {
+            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
+            return;
+        }
+        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
+        ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
+
+        PurchaseData pd = new PurchaseData();
+        pd.setPrice(price);
+        pd.setShowcaseItem(itemStack);
+        pd.setCanPurchase(() -> {
+            UCKeyPurchaseEvent event = new UCKeyPurchaseEvent(ultraPlayer, price);
+            Bukkit.getPluginManager().callEvent(event);
+            if (event.isCancelled()) return false;
+            pd.setPrice(event.getPrice());
+            return true;
+        });
+        Menus menus = ultraCosmetics.getMenus();
+        pd.setOnPurchase(() -> {
+            ultraPlayer.addKey();
+            menus.openMainMenu(ultraPlayer);
+        });
+        pd.setOnCancel(() -> menus.openMainMenu(ultraPlayer));
+        MenuPurchase mp = menus.getMenuPurchaseFactory().createPurchaseMenu(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
+        Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> player.openInventory(mp.getInventory(ultraPlayer)), 1);
     }
 }

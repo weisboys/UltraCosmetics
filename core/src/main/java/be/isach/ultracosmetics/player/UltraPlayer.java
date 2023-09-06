@@ -18,10 +18,6 @@ import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
-import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
-import be.isach.ultracosmetics.menu.MenuPurchase;
-import be.isach.ultracosmetics.menu.Menus;
-import be.isach.ultracosmetics.menu.PurchaseData;
 import be.isach.ultracosmetics.mysql.SqlCache;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.player.profile.FileCosmeticsProfile;
@@ -29,12 +25,9 @@ import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PlayerUtils;
-import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.messages.ActionBar;
 import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.ConfigurationSection;
@@ -370,42 +363,6 @@ public class UltraPlayer {
         saveCosmeticsProfile();
         clear();
         removeMenuItem();
-    }
-
-    /**
-     * Opens the Key Purchase Menu.
-     */
-    public void openKeyPurchaseMenu() {
-        if (!ultraCosmetics.getEconomyHandler().isUsingEconomy()) return;
-
-        int price = SettingsManager.getConfig().getInt("TreasureChests.Key-Price");
-        if (price < 1) return;
-
-        if (!getBukkitPlayer().hasPermission("ultracosmetics.treasurechests.buykey")) {
-            getBukkitPlayer().sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
-            return;
-        }
-        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
-        ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
-
-        PurchaseData pd = new PurchaseData();
-        pd.setPrice(price);
-        pd.setShowcaseItem(itemStack);
-        pd.setCanPurchase(() -> {
-            UCKeyPurchaseEvent event = new UCKeyPurchaseEvent(this, price);
-            Bukkit.getPluginManager().callEvent(event);
-            if (event.isCancelled()) return false;
-            pd.setPrice(event.getPrice());
-            return true;
-        });
-        Menus menus = ultraCosmetics.getMenus();
-        pd.setOnPurchase(() -> {
-            addKey();
-            menus.openMainMenu(this);
-        });
-        pd.setOnCancel(() -> menus.openMainMenu(this));
-        MenuPurchase mp = menus.getMenuPurchaseFactory().createPurchaseMenu(ultraCosmetics, MessageManager.getMessage("Buy-Treasure-Key"), pd);
-        Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> getBukkitPlayer().openInventory(mp.getInventory(this)), 1);
     }
 
     /**

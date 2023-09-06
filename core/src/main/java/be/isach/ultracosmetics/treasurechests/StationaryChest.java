@@ -24,7 +24,7 @@ public class StationaryChest {
         event.setCancelled(true);
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(event.getPlayer());
         if (ultraPlayer.getKeys() < 1) {
-            ultraPlayer.openKeyPurchaseMenu();
+            ultraCosmetics.getMenus().openKeyPurchaseMenu(ultraPlayer);
             return;
         }
         ultraPlayer.removeKey();

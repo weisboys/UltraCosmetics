@@ -62,7 +62,7 @@ public class SubCommandTreasure extends SubCommand {
 
         if (ultraPlayer.getKeys() <= 0) {
             opener.closeInventory();
-            ultraPlayer.openKeyPurchaseMenu();
+            ultraCosmetics.getMenus().openKeyPurchaseMenu(ultraPlayer);
             return;
         }
 

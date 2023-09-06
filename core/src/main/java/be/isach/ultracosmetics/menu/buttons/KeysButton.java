@@ -13,9 +13,11 @@ import org.bukkit.inventory.ItemStack;
 
 public class KeysButton extends TreasureButton {
     private final String itemName = MessageManager.getLegacyMessage("Treasure-Keys");
+    private final UltraCosmetics ultraCosmetics;
 
     public KeysButton(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
+        this.ultraCosmetics = ultraCosmetics;
     }
 
     @Override
@@ -35,6 +37,6 @@ public class KeysButton extends TreasureButton {
             return;
         }
         clicker.getBukkitPlayer().closeInventory();
-        clicker.openKeyPurchaseMenu();
+        ultraCosmetics.getMenus().openKeyPurchaseMenu(clicker);
     }
 }
