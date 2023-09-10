@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.type.CosmeticEntType;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.menu.buttons.ClearCosmeticButton;
 import be.isach.ultracosmetics.menu.buttons.CosmeticButton;
@@ -18,7 +17,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Difficulty;
 import org.bukkit.inventory.Inventory;
 
 import java.util.ArrayList;
@@ -204,12 +202,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
 
 
     protected boolean shouldHideItem(UltraPlayer player, CosmeticType<?> cosmeticType) {
-        if ((hideNoPermissionItems || player.isFilteringByOwned()) && !player.canEquip(cosmeticType)) {
-            return true;
-        }
-        return cosmeticType instanceof CosmeticEntType
-                && ((CosmeticEntType<?>) cosmeticType).isMonster()
-                && player.getBukkitPlayer().getWorld().getDifficulty() == Difficulty.PEACEFUL;
+        return (hideNoPermissionItems || player.isFilteringByOwned()) && !player.canEquip(cosmeticType);
     }
 
     protected boolean hasUnlockable(UltraPlayer player) {
