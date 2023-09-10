@@ -33,7 +33,6 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
 Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
-World-In-Peaceful: <prefix> <bold><red>You can't use this in a peaceful world!
 Clear:
   Cosmetics: <bold><red>Clear cosmetics
   Gadgets: <bold><red>Clear current gadget
