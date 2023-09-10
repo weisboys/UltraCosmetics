@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
@@ -18,7 +19,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.Vector;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Represents an instance of a portal gun gadget summoned by a player.
@@ -26,10 +30,9 @@ import java.util.List;
  * @author iSach
  * @since 08-07-2015
  */
-public class GadgetPortalGun extends Gadget implements Updatable {
+public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, Updatable {
     private static final double CIRCLE_STEP = (2 * Math.PI) / 20;
-    private boolean teleported = false;
-
+    private final Set<UUID> playersOnCooldown = new HashSet<>();
     private final PortalLoc red = new PortalLoc(255, 0, 0);
     private final PortalLoc blue = new PortalLoc(31, 0, 127);
 
@@ -94,41 +97,48 @@ public class GadgetPortalGun extends Gadget implements Updatable {
         return null;
     }
 
-    private boolean portalTeleportCheck(PortalLoc portalLoc, PortalLoc dest) {
+    private boolean portalTeleportCheck(Player player, PortalLoc portalLoc, PortalLoc dest) {
         BlockFace face = portalLoc.getFace();
         Location playerLoc;
         if (face == BlockFace.DOWN) {
-            playerLoc = getPlayer().getEyeLocation();
+            playerLoc = player.getEyeLocation();
         } else if (face == BlockFace.UP) {
-            playerLoc = getPlayer().getLocation();
+            playerLoc = player.getLocation();
         } else {
-            playerLoc = getPlayer().getLocation().add(0, 1, 0);
+            playerLoc = player.getLocation().add(0, 1, 0);
         }
 
         // 'distanceSquared' is faster than 'distance', and sqrt(1) == 1 anyway
-        if (playerLoc.getWorld() != getPlayer().getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) {
+        if (playerLoc.getWorld() != player.getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) {
             return false;
         }
-        teleported = true;
+        playersOnCooldown.add(player.getUniqueId());
         Location loc = dest.getLocation().clone();
         BlockFace destFace = dest.getFace();
         loc.setYaw(getYaw(destFace));
         loc.setPitch(getPitch(destFace));
-        teleport(getPlayer(), loc, destFace.getDirection().multiply(0.3));
-        Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> teleported = false, 20);
+        teleport(player, loc, destFace.getDirection().multiply(0.3));
+
+        Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> playersOnCooldown.remove(player.getUniqueId()), 20);
         return true;
     }
 
     private void checkPortals() {
-        if (!red.isValid() || !blue.isValid() || teleported) return;
+        if (!red.isValid() || !blue.isValid()) return;
         if (red.getLocation().getWorld() != blue.getLocation().getWorld()) {
             red.clear();
             blue.clear();
             MessageManager.send(getPlayer(), "Gadgets.PortalGun.Different-Worlds");
             return;
         }
-        if (!portalTeleportCheck(red, blue)) {
-            portalTeleportCheck(blue, red);
+        Player owner = getPlayer();
+        for (Player player : owner.getWorld().getPlayers()) {
+            if (playersOnCooldown.contains(player.getUniqueId()) || (player != owner && !canAffect(player, owner))) {
+                continue;
+            }
+            if (!portalTeleportCheck(player, red, blue)) {
+                portalTeleportCheck(player, blue, red);
+            }
         }
     }
 
