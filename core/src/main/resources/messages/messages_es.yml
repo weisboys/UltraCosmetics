@@ -440,13 +440,13 @@ Mounts:
     Held-Item-Lore: <italic><gray>Comida de cerdo en un palo!
   SlimeSnake:
     menu-name: <bold><red>Serpiente de limo
-    entity-displayname: <bold><playername>'s Slime Snake
+    entity-displayname: <bold>Serpiente de Slime de <playername>
     Description: |-
       This type of snake comes straight from
       the hidden "Secret Swamps of Sliminess".
       This one will serve you eternally.
   Camel:
-    menu-name: <bold><gold>Camel
+    menu-name: <bold><gold>Camello
     entity-displayname: <bold><playername>'s Camel
     Description: Your standard, everyday camel
   Equip: <prefix> <blue>Spawneaste <mountname>
