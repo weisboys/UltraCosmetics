@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Chave de 
 You-Won-Treasure-Chests: '<prefix> <bold><white>Você ganhou: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Todos os locais do tesouro estão cheios, aguarde e tente novamente
 No-Ammo: <prefix> <bold><red>Você não tem nenhuma munição para esta engenhoca!
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Limpar cosméticos
   Gadgets: <bold><red>Limpar a engenhoca atual
@@ -50,7 +51,7 @@ Menu:
       Showcase: <bold><red>Renomeie o mascote para </red></bold><bold><white><name> </white></bold><bold><red>por </red></bold><bold><yellow>$<price>
     Title: <bold>Renomear Mascote
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Comprar <cosmetic>
   Rename-Pet:
     Button:
       Name: '<bold><red>Clique para renomear: <petname>'
@@ -136,7 +137,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Página anterior
       Next-Page: <bold><green>Próxima página
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>DESATIVADO
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Não há espaço suficiente para um baú do tesouro!
   Region-Disabled: <prefix><bold><red>Você não pode abrir um baú aqui!
@@ -182,22 +183,22 @@ Treasure-Chests-Loot:
     <dark_purple>Efeito de Projétil
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> encontrou <ammo> munição de <cosmetic>
+  Money: <prefix> <bold><gold><name> encontrou $<money>
+  Pets: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Mounts: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Particle-Effects: <prefix> <bold><gold><name> encontrou <cosmetic> lendário
+  Morphs: <prefix> <bold><gold><name> encontrou <cosmetic> lendário
+  Hats: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Gadgets: <prefix> <bold><gold><name> encontrou a engenhoca <cosmetic>
+  Suits: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Emotes: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Death-Effects: <prefix> <bold><gold><name> encontrou <cosmetic> raro
+  Projectile-Effects: <prefix> <bold><gold><name> encontrou <cosmetic> raro
 Permission-Lore:
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
-  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
-  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
+  Showroom: '<gray>Permissão: </gray><gold>Utilizável na showroom'
+  Permission-No: '<gray>Permissão: </gray><bold><dark_red>Não!'
+  Permission-Yes: '<gray>Permissão: </gray><bold><green>Sim!'
 Disable-Gadgets: <bold><red>Desabilitar bugigangas
 Disable-Gadgets-Lore: <red>Desativa o uso de gadgets e os efeitos deles em você
 Enable-Gadgets: <bold><green>Ativar cosmeticos
@@ -217,7 +218,7 @@ Gadgets:
     name: <bold><aqua>Arminha de tinta
     Description: POW POW POW POW!!!
   BatBlaster:
-    name: <bold><gray>Bat Blaster
+    name: <bold><gray>Lançador de Morcegos
     Description: |-
       Lança ondas de morcegos
       para pessoas que você não gosta!
@@ -354,52 +355,52 @@ Mounts:
     entity-displayname: Corcel Glacial de <bold><playername>
     Description: Esta montaria vem do Pólo Norte!
   WalkingDead:
-    menu-name: <bold><dark_green>Walking Dead
-    entity-displayname: <bold><playername>'s Walking Dead
-    Description: Graaaaw...
+    menu-name: <bold><dark_green>Andar à Morto
+    entity-displayname: Andar à Morto de <bold><playername>
+    Description: Hrraaaw...
   MountOfFire:
     menu-name: <bold><red>Monte de Fogo
     entity-displayname: <bold>Monte de Fogo de <bold><playername>
     Description: A montaria de Hades!
   MountOfWater:
-    menu-name: <bold><blue>Mount of Water
-    entity-displayname: <bold><playername>'s Mount of Water
-    Description: The mount of Poseidon!
+    menu-name: <bold><blue>Monte de Água
+    entity-displayname: Monte de Água de <bold><playername>
+    Description: O monte de Poseidon!
   EcologistHorse:
     menu-name: <bold><green>Cavalo Ecologista
     entity-displayname: <bold><playername> Cavalo Ecologista
     Description: Torne-se um ecologista!
   NyanSheep:
-    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Sh</green><aqua>ee</aqua><light_purple>p
-    entity-displayname: <bold><playername>'s Nyan Sheep
+    menu-name: <bold><dark_red>Ove</dark_red><gold>lha</gold><yellow> M</yellow><green>i</green><aqua>a</aqua><light_purple>u
+    entity-displayname: <bold>Ovelha Miau de <playername>
     Description: |-
-      <bold><dark_red>Nyan </dark_red><gold>nyan </gold><yellow>nyan
-      <bold><green>nyan </green><dark_aqua>nyan </dark_aqua><blue>nyan
+      <bold><dark_red>Miau </dark_red><gold>miau </gold><yellow>miau
+      <bold><green>miau </green><dark_aqua>miau </dark_aqua><blue>miau
   Snake:
     menu-name: <bold><gold>Scobra
-    entity-displayname: <bold><playername>'s Snake
+    entity-displayname: <bold>Cobra de <playername>
     Description: Cuidado! Pode morder...
   Dragon:
     menu-name: <dark_purple>lDragão
-    entity-displayname: <bold><playername>'s Dragon
+    entity-displayname: <bold>Dragão de <playername>
     Description: Torne-se um cavaleiro de dragão!
   HypeCart:
-    menu-name: <bold><gray>HypeCart
-    entity-displayname: <bold><playername>'s HypeCart
+    menu-name: <bold><gray>Carrinho da Moda
+    entity-displayname: <bold>Carrinho da Moda de <playername>
     Description: |-
       Ever queria dirigir um F1?
       Agora você pode!
   Slime:
     menu-name: <bold><green>Slime
-    entity-displayname: <bold><playername>'s Slime
+    entity-displayname: <bold>Slime de <playername>
     Description: Splat! Splat!
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
+    menu-name: <bold><dark_gray>Aranha
+    entity-displayname: <bold>Aranha de <playername>
     Description: VOCÊ é o jóquei da aranha!
   Rudolph:
     menu-name: <bold><white>Rudolp</white></bold><bold><dark_red>h
-    entity-displayname: <bold><playername>'s Rudolph
+    entity-displayname: <bold>Rodolfo de <playername>
     Description: |-
       What seria o Natal
       sem Rudolph a rena?
@@ -419,32 +420,32 @@ Mounts:
     Held-Item-Lore: <italic><gray>Comida do Strider em uma vara!
   Horse:
     menu-name: <bold><gray>Cavalo
-    entity-displayname: <bold><playername>'s Horse
-    Description: Your standard, everyday horse
+    entity-displayname: <bold>Cavalo de <playername>
+    Description: O seu normal, cavalo do dia a dia
   Donkey:
     menu-name: <bold><dark_gray>Burro
     entity-displayname: <bold><playername>'s Donkey
-    Description: Your standard, everyday donkey
+    Description: O seu normal, burro do dia a dia
   Mule:
-    menu-name: <bold><dark_gray>Mule
+    menu-name: <bold><dark_gray>Mula
     entity-displayname: <bold><playername>'s Mule
-    Description: Your standard, everyday mule
+    Description: A sua normal, mula do dia a dia
   Pig:
     menu-name: <bold><light_purple>Porco
-    entity-displayname: <bold><playername>'s Pig
+    entity-displayname: <bold>Porco de <playername>
     Description: Oink!
     Held-Item-Lore: <italic><gray>Comida do Strider em uma vara!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Cobra de Slime
+    entity-displayname: <bold>Cobra de Slime de <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Este tipo de cobra vem direto dos
+      escondidos "Secretos Pântanos de Viscosidade".
+      Este irá servi-lo eternamente.
   Camel:
-    menu-name: <bold><gold>Camel
-    entity-displayname: <bold><playername>'s Camel
-    Description: Your standard, everyday camel
+    menu-name: <bold><gold>Camelo
+    entity-displayname: <bold>Camelo de <playername>
+    Description: O seu normal, camelo do dia a dia
   Equip: <prefix> <blue>Você invocou <mountname>
   Unequip: <prefix> <blue>Você invocou <mountname>
   Cant-Spawn: <prefix> <bold><red>Monsters não podem nascer aqui!
@@ -463,7 +464,7 @@ Particle-Effects:
       A previsão do tempo
       is me disse que está chovendo.
   BloodHelix:
-    name: <bold><dark_red>Blood Helix
+    name: <bold><dark_red>Hélice de Sangue
     Description: |-
       Antiga lenda diz que essa mágica
       empodera o sangue de seu usuário,
@@ -475,7 +476,7 @@ Particle-Effects:
     name: <bold><red>Anéis Flamejantes
     Description: Cuidado! Eles são quentes!
   GreenSparks:
-    name: <bold><green>Green Sparks
+    name: <bold><green>Faíscas Verdes
     Description: Pequena e verde brilha com brilhante!
   InLove:
     name: <bold><red>In amor
@@ -496,14 +497,14 @@ Particle-Effects:
     name: <bold><white>Asas de anjo
     Description: Torne-se um anjo!
   RainbowWings:
-    name: <bold><rainbow>Rainbow</rainbow> <white>Wings
+    name: <bold><white>Assas</white> <rainbow>Arco-íris</rainbow>
     Description: Asas, mas cheio de cor!
   SuperHero:
     name: <bold><dark_red>Super Herói
     Description: Tornar-se Superpermanente!
   SantaHat:
-    name: <bold><dark_red>Santa </dark_red><white>Hat
-    Description: Become Santa!
+    name: <bold><white>Gorro do</white> <dark_red>Papai Noel</dark_red>
+    Description: Torne-se no Papai Noel!
   CrushedCandyCane:
     name: <bold><dark_red>Destruído </dark_red></bold><bold><white>Candy </white></bold><bold><dark_red>Cane
     Description: |-
@@ -540,7 +541,7 @@ Particle-Effects:
       Deixa um rastro de
       dark de energia para trás.
   SpringFootprints:
-    name: <bold><green>Spring Footprints
+    name: <bold><green>Pegadas da Primavera
     Description: |-
       Deixa um rastro de
       dark de energia para trás.
@@ -556,7 +557,7 @@ Particle-Effects:
     name: <bold><red>Coeurs
     Description: Notas acima da sua cabeça.
   EnderFootprints:
-    name: <bold><light_purple>Ender Footprints
+    name: <bold><light_purple>Pegadas de Ender
     Description: |-
       Deixa um rastro de
       dark de energia para trás.
@@ -569,17 +570,17 @@ Particle-Effects:
       A halo composto por
       eternal chamas.
   SnowFootprints:
-    name: <bold><white>Snow Footprints
+    name: <bold><white>Pegadas de Neve
     Description: |-
       Deixa um rastro de
       dark de energia para trás.
 Pets:
   Piggy:
     menu-name: <bold><light_purple>Porco
-    entity-displayname: <bold><playername>'s Piggy
+    entity-displayname: <bold>Porquinho de <playername>
     Description: Oink! Oink!
   Sheep:
-    menu-name: <bold><white>Sheep
+    menu-name: <bold><white>Ovelha
     entity-displayname: <bold><playername>'s Sheep
     Description: Baaaa, baa
   EasterBunny:
@@ -652,72 +653,72 @@ Pets:
     Description: YAAHH Ehehhehe!
   Panda:
     menu-name: <bold><green>Panda
-    entity-displayname: <bold><playername>'s Panda
-    Description: Likes Bamboo!
+    entity-displayname: <bold>Panda de <playername>
+    Description: Gosta de Bambo!
   Fox:
-    menu-name: <bold><light_purple>Fox
-    entity-displayname: <bold><playername>'s Fox
-    Description: What does the fox say?
+    menu-name: <bold><light_purple>Raposa
+    entity-displayname: <bold>Raposa de <playername>
+    Description: '"What does the fox say?"'
   Axolotl:
-    menu-name: <bold><dark_purple>Axolotl
-    entity-displayname: <bold><playername>'s Axolotl
-    Description: Sooo cute!
+    menu-name: <bold><dark_purple>Axolote
+    entity-displayname: <bold>Axolote de <playername>'
+    Description: Tãaooo Fofo!
   Piglin:
-    menu-name: <bold><gold>Gold Dealer
-    entity-displayname: <bold><playername>'s Gold Dealer
-    Description: Deals with Gold!
+    menu-name: <bold><gold>Traficante de Ouro
+    entity-displayname: <bold>Traficante de Ouro de <playername>
+    Description: Trafica em volta d'ouro!
   Slime:
     menu-name: <bold><green>Slime
-    entity-displayname: <bold><playername>'s Slime
+    entity-displayname: <bold>Slime de <playername>
     Description: Squish...
   Bee:
-    menu-name: <bold><yellow>Bee
-    entity-displayname: <bold><playername>'s Bee
+    menu-name: <bold><yellow>Abelha
+    entity-displayname: <bold>Abelha de <playername>
     Description: '*bzzzz* *bzzzz*'
   Goat:
-    menu-name: <bold><white>Goat
-    entity-displayname: <bold><playername>'s Goat
-    Description: BAAAA!
+    menu-name: <bold><white>Cabra
+    entity-displayname: <bold>Cabra de <playername>
+    Description: BÉÉÉÉ!
   Silverfish:
-    menu-name: <bold><gray>Silverfish
-    entity-displayname: <bold><playername>'s Silverfish
-    Description: Lurking in the walls...
+    menu-name: <bold><gray>Traça
+    entity-displayname: <bold>Traça de <playername>
+    Description: Espreitando pelas paredes...
   Horse:
-    menu-name: <bold><green>Horse
-    entity-displayname: <bold><playername>'s Horse
+    menu-name: <bold><green>Cavalo
+    entity-displayname: <bold>Cavalo de <playername>
     Description: '*fhrrrrhh*'
   Blaze:
     menu-name: <bold><red>Blaze
-    entity-displayname: <bold><playername>'s Blaze
-    Description: Flying and hot!
+    entity-displayname: <bold>Blaze de <playername>
+    Description: Voando e quente!
   Creeper:
     menu-name: <bold><green>Creeper
-    entity-displayname: <bold><playername>'s Creeper
-    Description: Likes blowing up your favorite stuff...
+    entity-displayname: <bold>Creeper de <playername>
+    Description: Adora explodir com suas cenas preferidas...
   Enderman:
     menu-name: <bold><dark_purple>Enderman
-    entity-displayname: <bold><playername>'s Enderman
-    Description: Don't look at it or it will hunt you!
+    entity-displayname: <bold>Enderman de <playername>
+    Description: Não o olhe ou ele o irá caçar!
   Skeleton:
-    menu-name: <bold><white>Skeleton
-    entity-displayname: <bold><playername>'s Skeleton
-    Description: Watch out, it will try to shoot you!
+    menu-name: <bold><white>Esqueleto
+    entity-displayname: <bold>Esqueleto de <playername>
+    Description: Cuidado, ele tentará dar uma flechada no joelho!
   Zombie:
-    menu-name: <bold><dark_green>Zombie
-    entity-displayname: <bold><playername>'s Zombie
-    Description: Quick! Hide your Villagers!
+    menu-name: <bold><dark_green>Zumbi
+    entity-displayname: <bold>Zumbi de <playername>
+    Description: Rápido! Esconde seus Aldeões!
   Frog:
-    menu-name: <bold><dark_green>Frog
-    entity-displayname: <bold><playername>'s Frog
-    Description: Doesn't like fireflies!
+    menu-name: <bold><dark_green>Sapo
+    entity-displayname: <bold>Sapo de <playername>
+    Description: Não gosta de pirilampos!
   Warden:
-    menu-name: <bold><dark_aqua>Warden
-    entity-displayname: <bold><playername>'s Warden
-    Description: The scariest Mob in Minecraft!
+    menu-name: <bold><dark_aqua>Defensor
+    entity-displayname: <bold>Defensor de <playername>
+    Description: A Criatura mais assustadora do Minecraft!
   Allay:
     menu-name: <bold><green>Allay
-    entity-displayname: <bold><playername>'s Allay
-    Description: A new friend!
+    entity-displayname: <bold>Allay de <playername>
+    Description: Um novo amigo!
   Cod:
     menu-name: <bold><gray>Cod
     entity-displayname: <bold><playername>'s Cod
@@ -783,16 +784,16 @@ Pets:
     entity-displayname: <bold><playername>'s Dolphin
     Description: The happiest creature of the seas!
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
+    menu-name: <bold><dark_gray>Aranha
+    entity-displayname: <bold>Aranha de <playername>
     Description: Your friendly neighborhood spider!
   ZombifiedPiglin:
     menu-name: <bold><light_purple>Zombified Piglin
     entity-displayname: <bold><playername>'s Zombified Piglin
     Description: Attack it and all of them will be after you!
   Drowned:
-    menu-name: <bold><dark_aqua>Drowned
-    entity-displayname: <bold><playername>'s Drowned
+    menu-name: <bold><dark_aqua>Afogado
+    entity-displayname: <bold>Afogado de <playername>
     Description: An underwater zombie!
   ElderGuardian:
     menu-name: <bold><dark_aqua>Elder Guardian
@@ -938,7 +939,7 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Moo'
     Description: Moooo!
   Sheep:
-    name: <bold><white>Sheep
+    name: <bold><white>Ovelha
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Change Colors'
     Description: Baaaa, baa
   Mooshroom:
@@ -968,13 +969,13 @@ Morphs:
   Allay:
     name: <bold><green>Allay
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: A new friend!
+    Description: Um novo amigo!
   Axolotl:
-    name: <bold><dark_purple>Axolotl
+    name: <bold><dark_purple>Axolote
     skill: <yellow>Left-Click</yellow><gray> for cute sounds
-    Description: Sooo cute!
+    Description: Tãaooo Fofo!
   Bee:
-    name: <bold><yellow>Bee
+    name: <bold><yellow>Abelha
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
     Description: '*bzzzz* *bzzzz*'
   Cat:
@@ -998,7 +999,7 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Can carry all your stuff!
   Drowned:
-    name: <bold><dark_aqua>Drowned
+    name: <bold><dark_aqua>Afogado
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: An underwater zombie!
   Endermite:
@@ -1010,21 +1011,21 @@ Morphs:
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: Summons Vexes for a living!
   Frog:
-    name: <bold><dark_green>Frog
+    name: <bold><dark_green>Sapo
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Doesn't like fireflies!
+    Description: Não gosta de pirilampos!
   Fox:
-    name: <bold><light_purple>Fox
+    name: <bold><light_purple>Raposa
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: What does the fox say?
+    Description: '"What does the fox say?"'
   GlowSquid:
     name: <bold><dark_aqua>Glow Squid
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
     Description: It glows!
   Goat:
-    name: <bold><white>Goat
+    name: <bold><white>Cabra
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: BAAAA!
+    Description: BÉÉÉÉ!
   Guardian:
     name: <bold><dark_aqua>Guardian
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
@@ -1042,13 +1043,13 @@ Morphs:
     name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    name: <bold><dark_green>Zombie
+    name: <bold><dark_green>Zumbi
     Description: Brains!!!
   Squid:
     name: <bold><light_purple>Squid
     Description: Bloop Bloop!
   Spider:
-    name: <bold><dark_gray>Spider
+    name: <bold><dark_gray>Aranha
     Description: HISS...
   Ghast:
     name: <bold><white>Ghast
@@ -1057,10 +1058,10 @@ Morphs:
     name: <bold><red>Magma Cube
     Description: A very hot cube!
   Horse:
-    name: <bold><green>Horse
+    name: <bold><green>Cavalo
     Description: '*fhrrrrhh*'
   Warden:
-    name: <bold><dark_aqua>Warden
+    name: <bold><dark_aqua>Defensor
     Description: Be quiet...
   Tadpole:
     name: <bold><dark_gray>Tadpole
@@ -1123,8 +1124,8 @@ Morphs:
     name: <bold><gray>Vindicator
     Description: Don't underestimate their strength!
   Mule:
-    name: <bold><dark_gray>Mule
-    Description: Your standard, everyday mule
+    name: <bold><dark_gray>Mula
+    Description: A sua normal, mula do dia a dia
   SkeletonHorse:
     name: <bold><white>Skeleton Horse
     Description: Look out for lightning strikes!
@@ -1210,7 +1211,7 @@ Hats:
     Name: <bold><gray>Piston
     Description: Have you got the redstone?
   Sheep:
-    Name: <bold><white>Sheep
+    Name: <bold><white>Ovelha
     Description: Baaaa, baa
   Pig:
     Name: <bold><light_purple>Pig
@@ -1252,10 +1253,10 @@ Hats:
     Name: <bold><gray>Skeleton
     Description: Very good archer!
   Zombie:
-    Name: <bold><dark_green>Zombie
+    Name: <bold><dark_green>Zumbi
     Description: Brains!!!
   Drowned:
-    Name: <bold><dark_aqua>Drowned
+    Name: <bold><dark_aqua>Afogado
     Description: Underwater zombie
   Strider:
     Name: <bold><red>Strider
@@ -1267,7 +1268,7 @@ Hats:
     Name: <bold><white>Ghast
     Description: '*high-pitched scream*'
   Warden:
-    Name: <bold><dark_aqua>Warden
+    Name: <bold><dark_aqua>Defensor
     Description: Be quiet...
   Witch:
     Name: <bold><dark_purple>Witch
@@ -1285,7 +1286,7 @@ Hats:
     Name: <bold><gold>Librarian Villager
     Description: Knowledge is power.
   Bee:
-    Name: <bold><yellow>Bee
+    Name: <bold><yellow>Abelha
     Description: Be careful!
   Fox:
     Name: <bold><gold>Fox
@@ -1297,7 +1298,7 @@ Hats:
     Name: <bold><yellow>Ocelot
     Description: King of the jungle
   Frog:
-    Name: <bold><dark_green>Frog
+    Name: <bold><dark_green>Sapo
     Description: Eats whatever bugs him.
   AxolotlPink:
     Name: <bold><light_purple>Pink Axolotl

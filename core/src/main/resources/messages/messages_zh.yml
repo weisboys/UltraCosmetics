@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1把 </yellow></bold><bold><gray>宝藏
 You-Won-Treasure-Chests: '<prefix> <bold><white>你赢得了: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>所有宝藏点都已被占用，请稍等并重试。
 No-Ammo: <prefix> <bold><red>你没有在此小道具上可用的使用次数
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>清除所有装饰品
   Gadgets: <bold><red>清除当前使用的小道具

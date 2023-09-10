@@ -14,7 +14,7 @@ Ammo: 'jouw munitie: <yellow><ammo>'
 Purchase: <bold><green>AANKOOP
 Cancel: <bold><red>ANNULEREN
 Buy-Ammo-Description: <bold><yellow>Koop <amount> <gadgetname> munitie </yellow></bold><bold><yellow>voor $<price>
-Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> for $<price>
+Buy-Cosmetic-Description: <bold><yellow>Koop <gadgetname> voor $<price>
 Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
 Click-To-Purchase: <yellow>Click to purchase for $<price>
 Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Treasure Key </gray><y
 You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Clear cosmetics
   Gadgets: <bold><red>Clear current gadget

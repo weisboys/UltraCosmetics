@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Klucz Ska
 You-Won-Treasure-Chests: '<prefix> <bold><white>Wygrałeś: <name>!'
 Treasure-Chest-Occupied: <prefix> <strikethrough><red>iejsca skarbów są pełne, proszę poczekaj i spróbuj ponownie
 No-Ammo: <prefix> <bold><red>Nie masz amunicji na ten gadżet!
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Clear kosmetyków
   Gadgets: <bold><red>Clear bieżący gadżet
@@ -41,106 +42,106 @@ Clear:
   Morphs: <bold><red>Clear bieżący gadżet
   Hats: <bold><red>Wyczyść bieżący gadżet
   Suits: <bold><red>Wyczyść bieżący gadżet
-  Emotes: <bold><red>Clear current emote
-  Projectile-Effects: <bold><red>Clear current projectile effect
-  Death-Effects: <bold><red>Clear current death effect
+  Emotes: <bold><red>Usuń aktualną emotikonę
+  Projectile-Effects: <bold><red>Usuń aktualny efekt pocisku
+  Death-Effects: <bold><red>Usuń aktualny efekt śmierci
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: <bold><red>Rename the pet to </red><white><name> </white><red>for </red><yellow>$<price>
-    Title: <bold>Rename Pet
+      Showcase: <bold><red>Zmień nazwę zwierzaka na </red><white><name> </white><red> za </red><yellow>$<price>
+    Title: <bold>Zmień nazwę zwierzaka
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Kup <cosmetic>
   Rename-Pet:
     Button:
-      Name: '<bold><red>Click to rename: <petname>'
-    Placeholder: Pet Name
-    Title: Rename pet
+      Name: '<bold><red>Kliknij, aby zmienić nazwę: <petname>'
+    Placeholder: Nazwa zwierzaka
+    Title: Zmień nazwę zwierzaka
   Main:
-    Title: <bold>Main Menu
+    Title: <bold>Główne Menu
     Button:
-      Name: <bold><red>Main Menu
+      Name: <bold><red>Główne Menu
   Pets:
-    Title: <bold>Pets
+    Title: <bold>Zwierzaki
     Button:
-      Name: <bold><green>Pets
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Name: <bold><green>Zwierzaki
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Tooltip-Unequip: <bold><red>Usuń
   Gadgets:
-    Title: <bold>Gadgets
+    Title: <bold>Gadżety
     Button:
-      Name: <bold><blue>Gadgets
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Activate
-      Tooltip-Unequip: <bold><red>Deactivate
+      Name: <bold><blue>Gadżety
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Aktywuj
+      Tooltip-Unequip: <bold><red>Dezaktywuj
   Mounts:
     Title: <bold>Mounts
     Button:
       Name: <bold><gold>Mounts
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Tooltip-Unequip: <bold><red>Usuń
   Morphs:
-    Title: <bold>Morphs
+    Title: <bold>Przemiany
     Button:
-      Name: <bold><dark_green>Morphs
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Morph into
-      Tooltip-Unequip: <bold><red>Unmorph from
+      Name: <bold><dark_green>Przemiany
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Przemiana w
+      Tooltip-Unequip: <bold><red>Wyjdź z
   Hats:
-    Title: <bold>Hats
+    Title: <bold>Czapki
     Button:
-      Name: <bold><light_purple>Hats
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Name: <bold><light_purple>Czapki
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Załóż
+      Tooltip-Unequip: <bold><red>Zdejmij
   Particle-Effects:
-    Title: <bold>Particle Effects
+    Title: <bold>Efekty particlesów
     Button:
-      Name: <bold><aqua>Particle Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Summon
-      Tooltip-Unequip: <bold><red>Unsummon
+      Name: <bold><aqua>Efekty particlesów
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Przywołaj
+      Tooltip-Unequip: <bold><red>Odwołaj
   Suits:
-    Title: <bold>Suits
+    Title: <bold>Stroje
     Button:
-      Name: <bold><dark_aqua>Suits
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Name: <bold><dark_aqua>Stroje
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Załóż
+      Tooltip-Unequip: <bold><red>Zdejmij
   Emotes:
-    Title: <bold>Emotes
+    Title: <bold>Emotikony
     Button:
-      Name: <bold><yellow>Emotes
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Name: <bold><yellow>Emotikony
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Załóż
+      Tooltip-Unequip: <bold><red>Zdejmij
   Projectile-Effects:
-    Title: <bold>Projectile Effects
+    Title: <bold>Efekty pocisków
     Button:
-      Name: <bold><dark_purple>Projectile Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Name: <bold><dark_purple>Efekty pocisków
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Załóż
+      Tooltip-Unequip: <bold><red>Zdejmij
   Death-Effects:
-    Title: <bold>Death Effects
+    Title: <bold>Efekty śmierci
     Button:
-      Name: <bold><red>Death Effects
-      Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
-      Tooltip-Unequip: <bold><red>Unequip
+      Name: <bold><red>Efekty śmierci
+      Lore: '<gray>Odblokowano: </gray><white><unlocked>'
+      Tooltip-Equip: <bold><aqua>Załóż
+      Tooltip-Unequip: <bold><red>Zdejmij
   Buy-Ammo:
-    Title: <bold>Buy Ammo
+    Title: <bold>Kup amunicję
   Misc:
     Button:
-      Previous-Page: <bold><red>Previous Page
-      Next-Page: <bold><green>Next Page
+      Previous-Page: <bold><red>Poprzednia strona
+      Next-Page: <bold><green>Następna strona
   Disabled-Button: <red>DISABLED
 Chest-Location:
-  Not-Enough-Space: <prefix> <bold><red>There isn't enough space for a treasure chest!
-  Region-Disabled: <prefix> <bold><red>You can't open a chest here!
-  Invalid: <prefix> <bold><red>That's not a valid location.
+  Not-Enough-Space: <prefix> <bold><red>Nie ma wystarczającej ilości miejsca na skrzynię skarbów!
+  Region-Disabled: <prefix> <bold><red>Nie możesz otworzyć skrzyni tutaj!
+  Invalid: <prefix> <bold><red>Twoja lokalizacja nie jest poprawna.
   In-Air: <prefix> <bold><red>That location is not on the ground!
   In-Ground: <prefix> <bold><red>That location is in the ground!
   Suggestion: <prefix> <green>Maybe you meant <location>?
@@ -241,91 +242,91 @@ Gadgets:
       at them and pulling them
       to you!
   DiscoBall:
-    name: <bold><light_purple>Disco Ball
-    Already-Active: <bold><red>There is already a disco ball active!
-    Not-Space-Above: <bold><red>There is not enough space above you!
-    Description: Just dance!
+    name: <bold><light_purple>Kula Disco
+    Already-Active: <bold><red>Kula disco już jest aktywowana!
+    Not-Space-Above: <bold><red>Nie ma wystarczająco miejsca nad Tobą!
+    Description: Potańczmy!
   ColorBomb:
-    name: <bold><light_purple>Color Bomb
-    Description: A colorful bomb!
+    name: <bold><light_purple>Bomba kolorów
+    Description: Kolorowa bomba!
   Chickenator:
-    name: <bold><white>Chickenator
-    Description: 1.Shoot! 2.Boom! 3.KFC!
+    name: <bold><white>Kurczak
+    Description: 1.Strzel! 2.Boom! 3.KFC!
   PortalGun:
-    name: <bold><red>Portal </red><blue>Gun
-    No-Block-Range: <prefix> <bold><red>No BLOCKS in range!
-    Different-Worlds: <prefix> <bold><red>Portals must be in the same world!
-    Description: The cake is a lie!
+    name: <bold><blue>Pistolet</blue><red>Portali
+    No-Block-Range: <prefix> <bold><red>Nie ma BLOKÓW w zasięgu!
+    Different-Worlds: <prefix> <bold><red>Portale muszą być na tym samym świecie!
+    Description: Ciasto jest kłamstwem!
   BlizzardBlaster:
-    name: <bold><aqua>Blizzard Blaster
-    Description: Let it snow!
+    name: <bold><aqua>Blaster Zamieci
+    Description: Pozwól na śnieg!
   ThorHammer:
-    name: <bold><white>Thor's Hammer
-    Description: Get the real Mjölnir!
+    name: <bold><white>Młot Thora
+    Description: Zdobądź prawdziwy Mjölnir!
   SmashDown:
     name: <bold><red>SmashDown
-    Description: AND HIS NAME IS...JOHN CENA!
+    Description: I JEGO IMIĘ TO...JOHN CENA!
   ExplosiveSheep:
-    name: <bold><dark_red>Explosive Sheep
-    Already-Active: <bold><red>There is already an explosive sheep active!
+    name: <bold><dark_red>Wybuchowa Owca
+    Already-Active: <bold><red>Wybuchowa owca jest już aktywowana!
     Description: |-
-      Are you sure it's supposed
-      to flicker like that?
+      Czy na pewno tak ma być
+      tak migotać?
   AntiGravity:
-    name: <bold><light_purple>Anti Gravity
+    name: <bold><light_purple>Anty Grawitacja
     Description: |-
-      You don't like gravity?
-      Then, this gadget is made for you!
+      Nie lubisz grawitacji?
+      Jeśli tak, ten gadżet jest dla Ciebie!
   Tsunami:
     name: <bold><blue>Tsunami
     Description: |-
       TSUNAMI!
-      Run for your life!
+      Uciekaj, aby przeżyć!
   Rocket:
-    name: <bold><dark_red>Rocket
-    Not-Enough-Space: <prefix> <bold><red>Not enough space around and above you!
-    Not-On-Ground: <prefix> <bold><red>You must be on the ground!
-    Takeoff: <bold><dark_red>TAKEOFF!!
-    LaunchAborted: <bold><red>Launch aborted!
-    Description: Houston, we have a problem...
+    name: <bold><dark_red>Rakieta
+    Not-Enough-Space: <prefix> <bold><red>Za mało miejsca w okolicy i nad Tobą!
+    Not-On-Ground: <prefix> <bold><red>Musisz być na ziemi!
+    Takeoff: <bold><dark_red>STARTUJEMY!!
+    LaunchAborted: <bold><red>Uruchomienie przerwane!
+    Description: Houston, mamy problem...
   BlackHole:
-    name: <bold><dark_blue>Black Hole
-    Description: You should not get caught by it!
+    name: <bold><dark_blue>Czarna dziura
+    Description: Nie powinieneś zostać przez to złapany!
   TNT:
     name: <bold><dark_red>T</dark_red><white>N</white><dark_red>T
     Description: |-
-      Blow some people up!
+      Wybuchnij kilku ludzi!
       KABOOM!
   FunGun:
-    name: <bold><gold>Fun Gun
-    Description: Woow! So much fun in a gun!
+    name: <bold><gold>Zabawny Pistolet
+    Description: Woow! Trochę zabawy w pistolecie!
   Parachute:
-    name: <bold><white>Parachute
+    name: <bold><white>Spadochron
     Description: GERONIMOOO!
   QuakeGun:
-    name: <bold><dark_purple>Quake </dark_purple><light_purple>Gun
+    name: <bold><dark_purple>Drżący </dark_purple><light_purple>Pistolet
     Description: |-
-      Get a real Rail Gun
-      and strike players and mobs!
+      Weź prawdziwy Kolejowy Pistolet
+      i uderz graczy i moby!
   GhostParty:
-    name: <bold><white>Ghost Party
+    name: <bold><white>Party Ducha
     Description: |-
-      Who you gonna call?
-      GHOST BUSTERS!
+      Do kogo zadzwonisz?
+      POGROMCY DUCHÓW!
   Firework:
-    name: <bold><red>Firework
+    name: <bold><red>Fajerwerk
     Description: |-
-      Need to celebrate?
-      Use fireworks!
+      Potrzebujesz świętować?
+      Użyj fajerwerków!
   ChristmasTree:
-    name: <bold><dark_green>Christmas Tree
-    Click-On-Block: <prefix> <bold><red>Please click on a block!
+    name: <bold><dark_green>Świąteczne Drzewo
+    Click-On-Block: <prefix> <bold><red>Kliknij na blok!
     Description: |-
-      Here is a Christmas
-      Tree for you!
+      Tutaj jest Świąteczne
+      Drzewo dla Ciebie!
   FreezeCannon:
-    name: <bold><aqua>Freeze Cannon
-    Description: Transform the floor into a rink!
+    name: <bold><aqua>Działo zamrażające
+    Description: Przekształć podłogę w lodowisko!
   Snowball:
     name: <bold><white>Snowball
     Description: |-
@@ -409,71 +410,71 @@ Mounts:
       without Rudolph the Reindeer?
   MoltenSnake:
     menu-name: <bold><red>Molten Snake
-    entity-displayname: <bold><playername>'s Molten Snake
+    entity-displayname: <bold>Roztopiony wąż <playername>
     Description: |-
-      Deep under the Earth's surface, there
-      exists a mythical species of Molten
-      Snakes. This one will serve you eternally.
+      Głęboko pod powierzchnią Ziemi, tam
+      istnieje mityczny gatunek stopionych wężów. 
+      Ten będzie służył Ci na zawsze.
   Strider:
     menu-name: <bold><red>Strider
     entity-displayname: <bold><playername>'s Strider
     Description: |-
-      A mysterious cube-shaped mob
-      capable of walking straight over lava.
-    Held-Item-Lore: Strider food on a stick!
+      Tajemniczy, kulisty potwór
+      potrafi chodzić prosto nad lawą.
+    Held-Item-Lore: Jedzenie na kapeluszu jeźdźca!
   Horse:
-    menu-name: <bold><gray>Horse
+    menu-name: <bold><gray>Koń
     entity-displayname: <bold><playername>'s Horse
-    Description: Your standard, everyday horse
+    Description: Twój standardowy, codzienny koń
   Donkey:
-    menu-name: <bold><dark_gray>Donkey
+    menu-name: <bold><dark_gray>Osioł
     entity-displayname: <bold><playername>'s Donkey
-    Description: Your standard, everyday donkey
+    Description: Twój standardowy, codzienny osioł
   Mule:
-    menu-name: <bold><dark_gray>Mule
+    menu-name: <bold><dark_gray>Muł
     entity-displayname: <bold><playername>'s Mule
-    Description: Your standard, everyday mule
+    Description: Twój standardowy, codzienny muł
   Pig:
     menu-name: <bold><light_purple>Pig
-    entity-displayname: <bold><playername>'s Pig
-    Description: Oink!
-    Held-Item-Lore: Pig food on a stick!
+    entity-displayname: <bold>Świnia <playername>
+    Description: Chrum!
+    Held-Item-Lore: Karma dla świń na patyku!
   SlimeSnake:
-    menu-name: <bold><red>Slime Snake
-    entity-displayname: <bold><playername>'s Slime Snake
+    menu-name: <bold><red>Śluzowy Wąż
+    entity-displayname: <bold>Śluzowy Wąż <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Ten typ węża pochodzi bezpośrednio od
+      ukrytego "Sekretnych Swobód Eliminacji".
+      To będzie służyło Ci na zawsze.
   Camel:
-    menu-name: <bold><gold>Camel
-    entity-displayname: <bold><playername>'s Camel
-    Description: Your standard, everyday camel
-  Equip: <prefix> <blue>You spawned <mountname>
-  Unequip: <prefix> <blue>You despawned <mountname>
-  Cant-Spawn: <prefix> <bold><red>Monsters can't spawn here!
-  Not-Enough-Room: <prefix> <bold><red>Not enough room for a mount here!
+    menu-name: <bold><gold>Wielbłąd
+    entity-displayname: <bold>Wielbłąd <playername>
+    Description: Twój standardowy, codzienny wielbłąd
+  Equip: <prefix> <blue>Ty przywołałeś <mountname>
+  Unequip: <prefix> <blue>Ty odwołałeś <mountname>
+  Cant-Spawn: <prefix> <bold><red>Potwory nie mogą się tu pojawić!
+  Not-Enough-Room: <prefix> <bold><red>Za mało miejsca na mount tutaj!
 Particle-Effects:
-  Equip: <prefix> <blue>You summoned <effectname>
-  Unequip: <prefix> <blue>You unsummoned <effectname>
+  Equip: <prefix> <blue>Ty przywołałeś <effectname>
+  Unequip: <prefix> <blue>Ty odwołałeś <effectname>
   RainCloud:
-    name: <bold><blue>Rain Cloud
+    name: <bold><blue>Chmura deszczu
     Description: |-
-      The weather forecast
-      is telling me it's raining.
+      Prognoza pogody
+      mówi mi, że pada.
   SnowCloud:
-    name: <bold><white>Snow Cloud
+    name: <bold><white>Chmura śniegu
     Description: |-
-      The weather forecast
-      is telling me it's snowing.
+      Prognoza pogody
+      mówi mi, że pada śnieg.
   BloodHelix:
-    name: <bold><dark_red>Blood Helix
+    name: <bold><dark_red>Krew Helix
     Description: |-
-      Ancient legend says this magic
-      empowers the blood of its user,
-      giving them godly powers...
+      Starożytna legenda mówi, że ta magiczna
+      wzmacnia krew swojego użytkownika,
+      dając mu bogate potęgi...
   FrostLord:
-    name: <bold><aqua>Frost Lord
+    name: <bold><aqua>Mroźny Władca
     Description: I am The Almighty Frostlord!
   FlameRings:
     name: <bold><red>Flame Rings
@@ -1127,8 +1128,8 @@ Morphs:
     name: <bold><gray>Vindicator
     Description: Don't underestimate their strength!
   Mule:
-    name: <bold><dark_gray>Mule
-    Description: Your standard, everyday mule
+    name: <bold><dark_gray>Muł
+    Description: Twój standardowy, codzienny muł
   SkeletonHorse:
     name: <bold><white>Skeleton Horse
     Description: Look out for lightning strikes!

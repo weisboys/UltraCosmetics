@@ -32,6 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Llave del
 You-Won-Treasure-Chests: '<prefix> <bold><white>Ganaste un: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Los espacios para abrir cofres estan llenos. Por favor espera y prueba nuevamente
 No-Ammo: <prefix> <bold><red>¡No tienes munición para este dispositivo!
+Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Quitar todos los cosmetics activos
   Gadgets: <bold><red>Quitar gadget activo
@@ -439,13 +440,13 @@ Mounts:
     Held-Item-Lore: <italic><gray>Comida de cerdo en un palo!
   SlimeSnake:
     menu-name: <bold><red>Serpiente de limo
-    entity-displayname: <bold><playername>'s Slime Snake
+    entity-displayname: <bold>Serpiente de Slime de <playername>
     Description: |-
       This type of snake comes straight from
       the hidden "Secret Swamps of Sliminess".
       This one will serve you eternally.
   Camel:
-    menu-name: <bold><gold>Camel
+    menu-name: <bold><gold>Camello
     entity-displayname: <bold><playername>'s Camel
     Description: Your standard, everyday camel
   Equip: <prefix> <blue>Spawneaste <mountname>
