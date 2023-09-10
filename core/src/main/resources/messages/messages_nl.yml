@@ -14,7 +14,7 @@ Ammo: 'jouw munitie: <yellow><ammo>'
 Purchase: <bold><green>AANKOOP
 Cancel: <bold><red>ANNULEREN
 Buy-Ammo-Description: <bold><yellow>Koop <amount> <gadgetname> munitie </yellow></bold><bold><yellow>voor $<price>
-Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> for $<price>
+Buy-Cosmetic-Description: <bold><yellow>Koop <gadgetname> voor $<price>
 Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
 Click-To-Purchase: <yellow>Click to purchase for $<price>
 Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
