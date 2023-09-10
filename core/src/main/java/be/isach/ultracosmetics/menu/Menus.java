@@ -32,6 +32,7 @@ public class Menus {
     private final Map<Category, CosmeticMenu<?>> categoryMenus = new HashMap<>();
     private Menu mainMenu;
     private MenuPurchaseFactory menuPurchaseFactory = StandardMenuPurchase::new;
+    private ItemStack treasureKeyBaseItem = XMaterial.TRIPWIRE_HOOK.parseItem();
 
     public Menus(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -111,6 +112,14 @@ public class Menus {
         this.menuPurchaseFactory = factory;
     }
 
+    public ItemStack getTreasureKeyBaseItem() {
+        return treasureKeyBaseItem;
+    }
+
+    public void setTreasureKeyBaseItem(ItemStack treasureKeyBaseItem) {
+        this.treasureKeyBaseItem = treasureKeyBaseItem;
+    }
+
     /**
      * Opens the Key Purchase Menu.
      */
@@ -126,7 +135,7 @@ public class Menus {
             return;
         }
         TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
-        ItemStack itemStack = ItemFactory.create(XMaterial.TRIPWIRE_HOOK, MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
+        ItemStack itemStack = ItemFactory.rename(getTreasureKeyBaseItem(), MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
 
         PurchaseData pd = new PurchaseData();
         pd.setPrice(price);
