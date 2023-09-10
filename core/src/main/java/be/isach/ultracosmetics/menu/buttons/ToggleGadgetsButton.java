@@ -11,7 +11,8 @@ import org.bukkit.inventory.ItemStack;
 public class ToggleGadgetsButton implements Button {
     @Override
     public ItemStack getDisplayItem(UltraPlayer ultraPlayer) {
-        String enabledKey = (ultraPlayer.hasGadgetsEnabled() ? "Enable" : "Disable");
+        // Show "disable gadgets" string when gadgets are enabled, and vice versa
+        String enabledKey = (ultraPlayer.hasGadgetsEnabled() ? "Disable" : "Enable");
         String configPath = "Categories.Gadgets-Item.When-" + enabledKey + "d";
         String key = enabledKey + "-Gadgets";
         Component msg = MessageManager.getMessage(key);
