@@ -29,6 +29,7 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
 
     @Override
     public void onUpdate() {
+        if (!canUseSkill) return;
         CreeperWatcher creeperWatcher = (CreeperWatcher) disguise.getWatcher();
         if (getPlayer().isSneaking()) {
             creeperWatcher.setIgnited(true);

@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import me.libraryaddict.disguise.DisguiseAPI;
 import me.libraryaddict.disguise.disguisetypes.DisguiseType;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
@@ -24,9 +23,11 @@ public abstract class Morph extends Cosmetic<MorphType> {
      * @see me.libraryaddict.disguise.disguisetypes.MobDisguise MobDisguise from Lib's Disguises
      */
     protected MobDisguise disguise;
+    protected final boolean canUseSkill;
 
     public Morph(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        canUseSkill = type.canUseSkill();
     }
 
     @Override

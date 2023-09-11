@@ -24,7 +24,6 @@ import java.util.List;
  * @since 10-18-2015
  */
 public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmetic {
-    private boolean inCooldown;
 
     public MorphWitherSkeleton(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -33,9 +32,7 @@ public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmeti
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onSneak(PlayerToggleSneakEvent event) {
         Player player = getPlayer();
-        if (event.getPlayer() != player || inCooldown) return;
-        inCooldown = true;
-        Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> inCooldown = false, 200);
+        if (event.getPlayer() != player || !getOwner().getAndSetCooldown(cosmeticType, 10, 3)) return;
         for (Entity ent : player.getNearbyEntities(3, 3, 3)) {
             if (canAffect(ent, player)) {
                 MathUtils.applyVelocity(ent, ent.getLocation().toVector().subtract(player.getLocation().toVector()).setY(1));

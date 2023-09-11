@@ -4,8 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import org.bukkit.entity.Snowball;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 /**
@@ -14,22 +12,14 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author iSach
  * @since 11-29-2015
  */
-public class MorphSnowman extends Morph {
-
-    private long coolDown = 0;
-
+public class MorphSnowman extends MorphLeftClickCooldown {
     public MorphSnowman(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics);
+        super(owner, type, ultraCosmetics, 0.5);
     }
 
-    @EventHandler
+    @Override
     public void onLeftClick(PlayerInteractEvent event) {
-        if ((event.getAction() == Action.LEFT_CLICK_AIR
-                || event.getAction() == Action.LEFT_CLICK_BLOCK) && event.getPlayer() == getPlayer()) {
-            if (coolDown > System.currentTimeMillis()) return;
-            event.setCancelled(true);
-            event.getPlayer().launchProjectile(Snowball.class);
-            coolDown = System.currentTimeMillis() + 500;
-        }
+        event.setCancelled(true);
+        event.getPlayer().launchProjectile(Snowball.class);
     }
 }

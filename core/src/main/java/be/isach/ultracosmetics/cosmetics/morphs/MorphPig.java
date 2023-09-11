@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
 import com.cryptomorin.xseries.XSound;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
@@ -19,7 +18,6 @@ import org.bukkit.util.Vector;
  * @since 08-27-2015
  */
 public class MorphPig extends Morph implements PlayerAffectingCosmetic, Updatable {
-    private boolean cooldown = false;
 
     public MorphPig(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -27,12 +25,11 @@ public class MorphPig extends Morph implements PlayerAffectingCosmetic, Updatabl
 
     @Override
     public void onUpdate() {
-        if (cooldown || !isAffectingPlayersEnabled()) return;
+        if (!canUseSkill || getOwner().canUse(cosmeticType) || !isAffectingPlayersEnabled()) return;
         Player player = getPlayer();
         for (Entity ent : player.getNearbyEntities(0.2, 0.2, 0.2)) {
             if (!canAffect(ent, player)) continue;
-            cooldown = true;
-            Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> cooldown = false, 20);
+            getOwner().setCooldown(cosmeticType, 1, 0);
             XSound.ENTITY_PIG_AMBIENT.play(player, .2f, 1.5f);
             Vector v = new Vector(0, 0.6, 0);
             Vector vEnt = ent.getLocation().toVector().subtract(player.getLocation().toVector()).add(v);

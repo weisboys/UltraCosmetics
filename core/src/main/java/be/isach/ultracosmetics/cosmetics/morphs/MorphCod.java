@@ -11,7 +11,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
  * @since 26-10-2022
  */
 public class MorphCod extends Morph {
-
     public MorphCod(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }

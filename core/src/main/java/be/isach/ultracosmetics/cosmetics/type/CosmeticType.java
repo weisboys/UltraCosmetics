@@ -107,6 +107,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.save();
         }
+        VALUES.forEach((c, l) -> l.forEach(t -> t.setupConfig(SettingsManager.getConfig(), t.getConfigPath())));
     }
 
     private final String configName;
@@ -134,7 +135,6 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         if (registerPerm) {
             registerPermission();
         }
-        setupConfig(SettingsManager.getConfig(), getConfigPath());
         VALUES.computeIfAbsent(category, l -> new ArrayList<>()).add(this);
         if (isEnabled()) {
             ENABLED.computeIfAbsent(category, l -> new ArrayList<>()).add(this);

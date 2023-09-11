@@ -152,16 +152,32 @@ public class UltraPlayer {
     }
 
     /**
-     * Sets the cooldown of a gadget.
+     * Sets the cooldown of a cosmetic.
      *
-     * @param type     The gadget.
+     * @param type     The cosmetic.
      * @param cooldown The standard cooldown of the cosmetic in seconds
      * @param runTime  The runtime of the cosmetic (i.e. minimum possible cooldown) in seconds.
      */
-    public void setCoolDown(CosmeticType<?> type, double cooldown, double runTime) {
+    public void setCooldown(CosmeticType<?> type, double cooldown, double runTime) {
         double time = isBypassingCooldown() ? runTime : cooldown;
         if (time == 0) return;
         cooldowns.put(type, (long) (time * 1000 + System.currentTimeMillis()));
+    }
+
+    /**
+     * Checks whether a cosmetic is on cooldown, and if not, sets the cooldown.
+     *
+     * @param type     The cosmetic
+     * @param cooldown The standard cooldown of the cosmetic in seconds
+     * @param runTime  The runtime of the cosmetic (i.e. minimum possible cooldown) in seconds.
+     * @return true if the cosmetic can be used (making this a drop-in replacement for canUse)
+     */
+    public boolean getAndSetCooldown(CosmeticType<?> type, double cooldown, double runTime) {
+        if (canUse(type)) {
+            setCooldown(type, cooldown, runTime);
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.cosmetics.type;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.morphs.*;
 import be.isach.ultracosmetics.util.ServerVersion;
@@ -23,7 +24,7 @@ public class MorphType extends CosmeticType<Morph> {
      * Disguise Type of the morph.
      */
     private final EntityType disguiseType;
-    private final boolean canUseSkill;
+    private final boolean doesSkillExist;
 
     private MorphType(String configName, XMaterial material, EntityType disguiseType) {
         this(configName, material, disguiseType, MorphBasic.class, false);
@@ -33,13 +34,13 @@ public class MorphType extends CosmeticType<Morph> {
         this(configName, material, disguiseType, clazz, true);
     }
 
-    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz, boolean canUseSkill) {
+    private MorphType(String configName, XMaterial material, EntityType disguiseType, Class<? extends Morph> clazz, boolean doesSkillExist) {
         super(Category.MORPHS, configName, material, clazz);
         this.disguiseType = disguiseType;
-        this.canUseSkill = canUseSkill;
+        this.doesSkillExist = doesSkillExist;
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.addMessage(getConfigPath() + ".name", configName);
-            if (canUseSkill) {
+            if (doesSkillExist) {
                 MessageManager.addMessage(getConfigPath() + ".skill", "Skill");
             }
         }
@@ -51,11 +52,11 @@ public class MorphType extends CosmeticType<Morph> {
      * @return The skill message of the morph.
      */
     public Component getSkill() {
-        return MessageManager.getMessage("Morphs." + getConfigName() + ".skill");
+        return MessageManager.getMessage(getConfigPath() + ".skill");
     }
 
     public boolean canUseSkill() {
-        return canUseSkill;
+        return doesSkillExist && SettingsManager.getConfig().getBoolean(getConfigPath() + ".Skill-Enabled", true);
     }
 
     /**
@@ -70,6 +71,9 @@ public class MorphType extends CosmeticType<Morph> {
     @Override
     public void setupConfig(CustomConfiguration config, String path) {
         super.setupConfig(config, path);
+        if (doesSkillExist) {
+            config.addDefault(path + ".Skill-Enabled", true, "Whether this morph's skill should be enabled.");
+        }
         if (MorphNoFall.class.isAssignableFrom(getClazz())) {
             config.addDefault(path + ".No-Fall-Damage", true,
                     "Whether to disable fall damage while this morph is equipped.",

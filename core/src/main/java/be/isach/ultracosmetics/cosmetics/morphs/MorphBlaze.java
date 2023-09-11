@@ -5,11 +5,9 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerKickEvent;
-
-import com.cryptomorin.xseries.XSound;
 
 /**
  * Represents an instance of a blaze morph summoned by a player.
@@ -25,7 +23,7 @@ public class MorphBlaze extends MorphNoFall implements Updatable {
 
     @Override
     public void onUpdate() {
-        if (getPlayer().isSneaking()) {
+        if (canUseSkill && getPlayer().isSneaking()) {
             Particles.FLAME.display(getPlayer().getLocation());
             Particles.LAVA.display(getPlayer().getLocation());
             XSound.BLOCK_FIRE_EXTINGUISH.play(getPlayer(), 0.1f, 1.5f);
@@ -35,7 +33,7 @@ public class MorphBlaze extends MorphNoFall implements Updatable {
 
     @EventHandler
     public void onKick(PlayerKickEvent event) {
-        if (event.getPlayer() == getPlayer() && getOwner().getCurrentMorph() == this && event.getReason().contains("Flying")) {
+        if (canUseSkill && event.getPlayer() == getPlayer() && getOwner().getCurrentMorph() == this && event.getReason().contains("Flying")) {
             event.setCancelled(true);
         }
     }

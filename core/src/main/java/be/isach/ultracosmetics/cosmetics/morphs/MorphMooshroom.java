@@ -26,8 +26,6 @@ import java.util.List;
  * @since 07-03-2017
  */
 public class MorphMooshroom extends Morph implements PlayerAffectingCosmetic {
-    private boolean inCooldown = false;
-
     public MorphMooshroom(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
@@ -35,9 +33,7 @@ public class MorphMooshroom extends Morph implements PlayerAffectingCosmetic {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onSneak(PlayerToggleSneakEvent event) {
         Player player = getPlayer();
-        if (event.getPlayer() != player || inCooldown) return;
-        inCooldown = true;
-        Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> inCooldown = false, 200);
+        if (!canUseSkill || event.getPlayer() != player || !getOwner().getAndSetCooldown(cosmeticType, 10, 3)) return;
         for (Entity ent : player.getNearbyEntities(3, 3, 3)) {
             if (canAffect(ent, player)) {
                 MathUtils.applyVelocity(ent, ent.getLocation().toVector().subtract(player.getLocation().toVector()).setY(1));

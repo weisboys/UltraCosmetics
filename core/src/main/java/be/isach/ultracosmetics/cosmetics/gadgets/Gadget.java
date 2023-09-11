@@ -271,7 +271,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             }
             return;
         }
-        ultraPlayer.setCoolDown(getType(), getType().getCountdown(), getType().getRunTime());
+        ultraPlayer.setCooldown(getType(), getType().getCountdown(), getType().getRunTime());
         if (requiresAmmo && !inShowroom) {
             ultraPlayer.removeAmmo(getType());
             equipItem();

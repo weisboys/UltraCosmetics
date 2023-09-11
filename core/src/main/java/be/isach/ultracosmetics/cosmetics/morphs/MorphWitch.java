@@ -3,10 +3,13 @@ package be.isach.ultracosmetics.cosmetics.morphs;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.Material;
 import org.bukkit.entity.ThrownPotion;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.PotionMeta;
 
 /**
  * Represents an instance of a witch morph summoned by a player.
@@ -14,21 +17,21 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author RadBuilder
  * @since 07-03-2017
  */
-public class MorphWitch extends Morph {
-    private long coolDown = 0;
-
+public class MorphWitch extends MorphLeftClickCooldown {
     public MorphWitch(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics);
+        super(owner, type, ultraCosmetics, 2);
     }
 
-    @EventHandler
+    @Override
     public void onLeftClick(PlayerInteractEvent event) {
-        if ((event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK)
-                && event.getPlayer() == getPlayer()) {
-            if (coolDown > System.currentTimeMillis()) return;
-            event.setCancelled(true);
-            getPlayer().launchProjectile(ThrownPotion.class);
-            coolDown = System.currentTimeMillis() + 2000;
-        }
+        event.setCancelled(true);
+        ThrownPotion potion = getPlayer().launchProjectile(ThrownPotion.class);
+
+        // Randomize color
+        ItemStack stack = new ItemStack(Material.SPLASH_POTION);
+        PotionMeta meta = (PotionMeta) Bukkit.getItemFactory().getItemMeta(stack.getType());
+        meta.setColor(Color.fromRGB(RANDOM.nextInt(0x1000000)));
+        stack.setItemMeta(meta);
+        potion.setItem(stack);
     }
 }

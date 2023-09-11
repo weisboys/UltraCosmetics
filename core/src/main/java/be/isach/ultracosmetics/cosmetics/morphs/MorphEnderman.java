@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.EntitySpawner;
-
 import org.bukkit.Color;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -34,18 +33,20 @@ public class MorphEnderman extends MorphNoFall {
     @Override
     protected void onEquip() {
         super.onEquip();
-        getPlayer().setAllowFlight(true);
+        if (canUseSkill) {
+            getPlayer().setAllowFlight(true);
+        }
     }
 
     @EventHandler
-    public void onPlayerToggleFligh(PlayerToggleFlightEvent event) {
+    public void onPlayerToggleFlight(PlayerToggleFlightEvent event) {
         Player player = event.getPlayer();
-        if (player != getPlayer() || player.getGameMode() == GameMode.CREATIVE || event.getPlayer().isFlying()) {
+        if (!canUseSkill || player != getPlayer() || player.getGameMode() == GameMode.CREATIVE || event.getPlayer().isFlying()) {
             return;
         }
         player.setFlying(false);
         event.setCancelled(true);
-        if (!getOwner().canUse(cosmeticType)) {
+        if (!getOwner().getAndSetCooldown(cosmeticType, COOLDOWN, 0)) {
             return;
         }
         if (mode.equalsIgnoreCase("Fast")) {
@@ -55,7 +56,6 @@ public class MorphEnderman extends MorphNoFall {
         } else { // Ray trace
             rayTrace(player);
         }
-        getOwner().setCoolDown(cosmeticType, COOLDOWN, 0);
     }
 
     private void rayTrace(Player player) {
@@ -86,7 +86,7 @@ public class MorphEnderman extends MorphNoFall {
 
     @Override
     public void onClear() {
-        if (getPlayer().getGameMode() != GameMode.CREATIVE) {
+        if (canUseSkill && getPlayer().getGameMode() != GameMode.CREATIVE) {
             getPlayer().setAllowFlight(false);
         }
     }
