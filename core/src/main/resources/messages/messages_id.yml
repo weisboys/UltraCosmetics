@@ -32,7 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Kunci Kot
 You-Won-Treasure-Chests: '<prefix> <bold><white>Anda mendapatkan: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Semua lokasi kotak kosmetik telah penuh, mohon tunggu dan coba kembali
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
-Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
+Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Bersihkan kosmetik
   Gadgets: <bold><red>Bersihkan peralatan saat ini
