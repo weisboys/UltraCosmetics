@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import org.bukkit.entity.LlamaSpit;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
@@ -15,28 +14,21 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author RadBuilder
  * @since 07-03-2017
  */
-public class MorphLlama extends Morph {
-    private long coolDown = 0;
-
+public class MorphLlama extends MorphLeftClickCooldown {
     public MorphLlama(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics);
+        super(owner, type, ultraCosmetics, 1.5);
     }
 
-    @EventHandler
+    @Override
     public void onLeftClick(PlayerInteractEvent event) {
-        if ((event.getAction() == Action.LEFT_CLICK_AIR
-                || event.getAction() == Action.LEFT_CLICK_BLOCK) && event.getPlayer() == getPlayer()) {
-            if (coolDown > System.currentTimeMillis()) return;
-            event.setCancelled(true);
-            LlamaSpit llamaSpit = event.getPlayer().launchProjectile(LlamaSpit.class);
-            llamaSpit.setShooter(event.getPlayer());
-            coolDown = System.currentTimeMillis() + 1500;
-        }
+        event.setCancelled(true);
+        LlamaSpit llamaSpit = event.getPlayer().launchProjectile(LlamaSpit.class);
+        llamaSpit.setShooter(event.getPlayer());
     }
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
-        if (getOwner() != null && getPlayer() != null && event.getDamager() == getPlayer()) {
+        if (event.getDamager() instanceof LlamaSpit && ((LlamaSpit) event.getDamager()).getShooter() == getPlayer()) {
             event.setCancelled(true);
         }
     }
