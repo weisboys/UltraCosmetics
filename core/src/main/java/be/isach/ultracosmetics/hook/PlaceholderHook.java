@@ -38,6 +38,7 @@ public class PlaceholderHook extends PlaceholderExpansion {
             if (identifier.startsWith("suit_")) {
                 identifier = "suits_" + identifier.substring(5);
             }
+            identifier = identifier.replace("particleeffect", "effect");
             Category category = Category.fromString(identifier);
             if (category == null) return null;
             Cosmetic<?> cosmetic = ultraPlayer.getCosmetic(category);
