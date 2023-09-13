@@ -116,7 +116,7 @@ public class TreasureRandomizer {
         return Color.fromRGB(r.nextInt(256), r.nextInt(256), r.nextInt(256));
     }
 
-    public LootReward giveRandomThing(TreasureChest chest) {
+    public LootReward giveRandomThing(TreasureChest chest, boolean skipFirework) {
         UltraPlayer ultraPlayer = UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player);
         XSound.BLOCK_CHEST_OPEN.play(loc, 1.4f, 1.5f);
         if (lootTypes.size() == 0) {
@@ -125,7 +125,7 @@ public class TreasureRandomizer {
         Loot loot = lootTypes.getRandom();
         LootReward reward = loot.giveToPlayer(ultraPlayer, chest);
         broadcast(reward.getMessage(), reward.isBroadcast());
-        if (reward.isFirework()) {
+        if (!skipFirework && reward.isFirework()) {
             spawnFirework();
         }
         if (loot.isEmpty()) {

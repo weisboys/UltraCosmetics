@@ -59,7 +59,7 @@ public class OpenChestButton extends TreasureButton {
             player.removeKey();
             TreasureRandomizer tr = new TreasureRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
             for (int i = 0; i < chestCount; i++) {
-                tr.giveRandomThing(null);
+                tr.giveRandomThing(null, false);
             }
             // Refresh with new key count
             clickData.getMenu().open(player);

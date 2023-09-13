@@ -172,7 +172,8 @@ public class TreasureChest implements Listener {
         if (delay == 0) {
             stopping = true;
             for (int i = 0; i < chestsLeft; i++) {
-                LootReward reward = randomGenerator.giveRandomThing(this);
+                // Skip firework to avoid running EntitySpawner tasks on shutdown
+                LootReward reward = randomGenerator.giveRandomThing(this, true);
                 String[] names = reward.getName();
                 MessageManager.send(getPlayer(), "You-Won-Treasure-Chests",
                         Placeholder.unparsed("name", names[names.length - 1])
@@ -184,7 +185,7 @@ public class TreasureChest implements Listener {
         for (final Block b : unopenedChests) {
             setLidPosition(b, true);
             randomGenerator.setLocation(b.getLocation().clone().add(0.0D, 1.0D, 0.0D));
-            LootReward reward = randomGenerator.giveRandomThing(this);
+            LootReward reward = randomGenerator.giveRandomThing(this, false);
 
             items.add(spawnItem(reward.getStack(), b.getLocation()));
             Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> makeHolograms(b.getLocation(), reward), 15L);
@@ -253,7 +254,7 @@ public class TreasureChest implements Listener {
         setLidPosition(block, true);
         Location loc = block.getLocation();
         randomGenerator.setLocation(loc.clone().add(0.0D, 1.0D, 0.0D));
-        LootReward reward = randomGenerator.giveRandomThing(this);
+        LootReward reward = randomGenerator.giveRandomThing(this, false);
 
         cooldown = true;
         Bukkit.getScheduler().runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> cooldown = false, 3L);
