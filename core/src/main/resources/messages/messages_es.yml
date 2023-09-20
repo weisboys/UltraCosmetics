@@ -447,7 +447,7 @@ Mounts:
       This one will serve you eternally.
   Camel:
     menu-name: <bold><gold>Camello
-    entity-displayname: <bold><playername>'s Camel
+    entity-displayname: <bold>Camello de <playername>
     Description: Your standard, everyday camel
   Equip: <prefix> <blue>Spawneaste <mountname>
   Unequip: <prefix> <blue>Despawneaste <mountname>
