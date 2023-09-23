@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.v1_20_R1;
+package be.isach.ultracosmetics.v1_20_R2;
 
 /**
  * @author RadBuilder

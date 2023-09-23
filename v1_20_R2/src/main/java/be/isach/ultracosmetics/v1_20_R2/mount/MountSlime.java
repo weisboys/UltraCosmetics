@@ -1,12 +1,12 @@
-package be.isach.ultracosmetics.v1_20_R1.mount;
+package be.isach.ultracosmetics.v1_20_R2.mount;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.v1_20_R1.customentities.CustomSlime;
+import be.isach.ultracosmetics.v1_20_R2.customentities.CustomSlime;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R2.entity.CraftPlayer;
 
 /**
  * @author RadBuilder

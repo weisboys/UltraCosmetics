@@ -1,9 +1,9 @@
-package be.isach.ultracosmetics.v1_20_R1.customentities;
+package be.isach.ultracosmetics.v1_20_R2.customentities;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.v1_20_R1.EntityBase;
-import be.isach.ultracosmetics.v1_20_R1.ObfuscatedFields;
-import be.isach.ultracosmetics.v1_20_R1.nms.EntityWrapper;
+import be.isach.ultracosmetics.v1_20_R2.EntityBase;
+import be.isach.ultracosmetics.v1_20_R2.ObfuscatedFields;
+import be.isach.ultracosmetics.v1_20_R2.nms.EntityWrapper;
 import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.types.Type;
 import net.minecraft.SharedConstants;

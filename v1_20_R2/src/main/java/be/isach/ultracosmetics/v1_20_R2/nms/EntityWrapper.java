@@ -1,6 +1,6 @@
-package be.isach.ultracosmetics.v1_20_R1.nms;
+package be.isach.ultracosmetics.v1_20_R2.nms;
 
-import be.isach.ultracosmetics.v1_20_R1.ObfuscatedFields;
+import be.isach.ultracosmetics.v1_20_R2.ObfuscatedFields;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 

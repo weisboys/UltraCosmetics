@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.v1_20_R1.customentities;
+package be.isach.ultracosmetics.v1_20_R2.customentities;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.locale.Language;

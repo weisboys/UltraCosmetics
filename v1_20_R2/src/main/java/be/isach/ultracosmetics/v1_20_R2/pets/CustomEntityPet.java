@@ -1,13 +1,13 @@
-package be.isach.ultracosmetics.v1_20_R1.pets;
+package be.isach.ultracosmetics.v1_20_R2.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.pets.Pet;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.v1_20_R1.customentities.CustomEntities;
+import be.isach.ultracosmetics.v1_20_R2.customentities.CustomEntities;
 import net.minecraft.world.entity.Entity;
-import org.bukkit.craftbukkit.v1_20_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_20_R1.entity.CraftEntity;
+import org.bukkit.craftbukkit.v1_20_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R2.entity.CraftEntity;
 import org.bukkit.entity.Mob;
 
 /**

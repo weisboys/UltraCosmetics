@@ -1,6 +1,6 @@
-package be.isach.ultracosmetics.v1_20_R1.customentities;
+package be.isach.ultracosmetics.v1_20_R2.customentities;
 
-import be.isach.ultracosmetics.v1_20_R1.EntityBase;
+import be.isach.ultracosmetics.v1_20_R2.EntityBase;
 import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EntityType;

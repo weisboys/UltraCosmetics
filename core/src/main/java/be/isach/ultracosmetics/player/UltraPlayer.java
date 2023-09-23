@@ -113,7 +113,6 @@ public class UltraPlayer {
             // loads data from database async
             cosmeticsProfile = new SqlCache(this, ultraCosmetics);
         }
-        Bukkit.getLogger().info("Built ultraplayer for " + uuid);
     }
 
     /**
@@ -380,7 +379,6 @@ public class UltraPlayer {
         saveCosmeticsProfile();
         clear();
         removeMenuItem();
-        Bukkit.getLogger().info("Destroyed UltraPlayer for " + uuid);
     }
 
     /**
