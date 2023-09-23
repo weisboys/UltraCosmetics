@@ -5,11 +5,10 @@ import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.Particles.OrdinaryColor;
-
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,26 +54,30 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     @Override
     public void onUpdate() {
         if (heightDirectionUp) {
-            if (height < MAX_HEIGHT)
+            if (height < MAX_HEIGHT) {
                 height += HEIGHT_STEP;
-            else
+            } else {
                 heightDirectionUp = false;
+            }
         } else {
-            if (height > MIN_HEIGHT)
+            if (height > MIN_HEIGHT) {
                 height -= HEIGHT_STEP;
-            else
+            } else {
                 heightDirectionUp = true;
+            }
         }
         if (hoveringDirectionUp) {
-            if (heightDiffFactor < MAX_HEIGHT_DIFF)
+            if (heightDiffFactor < MAX_HEIGHT_DIFF) {
                 heightDiffFactor += HEIGHT_DIFF_STEP;
-            else
+            } else {
                 hoveringDirectionUp = false;
+            }
         } else {
-            if (heightDiffFactor > -MAX_HEIGHT_DIFF)
+            if (heightDiffFactor > -MAX_HEIGHT_DIFF) {
                 heightDiffFactor -= HEIGHT_DIFF_STEP;
-            else
+            } else {
                 hoveringDirectionUp = true;
+            }
         }
 
         drawColumns(height, angle);
@@ -84,7 +87,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        Vector left = getPlayer().getLocation().getDirection().setY(0).getCrossProduct(new Vector(0, 1, 0));
+        Vector left = getPlayer().getLocation().getDirection().setY(0).crossProduct(new Vector(0, 1, 0));
         double multiplier = 0.3;
         for (OrdinaryColor color : COLORS) {
             Particles.REDSTONE.display(color, getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));

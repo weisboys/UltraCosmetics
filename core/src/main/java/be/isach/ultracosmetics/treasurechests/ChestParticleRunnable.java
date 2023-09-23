@@ -17,6 +17,7 @@ public class ChestParticleRunnable extends BukkitRunnable {
     private final int totalChests;
     private int i;
     private PlaceChestRunnable chestRunnable = null;
+
     public ChestParticleRunnable(TreasureChest chest) {
         this.chest = chest;
         this.uc = UltraCosmeticsData.get().getPlugin();
@@ -72,7 +73,7 @@ public class ChestParticleRunnable extends BukkitRunnable {
 
         BlockFace face = getDirection(i);
         Vector v = new Vector(face.getModX(), face.getModY(), face.getModZ());
-        Vector perpendicular = v.getCrossProduct(Y_AXIS).multiply(horizontalOffset);
+        Vector perpendicular = v.clone().crossProduct(Y_AXIS).multiply(horizontalOffset);
         v.multiply(large ? 3 : 2).add(perpendicular);
 
         return chestLocation.add(v);
