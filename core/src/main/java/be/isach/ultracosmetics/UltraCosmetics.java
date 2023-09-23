@@ -371,7 +371,7 @@ public class UltraCosmetics extends JavaPlugin {
         new FallDamageManager().runTaskTimerAsynchronously(this, 0, 1);
         // No need to worry about the invalid world checker if all worlds are allowed
         if (!config.getStringList("Enabled-Worlds").contains("*")) {
-            new InvalidWorldChecker(this).runTaskTimerAsynchronously(this, 0, 5);
+            new InvalidWorldChecker(this).runTaskTimer(this, 0, 5);
         }
         if (config.getBoolean("Prevent-Cosmetics-In-Vanish")) {
             new VanishChecker(this).runTaskTimerAsynchronously(this, 100, 100);
