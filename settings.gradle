@@ -1,2 +1,2 @@
-include 'v1_19_R3', 'v1_20_R1', 'core', 'worldguard', 'worldguard-legacy'
+include 'v1_19_R3', 'v1_20_R2', 'core', 'worldguard', 'worldguard-legacy'
 rootProject.name = 'UltraCosmetics'
