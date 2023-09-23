@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.player;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.listeners.ClientBrandListener;
+import be.isach.ultracosmetics.run.LoadUltraPlayerTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -28,17 +29,28 @@ public class UltraPlayerManager {
     }
 
     public void createUltraPlayer(UUID uuid) {
-        // This should overwrite any existing UltraPlayer
-        UltraPlayer old = playerCache.put(uuid, new UltraPlayer(uuid, ultraCosmetics));
-        if (old != null) {
-            //ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Removed stale UltraPlayer, potential memory leak?");
+        // Happens if the player logs in before they're fully logged out,
+        // like when they are kicked for connecting from another location.
+        // In this case, schedule a task to load a new UltraPlayer as soon
+        // as the old one is disposed of.
+        if (playerCache.containsKey(uuid)) {
+            new LoadUltraPlayerTask(uuid, this).runTaskLater(ultraCosmetics, 2);
+            return;
         }
+        playerCache.put(uuid, new UltraPlayer(uuid, ultraCosmetics));
+    }
+
+    public boolean hasUltraPlayer(UUID uuid) {
+        return playerCache.containsKey(uuid);
     }
 
     public UltraPlayer getUltraPlayer(Player player) {
         if (player == null) return null;
+        return getUltraPlayer(player.getUniqueId());
+    }
 
-        return playerCache.computeIfAbsent(player.getUniqueId(), u -> new UltraPlayer(u, ultraCosmetics));
+    public UltraPlayer getUltraPlayer(UUID uuid) {
+        return playerCache.computeIfAbsent(uuid, u -> new UltraPlayer(u, ultraCosmetics));
     }
 
     public boolean remove(Player player) {
