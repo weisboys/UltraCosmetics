@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.menu.Menus;
 import be.isach.ultracosmetics.menu.buttons.RenamePetButton;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -25,18 +26,32 @@ import java.util.List;
 public class SubCommandMenu extends SubCommand {
 
     public SubCommandMenu(UltraCosmetics ultraCosmetics) {
-        super("menu", "Opens Specified Menu", "<menu> [page]", ultraCosmetics, true);
+        super("menu", "Opens Specified Menu", "<menu> [page] [player]", ultraCosmetics, true);
     }
 
     @Override
-    protected void onExePlayer(Player sender, String[] args) {
-        if (!SettingsManager.isAllowedWorld(sender.getWorld())) {
+    protected void onExeAnyone(CommandSender sender, String[] args) {
+        Player player;
+        UltraPlayer ultraPlayer;
+        if (args.length > 3) {
+            player = Bukkit.getPlayer(args[3]);
+            if (player == null) {
+                error(sender, "Player not found");
+                return;
+            }
+        } else {
+            if (!(sender instanceof Player)) {
+                error(sender, "You must specify a player");
+                return;
+            }
+            player = (Player) sender;
+        }
+        if (!SettingsManager.isAllowedWorld(player.getWorld())) {
             MessageManager.send(sender, "World-Disabled");
             return;
         }
-
-        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(sender);
         Menus menus = ultraCosmetics.getMenus();
+        ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
         if (args.length < 2) {
             menus.openMainMenu(ultraPlayer);
             return;
@@ -65,8 +80,7 @@ public class SubCommandMenu extends SubCommand {
             RenamePetButton.renamePet(ultraCosmetics, ultraPlayer, menus.getCategoryMenu(Category.PETS));
             return;
         } else if (s.startsWith("b") && UltraCosmeticsData.get().areTreasureChestsEnabled()) {
-            sender.closeInventory();
-            menus.openKeyPurchaseMenu(ultraCosmetics.getPlayerManager().getUltraPlayer(sender));
+            menus.openKeyPurchaseMenu(ultraPlayer);
             return;
         }
         Category cat;
@@ -84,11 +98,6 @@ public class SubCommandMenu extends SubCommand {
             return;
         }
         menus.getCategoryMenu(cat).open(ultraPlayer, page);
-    }
-
-    @Override
-    protected void onExeAnyone(CommandSender sender, String[] args) {
-        notAllowed(sender);
     }
 
     private List<String> getMenus() {
