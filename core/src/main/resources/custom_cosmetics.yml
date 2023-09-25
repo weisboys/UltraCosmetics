@@ -1,13 +1,13 @@
 # In this file, you can define custom hats, emotes, suits, or pets! How exciting!
 
 # Format for hats:
-# Start with the internal name of the cosmetic,
-# which must be ASCII-only and less than 32 characters.
-#   datatags:
+# Start with the internal name of the cosmetic, which must be ASCII-only and less than 32 characters.
+# For example, "CraftingTable":
+#   CraftingTable:
 #       # 'url' should be the end of a texture URL, like if the url is:
-#       # http://textures.minecraft.net/texture/40c761ccdb237d4c148fa48f36bdcff14f60cface2a6ea52214e150207d
+#       # http://textures.minecraft.net/texture/9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
 #       # Then the 'url' option should be:
-#       url: 40c761ccdb237d4c148fa48f36bdcff14f60cface2a6ea52214e150207d
+#       url: 9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
 # Once the hat is loaded, you will be able to change the display name and description in the messages file.
 Hats:
 
