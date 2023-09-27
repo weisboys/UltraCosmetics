@@ -6,12 +6,12 @@ Invalid-Pet: <prefix> <bold><red>Pet non valido!
 Invalid-Mount: <prefix> <bold><red>Invalid Mount!
 Invalid-Effect: <prefix> <bold><red>Invalid Effect!
 Invalid-Morph: <prefix> <bold><red>Invalid Morph!
-Invalid-Hat: <prefix> <bold><red>Invalid Hat!
+Invalid-Hat: <prefix> <bold><red>Cappello non valido!
 Invalid-Suit: <prefix> <bold><red>Invalid Suit!
-Invalid-Emote: <prefix> <bold><red>Invalid Emote!
+Invalid-Emote: <prefix> <bold><red>Emote non valida!
 Invalid-Menu: <prefix> <bold><red>Invalid Menu!
 Ammo: '<gray>Your ammo: </gray><yellow><ammo>'
-Purchase: <bold><green>PURCHASE
+Purchase: <bold><green>ACQUISTA
 Cancel: <bold><red>CANCEL
 Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo for $<price>
 Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> for $<price>
