@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.util;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 
@@ -12,7 +13,12 @@ public enum Problem {
     // Non-fatal
     BAD_MC_VERSION(false, "This version of Minecraft is not fully supported, please check for an update.", "unsupported-mc-version"),
     NMS_LOAD_FAILURE(false, "Couldn't load support for this MC version, please report this issue.", "nms-load-failure"),
-    BAD_MAPPINGS_VERSION(false, "Server internals seem to have changed since this build was created, you will likely experience issues.", "bad-mappings-version"),
+    BAD_MAPPINGS_VERSION(false, "Server internals seem to have changed since this build was created, you will likely experience issues.", "bad-mappings-version") {
+        @Override
+        public Component getSummary() {
+            return super.getSummary().append(Component.text(" (Expected version: " + UltraCosmeticsData.get().getServerVersion().getName() + ")"));
+        }
+    },
     TALL_DISGUISES_DISABLED(false, "TallSelfDisguises is disabled in LibsDisguises players.yml. This may cause morph self view to not behave as intended.", "tall-disguises-disabled"),
     SQL_INIT_FAILURE(false, "SQL failed to connect, using flatfile support instead.", "sql-init-failure"),
     WORLDGUARD_HOOK_FAILURE(false, "Failed to hook into WorldGuard.", "worldguard-hook-failure"),
