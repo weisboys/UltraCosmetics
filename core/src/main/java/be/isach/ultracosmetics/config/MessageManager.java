@@ -253,7 +253,9 @@ public class MessageManager {
         for (String key : loots.getKeys(false)) {
             String path = key + ".Message.message";
             if (loots.isString(path)) {
-                messagesConfig.set("Treasure-Chests-Loot-Messages." + key, serializer.serialize(deserializer.deserialize(loots.getString(path))));
+                String message = serializer.serialize(deserializer.deserialize(loots.getString(path)));
+                message = message.replaceAll("%(\\w+)%", "<$1>");
+                messagesConfig.set("Treasure-Chests-Loot-Messages." + key, message);
                 loots.set(path, null);
             }
         }
