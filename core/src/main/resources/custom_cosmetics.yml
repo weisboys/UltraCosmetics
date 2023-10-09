@@ -4,10 +4,16 @@
 # Start with the internal name of the cosmetic, which must be ASCII-only and less than 32 characters.
 # For example, "CraftingTable":
 #   CraftingTable:
-#       # 'url' should be the end of a texture URL, like if the url is:
+#       # If the hat is a player skull, 'url' should be the end of a texture URL, like if the url is:
 #       # http://textures.minecraft.net/texture/9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
 #       # Then the 'url' option should be:
 #       url: 9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
+# Here's another example, this time with a custom model data:
+#   CarvedPumpkinBlock:
+#       # 'type' should be the material name of the hat. If not present (like in the above example,) 'PLAYER_HEAD' is assumed.
+#       type: CARVED_PUMPKIN
+#       # 'custom-model-data' should be the custom model data of the hat. If not present, 0 is assumed.
+#       custom-model-data: 10
 # Once the hat is loaded, you will be able to change the display name and description in the messages file.
 Hats:
 
