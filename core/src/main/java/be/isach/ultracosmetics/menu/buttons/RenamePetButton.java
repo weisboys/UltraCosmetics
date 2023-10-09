@@ -76,13 +76,14 @@ public class RenamePetButton implements Button {
 
     public static Inventory buyRenamePet(UltraPlayer ultraPlayer, final String name, Menu returnMenu) {
         int price = SettingsManager.getConfig().getInt("Pets-Rename.Requires-Money.Price");
+        int discountPrice = UltraCosmeticsData.get().getPlugin().getEconomyHandler().calculateDiscountPrice(ultraPlayer.getBukkitPlayer(), price);
         Component renameTitle = MessageManager.getMessage("Menu.Purchase-Rename.Button.Showcase",
-                Placeholder.unparsed("price", String.valueOf(price)),
+                Placeholder.unparsed("price", String.valueOf(discountPrice)),
                 Placeholder.component("name", MessageManager.getMiniMessage().deserialize(name)));
         ItemStack showcaseItem = ItemFactory.create(XMaterial.NAME_TAG, renameTitle);
 
         PurchaseData purchaseData = new PurchaseData();
-        purchaseData.setPrice(price);
+        purchaseData.setBasePrice(price);
         purchaseData.setShowcaseItem(showcaseItem);
         purchaseData.setOnPurchase(() -> {
             ultraPlayer.setPetName(ultraPlayer.getCurrentPet().getType(), name);

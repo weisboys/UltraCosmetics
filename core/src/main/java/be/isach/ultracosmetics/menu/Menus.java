@@ -86,14 +86,15 @@ public class Menus {
      * Opens Ammo Purchase Menu.
      */
     public void openAmmoPurchaseMenu(GadgetType type, UltraPlayer player, Runnable menuReturnFunc) {
+        int price = ultraCosmetics.getEconomyHandler().calculateDiscountPrice(player.getBukkitPlayer(), type.getAmmoPrice());
         String itemName = MessageManager.getLegacyMessage("Buy-Ammo-Description",
                 Placeholder.unparsed("amount", String.valueOf(type.getResultAmmoAmount())),
-                Placeholder.unparsed("price", String.valueOf(type.getAmmoPrice())),
+                Placeholder.unparsed("price", String.valueOf(price)),
                 Placeholder.component("gadgetname", type.getName())
         );
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
         PurchaseData pd = new PurchaseData();
-        pd.setPrice(type.getAmmoPrice());
+        pd.setBasePrice(type.getAmmoPrice());
         pd.setShowcaseItem(display);
         pd.setOnPurchase(() -> {
             player.addAmmo(type, type.getResultAmmoAmount());
@@ -134,17 +135,18 @@ public class Menus {
             player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
             return;
         }
-        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(price));
+        int discountPrice = ultraCosmetics.getEconomyHandler().calculateDiscountPrice(player, price);
+        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(discountPrice));
         ItemStack itemStack = ItemFactory.rename(getTreasureKeyBaseItem(), MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
 
         PurchaseData pd = new PurchaseData();
-        pd.setPrice(price);
+        pd.setBasePrice(discountPrice);
         pd.setShowcaseItem(itemStack);
         pd.setCanPurchase(() -> {
-            UCKeyPurchaseEvent event = new UCKeyPurchaseEvent(ultraPlayer, price);
+            UCKeyPurchaseEvent event = new UCKeyPurchaseEvent(ultraPlayer, discountPrice);
             Bukkit.getPluginManager().callEvent(event);
             if (event.isCancelled()) return false;
-            pd.setPrice(event.getPrice());
+            pd.setBasePrice(event.getPrice());
             return true;
         });
         Menus menus = ultraCosmetics.getMenus();

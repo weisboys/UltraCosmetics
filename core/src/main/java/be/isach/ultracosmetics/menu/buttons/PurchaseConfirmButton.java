@@ -29,7 +29,7 @@ public class PurchaseConfirmButton implements Button {
         UltraPlayer player = clickData.getClicker();
         player.getBukkitPlayer().closeInventory();
         if (!purchaseData.canPurchase()) return;
-        eh.getHook().withdraw(player.getBukkitPlayer(), purchaseData.getPrice(), () -> {
+        eh.withdrawWithDiscount(player.getBukkitPlayer(), purchaseData.getBasePrice(), () -> {
             player.sendMessage(MessageManager.getMessage("Successful-Purchase"));
             purchaseData.runOnPurchase();
         }, () -> {

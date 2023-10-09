@@ -15,7 +15,7 @@ public class PurchaseData {
     private Runnable onCancel;
     private ItemStack showcaseItem;
 
-    public int getPrice() {
+    public int getBasePrice() {
         return price;
     }
 
@@ -36,7 +36,7 @@ public class PurchaseData {
         if (onCancel != null) onCancel.run();
     }
 
-    public void setPrice(int price) {
+    public void setBasePrice(int price) {
         this.price = price;
     }
 

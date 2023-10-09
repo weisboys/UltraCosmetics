@@ -521,3 +521,10 @@ Description-Style: "<gray><italic>"
 
 # Whether running `/uc` by itself should open the main menu instead of displaying the help message.
 Open-Menu-On-Base-Command: false
+
+# Permission groups that are given discounts.
+# For example, the group 'vip' will have the permission 'ultracosmetics.discount.vip'
+# The discount is applied by multiplying the price by the discount value, so 0.8 is 20% off.
+# The final amount will be rounded down, so if the normal price is $5, a 50% discount will make it $2.
+Discount-Groups:
+  vip: 0.8
