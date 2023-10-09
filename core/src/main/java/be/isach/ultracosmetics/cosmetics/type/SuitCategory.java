@@ -13,10 +13,8 @@ import be.isach.ultracosmetics.cosmetics.suits.SuitRave;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSanta;
 import be.isach.ultracosmetics.cosmetics.suits.SuitSlime;
 import be.isach.ultracosmetics.util.MathUtils;
-
-import org.bukkit.Color;
-
 import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -62,10 +60,10 @@ public enum SuitCategory {
     private SuitType leggings;
     private SuitType boots;
     private final Class<? extends Suit> clazz;
-    private final Function<ArmorSlot,Color> colorFunc;
+    private final Function<ArmorSlot, Color> colorFunc;
 
     private SuitCategory(String configName, String permissionSuffix, XMaterial helmet, XMaterial chestplate,
-            XMaterial leggings, XMaterial boots, Function<ArmorSlot,Color> colorFunc, Class<? extends Suit> clazz) {
+                         XMaterial leggings, XMaterial boots, Function<ArmorSlot, Color> colorFunc, Class<? extends Suit> clazz) {
         this.configName = configName;
         this.permissionSuffix = permissionSuffix;
         this.clazz = clazz;
@@ -82,11 +80,11 @@ public enum SuitCategory {
         this.leggings = new SuitType(leggingsType, ArmorSlot.LEGGINGS, this);
         this.boots = new SuitType(bootsType, ArmorSlot.BOOTS, this);
         if (CosmeticType.GENERATE_MISSING_MESSAGES) {
-            MessageManager.addMessage(getConfigPath() + ".whole-equip", "&f&lwhole " + configName + " &f&lsuit");
-            MessageManager.addMessage(getConfigPath() + ".helmet-name", configName + " &f&Helmet");
-            MessageManager.addMessage(getConfigPath() + ".chestplate-name", configName + " &f&lChestplate");
-            MessageManager.addMessage(getConfigPath() + ".leggings-name", configName + " &f&lLeggings");
-            MessageManager.addMessage(getConfigPath() + ".boots-name", configName + " &f&lBoots");
+            MessageManager.addMessage(getConfigPath() + ".whole-equip", "<bold>whole</bold> " + configName + " <bold>suit");
+            MessageManager.addMessage(getConfigPath() + ".helmet-name", configName + " <bold>Helmet");
+            MessageManager.addMessage(getConfigPath() + ".chestplate-name", configName + " <bold>Chestplate");
+            MessageManager.addMessage(getConfigPath() + ".leggings-name", configName + " <bold>Leggings");
+            MessageManager.addMessage(getConfigPath() + ".boots-name", configName + " <bold>Boots");
         }
     }
 
@@ -128,15 +126,15 @@ public enum SuitCategory {
 
     public SuitType getPiece(ArmorSlot slot) {
         switch (slot) {
-        case HELMET:
-            return getHelmet();
-        case CHESTPLATE:
-        default:
-            return getChestplate();
-        case LEGGINGS:
-            return getLeggings();
-        case BOOTS:
-            return getBoots();
+            case HELMET:
+                return getHelmet();
+            case CHESTPLATE:
+            default:
+                return getChestplate();
+            case LEGGINGS:
+                return getLeggings();
+            case BOOTS:
+                return getBoots();
         }
     }
 
@@ -152,7 +150,6 @@ public enum SuitCategory {
     }
 
     public static List<SuitCategory> enabled() {
-        List<SuitCategory> enabled = new ArrayList<>(Arrays.asList(values()));
-        return enabled;
+        return new ArrayList<>(Arrays.asList(values()));
     }
 }

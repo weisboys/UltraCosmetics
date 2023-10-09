@@ -108,6 +108,17 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
             MessageManager.save();
         }
         VALUES.forEach((c, l) -> l.forEach(t -> t.setupConfig(SettingsManager.getConfig(), t.getConfigPath())));
+        // Reprocess enabled cosmetics now that each cosmetic has added its config options
+        updateEnabled();
+    }
+
+    public static void updateEnabled() {
+        ENABLED.clear();
+        VALUES.forEach((cat, types) -> types.forEach(type -> {
+            if (type.isEnabled()) {
+                ENABLED.computeIfAbsent(cat, l -> new ArrayList<>()).add(type);
+            }
+        }));
     }
 
     private final String configName;
@@ -246,8 +257,8 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         permission = registeredPermissions.computeIfAbsent(category.getPermission() + "." + getPermissionSuffix(), s -> {
             Permission perm = new Permission(s);
             try {
-                Bukkit.getPluginManager().addPermission(perm);
                 perm.addParent(ALL_PERMISSION, true);
+                Bukkit.getPluginManager().addPermission(perm);
             } catch (IllegalArgumentException ignored) {
             }
             return perm;
