@@ -32,7 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Chave de 
 You-Won-Treasure-Chests: '<prefix> <bold><white>Você ganhou: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Todos os locais do tesouro estão cheios, aguarde e tente novamente
 No-Ammo: <prefix> <bold><red>Você não tem nenhuma munição para esta engenhoca!
-Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
+Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
 Clear:
   Cosmetics: <bold><red>Limpar cosméticos
   Gadgets: <bold><red>Limpar a engenhoca atual

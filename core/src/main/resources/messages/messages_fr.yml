@@ -32,7 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Clé de C
 You-Won-Treasure-Chests: '<prefix> <bold><white>Tu as gagné : <name> !'
 Treasure-Chest-Occupied: <prefix> <bold><red>Pas d'endroits disponibles pour ouvrir un coffre, patiente un peu puis réessaye
 No-Ammo: <prefix> <bold><red>Vous n'avez pas de munitions pour ce gadget!
-Cannot-Sell-Item: <prefix> <bold><red> You cannot sell this item!
+Cannot-Sell-Item: <prefix> <bold><red>Vous ne pouvez pas vendre cet objet !
 Clear:
   Cosmetics: <bold><red>Retirer les cosmétiques
   Gadgets: <bold><red>Retirer le gadget actuel
