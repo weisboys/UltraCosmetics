@@ -8,7 +8,7 @@
 #       # http://textures.minecraft.net/texture/9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
 #       # Then the 'url' option should be:
 #       url: 9f30ffbc0110efa34e030860da18c8a1d6b223de0f00d9e4c5d0cfa7ecfafa48
-# Here's another example, this time with a custom model data:
+# Here's another example, this time with custom model data:
 #   CarvedPumpkinBlock:
 #       # 'type' should be the material name of the hat. If not present (like in the above example,) 'PLAYER_HEAD' is assumed.
 #       type: CARVED_PUMPKIN
