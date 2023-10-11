@@ -13,6 +13,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -22,6 +23,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -102,6 +104,17 @@ public class ItemFactory {
         return spawnUnpickableItem(material.parseItem(), loc, new Vector(random.nextDouble() - 0.5, random.nextDouble() / 2.0, random.nextDouble() - 0.5).multiply(variance));
     }
 
+    public static void applyCosmeticMarker(ItemStack item) {
+        // PDC is only available in 1.14+
+        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14)) return;
+
+        ItemMeta meta = item.getItemMeta();
+        // Do not cache this in a field, it doesn't exist on versions below 1.12
+        NamespacedKey marker = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), "marker");
+        meta.getPersistentDataContainer().set(marker, PersistentDataType.BYTE, (byte) 1);
+        item.setItemMeta(meta);
+    }
+
     public static ItemStack getItemStackFromConfig(String path) {
         XMaterial mat = getFromConfigInternal(path);
         if (mat != null) return mat.parseItem();
@@ -161,6 +174,7 @@ public class ItemFactory {
         }
 
         stack.setItemMeta(meta);
+        applyCosmeticMarker(stack);
         return stack;
     }
 

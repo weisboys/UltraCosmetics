@@ -194,6 +194,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     public void updateItemStack() {
         itemStack = ItemFactory.create(getType().getMaterial(), getItemDisplayName(), MessageManager.getLegacyMessage("Gadgets.Lore"));
+        ItemFactory.applyCosmeticMarker(itemStack);
     }
 
     public void equipItem() {

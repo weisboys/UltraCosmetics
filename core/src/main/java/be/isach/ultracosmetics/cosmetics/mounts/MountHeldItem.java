@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Material;
@@ -30,6 +31,7 @@ public abstract class MountHeldItem extends Mount implements UnmovableItemProvid
         String loreString = MessageManager.getLegacyMessage(getOptionPath("Held-Item-Lore"));
         meta.setLore(Arrays.asList(loreString.split("\n")));
         heldItem.setItemMeta(meta);
+        ItemFactory.applyCosmeticMarker(heldItem);
     }
 
     @Override

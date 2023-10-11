@@ -248,7 +248,7 @@ public class HatType extends CosmeticType<Hat> {
                 return;
             }
             Optional<XMaterial> choice = XMaterial.matchXMaterial(hats.getString(key + ".type", ""));
-            if (!choice.isPresent()) {
+            if (!choice.isPresent() || !choice.get().isSupported()) {
                 // Invalid type
                 UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "Invalid type for custom hat '" + key + "'");
                 continue;
