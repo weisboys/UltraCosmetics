@@ -21,7 +21,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -34,7 +36,7 @@ import java.util.Set;
  * @since 07-05-2016
  */
 public abstract class Menu implements Listener {
-    private static final Permission ALL_MENUS_PERMISSION = registerAllPermission();
+    public static final Permission ALL_MENUS_PERMISSION = registerAllPermission();
 
     private static Permission registerAllPermission() {
         Permission perm = Bukkit.getPluginManager().getPermission("ultracosmetics.menu.all");
@@ -46,6 +48,10 @@ public abstract class Menu implements Listener {
     }
 
     private static final Map<String, Permission> REGISTERED_PERMISSIONS = new HashMap<>();
+
+    public static List<Permission> getMenuPermissions() {
+        return new ArrayList<>(REGISTERED_PERMISSIONS.values());
+    }
 
     /**
      * UltraCosmetics Instance.

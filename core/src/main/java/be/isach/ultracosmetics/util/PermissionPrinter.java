@@ -6,6 +6,8 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
+import be.isach.ultracosmetics.menu.Menu;
+import org.bukkit.permissions.Permission;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -51,6 +53,11 @@ public class PermissionPrinter {
         writer.println("### Treasure Chests:");
         writer.println("  - ultracosmetics.treasurechests.buykey (enabled by default)");
         writer.println();
+        writer.println("### Menu permissions:");
+        writer.println("  - " + Menu.ALL_MENUS_PERMISSION.getName() + " (enabled by default)");
+        for (Permission perm : Menu.getMenuPermissions()) {
+            writer.println("  - " + perm.getName());
+        }
         writer.println("### Bypass perms:");
         writer.println("  - ultracosmetics.bypass.disabledcommands");
         writer.println("  - ultracosmetics.bypass.cooldown (granted to no one by default)");

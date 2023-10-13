@@ -56,6 +56,10 @@ public class Menus {
         new CosmeticsInventoryHolder();
     }
 
+    public Menu getMainMenu() {
+        return mainMenu;
+    }
+
     public void setMainMenu(Menu menu) {
         this.mainMenu = menu;
     }
