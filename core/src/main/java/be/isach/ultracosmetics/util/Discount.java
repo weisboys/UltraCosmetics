@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.util;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import org.bukkit.permissions.PermissionDefault;
 import org.jetbrains.annotations.NotNull;
 
 public class Discount implements Comparable<Discount> {
@@ -11,7 +12,7 @@ public class Discount implements Comparable<Discount> {
 
     public Discount(String name, double discount) {
         this.discount = discount;
-        this.permission = new Permission("ultracosmetics.discount." + name);
+        this.permission = new Permission("ultracosmetics.discount." + name, PermissionDefault.FALSE);
         try {
             Bukkit.getPluginManager().addPermission(permission);
         } catch (IllegalArgumentException ignored) {
