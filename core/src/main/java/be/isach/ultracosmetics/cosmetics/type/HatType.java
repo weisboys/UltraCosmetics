@@ -245,7 +245,7 @@ public class HatType extends CosmeticType<Hat> {
                 }
                 addCustomStrings(key);
                 new HatType(url, key);
-                return;
+                continue;
             }
             Optional<XMaterial> choice = XMaterial.matchXMaterial(hats.getString(key + ".type", ""));
             if (!choice.isPresent() || !choice.get().isSupported()) {
