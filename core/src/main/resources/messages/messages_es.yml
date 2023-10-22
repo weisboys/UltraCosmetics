@@ -32,7 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Llave del
 You-Won-Treasure-Chests: '<prefix> <bold><white>Ganaste un: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Los espacios para abrir cofres estan llenos. Por favor espera y prueba nuevamente
 No-Ammo: <prefix> <bold><red>¡No tienes munición para este dispositivo!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Cannot-Sell-Item: <prefix> <bold><red>No puedes vender este item!
 Clear:
   Cosmetics: <bold><red>Quitar todos los cosmetics activos
   Gadgets: <bold><red>Quitar gadget activo
@@ -137,7 +137,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Pagina Anterior
       Next-Page: <bold><green>Proxima Pagina
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>DESHABILITADO
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>No hay suficiente espacio para poner el cofre!
   Region-Disabled: <prefix> <bold><red>No puedes abrir un cofre aqui!
