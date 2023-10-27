@@ -560,6 +560,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         configMigration();
         boolean lootCommandsPresent = config.isConfigurationSection("TreasureChests.Loots.Commands");
+        boolean designsPresent = config.isConfigurationSection("TreasureChests.Designs");
 
         for (String key : defaults.getKeys(true)) {
             if (key.startsWith("TreasureChests.Loots.Commands.") && lootCommandsPresent
@@ -567,6 +568,7 @@ public class UltraCosmetics extends JavaPlugin {
                 continue;
             }
             if (key.startsWith("TreasureChests.Locations.default")) continue;
+            if (key.startsWith("TreasureChests.Designs") && designsPresent) continue;
             config.addDefault(key, defaults.get(key), defaults.comments(key));
         }
         for (String key : defaults.getConfigurationSection("TreasureChests.Loots").getKeys(false)) {
