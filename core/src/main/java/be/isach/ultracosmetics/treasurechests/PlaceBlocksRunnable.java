@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -31,37 +30,59 @@ public class PlaceBlocksRunnable extends BukkitRunnable {
             cancel();
             return;
         }
-        if (i == 0) {
+        if (i <= 0) {
             particleRunnable = new ChestParticleRunnable(chest);
             particleRunnable.runTaskTimer(uc, 0L, 50L);
             cancel();
             return;
         }
-        Block lampBlock;
+        doChestStages(player);
+    }
+
+    private void doChestStages(Player player) {
         if (i == 6) {
-            lampBlock = chest.getCenter().add(0.0D, -1.0D, 0.0D).getBlock();
             doChestStage(player.getLocation().subtract(0, 1, 0), ChestBlockPattern.CENTER_BLOCK, design.getCenter());
-        } else if (i == 5) {
-            doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), ChestBlockPattern.AROUND_CENTER, design.getBlocks2());
-            if (!large) i--;
-        } else if (i == 4) {
+        }
+        if (i == 5) {
+            boolean executed = doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), ChestBlockPattern.AROUND_CENTER, design.getBlocks2());
+            if (!large) {
+                i--;
+                if (executed) {
+                    // If this stage did run, we don't want to immediately trigger the next stage by the previous decrement
+                    i--;
+                    return;
+                }
+            }
+        }
+        if (i == 4) {
             doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), ChestBlockPattern.LARGE_AROUND_AROUND, design.getBlocks2());
-        } else if (i == 3) {
+        }
+        if (i == 3) {
             doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), large ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBlocks3());
-        } else if (i == 2) {
+        }
+        if (i == 2) {
             doChestStage(chest.getCenter().add(0.0D, -1.0D, 0.0D), large ? ChestBlockPattern.LARGE_BELOW_CHEST : ChestBlockPattern.BELOW_CHEST, design.getBelowChests());
-        } else if (i == 1) {
+        }
+        if (i == 1) {
             doChestStage(chest.getCenter(), large ? ChestBlockPattern.LARGE_CORNERS : ChestBlockPattern.CORNERS, design.getBarriers());
         }
         i--;
     }
 
-    private void doChestStage(Location center, ChestBlockPattern pattern, XMaterial newData) {
-        if (newData == null) return;
+    /**
+     * @return true if stage was executed
+     */
+    private boolean doChestStage(Location center, ChestBlockPattern pattern, XMaterial newData) {
+        if (newData == null) {
+            // Skip this stage, go to next
+            i--;
+            return false;
+        }
         pattern.loop(center, loc -> chest.addRestoreBlock(loc.getBlock(), newData));
+        return true;
     }
 
-    public void propogateCancel() {
+    public void propagateCancel() {
         cancel();
         if (particleRunnable != null) {
             particleRunnable.propogateCancel();

@@ -560,7 +560,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         configMigration();
         boolean lootCommandsPresent = config.isConfigurationSection("TreasureChests.Loots.Commands");
-        boolean designsPresent = config.isConfigurationSection("TreasureChests.Designs");
+        boolean designsPresent = config.isConfigurationSection("TreasureChests.Designs") && !config.getConfigurationSection("TreasureChests.Designs").getKeys(false).isEmpty();
 
         for (String key : defaults.getKeys(true)) {
             if (key.startsWith("TreasureChests.Loots.Commands.") && lootCommandsPresent

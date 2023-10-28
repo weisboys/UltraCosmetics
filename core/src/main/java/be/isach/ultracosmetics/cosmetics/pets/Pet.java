@@ -31,6 +31,7 @@ import org.bukkit.entity.Tameable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
@@ -277,6 +278,14 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
         if (event.getPlayer() == getPlayer()) getEntity().teleport(getPlayer());
+    }
+
+    // Going through portals seems to break pathfinders
+    @EventHandler
+    public void onPortal(EntityPortalEvent event) {
+        if (event.getEntity() == getEntity()) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler

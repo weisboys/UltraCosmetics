@@ -157,7 +157,7 @@ public class TreasureChest implements Listener {
 
     private void cancelRunnables() {
         // cancels all child runnables as well
-        blocksRunnable.propogateCancel();
+        blocksRunnable.propagateCancel();
     }
 
     @EventHandler
