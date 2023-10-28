@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
+import be.isach.ultracosmetics.cosmetics.gadgets.Gadget;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.ServerVersion;
@@ -146,7 +147,12 @@ public class WorldGuardManager {
             }
         }
         if (ultraPlayer.hasCosmetic(Category.GADGETS)) {
-            Bukkit.getScheduler().runTask(ultraCosmetics, () -> ultraPlayer.getCurrentGadget().equipItem());
+            Bukkit.getScheduler().runTask(ultraCosmetics, () -> {
+                Gadget gadget = (Gadget) ultraPlayer.getCurrentGadget();
+                // One tick has elapsed since the previous check, so we should check again.
+                if (gadget == null) return;
+                gadget.equipItem();
+            });
         }
     }
 
