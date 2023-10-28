@@ -10,7 +10,7 @@ allprojects {
     idea.module.downloadSources = true
 
     group = 'be.isach.UltraCosmetics'
-    version = '3.4'
+    version = '3.4.1'
     def classifier = 'RELEASE'
 
     tasks.withType(JavaCompile) {
