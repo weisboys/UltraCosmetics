@@ -32,7 +32,7 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Chave de 
 You-Won-Treasure-Chests: '<prefix> <bold><white>Você ganhou: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Todos os locais do tesouro estão cheios, aguarde e tente novamente
 No-Ammo: <prefix> <bold><red>Você não tem nenhuma munição para esta engenhoca!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Cannot-Sell-Item: <prefix> <bold><red>Você não pode vender este item!
 Clear:
   Cosmetics: <bold><red>Limpar cosméticos
   Gadgets: <bold><red>Limpar a engenhoca atual
@@ -596,7 +596,7 @@ Pets:
     entity-displayname: <bold><playername>'s Kitty
     Description: Meoooow
   Dog:
-    menu-name: <bold><gray>Dog
+    menu-name: <bold><gray>Cachorro
     entity-displayname: <bold><playername>'s Dog
     Description: Woof!
   Chick:
@@ -622,7 +622,7 @@ Pets:
   IronGolem:
     menu-name: <bold><gray>Iron Golem
     entity-displayname: <bold><playername>'s Iron Golem
-    Description: I like flowers
+    Description: Eu gosto de flores
   Snowman:
     menu-name: <bold><white>Snowman
     entity-displayname: <bold><playername>'s Snowman
@@ -636,11 +636,11 @@ Pets:
     entity-displayname: <bold><playername>'s Bat
     Description: I prefer dark areas
   PolarBear:
-    menu-name: <bold><aqua>Polar Bear
+    menu-name: <bold><aqua>Urso Polar
     entity-displayname: <bold><playername>'s Polar Bear
-    Description: I prefer cold areas
+    Description: Eu prefiro áreas geladas
   Llama:
-    menu-name: <bold><gray>Llama
+    menu-name: <bold><gray>Lhama
     entity-displayname: <bold><playername>'s Llama
     Description: Need me to carry anything?
   Parrot:
@@ -957,7 +957,7 @@ Morphs:
   PolarBear:
     name: <bold><white>Polar Bear
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Blizzard'
-    Description: I prefer cold areas
+    Description: Eu prefiro áreas geladas
   Llama:
     name: <bold><dark_aqua>Llama
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Spit'
