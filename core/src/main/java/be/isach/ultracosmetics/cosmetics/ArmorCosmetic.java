@@ -36,7 +36,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     public ArmorCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13)) {
             attributes = getAttributes();
         } else {
             attributes = new HashMap<>();
