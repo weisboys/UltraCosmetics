@@ -1,34 +1,34 @@
-Prefix: <italic><bold>Cosmetics >
-No-Permission: <bold><red>You don't have the permission!
-Cosmetic-Disabled: <prefix> <bold><red>This cosmetic is disabled!
-Invalid-Gadget: <prefix> <bold><red>Invalid Gadget!
-Invalid-Pet: <prefix> <bold><red>Invalid Pet!
-Invalid-Mount: <prefix> <bold><red>Invalid Mount!
-Invalid-Effect: <prefix> <bold><red>Invalid Effect!
-Invalid-Morph: <prefix> <bold><red>Invalid Morph!
-Invalid-Hat: <prefix> <bold><red>Invalid Hat!
-Invalid-Suit: <prefix> <bold><red>Invalid Suit!
-Invalid-Emote: <prefix> <bold><red>Invalid Emote!
-Invalid-Menu: <prefix> <bold><red>Invalid Menu!
-Ammo: '<gray>Your ammo: </gray><yellow><ammo>'
-Purchase: <bold><green>PURCHASE
-Cancel: <bold><red>CANCEL
-Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo for $<price>
-Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> for $<price>
-Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
-Click-To-Purchase: <yellow>Click to purchase for $<price>
-Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
-Successful-Purchase: <prefix> <bold><green>Successful purchase!
-Buy-Treasure-Key: <bold>Buy a Treasure Key
-Treasure-Keys: <bold><gray>Treasure Keys
-Treasure-Chests: <bold><gold>Treasure Chests
-Dont-Have-Key: <bold><dark_red>You need a key!
-Click-Open-Chest: <green>Click to open a chest
-Click-Buy-Key: <green>Click to buy a key
-Left-Click-Open-Chest: <green>Left-click to open a chest
-Right-Click-Simple: <green>Right-click to just get cosmetics
-Your-Keys: '<italic><gray>Your keys: </gray></italic><bold><white><keys>'
-Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Treasure Key </gray><yellow>for $<price>
+Prefix: <italic><bold>코스메틱 >
+No-Permission: <bold><red>권한이 없습니다!
+Cosmetic-Disabled: <prefix> <bold><red>이 코스메틱은 비활성화 되었어요!
+Invalid-Gadget: <prefix> <bold><red>잘못된 가젯입니다!
+Invalid-Pet: <prefix> <bold><red>잘못된 펫입니다!
+Invalid-Mount: <prefix> <bold><red>잘못된 마운트입니다!
+Invalid-Effect: <prefix> <bold><red>잘못된 효과입니다!
+Invalid-Morph: <prefix> <bold><red>잘못된 형태입니다!
+Invalid-Hat: <prefix> <bold><red>잘못된 모자입니다!
+Invalid-Suit: <prefix> <bold><red>잘못된 슈트입니다!
+Invalid-Emote: <prefix> <bold><red>잘못된 표현입니다!
+Invalid-Menu: <prefix> <bold><red>잘못된 메뉴입니다!
+Ammo: '<gray>횟수: </gray><yellow><ammo>'
+Purchase: <bold><green>구매
+Cancel: <bold><red>취소
+Buy-Ammo-Description: <bold><yellow> $<price>에 <gadgetname>사용횟수를 <amount>개 구매
+Buy-Cosmetic-Description: <bold><yellow>$<price>에 <gadgetname>를 구매
+Right-Click-Buy-Ammo: <gray>우클릭으로 사용횟수 구매
+Click-To-Purchase: <yellow>클릭 시 $<price>에 구매
+Not-Enough-Money: <prefix> <bold><red>돈이 부족합니다!
+Successful-Purchase: <prefix> <bold><green>구매에 성공했습니다!
+Buy-Treasure-Key: <bold>보물 열쇠 구매
+Treasure-Keys: <bold><gray>보물 열쇠
+Treasure-Chests: <bold><gold>보물 상자
+Dont-Have-Key: <bold><dark_red>열쇠가 필요합니다!
+Click-Open-Chest: <green>클릭하여 상자 열기
+Click-Buy-Key: <green>클릭하여 열쇠 구매
+Left-Click-Open-Chest: <green>좌클릭으로 상자 열기
+Right-Click-Simple: <green>우클릭으로 치장 얻기
+Your-Keys: '<italic><gray>열쇠: </gray></italic><bold><white><keys>'
+Buy-Treasure-Key-ItemName: <bold><gray>보물열쇠 </gray><yellow>1개는 </yellow><yellow>$<price> 입니다
 You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
