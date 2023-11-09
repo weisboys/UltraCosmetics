@@ -247,10 +247,10 @@ Gadgets:
     Not-Space-Above: <bold><red>Il n'y a pas assez de place au-dessus de toi !
     Description: Danse !
   ColorBomb:
-    name: <bold><light_purple>Bombe de Couleur
+    name: <bold><light_purple>Bombe de couleur
     Description: Une bombe colorée !
   Chickenator:
-    name: <bold><white>Lanceur de Poulets
+    name: <bold><white>Lanceur de poulets
     Description: 1. Tire ! 2. Boom ! 3. KFC !
   PortalGun:
     name: <bold><red>Pistolet </red></bold><bold><blue>Portail
