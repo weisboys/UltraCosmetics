@@ -27,7 +27,8 @@ import java.util.Set;
  */
 public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
-    private Set<Item> items = new HashSet<>();
+    private final Set<Item> active = new HashSet<>();
+    private final Set<Item> forRemoval = new HashSet<>();
 
     public GadgetFleshHook(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -36,20 +37,19 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
     @SuppressWarnings("deprecation")
     @EventHandler
     public void onItemPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
-        if (!items.remove(event.getItem())) return;
+        if (!active.contains(event.getItem()) && !forRemoval.contains(event.getItem())) return;
         event.setCancelled(true);
 
         UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(event.getPlayer());
 
-        if (ultraPlayer != null && !ultraPlayer.canBeHitByOtherGadgets()) {
-            return;
-        }
+        if (ultraPlayer == null) return;
 
         Player hitter = getPlayer();
-        if (event.getPlayer() == hitter || !canAffect(event.getPlayer(), hitter)) {
-            return;
-        }
+        if (event.getPlayer() == hitter || !canAffect(event.getPlayer(), hitter)) return;
+
         event.getItem().remove();
+        active.remove(event.getItem());
+        forRemoval.remove(event.getItem());
         final Player HIT = event.getPlayer();
         HIT.playEffect(EntityEffect.HURT);
         double dX = HIT.getLocation().getX() - hitter.getLocation().getX();
@@ -67,28 +67,38 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
 
     @Override
     protected void onRightClick() {
-        items.add(ItemFactory.createUnpickableItemDirectional(XMaterial.TRIPWIRE_HOOK, getPlayer(), 1.5));
+        Item item = ItemFactory.createUnpickableItemDirectional(XMaterial.TRIPWIRE_HOOK, getPlayer(), 1.5);
+        item.setPickupDelay(0);
+        active.add(item);
     }
 
     @Override
     public void onUpdate() {
-        Bukkit.getScheduler().runTask(getUltraCosmetics(), () -> {
-            Iterator<Item> it = items.iterator();
-            while (it.hasNext()) {
-                Item pair = it.next();
-                if (pair.isOnGround()) {
-                    pair.remove();
-                    it.remove();
-                }
+        Iterator<Item> it = active.iterator();
+        Set<Item> toRemove = new HashSet<>();
+        while (it.hasNext()) {
+            Item pair = it.next();
+            if (pair.isOnGround()) {
+                pair.remove();
+                toRemove.add(pair);
+                forRemoval.add(pair);
             }
-        });
+        }
+        if (!toRemove.isEmpty()) {
+            Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
+                for (Item item : toRemove) {
+                    item.remove();
+                    forRemoval.remove(item);
+                }
+            }, 10);
+        }
     }
 
     @Override
     public void onClear() {
-        for (Item item : items) {
+        for (Item item : active) {
             item.remove();
         }
-        items.clear();
+        active.clear();
     }
 }

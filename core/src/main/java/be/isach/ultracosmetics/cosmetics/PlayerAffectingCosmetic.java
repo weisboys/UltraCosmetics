@@ -19,7 +19,7 @@ public interface PlayerAffectingCosmetic {
             if (Bukkit.getPlayer(target.getUniqueId()) == null) return false;
             if (isHidden(target, owner)) return false;
             UltraPlayer ultraPlayer = getSelf().getUltraCosmetics().getPlayerManager().getUltraPlayer(target);
-            if (!ultraPlayer.hasGadgetsEnabled() || ultraPlayer.getCurrentTreasureChest() != null) {
+            if (!ultraPlayer.canBeHitByOtherGadgets() || !ultraPlayer.hasGadgetsEnabled() || ultraPlayer.getCurrentTreasureChest() != null) {
                 return false;
             }
             if (!getSelf().getUltraCosmetics().getWorldGuardManager().canAffectPlayersHere(target)) {
