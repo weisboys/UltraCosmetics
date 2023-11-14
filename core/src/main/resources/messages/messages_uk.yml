@@ -1854,3 +1854,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Ви повинні зняти шолом, щоб активувати емоцію!
   Gadgets: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації гаджету!
   Mounts: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації транспорту!
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
