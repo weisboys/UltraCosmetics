@@ -1853,3 +1853,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Vous devez retirer votre casque pour équiper une emote !
   Gadgets: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper un gadget !
   Mounts: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper cette monture !
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
