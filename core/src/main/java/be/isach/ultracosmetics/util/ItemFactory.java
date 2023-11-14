@@ -22,6 +22,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
@@ -186,10 +187,12 @@ public class ItemFactory {
     }
 
 
-    public static ItemStack createSkull(String str, String name) {
+    public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
         ItemMeta meta = head.getItemMeta();
-        SkullUtils.applySkin(meta, str);
+        //SkullUtils.applySkin(meta, str);
+        // Temporary workaround until #234 is fixed in XSeries
+        SkullUtils.setSkullBase64((SkullMeta) meta, SkullUtils.encodeTexturesURL("https://textures.minecraft.net/texture/" + url), url);
         head.setItemMeta(meta);
         return head;
     }
