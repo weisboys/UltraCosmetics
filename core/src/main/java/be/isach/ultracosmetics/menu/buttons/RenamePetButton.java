@@ -54,9 +54,13 @@ public class RenamePetButton implements Button {
     }
 
     public static void renamePet(UltraCosmetics ultraCosmetics, final UltraPlayer ultraPlayer, Menu returnMenu) {
+        String oldName = ultraPlayer.getProfile().getPetName(ultraPlayer.getCurrentPet().getType());
+        if (oldName == null) {
+            oldName = MessageManager.getLegacyMessage("Menu.Rename-Pet.Placeholder");
+        }
         new AnvilGUI.Builder().plugin(ultraCosmetics)
                 .itemLeft(XMaterial.PAPER.parseItem())
-                .text(MessageManager.getLegacyMessage("Menu.Rename-Pet.Placeholder"))
+                .text(oldName)
                 .title(MessageManager.getLegacyMessage("Menu.Rename-Pet.Title"))
                 .onClick((slot, state) -> {
                     if (slot != AnvilGUI.Slot.OUTPUT) return Collections.emptyList();
