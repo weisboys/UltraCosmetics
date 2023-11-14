@@ -1850,3 +1850,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>You must remove your helmet to equip an emote!
   Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
