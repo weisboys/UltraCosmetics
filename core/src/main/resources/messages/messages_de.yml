@@ -1856,3 +1856,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Du musst deinen Helm entfernen, um ein Emote auszurüsten!
   Gadgets: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!
   Mounts: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
