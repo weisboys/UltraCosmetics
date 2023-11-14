@@ -1854,3 +1854,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>你需要先移除您的头盔才能使用表情！
   Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
