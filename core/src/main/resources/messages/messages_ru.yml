@@ -1853,3 +1853,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Вы должны снять шлем, чтобы экипировать эмоцию!
   Gadgets: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы использовать гаджет!
   Mounts: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы экипировать этот транспорт!
+Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
