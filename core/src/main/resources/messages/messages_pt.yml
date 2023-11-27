@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Você ganhou: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Todos os locais do tesouro estão cheios, aguarde e tente novamente
 No-Ammo: <prefix> <bold><red>Você não tem nenhuma munição para esta engenhoca!
 Cannot-Sell-Item: <prefix> <bold><red>Você não pode vender este item!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
   Cosmetics: <bold><red>Limpar cosméticos
   Gadgets: <bold><red>Limpar a engenhoca atual
