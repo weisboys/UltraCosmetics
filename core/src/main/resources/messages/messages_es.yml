@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Ganaste un: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Los espacios para abrir cofres estan llenos. Por favor espera y prueba nuevamente
 No-Ammo: <prefix> <bold><red>¡No tienes munición para este dispositivo!
 Cannot-Sell-Item: <prefix> <bold><red>No puedes vender este item!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
   Cosmetics: <bold><red>Quitar todos los cosmetics activos
   Gadgets: <bold><red>Quitar gadget activo
