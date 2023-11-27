@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Anda mendapatkan: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Semua lokasi kotak kosmetik telah penuh, mohon tunggu dan coba kembali
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
 Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
   Cosmetics: <bold><red>Bersihkan kosmetik
   Gadgets: <bold><red>Bersihkan peralatan saat ini
