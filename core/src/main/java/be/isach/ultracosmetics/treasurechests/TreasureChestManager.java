@@ -67,10 +67,14 @@ public class TreasureChestManager implements Listener {
         return list.get(random.nextInt(set.size()));
     }
 
-    public void tryOpenChest(Player player) {
+    /*
+     * Returns false if a chest could not be opened, but a simple mode chest may succeed.
+     * Returns true for success or if the key purchase menu was opened.
+     */
+    public boolean tryOpenChest(Player player) {
         if (TREASURE_LOCATIONS.size() == 0) {
             tryOpenChest(player, null);
-            return;
+            return false;
         }
         List<TreasureLocation> locations = new ArrayList<>(TREASURE_LOCATIONS);
         for (UltraPlayer up : ultraCosmetics.getPlayerManager().getUltraPlayers()) {
@@ -80,27 +84,31 @@ public class TreasureChestManager implements Listener {
         }
         if (locations.size() == 0) {
             MessageManager.send(player, "Treasure-Chest-Occupied");
-            return;
+            return false;
         }
         TreasureLocation tloc = locations.get(random.nextInt(locations.size()));
-        tryOpenChest(player, tloc);
+        return tryOpenChest(player, tloc);
     }
 
-    public void tryOpenChest(Player player, TreasureLocation tpTo) {
+    /**
+     * @see #tryOpenChest(Player)
+     */
+    public boolean tryOpenChest(Player player, TreasureLocation tpTo) {
         UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(player);
         if (ultraPlayer.getCurrentTreasureChest() != null) {
-            return;
+            return false;
         }
 
         if (ultraPlayer.getKeys() < 1) {
             player.closeInventory();
             ultraCosmetics.getMenus().openKeyPurchaseMenu(ultraPlayer);
-            return;
+            // Opening
+            return true;
         }
 
         if (player.getVehicle() != null) {
             MessageManager.send(player, "Chest-Location.Dismount-First");
-            return;
+            return false;
         }
 
         Location targetLoc = tpTo == null ? player.getLocation() : tpTo.toLocation(player);
@@ -111,20 +119,20 @@ public class TreasureChestManager implements Listener {
 
         if (!area.isEmptyExcept(targetLoc.getBlock().getLocation())) {
             MessageManager.send(player, "Chest-Location.Not-Enough-Space");
-            return;
+            return false;
         }
 
         Area placeArea = new Area(targetLoc.clone().subtract(0, 1, 0), large ? 3 : 2, 0);
         if (StructureRollback.isBlockRollingBackInArea(placeArea)) {
             MessageManager.send(player, "Chest-Location.Not-Enough-Space");
-            return;
+            return false;
         }
 
         for (Entity ent : targetLoc.getWorld().getNearbyEntities(targetLoc, range, range, range)) {
             if (shouldPush(ultraPlayer, ent)) {
                 player.closeInventory();
                 MessageManager.send(player, "Chest-Location.Too-Close-To-Entity");
-                return;
+                return false;
             }
         }
 
@@ -132,7 +140,7 @@ public class TreasureChestManager implements Listener {
         if (!BlockUtils.isAir(block.getRelative(BlockFace.UP).getType())
                 || BlockUtils.isAir(block.getRelative(BlockFace.DOWN).getType())) {
             MessageManager.send(player, "Gadgets.Rocket.Not-On-Ground");
-            return;
+            return false;
         }
 
         Location preLoc = null;
@@ -147,13 +155,14 @@ public class TreasureChestManager implements Listener {
             if (preLoc != null) {
                 player.teleport(preLoc);
             }
-            return;
+            return false;
         }
 
         ultraPlayer.removeKey();
         String designPath = getRandomDesign();
         player.closeInventory();
         new TreasureChest(player.getUniqueId(), new TreasureChestDesign(designPath), preLoc, tpTo);
+        return true;
     }
 
     public static boolean shouldPush(UltraPlayer chestOwner, Entity entity) {

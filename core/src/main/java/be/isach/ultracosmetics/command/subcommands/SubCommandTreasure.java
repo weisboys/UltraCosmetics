@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureLocation;
+import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.version.VersionManager;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -66,10 +67,25 @@ public class SubCommandTreasure extends SubCommand {
             return;
         }
 
+        boolean structureEnabled = !SettingsManager.getConfig().getString("TreasureChests.Mode", "").equalsIgnoreCase("simple");
         // form: /uc treasure (player)
         if (args.length < 3) {
             if (!checkWorld(sender, opener.getWorld())) return;
-            ultraCosmetics.getTreasureChestManager().tryOpenChest(opener);
+            if (structureEnabled) {
+                if (ultraCosmetics.getTreasureChestManager().tryOpenChest(opener)) {
+                    return;
+                }
+            }
+            ultraPlayer.removeKey();
+            TreasureRandomizer tr = new TreasureRandomizer(opener, opener.getLocation().subtract(1, 0, 1), true);
+            for (int i = 0; i < SettingsManager.getConfig().getInt("TreasureChests.Count", 4); i++) {
+                tr.giveRandomThing(null, false);
+            }
+            return;
+        }
+
+        if (!structureEnabled) {
+            MessageManager.send(sender, "Structure-Chests-Disabled");
             return;
         }
 
