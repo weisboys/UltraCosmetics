@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Voitit: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
 No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
 Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
   Cosmetics: <bold><red>Poista kosmetiikka
   Gadgets: <bold><red>Poista käytössä oleva lelu
