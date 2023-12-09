@@ -96,7 +96,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
         if (!owner.isPreserveEquipped()) {
             TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
             Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Equip", typeNamePlaceholder);
-            MessageManager.getAudiences().player(player).sendMessage(appendActivateMessage(activateMessage));
+            owner.sendMessage(appendActivateMessage(activateMessage));
         }
 
         if (this instanceof Updatable) {
@@ -114,8 +114,8 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
 
         if (!owner.isPreserveEquipped()) {
             TagResolver.Single typeNamePlaceholder = Placeholder.component(getCategory().getChatPlaceholder(), TextUtil.filterPlaceholderColors(typeName));
-            Component activateMessage = MessageManager.getMessage(category.getConfigPath() + ".Unequip", typeNamePlaceholder);
-            MessageManager.getAudiences().player(getPlayer()).sendMessage(appendActivateMessage(activateMessage));
+            Component deactivateMessage = MessageManager.getMessage(category.getConfigPath() + ".Unequip", typeNamePlaceholder);
+            owner.sendMessage(deactivateMessage);
         }
 
         HandlerList.unregisterAll(this);

@@ -537,6 +537,7 @@ public class UltraPlayer {
     }
 
     public void sendMessage(Component message) {
+        if (message == null || message.equals(Component.empty())) return;
         MessageManager.getAudiences().player(getBukkitPlayer()).sendMessage(message);
     }
 
