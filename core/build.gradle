@@ -32,8 +32,8 @@ dependencies {
     compileOnly 'com.palmergames.bukkit.towny:towny:0.99.5.4'
     // Last version to support Java 8
     implementation 'com.zaxxer:HikariCP:4.0.3'
-    implementation 'net.wesjd:anvilgui:1.9.1-SNAPSHOT'
-    implementation 'me.gamercoder215:mobchip-bukkit:1.9.3-SNAPSHOT'
+    implementation 'net.wesjd:anvilgui:1.9.2-SNAPSHOT'
+    implementation 'me.gamercoder215:mobchip-bukkit:1.9.4-SNAPSHOT'
     compileOnly 'com.discordsrv:discordsrv:1.27.0-SNAPSHOT'
     compileOnly 'me.soknight:peconomy:2.7.4-pre1'
     implementation "net.kyori:adventure-text-minimessage:4.14.0"
