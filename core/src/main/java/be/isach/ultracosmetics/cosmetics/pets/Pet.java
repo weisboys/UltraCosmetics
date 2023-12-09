@@ -243,7 +243,11 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         } else {
             newName = getType().getEntityName(getPlayer());
         }
-        rename.setCustomName(MessageManager.toLegacy(newName));
+
+        // Hide name if name is empty
+        String nameString = MessageManager.toLegacy(newName);
+        getEntity().setCustomNameVisible(!nameString.equals(""));
+        rename.setCustomName(nameString);
     }
 
     @Override
