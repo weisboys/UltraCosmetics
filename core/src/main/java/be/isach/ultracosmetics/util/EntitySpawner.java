@@ -71,7 +71,9 @@ public class EntitySpawner<T extends Entity> extends BukkitRunnable {
                 spawnLoc.add(remaining % 5 - 2, 0, remaining / 4 - 2);
             }
 
+            EntitySpawningManager.setBypass(true);
             T entity = (T) loc.getWorld().spawnEntity(spawnLoc, type);
+            EntitySpawningManager.setBypass(false);
             func.accept(entity);
             entities.add(entity);
 
