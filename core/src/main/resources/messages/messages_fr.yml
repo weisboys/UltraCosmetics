@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Tu as gagné : <name> !'
 Treasure-Chest-Occupied: <prefix> <bold><red>Pas d'endroits disponibles pour ouvrir un coffre, patiente un peu puis réessaye
 No-Ammo: <prefix> <bold><red>Vous n'avez pas de munitions pour ce gadget!
 Cannot-Sell-Item: <prefix> <bold><red>Vous ne pouvez pas vendre cet objet !
+Structure-Chests-Disabled: <prefix> <bold><red>Les coffres de structure sont désactivés !
 Clear:
   Cosmetics: <bold><red>Retirer les cosmétiques
   Gadgets: <bold><red>Retirer le gadget actuel
@@ -1853,4 +1854,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Vous devez retirer votre casque pour équiper une emote !
   Gadgets: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper un gadget !
   Mounts: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper cette monture !
-Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+Use-Rename-Pet-Command: <prefix> <red>Utiliser <yellow>/uc rename</yellow> pour renommer

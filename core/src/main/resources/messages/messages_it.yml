@@ -4,16 +4,16 @@ Cosmetic-Disabled: <prefix> <bold><red>Questo cosmetico è disabilitato!
 Invalid-Gadget: <prefix> <bold><red>Gadget non valido!
 Invalid-Pet: <prefix> <bold><red>Pet non valido!
 Invalid-Mount: <prefix> <bold><red>Invalid Mount!
-Invalid-Effect: <prefix> <bold><red>Invalid Effect!
+Invalid-Effect: <prefix> <bold><red>Pet non valido!
 Invalid-Morph: <prefix> <bold><red>Invalid Morph!
 Invalid-Hat: <prefix> <bold><red>Cappello non valido!
-Invalid-Suit: <prefix> <bold><red>Invalid Suit!
+Invalid-Suit: <prefix> <bold><red>Abito Non Valido!
 Invalid-Emote: <prefix> <bold><red>Emote non valida!
-Invalid-Menu: <prefix> <bold><red>Invalid Menu!
+Invalid-Menu: <prefix> <bold><red>Menu Non Valido!
 Ammo: '<gray>Your ammo: </gray><yellow><ammo>'
 Purchase: <bold><green>ACQUISTA
-Cancel: <bold><red>CANCEL
-Buy-Ammo-Description: <bold><yellow>Buy <amount> <gadgetname> ammo for $<price>
+Cancel: <bold><red>ANNULLA
+Buy-Ammo-Description: <bold><yellow>Acquista munizioni <amount> <gadgetname> per $<price>
 Buy-Cosmetic-Description: <bold><yellow>Buy <gadgetname> for $<price>
 Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
 Click-To-Purchase: <yellow>Click to purchase for $<price>
@@ -33,6 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Hai vinto: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Tutti i luoghi del tesoro sono pieni, si prega di attendere e riprovare
 No-Ammo: <prefix> <bold><red>Non hai nessuna munizioni per questo gadget!
 Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
   Cosmetics: <bold><red>Rimuovi Cosmetici
   Gadgets: <bold><red>Rimuovi il gadget corrente

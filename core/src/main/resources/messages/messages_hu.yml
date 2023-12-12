@@ -16,27 +16,28 @@ Cancel: <bold><red>MÉGSE
 Buy-Ammo-Description: '<bold><yellow> Vásárlás <amount> <gadgetname> töltényt </yellow></bold><bold><yellow>a következőért: $<price>'
 Buy-Cosmetic-Description: '<bold><yellow>Vásárlás <gadgetname> </yellow></bold><bold><yellow>a következőért: $<price>'
 Right-Click-Buy-Ammo: <gray>Jobb Katt a Töltény Vásárlásához
-Click-To-Purchase: <yellow>Click to purchase for $<price>
-Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
-Successful-Purchase: <prefix> <bold><green>Successful purchase!
-Buy-Treasure-Key: <bold>Buy a Treasure Key
-Treasure-Keys: <bold><gray>Treasure Keys
-Treasure-Chests: <bold><gold>Treasure Chests
-Dont-Have-Key: <bold><dark_red>You need a key!
-Click-Open-Chest: <green>Click to open a chest
-Click-Buy-Key: <green>Click to buy a key
-Left-Click-Open-Chest: <green>Left-click to open a chest
+Click-To-Purchase: <yellow>Kattints a megvásárláshoz, $<price>-ért
+Not-Enough-Money: <prefix> <bold><red>Nincs elég pénzed!
+Successful-Purchase: <prefix> <bold><green>Sikeres vásárlás!
+Buy-Treasure-Key: <bold>Kincses láda kulcs vásárlása
+Treasure-Keys: <bold><gray>Kincses láda kulcsok
+Treasure-Chests: <bold><gold>Kincses ládák
+Dont-Have-Key: <bold><dark_red>Kell egy kulcs!
+Click-Open-Chest: <green>Kattints egy láda kinyitásához
+Click-Buy-Key: <green>Kattints egy kulcs vásárlásához
+Left-Click-Open-Chest: <green>Bal egérgomb a láda kinyitásához
 Right-Click-Simple: <green>Right-click to just get cosmetics
-Your-Keys: '<italic><gray>Your keys: </gray></italic><bold><white><keys>'
-Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Treasure Key </gray><yellow>for $<price>
-You-Won-Treasure-Chests: '<prefix> <bold><white>You won: <name>!'
-Treasure-Chest-Occupied: <prefix> <bold><red>All treasure locations are full, please wait and try again
-No-Ammo: <prefix> <bold><red>You don't have any ammo for this gadget!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
+Your-Keys: '<italic><gray>Kulcsaid: </gray></italic><bold><white><keys>'
+Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Kincsesláda kulcs </gray><yellow>$<price>-ért
+You-Won-Treasure-Chests: '<prefix> <bold><white>Nyertél: <name>!'
+Treasure-Chest-Occupied: <prefix> <bold><red>Minden kincs helye betelt, kérlek várj, majd próbáld újra
+No-Ammo: <prefix> <bold><red>Nincs lőszered ehhez az eszközhöz!
+Cannot-Sell-Item: <prefix> <bold><red>Ezt a tárgyat nem adhatod el!
+Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
 Clear:
-  Cosmetics: <bold><red>Clear cosmetics
-  Gadgets: <bold><red>Clear current gadget
-  Pets: <bold><red>Clear current pet
+  Cosmetics: <bold><red>Kozmetikumok törlése
+  Gadgets: <bold><red>Jelenlegi eszköz törlése
+  Pets: <bold><red>Jelenlegi háziállat törlése
   Mounts: <bold><red>Clear current mount
   Particle-Effects: <bold><red>Clear current effect
   Morphs: <bold><red>Clear current morph
