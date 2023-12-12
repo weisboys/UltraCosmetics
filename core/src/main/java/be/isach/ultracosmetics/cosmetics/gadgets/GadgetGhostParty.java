@@ -64,7 +64,8 @@ public class GadgetGhostParty extends Gadget implements Updatable {
 
     @EventHandler
     public void onPlayerInteractGhost(PlayerInteractEntityEvent event) {
-        if (event.getRightClicked().getVehicle() != null && bats.contains(event.getRightClicked().getVehicle())) {
+        // For some reason, the server considers it to be the bats that are interacted with, not the ghosts.
+        if (bats.contains(event.getRightClicked()) || ghosts.contains(event.getRightClicked())) {
             event.setCancelled(true);
         }
     }
