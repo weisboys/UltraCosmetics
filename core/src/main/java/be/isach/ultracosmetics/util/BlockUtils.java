@@ -54,7 +54,7 @@ public class BlockUtils {
         badXMaterials.add(XMaterial.CHEST);
         badXMaterials.add(XMaterial.ENDER_CHEST);
         badXMaterials.add(XMaterial.WHEAT);
-        badXMaterials.add(XMaterial.GRASS);
+        badXMaterials.add(XMaterial.SHORT_GRASS);
         badXMaterials.add(XMaterial.DEAD_BUSH);
         badXMaterials.add(XMaterial.POPPY);
         badXMaterials.add(XMaterial.RED_MUSHROOM);
