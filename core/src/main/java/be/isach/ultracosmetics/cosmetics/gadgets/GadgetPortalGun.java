@@ -109,7 +109,7 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
         }
 
         // 'distanceSquared' is faster than 'distance', and sqrt(1) == 1 anyway
-        if (playerLoc.getWorld() != player.getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) {
+        if (playerLoc.getWorld() != portalLoc.getLocation().getWorld() || playerLoc.distanceSquared(portalLoc.getLocation()) > 1) {
             return false;
         }
         playersOnCooldown.add(player.getUniqueId());
