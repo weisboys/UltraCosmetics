@@ -582,34 +582,34 @@ Pets:
     Description: Oink! Oink!
   Sheep:
     menu-name: <bold><white>Ovelha
-    entity-displayname: <bold><playername>'s Sheep
+    entity-displayname: <bold><playername>' Ovelha
     Description: Baaaa, baa
   EasterBunny:
     menu-name: <bold><gold>Coelhinho da Páscoa
-    entity-displayname: <bold><playername>'s Easter Bunny
+    entity-displayname: <bold><playername> Coelho da Páscoa
     Description: É Páscoa ainda?
   Cow:
-    menu-name: <bold><red>Cow
-    entity-displayname: <bold><playername>'s Cow
+    menu-name: <bold><red>Vaca
+    entity-displayname: <bold><playername> Vaca
     Description: Moooo!
   Kitty:
-    menu-name: <bold><blue>Kitty
-    entity-displayname: <bold><playername>'s Kitty
+    menu-name: <bold><blue> Gatinho
+    entity-displayname: <bold><playername> Gatinho
     Description: Meoooow
   Dog:
     menu-name: <bold><gray>Cachorro
-    entity-displayname: <bold><playername>'s Dog
+    entity-displayname: <bold><playername> Cachorro
     Description: Woof!
   Chick:
-    menu-name: <bold><yellow>Chick
-    entity-displayname: <bold><playername>'s Chick
+    menu-name: <bold><yellow> Criança
+    entity-displayname: <bold><playername> Criança
     Description: Bwaaaaaaak!!
   Wither:
     menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold><playername>'s Wither
-    Description: Watch out for me...
+    Description: Cuidado comigo...
   Pumpling:
-    menu-name: <bold><gold>Pumpling
+    menu-name: <bold><gold>Bombeamento
     entity-displayname: <bold><playername>'s Pumpling
     Description: Just a little floating pumpkin
   ChristmasElf:
@@ -1039,7 +1039,7 @@ Morphs:
     Description: Hates zombies!
   Wither:
     name: <bold><dark_gray>Wither
-    Description: Watch out for me...
+    Description: Cuidado comigo...
   Skeleton:
     name: <bold><gray>Skeleton
     Description: Very good archer!
