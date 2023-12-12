@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.ReflectionUtils.PackageType;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.awt.Color;
+import java.awt.*;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -466,8 +465,8 @@ public enum Particles {
     SCULK_SOUL("sculksoul", 52, 19);
 
     public static final int DEF_RADIUS = 128; // for convenience functions by iSach
-    private static final Map<String,Particles> NAME_MAP = new HashMap<>();
-    private static final Map<Integer,Particles> ID_MAP = new HashMap<>();
+    private static final Map<String, Particles> NAME_MAP = new HashMap<>();
+    private static final Map<Integer, Particles> ID_MAP = new HashMap<>();
     private final String name;
     private final int id;
     private final int requiredVersion;
@@ -548,7 +547,7 @@ public enum Particles {
      * @return The particle effect
      */
     public static Particles fromName(String name) {
-        for (Entry<String,Particles> entry : NAME_MAP.entrySet()) {
+        for (Entry<String, Particles> entry : NAME_MAP.entrySet()) {
             if (!entry.getKey().equalsIgnoreCase(name)) {
                 continue;
             }
@@ -564,7 +563,7 @@ public enum Particles {
      * @return The particle effect
      */
     public static Particles fromId(int id) {
-        for (Entry<Integer,Particles> entry : ID_MAP.entrySet()) {
+        for (Entry<Integer, Particles> entry : ID_MAP.entrySet()) {
             if (entry.getKey() != id) {
                 continue;
             }
@@ -683,7 +682,7 @@ public enum Particles {
     }
 
     /**
-     * Displays a particle effect which is only visible for the specified players
+     * Displays a particle effect which is only visible for players in the default radius
      *
      * @param offsetX Maximum distance particles can fly away from the center on the x-axis
      * @param offsetY Maximum distance particles can fly away from the center on the y-axis
@@ -691,14 +690,13 @@ public enum Particles {
      * @param speed   Display speed of the particles
      * @param amount  Amount of particles
      * @param center  Center location of the effect
-     * @param players Receivers of the effect
      * @throws ParticleVersionException If the particle effect is not supported by the server version
      * @throws ParticleDataException    If the particle effect requires additional data
      * @throws IllegalArgumentException If the particle effect requires water and none is at the center location
      * @see #display(float, float, float, float, int, Location, List)
      */
-    public void display(float offsetX, float offsetY, float offsetZ, float speed, int amount, Location center, Player... players) throws ParticleVersionException, ParticleDataException, IllegalArgumentException {
-        display(offsetX, offsetY, offsetZ, speed, amount, center, Arrays.asList(players));
+    public void display(float offsetX, float offsetY, float offsetZ, float speed, int amount, Location center) throws ParticleVersionException, ParticleDataException, IllegalArgumentException {
+        display(offsetX, offsetY, offsetZ, speed, amount, center, DEF_RADIUS);
     }
 
     /**
@@ -760,19 +758,18 @@ public enum Particles {
     }
 
     /**
-     * Displays a single particle which flies into a determined direction and is only visible for the specified players
+     * Displays a single particle which flies into a determined direction and is only visible for players in the default radius
      *
      * @param direction Direction of the particle
      * @param speed     Display speed of the particle
      * @param center    Center location of the effect
-     * @param players   Receivers of the effect
      * @throws ParticleVersionException If the particle effect is not supported by the server version
      * @throws ParticleDataException    If the particle effect requires additional data
      * @throws IllegalArgumentException If the particle effect is not directional or if it requires water and none is at the center location
      * @see #display(Vector, float, Location, List)
      */
-    public void display(Vector direction, float speed, Location center, Player... players) throws ParticleVersionException, ParticleDataException, IllegalArgumentException {
-        display(direction, speed, center, Arrays.asList(players));
+    public void display(Vector direction, float speed, Location center) throws ParticleVersionException, ParticleDataException, IllegalArgumentException {
+        display(direction, speed, center, DEF_RADIUS);
     }
 
     /**
@@ -824,17 +821,16 @@ public enum Particles {
     }
 
     /**
-     * Displays a single particle which is colored and only visible for the specified players
+     * Displays a single particle which is colored and only visible for players in the default radius
      *
-     * @param color   Color of the particle
-     * @param center  Center location of the effect
-     * @param players Receivers of the effect
+     * @param color  Color of the particle
+     * @param center Center location of the effect
      * @throws ParticleVersionException If the particle effect is not supported by the server version
      * @throws ParticleColorException   If the particle effect is not colorable or the color type is incorrect
      * @see #display(ParticleColor, Location, List)
      */
-    public void display(ParticleColor color, Location center, Player... players) throws ParticleVersionException, ParticleColorException {
-        display(color, center, Arrays.asList(players));
+    public void display(ParticleColor color, Location center) throws ParticleVersionException, ParticleColorException {
+        display(color, center, DEF_RADIUS);
     }
 
     /**
@@ -896,7 +892,7 @@ public enum Particles {
     }
 
     /**
-     * Displays a particle effect which requires additional data and is only visible for the specified players
+     * Displays a particle effect which requires additional data and is only visible for players in the default radius
      *
      * @param data    Data of the effect
      * @param offsetX Maximum distance particles can fly away from the center on the x-axis
@@ -905,13 +901,12 @@ public enum Particles {
      * @param speed   Display speed of the particles
      * @param amount  Amount of particles
      * @param center  Center location of the effect
-     * @param players Receivers of the effect
      * @throws ParticleVersionException If the particle effect is not supported by the server version
      * @throws ParticleDataException    If the particle effect does not require additional data or if the data type is incorrect
      * @see #display(ParticleData, float, float, float, float, int, Location, List)
      */
-    public void display(ParticleData data, float offsetX, float offsetY, float offsetZ, float speed, int amount, Location center, Player... players) throws ParticleVersionException, ParticleDataException {
-        display(data, offsetX, offsetY, offsetZ, speed, amount, center, Arrays.asList(players));
+    public void display(ParticleData data, float offsetX, float offsetY, float offsetZ, float speed, int amount, Location center) throws ParticleVersionException, ParticleDataException {
+        display(data, offsetX, offsetY, offsetZ, speed, amount, center, DEF_RADIUS);
     }
 
     /**
@@ -967,19 +962,18 @@ public enum Particles {
     }
 
     /**
-     * Displays a single particle which requires additional data that flies into a determined direction and is only visible for the specified players
+     * Displays a single particle which requires additional data that flies into a determined direction and is only visible for players in the default radius
      *
      * @param data      Data of the effect
      * @param direction Direction of the particle
      * @param speed     Display speed of the particles
      * @param center    Center location of the effect
-     * @param players   Receivers of the effect
      * @throws ParticleVersionException If the particle effect is not supported by the server version
      * @throws ParticleDataException    If the particle effect does not require additional data or if the data type is incorrect
      * @see #display(ParticleData, Vector, float, Location, List)
      */
-    public void display(ParticleData data, Vector direction, float speed, Location center, Player... players) throws ParticleVersionException, ParticleDataException {
-        display(data, direction, speed, center, Arrays.asList(players));
+    public void display(ParticleData data, Vector direction, float speed, Location center) throws ParticleVersionException, ParticleDataException {
+        display(data, direction, speed, center, DEF_RADIUS);
     }
 
     // Start convenience functions originally by iSach
@@ -1028,10 +1022,11 @@ public enum Particles {
                 Vector v = new Vector();
                 v.setX(Math.cos(angle) * radius);
                 v.setZ(Math.sin(angle) * radius);
-                if (Particles.this == Particles.REDSTONE)
+                if (Particles.this == Particles.REDSTONE) {
                     display(0, 0, 255, location, 1);
-                else
+                } else {
                     display(location);
+                }
                 location.subtract(v);
                 location.subtract(0, 0.1d, 0);
                 if (location.getY() <= y) {
@@ -1121,7 +1116,7 @@ public enum Particles {
         public ParticleData(Material material, byte data) {
             this.material = material;
             this.data = data;
-            this.packetData = new int[] { material.getId(), data };
+            this.packetData = new int[] {material.getId(), data};
         }
 
         /**
@@ -1621,7 +1616,7 @@ public enum Particles {
                         ReflectionUtils.setValue(packet, true, "j", longDistance);
                         if (data != null) {
                             int[] packetData = data.getPacketData();
-                            ReflectionUtils.setValue(packet, true, "k", effect == Particles.ITEM_CRACK ? packetData : new int[] { packetData[0] | (packetData[1] << 12) });
+                            ReflectionUtils.setValue(packet, true, "k", effect == Particles.ITEM_CRACK ? packetData : new int[] {packetData[0] | (packetData[1] << 12)});
                         }
                     }
                     ReflectionUtils.setValue(packet, true, "b", (float) center.getX());
