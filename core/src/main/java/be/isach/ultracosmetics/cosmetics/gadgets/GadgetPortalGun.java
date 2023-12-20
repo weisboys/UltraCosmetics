@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.MessageManager;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
@@ -35,10 +36,12 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
     private final Set<UUID> playersOnCooldown = new HashSet<>();
     private final PortalLoc red = new PortalLoc(255, 0, 0);
     private final PortalLoc blue = new PortalLoc(31, 0, 127);
+    private final boolean affectsOthers;
 
     public GadgetPortalGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
         displayCooldownMessage = false;
+        affectsOthers = SettingsManager.getConfig().getBoolean(getOptionPath("Affects-Others"));
     }
 
     @Override
@@ -133,7 +136,10 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
         }
         Player owner = getPlayer();
         for (Player player : owner.getWorld().getPlayers()) {
-            if (playersOnCooldown.contains(player.getUniqueId()) || (player != owner && !canAffect(player, owner))) {
+            if (playersOnCooldown.contains(player.getUniqueId())) {
+                continue;
+            }
+            if (player != owner && (!affectsOthers || !canAffect(player, owner))) {
                 continue;
             }
             if (!portalTeleportCheck(player, red, blue)) {
