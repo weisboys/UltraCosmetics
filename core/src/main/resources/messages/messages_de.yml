@@ -32,8 +32,8 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Schatzsch
 You-Won-Treasure-Chests: '<prefix> <bold><white>Du hast gewonnen: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Alle Plätze sind besetzt, bitte warte und versuche es erneut
 No-Ammo: <prefix> <bold><red>Du hast keine Munition für dieses Gadget!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
-Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
+Cannot-Sell-Item: <prefix> <bold><red>Sie können dieses Item nicht verkaufen!
+Structure-Chests-Disabled: <prefix> <bold><red>Strukturkisten sind deaktiviert!
 Clear:
   Cosmetics: <bold><red>Kosmetische Items entfernen
   Gadgets: <bold><red>Aktuelles Gadget entfernen
@@ -1857,4 +1857,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Du musst deinen Helm entfernen, um ein Emote auszurüsten!
   Gadgets: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!
   Mounts: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!
-Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+Use-Rename-Pet-Command: <prefix> <red>Benutze <yellow>/uc rename</yellow> um ihn umzubenennen
