@@ -104,6 +104,11 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         EmoteType.register();
         ProjectileEffectType.register(version);
         DeathEffectType.register();
+
+        // Permissions registered by cosmetics are not fully calculated until here,
+        // reducing loading time.
+        ALL_PERMISSION.recalculatePermissibles();
+
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.save();
         }
@@ -257,7 +262,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         permission = registeredPermissions.computeIfAbsent(category.getPermission() + "." + getPermissionSuffix(), s -> {
             Permission perm = new Permission(s);
             try {
-                perm.addParent(ALL_PERMISSION, true);
+                ALL_PERMISSION.getChildren().put(s, true);
                 Bukkit.getPluginManager().addPermission(perm);
             } catch (IllegalArgumentException ignored) {
             }
