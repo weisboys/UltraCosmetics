@@ -61,7 +61,8 @@ public class PlayerListener implements Listener {
     public void onJoin(final PlayerJoinEvent event) {
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            ultraPlayer.giveMenuItem();
+            // Delay in case other plugins clear inventory on join
+            Bukkit.getScheduler().runTaskLater(ultraCosmetics, ultraPlayer::giveMenuItem, 1);
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
