@@ -414,7 +414,7 @@ Mounts:
       Snakes. Esta lhe servirá eternamente.
   Strider:
     menu-name: <bold><red>Strider
-    entity-displayname: <bold><playername>'s Strider
+    entity-displayname: <bold>Lavagante de <playername>
     Description: |-
       A misteriosa criatura em forma de cubo
       capable de andar direto sobre a lava.
@@ -583,7 +583,7 @@ Pets:
   Sheep:
     menu-name: <bold><white>Ovelha
     entity-displayname: <bold><playername>' Ovelha
-    Description: Baaaa, baa
+    Description: Béééé, béé
   EasterBunny:
     menu-name: <bold><gold>Coelhinho da Páscoa
     entity-displayname: <bold><playername> Coelho da Páscoa
@@ -591,35 +591,35 @@ Pets:
   Cow:
     menu-name: <bold><red>Vaca
     entity-displayname: <bold><playername> Vaca
-    Description: Moooo!
+    Description: Muuuu!
   Kitty:
     menu-name: <bold><blue> Gatinho
     entity-displayname: <bold><playername> Gatinho
-    Description: Meoooow
+    Description: Miaaaaau
   Dog:
     menu-name: <bold><gray>Cachorro
     entity-displayname: <bold><playername> Cachorro
-    Description: Woof!
+    Description: Au au!
   Chick:
     menu-name: <bold><yellow> Criança
     entity-displayname: <bold><playername> Criança
     Description: Bwaaaaaaak!!
   Wither:
     menu-name: <bold><dark_gray>Wither
-    entity-displayname: <bold><playername>'s Wither
+    entity-displayname: <bold>Wither de <playername>
     Description: Cuidado comigo...
   Pumpling:
     menu-name: <bold><gold>Bombeamento
     entity-displayname: <bold><playername>'s Pumpling
-    Description: Just a little floating pumpkin
+    Description: Apenas uma pequena abóbora flutuante
   ChristmasElf:
-    menu-name: <bold><green>Christmas Elf
-    entity-displayname: <bold><playername>'s Christmas Elf
-    Description: I can make presents for you!
+    menu-name: <bold><green>Elfo Natalino
+    entity-displayname: <bold>Elfo Natalino de <playername>
+    Description: Eu posso fazer presentes para você!
   Mooshroom:
-    menu-name: <bold><dark_red>Mooshroom
-    entity-displayname: <bold><playername>'s Mooshroom
-    Description: Moooo!
+    menu-name: <bold><dark_red>Coguvaca
+    entity-displayname: <bold>Coguvaca de <playername>
+    Description: Muuuu!
   IronGolem:
     menu-name: <bold><gray>Iron Golem
     entity-displayname: <bold><playername>'s Iron Golem
@@ -629,11 +629,11 @@ Pets:
     entity-displayname: <bold><playername>'s Snowman
     Description: Pew pew pew
   Villager:
-    menu-name: <bold><green>Villager
-    entity-displayname: <bold><playername>'s Villager
+    menu-name: <bold><green>Aldeão
+    entity-displayname: <bold>Aldeão de <playername>
     Description: Hmmmmmmmmm
   Bat:
-    menu-name: <bold><dark_gray>Bat
+    menu-name: <bold><dark_gray>Morcego
     entity-displayname: <bold><playername>'s Bat
     Description: I prefer dark areas
   PolarBear:
@@ -747,23 +747,23 @@ Pets:
   Salmon:
     menu-name: <bold><red>Salmon
     entity-displayname: <bold><playername>'s Salmon
-    Description: They're very tasty!
+    Description: Eles são muito saborosos!
   SkeletonHorse:
     menu-name: <bold><white>Skeleton Horse
     entity-displayname: <bold><playername>'s Skeleton Horse
-    Description: Look out for lightning strikes!
+    Description: Cuidado com relâmpagos!
   Squid:
-    menu-name: <bold><black>Squid
-    entity-displayname: <bold><playername>'s Squid
-    Description: Don't scare it or the water turns black!
+    menu-name: <bold><black>Lula
+    entity-displayname: <bold>Lula de <playername>
+    Description: Não o assuste, ou a água fica preta!
   Strider:
     menu-name: <bold><red>Strider
-    entity-displayname: <bold><playername>'s Strider
-    Description: Walks over lava!
+    entity-displayname: <bold>Lavagante de <playername>
+    Description: Anda sobre a lava!
   Tadpole:
-    menu-name: <bold><dark_gray>Tadpole
-    entity-displayname: <bold><playername>'s Tadpole
-    Description: Will grow into a frog!
+    menu-name: <bold><dark_gray>Girino
+    entity-displayname: <bold>Girino de <playername>
+    Description: Vai crescer e se tornar um sapo!
   TropicalFish:
     menu-name: <bold><yellow>Tropical Fish
     entity-displayname: <bold><playername>'s Tropical Fish
@@ -847,23 +847,23 @@ Pets:
   Shulker:
     menu-name: <bold><dark_purple>Shulker
     entity-displayname: <bold><playername>'s Shulker
-    Description: Likes to hide!
+    Description: Gosta de se esconder!
   Stray:
-    menu-name: <bold><dark_gray>Stray
-    entity-displayname: <bold><playername>'s Stray
+    menu-name: <bold><dark_gray>Esqueleto-errante
+    entity-displayname: <bold>Esqueleto-errante de <playername>
     Description: A freezing cold skeleton!
   Vindicator:
     menu-name: <bold><gray>Vindicator
     entity-displayname: <bold><playername>'s Vindicator
-    Description: Don't underestimate their strength!
+    Description: Não subestime sua força!
   Witch:
     menu-name: <bold><dark_purple>Witch
-    entity-displayname: <bold><playername>'s Witch
-    Description: Loves black cats!
+    entity-displayname: <bold>Bruxa de <playername>
+    Description: Adora gatos pretos!
   WitherSkeleton:
-    menu-name: <bold><dark_gray>Wither Skeleton
-    entity-displayname: <bold><playername>'s Wither Skeleton
-    Description: The reason why Looting exists.
+    menu-name: <bold><dark_gray>Esqueleto Wither
+    entity-displayname: <bold>Esqueleto Wither de <playername>
+    Description: A razão pela qual Saque existe.
   Zoglin:
     menu-name: <bold><red>Zoglin
     entity-displayname: <bold><playername>'s Zoglin
@@ -879,10 +879,10 @@ Pets:
   Illusioner:
     menu-name: <bold><dark_blue>Illusioner
     entity-displayname: <bold><playername>'s Illusioner
-    Description: Only spawnable with commands!
+    Description: Só pode ser gerado com comandos!
   Sniffer:
-    menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
+    menu-name: <bold><green>Farejador
+    entity-displayname: <bold>Farejador de <playername>
     Description: Can smell pottery!
   Equip: <prefix> <blue>You spawned <petname>
   Unequip: <prefix> <blue>You despawned <petname>
@@ -890,11 +890,11 @@ Morphs:
   Blaze:
     name: <bold><gold>Blaze
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Fly'
-    Description: It might be hot on there...
+    Description: Pode ser quente ali...
   Chicken:
-    name: <bold><white>Chicken
+    name: <bold><white>Galinha
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Lay eggs'
-    Description: Become a chicken!
+    Description: Torne-se uma galinha!
   Slime:
     name: <bold><green>Slime
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bounce'
@@ -910,45 +910,45 @@ Morphs:
       I go from there to
       there, then you lost me...
   Bat:
-    name: <bold><dark_gray>Bat
+    name: <bold><dark_gray>Morcego
     skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: Become a bat!
+    Description: Torne-se um morcego!
   Creeper:
     name: <bold><green>Creeper
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Detonate'
     charging: '<bold><green>Charging: <chargelevel>/100'
     release-to-explode: <bold><white>Release to explode!
-    Description: Hey What'sssssss up?
+    Description: Sssssalve! Tudo bem?
   Snowman:
     name: <bold><white>Snowman
     skill: '<yellow>Left Click</yellow><gray> to: </gray><green>Throw Snowball'
-    Description: Become Olaf!
+    Description: Torne-se o Olaf!
   Equip: <prefix> <blue>You morphed into <morphname>
   Unequip: <prefix> <blue>You unmorphed from <morphname>
   WitherSkeleton:
-    name: <bold><dark_gray>Wither Skeleton
+    name: <bold><dark_gray>Esqueleto Wither
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bone Bomb'
     Description: |-
-      Just a regular skeleton...
-      but from the Nether!
+      Só um esqueleto normal...
+      mas do Nether!
   ElderGuardian:
-    name: <bold><dark_gray>Elder Guardian
+    name: <bold><dark_gray>Guardião Ancião
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Laser'
     Description: Become an Elder Guardian!!
   Cow:
     name: <bold><dark_gray>Cow
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Moo'
-    Description: Moooo!
+    Description: Muuuu!
   Sheep:
     name: <bold><white>Ovelha
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Change Colors'
-    Description: Baaaa, baa
+    Description: Béééé, béé
   Mooshroom:
     name: <bold><red>Mooshroom
     skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Soup Throw'
-    Description: Moooo!
+    Description: Muuuu!
   Villager:
-    name: <bold><green>Villager
+    name: <bold><green>Aldeão
     skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Emerald Throw'
     Description: Hmmmmmmmmm
   Witch:
@@ -1033,7 +1033,7 @@ Morphs:
     Description: Hates squids!
   Wolf:
     name: <bold><gray>Wolf
-    Description: Woof!
+    Description: Au au!
   IronGolem:
     name: <bold><gray>Iron Golem
     Description: Hates zombies!
@@ -1065,8 +1065,8 @@ Morphs:
     name: <bold><dark_aqua>Defensor
     Description: Be quiet...
   Tadpole:
-    name: <bold><dark_gray>Tadpole
-    Description: Will grow into a frog!
+    name: <bold><dark_gray>Girino
+    Description: Vai crescer e se tornar um sapo!
   Piglin:
     name: <bold><gold>Piglin
     Description: Deals with gold!
@@ -1105,7 +1105,7 @@ Morphs:
     Description: Doesn't like to be touched!
   Salmon:
     name: <bold><red>Salmon
-    Description: They're very tasty!
+    Description: Eles são muito saborosos!
   TropicalFish:
     name: <bold><yellow>Tropical Fish
     Description: A colorful fish!
@@ -1117,25 +1117,25 @@ Morphs:
     Description: Hates players that don't sleep!
   Illusioner:
     name: <bold><dark_blue>Illusioner
-    Description: Only spawnable with commands!
+    Description: Só pode ser gerado com comandos!
   Vex:
     name: <bold><gray>Vex
     Description: YAAHH Ehehhehe!
   Vindicator:
     name: <bold><gray>Vindicator
-    Description: Don't underestimate their strength!
+    Description: Não subestime sua força!
   Mule:
     name: <bold><dark_gray>Mula
     Description: A sua normal, mula do dia a dia
   SkeletonHorse:
     name: <bold><white>Skeleton Horse
-    Description: Look out for lightning strikes!
+    Description: Cuidado com relâmpagos!
   ZombieHorse:
     name: <bold><dark_green>Zombie Horse
     Description: The rarest horse in Minecraft!
   Shulker:
     name: <bold><dark_purple>Shulker
-    Description: Likes to hide!
+    Description: Gosta de se esconder!
 Hats:
   Equip: <prefix> <blue>You equipped <hatname> hat!
   Unequip: <prefix> <blue>You unequipped <hatname> hat!
@@ -1203,7 +1203,7 @@ Hats:
     Name: <bold><aqua>Glow Squid
     Description: Light up the ocean!
   Chicken:
-    Name: <bold><white>Chicken
+    Name: <bold><white>Galinha
     Description: Bwwaaaaaaaaaaaakkkkk!
   Blaze:
     Name: <bold><gold>Blaze
@@ -1213,19 +1213,19 @@ Hats:
     Description: Have you got the redstone?
   Sheep:
     Name: <bold><white>Ovelha
-    Description: Baaaa, baa
+    Description: Béééé, béé
   Pig:
     Name: <bold><light_purple>Pig
     Description: Oink Oink!
   Cow:
     Name: <bold><green>Cow
-    Description: Moooo!
+    Description: Muuuu!
   Mooshroom:
     Name: <bold><red>Mooshroom
-    Description: Moooo!
+    Description: Muuuu!
   BrownMooshroom:
     Name: <bold><aqua>Brown Mooshroom
-    Description: Moooo!
+    Description: Muuuu!
   Moobloom:
     Name: <bold><yellow>Moobloom
     Description: Very rare cow!
