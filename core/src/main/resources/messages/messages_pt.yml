@@ -33,7 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Você ganhou: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Todos os locais do tesouro estão cheios, aguarde e tente novamente
 No-Ammo: <prefix> <bold><red>Você não tem nenhuma munição para esta engenhoca!
 Cannot-Sell-Item: <prefix> <bold><red>Você não pode vender este item!
-Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
+Structure-Chests-Disabled: <prefix> <bold><red>Baús de estruturas estão Desabilitados!
 Clear:
   Cosmetics: <bold><red>Limpar cosméticos
   Gadgets: <bold><red>Limpar a engenhoca atual
@@ -603,14 +603,14 @@ Pets:
   Chick:
     menu-name: <bold><yellow> Criança
     entity-displayname: <bold><playername> Criança
-    Description: Bwaaaaaaak!!
+    Description: Cocóricooooooo!!
   Wither:
     menu-name: <bold><dark_gray>Wither
     entity-displayname: <bold>Wither de <playername>
     Description: Cuidado comigo...
   Pumpling:
     menu-name: <bold><gold>Bombeamento
-    entity-displayname: <bold><playername>'s Pumpling
+    entity-displayname: Bolinho de <bold><playername>'s
     Description: Apenas uma pequena abóbora flutuante
   ChristmasElf:
     menu-name: <bold><green>Elfo Natalino
@@ -621,11 +621,11 @@ Pets:
     entity-displayname: <bold>Coguvaca de <playername>
     Description: Muuuu!
   IronGolem:
-    menu-name: <bold><gray>Iron Golem
-    entity-displayname: <bold><playername>'s Iron Golem
+    menu-name: <bold><gray>Golem de Ferro
+    entity-displayname: Golem de Ferro de <bold><playername>
     Description: Eu gosto de flores
   Snowman:
-    menu-name: <bold><white>Snowman
+    menu-name: <bold><white>Boneco de Neve
     entity-displayname: <bold><playername>'s Snowman
     Description: Pew pew pew
   Villager:
@@ -920,7 +920,7 @@ Morphs:
     release-to-explode: <bold><white>Release to explode!
     Description: Sssssalve! Tudo bem?
   Snowman:
-    name: <bold><white>Snowman
+    name: <bold><white>Boneco de Neve
     skill: '<yellow>Left Click</yellow><gray> to: </gray><green>Throw Snowball'
     Description: Torne-se o Olaf!
   Equip: <prefix> <blue>You morphed into <morphname>
@@ -1035,7 +1035,7 @@ Morphs:
     name: <bold><gray>Wolf
     Description: Au au!
   IronGolem:
-    name: <bold><gray>Iron Golem
+    name: <bold><gray>Golem de Ferro
     Description: Hates zombies!
   Wither:
     name: <bold><dark_gray>Wither
@@ -1392,7 +1392,7 @@ Hats:
     Name: <bold><dark_red>Santa
     Description: Ho ho ho! Merry Christmas!
   Snowman:
-    Name: <bold><white>Snowman
+    Name: <bold><white>Boneco de Neve
     Description: I don't have a skull... or bones
   Present:
     Name: <bold><red>Present
