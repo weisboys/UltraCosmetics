@@ -20,7 +20,7 @@ import org.bukkit.util.Vector;
 public class GadgetPartyPopper extends Gadget {
 
     public GadgetPartyPopper(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
-        super(owner, type, ultraCosmetics, true);
+        super(owner, type, ultraCosmetics);
     }
 
     @Override
