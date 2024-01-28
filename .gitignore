@@ -137,6 +137,7 @@ hts*
 
 # Ignore jar dependencies
 !core/*.jar
+!java-17/libs/*.jar
 
 # Don't ignore jars in tools
 !tooling/*/*.jar

@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'org.spigotmc:spigot:1.20.4-R0.1-SNAPSHOT:'
+    implementation project(':core')
+    implementation files('libs/CoinsEngine-2.1.1.jar')
+    implementation files('libs/NexEngine.jar')
+}
