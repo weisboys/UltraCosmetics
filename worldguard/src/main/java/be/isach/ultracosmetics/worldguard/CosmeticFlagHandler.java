@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.player.UltraPlayerManager;
 import com.sk89q.worldedit.util.Location;
 import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.bukkit.BukkitPlayer;
@@ -31,7 +30,6 @@ public class CosmeticFlagHandler extends Handler {
     }
 
     private final UltraCosmetics ultraCosmetics = UltraCosmeticsData.get().getPlugin();
-    private final UltraPlayerManager playerManager = ultraCosmetics.getPlayerManager();
     private final StateFlag cosmeticsFlag;
     private final StateFlag showroomFlag;
     private final SetFlag<Category> categoryFlag;
@@ -56,7 +54,7 @@ public class CosmeticFlagHandler extends Handler {
         if (Bukkit.getPlayer(player.getUniqueId()) == null) return true;
 
         Player bukkitPlayer = ((BukkitPlayer) player).getPlayer();
-        UltraPlayer ultraPlayer = playerManager.getUltraPlayer(bukkitPlayer);
+        UltraPlayer ultraPlayer = ultraCosmetics.getPlayerManager().getUltraPlayer(bukkitPlayer);
         State currentValue = toSet.queryState(player, cosmeticsFlag);
         if (currentValue == State.DENY) {
             ultraCosmetics.getWorldGuardManager().noCosmeticsRegionEntered(ultraPlayer);
@@ -71,6 +69,7 @@ public class CosmeticFlagHandler extends Handler {
         boolean newShowroomState = toSet.queryState(player, showroomFlag) == State.ALLOW;
         if (lastShowroomFlagValue == null || lastShowroomFlagValue != newShowroomState) {
             ultraCosmetics.getWorldGuardManager().showroomFlagChange(ultraPlayer, newShowroomState);
+            lastShowroomFlagValue = newShowroomState;
         }
         lastCategoryFlagValue = categoryValue;
         return true;

@@ -212,12 +212,12 @@ public class UltraCosmetics extends JavaPlugin {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        start();
+        start(true);
         // Load the class manually so it's available on shutdown
         PlayerUtils.class.getName();
     }
 
-    public void start() {
+    public void start(boolean firstRun) {
         long startTime = System.currentTimeMillis();
 
         // If this is a reload, it's important to clear all enable-time problems
@@ -338,7 +338,10 @@ public class UltraCosmetics extends JavaPlugin {
         }
 
         // Set up WorldGuard if needed.
-        worldGuardManager.registerPhase2();
+        // WorldGuard handlers persist across UC reloads, so we only need to register them once.
+        if (firstRun) {
+            worldGuardManager.registerPhase2();
+        }
 
         // Set up economy if needed.
         setupEconomy();
@@ -446,7 +449,7 @@ public class UltraCosmetics extends JavaPlugin {
         shutdown();
         CosmeticType.removeAllTypes();
         getLogger().info("Starting up...");
-        start();
+        start(false);
         for (UCAddon addon : addons) {
             addon.reload(this);
         }
