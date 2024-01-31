@@ -2,9 +2,9 @@ package be.isach.ultracosmetics;
 
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Problem;
-import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.version.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 import org.bukkit.Bukkit;
 
@@ -85,10 +85,6 @@ public class UltraCosmeticsData {
      */
     private ServerVersion serverVersion;
 
-    private String nmsVersion = "???";
-
-    private int nmsRev = -1;
-
     /**
      * NMS Version Manager.
      */
@@ -124,7 +120,7 @@ public class UltraCosmeticsData {
         logger.write("Initializing module " + serverVersion + " (expected version: " + serverVersion.getName() + ")");
         if (useNMS.equalsIgnoreCase("no")) {
             logger.write("NMS support has been disabled in the config, will run without it.");
-        } else if (serverVersion.isNmsSupported() && serverVersion.getNMSRevision() == nmsRev) {
+        } else if (serverVersion.isNmsSupported() && ServerVersion.getMinecraftVersion().equals(serverVersion.getName())) {
             if (startNMS()) return true;
         } else {
             logger.write("Loading NMS-less mode...");
@@ -186,30 +182,25 @@ public class UltraCosmeticsData {
      * @return the reason the check failed, or null if it succeeded.
      */
     protected Problem checkServerVersion() {
-        int versionNum;
-        try {
-            nmsVersion = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-            String mcVersion = nmsVersion.substring(nmsVersion.indexOf('_') + 1, nmsVersion.lastIndexOf('_'));
-            versionNum = Integer.parseInt(mcVersion);
-            nmsRev = Integer.parseInt(nmsVersion.substring(nmsVersion.lastIndexOf('R') + 1));
-        } catch (ArrayIndexOutOfBoundsException e) {
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Unable to determine server version. Please report this error.");
-            ultraCosmetics.getSmartLogger().write(LogLevel.ERROR, "Server package: " + Bukkit.getServer().getClass().getPackage().getName());
-            return Problem.UNKNOWN_MC_VERSION;
+        String version = ServerVersion.getMinecraftVersion();
+        int majorVer;
+        int minorVer = 0;
+        // If version has minor component, e.g. 1.8.8
+        if (version.indexOf('.') != version.lastIndexOf('.')) {
+            majorVer = Integer.parseInt(version.substring(2, version.lastIndexOf('.')));
+            minorVer = Integer.parseInt(version.substring(version.lastIndexOf('.') + 1));
+        } else {
+            majorVer = Integer.parseInt(version.substring(2));
         }
-
-        ServerVersion serverVersion = ServerVersion.byId(versionNum);
-
+        ServerVersion serverVersion = ServerVersion.byId(majorVer);
         // If we don't know the server version, or if the server version is a
         // newer revision of one we know, use NEW.
-        if (serverVersion == null || (serverVersion.getNMSRevision() > 0 && serverVersion.getNMSRevision() < nmsRev)) {
+        if (serverVersion == null || (serverVersion.getNMSRevision() > 0 && serverVersion.getMinorVer() < minorVer)) {
             // Error message printed in onEnable so it's more visible
             this.serverVersion = ServerVersion.NEW;
             return Problem.BAD_MC_VERSION;
         }
-
         this.serverVersion = serverVersion;
-
         return null;
     }
 
@@ -312,9 +303,5 @@ public class UltraCosmeticsData {
 
     public String getNmsConfigOption() {
         return useNMS;
-    }
-
-    public String getRawNMSVersion() {
-        return nmsVersion;
     }
 }

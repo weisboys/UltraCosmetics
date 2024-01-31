@@ -5,8 +5,7 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.ServerVersion;
-
+import be.isach.ultracosmetics.version.ServerVersion;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Axolotl;
 import org.bukkit.entity.Axolotl.Variant;

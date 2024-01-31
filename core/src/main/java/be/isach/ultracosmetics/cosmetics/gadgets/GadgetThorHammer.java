@@ -8,7 +8,7 @@ import be.isach.ultracosmetics.listeners.HammerPickupListener;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Item;

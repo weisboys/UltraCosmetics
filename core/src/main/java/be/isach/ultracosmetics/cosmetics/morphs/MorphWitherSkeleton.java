@@ -49,6 +49,7 @@ public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmeti
             }
             items.clear();
         }, 50);
+        ;
         XSound.ENTITY_SKELETON_HURT.play(player, 0.4f, (float) Math.random() + 1f);
     }
 }

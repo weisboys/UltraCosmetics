@@ -1,4 +1,4 @@
-package be.isach.ultracosmetics.util;
+package be.isach.ultracosmetics.version;
 
 import org.bukkit.Bukkit;
 
@@ -8,24 +8,25 @@ import org.bukkit.Bukkit;
 public enum ServerVersion {
 
     // Do not supply a mapping version when there is no NMS module.
-    v1_8("1.8.8", 8, null, 0),
-    v1_9("1.9.4", 9, null, 0),
-    v1_10("1.10.2", 10, null, 0),
-    v1_11("1.11.2", 11, null, 0),
-    v1_12("1.12.2", 12, null, 0),
-    v1_13("1.13.2", 13, null, 0),
-    v1_14("1.14.4", 14, null, 0),
-    v1_15("1.15.2", 15, null, 0),
-    v1_16("1.16.5", 16, null, 0),
-    v1_17("1.17.1", 17, null, 0),
-    v1_18("1.18.2", 18, null, 0),
-    v1_19("1.19.4", 19, "3009edc0fff87fa34680686663bd59df", 3),
-    v1_20("1.20.4", 20, "60a2bb6bf2684dc61c56b90d7c41bddc", 3),
-    NEW("???", 0, null, 0),
+    v1_8(8, 8),
+    v1_9(9, 4),
+    v1_10(10, 2),
+    v1_11(11, 2),
+    v1_12(12, 2),
+    v1_13(13, 2),
+    v1_14(14, 4),
+    v1_15(15, 2),
+    v1_16(16, 5),
+    v1_17(17, 1),
+    v1_18(18, 2),
+    v1_19(19, 4, "3009edc0fff87fa34680686663bd59df", 3),
+    v1_20(20, 4, "60a2bb6bf2684dc61c56b90d7c41bddc", 3),
+    NEW("???"),
     ;
 
     private final String name;
-    private final int id;
+    private final int majorVer;
+    private final int minorVer;
     // mappingsVersion is a random string that is changed whenever NMS changes
     // which is more often than actual NMS revisions happen. You can find this
     // value by checking the source code of this method:
@@ -36,15 +37,37 @@ public enum ServerVersion {
     // The NMS revision the corresponding module is built for, or 0 for no module.
     private final int nmsRevision;
 
-    private ServerVersion(String name, int id, String mappingsVersion, int nmsRevision) {
+    // Dummy constructor for placeholder versions
+    private ServerVersion(String name) {
         this.name = name;
-        this.id = id;
+        this.majorVer = 0;
+        this.minorVer = 0;
+        this.mappingsVersion = null;
+        this.nmsRevision = 0;
+    }
+
+    private ServerVersion(int majorVer, int minorVer) {
+        this(majorVer, minorVer, null, 0);
+    }
+
+    private ServerVersion(int majorVer, int minorVer, String mappingsVersion, int nmsRevision) {
+        this.name = "1." + majorVer + (minorVer > 0 ? "." + minorVer : "");
+        this.majorVer = majorVer;
+        this.minorVer = minorVer;
         this.mappingsVersion = mappingsVersion;
         this.nmsRevision = nmsRevision;
     }
 
     public String getName() {
         return name;
+    }
+
+    public int getMajorVer() {
+        return majorVer;
+    }
+
+    public int getMinorVer() {
+        return minorVer;
     }
 
     public String getMappingsVersion() {
@@ -62,7 +85,7 @@ public enum ServerVersion {
     public static ServerVersion byId(int id) {
         if (id == 0) return null;
         for (ServerVersion version : values()) {
-            if (id == version.id) {
+            if (id == version.majorVer) {
                 return version;
             }
         }
@@ -91,9 +114,11 @@ public enum ServerVersion {
     }
 
     public static boolean isMobchipEdgeCase() {
-        String rawVersion = Bukkit.getVersion();
-        String version = rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
-        return version.equals("1.19");
+        return getMinecraftVersion().equals("1.19");
     }
 
+    public static String getMinecraftVersion() {
+        String rawVersion = Bukkit.getVersion();
+        return rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
+    }
 }

@@ -4,8 +4,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.particleeffects.*;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.util.ServerVersion;
-
+import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 
 /**

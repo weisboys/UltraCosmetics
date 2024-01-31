@@ -6,7 +6,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.mounts.*;
-import be.isach.ultracosmetics.util.ServerVersion;
+import be.isach.ultracosmetics.version.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;

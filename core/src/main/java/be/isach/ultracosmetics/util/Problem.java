@@ -6,7 +6,6 @@ import net.kyori.adventure.text.event.ClickEvent;
 
 public enum Problem {
     // Fatal
-    UNKNOWN_MC_VERSION(true, "Could not parse Minecraft version, please report this issue.", "unknown-mc-version"),
     BAD_CONFIG(true, "config.yml is invalid, please run it through a YAML checker.", "invalid-config"),
     BAD_MESSAGES(true, "Messages file is invalid, please run it through a YAML checker.", "invalid-messages-file"),
 

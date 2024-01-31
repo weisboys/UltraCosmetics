@@ -9,8 +9,7 @@ import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectHelix
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectNote;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRainbow;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.util.ServerVersion;
-
+import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 
 public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect> {

@@ -35,10 +35,10 @@ import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.Problem;
-import be.isach.ultracosmetics.util.ServerVersion;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
+import be.isach.ultracosmetics.version.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.WorldGuardManager;
 import com.cryptomorin.xseries.XMaterial;
@@ -285,7 +285,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         if (activeProblems.contains(Problem.BAD_MC_VERSION)) {
             getSmartLogger().write();
-            getSmartLogger().write(LogLevel.WARNING, "This NMS version is unknown (" + UltraCosmeticsData.get().getRawNMSVersion() + "), but UltraCosmetics will try to continue running.");
+            getSmartLogger().write(LogLevel.WARNING, "This server version is unknown (" + ServerVersion.getMinecraftVersion() + "), but UltraCosmetics will try to continue running.");
         }
 
         // Initialize NMS Module
