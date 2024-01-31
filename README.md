@@ -25,7 +25,7 @@ UltraCosmetics v3 officially supports the **Spigot** and **Paper** server softwa
 
 - **1.8.8** to **latest**
 
-For more information please check out the [Supported Configurations page](https://github.com/datatags/UltraCosmetics/wiki/Supported-Configurations) in the Wiki.
+For more information please check out the [Supported Configurations page](https://github.com/UltraCosmetics/UltraCosmetics/wiki/Supported-Configurations) in the Wiki.
 
 ## 📥 Download
 
@@ -43,11 +43,11 @@ You can find development builds on [Discord][discord-invite] or [GitHub][github-
 
 ## 📖 Documentation
 
-Read the [Quick Start Guide](https://github.com/datatags/UltraCosmetics/wiki/Quick-start-guide) and check out the [Wiki][wiki-link].
+Read the [Quick Start Guide](https://github.com/UltraCosmetics/UltraCosmetics/wiki/Quick-start-guide) and check out the [Wiki][wiki-link].
 
 ## 🐛 Report a Bug
 
-Please use the [Issues page](https://github.com/datatags/UltraCosmetics/issues) on GitHub to report a bug.
+Please use the [Issues page](https://github.com/UltraCosmetics/UltraCosmetics/issues) on GitHub to report a bug.
 
 When creating an issue, please make sure you're using the bug report issue template!
 
@@ -68,8 +68,8 @@ The Issues page of this repository is **exclusively** for bug reports and featur
 
 ## 💻 Development
 
-[![CI Status](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/gradle.yml)
-[![CodeQL Status](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml/badge.svg)](https://github.com/datatags/UltraCosmetics/actions/workflows/codeql.yml)
+[![CI Status](https://github.com/UltraCosmetics/UltraCosmetics/actions/workflows/gradle.yml/badge.svg)](https://github.com/UltraCosmetics/UltraCosmetics/actions/workflows/gradle.yml)
+[![CodeQL Status](https://github.com/UltraCosmetics/UltraCosmetics/actions/workflows/codeql.yml/badge.svg)](https://github.com/UltraCosmetics/UltraCosmetics/actions/workflows/codeql.yml)
 
 When contributing, please make sure you check out the [contribution guidelines](.github/CONTRIBUTING.md).
 
@@ -98,7 +98,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 ```
 
 [discord-invite]: https://discord.gg/PgSXZT37JV
-[wiki-link]: https://github.com/datatags/UltraCosmetics/wiki
+[wiki-link]: https://github.com/UltraCosmetics/UltraCosmetics/wiki
 [spigotmc-link]: https://www.spigotmc.org/resources/10905/
 [crowdin-link]: https://crowdin.com/project/ultracosmetics
-[github-releases-link]: https://github.com/datatags/UltraCosmetics/releases
+[github-releases-link]: https://github.com/UltraCosmetics/UltraCosmetics/releases
