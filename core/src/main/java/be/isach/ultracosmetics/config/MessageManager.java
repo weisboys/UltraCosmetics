@@ -325,7 +325,10 @@ public class MessageManager {
     }
 
     public static void send(CommandSender sender, String messagePath, TagResolver.Single... placeholders) {
-        getInstance().audiences.sender(sender).sendMessage(getMessage(messagePath, placeholders));
+        Component message = getMessage(messagePath, placeholders);
+        if (!Component.empty().equals(message)) {
+            getInstance().audiences.sender(sender).sendMessage(message);
+        }
     }
 
     public static BukkitAudiences getAudiences() {
