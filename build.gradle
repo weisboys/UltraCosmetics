@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 allprojects {
     apply plugin: 'java-library'
     apply plugin: 'eclipse'
@@ -42,7 +44,7 @@ allprojects {
     processResources {
         inputs.property("version", project.version)
 
-        filter org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+        filter ReplaceTokens, tokens: [
                 'VERSION'   : project.version,
                 'CLASSIFIER': classifier,
                 'GIT-HASH'  : getGitHash()
