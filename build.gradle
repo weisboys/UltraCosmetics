@@ -120,7 +120,7 @@ subprojects { subproj ->
             url 'https://repo.rosewooddev.io/repository/public/'
         }
 
-        // Spigot
+        // SpigotMC
         maven {
             url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
         }
