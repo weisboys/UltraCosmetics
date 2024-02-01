@@ -92,32 +92,32 @@ subprojects { subproj ->
         // MobChip
         // Treasury
         maven {
-            url "https://repo.codemc.io/repository/maven-snapshots/"
+            url = "https://repo.codemc.io/repository/maven-snapshots/"
         }
 
         // Lib's Disguises
         maven {
-            url 'https://repo.md-5.net/content/groups/public/'
+            url = 'https://repo.md-5.net/content/groups/public/'
         }
 
         // WorldEdit
         maven {
-            url 'https://repo.aikar.co/nexus/content/groups/aikar'
+            url = 'https://repo.aikar.co/nexus/content/groups/aikar'
         }
 
         // BungeeCord
         maven {
-            url 'https://oss.sonatype.org/content/repositories/snapshots'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots'
         }
 
         // PlaceholderAPI
         maven {
-            url 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
+            url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/'
         }
 
         // PlayerPoints
         maven {
-            url 'https://repo.rosewooddev.io/repository/public/'
+            url = 'https://repo.rosewooddev.io/repository/public/'
         }
 
         // SpigotMC
@@ -127,17 +127,17 @@ subprojects { subproj ->
 
         // WorldGuard
         maven {
-            url "https://maven.enginehub.org/repo/"
+            url = "https://maven.enginehub.org/repo/"
         }
 
         // DiscordSRV
         maven {
-            url "https://nexus.scarsz.me/content/groups/public/"
+            url = "https://nexus.scarsz.me/content/groups/public/"
         }
 
         // ChestSort
         maven {
-            url "https://hub.jeff-media.com/nexus/repository/jeff-media-public/"
+            url = "https://hub.jeff-media.com/nexus/repository/jeff-media-public/"
         }
 
         // Towny
@@ -153,12 +153,12 @@ subprojects { subproj ->
         // Vault
         // PEconomy
         maven {
-            url 'https://jitpack.io'
+            url = 'https://jitpack.io'
         }
 
         // Mojang Authlib
         maven {
-            url 'https://libraries.minecraft.net'
+            url = 'https://libraries.minecraft.net'
         }
     }
     def version = 8
