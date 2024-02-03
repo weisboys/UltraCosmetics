@@ -1139,6 +1139,9 @@ Morphs:
   Shulker:
     name: <bold><dark_purple>Шалкер
     Description: Любит прятаться!
+  Sniffer:
+    name: <bold><green>Нюхач
+    Description: '*sniff sniff*'
 Hats:
   Equip: <prefix> <blue>Вы экипированы <hatname> </blue><blue>шапку!
   Unequip: <prefix> <blue>Вы сняли <hatname> </blue><blue>шапку!

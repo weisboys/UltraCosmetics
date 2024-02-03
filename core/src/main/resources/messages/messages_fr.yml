@@ -1139,6 +1139,9 @@ Morphs:
   Shulker:
     name: <bold><dark_purple>Shulker
     Description: Aime se cacher !
+  Sniffer:
+    name: <bold><green>Renifleur
+    Description: '*sniff sniff*'
 Hats:
   Equip: <prefix> <blue>Tu as équipé <hatname> !
   Unequip: <prefix> <blue>Tu as déséquipé <hatname> !
