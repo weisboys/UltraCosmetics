@@ -33,7 +33,7 @@ You-Won-Treasure-Chests: '<prefix> <bold><white>Ganaste un: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Los espacios para abrir cofres estan llenos. Por favor espera y prueba nuevamente
 No-Ammo: <prefix> <bold><red>¡No tienes munición para este dispositivo!
 Cannot-Sell-Item: <prefix> <bold><red>No puedes vender este item!
-Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
+Structure-Chests-Disabled: <prefix> <bold><red>¡Los cofres de estructuras están deshabilitados!
 Clear:
   Cosmetics: <bold><red>Quitar todos los cosmetics activos
   Gadgets: <bold><red>Quitar gadget activo
@@ -188,20 +188,20 @@ Treasure-Chests-Loot:
     <dark_purple>Efecto de Proyectil
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> obtuvo <ammo> municiones de <cosmetic> 
+  Money: <prefix> <bold><gold><name> obtuvo $<money>
+  Pets: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Mounts: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Particle-Effects: <prefix> <bold><gold><name> obtuvo <cosmetic> de calidad LEGENDARIA
+  Morphs: <prefix> <bold><gold><name> obtuvo <cosmetic> de calidad LEGENDARIA
+  Hats: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Gadgets: <prefix> <bold><gold><name> obtuvo el cosmético <cosmetic>
+  Suits: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Emotes: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Death-Effects: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
+  Projectile-Effects: '<prefix> <bold><gold><name> obtuvo  <cosmetic> de calidad: RARA'
 Permission-Lore:
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
+  Showroom: '<gray>Permiso: </gray><gold>Usable en sala de exposición'
   Permission-No: '<gray>Permiso: </gray><bold><dark_red>¡No!'
   Permission-Yes: '<gray>Permiso: </gray><bold><green>¡Sí!'
 Disable-Gadgets: <bold><red>Deshabilitar Gadgets
@@ -443,13 +443,13 @@ Mounts:
     menu-name: <bold><red>Serpiente de limo
     entity-displayname: <bold>Serpiente de Slime de <playername>
     Description: |-
-      This type of snake comes straight from
-      the hidden "Secret Swamps of Sliminess".
-      This one will serve you eternally.
+      Este tipo de serpiente viene directo de
+      los ocultos "Pantanos Secretos de Slime".
+      Esta te será fiel eternamente.
   Camel:
     menu-name: <bold><gold>Camello
     entity-displayname: <bold>Camello de <playername>
-    Description: Your standard, everyday camel
+    Description: Tu camello de todos los días
   Equip: <prefix> <blue>Spawneaste <mountname>
   Unequip: <prefix> <blue>Despawneaste <mountname>
   Cant-Spawn: <prefix> <bold><red>Los monstruos no pueden spawnear aqui!
@@ -885,7 +885,7 @@ Pets:
     Description: Spawneable solamente con comandos!
   Sniffer:
     menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
+    entity-displayname: <bold>El Sniffer de <playername>
     Description: '¡Puedes oler alfarería!'
   Equip: <prefix> <blue>Spawneaste <petname>
   Unequip: <prefix> <blue>Despawneaste <petname>
@@ -1854,4 +1854,4 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Debes quitarte el casco para equipar este emote!
   Gadgets: <prefix> <bold><red>Tienes que limpiar el slot <slot> de tu inventario para equipar el gadget!
   Mounts: <prefix> <bold><red>Tienes que limpiar el slot <slot> de tu inventario para equipar esa montura!
-Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+Use-Rename-Pet-Command: <prefix> <red>Usa <yellow>/uc rename</yellow> para renombrar
