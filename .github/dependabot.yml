@@ -1,0 +1,17 @@
+version: 2
+
+updates:
+  - package-ecosystem: "github-actions"
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: "gradle"
+    directory: /
+    schedule:
+      interval: daily
+    ignore:
+      - dependency-name: "com.mojang:authlib"
+      - dependency-name: "com.zaxxer:HikariCP"
+      - dependency-name: "com.sk89q.worldguard:worldguard-bukkit"
+      - dependency-name: "org.spigotmc:spigot-api"
