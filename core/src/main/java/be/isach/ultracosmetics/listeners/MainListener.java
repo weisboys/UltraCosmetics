@@ -20,7 +20,9 @@ public class MainListener implements Listener {
 
     @EventHandler
     public void onInteractAtEntity(PlayerInteractAtEntityEvent event) {
-        if (event.getRightClicked().hasMetadata("NO_INTER")) event.setCancelled(true);
+        if (event.getRightClicked().hasMetadata("NO_INTER") || event.getRightClicked().hasMetadata("C_AD_ArmorStand")) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler
@@ -50,7 +52,7 @@ public class MainListener implements Listener {
     @EventHandler
     public void onChunkUnload(ChunkUnloadEvent event) {
         for (Entity entity : event.getChunk().getEntities()) {
-            if (entity.hasMetadata("Pet")) {
+            if (entity.hasMetadata("Pet") || entity.hasMetadata("UNPICKABLEUP") || entity.hasMetadata("NO_INTER") || entity.hasMetadata("C_AD_ArmorStand")) {
                 entity.remove();
             }
         }
