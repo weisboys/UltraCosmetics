@@ -16,4 +16,5 @@ updates:
       - dependency-name: "com.mojang:authlib"
       - dependency-name: "com.zaxxer:HikariCP"
       - dependency-name: "com.sk89q.worldguard:worldguard-bukkit"
+      - dependency-name: "com.sk89q.worldguard:worldguard-legacy"
       - dependency-name: "org.spigotmc:spigot-api"
