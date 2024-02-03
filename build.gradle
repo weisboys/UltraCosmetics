@@ -92,7 +92,7 @@ subprojects { subproj ->
         // MobChip
         // Treasury
         maven {
-            url = "https://repo.codemc.io/repository/maven-snapshots/"
+            url = 'https://repo.codemc.io/repository/maven-snapshots/'
         }
 
         // Lib's Disguises
@@ -127,17 +127,17 @@ subprojects { subproj ->
 
         // WorldGuard
         maven {
-            url = "https://maven.enginehub.org/repo/"
+            url = 'https://maven.enginehub.org/repo/'
         }
 
         // DiscordSRV
         maven {
-            url = "https://nexus.scarsz.me/content/groups/public/"
+            url = 'https://nexus.scarsz.me/content/groups/public/'
         }
 
         // ChestSort
         maven {
-            url = "https://hub.jeff-media.com/nexus/repository/jeff-media-public/"
+            url = 'https://hub.jeff-media.com/nexus/repository/jeff-media-public/'
         }
 
         // Towny
