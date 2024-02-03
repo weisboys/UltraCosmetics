@@ -30,6 +30,7 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
     private Item bomb;
     private ArrayList<Item> items = new ArrayList<>();
     private boolean running = false;
+    private final XSound.SoundPlayer sound = XSound.ENTITY_CHICKEN_EGG.record().withVolume(0.2f).soundPlayer();
 
     public GadgetColorBomb(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -83,7 +84,7 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
             Vector velocity = new Vector(0, 0.5, 0).add(MathUtils.getRandomCircleVector().multiply(0.1));
             Item item = ItemFactory.spawnUnpickableItem(ItemFactory.randomItemFromTag(XTag.WOOL), bomb.getLocation().add(0, 0.15, 0), velocity);
             items.add(item);
-            play(XSound.ENTITY_CHICKEN_EGG, item.getLocation(), 0.2f, 1.0f);
+            sound.atLocation(item.getLocation()).play();
 
             Player player = getPlayer();
             for (Entity entity : bomb.getNearbyEntities(1.5, 1, 1.5)) {

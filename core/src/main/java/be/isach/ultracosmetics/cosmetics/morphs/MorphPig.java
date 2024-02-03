@@ -18,9 +18,11 @@ import org.bukkit.util.Vector;
  * @since 08-27-2015
  */
 public class MorphPig extends Morph implements PlayerAffectingCosmetic, Updatable {
+    private final XSound.SoundPlayer sound;
 
     public MorphPig(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_PIG_AMBIENT.record().withVolume(0.2f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -30,7 +32,7 @@ public class MorphPig extends Morph implements PlayerAffectingCosmetic, Updatabl
         for (Entity ent : player.getNearbyEntities(0.2, 0.2, 0.2)) {
             if (!canAffect(ent, player)) continue;
             getOwner().setCooldown(cosmeticType, 1, 0);
-            XSound.ENTITY_PIG_AMBIENT.play(player, .2f, 1.5f);
+            sound.play();
             Vector v = new Vector(0, 0.6, 0);
             Vector vEnt = ent.getLocation().toVector().subtract(player.getLocation().toVector()).add(v);
             Vector vPig = player.getLocation().toVector().subtract(ent.getLocation().toVector()).add(v);

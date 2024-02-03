@@ -19,8 +19,11 @@ import org.bukkit.util.Vector;
  */
 public class GadgetPartyPopper extends Gadget {
 
+    private final XSound.SoundPlayer sound;
+
     public GadgetPartyPopper(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_CHICKEN_EGG.record().publicSound(true).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -36,8 +39,9 @@ public class GadgetPartyPopper extends Gadget {
                         getPlayer().getEyeLocation().getDirection().add(rand.multiply(0.2)).multiply(1.2), 0.6f, getPlayer().getEyeLocation(), 128);
             }
         }
+        sound.atLocation(getPlayer().getLocation());
         for (int i = 0; i < 3; i++) {
-            play(XSound.ENTITY_CHICKEN_EGG, getPlayer().getLocation(), 1.0f, 1.0f);
+            sound.play();
         }
     }
 }

@@ -21,9 +21,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -82,6 +80,8 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     private final boolean requiresAmmo = UltraCosmeticsData.get().isAmmoEnabled() && getType().requiresAmmo();
 
+    private final XSound.SoundPlayer readySound;
+
     private boolean handledThisTick = false;
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -91,6 +91,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics, boolean asynchronous) {
         super(owner, type, ultraCosmetics);
         this.asynchronous = asynchronous;
+        readySound = XSound.BLOCK_NOTE_BLOCK_HAT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -152,7 +153,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
                         Placeholder.component("gadgetname", TextUtil.stripColor(getTypeName()))
                 );
                 ActionBar.sendActionBar(getPlayer(), message);
-                play(XSound.BLOCK_NOTE_BLOCK_HAT, getPlayer(), 1.4f, 1.5f);
+                readySound.play();
             }
         }
     }
@@ -204,18 +205,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     protected boolean checkRequirements(PlayerInteractEvent event) {
         return true;
-    }
-
-    protected void play(XSound sound, Entity entity, float volume, float pitch) {
-        if (!SettingsManager.getConfig().getBoolean("Gadgets-Are-Silent")) {
-            sound.play(entity, volume, pitch);
-        }
-    }
-
-    protected void play(XSound sound, Location loc, float volume, float pitch) {
-        if (!SettingsManager.getConfig().getBoolean("Gadgets-Are-Silent")) {
-            sound.play(loc, volume, pitch);
-        }
     }
 
     public boolean itemMatches(ItemStack stack) {

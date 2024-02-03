@@ -5,15 +5,13 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ItemFactory;
-
+import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
-
-import com.cryptomorin.xseries.XMaterial;
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +24,16 @@ import java.util.List;
  */
 public class GadgetChickenator extends Gadget {
 
-    private List<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
+    private final XSound.SoundPlayer ambient;
+    private final XSound.SoundPlayer explode;
+    private final XSound.SoundPlayer hurt;
 
     public GadgetChickenator(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        this.ambient = XSound.ENTITY_CHICKEN_AMBIENT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        this.explode = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(0.3f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        this.hurt = XSound.ENTITY_CHICKEN_HURT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -37,11 +41,11 @@ public class GadgetChickenator extends Gadget {
         final Chicken chicken = (Chicken) getPlayer().getWorld().spawnEntity(getPlayer().getEyeLocation(), EntityType.CHICKEN);
         chicken.setNoDamageTicks(500);
         chicken.setVelocity(getPlayer().getLocation().getDirection().multiply(Math.PI / 1.5));
-        play(XSound.ENTITY_CHICKEN_AMBIENT, getPlayer(), 1.4f, 1.5f);
-        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer(), 0.3f, 1.5f);
+        ambient.play();
+        explode.play();
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             EntitySpawner.spawnFireworks(chicken.getLocation(), Color.WHITE, Color.WHITE);
-            play(XSound.ENTITY_CHICKEN_HURT, getPlayer(), 1.4f, 1.5f);
+            hurt.play();
             chicken.remove();
             for (int i = 0; i < 30; i++) {
                 items.add(ItemFactory.createUnpickableItemVariance(XMaterial.COOKED_CHICKEN, chicken.getLocation(), RANDOM, 1));

@@ -42,14 +42,20 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
     private List<FallingBlock> fallingBlocks = new ArrayList<>();
     private int i = 1;
     private boolean playEffect;
+    private final XSound.SoundPlayer useSound;
+    private final XSound.SoundPlayer smashSound;
+    private final XSound.SoundPlayer landSound;
 
     public GadgetSmashDown(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        useSound = XSound.ENTITY_FIREWORK_ROCKET_LAUNCH.record().withVolume(2.0f).publicSound(true).soundPlayer().forPlayers(getPlayer());
+        smashSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(2.0f).publicSound(true).soundPlayer().forPlayers(getPlayer());
+        landSound = XSound.BLOCK_ANVIL_BREAK.record().withVolume(0.05f).publicSound(true).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
     protected void onRightClick() {
-        play(XSound.ENTITY_FIREWORK_ROCKET_LAUNCH, getPlayer().getLocation(), 2.0f, 1.0f);
+        useSound.play();
         getPlayer().setVelocity(new Vector(0, 3, 0));
         final BukkitTask task = new BukkitRunnable() {
             @Override
@@ -91,7 +97,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         }
 
         Location loc = getPlayer().getLocation();
-        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 2.0f, 1.0f);
+        smashSound.play();
 
         if (i == 5) {
             playEffect = false;
@@ -130,19 +136,19 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
     @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onBlockChangeState(EntityChangeBlockEvent event) {
-        if (fallingBlocks.contains(event.getEntity())) {
-            event.setCancelled(true);
-            fallingBlocks.remove(event.getEntity());
-            FallingBlock fb = (FallingBlock) event.getEntity();
-            if (VersionManager.IS_VERSION_1_13) {
-                BlockData data = fb.getBlockData();
-                fb.getWorld().spawnParticle(Particle.BLOCK_CRACK, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
-            } else {
-                Particles.BLOCK_CRACK.display(new Particles.BlockData(fb.getMaterial(), event.getBlock().getData()), 0f, 0f, 0f, 0.4f, 50, fb.getLocation(), 128);
-            }
-            play(XSound.BLOCK_ANVIL_BREAK, getPlayer().getLocation(), 0.05f, 1.0f);
-            event.getEntity().remove();
+        if (!fallingBlocks.remove(event.getEntity())) {
+            return;
         }
+        event.setCancelled(true);
+        FallingBlock fb = (FallingBlock) event.getEntity();
+        if (VersionManager.IS_VERSION_1_13) {
+            BlockData data = fb.getBlockData();
+            fb.getWorld().spawnParticle(Particle.BLOCK_CRACK, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
+        } else {
+            Particles.BLOCK_CRACK.display(new Particles.BlockData(fb.getMaterial(), event.getBlock().getData()), 0f, 0f, 0f, 0.4f, 50, fb.getLocation(), 128);
+        }
+        landSound.play();
+        event.getEntity().remove();
     }
 
     @Override

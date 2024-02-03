@@ -52,9 +52,17 @@ public class GadgetRocket extends Gadget implements Updatable {
     private Entity playerVehicle = null;
     private int height;
     private RocketTask activeTask = null;
+    private final XSound.SoundPlayer countdownSound;
+    private final XSound.SoundPlayer liftoffSound;
+    private final XSound.SoundPlayer flightSound1;
+    private final XSound.SoundPlayer flightSound2;
 
     public GadgetRocket(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        countdownSound = XSound.BLOCK_NOTE_BLOCK_BASS.record().soundPlayer().forPlayers(getPlayer());
+        liftoffSound = XSound.ENTITY_GENERIC_EXPLODE.record().publicSound(true).soundPlayer().forPlayers(getPlayer());
+        flightSound1 = XSound.ENTITY_BAT_LOOP.record().withVolume(1.5f).soundPlayer();
+        flightSound2 = XSound.BLOCK_FIRE_EXTINGUISH.record().withVolume(0.025f).soundPlayer();
     }
 
     @SuppressWarnings("deprecation")
@@ -101,7 +109,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                     }
                     if (countdown > 0) {
                         sendTitle(ChatColor.RED.toString() + ChatColor.BOLD + countdown);
-                        play(XSound.BLOCK_NOTE_BLOCK_BASS, getPlayer(), 1.0f, 1.0f);
+                        countdownSound.play();
                         countdown--;
                         return;
                     }
@@ -109,7 +117,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                     stop();
 
                     sendTitle(MessageManager.getLegacyMessage("Gadgets.Rocket.Takeoff"));
-                    play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
+                    liftoffSound.play();
 
                     final FallingBlock top = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 3, 0), QUARTZ_BLOCK);
                     FallingBlock base = BlockUtils.spawnFallingBlock(getPlayer().getLocation().add(0, 2, 0), QUARTZ_BLOCK);
@@ -147,7 +155,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                             fallingBlocks.forEach(Entity::remove);
                             fallingBlocks.clear();
                             FallDamageManager.addNoFall(getPlayer());
-                            play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.0f, 1.0f);
+                            liftoffSound.play();
                             Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
                             disableFlight();
                             launching = false;
@@ -199,8 +207,9 @@ public class GadgetRocket extends Gadget implements Updatable {
         if (launching && !fallingBlocks.isEmpty()) {
             Particles.FLAME.display(0.3f, 0.2f, 0.3f, getPlayer().getLocation().add(0, -3, 0), 10);
             Particles.LAVA.display(0.3f, 0.2f, 0.3f, getPlayer().getLocation().add(0, -3, 0), 10);
-            play(XSound.ENTITY_BAT_LOOP, fallingBlocks.get(9).getLocation().clone().add(0, -1, 0), 1.5f, 1.0f);
-            play(XSound.BLOCK_FIRE_EXTINGUISH, fallingBlocks.get(9).getLocation().clone().add(0, -1, 0), 0.025f, 1.0f);
+            Location soundLoc = fallingBlocks.get(9).getLocation().clone().add(0, -1, 0);
+            flightSound1.atLocation(soundLoc).play();
+            flightSound2.atLocation(soundLoc).play();
         }
     }
 

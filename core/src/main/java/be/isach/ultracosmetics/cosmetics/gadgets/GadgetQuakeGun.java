@@ -33,15 +33,17 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
     private static final FireworkEffect FIREWORK_EFFECT = FireworkEffect.builder().flicker(false).trail(false)
             .with(FireworkEffect.Type.BALL_LARGE).withColor(Color.RED).withFade(Color.ORANGE).build();
 
-    private List<Firework> fireworkList = new ArrayList<>();
+    private final List<Firework> fireworkList = new ArrayList<>();
+    private final XSound.SoundPlayer sound;
 
     public GadgetQuakeGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_BLAZE_DEATH.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
     protected void onRightClick() {
-        play(XSound.ENTITY_BLAZE_DEATH, getPlayer(), 1.4f, 1.5f);
+        sound.play();
 
         Location location = getPlayer().getEyeLocation().subtract(0, 0.4, 0);
         Vector vector = location.getDirection();

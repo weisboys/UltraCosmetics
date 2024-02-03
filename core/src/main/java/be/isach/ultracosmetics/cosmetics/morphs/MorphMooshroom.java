@@ -26,6 +26,8 @@ import java.util.List;
  * @since 07-03-2017
  */
 public class MorphMooshroom extends Morph implements PlayerAffectingCosmetic {
+    private final XSound.Record sound = XSound.ENTITY_SHEEP_SHEAR.record().withVolume(0.4f);
+
     public MorphMooshroom(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
@@ -50,6 +52,6 @@ public class MorphMooshroom extends Morph implements PlayerAffectingCosmetic {
             }
             items.clear();
         }, 50);
-        XSound.ENTITY_SHEEP_SHEAR.play(player, 0.4f, (float) Math.random() + 1f);
+        sound.withPitch((float) Math.random() + 1f).soundPlayer().forPlayers(player).play();
     }
 }

@@ -24,9 +24,11 @@ import java.util.List;
  * @since 10-18-2015
  */
 public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmetic {
+    private final XSound.Record sound;
 
     public MorphWitherSkeleton(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_SKELETON_AMBIENT.record().withVolume(0.4f);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST)
@@ -49,7 +51,6 @@ public class MorphWitherSkeleton extends Morph implements PlayerAffectingCosmeti
             }
             items.clear();
         }, 50);
-        ;
-        XSound.ENTITY_SKELETON_HURT.play(player, 0.4f, (float) Math.random() + 1f);
+        sound.withPitch((float) Math.random() + 1f).soundPlayer().forPlayers(player).play();
     }
 }

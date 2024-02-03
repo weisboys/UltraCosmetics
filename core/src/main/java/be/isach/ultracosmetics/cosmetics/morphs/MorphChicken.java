@@ -36,9 +36,12 @@ public class MorphChicken extends Morph implements Updatable {
 
     private final List<Item> items = new ArrayList<>();
     private final List<Chicken> chickens = new ArrayList<>();
+    private final XSound.SoundPlayer eggSound;
+    private final XSound.SoundPlayer spawnSound = XSound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR.record().withVolume(0.05f).withPitch(1f).soundPlayer();
 
     public MorphChicken(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        eggSound = XSound.ENTITY_CHICKEN_EGG.record().withVolume(0.5f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @EventHandler
@@ -50,7 +53,7 @@ public class MorphChicken extends Morph implements Updatable {
         items.clear();
         for (int j = 0; j < 10; j++) {
             items.add(ItemFactory.createUnpickableItemVariance(XMaterial.EGG, getPlayer().getLocation(), RANDOM, 0.5));
-            XSound.ENTITY_CHICKEN_EGG.play(getPlayer(), 0.5f, 1.5f);
+            eggSound.play();
         }
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), new Runnable() {
 
@@ -63,7 +66,7 @@ public class MorphChicken extends Morph implements Updatable {
                     } else {
                         Particles.BLOCK_CRACK.display(new Particles.BlockData(XMaterial.WHITE_TERRACOTTA.parseMaterial(), (byte) 0), 0, 0, 0, 0.3f, 50, i.getLocation(), 128);
                     }
-                    XSound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR.play(i.getLocation(), 0.05f, 1f);
+                    spawnSound.atLocation(i.getLocation()).play();
                     final Chicken chicken = (Chicken) i.getWorld().spawnEntity(i.getLocation(), EntityType.CHICKEN);
                     chicken.setAgeLock(true);
                     chicken.setBaby();

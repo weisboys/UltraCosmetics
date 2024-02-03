@@ -16,9 +16,11 @@ import org.bukkit.event.player.PlayerKickEvent;
  * @since 08-26-2015
  */
 public class MorphBlaze extends MorphNoFall implements Updatable {
+    private final XSound.SoundPlayer sound;
 
     public MorphBlaze(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.BLOCK_FIRE_EXTINGUISH.record().withVolume(0.1f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -26,7 +28,7 @@ public class MorphBlaze extends MorphNoFall implements Updatable {
         if (canUseSkill && getPlayer().isSneaking()) {
             Particles.FLAME.display(getPlayer().getLocation());
             Particles.LAVA.display(getPlayer().getLocation());
-            XSound.BLOCK_FIRE_EXTINGUISH.play(getPlayer(), 0.1f, 1.5f);
+            sound.play();
             getPlayer().setVelocity(getPlayer().getEyeLocation().getDirection().multiply(1));
         }
     }

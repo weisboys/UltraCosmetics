@@ -17,15 +17,18 @@ import org.bukkit.scheduler.BukkitRunnable;
  * @since 07-03-2017
  */
 public class MorphSheep extends MorphLeftClickCooldown {
+    private final XSound.SoundPlayer sound;
+
     public MorphSheep(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics, 3);
+        sound = XSound.ENTITY_SHEEP_AMBIENT.record().publicSound(true).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
     @EventHandler
     public void onLeftClick(PlayerInteractEvent event) {
         event.setCancelled(true);
-        XSound.ENTITY_SHEEP_AMBIENT.play(event.getPlayer().getLocation(), 1.0f, 1.0f);
+        sound.play();
         SheepWatcher sheepWatcher = (SheepWatcher) getDisguise().getWatcher();
         new BukkitRunnable() {
             private int count = 0;

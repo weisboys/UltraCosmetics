@@ -34,8 +34,10 @@ public class GadgetExplosiveSheep extends Gadget {
 
     // I know 'sheeps' isn't the plural form of 'sheep' but it's funny
     // and it distinguishes it from the local variables named 'sheep' (singular)
-    private Set<Sheep> sheeps = new HashSet<>();
+    private final Set<Sheep> sheeps = new HashSet<>();
     private BukkitRunnable sheepRemovalRunnable = null;
+    private final XSound.SoundPlayer tickSound = XSound.BLOCK_NOTE_BLOCK_HAT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
+    private final XSound.SoundPlayer explodeSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
 
     public GadgetExplosiveSheep(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -102,7 +104,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 return;
             }
             s.setColor(red ? DyeColor.RED : DyeColor.WHITE);
-            play(XSound.BLOCK_NOTE_BLOCK_HAT, s.getLocation(), 1.4f, 1.5f);
+            tickSound.atLocation(s.getLocation()).play();
             red = !red;
             time -= 0.2;
 
@@ -111,7 +113,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 new SheepColorRunnable(s, time, red);
                 return;
             }
-            play(XSound.ENTITY_GENERIC_EXPLODE, s.getLocation(), 1.4f, 1.5f);
+            explodeSound.atLocation(s.getLocation()).play();
             Particles.EXPLOSION_HUGE.display(s.getLocation());
             sheeps.remove(s);
             s.remove();

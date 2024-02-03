@@ -16,6 +16,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.vehicle.VehicleDestroyEvent;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,10 +29,12 @@ import java.util.Set;
  */
 public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
 
-    private Set<Entity> entities = new HashSet<>();
+    private final Set<Entity> entities = new HashSet<>();
+    private final XSound.SoundPlayer sound;
 
     public GadgetTNT(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -73,23 +76,28 @@ public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
         if (!entities.remove(event.getEntity())) return;
         event.setCancelled(true);
         Particles.EXPLOSION_HUGE.display(event.getEntity().getLocation());
-        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer(), 1.4f, 1.5f);
+        sound.play();
 
         Player player = getPlayer();
         for (Entity ent : event.getEntity().getNearbyEntities(3, 3, 3)) {
             if (!canAffect(ent, player)) continue;
-            double dX = event.getEntity().getLocation().getX() - ent.getLocation().getX();
-            double dY = event.getEntity().getLocation().getY() - ent.getLocation().getY();
-            double dZ = event.getEntity().getLocation().getZ() - ent.getLocation().getZ();
-            double yaw = Math.atan2(dZ, dX);
-            double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-            double X = Math.sin(pitch) * Math.cos(yaw);
-            double Y = Math.sin(pitch) * Math.sin(yaw);
-            double Z = Math.cos(pitch);
-
-            Vector vector = new Vector(X, Z, Y);
+            Vector vector = getVector(event, ent);
             MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
         }
+    }
+
+    @NotNull
+    private static Vector getVector(EntityExplodeEvent event, Entity ent) {
+        double dX = event.getEntity().getLocation().getX() - ent.getLocation().getX();
+        double dY = event.getEntity().getLocation().getY() - ent.getLocation().getY();
+        double dZ = event.getEntity().getLocation().getZ() - ent.getLocation().getZ();
+        double yaw = Math.atan2(dZ, dX);
+        double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+        double X = Math.sin(pitch) * Math.cos(yaw);
+        double Y = Math.sin(pitch) * Math.sin(yaw);
+        double Z = Math.cos(pitch);
+
+        return new Vector(X, Z, Y);
     }
 
     @Override

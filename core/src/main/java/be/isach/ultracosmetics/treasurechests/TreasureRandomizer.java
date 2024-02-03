@@ -45,6 +45,7 @@ public class TreasureRandomizer {
     private final NothingLoot nothing = new NothingLoot();
     private final AmmoLoot ammo;
     private final boolean canAddAmmo;
+    private final XSound.SoundPlayer sound = XSound.BLOCK_CHEST_OPEN.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
 
     public TreasureRandomizer(final Player player, Location location, boolean forceMessageToOwner) {
         this.loc = location.add(0.5, 0, 0.5);
@@ -118,7 +119,7 @@ public class TreasureRandomizer {
 
     public LootReward giveRandomThing(TreasureChest chest, boolean skipFirework) {
         UltraPlayer ultraPlayer = UltraCosmeticsData.get().getPlugin().getPlayerManager().getUltraPlayer(player);
-        XSound.BLOCK_CHEST_OPEN.play(loc, 1.4f, 1.5f);
+        sound.atLocation(loc).play();
         if (lootTypes.size() == 0) {
             return giveFallback(ultraPlayer, chest);
         }

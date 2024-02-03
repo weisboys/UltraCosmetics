@@ -4,14 +4,12 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.XSound;
 import org.bukkit.Location;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ProjectileHitEvent;
-
-import com.cryptomorin.xseries.XSound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,16 +22,19 @@ import java.util.List;
  */
 public class GadgetFunGun extends Gadget {
 
-    private List<Projectile> projectiles = new ArrayList<>();
+    private final List<Projectile> projectiles = new ArrayList<>();
+    private final XSound.SoundPlayer sound;
 
     public GadgetFunGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        this.sound = XSound.ENTITY_CAT_PURREOW.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
     protected void onRightClick() {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) {
             projectiles.add(getPlayer().launchProjectile(Snowball.class));
+        }
     }
 
     @EventHandler
@@ -44,11 +45,12 @@ public class GadgetFunGun extends Gadget {
 
         Location location = projectile.getLocation();
 
-        for (Projectile snowball : projectiles)
+        for (Projectile snowball : projectiles) {
             snowball.remove();
+        }
 
         Particles.LAVA.display(1.3f, 1f, 1.3f, location, 16);
         Particles.HEART.display(0.8f, 0.8f, 0.8f, location, 20);
-        play(XSound.ENTITY_CAT_PURREOW, getPlayer(), 1.4f, 1.5f);
+        sound.play();
     }
 }

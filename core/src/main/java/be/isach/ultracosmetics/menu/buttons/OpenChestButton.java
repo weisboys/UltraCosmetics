@@ -21,6 +21,7 @@ public class OpenChestButton extends TreasureButton {
     private final String[] noKeysLore = new String[] {"", MessageManager.getLegacyMessage("Dont-Have-Key"), buyKeyMessage};
     private final String[] hasKeysLore;
     private final TreasureChestManager treasureChestManager;
+    private final XSound.SoundPlayer noKeysSound;
 
     public OpenChestButton(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
@@ -31,6 +32,7 @@ public class OpenChestButton extends TreasureButton {
         } else {
             hasKeysLore = new String[] {"", MessageManager.getLegacyMessage("Click-Open-Chest"), ""};
         }
+        noKeysSound = XSound.BLOCK_ANVIL_LAND.record().withVolume(0.2f).withPitch(1.2f).soundPlayer();
     }
 
     @Override
@@ -44,7 +46,7 @@ public class OpenChestButton extends TreasureButton {
         UltraPlayer player = clickData.getClicker();
         Player p = player.getBukkitPlayer();
         if (!canBuyKeys && player.getKeys() < 1) {
-            XSound.BLOCK_ANVIL_LAND.play(p.getLocation(), 0.2f, 1.2f);
+            noKeysSound.forPlayers(p).play();
             return;
         }
         String selectedMode = chestMode;

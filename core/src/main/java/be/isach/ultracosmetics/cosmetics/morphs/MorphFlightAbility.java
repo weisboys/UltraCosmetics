@@ -14,11 +14,11 @@ import org.bukkit.util.Vector;
 
 public abstract class MorphFlightAbility extends Morph implements Updatable {
     private static final double COOLDOWN = 2;
-    private final XSound sound;
+    private final XSound.SoundPlayer sound;
 
     public MorphFlightAbility(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics, XSound sound) {
         super(owner, type, ultraCosmetics);
-        this.sound = sound;
+        this.sound = sound.record().withVolume(0.4f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -40,7 +40,7 @@ public abstract class MorphFlightAbility extends Morph implements Updatable {
             Vector v = event.getPlayer().getLocation().getDirection();
             v.setY(0.75);
             MathUtils.applyVelocity(getPlayer(), v);
-            sound.play(getPlayer(), 0.4f, 1.0f);
+            sound.play();
             getOwner().setCooldown(getType(), COOLDOWN, 0);
         }
     }

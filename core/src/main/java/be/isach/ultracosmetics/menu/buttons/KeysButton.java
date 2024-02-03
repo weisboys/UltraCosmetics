@@ -14,10 +14,12 @@ import org.bukkit.inventory.ItemStack;
 public class KeysButton extends TreasureButton {
     private final String itemName = MessageManager.getLegacyMessage("Treasure-Keys");
     private final UltraCosmetics ultraCosmetics;
+    private final XSound.SoundPlayer noKeysSound;
 
     public KeysButton(UltraCosmetics ultraCosmetics) {
         super(ultraCosmetics);
         this.ultraCosmetics = ultraCosmetics;
+        noKeysSound = XSound.BLOCK_ANVIL_LAND.record().withVolume(0.2f).withPitch(1.2f).soundPlayer();
     }
 
     @Override
@@ -33,7 +35,7 @@ public class KeysButton extends TreasureButton {
     public void onClick(ClickData clickData) {
         UltraPlayer clicker = clickData.getClicker();
         if (!canBuyKeys) {
-            XSound.BLOCK_ANVIL_LAND.play(clicker.getBukkitPlayer().getLocation(), 0.2f, 1.2f);
+            noKeysSound.forPlayers(clicker.getBukkitPlayer());
             return;
         }
         clicker.getBukkitPlayer().closeInventory();

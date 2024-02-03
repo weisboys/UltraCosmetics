@@ -11,6 +11,7 @@ import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import org.bukkit.Effect;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -30,6 +31,8 @@ import java.util.Set;
 public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmetic, Updatable {
     private Item melon = null;
     private final Set<Item> melonSlices = new HashSet<>();
+    private final XSound.SoundPlayer eatSound = XSound.ENTITY_PLAYER_BURP.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
+    private final XSound.SoundPlayer useSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
 
     public GadgetMelonThrower(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -42,7 +45,7 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
                 && event.getItem().getTicksLived() > 5
                 && canAffect(event.getPlayer(), getPlayer())) {
             event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5 * 20, 2));
-            play(XSound.ENTITY_PLAYER_BURP, getPlayer().getLocation(), 1.4f, 1.5f);
+            eatSound.atLocation(getPlayer().getLocation()).play();
             event.getItem().remove();
             melonSlices.remove(event.getItem());
             // Should be done anyway by PlayerListener, but just to be safe
@@ -69,8 +72,9 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
 
     @Override
     protected void onRightClick() {
-        play(XSound.ENTITY_GENERIC_EXPLODE, getPlayer().getLocation(), 1.4f, 1.5f);
-        melon = ItemFactory.createUnpickableItemDirectional(XMaterial.MELON, getPlayer(), 1.3);
+        Player player = getPlayer();
+        useSound.atLocation(player.getLocation()).play();
+        melon = ItemFactory.createUnpickableItemDirectional(XMaterial.MELON, player, 1.3);
     }
 
     @Override

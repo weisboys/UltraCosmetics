@@ -15,6 +15,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author iSach
@@ -22,9 +23,13 @@ import org.bukkit.util.Vector;
  */
 public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Updatable {
     private int charge = 0;
+    private final XSound.SoundPlayer chargeSound;
+    private final XSound.SoundPlayer explodeSound;
 
     public MorphCreeper(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        chargeSound = XSound.ENTITY_CREEPER_PRIMED.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        explodeSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
@@ -34,7 +39,7 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
         if (getPlayer().isSneaking()) {
             creeperWatcher.setIgnited(true);
             if (charge + 4 <= 100) charge += 4;
-            XSound.ENTITY_CREEPER_PRIMED.play(getPlayer(), 1.4f, 1.5f);
+            chargeSound.play();
         } else {
             if (creeperWatcher.isIgnited()) {
                 // Reset disguise
@@ -42,21 +47,12 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
             }
             if (charge == 100) {
                 Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
-                XSound.ENTITY_GENERIC_EXPLODE.play(getPlayer(), 1.4f, 1.5f);
+                explodeSound.play();
 
                 Player player = getPlayer();
                 for (Entity ent : player.getNearbyEntities(3, 3, 3)) {
                     if (!canAffect(ent, player)) continue;
-                    double dX = getPlayer().getLocation().getX() - ent.getLocation().getX();
-                    double dY = getPlayer().getLocation().getY() - ent.getLocation().getY();
-                    double dZ = getPlayer().getLocation().getZ() - ent.getLocation().getZ();
-                    double yaw = Math.atan2(dZ, dX);
-                    double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
-                    double x = Math.sin(pitch) * Math.cos(yaw);
-                    double y = Math.sin(pitch) * Math.sin(yaw);
-                    double z = Math.cos(pitch);
-
-                    Vector vector = new Vector(x, z, y);
+                    Vector vector = getVector(ent);
                     MathUtils.applyVelocity(ent, vector.multiply(1.3D).add(new Vector(0, 1.4D, 0)));
                 }
                 ActionBar.clearActionBar(getPlayer());
@@ -76,5 +72,19 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
         } else if (charge == 100) {
             ActionBar.sendActionBar(getPlayer(), MessageManager.getLegacyMessage("Morphs.Creeper.release-to-explode"));
         }
+    }
+
+    @NotNull
+    private Vector getVector(Entity ent) {
+        double dX = getPlayer().getLocation().getX() - ent.getLocation().getX();
+        double dY = getPlayer().getLocation().getY() - ent.getLocation().getY();
+        double dZ = getPlayer().getLocation().getZ() - ent.getLocation().getZ();
+        double yaw = Math.atan2(dZ, dX);
+        double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
+        double x = Math.sin(pitch) * Math.cos(yaw);
+        double y = Math.sin(pitch) * Math.sin(yaw);
+        double z = Math.cos(pitch);
+
+        return new Vector(x, z, y);
     }
 }

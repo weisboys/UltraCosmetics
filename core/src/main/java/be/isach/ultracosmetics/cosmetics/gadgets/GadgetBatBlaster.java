@@ -29,6 +29,7 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
     private boolean active = false;
     private Location playerStartLoc;
     private EntitySpawner<Bat> bats;
+    private final XSound.SoundPlayer bounceSound = XSound.ENTITY_BAT_HURT.record().soundPlayer();
 
     public GadgetBatBlaster(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -100,7 +101,7 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
                 other.setFallDistance(0);
                 MathUtils.applyVelocity(other, bat.getLocation().getDirection().add(new Vector(0, 0.4f, 0)));
 
-                play(XSound.ENTITY_BAT_HURT, bat.getLocation(), 1.0f, 1.0f);
+                bounceSound.atLocation(bat.getLocation()).play();
                 Particles.SMOKE_NORMAL.display(bat.getLocation());
 
                 bat.remove();

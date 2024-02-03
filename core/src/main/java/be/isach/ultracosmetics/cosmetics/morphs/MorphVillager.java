@@ -17,14 +17,17 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @since 07-03-2017
  */
 public class MorphVillager extends MorphLeftClickCooldown {
+    private final XSound.SoundPlayer sound;
+
     public MorphVillager(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics, 5);
+        sound = XSound.ENTITY_EXPERIENCE_ORB_PICKUP.record().soundPlayer().forPlayers(getPlayer());
     }
 
     @Override
     public void onLeftClick(PlayerInteractEvent event) {
         event.setCancelled(true);
-        XSound.ENTITY_EXPERIENCE_ORB_PICKUP.play(getPlayer());
+        sound.play();
         Item emerald = ItemFactory.createUnpickableItemDirectional(XMaterial.EMERALD, getPlayer(), 1.5);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), emerald::remove, 80);
     }

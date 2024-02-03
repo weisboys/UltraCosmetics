@@ -56,9 +56,11 @@ public class GadgetPaintballGun extends Gadget {
     private final int radius;
     private final Particles effect;
     private final int particleCount;
+    private final XSound.SoundPlayer sound;
 
     public GadgetPaintballGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        sound = XSound.ENTITY_CHICKEN_EGG.record().withVolume(1.5f).withPitch(1.2f).soundPlayer().forPlayers(getPlayer());
         radius = SettingsManager.getConfig().getInt(getOptionPath("Radius"), 2);
         displayCooldownMessage = false;
         if (!SettingsManager.getConfig().getBoolean(getOptionPath("Particle.Enabled"))) {
@@ -66,7 +68,7 @@ public class GadgetPaintballGun extends Gadget {
             effect = null;
             return;
         }
-        Particles effect = null;
+        Particles effect;
         try {
             effect = Particles.valueOf(SettingsManager.getConfig().getString(getOptionPath("Particle.Effect")));
         } catch (IllegalArgumentException ignored) {
@@ -82,7 +84,7 @@ public class GadgetPaintballGun extends Gadget {
     protected void onRightClick() {
         Projectile projectile = getPlayer().launchProjectile(EnderPearl.class, getPlayer().getLocation().getDirection().multiply(2));
         projectiles.add(projectile);
-        play(XSound.ENTITY_CHICKEN_EGG, getPlayer(), 1.5f, 1.2f);
+        sound.play();
     }
 
     @EventHandler
