@@ -1139,6 +1139,9 @@ Morphs:
   Shulker:
     name: <bold><dark_purple>Shulker
     Description: Le gusta esconderse!
+  Sniffer:
+    name: <bold><green>Sniffer
+    Description: '*sniff sniff*'
 Hats:
   Equip: '<prefix> <blue>Equipaste el sombrero: <hatname>'
   Unequip: '<prefix> <blue>Desequipaste el sombrero: <hatname>'
