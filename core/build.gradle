@@ -40,6 +40,7 @@ dependencies {
     compileOnly "com.olziedev:playerauctions-api:1.24.0-pre2"
 }
 shadowJar {
+    //archiveClassifier = ''
     // removes unused classes in 'implementation' path dependencies
     minimize {
         // Loads classes reflectively
@@ -64,9 +65,9 @@ shadowJar {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        pluginMaven(MavenPublication) {
             groupId project.group
-            artifactId project.name
+            //artifactId project.name
             version project.version
             from components.java
         }
