@@ -40,7 +40,8 @@ dependencies {
     compileOnly "com.olziedev:playerauctions-api:1.24.0-pre2"
 }
 shadowJar {
-    //archiveClassifier = ''
+    // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack
+    archiveClassifier = ''
     // removes unused classes in 'implementation' path dependencies
     minimize {
         // Loads classes reflectively
