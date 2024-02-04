@@ -66,8 +66,12 @@ shadowJar {
 
 publishing {
     publications {
-        jar(MavenPublication) {
+        mavenJava(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
             from components.java
+            //artifact shadowJar
         }
     }
     repositories {
