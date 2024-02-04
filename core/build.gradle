@@ -15,9 +15,7 @@ dependencies {
     }
     compileOnly 'me.clip:placeholderapi:2.11.3'
     compileOnly 'org.black_ixx:playerpoints:3.2.6'
-    // WG 7.0.3 was last version to support Java <16
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.3'
-    // same version used in 1.17.1, 3.x uses Java 16
     compileOnly 'com.mojang:authlib:2.3.31'
     // used by the update checker
     compileOnly 'com.googlecode.json-simple:json-simple:1.1.1'
@@ -30,7 +28,6 @@ dependencies {
     compileOnly "me.lokka30:treasury-api:2.0.2-SNAPSHOT"
     compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     compileOnly 'com.palmergames.bukkit.towny:towny:0.99.5.4'
-    // Last version to support Java 8
     implementation 'com.zaxxer:HikariCP:4.0.3'
     implementation 'net.wesjd:anvilgui:1.9.2-SNAPSHOT'
     implementation 'me.gamercoder215:mobchip-bukkit:1.9.4-SNAPSHOT'
