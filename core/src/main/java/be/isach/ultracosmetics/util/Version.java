@@ -13,22 +13,22 @@ public class Version implements Comparable<Version> {
 
     // only numbers (ex. 2.6.1)
     private final String version;
-    // classifier (ex. RELEASE)
+    // Classifier only (ex. RELEASE)
     private final String classifier;
     private final String gitHash;
 
 
-    public Version(String version, String classifier, String gitHash) {
+    public Version(String version, String gitHash) {
         if (version == null) {
             throw new IllegalArgumentException("Version can not be null");
         }
-        this.version = version;
-        this.classifier = classifier;
+        this.version = findVersion(version);
+        this.classifier = findClassifier(version);
         this.gitHash = gitHash;
     }
 
     public Version(String version) {
-        this(findVersion(version), findClassifier(version), null);
+        this(version, null);
     }
 
     private static String findVersion(String version) {

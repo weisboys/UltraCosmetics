@@ -12,8 +12,7 @@ allprojects {
     idea.module.downloadSources = true
 
     group = 'be.isach.UltraCosmetics'
-    version = '3.4.2'
-    def classifier = 'RELEASE'
+    version = '3.5-DEV-b1'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
@@ -45,15 +44,13 @@ allprojects {
         inputs.property("version", project.version)
 
         filter ReplaceTokens, tokens: [
-                'VERSION'   : project.version,
-                'CLASSIFIER': classifier,
-                'GIT-HASH'  : getGitHash()
+                'VERSION' : project.version,
+                'GIT-HASH': getGitHash()
         ]
     }
 
     afterEvaluate {
         jar {
-            archiveClassifier = classifier
             dependsOn configurations.shaded
             from configurations.shaded.collect {
                 it.isDirectory() ?

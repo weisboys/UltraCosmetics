@@ -59,9 +59,8 @@ public class UpdateManager extends BukkitRunnable {
         this.ultraCosmetics = ultraCosmetics;
         Reader reader = UltraCosmeticsData.get().getPlugin().getFileReader("build_info.yml");
         YamlConfiguration buildInfo = YamlConfiguration.loadConfiguration(reader);
-        String classifier = buildInfo.getString("classifier");
         String gitHash = buildInfo.getString("git-hash");
-        this.currentVersion = new Version(ultraCosmetics.getDescription().getVersion(), classifier, gitHash);
+        this.currentVersion = new Version(ultraCosmetics.getDescription().getVersion(), gitHash);
     }
 
     /**
