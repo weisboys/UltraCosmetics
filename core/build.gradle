@@ -6,7 +6,7 @@ dependencies {
     // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
     // ideally matches the dependency version of the latest NMS module
     compileOnly 'org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT'
-    compileOnly('LibsDisguises:LibsDisguises:10.0.37') {
+    compileOnly('LibsDisguises:LibsDisguises:10.0.42') {
         exclude group: 'org.spigotmc'
         exclude group: 'com.comphenix.protocol'
     }
