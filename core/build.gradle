@@ -37,7 +37,7 @@ dependencies {
     implementation "net.kyori:adventure-platform-bukkit:4.3.0"
     implementation "net.kyori:adventure-text-serializer-plain:4.15.0"
     api "net.kyori:adventure-api:4.15.0"
-    compileOnly "com.olziedev:playerauctions-api:1.24.0-pre2"
+    compileOnly "com.olziedev:playerauctions-api:1.26.0-pre22"
 }
 shadowJar {
     // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack
