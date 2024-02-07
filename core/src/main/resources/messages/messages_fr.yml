@@ -1141,7 +1141,7 @@ Morphs:
     Description: Aime se cacher !
   Sniffer:
     name: <bold><green>Renifleur
-    Description: '*sniff sniff*'
+    Description: '*renifle renifle*'
 Hats:
   Equip: <prefix> <blue>Tu as équipé <hatname> !
   Unequip: <prefix> <blue>Tu as déséquipé <hatname> !
