@@ -16,7 +16,7 @@ Cancel: <bold><red>PERUUTA
 Buy-Ammo-Description: <bold><yellow>Osta <amount> <gadgetname> ammuksia </yellow></bold><bold><yellow>hintaan <price>$
 Buy-Cosmetic-Description: <bold><yellow>Osta <gadgetname>hintaan $<price>
 Right-Click-Buy-Ammo: <gray>Oikea Clikkaa ostaaksesi ammuksia
-Click-To-Purchase: <yellow>Click to purchase for $<price>
+Click-To-Purchase: <yellow>Klikkaa ostaaksesi hinnalla <price>
 Not-Enough-Money: <prefix> <bold><red>Sinulla ei ole tarpeeksi rahaa!
 Successful-Purchase: <prefix> <bold><green>Osto onnistui!
 Buy-Treasure-Key: <bold>Osta Kosmeettinen Avain
