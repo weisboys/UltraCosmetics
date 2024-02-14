@@ -63,26 +63,26 @@ Menu:
     Button:
       Name: <bold><red>Main Menu
   Pets:
-    Title: <bold>Pets
+    Title: <bold>Animali domestici
     Button:
       Name: <bold><green>Pets
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Tooltip-Equip: <bold><aqua>Produrre
+      Tooltip-Unequip: <bold><red>Scomparsa
   Gadgets:
-    Title: <bold>Gadgets
+    Title: <bold>Gadget
     Button:
       Name: <bold><blue>Gadgets
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Activate
       Tooltip-Unequip: <bold><red>Deactivate
   Mounts:
-    Title: <bold>Mounts
+    Title: <bold>Monti
     Button:
-      Name: <bold><gold>Mounts
+      Name: <bold><gold>Monti
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Spawn
-      Tooltip-Unequip: <bold><red>Despawn
+      Tooltip-Equip: <bold><aqua>Produrre
+      Tooltip-Unequip: <bold><red>Scomparsa
   Morphs:
     Title: <bold>Morphs
     Button:
@@ -91,11 +91,11 @@ Menu:
       Tooltip-Equip: <bold><aqua>Morph into
       Tooltip-Unequip: <bold><red>Unmorph from
   Hats:
-    Title: <bold>Hats
+    Title: <bold>Cappelli
     Button:
       Name: <bold><light_purple>Hats
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Equip: <bold><aqua>Equipaggiare
       Tooltip-Unequip: <bold><red>Unequip
   Particle-Effects:
     Title: <bold>Particle Effects
@@ -109,28 +109,28 @@ Menu:
     Button:
       Name: <bold><dark_aqua>Suits
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Equip: <bold><aqua>Equipaggiare
       Tooltip-Unequip: <bold><red>Unequip
   Emotes:
     Title: <bold>Emotes
     Button:
       Name: <bold><yellow>Emotes
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Equip: <bold><aqua>Equipaggiare
       Tooltip-Unequip: <bold><red>Unequip
   Projectile-Effects:
     Title: <bold>Projectile Effects
     Button:
       Name: <bold><dark_purple>Projectile Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Equip: <bold><aqua>Equipaggiare
       Tooltip-Unequip: <bold><red>Unequip
   Death-Effects:
     Title: <bold>Death Effects
     Button:
       Name: <bold><red>Death Effects
       Lore: '<gray>Unlocked: </gray><white><unlocked>'
-      Tooltip-Equip: <bold><aqua>Equip
+      Tooltip-Equip: <bold><aqua>Equipaggiare
       Tooltip-Unequip: <bold><red>Unequip
   Buy-Ammo:
     Title: <bold>Buy Ammo
