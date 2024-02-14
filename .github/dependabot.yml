@@ -5,12 +5,16 @@ updates:
     directory: /
     schedule:
       interval: daily
+      time: "04:00"
+      timezone: Europe/Paris
     open-pull-requests-limit: 10
 
   - package-ecosystem: "gradle"
     directory: /
     schedule:
       interval: daily
+      time: "04:00"
+      timezone: Europe/Paris
     open-pull-requests-limit: 10
     ignore:
       - dependency-name: "com.mojang:authlib" # AuthLib 2.3.31 - Same version used in 1.17.1, 3.x uses Java 16
