@@ -5,13 +5,13 @@ updates:
     directory: /
     schedule:
       interval: daily
-    open-pull-requests-limit: 50
+    open-pull-requests-limit: 10
 
   - package-ecosystem: "gradle"
     directory: /
     schedule:
       interval: daily
-    open-pull-requests-limit: 50
+    open-pull-requests-limit: 10
     ignore:
       - dependency-name: "com.mojang:authlib" # AuthLib 2.3.31 - Same version used in 1.17.1, 3.x uses Java 16
       - dependency-name: "com.zaxxer:HikariCP" # HikariCP 4.0.3 - Last version to support Java 8
