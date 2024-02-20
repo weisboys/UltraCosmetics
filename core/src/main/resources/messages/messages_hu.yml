@@ -41,21 +41,21 @@ Clear:
   Mounts: <bold><red>Clear current mount
   Particle-Effects: <bold><red>Clear current effect
   Morphs: <bold><red>Clear current morph
-  Hats: <bold><red>Clear current hat
-  Suits: <bold><red>Clear current suit
-  Emotes: <bold><red>Clear current emote
-  Projectile-Effects: <bold><red>Clear current projectile effect
-  Death-Effects: <bold><red>Clear current death effect
+  Hats: <bold><red>Jelenlegi sapka törlése
+  Suits: <bold><red>Jelenlegi öltözet törlése
+  Emotes: <bold><red>Jelenlegi emót törlése
+  Projectile-Effects: <bold><red>Jelenlegi lövedék effektus törlése
+  Death-Effects: <bold><red>Jelenlegi halál effektus törlése
 Menu:
   Purchase-Rename:
     Button:
-      Showcase: <bold><red>Rename the pet to </red><white><name> </white><red>for </red><yellow>$<price>
-    Title: <bold>Rename Pet
+      Showcase: <bold><red>Háziállat elnevezése </red><white><name> </white><red> </red><yellow>$<price> értékben
+    Title: <bold>Háziállat átnevezése
   Purchase-Cosmetic:
-    Title: <bold>Purchase <cosmetic>
+    Title: <bold>Vásárlás <cosmetic>
   Rename-Pet:
     Button:
-      Name: '<bold><red>Click to rename: <petname>'
+      Name: '<bold><red>Kattints az átnevezéshez: <petname>'
     Placeholder: Kisállat Neve
     Title: Kisállat átnevezése
   Main:
@@ -91,9 +91,9 @@ Menu:
       Tooltip-Equip: <bold><aqua>Morph into
       Tooltip-Unequip: <bold><red>Unmorph from
   Hats:
-    Title: <bold>Hats
+    Title: <bold>Sapkák
     Button:
-      Name: <bold><light_purple>Hats
+      Name: <bold><light_purple>Sapkák
       Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Equip
       Tooltip-Unequip: <bold><red>Unequip
