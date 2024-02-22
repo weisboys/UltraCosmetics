@@ -36,7 +36,7 @@ public class ClearCosmeticButton implements Button {
         }
         if (category.isSuits()) {
             for (Category cat : Category.values()) {
-                if (category.isSuits()) {
+                if (cat.isSuits()) {
                     clicker.removeCosmetic(cat);
                 }
             }

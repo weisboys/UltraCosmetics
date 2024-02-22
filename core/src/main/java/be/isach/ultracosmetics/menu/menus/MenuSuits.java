@@ -6,7 +6,6 @@ import be.isach.ultracosmetics.cosmetics.type.SuitCategory;
 import be.isach.ultracosmetics.cosmetics.type.SuitType;
 import be.isach.ultracosmetics.menu.CosmeticMenu;
 import be.isach.ultracosmetics.menu.buttons.EquipWholeSuitButton;
-import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import org.bukkit.inventory.Inventory;
 
@@ -69,7 +68,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
 
     @Override
     protected int getMaxPages(UltraPlayer player) {
-        PermissionManager pm = ultraCosmetics.getPermissionManager();
         int i = 0;
         for (SuitCategory cat : SuitCategory.enabled()) {
             if (player.canEquip(cat.getHelmet())
@@ -84,7 +82,6 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
 
     @Override
     protected boolean hasUnlockable(UltraPlayer player) {
-        PermissionManager pm = ultraCosmetics.getPermissionManager();
         for (SuitCategory cat : SuitCategory.enabled()) {
             if (!player.canEquip(cat.getHelmet())
                     || !player.canEquip(cat.getChestplate())
