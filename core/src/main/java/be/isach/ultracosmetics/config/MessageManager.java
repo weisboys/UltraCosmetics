@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.util.SmartLogger;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
-import net.kyori.adventure.platform.bukkit.BukkitComponentSerializer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -308,12 +307,13 @@ public class MessageManager {
      * @param messagePath The path of the message in the config.
      * @return a message from a config path.
      */
-    public static @NotNull Component getMessage(String messagePath, TagResolver.Single... placeholders) {
+    @NotNull
+    public static Component getMessage(String messagePath, TagResolver.Single... placeholders) {
         return getInstance().getMessageInternal(messagePath, placeholders);
     }
 
     public static String toLegacy(Component component) {
-        return BukkitComponentSerializer.legacy().serialize(component);
+        return LegacyComponentSerializer.legacySection().serialize(component);
     }
 
     public static String getLegacyMessage(String messagePath, TagResolver.Single... placeholders) {
