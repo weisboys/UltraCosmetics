@@ -416,7 +416,7 @@ Mounts:
       Snakes. This one will serve you eternally.
   Strider:
     menu-name: <bold><red>Strider
-    entity-displayname: <bold><playername>'s Strider
+    entity-displayname: <bold><playername> Stridere
     Description: |-
       A mysterious cube-shaped mob
       capable of walking straight over lava.
@@ -434,7 +434,7 @@ Mounts:
     entity-displayname: <bold><playername>'s Mule
     Description: Olyan mint a szamár csak nem az
   Pig:
-    menu-name: <bold><light_purple>Pig
+    menu-name: <bold><light_purple>Malac
     entity-displayname: <bold><playername> Malaca
     Description: Röff!
     Held-Item-Lore: Malac kaja egy boton! Talán malachorgászatra való?
@@ -753,66 +753,66 @@ Pets:
   Squid:
     menu-name: <bold><black>Tintahal
     entity-displayname: <bold><playername> Tintahala
-    Description: Don't scare it or the water turns black!
+    Description: Ne rémiszd meg, mert fekete lesz a víz!
   Strider:
     menu-name: <bold><red>Strider
-    entity-displayname: <bold><playername>'s Strider
-    Description: Walks over lava!
+    entity-displayname: <bold><playername> Stridere
+    Description: Láván jár. Ez még hasznodra válhat!
   Tadpole:
-    menu-name: <bold><dark_gray>Tadpole
-    entity-displayname: <bold><playername>'s Tadpole
-    Description: Will grow into a frog!
+    menu-name: <bold><dark_gray>Ebihal
+    entity-displayname: <bold><playername> Ebihala
+    Description: Előbb utóbb béka lesz belőle!
   TropicalFish:
-    menu-name: <bold><yellow>Tropical Fish
-    entity-displayname: <bold><playername>'s Tropical Fish
-    Description: A colorful fish!
+    menu-name: <bold><yellow>Trópusi hal
+    entity-displayname: <bold><playername> Tórpusi hala
+    Description: Színes hal!
   Turtle:
-    menu-name: <bold><dark_green>Turtle
-    entity-displayname: <bold><playername>'s Turtle
-    Description: Some of them get over 150 years old!
+    menu-name: <bold><dark_green>Teknős
+    entity-displayname: <bold><playername> Teknőse
+    Description: Több mint 150 évig élhet!
   WanderingTrader:
-    menu-name: <bold><dark_blue>Wandering Trader
-    entity-displayname: <bold><playername>'s Wandering Trader
-    Description: Wanders around trying to sell his stuff!
+    menu-name: <bold><dark_blue>Vándorkereskedő
+    entity-displayname: <bold><playername> Vándorkereskedője
+    Description: Sebby, <strikethrough>főznünk kell</strikethrough> el kell adnunk cuccokat!
   CaveSpider:
-    menu-name: <bold><dark_green>Cave Spider
-    entity-displayname: <bold><playername>'s Cave Spider
-    Description: A spider, but poisonous!
+    menu-name: <bold><dark_green>Barlangi pók
+    entity-displayname: <bold><playername> Barlangi pókja
+    Description: Olyan mint egy pók csak mérgesebb (Szó szerint)!
   Dolphin:
-    menu-name: <bold><aqua>Dolphin
-    entity-displayname: <bold><playername>'s Dolphin
+    menu-name: <bold><aqua>Delfin
+    entity-displayname: <bold><playername> Delfine
     Description: '&7Okosabbak, mint gondolnád! :D'
   Spider:
     menu-name: <bold><dark_gray>Spider
     entity-displayname: <bold><playername>'s Spider
-    Description: Your friendly neighborhood spider!
+    Description: A barátságos pók<strikethrough>ember</strikethrough>!
   ZombifiedPiglin:
-    menu-name: <bold><light_purple>Zombified Piglin
-    entity-displayname: <bold><playername>'s Zombified Piglin
-    Description: Attack it and all of them will be after you!
+    menu-name: <bold><light_purple>Zombi piglin
+    entity-displayname: <bold><playername> Zombi piglinje
+    Description: Bandában utaznak, ne támadj rá!
   Drowned:
-    menu-name: <bold><dark_aqua>Drowned
-    entity-displayname: <bold><playername>'s Drowned
-    Description: An underwater zombie!
+    menu-name: <bold><dark_aqua>Vízbefúlt
+    entity-displayname: <bold><playername> Vízbefúltja
+    Description: Vízalatti zombi!
   ElderGuardian:
-    menu-name: <bold><dark_aqua>Elder Guardian
-    entity-displayname: <bold><playername>'s Elder Guardian
-    Description: Guards ancient temples!
+    menu-name: <bold><dark_aqua>Idősebb őrszem
+    entity-displayname: <bold><playername> Idősebb őrszeme
+    Description: Ősi romokat őriz!
   Endermite:
     menu-name: <bold><dark_purple>Endermite
-    entity-displayname: <bold><playername>'s Endermite
-    Description: Attracts Endermen!
+    entity-displayname: <bold><playername> Endermite-ja
+    Description: Kicsi, morcos, mindenkit megtámad!
   Evoker:
-    menu-name: <bold><gray>Evoker
-    entity-displayname: <bold><playername>'s Evoker
-    Description: Summons Vexes for a living!
+    menu-name: <bold><gray>Idéző
+    entity-displayname: <bold><playername> Idézője
+    Description: Megidézésekkel keresi kenyerét!
   Ghast:
-    menu-name: <bold><white>Ghast
-    entity-displayname: <bold><playername>'s Ghast
-    Description: '*Demonic screaming*'
+    menu-name: <bold><white>Szellem
+    entity-displayname: <bold><playername> Szelleme
+    Description: 'Idegesítő, amikor sikít és lövöldöz'
   Guardian:
-    menu-name: <bold><dark_aqua>Guardian
-    entity-displayname: <bold><playername>'s Guardian
+    menu-name: <bold><dark_aqua>Őrszem
+    entity-displayname: <bold><playername> Őrszeme
     Description: Hates squids!
   Hoglin:
     menu-name: <bold><red>Hoglin
@@ -855,11 +855,11 @@ Pets:
     entity-displayname: <bold><playername>'s Vindicator
     Description: Don't underestimate their strength!
   Witch:
-    menu-name: <bold><dark_purple>Witch
+    menu-name: <bold><dark_purple>Boszorkány
     entity-displayname: <bold><playername>'s Witch
     Description: Loves black cats!
   WitherSkeleton:
-    menu-name: <bold><dark_gray>Wither Skeleton
+    menu-name: <bold><dark_gray>Withercsontváz
     entity-displayname: <bold><playername>'s Wither Skeleton
     Description: The reason why Looting exists.
   Zoglin:
@@ -882,152 +882,154 @@ Pets:
     menu-name: <bold><green>Sniffer
     entity-displayname: <bold><playername>'s Sniffer
     Description: Can smell pottery!
-  Equip: <prefix> <blue>You spawned <petname>
-  Unequip: <prefix> <blue>You despawned <petname>
+  Equip: '<prefix> <blue> Leidézted őt: <petname>'
+  Unequip: '<prefix> <blue>Elküldted őt: <petname>'
 Morphs:
   Blaze:
-    name: <bold><gold>Blaze
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Fly'
-    Description: It might be hot on there...
+    name: <bold><gold>Őrláng
+    skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>repüléshez'
+    Description: Forró, vigyázz...
   Chicken:
-    name: <bold><white>Chicken
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Lay eggs'
-    Description: Become a chicken!
+    name: <bold><white>Csirke
+    skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>tojjon tojást'
+    Description: Légy csirke!
   Slime:
     name: <bold><green>Slime
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bounce'
-    Description: Splat splat!
+    skill: '<yellow>Lopakodj </yellow><gray> a </gray><green> pattogáshoz'
+    Description: Placcs placcs!
   Pig:
-    name: <bold><light_purple>Pig
-    skill: '<yellow>Collide</yellow><gray> to: </gray><green>Bounce Players'
-    Description: Must hold your carrot!
+    name: <bold><light_purple>Malac
+    skill: '<yellow>Menj neki</yellow><gray> másnak, </gray><green>hogy ellökd a többieket'
+    Description: Répa? Répa!
   Enderman:
     name: <bold><dark_purple>Enderman
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Teleport'
+    skill: '<yellow>Ugorj 2x</yellow><gray> a </gray><green>teleportáláshoz'
     Description: |-
-      I go from there to
-      there, then you lost me...
+      Innen
+      Oda
+      Onnan
+      Amoda...
   Bat:
     name: <bold><dark_gray>Denevér
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
-    Description: Become a bat!
+    skill: '<yellow>Ugorj 2x</yellow><gray> a </gray><green>csapáshoz'
+    Description: "Légy denevér. Vagy vámpír.\nEz már a Te fantáziád!"
   Creeper:
     name: <bold><green>Creeper
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Detonate'
-    charging: '<bold><green>Charging: <chargelevel>/100'
-    release-to-explode: <bold><white>Release to explode!
-    Description: Hey What'sssssss up?
+    skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>robbantáshoz'
+    charging: '<bold><green>Töltöttség: <chargelevel>/100'
+    release-to-explode: <bold><white>Kilövésre fel!
+    Description: Mi a pálllya?
   Snowman:
     name: <bold><white>Hóember
-    skill: '<yellow>Left Click</yellow><gray> to: </gray><green>Throw Snowball'
-    Description: Become Olaf!
-  Equip: <prefix> <blue>You morphed into <morphname>
-  Unequip: <prefix> <blue>You unmorphed from <morphname>
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>hógolyó eldobására'
+    Description: Légy Olaf!
+  Equip: '<prefix> <blue>Átváltoztál erre: <morphname>'
+  Unequip: '<prefix> <blue>Átváltoztál erről: <morphname>'
   WitherSkeleton:
-    name: <bold><dark_gray>Wither Skeleton
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Bone Bomb'
+    name: <bold><dark_gray>Withercsontváz
+    skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>csont bombához'
     Description: |-
-      Just a regular skeleton...
-      but from the Nether!
+      Olyan mint egy csontváz
+      Csak másik éghajlatról!
   ElderGuardian:
-    name: <bold><dark_gray>Elder Guardian
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Laser'
-    Description: Become an Elder Guardian!!
+    name: <bold><dark_gray>Idősebb őrszem
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>Lézer használatához'
+    Description: Légy Idősebb őrszem!!
   Cow:
-    name: <bold><dark_gray>Cow
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Moo'
+    name: <bold><dark_gray>Tehén
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>"búúúúúú" hanghoz'
     Description: Búúúúú!
   Sheep:
     name: <bold><white>Bárány
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Change Colors'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>színváltáshoz'
     Description: Beeeee
   Mooshroom:
-    name: <bold><red>Mooshroom
-    skill: '<yellow>Sneak</yellow><gray> to: </gray><green>Soup Throw'
+    name: <bold><red>Gombatehén
+    skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>leves dobáláshoz'
     Description: Búúúúú!
   Villager:
     name: <bold><green>Falusi
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Emerald Throw'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>smaragd dobáláshoz'
     Description: Smaragd az életem! Hmmmmmm
   Witch:
-    name: <bold><dark_purple>Witch
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Potion Throw'
+    name: <bold><dark_purple>Boszorkány
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>poti dobáláshoz'
     Description: Muahahahahaha
   PolarBear:
-    name: <bold><white>Polar Bear
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Blizzard'
+    name: <bold><white>Jegesmaci
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>hóviharhoz'
     Description: Legjobb a hideg
   Llama:
-    name: <bold><dark_aqua>Llama
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Spit'
+    name: <bold><dark_aqua>Láma
+    skill: '<yellow>Bal klikkelj </yellow><gray> a </gray><green>köpéshez'
     Description: Dráma láma
   Parrot:
     name: <bold><green>Papagáj
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
+    skill: '<yellow>Ugorj 2x</yellow><gray> a </gray><green>csapáshoz'
     Description: Mindent megismétel amit mondasz neki, csak óvatosan
   Allay:
     name: <bold><green>Allay
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
+    skill: '<yellow>Ugorj 2x</yellow><gray> a </gray><green>csapáshoz'
     Description: Egy új barát!
   Axolotl:
     name: <bold><dark_purple>Axolotl
-    skill: <yellow>Left-Click</yellow><gray> for cute sounds
+    skill: <yellow>Bal klikkelj</yellow><gray>a cuki hangokért
     Description: Olyan cukiiii!
   Bee:
     name: <bold><yellow>Méhecske
-    skill: '<yellow>Double Jump</yellow><gray> to: </gray><green>Flap'
+    skill: '<yellow>Ugorj 2x</yellow><gray> a </gray><green>csapáshoz'
     Description: '*bzzzz* *bzzzz*'
   Cat:
-    name: <bold><yellow>Cat
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>Meow'
-    Description: Basically a tiny tiger
+    name: <bold><yellow>Macska
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>nyávogáshoz'
+    Description: Mini tigrincs
   CaveSpider:
     name: <bold><yellow>Bányapók
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Egy pók, viszont mérgező!
   Cod:
-    name: <bold><yellow>Cod
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    name: <bold><yellow>Tőkehal
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Prefers water over land!
   Dolphin:
     name: <bold><yellow>Dolphin
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: '&7Okosabbak, mint gondolnád! :D'
   Donkey:
     name: <bold><gray>Donkey
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Can carry all your stuff!
   Drowned:
-    name: <bold><dark_aqua>Drowned
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: An underwater zombie!
+    name: <bold><dark_aqua>Vízbefúlt
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
+    Description: Vízalatti zombi!
   Endermite:
     name: <bold><dark_purple>Endermite
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Attracts Endermen!
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
+    Description: Kicsi, morcos, mindenkit megtámad!
   Evoker:
-    name: <bold><gray>Evoker
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
-    Description: Summons Vexes for a living!
+    name: <bold><gray>Idéző
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
+    Description: Megidézésekkel keresi kenyerét!
   Frog:
     name: <bold><dark_green>Frog
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Doesn't like fireflies!
   Fox:
     name: <bold><light_purple>Róka
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: "What does the fox say?\nding-ding-ding-ding-ding-ding-ding"
   GlowSquid:
     name: <bold><dark_aqua>Glow Squid
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: It glows!
   Goat:
     name: <bold><white>Goat
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: BAAAA!
   Guardian:
-    name: <bold><dark_aqua>Guardian
-    skill: '<yellow>Left-Click</yellow><gray> to: </gray><green>TODO'
+    name: <bold><dark_aqua>Őrszem
+    skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Hates squids!
   Wolf:
     name: <bold><gray>Wolf
@@ -1039,11 +1041,11 @@ Morphs:
     name: <bold><dark_gray>Wither
     Description: Vigyázz velem...
   Skeleton:
-    name: <bold><gray>Skeleton
-    Description: Very good archer!
+    name: <bold><gray>Csontváz
+    Description: Nem kancsal, csak néha!
   Zombie:
     name: <bold><dark_green>Zombie
-    Description: Brains!!!
+    Description: AGYAAAAAAT!!!
   Squid:
     name: <bold><light_purple>Polip
     Description: Bloop Bloop!
@@ -1051,8 +1053,8 @@ Morphs:
     name: <bold><dark_gray>Pók
     Description: HISS...
   Ghast:
-    name: <bold><white>Ghast
-    Description: '*high-pitched scream*'
+    name: <bold><white>Szellem
+    Description: 'AAAAAAAAAAAAAAA, IIIIIIIIIIII'
   MagmaCube:
     name: <bold><red>Magma Cube
     Description: A very hot cube!
@@ -1061,16 +1063,16 @@ Morphs:
     Description: '*fhrrrrhh*'
   Warden:
     name: <bold><dark_aqua>Warden
-    Description: Be quiet...
+    Description: Halkan, mert meghall és meghalsz
   Tadpole:
-    name: <bold><dark_gray>Tadpole
-    Description: Will grow into a frog!
+    name: <bold><dark_gray>Ebihal
+    Description: Előbb utóbb béka lesz belőle!
   Piglin:
     name: <bold><gold>Piglin
     Description: Deals with gold!
   Strider:
     name: <bold><red>Strider
-    Description: I hate water!
+    Description: Víz = "rósz"
   Hoglin:
     name: <bold><red>Hoglin
     Description: A pig, but in angry.
@@ -1081,8 +1083,8 @@ Morphs:
     name: <bold><red>Zoglin
     Description: A zombified Hoglin!
   ZombifiedPiglin:
-    name: <bold><light_purple>Zombified Piglin
-    Description: Attack it and all of them will be after you!
+    name: <bold><light_purple>Zombi piglin
+    Description: Bandában utaznak, ne támadj rá!
   Panda:
     name: <bold><green>Panda
     Description: Likes bamboo!
@@ -1091,7 +1093,7 @@ Morphs:
     Description: A Dzsungel Királya
   WanderingTrader:
     name: <bold><dark_blue>Vándorfalusi
-    Description: Wanders around trying to sell his stuff!
+    Description: Sebby, <strikethrough>főznünk kell</strikethrough> el kell adnunk cuccokat!
   Pillager:
     name: <bold><gray>Pillager
     Description: Likes to pillage villages!
@@ -1105,8 +1107,8 @@ Morphs:
     name: <bold><red>Lazac
     Description: Elég lazac!
   TropicalFish:
-    name: <bold><yellow>Tropical Fish
-    Description: A colorful fish!
+    name: <bold><yellow>Trópusi hal
+    Description: Színes hal!
   Turtle:
     name: <bold><green>Turtle
     Description: Take your time.
@@ -1201,107 +1203,107 @@ Hats:
     Name: <bold><dark_aqua>Squid
     Description: Bloop Bloop!
   GlowSquid:
-    Name: <bold><aqua>Glow Squid
-    Description: Light up the ocean!
+    Name: <bold><aqua> Világító Tintahal
+    Description: Tintahal, csak világít...
   Chicken:
-    Name: <bold><white>Chicken
-    Description: Bwwaaaaaaaaaaaakkkkk!
+    Name: <bold><white>Csirke
+    Description: Qvaaaaaak!
   Blaze:
-    Name: <bold><gold>Blaze
-    Description: Watch out for the fire!
+    Name: <bold><gold>Őrláng
+    Description: Vigyázz a tűzre, veszélyes!
   Piston:
-    Name: <bold><gray>Piston
-    Description: Have you got the redstone?
+    Name: <bold><gray>Dugattyú
+    Description: "Motorokban is hasonló van...\nCsak ez vöröskőbel működik, nem üzemanyaggal..."
   Sheep:
     Name: <bold><white>Bárány
     Description: Beeeee
   Pig:
-    Name: <bold><light_purple>Pig
-    Description: Oink Oink!
+    Name: <bold><light_purple>Malac
+    Description: Röff! Röff!
   Cow:
-    Name: <bold><green>Cow
+    Name: <bold><green>Tehén
     Description: Búúúúú!
   Mooshroom:
-    Name: <bold><red>Mooshroom
+    Name: <bold><red>Gombatehén
     Description: Búúúúú!
   BrownMooshroom:
-    Name: <bold><aqua>Brown Mooshroom
+    Name: <bold><aqua>Barna Gombatehén
     Description: Búúúúú!
   Moobloom:
     Name: <bold><yellow>Moobloom
-    Description: Very rare cow!
+    Description: Ritka, mint a fehér holló!
   ChestnutHorse:
-    Name: <bold><dark_green>Chestnut Horse
-    Description: Don't forget the saddle!
+    Name: <bold><dark_green>Gesztenye ló
+    Description: Nyereg nélkül ne indulj el!
   Golem:
-    Name: <bold><gray>Golem
-    Description: I'm your guard.
+    Name: <bold><gray>Gólem
+    Description: Védelmező!
   CopperGolem:
-    Name: <bold><gold>Copper Golem
-    Description: Made out of 100% copper.
+    Name: <bold><gold>Réz gólem
+    Description: Teljesen rézbű' van!
   Enderman:
     Name: <bold><dark_purple>Enderman
-    Description: Now I'm here, now I'm there!
+    Description: Na hol lehetek?
   EndermanKing:
-    Name: <bold><light_purple>Enderman King
-    Description: King of the endermen
+    Name: <bold><light_purple>Bevégző király
+    Description: A bevégzők királya
   Slime:
     Name: <bold><green>Slime
-    Description: Very slimy
+    Description: Nyálkás... Fúj
   Creeper:
     Name: <bold><dark_green>Creeper
-    Description: Scare your friends!
+    Description: Ijesztő saláta!
   Skeleton:
-    Name: <bold><gray>Skeleton
-    Description: Very good archer!
+    Name: <bold><gray>Csontváz
+    Description: Nem kancsal, csak néha!
   Zombie:
     Name: <bold><dark_green>Zombie
-    Description: Brains!!!
+    Description: AGYAAAAAAT!!!
   Drowned:
-    Name: <bold><dark_aqua>Drowned
-    Description: Underwater zombie
+    Name: <bold><dark_aqua>Vízbefúlt
+    Description: Víz alatt élő zombi
   Strider:
     Name: <bold><red>Strider
-    Description: I hate water!
+    Description: Víz = "rósz"
   WitherSkeleton:
-    Name: <bold><gray>Wither Skeleton
-    Description: Guardian of the nether fortress
+    Name: <bold><gray>Withercsontváz
+    Description: Pokol bástyák védelmezője
   Ghast:
-    Name: <bold><white>Ghast
-    Description: '*high-pitched scream*'
+    Name: <bold><white>Szellem
+    Description: 'AAAAAAAAAAAAAAA, IIIIIIIIIIII'
   Warden:
     Name: <bold><dark_aqua>Warden
-    Description: Be quiet...
+    Description: Halkan, mert meghall és meghalsz
   Witch:
-    Name: <bold><dark_purple>Witch
-    Description: Please try my potion!
+    Name: <bold><dark_purple>Boszorkány
+    Description: Próbáld ki a főzeteim!
   Guardian:
-    Name: <bold><dark_aqua>Guardian
-    Description: Protect the ocean monuments!
+    Name: <bold><dark_aqua>Őrszem
+    Description: Védd az óceánokat, igyál olajat!
   ShepherdVillager:
-    Name: <bold><yellow>Shepherd Villager
-    Description: The Lonely Shepherd
+    Name: <bold><yellow>Pásztor
+    Description: Magányos Pásztor
   FletcherVillager:
-    Name: <bold><green>Fletcher Villager
-    Description: I make arrows.
+    Name: <bold><green>Nyilas
+    Description: Nyilat tessék!
   LibrarianVillager:
-    Name: <bold><gold>Librarian Villager
-    Description: Knowledge is power.
+    Name: <bold><gold>Könyves
+    Description: A tudás hatalom!
   Bee:
     Name: <bold><yellow>Méhecske
-    Description: Be careful!
+    Description: Csak óvatosan!
   Fox:
-    Name: <bold><gold>Fox
-    Description: Fast and smart!
+    Name: <bold><gold>Róka
+    Description: Swiper, ne lopkodj!
   SnowFox:
-    Name: <bold><white>Snow Fox
-    Description: Snowy biomes are my home.
+    Name: <bold><white>Fehér róka
+    Description: Mint havas Jon, csak mégsem.
   Ocelot:
     Name: <bold><yellow>Ocelot
-    Description: King of the jungle
+    Description: A Dzsungel Királya
   Frog:
     Name: <bold><dark_green>Frog
-    Description: Eats whatever bugs him.
+    Description: Mindent megesz ami ZZZzzzzzavarja.
   AxolotlPink:
     Name: <bold><light_purple>Pink Axolotl
     Description: The cutest predator
@@ -1379,52 +1381,52 @@ Hats:
     Description: Open, and close
   Skull:
     Name: <bold><white>Skull
-    Description: Who is headless now?
+    Description: Ki a fejetlen most?
   JackOLantern:
-    Name: <bold><gold>Jack-O'-Lantern
-    Description: A little pumpkin
+    Name: <bold><gold>Töklámpás
+    Description: Tök jól világít
   Ghost:
-    Name: <bold><white>Ghost
-    Description: 2spooky4u
+    Name: <bold><white>Szellem
+    Description: '"non ijesztő"'
   ScaryClown:
-    Name: <bold><dark_red>Scary Clown
-    Description: Hope you are not scared of clowns.
+    Name: <bold><dark_red>Félelmetes bohóc
+    Description: Remélem nem félsz a bohócoktól.
   Santa:
-    Name: <bold><dark_red>Santa
-    Description: Ho ho ho! Merry Christmas!
+    Name: <bold><dark_red>Mikulás
+    Description: Máris karácsony van?
   Snowman:
     Name: <bold><white>Hóember
-    Description: I don't have a skull... or bones
+    Description: Nincs koponyám... se csontjaim...
   Present:
-    Name: <bold><red>Present
-    Description: From Santa, to you!
+    Name: <bold><red>Ajándék
+    Description: Csak akkor jár, ha jó voltál!
   Elf:
-    Name: <bold><green>Elf
-    Description: I work for Santa!
+    Name: <bold><green>Manó
+    Description: A Mikulásnak dolgozok!
   Bedrock:
-    Name: <bold><dark_gray>Bedrock
-    Description: Unbreakable!
+    Name: <bold><dark_gray>Alapkő
+    Description: Keményebb, mint a 2 hetes TESCO-s kifli.
   RedCrewmate:
-    Name: <bold><dark_red>Red Crewmate
-    Description: Red sus!
+    Name: <bold><dark_red>Ártatlan piros
+    Description: Pirosus
   BlueCrewmate:
-    Name: <bold><dark_blue>Blue Crewmate
-    Description: Blue sus!
+    Name: <bold><dark_blue>Ártatlan kék
+    Description: Kéksus
   GreenCrewmate:
-    Name: <bold><dark_green>Green Crewmate
-    Description: Green sus!
+    Name: <bold><dark_green>Ártatlan zöld
+    Description: Zöldsus
   CyanCrewmate:
-    Name: <bold><aqua>Cyan Crewmate
-    Description: Cyan sus!
+    Name: <bold><aqua>Ártatlan Cián
+    Description: Ciánsus
   LimeCrewmate:
-    Name: <bold><green>Lime Crewmate
-    Description: Lime sus!
+    Name: <bold><green>Ártatlan világoszöld
+    Description: VilágosusZöld
   YellowCrewmate:
-    Name: <bold><yellow>Yellow Crewmate
-    Description: Yellow sus!
+    Name: <bold><yellow>Ártatlan Sárga
+    Description: Susárga
   OrangeCrewmate:
-    Name: <bold><gold>Orange Crewmate
-    Description: Orange sus!
+    Name: <bold><gold>Ártatlan Narancs
+    Description: Narancsus
   PurpleCrewmate:
     Name: <bold><dark_purple>Purple Crewmate
     Description: Purple sus!
@@ -1748,7 +1750,7 @@ Projectile-Effects:
     name: <bold><blue>Water
     Description: Blue waterdrops
   Witch:
-    name: <bold><dark_purple>Witch
+    name: <bold><dark_purple>Boszorkány
     Description: Purple crosses
   Emerald:
     name: <bold><dark_green>Emerald
