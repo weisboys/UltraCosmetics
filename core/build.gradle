@@ -61,7 +61,7 @@ shadowJar {
     relocate('org.bstats', path + '.metrics')
     relocate('net.wesjd', path + '.anvilgui')
     relocate('me.gamercoder215.mobchip', path + '.mobchip')
-    relocate('net.kyori.adventure', path + '.adventure')
+    relocate('net.kyori', path + '.kyori')
 }
 
 publishing {

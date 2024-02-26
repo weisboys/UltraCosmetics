@@ -13,6 +13,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import net.kyori.adventure.text.minimessage.tag.standard.StandardTags;
 import net.kyori.adventure.text.serializer.ComponentSerializer;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -79,7 +80,8 @@ public class MessageManager {
         }
     }
 
-    private @NotNull Component getMessageInternal(String messagePath, TagResolver.Single... placeholders) {
+    @NotNull
+    private Component getMessageInternal(String messagePath, TagResolver.Single... placeholders) {
         checkMessageExists(messagePath);
         return miniMessage.deserialize(messagesConfig.getString(messagePath), placeholders);
     }
@@ -326,8 +328,22 @@ public class MessageManager {
 
     public static void send(CommandSender sender, String messagePath, TagResolver.Single... placeholders) {
         Component message = getMessage(messagePath, placeholders);
-        if (!Component.empty().equals(message)) {
+        if (Component.empty().equals(message)) {
+            sender.sendMessage("No message 4 u");
+            return;
+        }
+        sender.sendMessage("sent u a message");
+        try {
+            getInstance().audiences.console().sendMessage(Component.text("test"));
+            sender.sendMessage("sent u a message");
             getInstance().audiences.sender(sender).sendMessage(message);
+        } catch (NoClassDefFoundError e) {
+            e.getCause().printStackTrace();
+            if (e.getCause().getCause() == null) {
+                Bukkit.getLogger().info("NoClassDefFoundError has no double cause");
+            } else {
+                e.getCause().getCause().printStackTrace();
+            }
         }
     }
 
