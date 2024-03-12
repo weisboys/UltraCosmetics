@@ -85,9 +85,9 @@ Economy-Currency: ''
 
 # Treasure Chests Settings.
 #
-# NOTE: Money will be given
-#       to player even if disabled in case
-#       there is nothing to give!
+# NOTE: If money loot is enabled, it will be given when no cosmetics are available, regardless of its chance.
+# This means that if you want to give money ONLY when no cosmetics are available, just set the chance to 0
+# instead of disabling it!
 #
 # About Treasure Chests designs:
 # For a list of effect: http://pastebin.com/CVKkufck

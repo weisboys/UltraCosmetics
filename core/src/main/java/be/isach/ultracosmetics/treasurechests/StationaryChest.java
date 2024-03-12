@@ -28,7 +28,7 @@ public class StationaryChest {
             return;
         }
         ultraPlayer.removeKey();
-        TreasureRandomizer randomizer = new TreasureRandomizer(event.getPlayer(), chest.getLocation());
+        LootRandomizer randomizer = new LootRandomizer(event.getPlayer(), chest.getLocation());
         TreasureChest.setLidPosition(chest, true);
         if (currentBounceTask != null) {
             currentBounceTask.stop();

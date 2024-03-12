@@ -49,7 +49,7 @@ public class TreasureChest implements Listener {
     private final List<Block> unopenedChests = new ArrayList<>();
     private final StructureRollback chestRollback = new StructureRollback();
     private final UUID owner;
-    private final TreasureRandomizer randomGenerator;
+    private final LootRandomizer randomGenerator;
     private final Location center;
     private final Block centerBlock;
     private final Particles particleEffect;
@@ -101,7 +101,7 @@ public class TreasureChest implements Listener {
             pm.getUltraPlayer(getPlayer()).setSeeSelfMorph(false);
         }
 
-        this.randomGenerator = new TreasureRandomizer(getPlayer(), getPlayer().getLocation());
+        this.randomGenerator = new LootRandomizer(getPlayer(), getPlayer().getLocation());
 
         blocksRunnable = new PlaceBlocksRunnable(this);
         blocksRunnable.runTaskTimer(uc, 0L, 12L);

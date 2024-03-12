@@ -34,7 +34,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by sacha on 19/08/15.
  */
-public class TreasureRandomizer {
+public class LootRandomizer {
     private final int moneyChance = SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Chance");
     private final int ammoChance = SettingsManager.getConfig().getInt("TreasureChests.Loots.Gadgets-Ammo.Chance");
     private final WeightedSet<Loot> lootTypes = new WeightedSet<>();
@@ -47,7 +47,7 @@ public class TreasureRandomizer {
     private final boolean canAddAmmo;
     private final XSound.SoundPlayer sound = XSound.BLOCK_CHEST_OPEN.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
 
-    public TreasureRandomizer(final Player player, Location location, boolean forceMessageToOwner) {
+    public LootRandomizer(final Player player, Location location, boolean forceMessageToOwner) {
         this.loc = location.add(0.5, 0, 0.5);
         this.player = player;
         this.forceMessageToOwner = forceMessageToOwner;
@@ -69,7 +69,7 @@ public class TreasureRandomizer {
         }
     }
 
-    public TreasureRandomizer(final Player player, Location location) {
+    public LootRandomizer(final Player player, Location location) {
         this(player, location, false);
     }
 
@@ -143,7 +143,7 @@ public class TreasureRandomizer {
     }
 
     private LootReward giveFallback(UltraPlayer player, TreasureChest chest) {
-        if (UltraCosmeticsData.get().getPlugin().getEconomyHandler().isUsingEconomy()) {
+        if (UltraCosmeticsData.get().useMoneyTreasureLoot()) {
             return money.giveToPlayer(player, chest);
         }
         return nothing.giveToPlayer(player, chest);

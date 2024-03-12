@@ -6,8 +6,8 @@ import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.treasurechests.LootRandomizer;
 import be.isach.ultracosmetics.treasurechests.TreasureLocation;
-import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.version.VersionManager;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -77,7 +77,7 @@ public class SubCommandTreasure extends SubCommand {
                 }
             }
             ultraPlayer.removeKey();
-            TreasureRandomizer tr = new TreasureRandomizer(opener, opener.getLocation().subtract(1, 0, 1), true);
+            LootRandomizer tr = new LootRandomizer(opener, opener.getLocation().subtract(1, 0, 1), true);
             for (int i = 0; i < SettingsManager.getConfig().getInt("TreasureChests.Count", 4); i++) {
                 tr.giveRandomThing(null, false);
             }
