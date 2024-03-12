@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Problem;
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.ChatColor;
@@ -58,10 +59,13 @@ public class CommandManager implements CommandExecutor {
         Set<Problem> problems = ultraCosmetics.getSevereProblems();
         if (!problems.isEmpty()) {
             sender.sendMessage(ChatColor.RED + "Plugin is currently disabled because:");
-            Audience audience = MessageManager.getAudiences().sender(sender);
-            problems.forEach(p -> audience.sendMessage(p.getSummary().color(NamedTextColor.RED)));
-            SubCommandTroubleshoot.sendSupportMessage(sender);
-            return true;
+            // Don't use MessageManager's audiences, we can't be sure it initialized
+            try (BukkitAudiences audiences = BukkitAudiences.create(ultraCosmetics)) {
+                Audience audience = audiences.sender(sender);
+                problems.forEach(p -> audience.sendMessage(p.getSummary().color(NamedTextColor.RED)));
+                SubCommandTroubleshoot.sendSupportMessage(sender);
+                return true;
+            }
         }
 
         if (args.length == 0) {
