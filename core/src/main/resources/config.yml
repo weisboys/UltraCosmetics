@@ -528,3 +528,6 @@ Open-Menu-On-Base-Command: false
 # The final amount will be rounded down, so if the normal price is $5, a 50% discount will make it $2.
 Discount-Groups:
   vip: 0.8
+
+# Whether non-player entities (e.g. animals) should be affected by cosmetics, such as gadgets.
+Cosmetics-Affect-Entities: true

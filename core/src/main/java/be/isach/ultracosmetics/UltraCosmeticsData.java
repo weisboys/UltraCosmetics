@@ -93,6 +93,7 @@ public class UltraCosmeticsData {
     private UltraCosmetics ultraCosmetics;
 
     private boolean cosmeticsProfilesEnabled;
+    private boolean cosmeticsAffectEntities;
 
     public UltraCosmeticsData(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -229,6 +230,7 @@ public class UltraCosmeticsData {
         this.cosmeticsProfilesEnabled = ultraCosmetics.getConfig().getBoolean("Auto-Equip-Cosmetics");
         this.language = SettingsManager.getConfig().getString("Language");
         this.ammoPurchase = SettingsManager.getConfig().getBoolean("Ammo-System-For-Gadgets.Allow-Purchase");
+        this.cosmeticsAffectEntities = SettingsManager.getConfig().getBoolean("Cosmetics-Affect-Entities");
         this.useNMS = SettingsManager.getConfig().getString("Use-NMS", "auto");
         // I'm not sure why "no" is translated to "false", but this changes it back
         if (useNMS.equalsIgnoreCase("false")) useNMS = "no";
@@ -276,6 +278,10 @@ public class UltraCosmeticsData {
 
     public boolean isAmmoPurchaseEnabled() {
         return ammoEnabled && ammoPurchase;
+    }
+
+    public boolean isCosmeticsAffectEntities() {
+        return cosmeticsAffectEntities;
     }
 
     public VersionManager getVersionManager() {
