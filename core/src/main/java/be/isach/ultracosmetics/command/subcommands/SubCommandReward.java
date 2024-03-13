@@ -2,7 +2,7 @@ package be.isach.ultracosmetics.command.subcommands;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.SubCommand;
-import be.isach.ultracosmetics.treasurechests.LootRandomizer;
+import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -39,7 +39,7 @@ public class SubCommandReward extends SubCommand {
         } else {
             target = (Player) sender;
         }
-        LootRandomizer tr = new LootRandomizer(target, target.getLocation().subtract(1, 0, 1), true);
+        TreasureRandomizer tr = new TreasureRandomizer(target, target.getLocation().subtract(1, 0, 1), true);
         for (int i = 0; i < n; i++) {
             tr.giveRandomThing(null, false);
         }

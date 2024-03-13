@@ -5,8 +5,8 @@ import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.treasurechests.LootRandomizer;
 import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
+import be.isach.ultracosmetics.treasurechests.TreasureRandomizer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
@@ -59,7 +59,7 @@ public class OpenChestButton extends TreasureButton {
         }
         if (player.getKeys() > 0 && selectedMode.equalsIgnoreCase("simple")) {
             player.removeKey();
-            LootRandomizer tr = new LootRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
+            TreasureRandomizer tr = new TreasureRandomizer(p, p.getLocation().subtract(1, 0, 1), true);
             for (int i = 0; i < chestCount; i++) {
                 tr.giveRandomThing(null, false);
             }
