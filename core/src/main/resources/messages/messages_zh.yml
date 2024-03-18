@@ -194,7 +194,7 @@ Treasure-Chests-Loot-Messages:
   Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
   Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
   Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
+  Hats: <prefix> <bold><gold><name> 发现罕见的 <cosmetic>
   Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
   Suits: <prefix> <bold><gold><name> found rare <cosmetic>
   Emotes: <prefix> <bold><gold><name> found rare <cosmetic>

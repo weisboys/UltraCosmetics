@@ -1144,7 +1144,7 @@ Morphs:
     Description: Versteckt sich gerne!
   Sniffer:
     name: <bold><green>Schnüffler
-    Description: '*sniff sniff*'
+    Description: '*schnüffel schnüffel*'
 Hats:
   Equip: <prefix> <blue>Du hast <hatname> </blue><blue>Hut ausgerüstet!
   Unequip: <prefix> <blue>Du hast <hatname> </blue><blue>Hut entfernt!
