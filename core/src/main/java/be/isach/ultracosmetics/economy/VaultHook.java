@@ -1,12 +1,12 @@
 package be.isach.ultracosmetics.economy;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
-
+import be.isach.ultracosmetics.config.SettingsManager;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 
 /**
  * Vault economy hook.
@@ -16,6 +16,8 @@ import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
  */
 public class VaultHook implements EconomyHook {
     private final Economy economy;
+    private final boolean nonnegative;
+    private final boolean ignoreResponse;
 
     public VaultHook() {
         if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
@@ -26,12 +28,19 @@ public class VaultHook implements EconomyHook {
             throw new IllegalStateException("Found Vault but no economy, please check whether your economy plugin supports Vault.");
         }
         economy = economyProvider.getProvider();
+        String validation = SettingsManager.getConfig().getString("Vault-Balance-Validation", "delegate").toLowerCase();
+        nonnegative = validation.endsWith("nonnegative");
+        ignoreResponse = validation.equals("force-nonnegative");
     }
 
     @Override
     public void withdraw(Player player, int amount, Runnable onSuccess, Runnable onFailure) {
+        if (nonnegative && economy.getBalance(player) < amount) {
+            onFailure.run();
+            return;
+        }
         EconomyResponse response = economy.withdrawPlayer(player, amount);
-        if (response.type == ResponseType.SUCCESS) {
+        if (ignoreResponse || response.type == ResponseType.SUCCESS) {
             onSuccess.run();
         } else {
             onFailure.run();

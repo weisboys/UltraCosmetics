@@ -83,6 +83,22 @@ Economy: 'Vault'
 # If this is not set and the economy has no default currency, UC may pick a random one.
 Economy-Currency: ''
 
+# Describes how UC should interact with plugins through the Vault API with regard to
+# a player's minimum balance. Available options are:
+# - 'delegate': UC will let the economy plugin decide whether a player has enough money to make a purchase.
+#     Your economy plugin should do this, so USE 'delegate' UNLESS you're experiencing an issue.
+#
+# - 'nonnegative': UC will assume that players must have a non-negative balance to make a purchase,
+#     but will still check whether the economy plugin returned a success.
+#     You may need this if your economy plugin runs async and doesn't immediately
+#     know whether a transaction can be performed.
+#
+# - 'force-nonnegative': UC will assume that players must have a non-negative balance to make a purchase,
+#     and will assume success regardless of what the economy plugin returns.
+#     You should ONLY use this if your economy plugin responds improperly to UC's requests,
+#     for example returning null instead of a response.
+Vault-Balance-Validation: 'delegate'
+
 # Treasure Chests Settings.
 #
 # NOTE: If money loot is enabled, it will be given when no cosmetics are available, regardless of its chance.
