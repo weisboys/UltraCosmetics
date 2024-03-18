@@ -14,10 +14,12 @@ import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -240,7 +242,7 @@ public class PetType extends CosmeticEntType<Pet> {
                 continue;
             }
             mat = XMaterial.matchXMaterial(pet.getString("item"));
-            if (!mat.isPresent() || !mat.get().parseMaterial().isItem()) {
+            if (!mat.isPresent() || !isItem(mat.get().parseMaterial())) {
                 log.write(LogLevel.WARNING, "Invalid item for custom pet '" + key + "'");
                 continue;
             }
@@ -248,6 +250,15 @@ public class PetType extends CosmeticEntType<Pet> {
             MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".entity-displayname", "&l%playername%'s " + key);
             MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".Description", "A custom pet!");
             new PetType(key, mat.get(), type, PET_MAP.get(type), pet.getString("customization"));
+        }
+    }
+
+    private static boolean isItem(@Nullable Material mat) {
+        if (mat == null) return false;
+        try {
+            return mat.isItem();
+        } catch (NoSuchMethodError e) {
+            return true;
         }
     }
 }
