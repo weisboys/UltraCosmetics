@@ -57,7 +57,7 @@ public class EconomyHandler {
             economyHook = hookLoader.load(ultraCosmetics, currency);
             ultraCosmetics.getSmartLogger().write("Hooked into " + economyHook.getName() + " for economy.");
             usingEconomy = true;
-        } catch (IllegalStateException | IllegalArgumentException e) {
+        } catch (IllegalStateException | IllegalArgumentException | UnsupportedClassVersionError e) {
             ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, e.getMessage());
         } catch (ReflectiveOperationException e) {
             e.printStackTrace();

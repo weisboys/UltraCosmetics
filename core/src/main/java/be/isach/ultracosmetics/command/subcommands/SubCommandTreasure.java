@@ -71,10 +71,8 @@ public class SubCommandTreasure extends SubCommand {
         // form: /uc treasure (player)
         if (args.length < 3) {
             if (!checkWorld(sender, opener.getWorld())) return;
-            if (structureEnabled) {
-                if (ultraCosmetics.getTreasureChestManager().tryOpenChest(opener)) {
-                    return;
-                }
+            if (structureEnabled && ultraCosmetics.getTreasureChestManager().tryOpenChest(opener)) {
+                return;
             }
             ultraPlayer.removeKey();
             TreasureRandomizer tr = new TreasureRandomizer(opener, opener.getLocation().subtract(1, 0, 1), true);

@@ -72,9 +72,9 @@ public class TreasureChestManager implements Listener {
      * Returns true for success or if the key purchase menu was opened.
      */
     public boolean tryOpenChest(Player player) {
-        if (TREASURE_LOCATIONS.size() == 0) {
+        if (TREASURE_LOCATIONS.isEmpty()) {
             tryOpenChest(player, null);
-            return false;
+            return true;
         }
         List<TreasureLocation> locations = new ArrayList<>(TREASURE_LOCATIONS);
         for (UltraPlayer up : ultraCosmetics.getPlayerManager().getUltraPlayers()) {
@@ -82,7 +82,7 @@ public class TreasureChestManager implements Listener {
                 locations.remove(up.getCurrentTreasureChest().getTreasureLocation());
             }
         }
-        if (locations.size() == 0) {
+        if (locations.isEmpty()) {
             MessageManager.send(player, "Treasure-Chest-Occupied");
             return false;
         }
