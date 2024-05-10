@@ -71,6 +71,19 @@ build/
 # CDT-specific
 .cproject
 
+### Eclipse template
+*.pydevproject
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
