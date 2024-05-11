@@ -85,9 +85,7 @@ subprojects { subproj ->
         mavenLocal()
         mavenCentral()
 
-        // AnvilGUI
-        // MobChip
-        // Treasury
+        // AnvilGUI, MobChip, Treasury
         maven {
             url = 'https://repo.codemc.io/repository/maven-snapshots/'
         }
@@ -147,8 +145,7 @@ subprojects { subproj ->
             url = 'https://repo.olziedev.com/'
         }
 
-        // Vault
-        // PEconomy
+        // Vault, PEconomy
         maven {
             url = 'https://jitpack.io'
         }
