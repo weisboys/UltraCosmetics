@@ -27,7 +27,7 @@ jobs:
 
     - run: |
        echo "Run, Build Application using script"
-       ./gradlew --no-daemon -S core:testClasses worldguard:testClasses worldguard-legacy:testClasses
+       ./gradlew --no-daemon -S core:testClasses
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3.25.5
