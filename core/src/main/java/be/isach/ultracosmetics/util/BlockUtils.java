@@ -142,11 +142,10 @@ public class BlockUtils {
      * @param blocks    The blocks to restore mapped to the materials to change them to.
      * @param tickDelay The delay after which the blocks are restored.
      */
-    @SuppressWarnings("deprecation")
     public static void setToRestoreIgnoring(final Map<Block, XMaterial> blocks, final int tickDelay) {
         Bukkit.getScheduler().runTaskAsynchronously(UltraCosmeticsData.get().getPlugin(), () -> {
             blocks.keySet().removeIf(BlockViewUpdater::isUpdating);
-            if (blocks.size() == 0) return;
+            if (blocks.isEmpty()) return;
             World world = blocks.keySet().iterator().next().getWorld();
             for (Entry<Block, XMaterial> entry : blocks.entrySet()) {
                 BlockData data = Bukkit.createBlockData(entry.getValue().parseMaterial());
