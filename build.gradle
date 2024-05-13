@@ -12,7 +12,7 @@ allprojects {
     idea.module.downloadSources = true
 
     group = 'be.isach.UltraCosmetics'
-    version = '3.5-DEV-b1'
+    version = '3.6-DEV-b1'
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
@@ -22,7 +22,7 @@ allprojects {
     java {
         toolchain {
             // minimum Java version to compile all subprojects
-            languageVersion = JavaLanguageVersion.of(17)
+            languageVersion = JavaLanguageVersion.of(21)
         }
     }
 
@@ -155,7 +155,7 @@ subprojects { subproj ->
             url = 'https://libraries.minecraft.net'
         }
     }
-    def version = 8
+    def version = 17
     if (subproj.hasProperty("javaVersion")) {
         version = subproj.property("javaVersion")
     }
