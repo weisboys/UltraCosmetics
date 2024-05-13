@@ -9,10 +9,11 @@ import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
-import org.bukkit.EntityEffect;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.util.Vector;
 
 import java.util.HashSet;
@@ -34,27 +35,27 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
         super(owner, type, ultraCosmetics);
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onItemPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
+    public void onItemPickup(EntityPickupItemEvent event) {
+        if (event.getEntityType() != EntityType.PLAYER) return;
         if (!active.contains(event.getItem()) && !forRemoval.contains(event.getItem())) return;
         event.setCancelled(true);
 
-        UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(event.getPlayer());
+        Player hit = (Player) event.getEntity();
+        UltraPlayer ultraPlayer = getUltraCosmetics().getPlayerManager().getUltraPlayer(hit);
 
         if (ultraPlayer == null) return;
 
         Player hitter = getPlayer();
-        if (event.getPlayer() == hitter || !canAffect(event.getPlayer(), hitter)) return;
+        if (hit == hitter || !canAffect(hit, hitter)) return;
 
         event.getItem().remove();
         active.remove(event.getItem());
         forRemoval.remove(event.getItem());
-        final Player HIT = event.getPlayer();
-        HIT.playEffect(EntityEffect.HURT);
-        double dX = HIT.getLocation().getX() - hitter.getLocation().getX();
-        double dY = HIT.getLocation().getY() - hitter.getLocation().getY();
-        double dZ = HIT.getLocation().getZ() - hitter.getLocation().getZ();
+        hit.playHurtAnimation(0);
+        double dX = hit.getLocation().getX() - hitter.getLocation().getX();
+        double dY = hit.getLocation().getY() - hitter.getLocation().getY();
+        double dZ = hit.getLocation().getZ() - hitter.getLocation().getZ();
         double yaw = Math.atan2(dZ, dX);
         double pitch = Math.atan2(Math.sqrt(dZ * dZ + dX * dX), dY) + Math.PI;
         double X = Math.sin(pitch) * Math.cos(yaw);
@@ -62,7 +63,7 @@ public class GadgetFleshHook extends Gadget implements PlayerAffectingCosmetic, 
         double Z = Math.cos(pitch);
 
         Vector vector = new Vector(X, Z, Y);
-        MathUtils.applyVelocity(HIT, vector.multiply(2.5D).add(new Vector(0D, 1.45D, 0D)));
+        MathUtils.applyVelocity(hit, vector.multiply(2.5D).add(new Vector(0D, 1.45D, 0D)));
     }
 
     @Override

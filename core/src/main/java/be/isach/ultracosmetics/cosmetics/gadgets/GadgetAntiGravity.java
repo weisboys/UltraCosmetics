@@ -31,7 +31,6 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         super(owner, type, ultraCosmetics);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onRightClick() {
         as = getPlayer().getWorld().spawn(getPlayer().getLocation(), ArmorStand.class);
@@ -40,7 +39,7 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         as.setSmall(true);
         running = true;
         as.setVisible(false);
-        as.setHelmet(SEA_LANTERN);
+        as.getEquipment().setHelmet(SEA_LANTERN);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> running = false, 240);
     }
 

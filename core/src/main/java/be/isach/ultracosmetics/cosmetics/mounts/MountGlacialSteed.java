@@ -29,6 +29,7 @@ public class MountGlacialSteed extends MountAbstractHorse {
     @Override
     public void setupEntity() {
         super.setupEntity();
+        ((Horse) entity).setColor(Horse.Color.WHITE);
         if (BOOTS != null) {
             ((Horse) entity).getEquipment().setBoots(BOOTS, true);
         }
@@ -37,10 +38,5 @@ public class MountGlacialSteed extends MountAbstractHorse {
     @Override
     public void onUpdate() {
         Particles.SNOW_SHOVEL.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
-    }
-
-    @Override
-    protected Horse.Color getColor() {
-        return Horse.Color.WHITE;
     }
 }

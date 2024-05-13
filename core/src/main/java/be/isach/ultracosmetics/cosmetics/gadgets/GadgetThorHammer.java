@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
-import be.isach.ultracosmetics.listeners.HammerPickupListener;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
@@ -24,9 +23,7 @@ import org.bukkit.util.Vector;
  * @since 08-08-2015
  */
 public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic {
-    private static final boolean USE_OTHER_LISTENER = true;
     private Item hammer = null;
-    private HammerPickupListener listener;
     private Vector v;
 
     public GadgetThorHammer(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -80,13 +77,12 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
         hammer = null;
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
     public void onDamEnt(EntityDamageByEntityEvent event) {
         if (getOwner() != null
                 && getPlayer() != null
                 && event.getDamager() == getPlayer()
-                && getPlayer().getItemInHand().equals(getItemStack())) {
+                && getItemStack().equals(getPlayer().getInventory().getItemInMainHand())) {
             event.setCancelled(true);
         }
     }

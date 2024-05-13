@@ -21,7 +21,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
@@ -56,7 +55,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         armorStand.setVisible(false);
         armorStand.setGravity(false);
         armorStand.setSmall(false);
-        setHelmet(armorStand, ItemFactory.rename(XMaterial.LIGHT_BLUE_STAINED_GLASS.parseItem(), " "));
+        armorStand.getEquipment().setHelmet(ItemFactory.rename(XMaterial.LIGHT_BLUE_STAINED_GLASS.parseItem(), " "));
         running = true;
         DISCO_BALLS.add(this);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), this::clean, 400);
@@ -89,7 +88,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         }
         armorStand.setHeadPose(armorStand.getHeadPose().add(0, 0.2, 0));
 
-        setHelmet(armorStand, ItemFactory.getRandomStainedGlass());
+        armorStand.getEquipment().setHelmet(ItemFactory.getRandomStainedGlass());
 
         Particles.SPELL.display(armorStand.getEyeLocation(), 1, 1f);
         Particles.SPELL_INSTANT.display(armorStand.getEyeLocation(), 1, 1f);
@@ -174,10 +173,5 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
                 Particles.REDSTONE.display(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255), loc);
             }
         }
-    }
-
-    @SuppressWarnings("deprecation")
-    private void setHelmet(ArmorStand stand, ItemStack itemStack) {
-        stand.setHelmet(itemStack);
     }
 }

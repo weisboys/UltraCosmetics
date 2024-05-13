@@ -65,7 +65,6 @@ public class GadgetRocket extends Gadget implements Updatable {
         flightSound2 = XSound.BLOCK_FIRE_EXTINGUISH.record().withVolume(0.025f).soundPlayer();
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onRightClick() {
         getPlayer().setVelocity(new Vector(0, 1, 0));
@@ -91,7 +90,7 @@ public class GadgetRocket extends Gadget implements Updatable {
             // prevent kicking
             enableFlight();
             playerVehicle = null;
-            armorStand.setPassenger(getPlayer());
+            armorStand.addPassenger(getPlayer());
             playerVehicle = armorStand;
             activeTask = new RocketTask() {
                 private int countdown = 3;
@@ -130,10 +129,10 @@ public class GadgetRocket extends Gadget implements Updatable {
 
                     fallingBlocks.add(top);
                     fallingBlocks.add(base);
-                    if (fallingBlocks.get(8).getPassenger() == null) {
-                        fallingBlocks.get(8).setPassenger(getPlayer());
+                    if (fallingBlocks.get(8).getPassengers().isEmpty()) {
+                        fallingBlocks.get(8).addPassenger(getPlayer());
                     }
-                    top.setPassenger(getPlayer());
+                    top.addPassenger(getPlayer());
                     playerVehicle = top;
                     launching = true;
                     activeTask = new RocketTask() {

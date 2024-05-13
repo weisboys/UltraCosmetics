@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Horse;
@@ -26,8 +25,9 @@ public class MountDruggedHorse extends MountAbstractHorse {
     @Override
     public void setupEntity() {
         super.setupEntity();
-
-        ((Horse)getEntity()).setJumpStrength(1.3);
+        Horse horse = (Horse) getEntity();
+        horse.setColor(Horse.Color.CHESTNUT);
+        horse.setJumpStrength(1.3);
 
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 10000000, 1));
@@ -50,10 +50,5 @@ public class MountDruggedHorse extends MountAbstractHorse {
             effectPlayer.removePotionEffect(PotionEffectType.CONFUSION);
         }
         super.onClear();
-    }
-
-    @Override
-    protected Horse.Color getColor() {
-        return Horse.Color.CHESTNUT;
     }
 }

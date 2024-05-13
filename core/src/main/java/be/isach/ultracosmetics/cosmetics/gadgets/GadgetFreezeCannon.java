@@ -10,6 +10,7 @@ import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -25,7 +26,7 @@ import java.util.Set;
 public class GadgetFreezeCannon extends Gadget implements Updatable {
     private static final ItemStack ICE = XMaterial.ICE.parseItem();
 
-    private Set<Item> items = new HashSet<>();
+    private final Set<Item> items = new HashSet<>();
 
     public GadgetFreezeCannon(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -38,9 +39,8 @@ public class GadgetFreezeCannon extends Gadget implements Updatable {
         items.add(item);
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
+    public void onPickup(EntityPickupItemEvent event) {
         if (items.contains(event.getItem())) {
             event.setCancelled(true);
         }

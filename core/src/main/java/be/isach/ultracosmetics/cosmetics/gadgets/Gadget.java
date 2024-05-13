@@ -137,8 +137,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
             ((Updatable) this).onUpdate();
         }
         if (showCooldownInBar) {
-            @SuppressWarnings("deprecation")
-            ItemStack hand = getPlayer().getItemInHand();
+            ItemStack hand = getPlayer().getInventory().getItemInMainHand();
             if (itemMatches(hand) && !owner.canUse(getType())) {
                 owner.sendCooldownBar(getType(), getType().getCountdown(), getType().getRunTime());
             }

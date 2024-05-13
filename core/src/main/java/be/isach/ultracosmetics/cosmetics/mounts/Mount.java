@@ -54,10 +54,6 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         super(ultraPlayer, type, ultraCosmetics);
     }
 
-    /**
-     * Equips the pet.
-     */
-    @SuppressWarnings("deprecation")
     @Override
     public void onEquip() {
 
@@ -73,7 +69,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         }
         entity.setCustomNameVisible(true);
         entity.setCustomName(MessageManager.toLegacy(getType().getName(getPlayer())));
-        entity.setPassenger(getPlayer());
+        entity.addPassenger(getPlayer());
         entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         setupEntity();
 
@@ -107,11 +103,9 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         return true;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void run() {
-        if (entity.getPassenger() != getPlayer()
-                && entity.getTicksLived() > 10) {
+        if (entity.getPassengers().isEmpty() && entity.getTicksLived() > 10) {
             clear();
             return;
         }

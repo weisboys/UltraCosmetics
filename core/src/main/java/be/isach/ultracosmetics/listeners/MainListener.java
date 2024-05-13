@@ -33,9 +33,8 @@ public class MainListener implements Listener {
         processPickup(event.getItem(), event);
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onPlayerPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
+    public void onPlayerPickup(EntityPickupItemEvent event) {
         processPickup(event.getItem(), event);
     }
 

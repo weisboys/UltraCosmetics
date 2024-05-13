@@ -43,7 +43,6 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         }
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onRightClick() {
         getOwner().removeCosmetic(Category.MOUNTS);
@@ -59,7 +58,7 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         getPlayer().teleport(getPlayer().getLocation().add(0, 5, 0));
         // Teleportation can cause the pearl to hit the player in the same tick
         if (pearl == null) return;
-        if (!pearl.setPassenger(getPlayer())) {
+        if (!pearl.addPassenger(getPlayer())) {
             pearl.remove();
             return;
         }

@@ -9,8 +9,6 @@ import be.isach.ultracosmetics.util.PlayerUtils;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Horse;
-import org.bukkit.entity.Horse.Color;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -37,7 +35,6 @@ public class MountRudolph extends MountAbstractHorse {
         moveAntlers();
     }
 
-    @SuppressWarnings("deprecation")
     private ArmorStand spawnArmorStand(boolean right) {
         ArmorStand armorStand = getEntity().getWorld().spawn(getEyeLocation(), ArmorStand.class);
         armorStand.setBasePlate(false);
@@ -49,7 +46,7 @@ public class MountRudolph extends MountAbstractHorse {
         } else {
             armorStand.setRightArmPose(new EulerAngle(Math.PI, -Math.PI / 4, Math.PI / 4));
         }
-        armorStand.setItemInHand(DEAD_BUSH);
+        armorStand.getEquipment().setItemInMainHand(DEAD_BUSH);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(getUltraCosmetics(), getPlayer().getUniqueId().toString()));
         getUltraCosmetics().getArmorStandManager().makeUcStand(armorStand);
         return armorStand;
@@ -95,17 +92,6 @@ public class MountRudolph extends MountAbstractHorse {
 
         if (left != null) left.remove();
         if (right != null) right.remove();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    protected Horse.Variant getVariant() {
-        return Horse.Variant.MULE;
-    }
-
-    @Override
-    protected Color getColor() {
-        return null;
     }
 
     private Location getEyeLocation() {

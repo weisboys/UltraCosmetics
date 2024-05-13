@@ -69,15 +69,10 @@ public abstract class MountFlyingSnake extends Mount {
             armorStand.setVisible(false);
             armorStand.setGravity(false);
             if (i > 0) {
-                setHelmet(armorStand, tailItem);
+                armorStand.getEquipment().setHelmet(tailItem);
             }
             armorStand.setMetadata("NO_INTER", new FixedMetadataValue(getUltraCosmetics(), ""));
         }
-    }
-
-    @SuppressWarnings("deprecation")
-    private void setHelmet(ArmorStand stand, ItemStack itemStack) {
-        stand.setHelmet(itemStack);
     }
 
     @Override

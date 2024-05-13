@@ -36,13 +36,12 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(XMaterial.LEATHER_CHESTPLATE.parseMaterial(), 255, 255, 255);
     private static final ItemStack DIAMOND_HOE = XMaterial.DIAMOND_HOE.parseItem();
     private EntitySpawner<Bat> bats = EntitySpawner.empty();
-    private Set<ArmorStand> ghosts = new HashSet<>();
+    private final Set<ArmorStand> ghosts = new HashSet<>();
 
     public GadgetGhostParty(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     protected void onRightClick() {
         Location loc = getPlayer().getLocation().add(0, 1, 0);
@@ -52,11 +51,11 @@ public class GadgetGhostParty extends Gadget implements Updatable {
             ghost.setSmall(true);
             ghost.setGravity(false);
             ghost.setVisible(false);
-            ghost.setHelmet(GHOST_HEAD);
-            ghost.setChestplate(GHOST_CHESTPLATE);
-            ghost.setItemInHand(DIAMOND_HOE);
+            ghost.getEquipment().setHelmet(GHOST_HEAD);
+            ghost.getEquipment().setChestplate(GHOST_CHESTPLATE);
+            ghost.getEquipment().setItemInMainHand(DIAMOND_HOE);
             ghosts.add(ghost);
-            bat.setPassenger(ghost);
+            bat.addPassenger(ghost);
         }, getUltraCosmetics());
 
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), this::killBats, 160);

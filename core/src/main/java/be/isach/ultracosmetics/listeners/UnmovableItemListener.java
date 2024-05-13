@@ -119,14 +119,13 @@ public class UnmovableItemListener implements Listener {
         });
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
     public void onPlayerInteractEntity(PlayerInteractEntityEvent event) {
         // Prevent losing the item when clicking on an entity.
         // This can happen in a number of different ways, so we just cancel the event unless it's a player,
         // because some gadgets target players and so clicking on a player may be useful.
         if (event.getRightClicked() instanceof Player) return;
-        forEachProviderWithItem(event.getPlayer(), event.getPlayer().getItemInHand(), p -> {
+        forEachProviderWithItem(event.getPlayer(), event.getPlayer().getInventory().getItemInMainHand(), p -> {
             slotCheck(p, event.getPlayer().getInventory().getHeldItemSlot(), event.getPlayer());
             event.setCancelled(true);
         });

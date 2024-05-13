@@ -21,6 +21,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerChangedWorldEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
@@ -181,9 +182,8 @@ public class PlayerListener implements Listener {
         }
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST)
-    public void onPlayerPickUpItem(org.bukkit.event.player.PlayerPickupItemEvent event) {
+    public void onPlayerPickUpItem(EntityPickupItemEvent event) {
         if (isMenuItem(event.getItem().getItemStack())) {
             event.setCancelled(true);
             event.getItem().remove();

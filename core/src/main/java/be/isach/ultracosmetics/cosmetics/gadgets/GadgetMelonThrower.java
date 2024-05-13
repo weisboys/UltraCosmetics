@@ -10,9 +10,11 @@ import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import org.bukkit.Effect;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.potion.PotionEffect;
@@ -38,17 +40,19 @@ public class GadgetMelonThrower extends Gadget implements PlayerAffectingCosmeti
         super(owner, type, ultraCosmetics);
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onTakeUpMelon(org.bukkit.event.player.PlayerPickupItemEvent event) {
-        if (melonSlices.contains(event.getItem())
+    public void onTakeUpMelon(EntityPickupItemEvent event) {
+        if (!melonSlices.contains(event.getItem())) return;
+        // Should be done anyway by PlayerListener, but just to be safe
+        event.setCancelled(true);
+        if (event.getEntityType() == EntityType.PLAYER
                 && event.getItem().getTicksLived() > 5
-                && canAffect(event.getPlayer(), getPlayer())) {
-            event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5 * 20, 2));
+                && canAffect(event.getEntity(), getPlayer())) {
+            event.getEntity().addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 5 * 20, 2));
             eatSound.atLocation(getPlayer().getLocation()).play();
             event.getItem().remove();
             melonSlices.remove(event.getItem());
-            // Should be done anyway by PlayerListener, but just to be safe
+
             event.setCancelled(true);
         }
     }
