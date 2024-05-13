@@ -547,3 +547,10 @@ Discount-Groups:
 
 # Whether non-player entities (e.g. animals) should be affected by cosmetics, such as gadgets.
 Cosmetics-Affect-Entities: true
+
+# Delay in ticks before UC should give items when the player joins, or respawns or changes worlds.
+# 1 is enough for compatibility with most plugins, but if you're experiencing issues,
+# consider increasing it to 5.
+Item-Delay:
+  Join: 1
+  World-Change-Or-Respawn: 0

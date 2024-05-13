@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.player.profile;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
@@ -15,12 +14,17 @@ import java.util.Collections;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 public abstract class CosmeticsProfile {
     protected final UltraPlayer ultraPlayer;
     protected final UUID uuid;
     protected final UltraCosmetics ultraCosmetics;
     protected final PlayerData data;
+    protected final AtomicBoolean loaded = new AtomicBoolean();
+    protected Consumer<CosmeticsProfile> onLoad = p -> {
+    };
 
     public CosmeticsProfile(UltraPlayer ultraPlayer, UltraCosmetics ultraCosmetics) {
         this.ultraPlayer = ultraPlayer;
@@ -29,14 +33,21 @@ public abstract class CosmeticsProfile {
         this.data = new PlayerData(uuid);
         Bukkit.getScheduler().runTaskAsynchronously(ultraCosmetics, () -> {
             load();
-            if (shouldLoadCosmetics()) {
-                Bukkit.getScheduler().runTask(ultraCosmetics, this::equip);
+            synchronized (loaded) {
+                loaded.set(true);
+                Bukkit.getScheduler().runTask(ultraCosmetics, () -> onLoad.accept(this));
             }
         });
     }
 
-    protected static boolean shouldLoadCosmetics() {
-        return UltraCosmeticsData.get().areCosmeticsProfilesEnabled();
+    public void onLoad(Consumer<CosmeticsProfile> onLoad) {
+        synchronized (loaded) {
+            if (loaded.get()) {
+                onLoad.accept(this);
+                return;
+            }
+            this.onLoad = onLoad;
+        }
     }
 
     protected abstract void load();

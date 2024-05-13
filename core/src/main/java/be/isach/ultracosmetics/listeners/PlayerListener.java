@@ -1,12 +1,14 @@
 package be.isach.ultracosmetics.listeners;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
+import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
@@ -43,6 +45,8 @@ public class PlayerListener implements Listener {
     private final ItemStack menuItem;
     private final boolean menuItemEnabled = SettingsManager.getConfig().getBoolean("Menu-Item.Enabled");
     private final int menuItemSlot = SettingsManager.getConfig().getInt("Menu-Item.Slot");
+    private final long joinItemDelay = SettingsManager.getConfig().getLong("Item-Delay.Join", 1);
+    private final long respawnItemDelay = SettingsManager.getConfig().getLong("Item-Delay.World-Change-Or-Respawn", 0);
 
     public PlayerListener(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -61,7 +65,12 @@ public class PlayerListener implements Listener {
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest") && SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             // Delay in case other plugins clear inventory on join
-            Bukkit.getScheduler().runTaskLater(ultraCosmetics, ultraPlayer::giveMenuItem, 1);
+            Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> {
+                ultraPlayer.giveMenuItem();
+                if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) {
+                    ultraPlayer.getProfile().onLoad(CosmeticsProfile::equip);
+                }
+            }, joinItemDelay);
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
@@ -82,11 +91,11 @@ public class PlayerListener implements Listener {
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
             if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
-                up.giveMenuItem();
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, up::giveMenuItem, respawnItemDelay);
             }
             // If the player joined an allowed world from a non-allowed world, re-equip their cosmetics.
             if (!SettingsManager.isAllowedWorld(event.getFrom())) {
-                up.getProfile().equip();
+                Bukkit.getScheduler().runTaskLater(ultraCosmetics, () -> up.getProfile().equip(), respawnItemDelay);
             }
         }
     }
@@ -117,7 +126,7 @@ public class PlayerListener implements Listener {
                 ultraPlayer.giveMenuItem();
             }
             ultraPlayer.getProfile().equip();
-        }, 1);
+        }, Math.max(1, respawnItemDelay));
     }
 
     @EventHandler

@@ -133,9 +133,11 @@ public class MessageManager {
             messagesConfig.set("No-Permission", noPermissionMessage.substring(9));
         }
         ConfigurationSection newLoots = messagesConfig.getConfigurationSection("Treasure-Chests-Loot-Messages");
-        for (String key : newLoots.getKeys(false)) {
-            if (newLoots.getString(key).contains("%")) {
-                newLoots.set(key, newLoots.getString(key).replaceAll("%(\\w+)%", "<$1>"));
+        if (newLoots != null) {
+            for (String key : newLoots.getKeys(false)) {
+                if (newLoots.getString(key).contains("%")) {
+                    newLoots.set(key, newLoots.getString(key).replaceAll("%(\\w+)%", "<$1>"));
+                }
             }
         }
         for (String key : defaults.getKeys(true)) {
