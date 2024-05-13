@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.util;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 import org.bukkit.Bukkit;
@@ -12,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -149,13 +149,9 @@ public class BlockUtils {
             if (blocks.size() == 0) return;
             World world = blocks.keySet().iterator().next().getWorld();
             for (Entry<Block, XMaterial> entry : blocks.entrySet()) {
+                BlockData data = Bukkit.createBlockData(entry.getValue().parseMaterial());
                 for (Player player : world.getPlayers()) {
-                    if (VersionManager.IS_VERSION_1_13) {
-                        // we have to do this when we can or we enable legacy material support which is evil sometimes
-                        player.sendBlockChange(entry.getKey().getLocation(), Bukkit.createBlockData(entry.getValue().parseMaterial()));
-                    } else {
-                        player.sendBlockChange(entry.getKey().getLocation(), entry.getValue().parseMaterial(), entry.getValue().getData());
-                    }
+                    player.sendBlockChange(entry.getKey().getLocation(), data);
                 }
             }
             new BlockViewUpdater(blocks.keySet()).runTaskLaterAsynchronously(UltraCosmeticsData.get().getPlugin(), tickDelay);
@@ -207,21 +203,11 @@ public class BlockUtils {
         return AIRS.contains(mat);
     }
 
-    @SuppressWarnings("deprecation")
     public static FallingBlock spawnFallingBlock(Location loc, Material type) {
-        if (VersionManager.IS_VERSION_1_13) {
-            return loc.getWorld().spawnFallingBlock(loc, type.createBlockData());
-        } else {
-            return loc.getWorld().spawnFallingBlock(loc, type, (byte) 0);
-        }
+        return loc.getWorld().spawnFallingBlock(loc, type.createBlockData());
     }
 
-    @SuppressWarnings("deprecation")
     public static FallingBlock spawnFallingBlock(Location loc, Block source) {
-        if (VersionManager.IS_VERSION_1_13) {
-            return loc.getWorld().spawnFallingBlock(loc, source.getBlockData());
-        } else {
-            return loc.getWorld().spawnFallingBlock(loc, source.getType(), source.getData());
-        }
+        return loc.getWorld().spawnFallingBlock(loc, source.getBlockData());
     }
 }

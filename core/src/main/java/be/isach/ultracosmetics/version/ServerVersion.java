@@ -88,12 +88,8 @@ public enum ServerVersion {
         return this.compareTo(version) >= 0;
     }
 
-    public boolean offhandAvailable() {
-        return isAtLeast(v1_9);
-    }
-
     public boolean isMobChipAvailable() {
-        return isAtLeast(v1_13) && this != NEW && !isMobchipEdgeCase();
+        return this != NEW && !isMobchipEdgeCase();
     }
 
     public boolean isNmsSupported() {

@@ -9,7 +9,6 @@ import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.StructureRollback;
-import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XSound;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -133,7 +132,6 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         i++;
     }
 
-    @SuppressWarnings("deprecation")
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onBlockChangeState(EntityChangeBlockEvent event) {
         if (!fallingBlocks.remove(event.getEntity())) {
@@ -141,12 +139,8 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         }
         event.setCancelled(true);
         FallingBlock fb = (FallingBlock) event.getEntity();
-        if (VersionManager.IS_VERSION_1_13) {
-            BlockData data = fb.getBlockData();
-            fb.getWorld().spawnParticle(Particle.BLOCK_CRACK, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
-        } else {
-            Particles.BLOCK_CRACK.display(new Particles.BlockData(fb.getMaterial(), event.getBlock().getData()), 0f, 0f, 0f, 0.4f, 50, fb.getLocation(), 128);
-        }
+        BlockData data = fb.getBlockData();
+        fb.getWorld().spawnParticle(Particle.BLOCK_CRACK, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
         landSound.play();
         event.getEntity().remove();
     }

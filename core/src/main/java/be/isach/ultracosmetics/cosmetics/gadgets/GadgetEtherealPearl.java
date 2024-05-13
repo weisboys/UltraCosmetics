@@ -1,14 +1,11 @@
 package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
-import be.isach.ultracosmetics.version.ServerVersion;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -81,12 +78,7 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
 
     @EventHandler
     public void onEntityDismount(EntityDismountEvent event) {
-        if (pearl == null) return;
-        if (event.getEntity() != getPlayer()) return;
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
-            // 1.8.8 has weird timing problems with dismounting
-            Bukkit.getScheduler().runTask(getUltraCosmetics(), this::endRide);
-        } else {
+        if (pearl != null && event.getEntity() == getPlayer()) {
             endRide();
         }
     }

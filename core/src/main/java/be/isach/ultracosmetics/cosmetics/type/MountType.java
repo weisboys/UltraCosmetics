@@ -102,12 +102,12 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("SlimeSnake", XMaterial.SLIME_BLOCK, EntityType.SLIME, 1, 0.4, MountSlimeSnake.class);
         new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, 0.4, MountOfWater.class, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA));
         new MountType("EcologistHorse", XMaterial.GREEN_DYE, EntityType.HORSE, 2, 0.4, MountEcologistHorse.class, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA));
-        new MountType("Rudolph", XMaterial.DEAD_BUSH, horseOrType("MULE", version), 1, 0.4, MountRudolph.class);
-        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, horseOrType("ZOMBIE_HORSE", version), 2, 0.4, MountWalkingDead.class);
-        new MountType("InfernalHorror", XMaterial.BONE, horseOrType("SKELETON_HORSE", version), 2, 0.4, MountInfernalHorror.class);
-        new MountType("Horse", XMaterial.SADDLE, horseOrType("HORSE", version), 0, 0.3, MountHorse.class);
-        new MountType("Donkey", XMaterial.CHEST, horseOrType("DONKEY", version), 0, 0.25, MountDonkey.class);
-        new MountType("Mule", XMaterial.ENDER_CHEST, horseOrType("MULE", version), 0, 0.25, MountMule.class);
+        new MountType("Rudolph", XMaterial.DEAD_BUSH, EntityType.MULE, 1, 0.4, MountRudolph.class);
+        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, EntityType.ZOMBIE_HORSE, 2, 0.4, MountWalkingDead.class);
+        new MountType("InfernalHorror", XMaterial.BONE, EntityType.SKELETON_HORSE, 2, 0.4, MountInfernalHorror.class);
+        new MountType("Horse", XMaterial.SADDLE, EntityType.HORSE, 0, 0.3, MountHorse.class);
+        new MountType("Donkey", XMaterial.CHEST, EntityType.DONKEY, 0, 0.25, MountDonkey.class);
+        new MountType("Mule", XMaterial.ENDER_CHEST, EntityType.MULE, 0, 0.25, MountMule.class);
         new MountType("Pig", XMaterial.PORKCHOP, EntityType.PIG, 0, 0.35, MountPig.class);
 
         if (version.isMobChipAvailable()) {
@@ -121,9 +121,7 @@ public class MountType extends CosmeticEntType<Mount> {
             };
         }
 
-        if (version.isAtLeast(ServerVersion.v1_16)) {
-            new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
-        }
+        new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
 
         if (version.isAtLeast(ServerVersion.v1_20)) {
             new MountType("Camel", XMaterial.CACTUS, EntityType.CAMEL, 0, 0.35, MountCamel.class);
@@ -133,10 +131,5 @@ public class MountType extends CosmeticEntType<Mount> {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
             new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
         }
-    }
-
-    private static EntityType horseOrType(String name, ServerVersion version) {
-        if (!version.isAtLeast(ServerVersion.v1_11)) return EntityType.HORSE;
-        return EntityType.valueOf(name);
     }
 }

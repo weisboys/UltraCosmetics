@@ -5,7 +5,6 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
@@ -107,9 +106,6 @@ public class ItemFactory {
     }
 
     public static void applyCosmeticMarker(ItemStack item) {
-        // PDC is only available in 1.14+
-        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14)) return;
-
         ItemMeta meta = item.getItemMeta();
         // Do not cache this in a field, it doesn't exist on versions below 1.12
         NamespacedKey marker = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), "marker");
@@ -171,7 +167,7 @@ public class ItemFactory {
             }
             meta.setLore(lore);
         }
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && model != 0) {
+        if (model != 0) {
             meta.setCustomModelData(model);
         }
 

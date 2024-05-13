@@ -39,6 +39,8 @@ dependencies {
     implementation "net.kyori:adventure-text-serializer-plain:4.17.0"
     api "net.kyori:adventure-api:4.17.0"
     compileOnly "com.olziedev:playerauctions-api:1.28.1"
+    compileOnly files('libs/CoinsEngine-2.1.1.jar')
+    compileOnly files('libs/NexEngine.jar')
 }
 shadowJar {
     // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack

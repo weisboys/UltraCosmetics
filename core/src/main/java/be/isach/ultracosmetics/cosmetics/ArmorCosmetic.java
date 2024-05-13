@@ -1,14 +1,12 @@
 package be.isach.ultracosmetics.cosmetics;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -36,11 +34,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
     public ArmorCosmetic(UltraPlayer owner, T type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13)) {
-            attributes = getAttributes();
-        } else {
-            attributes = new HashMap<>();
-        }
+        attributes = getAttributes();
     }
 
     @Override

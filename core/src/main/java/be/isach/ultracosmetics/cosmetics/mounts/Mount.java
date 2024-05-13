@@ -12,7 +12,6 @@ import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
@@ -65,9 +64,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         entity = spawnEntity();
 
         if (entity instanceof LivingEntity) {
-            if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
-                ((LivingEntity) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(getType().getMovementSpeed());
-            }
+            ((LivingEntity) entity).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(getType().getMovementSpeed());
             if (entity instanceof Ageable) {
                 ((Ageable) entity).setAdult();
             } else if (entity instanceof Slime) {
@@ -195,9 +192,6 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
     }
 
     private boolean isHorse(EntityType type) {
-        if (UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8) {
-            return type == EntityType.HORSE;
-        }
         return AbstractHorse.class.isAssignableFrom(type.getEntityClass());
     }
 

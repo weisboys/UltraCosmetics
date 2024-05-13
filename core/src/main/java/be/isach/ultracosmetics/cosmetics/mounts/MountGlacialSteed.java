@@ -1,11 +1,9 @@
 package be.isach.ultracosmetics.cosmetics.mounts;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Horse;
@@ -18,15 +16,10 @@ import org.bukkit.inventory.ItemStack;
  * @since 08-10-2015
  */
 public class MountGlacialSteed extends MountAbstractHorse {
-    private static final ItemStack BOOTS;
+    private static final ItemStack BOOTS = XMaterial.LEATHER_BOOTS.parseItem();
 
     static {
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
-            BOOTS = XMaterial.LEATHER_BOOTS.parseItem();
-            BOOTS.addEnchantment(Enchantment.FROST_WALKER, 2);
-        } else {
-            BOOTS = null;
-        }
+        BOOTS.addEnchantment(Enchantment.FROST_WALKER, 2);
     }
 
     public MountGlacialSteed(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {

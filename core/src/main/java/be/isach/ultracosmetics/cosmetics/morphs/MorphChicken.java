@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PetPathfinder;
-import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import me.gamercoder215.mobchip.EntityBrain;
@@ -61,11 +60,7 @@ public class MorphChicken extends Morph implements Updatable {
             public void run() {
                 chickens.clear();
                 for (Item i : items) {
-                    if (VersionManager.IS_VERSION_1_13) {
-                        i.getWorld().spawnParticle(Particle.BLOCK_CRACK, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.parseMaterial().createBlockData());
-                    } else {
-                        Particles.BLOCK_CRACK.display(new Particles.BlockData(XMaterial.WHITE_TERRACOTTA.parseMaterial(), (byte) 0), 0, 0, 0, 0.3f, 50, i.getLocation(), 128);
-                    }
+                    i.getWorld().spawnParticle(Particle.BLOCK_CRACK, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.parseMaterial().createBlockData());
                     spawnSound.atLocation(i.getLocation()).play();
                     final Chicken chicken = (Chicken) i.getWorld().spawnEntity(i.getLocation(), EntityType.CHICKEN);
                     chicken.setAgeLock(true);

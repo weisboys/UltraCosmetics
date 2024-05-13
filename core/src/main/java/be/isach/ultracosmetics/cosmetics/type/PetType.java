@@ -14,12 +14,10 @@ import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -140,83 +138,71 @@ public class PetType extends CosmeticEntType<Pet> {
             case v1_18:
                 new PetType("Goat", XMaterial.GOAT_HORN.or(XMaterial.WHEAT), EntityType.GOAT, PetGoat.class);
             case v1_17:
-                new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class) {
-                    @Override
-                    public void setupConfig(CustomConfiguration config, String path) {
-                        super.setupConfig(config, path);
-                        config.addDefault(path + ".Fast", false, "https://imgur.com/a/EKWwQ6w");
-                    }
-                };
-                /* Glow Squid disabled because its not moving at all, its just turning around all the time */
-                /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, EntityType.GLOW_SQUID, PetGlowSquid.class); */
-            case v1_16:
-                new PetType("Piglin", XMaterial.GOLD_INGOT, EntityType.PIGLIN, PetPiglin.class);
-                new PetType("Strider", XMaterial.WARPED_FUNGUS, EntityType.STRIDER, PetStrider.class);
-                new PetType("Hoglin", XMaterial.COOKED_PORKCHOP, EntityType.HOGLIN, PetHoglin.class);
-                new PetType("PiglinBrute", XMaterial.GOLDEN_AXE, EntityType.PIGLIN_BRUTE, PetPiglinBrute.class);
-                new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, EntityType.ZOGLIN, PetZoglin.class);
-                new PetType("ZombifiedPiglin", XMaterial.GOLDEN_SWORD, EntityType.ZOMBIFIED_PIGLIN, PetZombifiedPiglin.class);
-            case v1_15:
-                new PetType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, PetBee.class);
-            case v1_14:
-                new PetType("Panda", XMaterial.BAMBOO, EntityType.PANDA, PetPanda.class);
-                new PetType("Fox", XMaterial.SWEET_BERRIES, EntityType.FOX, PetFox.class);
-                new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.CAT, PetKitty.class);
-                new PetType("Ocelot", XMaterial.COD, EntityType.OCELOT, PetOcelot.class);
-                new PetType("WanderingTrader", XMaterial.WANDERING_TRADER_SPAWN_EGG, EntityType.WANDERING_TRADER, PetWanderingTrader.class);
-                new PetType("Pillager", XMaterial.CROSSBOW, EntityType.PILLAGER, PetPillager.class);
-                new PetType("Ravager", XMaterial.RAVAGER_SPAWN_EGG, EntityType.RAVAGER, PetRavager.class);
-            case v1_13:
-                new PetType("Cod", XMaterial.COD_BUCKET, EntityType.COD, PetCod.class);
-                new PetType("Pufferfish", XMaterial.PUFFERFISH, EntityType.PUFFERFISH, PetPufferfish.class);
-                new PetType("Salmon", XMaterial.SALMON_BUCKET, EntityType.SALMON, PetSalmon.class);
-                new PetType("TropicalFish", XMaterial.TROPICAL_FISH_BUCKET, EntityType.TROPICAL_FISH, PetTropicalFish.class);
-                new PetType("Turtle", XMaterial.TURTLE_HELMET, EntityType.TURTLE, PetTurtle.class);
-                new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, PetDolphin.class);
-                new PetType("Drowned", XMaterial.TRIDENT, EntityType.DROWNED, PetDrowned.class);
-                /* Phantom disabled because its just stuck flying down into the ground */
-                /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class); */
-            case v1_12:
-                new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
-                new PetType("Illusioner", XMaterial.COMMAND_BLOCK, EntityType.ILLUSIONER, PetIllusioner.class);
-            case v1_11:
-                new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
-                new PetType("Vex", XMaterial.IRON_SWORD, EntityType.VEX, PetVex.class);
-                new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, PetEvoker.class);
-                new PetType("Vindicator", XMaterial.IRON_AXE, EntityType.VINDICATOR, PetVindicator.class);
-                // Some entities are here because they were split into different EntityTypes in 1.11
-                new PetType("Donkey", XMaterial.CHEST, EntityType.DONKEY, PetDonkey.class);
-                new PetType("Mule", XMaterial.SADDLE, EntityType.MULE, PetMule.class);
-                new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
-                new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, EntityType.ZOMBIE_HORSE, PetZombieHorse.class);
-                new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class) {
-                    @Override
-                    public void setupConfig(CustomConfiguration config, String path) {
-                        super.setupConfig(config, path);
-                        config.addDefault(path + ".Block-Effect", true,
-                                "Whether the mining fatigue effect is blocked while this pet is equipped.",
-                                "Please note that this will also block mining fatigue from real elder guardians,",
-                                "due to Spigot API limitations.");
-                    }
-                };
-                new PetType("WitherSkeleton", XMaterial.STONE_SWORD, EntityType.WITHER_SKELETON, PetWitherSkeleton.class);
-                new PetType("ZombieVillager", XMaterial.GOLDEN_APPLE, EntityType.ZOMBIE_VILLAGER, PetZombieVillager.class);
-                new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
-                new PetType("Stray", XMaterial.ARROW, EntityType.STRAY, PetStray.class);
-            case v1_10:
-                new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
-            case v1_9:
-                new PetType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER, PetShulker.class);
-            case v1_8:
                 break;
         }
 
+        new PetType("Axolotl", XMaterial.AXOLOTL_BUCKET, EntityType.AXOLOTL, PetAxolotl.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
+                config.addDefault(path + ".Fast", false, "https://imgur.com/a/EKWwQ6w");
+            }
+        };
+        /* Glow Squid disabled because its not moving at all, its just turning around all the time */
+        /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, EntityType.GLOW_SQUID, PetGlowSquid.class); */
+        new PetType("Piglin", XMaterial.GOLD_INGOT, EntityType.PIGLIN, PetPiglin.class);
+        new PetType("Strider", XMaterial.WARPED_FUNGUS, EntityType.STRIDER, PetStrider.class);
+        new PetType("Hoglin", XMaterial.COOKED_PORKCHOP, EntityType.HOGLIN, PetHoglin.class);
+        new PetType("PiglinBrute", XMaterial.GOLDEN_AXE, EntityType.PIGLIN_BRUTE, PetPiglinBrute.class);
+        new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, EntityType.ZOGLIN, PetZoglin.class);
+        new PetType("ZombifiedPiglin", XMaterial.GOLDEN_SWORD, EntityType.ZOMBIFIED_PIGLIN, PetZombifiedPiglin.class);
+        new PetType("Bee", XMaterial.HONEYCOMB, EntityType.BEE, PetBee.class);
+        new PetType("Panda", XMaterial.BAMBOO, EntityType.PANDA, PetPanda.class);
+        new PetType("Fox", XMaterial.SWEET_BERRIES, EntityType.FOX, PetFox.class);
+        new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.CAT, PetKitty.class);
+        new PetType("Ocelot", XMaterial.COD, EntityType.OCELOT, PetOcelot.class);
+        new PetType("WanderingTrader", XMaterial.WANDERING_TRADER_SPAWN_EGG, EntityType.WANDERING_TRADER, PetWanderingTrader.class);
+        new PetType("Pillager", XMaterial.CROSSBOW, EntityType.PILLAGER, PetPillager.class);
+        new PetType("Ravager", XMaterial.RAVAGER_SPAWN_EGG, EntityType.RAVAGER, PetRavager.class);
+        new PetType("Cod", XMaterial.COD_BUCKET, EntityType.COD, PetCod.class);
+        new PetType("Pufferfish", XMaterial.PUFFERFISH, EntityType.PUFFERFISH, PetPufferfish.class);
+        new PetType("Salmon", XMaterial.SALMON_BUCKET, EntityType.SALMON, PetSalmon.class);
+        new PetType("TropicalFish", XMaterial.TROPICAL_FISH_BUCKET, EntityType.TROPICAL_FISH, PetTropicalFish.class);
+        new PetType("Turtle", XMaterial.TURTLE_HELMET, EntityType.TURTLE, PetTurtle.class);
+        new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, EntityType.DOLPHIN, PetDolphin.class);
+        new PetType("Drowned", XMaterial.TRIDENT, EntityType.DROWNED, PetDrowned.class);
+        /* Phantom disabled because its just stuck flying down into the ground */
+        /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, EntityType.PHANTOM, PetPhantom.class); */
+        new PetType("Parrot", XMaterial.COOKIE, EntityType.PARROT, PetParrot.class);
+        new PetType("Illusioner", XMaterial.COMMAND_BLOCK, EntityType.ILLUSIONER, PetIllusioner.class);
+        new PetType("Llama", XMaterial.RED_WOOL, EntityType.LLAMA, PetLlama.class);
+        new PetType("Vex", XMaterial.IRON_SWORD, EntityType.VEX, PetVex.class);
+        new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, EntityType.EVOKER, PetEvoker.class);
+        new PetType("Vindicator", XMaterial.IRON_AXE, EntityType.VINDICATOR, PetVindicator.class);
+        // Some entities are here because they were split into different EntityTypes in 1.11
+        new PetType("Donkey", XMaterial.CHEST, EntityType.DONKEY, PetDonkey.class);
+        new PetType("Mule", XMaterial.SADDLE, EntityType.MULE, PetMule.class);
+        new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, EntityType.SKELETON_HORSE, PetSkeletonHorse.class);
+        new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, EntityType.ZOMBIE_HORSE, PetZombieHorse.class);
+        new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, EntityType.ELDER_GUARDIAN, PetElderGuardian.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
+                config.addDefault(path + ".Block-Effect", true,
+                        "Whether the mining fatigue effect is blocked while this pet is equipped.",
+                        "Please note that this will also block mining fatigue from real elder guardians,",
+                        "due to Spigot API limitations.");
+            }
+        };
+        new PetType("WitherSkeleton", XMaterial.STONE_SWORD, EntityType.WITHER_SKELETON, PetWitherSkeleton.class);
+        new PetType("ZombieVillager", XMaterial.GOLDEN_APPLE, EntityType.ZOMBIE_VILLAGER, PetZombieVillager.class);
+        new PetType("Husk", XMaterial.SAND, EntityType.HUSK, PetHusk.class);
+        new PetType("Stray", XMaterial.ARROW, EntityType.STRAY, PetStray.class);
+        new PetType("PolarBear", XMaterial.SNOW_BLOCK, EntityType.POLAR_BEAR, PetPolarBear.class);
+        new PetType("Shulker", XMaterial.SHULKER_BOX, EntityType.SHULKER, PetShulker.class);
+
         if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             new PetType("Pumpling", XMaterial.PUMPKIN, EntityType.ZOMBIE, UltraCosmeticsData.get().getVersionManager().getModule().getPumplingClass());
-        }
-
-        if (!serverVersion.isAtLeast(ServerVersion.v1_14)) {
-            new PetType("Kitty", XMaterial.TROPICAL_FISH, EntityType.OCELOT, PetKitty.class);
         }
 
         ConfigurationSection pets = getCustomConfig(Category.PETS);
@@ -242,7 +228,7 @@ public class PetType extends CosmeticEntType<Pet> {
                 continue;
             }
             mat = XMaterial.matchXMaterial(pet.getString("item"));
-            if (!mat.isPresent() || !isItem(mat.get().parseMaterial())) {
+            if (mat.isEmpty() || !mat.get().parseMaterial().isItem()) {
                 log.write(LogLevel.WARNING, "Invalid item for custom pet '" + key + "'");
                 continue;
             }
@@ -250,15 +236,6 @@ public class PetType extends CosmeticEntType<Pet> {
             MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".entity-displayname", "&l%playername%'s " + key);
             MessageManager.addMessage(Category.PETS.getConfigPath() + "." + key + ".Description", "A custom pet!");
             new PetType(key, mat.get(), type, PET_MAP.get(type), pet.getString("customization"));
-        }
-    }
-
-    private static boolean isItem(@Nullable Material mat) {
-        if (mat == null) return false;
-        try {
-            return mat.isItem();
-        } catch (NoSuchMethodError e) {
-            return true;
         }
     }
 }

@@ -50,15 +50,9 @@ public class ParticleEffectType extends CosmeticParticleType<ParticleEffect> {
         new ParticleEffectType("ShadowFootprints", 2, Particles.SMOKE_LARGE, XMaterial.BLACK_WOOL, ParticleEffectFootprints.class, false);
         new ParticleEffectType("Notes", 6, Particles.NOTE, XMaterial.NOTE_BLOCK, ParticleEffectAboveHead.class, false);
         new ParticleEffectType("Hearts", 6, Particles.HEART, XMaterial.RED_WOOL, ParticleEffectAboveHead.class, false);
-        if (version.isAtLeast(ServerVersion.v1_9)) {
-            new ParticleEffectType("EnderFootprints", 1, Particles.DRAGON_BREATH, XMaterial.DRAGON_BREATH, ParticleEffectFootprints.class, false);
-        }
-        if (version.isAtLeast(ServerVersion.v1_16)) {
-            new ParticleEffectType("ArcaneFlame", 3, Particles.SOUL_FIRE_FLAME, XMaterial.SOUL_TORCH, ParticleEffectAboveHead.class, false);
-        }
-        if (version.isAtLeast(ServerVersion.v1_17)) {
-            new ParticleEffectType("DivineHalo", 2, Particles.WAX_OFF, XMaterial.GLOWSTONE, ParticleEffectHalo.class, false);
-            new ParticleEffectType("SnowFootprints", 1, Particles.SNOWFLAKE, XMaterial.POWDER_SNOW_BUCKET, ParticleEffectFootprints.class, false);
-        }
+        new ParticleEffectType("EnderFootprints", 1, Particles.DRAGON_BREATH, XMaterial.DRAGON_BREATH, ParticleEffectFootprints.class, false);
+        new ParticleEffectType("ArcaneFlame", 3, Particles.SOUL_FIRE_FLAME, XMaterial.SOUL_TORCH, ParticleEffectAboveHead.class, false);
+        new ParticleEffectType("DivineHalo", 2, Particles.WAX_OFF, XMaterial.GLOWSTONE, ParticleEffectHalo.class, false);
+        new ParticleEffectType("SnowFootprints", 1, Particles.SNOWFLAKE, XMaterial.POWDER_SNOW_BUCKET, ParticleEffectFootprints.class, false);
     }
 }

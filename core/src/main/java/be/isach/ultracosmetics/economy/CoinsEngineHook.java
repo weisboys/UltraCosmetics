@@ -1,7 +1,6 @@
-package be.isach.ultracosmetics.economy.java17;
+package be.isach.ultracosmetics.economy;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.economy.EconomyHook;
 import org.bukkit.entity.Player;
 import su.nightexpress.coinsengine.api.CoinsEngineAPI;
 import su.nightexpress.coinsengine.api.currency.Currency;

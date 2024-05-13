@@ -1,21 +1,20 @@
 package be.isach.ultracosmetics.cosmetics.gadgets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.listeners.HammerPickupListener;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.util.Vector;
 
 /**
@@ -25,8 +24,7 @@ import org.bukkit.util.Vector;
  * @since 08-08-2015
  */
 public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic {
-    // EntityPickupItemEvent didn't exist until 1.12
-    private static final boolean USE_OTHER_LISTENER = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_12);
+    private static final boolean USE_OTHER_LISTENER = true;
     private Item hammer = null;
     private HammerPickupListener listener;
     private Vector v;
@@ -56,24 +54,17 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
         }, 20);
     }
 
-    @Override
-    public void onEquip() {
-        super.onEquip();
-        if (!USE_OTHER_LISTENER) return;
-        listener = new HammerPickupListener(this);
-        Bukkit.getPluginManager().registerEvents(listener, getUltraCosmetics());
-    }
-
-    @SuppressWarnings("deprecation")
     @EventHandler
-    public void onItemPickup(org.bukkit.event.player.PlayerPickupItemEvent event) {
+    public void onHammerPickup(EntityPickupItemEvent event) {
         if (hammer != event.getItem()) return;
         event.setCancelled(true);
-
+        if (event.getEntityType() != EntityType.PLAYER) {
+            return;
+        }
         Player player = getPlayer();
-        if (event.getPlayer() != player) {
-            if (v != null && canAffect(event.getPlayer(), player)) {
-                MathUtils.applyVelocity(event.getPlayer(), v);
+        if (event.getEntity() != player) {
+            if (v != null && canAffect(event.getEntity(), player)) {
+                MathUtils.applyVelocity(event.getEntity(), v);
             }
             return;
         }
@@ -107,12 +98,5 @@ public class GadgetThorHammer extends Gadget implements PlayerAffectingCosmetic 
             hammer = null;
         }
         v = null;
-        if (!USE_OTHER_LISTENER) return;
-        HandlerList.unregisterAll(listener);
-        listener = null;
-    }
-
-    public Item getHammer() {
-        return hammer;
     }
 }

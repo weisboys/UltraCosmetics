@@ -1,13 +1,11 @@
 package be.isach.ultracosmetics.menu.buttons;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.menu.Button;
 import be.isach.ultracosmetics.menu.ClickData;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -75,7 +73,7 @@ public class CommandButton implements Button {
             }
             meta.setLore(lore);
         }
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14) && section.isInt("CustomModelData")) {
+        if (section.isInt("CustomModelData")) {
             meta.setCustomModelData(section.getInt("CustomModelData"));
         }
         stack.setItemMeta(meta);

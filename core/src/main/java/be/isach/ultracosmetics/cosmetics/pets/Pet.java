@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
@@ -10,7 +9,6 @@ import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PetPathfinder;
-import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
@@ -116,7 +114,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
 
         entity.getEquipment().clear();
         entity.setRemoveWhenFarAway(false);
-        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent") && UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_9)) {
+        if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent")) {
             entity.setSilent(true);
         }
 
@@ -149,8 +147,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     }
 
     public boolean useArmorStandNameTag() {
-        // setCustomNameVisible(true) doesn't seem to work on 1.8, so we'll just use armor stands in that case
-        return isCustomEntity() || UltraCosmeticsData.get().getServerVersion() == ServerVersion.v1_8;
+        return isCustomEntity();
     }
 
     public boolean useMarkerArmorStand() {

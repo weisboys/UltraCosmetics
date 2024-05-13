@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.version;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.version.dummy.DummyEntityUtil;
 import be.isach.ultracosmetics.version.dummy.DummyModule;
@@ -11,8 +10,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public class VersionManager {
-    // Used for knowing whether to use 'new' API methods that were added in 1.13
-    public static final boolean IS_VERSION_1_13 = UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13);
     public static final String PACKAGE = "be.isach.ultracosmetics";
     private static final Map<UUID, Integer> WORLD_MIN_HEIGHTS = new HashMap<>();
     private static final Map<UUID, Integer> WORLD_MAX_HEIGHTS = new HashMap<>();

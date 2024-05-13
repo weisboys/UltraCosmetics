@@ -15,7 +15,6 @@ import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.hook.PlayerAuctionsHook;
 import be.isach.ultracosmetics.hook.TownyHook;
-import be.isach.ultracosmetics.listeners.Listener113;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
@@ -39,7 +38,6 @@ import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
 import be.isach.ultracosmetics.version.ServerVersion;
-import be.isach.ultracosmetics.version.VersionManager;
 import be.isach.ultracosmetics.worldguard.WorldGuardManager;
 import com.cryptomorin.xseries.XMaterial;
 import me.libraryaddict.disguise.DisguiseConfig;
@@ -509,9 +507,6 @@ public class UltraCosmetics extends JavaPlugin {
         pluginManager.registerEvents(new EntitySpawningManager(), this);
         unmovableItemListener = new UnmovableItemListener(this);
         pluginManager.registerEvents(unmovableItemListener, this);
-        if (VersionManager.IS_VERSION_1_13) {
-            Bukkit.getPluginManager().registerEvents(new Listener113(), this);
-        }
     }
 
     /**
@@ -529,7 +524,7 @@ public class UltraCosmetics extends JavaPlugin {
         if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {
             nms = sv.getNmsVersion();
         } else {
-            nms = "NMS-less " + (sv.isAtLeast(ServerVersion.v1_13) ? "flattening" : "legacy");
+            nms = "NMS-less flattening";
         }
         String version = updateChecker.getCurrentVersion().versionWithClassifier();
         metrics.addCustomChart(new DrilldownPie("uc_by_mc", () -> {

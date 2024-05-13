@@ -1,11 +1,9 @@
 package be.isach.ultracosmetics.listeners;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.menu.MenuItemHandler;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -17,6 +15,7 @@ import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Set;
@@ -25,17 +24,10 @@ import java.util.function.Consumer;
 
 public class UnmovableItemListener implements Listener {
     private final Set<UnmovableItemProvider> providers = ConcurrentHashMap.newKeySet();
-    private final OffhandListener offhandListener;
 
     public UnmovableItemListener(UltraCosmetics ultraCosmetics) {
         if (SettingsManager.getConfig().getBoolean("Menu-Item.Enabled")) {
             providers.add(new MenuItemHandler(ultraCosmetics));
-        }
-        if (UltraCosmeticsData.get().getServerVersion().offhandAvailable()) {
-            offhandListener = new OffhandListener(this);
-            Bukkit.getPluginManager().registerEvents(offhandListener, ultraCosmetics);
-        } else {
-            offhandListener = null;
         }
     }
 
@@ -146,6 +138,15 @@ public class UnmovableItemListener implements Listener {
         forEachProviderWithItem(event.getPlayer(), event.getItem(), p -> {
             if (slotCheck(p, event.getPlayer().getInventory().getHeldItemSlot(), event.getPlayer())) {
                 p.handleInteract(event);
+            }
+        });
+    }
+
+    @EventHandler
+    public void onPlayerSwapoffHand(PlayerSwapHandItemsEvent event) {
+        forEachProvider(event.getPlayer(), p -> {
+            if (p.itemMatches(event.getMainHandItem()) || p.itemMatches(event.getOffHandItem())) {
+                event.setCancelled(true);
             }
         });
     }

@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.worldguard;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.Cosmetic;
@@ -11,13 +10,11 @@ import be.isach.ultracosmetics.util.Problem;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.TextUtil;
-import be.isach.ultracosmetics.version.ServerVersion;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 public class WorldGuardManager {
@@ -30,17 +27,9 @@ public class WorldGuardManager {
     }
 
     public void register() {
-        String path = "be.isach.ultracosmetics.worldguard.";
-        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_13)) {
-            path += "legacy.";
-        }
         try {
-            flagManager = (IFlagManager) Class.forName(path + "FlagManager").getConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-                 | InvocationTargetException e) {
-            e.printStackTrace();
-            return;
-        } catch (NoClassDefFoundError | NoSuchMethodError | NoSuchMethodException | ClassNotFoundException e) {
+            flagManager = new FlagManager();
+        } catch (NoClassDefFoundError | NoSuchMethodError e) {
             ultraCosmetics.getSmartLogger().write(LogLevel.WARNING, "Couldn't find required classes for WorldGuard integration.");
             ultraCosmetics.getSmartLogger().write(LogLevel.WARNING, "Please make sure you are using the latest version of WorldGuard");
             ultraCosmetics.getSmartLogger().write(LogLevel.WARNING, "for your version of Minecraft. Debug info:");

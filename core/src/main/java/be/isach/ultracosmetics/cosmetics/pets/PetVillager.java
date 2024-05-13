@@ -1,10 +1,8 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.version.ServerVersion;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Villager.Type;
@@ -22,10 +20,6 @@ public class PetVillager extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        // If we don't have new villager API, do nothing
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_14)) {
-            return false;
-        }
         Type type;
         Profession profession = Profession.NONE;
         String[] parts = customization.split(":", 2);

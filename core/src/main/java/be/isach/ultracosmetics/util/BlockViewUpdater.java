@@ -1,33 +1,27 @@
 package be.isach.ultracosmetics.util;
 
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import be.isach.ultracosmetics.version.VersionManager;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BlockViewUpdater extends BukkitRunnable {
     private static final Set<Block> blocksUpdating = ConcurrentHashMap.newKeySet();
     private final Set<Block> blocks;
+
     public BlockViewUpdater(Set<Block> blocks) {
         this.blocks = blocks;
         addForProcessing(blocks);
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void run() {
         removeForProcessing(blocks);
         for (Block block : blocks) {
             for (Player player : block.getWorld().getPlayers()) {
-                if (VersionManager.IS_VERSION_1_13) {
-                    player.sendBlockChange(block.getLocation(), block.getBlockData());
-                } else {
-                    player.sendBlockChange(block.getLocation(), block.getType(), block.getData());
-                }
+                player.sendBlockChange(block.getLocation(), block.getBlockData());
             }
         }
     }
