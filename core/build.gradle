@@ -1,5 +1,37 @@
 plugins {
     id 'io.github.goooler.shadow' version '8.1.7'
+    id("net.minecrell.plugin-yml.bukkit").version("0.6.0")
+}
+
+bukkit {
+    authors = ['iSach', 'Datatags', 'Chris6ix', 'dennishzg', 'RadBuilder']
+    main = 'be.isach.ultracosmetics.UltraCosmetics'
+    apiVersion = "1.17" // Earliest version to support Java 17
+    softDepend = ['LibsDisguises', 'Vault', 'PlaceholderAPI', 'PlayerPoints', 'WorldGuard', 'Essentials', 'LuckPerms', 'DiscordSRV', 'ChestSort', 'Towny', 'PEconomy', 'PlayerAuctions', 'CoinsEngine', 'Treasury']
+    commands {
+        ultracosmetics {
+            aliases = ['uc', 'cosmetics']
+            description = 'Main command of UltraCosmetics'
+            usage = '/<command>'
+        }
+    }
+    permissions {
+        'ultracosmetics.openmenu' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.receivechest' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.treasurechests.buykey' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.bypass.disabledcommands' {
+            setDefault('OP')
+        }
+        'ultracosmetics.bypass.cooldown' {
+            setDefault('FALSE')
+        }
+    }
 }
 
 dependencies {
@@ -29,15 +61,15 @@ dependencies {
     compileOnly "me.lokka30:treasury-api:2.0.2-SNAPSHOT"
     compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     compileOnly 'com.palmergames.bukkit.towny:towny:0.100.2.8'
-    implementation 'com.zaxxer:HikariCP:4.0.3'
-    implementation 'net.wesjd:anvilgui:1.9.4-SNAPSHOT'
-    implementation 'me.gamercoder215:mobchip-bukkit:1.10.0-SNAPSHOT'
+    library 'com.zaxxer:HikariCP:4.0.3'
+    implementation 'net.wesjd:anvilgui:1.9.4-SNAPSHOT' // CodeMC repo
+    implementation 'me.gamercoder215:mobchip-bukkit:1.10.0-SNAPSHOT' // CodeMC repo
     compileOnly 'com.discordsrv:discordsrv:1.28.0-SNAPSHOT'
     compileOnly 'me.soknight:peconomy:2.7.4-pre1'
-    implementation "net.kyori:adventure-text-minimessage:4.17.0"
-    implementation "net.kyori:adventure-platform-bukkit:4.3.2"
-    implementation "net.kyori:adventure-text-serializer-plain:4.17.0"
-    api "net.kyori:adventure-api:4.17.0"
+    library "net.kyori:adventure-text-minimessage:4.17.0"
+    library "net.kyori:adventure-platform-bukkit:4.3.2"
+    library "net.kyori:adventure-text-serializer-plain:4.17.0"
+    library "net.kyori:adventure-api:4.17.0"
     compileOnly "com.olziedev:playerauctions-api:1.28.1"
     compileOnly files('libs/CoinsEngine-2.1.1.jar')
     compileOnly files('libs/NexEngine.jar')
@@ -55,16 +87,15 @@ shadowJar {
     // XParticle is big and not required so don't shade it.
     // It's not removed by minimize() because it's on the API path I guess?
     exclude 'com/cryptomorin/xseries/particles/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_13_R1/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R1/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R2/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_18_R1/*'
-    relocate('com.zaxxer.hikari', path + '.hikari')
+    // UC does not support these versions, so we don't need NMS modules for them.
+    exclude 'me/gamercoder215/mobchip/abstraction/v1_13_R*/*'
+    exclude 'me/gamercoder215/mobchip/abstraction/v1_14_R*/*'
+    exclude 'me/gamercoder215/mobchip/abstraction/v1_15_R*/*'
+    exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R*/*'
     relocate('com.cryptomorin.xseries', path + '.xseries')
     relocate('org.bstats', path + '.metrics')
     relocate('net.wesjd', path + '.anvilgui')
     relocate('me.gamercoder215.mobchip', path + '.mobchip')
-    relocate('net.kyori', path + '.kyori')
 }
 
 publishing {
