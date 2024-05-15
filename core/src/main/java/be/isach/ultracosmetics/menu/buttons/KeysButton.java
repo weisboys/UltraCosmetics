@@ -27,7 +27,7 @@ public class KeysButton extends TreasureButton {
         Component yourKeysMessage = MessageManager.getMessage("Your-Keys",
                 Placeholder.unparsed("keys", String.valueOf(ultraPlayer.getKeys()))
         );
-        return ItemFactory.create(XMaterial.TRIPWIRE_HOOK, itemName, "",
+        return ItemFactory.create(XMaterial.TRIAL_KEY.or(XMaterial.TRIPWIRE_HOOK), itemName, "",
                 MessageManager.toLegacy(yourKeysMessage), buyKeyMessage);
     }
 
