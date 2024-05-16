@@ -4,6 +4,7 @@ plugins {
 }
 
 bukkit {
+    name = "UltraCosmetics"
     authors = ['iSach', 'Datatags', 'Chris6ix', 'dennishzg', 'RadBuilder']
     main = 'be.isach.ultracosmetics.UltraCosmetics'
     apiVersion = "1.17" // Earliest version to support Java 17
