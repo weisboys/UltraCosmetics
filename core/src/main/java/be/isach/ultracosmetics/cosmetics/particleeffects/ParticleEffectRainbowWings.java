@@ -16,15 +16,15 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
     private static final boolean x = true;
     private static final boolean o = false;
     private static final boolean[][] shape = {
-            { o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o },
-            { o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o },
-            { o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o },
-            { o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o },
-            { o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o },
-            { o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o },
-            { o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o },
-            { o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o },
-            { o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o }
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o},
+            {o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o},
+            {o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o},
+            {o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o},
+            {o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o}
     };
 
     public ParticleEffectRainbowWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
@@ -69,7 +69,7 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
                     location.add(v);
                     location.add(v2);
                     for (int k = 0; k < getModifiedAmount(3); k++) {
-                        Particles.REDSTONE.display(nextColor.getRed(), nextColor.getGreen(), nextColor.getBlue(), location);
+                        Particles.DUST.display(nextColor.getRed(), nextColor.getGreen(), nextColor.getBlue(), location);
                     }
                     location.subtract(v2);
                     location.subtract(v);

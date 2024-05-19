@@ -25,6 +25,6 @@ public class MountEcologistHorse extends MountAbstractHorse {
 
     @Override
     public void onUpdate() {
-        Particles.VILLAGER_HAPPY.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
+        Particles.HAPPY_VILLAGER.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
     }
 }

@@ -45,11 +45,11 @@ public class GadgetTsunami extends Gadget implements PlayerAffectingCosmetic {
             Location loc1 = loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, .5) - 0.75, MathUtils.randomDouble(-1.5, 1.5));
             Location loc2 = loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(1.3, 1.8) - 0.75, MathUtils.randomDouble(-1.5, 1.5));
             for (int i1 = 0; i1 < 5; i1++) {
-                Particles.EXPLOSION_NORMAL.display(0.2d, 0.2d, 0.2d, loc1, 1);
-                Particles.DRIP_WATER.display(0.4d, 0.4d, 0.4d, loc2, 2);
+                Particles.POOF.display(0.2d, 0.2d, 0.2d, loc1, 1);
+                Particles.DRIPPING_WATER.display(0.4d, 0.4d, 0.4d, loc2, 2);
             }
             for (int a = 0; a < 100; a++) {
-                Particles.REDSTONE.display(0, 0, 255, loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(1, 1.6) - 0.75, MathUtils.randomDouble(-1.5, 1.5)));
+                Particles.DUST.display(0, 0, 255, loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(1, 1.6) - 0.75, MathUtils.randomDouble(-1.5, 1.5)));
             }
             if (isAffectingPlayersEnabled()) {
                 Bukkit.getScheduler().runTask(getUltraCosmetics(), () -> {

@@ -55,13 +55,13 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
         Particles effect;
         switch (RANDOM.nextInt(5)) {
             default:
-                effect = Particles.FIREWORKS_SPARK;
+                effect = Particles.FIREWORK;
                 break;
             case 3:
                 effect = Particles.FLAME;
                 break;
             case 4:
-                effect = Particles.SPELL_WITCH;
+                effect = Particles.WITCH;
                 break;
         }
 

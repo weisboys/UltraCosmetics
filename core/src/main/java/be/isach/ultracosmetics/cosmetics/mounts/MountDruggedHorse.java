@@ -38,10 +38,10 @@ public class MountDruggedHorse extends MountAbstractHorse {
     @Override
     public void onUpdate() {
         Location loc = entity.getLocation().add(0, 1, 0);
-        Particles.FIREWORKS_SPARK.display(0.4f, 0.2f, 0.4f, loc, 5);
-        Particles.SPELL.display(0.4f, 0.2f, 0.4f, loc, 5);
-        Particles.SPELL_MOB_AMBIENT.display(0.4f, 0.2f, 0.4f, loc, 5);
-        Particles.SPELL_MOB.display(5, 255, 0, loc);
+        Particles.FIREWORK.display(0.4f, 0.2f, 0.4f, loc, 5);
+        Particles.EFFECT.display(0.4f, 0.2f, 0.4f, loc, 5);
+        Particles.ENTITY_EFFECT_AMBIENT.display(0.4f, 0.2f, 0.4f, loc, 5);
+        Particles.ENTITY_EFFECT.display(5, 255, 0, loc);
     }
 
     @Override

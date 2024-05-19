@@ -109,7 +109,7 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
 
     protected void showColoredAlternativeEffect(int r, int g, int b) {
         for (int i = 0; i < getModifiedAmount(3); i++) {
-            Particles.REDSTONE.display(r, g, b, getPlayer().getLocation().add(MathUtils.randomDouble(-0.2, 0.2), MathUtils.randomDouble(0, 0.4), MathUtils.randomDouble(-0.2, 0.2)));
+            Particles.DUST.display(r, g, b, getPlayer().getLocation().add(MathUtils.randomDouble(-0.2, 0.2), MathUtils.randomDouble(0, 0.4), MathUtils.randomDouble(-0.2, 0.2)));
         }
     }
 }

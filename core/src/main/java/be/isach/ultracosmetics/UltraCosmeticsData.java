@@ -184,14 +184,12 @@ public class UltraCosmeticsData {
      */
     protected Problem checkServerVersion() {
         String version = ServerVersion.getMinecraftVersion();
-        int majorVer;
+        String[] parts = version.split("\\.");
+        int majorVer = Integer.parseInt(parts[1]);
         int minorVer = 0;
         // If version has minor component, e.g. 1.8.8
-        if (version.indexOf('.') != version.lastIndexOf('.')) {
-            majorVer = Integer.parseInt(version.substring(2, version.lastIndexOf('.')));
-            minorVer = Integer.parseInt(version.substring(version.lastIndexOf('.') + 1));
-        } else {
-            majorVer = Integer.parseInt(version.substring(2));
+        if (parts.length > 2) {
+            minorVer = Integer.parseInt(parts[2]);
         }
         ServerVersion serverVersion = ServerVersion.byId(majorVer);
         // If we don't know the server version, or if the server version is a

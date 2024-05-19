@@ -56,7 +56,7 @@ public class GadgetFreezeCannon extends Gadget implements Updatable {
                 for (Block b : BlockUtils.getBlocksInRadius(item.getLocation(), 4, false)) {
                     updates.put(b, XMaterial.PACKED_ICE);
                 }
-                Particles.FIREWORKS_SPARK.display(4d, 3d, 4d, item.getLocation(), 80);
+                Particles.FIREWORK.display(4d, 3d, 4d, item.getLocation(), 80);
                 item.remove();
                 iter.remove();
             }

@@ -69,8 +69,9 @@ public class ParticleEffectSuperHero extends ParticleEffect {
                         loc.setY(defY);
                     }
 
-                    for (int k = 0; k < getModifiedAmount(3); k++)
-                        Particles.REDSTONE.display(255, 0, 0, loc);
+                    for (int k = 0; k < getModifiedAmount(3); k++) {
+                        Particles.DUST.display(255, 0, 0, loc);
+                    }
                     loc.subtract(v2);
                     loc.subtract(v);
                 }

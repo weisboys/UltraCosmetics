@@ -17,7 +17,7 @@ public class ProjectileEffectChristmas extends ProjectileEffectHelix {
     @Override
     public void showHelix(Projectile projectile, Location a, Location b) {
         Particles.CLOUD.display(projectile.getLocation());
-        Particles.REDSTONE.display(211, 47, 47, a);
-        Particles.REDSTONE.display(52, 168, 83, b);
+        Particles.DUST.display(211, 47, 47, a);
+        Particles.DUST.display(52, 168, 83, b);
     }
 }

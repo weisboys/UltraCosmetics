@@ -18,15 +18,15 @@ public class ParticleEffectAngelWings extends ParticleEffect {
     public static final boolean x = true;
     public static final boolean o = false;
     private static final boolean[][] shape = {
-            { o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o },
-            { o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o },
-            { o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o },
-            { o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o },
-            { o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o },
-            { o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o },
-            { o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o },
-            { o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o },
-            { o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o }
+            {o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o, o},
+            {o, x, x, x, x, o, o, o, o, o, o, o, x, x, x, x, o, o},
+            {o, o, x, x, x, x, x, o, o, o, x, x, x, x, x, o, o, o},
+            {o, o, o, x, x, x, x, x, x, x, x, x, x, x, o, o, o, o},
+            {o, o, o, o, x, x, x, x, x, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, x, x, x, x, o, x, x, x, x, o, o, o, o, o},
+            {o, o, o, o, o, x, x, x, o, x, x, x, o, o, o, o, o, o},
+            {o, o, o, o, o, x, x, o, o, o, x, x, o, o, o, o, o, o},
+            {o, o, o, o, x, x, o, o, o, o, o, x, x, o, o, o, o, o}
     };
 
     public ParticleEffectAngelWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
@@ -69,7 +69,7 @@ public class ParticleEffectAngelWings extends ParticleEffect {
                     location.add(v);
                     location.add(v2);
                     for (int k = 0; k < getModifiedAmount(3); k++) {
-                        Particles.REDSTONE.display(255, 255, 255, location);
+                        Particles.DUST.display(255, 255, 255, location);
                     }
                     location.subtract(v2);
                     location.subtract(v);

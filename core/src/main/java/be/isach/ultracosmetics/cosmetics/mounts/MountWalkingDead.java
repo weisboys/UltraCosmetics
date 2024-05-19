@@ -16,7 +16,7 @@ public class MountWalkingDead extends MountAbstractHorse {
 
     @Override
     public void onUpdate() {
-        Particles.CRIT_MAGIC.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
-        Particles.SPELL_MOB_AMBIENT.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
+        Particles.ENCHANTED_HIT.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
+        Particles.ENTITY_EFFECT_AMBIENT.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
     }
 }

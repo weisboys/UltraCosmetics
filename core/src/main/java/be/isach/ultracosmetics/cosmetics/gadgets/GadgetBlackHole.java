@@ -65,7 +65,7 @@ public class GadgetBlackHole extends Gadget implements PlayerAffectingCosmetic, 
                 double x = Math.cos(angle) * ratio * radius;
                 double z = Math.sin(angle) * ratio * radius;
                 location.add(x, 0, z);
-                Particles.SMOKE_LARGE.display(location);
+                Particles.LARGE_SMOKE.display(location);
                 location.subtract(x, 0, z);
             }
         }

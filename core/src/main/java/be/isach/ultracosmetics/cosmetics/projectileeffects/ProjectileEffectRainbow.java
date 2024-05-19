@@ -18,6 +18,6 @@ public class ProjectileEffectRainbow extends ProjectileEffect {
     @Override
     public void showParticles(Projectile projectile) {
         Color color = ColorUtils.getRainbowColor(0.5);
-        Particles.REDSTONE.display(color.getRed(), color.getGreen(), color.getBlue(), projectile.getLocation());
+        Particles.DUST.display(color.getRed(), color.getGreen(), color.getBlue(), projectile.getLocation());
     }
 }

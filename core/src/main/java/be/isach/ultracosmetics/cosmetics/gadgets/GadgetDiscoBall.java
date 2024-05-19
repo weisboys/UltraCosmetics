@@ -90,8 +90,8 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
 
         armorStand.getEquipment().setHelmet(ItemFactory.getRandomStainedGlass());
 
-        Particles.SPELL.display(armorStand.getEyeLocation(), 1, 1f);
-        Particles.SPELL_INSTANT.display(armorStand.getEyeLocation(), 1, 1f);
+        Particles.EFFECT.display(armorStand.getEyeLocation(), 1, 1f);
+        Particles.INSTANT_EFFECT.display(armorStand.getEyeLocation(), 1, 1f);
         Location loc = armorStand.getEyeLocation().add(MathUtils.randomDouble(-4, 4), MathUtils.randomDouble(-3, 3), MathUtils.randomDouble(-4, 4));
         Particles.NOTE.display(new Particles.NoteColor(RANDOM.nextInt(25)), loc, 128);
         double angle, angle2, x, x2, z, z2;
@@ -170,7 +170,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
             step++;
             loc.add(v);
             if (dust) {
-                Particles.REDSTONE.display(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255), loc);
+                Particles.DUST.display(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255), loc);
             }
         }
     }

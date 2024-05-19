@@ -114,7 +114,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 return;
             }
             explodeSound.atLocation(s.getLocation()).play();
-            Particles.EXPLOSION_HUGE.display(s.getLocation());
+            Particles.EXPLOSION_EMITTER.display(s.getLocation());
             sheeps.remove(s);
             s.remove();
             DyeColor[] colors = DyeColor.values();

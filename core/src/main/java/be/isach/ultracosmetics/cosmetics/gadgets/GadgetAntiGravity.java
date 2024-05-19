@@ -54,7 +54,7 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
 
         as.setHeadPose(as.getHeadPose().add(0, 0.1, 0));
         Particles.PORTAL.display(3f, 3f, 3f, as.getLocation(), 150);
-        Particles.SPELL_WITCH.display(.3f, .3f, .3f, as.getEyeLocation(), 5);
+        Particles.WITCH.display(.3f, .3f, .3f, as.getEyeLocation(), 5);
         for (Entity ent : as.getNearbyEntities(3, 2, 3)) {
             if (canAffect(ent, getPlayer())) {
                 LivingEntity le = (LivingEntity) ent;

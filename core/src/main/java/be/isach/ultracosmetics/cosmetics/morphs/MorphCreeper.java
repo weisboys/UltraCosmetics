@@ -46,7 +46,7 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
                 onEquip();
             }
             if (charge == 100) {
-                Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
+                Particles.EXPLOSION_EMITTER.display(getPlayer().getLocation());
                 explodeSound.play();
 
                 Player player = getPlayer();

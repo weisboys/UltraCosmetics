@@ -90,7 +90,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
         Vector left = getPlayer().getLocation().getDirection().setY(0).crossProduct(new Vector(0, 1, 0));
         double multiplier = 0.3;
         for (OrdinaryColor color : COLORS) {
-            Particles.REDSTONE.display(color, getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));
+            Particles.DUST.display(color, getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));
             multiplier -= 0.2;
         }
     }
@@ -116,7 +116,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
                 v.setY(BASE_HEIGHT + Math.sin(angleStep * 3) * heightDiffFactor); // The height of the columns is a sine wave.
                 loc = getPlayer().getLocation().add(v);
 
-                Particles.REDSTONE.drawParticleLine(loc, loc.clone().add(0, ROD_HEIGHT, 0), getModifiedAmount(((int) ROD_HEIGHT) * 5), COLORS.get(j));
+                Particles.DUST.drawParticleLine(loc, loc.clone().add(0, ROD_HEIGHT, 0), getModifiedAmount(((int) ROD_HEIGHT) * 5), COLORS.get(j));
 
                 angleStep += workingSpace / COLORS.size();
                 height += (i >= 3 && i <= 5) ? heightDiffFactor : -heightDiffFactor;

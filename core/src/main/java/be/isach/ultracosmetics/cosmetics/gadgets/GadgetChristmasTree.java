@@ -50,7 +50,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
 
     private void drawSnow() {
         lastLocation.add(0, 3, 0);
-        Particles.FIREWORKS_SPARK.display(4d, 3d, 4d, lastLocation, 10);
+        Particles.FIREWORK.display(4d, 3d, 4d, lastLocation, 10);
         lastLocation.subtract(0, 3, 0);
     }
 
@@ -72,7 +72,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
         float ratio = length / 10;
         Vector vector = link.multiply(ratio);
         for (int i = 0; i < 10; i++) {
-            Particles.REDSTONE.display(LOG_COLOR.getRed(), LOG_COLOR.getGreen(), LOG_COLOR.getBlue(), current);
+            Particles.DUST.display(LOG_COLOR.getRed(), LOG_COLOR.getGreen(), LOG_COLOR.getBlue(), current);
             current.add(vector);
         }
     }
@@ -90,7 +90,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
                     float x = MathUtils.cos(angle) * (radius + 0.05f);
                     float z = MathUtils.sin(angle) * (radius + 0.05f);
                     lastLocation.add(x, f, z);
-                    Particles.REDSTONE.display(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256), lastLocation);
+                    Particles.DUST.display(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256), lastLocation);
                     lastLocation.subtract(x, f, z);
                 }
                 for (int i = 0; i < d; i++) {
@@ -99,7 +99,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
                     float x = MathUtils.cos(angle) * radius;
                     float z = MathUtils.sin(angle) * radius;
                     lastLocation.add(x, f, z);
-                    Particles.REDSTONE.display(0, 100, 0, lastLocation);
+                    Particles.DUST.display(0, 100, 0, lastLocation);
                     lastLocation.subtract(x, f, z);
                 }
                 radius = radius - (0.7f / 8.5f);
@@ -109,7 +109,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
 
     private void drawStar() {
         lastLocation.add(0, 2.6, 0);
-        Particles.REDSTONE.display(255, 255, 0, lastLocation);
+        Particles.DUST.display(255, 255, 0, lastLocation);
         lastLocation.subtract(0, 2.6, 0);
     }
 

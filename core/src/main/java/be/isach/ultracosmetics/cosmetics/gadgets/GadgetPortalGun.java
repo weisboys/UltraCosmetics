@@ -63,7 +63,7 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
         List<Block> sight = getPlayer().getLastTwoTargetBlocks(null, 20);
         Block target = sight.get(1);
         Location playerFaceLoc = getPlayer().getEyeLocation().add(getPlayer().getEyeLocation().getDirection().multiply(0.6));
-        Particles.REDSTONE.drawParticleLine(playerFaceLoc, target.getLocation(), 100, portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue());
+        Particles.DUST.drawParticleLine(playerFaceLoc, target.getLocation(), 100, portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue());
 
         BlockFace face = getBlockFace(sight.get(0), target);
         Location loc = target.getRelative(face).getLocation().add(0.5, 0.5, 0.5);
@@ -171,7 +171,7 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
                 v.setX(a1);
                 v.setZ(a2);
             }
-            Particles.REDSTONE.display(portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue(), loc.clone().add(v));
+            Particles.DUST.display(portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue(), loc.clone().add(v));
         }
     }
 

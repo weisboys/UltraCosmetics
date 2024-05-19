@@ -2,9 +2,11 @@ package be.isach.ultracosmetics.cosmetics.type;
 
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.cosmetics.Category;
-import be.isach.ultracosmetics.cosmetics.deatheffects.*;
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffect;
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectExplosion;
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectFirework;
+import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectLightning;
 import be.isach.ultracosmetics.util.Particles;
-
 import com.cryptomorin.xseries.XMaterial;
 
 public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
@@ -17,8 +19,8 @@ public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
     }
 
     public static void register() {
-        new DeathEffectType("Explosion", Particles.EXPLOSION_HUGE, XMaterial.TNT, DeathEffectExplosion.class, false);
-        new DeathEffectType("Firework", Particles.FIREWORKS_SPARK, XMaterial.FIREWORK_ROCKET, DeathEffectFirework.class, false);
+        new DeathEffectType("Explosion", Particles.EXPLOSION_EMITTER, XMaterial.TNT, DeathEffectExplosion.class, false);
+        new DeathEffectType("Firework", Particles.FIREWORK, XMaterial.FIREWORK_ROCKET, DeathEffectFirework.class, false);
         new DeathEffectType("Lightning", Particles.CRIT, XMaterial.DAYLIGHT_DETECTOR, DeathEffectLightning.class, false);
     }
 }

@@ -155,7 +155,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                             fallingBlocks.clear();
                             FallDamageManager.addNoFall(getPlayer());
                             liftoffSound.play();
-                            Particles.EXPLOSION_HUGE.display(getPlayer().getLocation());
+                            Particles.EXPLOSION_EMITTER.display(getPlayer().getLocation());
                             disableFlight();
                             launching = false;
                             cancel();

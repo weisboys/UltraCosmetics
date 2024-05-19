@@ -23,7 +23,7 @@ public class PlaceChestRunnable extends BukkitRunnable {
     public void run() {
         chest.addChest(chestBlock, chest.getDesign().getChestType().getType());
         sound.play();
-        Particles.SMOKE_LARGE.display(chestBlock.getLocation(), 5);
+        Particles.LARGE_SMOKE.display(chestBlock.getLocation(), 5);
         Particles.LAVA.display(chestBlock.getLocation(), 5);
         XBlock.setDirection(chestBlock, ChestParticleRunnable.getDirection(direction).getOppositeFace());
     }

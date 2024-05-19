@@ -58,7 +58,7 @@ public class MountNyanSheep extends Mount {
         Location particleLoc = entity.getLocation().add(entity.getLocation().getDirection().normalize().multiply(-2)).add(0, 1.2, 0);
         for (Color rgbColor : COLORS) {
             for (int i = 0; i < 10; i++) {
-                Particles.REDSTONE.display(rgbColor.getRed(), rgbColor.getGreen(), rgbColor.getBlue(), particleLoc);
+                Particles.DUST.display(rgbColor.getRed(), rgbColor.getGreen(), rgbColor.getBlue(), particleLoc);
             }
             particleLoc.subtract(0, 0.2, 0);
         }

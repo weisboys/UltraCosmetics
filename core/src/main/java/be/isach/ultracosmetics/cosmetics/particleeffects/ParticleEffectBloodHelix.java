@@ -38,8 +38,8 @@ public class ParticleEffectBloodHelix extends ParticleEffect {
             v1.setZ(Math.sin(angle) * radius);
             v2.setX(Math.cos(angle + 3.5) * radius);
             v2.setZ(Math.sin(angle + 3.5) * radius);
-            Particles.REDSTONE.display(location.clone().add(v1));
-            Particles.REDSTONE.display(location.clone().add(v2));
+            Particles.DUST.display(location.clone().add(v1));
+            Particles.DUST.display(location.clone().add(v2));
             location.add(0, 0.12d, 0);
             radius -= 4.4f / steps;
         }

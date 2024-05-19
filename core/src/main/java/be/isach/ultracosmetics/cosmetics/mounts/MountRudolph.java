@@ -74,7 +74,7 @@ public class MountRudolph extends MountAbstractHorse {
         double y = noseLocation.getY();
         noseLocation.add(noseLocation.getDirection().multiply(1.15));
         noseLocation.setY(y + 0.127);
-        Particles.REDSTONE.display(255, 0, 0, noseLocation);
+        Particles.DUST.display(255, 0, 0, noseLocation);
         // Improves update time for antlers, but not a critical feature
         if (!UltraCosmeticsData.get().getVersionManager().isUsingNMS()) return;
         new Thread(() -> {
