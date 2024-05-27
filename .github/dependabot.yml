@@ -17,8 +17,4 @@ updates:
       timezone: Europe/Paris
     open-pull-requests-limit: 10
     ignore:
-      - dependency-name: "com.mojang:authlib" # AuthLib 2.3.31 - Same version used in 1.17.1, 3.x uses Java 16
-      - dependency-name: "com.zaxxer:HikariCP" # HikariCP 4.0.3 - Last version to support Java 8
-      - dependency-name: "com.sk89q.worldguard:worldguard-bukkit" # WG 7.0.3 - Was last version to support Java <16
-      - dependency-name: "com.sk89q.worldguard:worldguard-legacy" # WG 6.2 - Was the last version before major API changes
       - dependency-name: "org.spigotmc:spigot-api" # SpigotAPI - Manual update
