@@ -62,7 +62,7 @@ dependencies {
     compileOnly "me.lokka30:treasury-api:2.0.2-SNAPSHOT"
     compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     compileOnly 'com.palmergames.bukkit.towny:towny:0.100.2.11'
-    library 'com.zaxxer:HikariCP:4.0.3'
+    library 'com.zaxxer:HikariCP:5.1.0'
     implementation 'net.wesjd:anvilgui:1.9.4-SNAPSHOT' // CodeMC repo
     implementation 'me.gamercoder215:mobchip-bukkit:1.10.1-SNAPSHOT' // CodeMC repo
     compileOnly 'com.discordsrv:discordsrv:1.28.0-SNAPSHOT'
