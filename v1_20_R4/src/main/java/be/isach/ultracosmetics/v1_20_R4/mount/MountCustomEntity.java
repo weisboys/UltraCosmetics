@@ -7,7 +7,6 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.v1_20_R4.customentities.CustomEntities;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import org.bukkit.craftbukkit.v1_20_R4.CraftWorld;
 import org.bukkit.craftbukkit.v1_20_R4.entity.CraftEntity;
 
 /**
@@ -21,14 +20,7 @@ public abstract class MountCustomEntity extends Mount {
 
     @Override
     public org.bukkit.entity.Entity spawnEntity() {
-        entity = getNewEntity().getBukkitEntity();
-        double x = getPlayer().getLocation().getX();
-        double y = getPlayer().getLocation().getY();
-        double z = getPlayer().getLocation().getZ();
-        // must refer to entity as an Entity
-        getCustomEntity().moveTo(x, y + 2, z, 0, 0);
-        ((CraftWorld) getPlayer().getWorld()).getHandle().addFreshEntity(getCustomEntity());
-        CustomEntities.addCustomEntity(getCustomEntity());
+        entity = CustomEntities.spawnEntity(getNewEntity(), getPlayer().getLocation());
         // must refer to entity as a LivingEntity
         ((LivingEntity) getCustomEntity()).setSpeed((float) getType().getMovementSpeed());
         return getEntity();
@@ -36,7 +28,6 @@ public abstract class MountCustomEntity extends Mount {
 
     @Override
     protected void removeEntity() {
-        getCustomEntity().discard();
         CustomEntities.removeCustomEntity(getCustomEntity());
     }
 

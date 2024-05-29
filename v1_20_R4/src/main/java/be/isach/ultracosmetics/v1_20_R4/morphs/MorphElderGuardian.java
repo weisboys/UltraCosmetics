@@ -13,8 +13,6 @@ import be.isach.ultracosmetics.v1_20_R4.customentities.CustomEntities;
 import be.isach.ultracosmetics.v1_20_R4.customentities.CustomGuardian;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelWriter;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -102,27 +100,16 @@ public class MorphElderGuardian extends Morph implements Updatable {
     @Override
     public void onClear() {
         if (customGuardian == null) return;
-        ((Entity) customGuardian).discard();
         CustomEntities.removeCustomEntity(customGuardian);
     }
 
     @Override
     protected void onEquip() {
         super.onEquip();
-        Level world = ((CraftWorld) getPlayer().getWorld()).getHandle();
-
-        customGuardian = new CustomGuardian(EntityType.ELDER_GUARDIAN, world);
-        CustomEntities.addCustomEntity(customGuardian);
-
-        Location location = getPlayer().getLocation();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        // the methods don't get properly re-obfuscated without casting like this
-        ((Entity) customGuardian).moveTo(x, y, z, 0, 0);
 
         EntitySpawningManager.setBypass(true);
-        ((LevelWriter) world).addFreshEntity(customGuardian);
+        customGuardian = new CustomGuardian(EntityType.ELDER_GUARDIAN, ((CraftWorld) getPlayer().getWorld()).getHandle());
+        CustomEntities.spawnEntity(customGuardian, getPlayer().getLocation());
         EntitySpawningManager.setBypass(false);
 
         getPlayer().addPassenger(customGuardian.getBukkitEntity());

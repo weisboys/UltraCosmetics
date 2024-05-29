@@ -134,9 +134,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
     @Override
     protected void onClear() {
         beingRemoved = true;
-        if (entity != null) {
-            entity.remove();
-        }
+        removeEntity();
 
         if (mountRegionTask != null) {
             mountRegionTask.cancel();

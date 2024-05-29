@@ -8,12 +8,14 @@ import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.v1_19_R3.customentities.CustomEntities;
 import be.isach.ultracosmetics.v1_19_R3.customentities.CustomEntityFirework;
+import be.isach.ultracosmetics.v1_19_R3.customentities.CustomMinecart;
 import be.isach.ultracosmetics.v1_19_R3.morphs.MorphElderGuardian;
 import be.isach.ultracosmetics.v1_19_R3.mount.MountSlime;
 import be.isach.ultracosmetics.v1_19_R3.mount.MountSpider;
 import be.isach.ultracosmetics.v1_19_R3.pets.PetPumpling;
 import be.isach.ultracosmetics.version.IModule;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import org.bukkit.Bukkit;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -64,6 +66,16 @@ public class VersionModule implements IModule {
     @Override
     public Class<? extends Morph> getElderGuardianClass() {
         return MorphElderGuardian.class;
+    }
+
+    @Override
+    public org.bukkit.entity.Entity spawnCustomMinecart(Location location) {
+        return CustomEntities.spawnEntity(new CustomMinecart(EntityType.MINECART, ((CraftWorld) location.getWorld()).getHandle()), location);
+    }
+
+    @Override
+    public void removeCustomEntity(org.bukkit.entity.Entity entity) {
+
     }
 
     @Override

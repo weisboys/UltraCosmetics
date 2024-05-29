@@ -23,6 +23,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_20_R4.CraftWorld;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;
@@ -106,6 +108,13 @@ public class CustomEntities {
         Registry.register(BuiltInRegistries.ENTITY_TYPE, customName, a.build(customName));
     }
 
+    public static org.bukkit.entity.Entity spawnEntity(Entity entity, Location loc) {
+        entity.moveTo(loc.getX(), loc.getY() + 2, loc.getZ(), 0, 0);
+        ((CraftWorld) loc.getWorld()).getHandle().addFreshEntity(entity);
+        addCustomEntity(entity);
+        return entity.getBukkitEntity();
+    }
+
     public static void ride(float sideMot, float forMot, Player passenger, Mob mob) {
         if (!(mob instanceof EntityBase)) {
             throw new IllegalArgumentException("The entity parameter should implement EntityBase");
@@ -178,6 +187,7 @@ public class CustomEntities {
     }
 
     public static void removeCustomEntity(Entity entity) {
+        entity.discard();
         customEntities.remove(entity);
     }
 
