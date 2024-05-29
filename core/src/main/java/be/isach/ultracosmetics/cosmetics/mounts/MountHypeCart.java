@@ -35,8 +35,6 @@ public class MountHypeCart extends Mount {
             }
             entity.setVelocity(vector);
         }
-        // Sets it so the minecart can drive up a full block
-        UltraCosmeticsData.get().getVersionManager().getEntityUtil().setStepHeight(entity);
     }
 
     @Override
