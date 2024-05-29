@@ -64,7 +64,8 @@ dependencies {
     compileOnly 'com.palmergames.bukkit.towny:towny:0.100.2.11'
     library 'com.zaxxer:HikariCP:5.1.0'
     implementation 'net.wesjd:anvilgui:1.9.4-SNAPSHOT' // CodeMC repo
-    implementation 'me.gamercoder215:mobchip-bukkit:1.10.1-SNAPSHOT' // CodeMC repo
+    //implementation 'me.gamercoder215:mobchip-bukkit:1.10.1-SNAPSHOT' // CodeMC repo
+    implementation fileTree(dir: '.', include: ['mobchip-bukkit-1.10.1-SNAPSHOT.jar'])
     compileOnly 'com.discordsrv:discordsrv:1.28.0-SNAPSHOT'
     compileOnly 'me.soknight:peconomy:2.7.4-pre1'
     library "net.kyori:adventure-text-minimessage:4.17.0"
@@ -79,11 +80,11 @@ shadowJar {
     // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack
     archiveClassifier = ''
     // removes unused classes in 'implementation' path dependencies
-    minimize {
+    /*minimize {
         // Loads classes reflectively
         exclude(dependency('net.wesjd:anvilgui:.*'))
         exclude(dependency('me.gamercoder215:.*:.*'))
-    }
+    }*/
     def path = 'be.isach.ultracosmetics.shaded'
     // XParticle is big and not required so don't shade it.
     // It's not removed by minimize() because it's on the API path I guess?
