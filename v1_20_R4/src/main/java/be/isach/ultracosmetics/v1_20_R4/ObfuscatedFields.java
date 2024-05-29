@@ -5,7 +5,7 @@ package be.isach.ultracosmetics.v1_20_R4;
  */
 public class ObfuscatedFields {
     // corresponds to net.minecraft.world.entity.LivingEntity#jumping
-    public static final String JUMPING = "bj";
+    public static final String JUMPING = "bn";
     // corresponds to net.minecraft.core.MappedRegistry#frozen
     public static final String FROZEN = "l";
     // corresponds to net.minecraft.core.MappedRegistry#unregisteredIntrusiveHolders
