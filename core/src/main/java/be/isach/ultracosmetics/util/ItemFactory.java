@@ -5,8 +5,8 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
-import com.cryptomorin.xseries.SkullUtils;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.XSkull;
 import com.cryptomorin.xseries.XTag;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -22,7 +22,6 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.util.Vector;
@@ -187,9 +186,7 @@ public class ItemFactory {
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
         ItemMeta meta = head.getItemMeta();
-        //SkullUtils.applySkin(meta, str);
-        // Temporary workaround until #234 is fixed in XSeries
-        SkullUtils.setSkullBase64((SkullMeta) meta, SkullUtils.encodeTexturesURL("https://textures.minecraft.net/texture/" + url), url);
+        XSkull.applySkin(meta, url);
         head.setItemMeta(meta);
         return head;
     }

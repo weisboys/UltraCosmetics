@@ -2,8 +2,10 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.version.ServerVersion;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -1455,6 +1457,15 @@ public enum Particles {
             if (packet != null) {
                 return;
             }
+            Particle particle;
+            if (effect == ENTITY_EFFECT_AMBIENT) {
+                particle = XParticle.ENTITY_EFFECT.get();
+            } else {
+                particle = XParticle.of(effect.toString()).get();
+            }
+            if (particle == null) {
+                throw new IllegalArgumentException("This particle effect (" + effect + ") is not supported by your server version");
+            }
             if (effect == Particles.DUST) {
                 int r = (int) (offsetX * 255);
                 int g = (int) (offsetY * 255);
@@ -1462,17 +1473,17 @@ public enum Particles {
                 if (r == 0 && g == 0 && b == 0) { // Normal redstone particle, no color data supplied
                     r = 255;
                 }
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center, 0, new org.bukkit.Particle.DustOptions(org.bukkit.Color.fromRGB(r, g, b), 1));
+                center.getWorld().spawnParticle(particle, center, 0, new org.bukkit.Particle.DustOptions(org.bukkit.Color.fromRGB(r, g, b), 1));
             } else if (effect == Particles.ENTITY_EFFECT || effect == Particles.ENTITY_EFFECT_AMBIENT) {
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center, amount, offsetX, offsetY, offsetZ, 1);
+                center.getWorld().spawnParticle(particle, center, amount, offsetX, offsetY, offsetZ, 1);
             } else if (effect == Particles.NOTE) {
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center, amount, offsetX, 0, 0, 1);
+                center.getWorld().spawnParticle(particle, center, amount, offsetX, 0, 0, 1);
             } else if (effect == Particles.ITEM && data != null) {
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center, amount, offsetX, offsetY, offsetZ, new ItemStack(data.getMaterial()));
+                center.getWorld().spawnParticle(particle, center, amount, offsetX, offsetY, offsetZ, new ItemStack(data.getMaterial()));
             } else if (effect == Particles.BLOCK_CRACK && data != null) {
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center, amount, offsetX, offsetY, offsetZ, data.getMaterial().createBlockData());
+                center.getWorld().spawnParticle(particle, center, amount, offsetX, offsetY, offsetZ, data.getMaterial().createBlockData());
             } else {
-                center.getWorld().spawnParticle(org.bukkit.Particle.valueOf(effect.toString()), center.getX(), center.getY(), center.getZ(), amount, offsetX, offsetY, offsetZ, speed);
+                center.getWorld().spawnParticle(particle, center.getX(), center.getY(), center.getZ(), amount, offsetX, offsetY, offsetZ, speed);
             }
         }
 

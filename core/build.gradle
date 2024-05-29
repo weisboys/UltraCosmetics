@@ -86,9 +86,6 @@ shadowJar {
         exclude(dependency('me.gamercoder215:.*:.*'))
     }*/
     def path = 'be.isach.ultracosmetics.shaded'
-    // XParticle is big and not required so don't shade it.
-    // It's not removed by minimize() because it's on the API path I guess?
-    exclude 'com/cryptomorin/xseries/particles/*'
     // UC does not support these versions, so we don't need NMS modules for them.
     exclude 'me/gamercoder215/mobchip/abstraction/v1_13_R*/*'
     exclude 'me/gamercoder215/mobchip/abstraction/v1_14_R*/*'
