@@ -185,9 +185,7 @@ public class ItemFactory {
 
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
-        ItemMeta meta = head.getItemMeta();
-        XSkull.applySkin(meta, url);
-        head.setItemMeta(meta);
+        XSkull.setProfile(head, XSkull.getProfile(XSkull.SkullInputType.TEXTURE_HASH, url));
         return head;
     }
 
