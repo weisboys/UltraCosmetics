@@ -97,7 +97,6 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("GlacialSteed", XMaterial.PACKED_ICE, EntityType.HORSE, 2, 0.4, MountGlacialSteed.class, Collections.singletonList(XMaterial.SNOW_BLOCK));
         new MountType("MountOfFire", XMaterial.BLAZE_POWDER, EntityType.HORSE, 2, 0.4, MountOfFire.class, Arrays.asList(XMaterial.ORANGE_TERRACOTTA, XMaterial.YELLOW_TERRACOTTA, XMaterial.RED_TERRACOTTA));
         new MountType("Snake", XMaterial.WHEAT_SEEDS, EntityType.SHEEP, 2, 0.3, MountSnake.class);
-        new MountType("HypeCart", XMaterial.MINECART, EntityType.MINECART, 1, 0, MountHypeCart.class);
         new MountType("MoltenSnake", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, 1, 0.4, MountMoltenSnake.class);
         new MountType("SlimeSnake", XMaterial.SLIME_BLOCK, EntityType.SLIME, 1, 0.4, MountSlimeSnake.class);
         new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, 0.4, MountOfWater.class, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA));
@@ -130,6 +129,7 @@ public class MountType extends CosmeticEntType<Mount> {
         if (vm.isUsingNMS()) {
             new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
             new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
+            new MountType("HypeCart", XMaterial.MINECART, EntityType.MINECART, 1, 0, MountHypeCart.class);
         }
     }
 }
