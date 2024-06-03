@@ -24,7 +24,7 @@ public enum Problem {
     SQL_MIGRATION_REQUIRED(false, "MySQL config settings have changed, please review them. SQL storage is disabled until then.", "sql-migration-required"),
     ;
 
-    private static final String PROBLEMS_WIKI = "https://github.com/datatags/UltraCosmetics/wiki/Problems#";
+    private static final String PROBLEMS_WIKI = "https://github.com/UltraCosmetics/UltraCosmetics/wiki/Problems#";
     private final boolean severe;
     private final String description;
     private final String wikiTitle;

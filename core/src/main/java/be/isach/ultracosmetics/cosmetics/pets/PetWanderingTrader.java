@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.entity.WanderingTrader;
 
 /**
@@ -29,7 +28,7 @@ public class PetWanderingTrader extends Pet {
 
     @Override
     public boolean useMarkerArmorStand() {
-        // See https://github.com/datatags/UltraCosmetics/issues/88
+        // See https://github.com/UltraCosmetics/UltraCosmetics/issues/88
         // Wandering trader hitbox is messed up I guess?
         // I couldn't find a related bug on the MC Java issue tracker.
         return false;
