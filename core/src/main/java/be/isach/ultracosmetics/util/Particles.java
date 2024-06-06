@@ -436,6 +436,7 @@ public enum Particles {
     SCULK_SOUL(19);
 
     public static final int DEF_RADIUS = 128; // for convenience functions by iSach
+    public static final int AMBIENT_ALPHA = 38;
     private final int requiredVersion;
     private final List<ParticleProperty> properties;
 
