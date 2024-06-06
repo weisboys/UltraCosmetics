@@ -75,21 +75,17 @@ dependencies {
     compileOnly files('libs/CoinsEngine-2.1.1.jar')
     compileOnly files('libs/NexEngine.jar')
 }
+
 shadowJar {
     // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack
     archiveClassifier = ''
     // removes unused classes in 'implementation' path dependencies
-    /*minimize {
+    minimize {
         // Loads classes reflectively
         exclude(dependency('net.wesjd:anvilgui:.*'))
-        exclude(dependency('me.gamercoder215:.*:.*'))
-    }*/
+        exclude(dependency('com.github.datatags.MobChipLite:.*:.*'))
+    }
     def path = 'be.isach.ultracosmetics.shaded'
-    // UC does not support these versions, so we don't need NMS modules for them.
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_13_R*/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_14_R*/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_15_R*/*'
-    exclude 'me/gamercoder215/mobchip/abstraction/v1_16_R*/*'
     relocate('com.cryptomorin.xseries', path + '.xseries')
     relocate('org.bstats', path + '.metrics')
     relocate('net.wesjd', path + '.anvilgui')
