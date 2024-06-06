@@ -64,8 +64,7 @@ dependencies {
     compileOnly 'com.palmergames.bukkit.towny:towny:0.100.2.12'
     library 'com.zaxxer:HikariCP:5.1.0'
     implementation 'net.wesjd:anvilgui:1.9.4-SNAPSHOT' // CodeMC repo
-    //implementation 'me.gamercoder215:mobchip-bukkit:1.10.1-SNAPSHOT' // CodeMC repo
-    implementation fileTree(dir: '.', include: ['mobchip-bukkit-1.10.1-SNAPSHOT.jar'])
+    implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:1.10.2'
     compileOnly 'com.discordsrv:discordsrv:1.28.0-SNAPSHOT'
     compileOnly 'me.soknight:peconomy:2.7.4-pre1'
     library "net.kyori:adventure-text-minimessage:4.17.0"
