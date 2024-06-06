@@ -347,91 +347,91 @@ Gadgets:
 Mounts:
   DruggedHorse:
     menu-name: <bold><dark_green>Drogos ló
-    entity-displayname: <bold><playername>'s Drugged Horse
-    Description: That is just too much!
+    entity-displayname: <bold><playername> Drogos Lova
+    Description: Az már túl sok!
   InfernalHorror:
-    menu-name: <bold><dark_red>Infernal Horror
-    entity-displayname: <bold><playername>'s Infernal Horror
-    Description: This mount comes directly from... hell!
+    menu-name: <bold><dark_red>Pokoli Horror
+    entity-displayname: <bold><playername> Pokoli Horrorja
+    Description: Ez a hátas egyenesen a... pokolból érkezett!
   GlacialSteed:
-    menu-name: <bold><aqua>Glacial Steed
-    entity-displayname: <bold><playername>'s Glacial Steed
-    Description: This mount comes from North Pole!
+    menu-name: <bold><aqua>Jeges Paripa
+    entity-displayname: <bold><playername> Jeges Paripája
+    Description: Ez a hátas egyenesen az Északi Sarktól érkezett!
   WalkingDead:
-    menu-name: <bold><dark_green>Walking Dead
-    entity-displayname: <bold><playername>'s Walking Dead
+    menu-name: <bold><dark_green>SétáLó Halott
+    entity-displayname: <bold><playername> SétáLó Halottja
     Description: Graaaaw...
   MountOfFire:
-    menu-name: <bold><red>Mount of Fire
-    entity-displayname: <bold><playername>'s Mount of Fire
-    Description: The mount of Hades!
+    menu-name: <bold><red>A Tűz Hátasa
+    entity-displayname: <bold><playername> Tűz Hátasa
+    Description: Hádész kedvenc hátasa!
   MountOfWater:
-    menu-name: <bold><blue>Mount of Water
-    entity-displayname: <bold><playername>'s Mount of Water
-    Description: The mount of Poseidon!
+    menu-name: <bold><blue>A Víz Hátasa
+    entity-displayname: <bold><playername> Víz Hátasa
+    Description: Poseidon kedvenc hátasa!
   EcologistHorse:
-    menu-name: <bold><green>Ecologist Horse
-    entity-displayname: <bold><playername>'s Ecologist Horse
-    Description: Become an ecologist!
+    menu-name: <bold><green> ÖkoLÓgus
+    entity-displayname: <bold><playername> ÖkoLÓgusa
+    Description: Legyél te is ökológus!
   NyanSheep:
-    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Sh</green><aqua>ee</aqua><light_purple>p
-    entity-displayname: <bold><playername>'s Nyan Sheep
+    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Bá</green><aqua>rá</aqua><light_purple>ny
+    entity-displayname: <bold><playername> Nyan Báránya
     Description: |-
       <bold><dark_red>Nyan </dark_red><gold>nyan </gold><yellow>nyan
       <bold><green>nyan </green><dark_aqua>nyan </dark_aqua><blue>nyan
   Snake:
-    menu-name: <bold><gold>Snake
-    entity-displayname: <bold><playername>'s Snake
-    Description: Watch out! It may bite...
+    menu-name: <bold><gold>Kígyó
+    entity-displayname: <bold><playername> Kígyója
+    Description: Vigyázz! Ez kígyózik...
   Dragon:
-    menu-name: <bold><dark_purple>Dragon
-    entity-displayname: <bold><playername>'s Dragon
-    Description: Become a dragon rider!
+    menu-name: <bold><dark_purple>Sárkány
+    entity-displayname: <bold><playername> Sárkánya
+    Description: Legyél te is sárkány lovas!
   HypeCart:
-    menu-name: <bold><gray>HypeCart
-    entity-displayname: <bold><playername>'s HypeCart
+    menu-name: <bold><gray>Hiper Kordé
+    entity-displayname: <bold><playername> Hiper Kordéja
     Description: |-
-      Ever wanted to drive a F1?
-      Now you can!
+      Szerettél volna valaha is F1-et vezetni?
+      Most megteheted!
   Slime:
-    menu-name: <bold><green>Slime
+    menu-name: <bold><green>Nyálka
     entity-displayname: <bold><playername> nyálkája
-    Description: Splat! Splat!
+    Description: Placcs placcs!
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
-    Description: YOU are the spider jockey!
+    menu-name: <bold><dark_gray>Pók
+    entity-displayname: <bold><playername> Pókja
+    Description: TE vagy a pók zsoké!
   Rudolph:
-    menu-name: <bold><white>Rudolp</white><dark_red>h
-    entity-displayname: <bold><playername>'s Rudolph
+    menu-name: <bold><white>Rudol</white><dark_red>f
+    entity-displayname: <bold><playername> Rudolfja
     Description: |-
-      What would Christmas be
-      without Rudolph the Reindeer?
+      Milyen lenne a Karácsony
+      Rudolf a Rénszarvas nélkül?
   MoltenSnake:
-    menu-name: <bold><red>Molten Snake
-    entity-displayname: <bold><playername>'s Molten Snake
+    menu-name: <bold><red>Olvadt Kígyó
+    entity-displayname: <bold><playername> Olvadt Kígyója
     Description: |-
-      Deep under the Earth's surface, there
-      exists a mythical species of Molten
-      Snakes. This one will serve you eternally.
+      Mélyen a Föld felszíne alatt, ott
+      létezik egy mitikus faj, az Olvadt
+      Kígyók. Ez örökké szolgálni fog téged.
   Strider:
     menu-name: <bold><red>Strider
     entity-displayname: <bold><playername> Stridere
     Description: |-
-      A mysterious cube-shaped mob
-      capable of walking straight over lava.
-    Held-Item-Lore: Strider food on a stick!
+      Titokzatos kocka alakú mob,
+      képes egyenesen a láva felett járni.
+    Held-Item-Lore: Strider étel egy boton!
   Horse:
-    menu-name: <bold><gray>Horse
-    entity-displayname: <bold><playername>'s Horse
-    Description: Your standard, everyday horse
+    menu-name: <bold><gray>Ló
+    entity-displayname: <bold><playername> Lova
+    Description: A te hétköznapi lovad
   Donkey:
-    menu-name: <bold><dark_gray>Donkey
-    entity-displayname: <bold><playername>'s Donkey
+    menu-name: <bold><dark_gray>Szamár
+    entity-displayname: <bold><playername> Szamara
     Description: Szamár mint a gazdája :3
   Mule:
     menu-name: <bold><dark_gray>Öszvér
-    entity-displayname: <bold><playername>'s Mule
+    entity-displayname: <bold><playername> Öszvérje
     Description: Olyan mint a szamár csak nem az
   Pig:
     menu-name: <bold><light_purple>Malac
@@ -515,8 +515,8 @@ Particle-Effects:
   EnderAura:
     name: <bold><light_purple>Ender Aura
     Description: |-
-      These mystic particles attach to
-      only the most legendary of players!
+      Ezek a misztikus részecskék csak a
+      leglegendásabb játékosokhoz tapadnak hozzá!
   FlameFairy:
     name: <bold><gold>Tűztündér
     Description: ÉGŐ!!
@@ -667,7 +667,7 @@ Pets:
     entity-displayname: <bold><playername> Arany Dílere
     Description: Aranyos!
   Slime:
-    menu-name: <bold><green>Slime
+    menu-name: <bold><green>Nyálka
     entity-displayname: <bold><playername> nyálkája
     Description: Placcs...
   Bee:
@@ -675,72 +675,72 @@ Pets:
     entity-displayname: <bold><playername> Méhecskéje
     Description: '*bzzzz* *bzzzz*'
   Goat:
-    menu-name: <bold><white>Goat
-    entity-displayname: <bold><playername>'s Goat
+    menu-name: <bold><white>Kecske
+    entity-displayname: <bold><playername> Kecskéje
     Description: BAAAA!
   Silverfish:
-    menu-name: <bold><gray>Silverfish
-    entity-displayname: <bold><playername>'s Silverfish
-    Description: Lurking in the walls...
+    menu-name: <bold><gray>Ezüsthal
+    entity-displayname: <bold><playername> Ezüsthala
+    Description: A falak között lapul...
   Horse:
-    menu-name: <bold><green>Horse
-    entity-displayname: <bold><playername>'s Horse
+    menu-name: <bold><green>Ló
+    entity-displayname: <bold><playername> Lova
     Description: '*fhrrrrhh*'
   Blaze:
-    menu-name: <bold><red>Blaze
-    entity-displayname: <bold><playername>'s Blaze
-    Description: Flying and hot!
+    menu-name: <bold><red>Őrláng
+    entity-displayname: <bold><playername> Őrlángja
+    Description: Repül és forró!
   Creeper:
     menu-name: <bold><green>Creeper
-    entity-displayname: <bold><playername>'s Creeper
-    Description: Likes blowing up your favorite stuff...
+    entity-displayname: <bold><playername> Creeperje
+    Description: Szereti felrobbantani a kedvenc dolgaid...
   Enderman:
     menu-name: <bold><dark_purple>Enderman
-    entity-displayname: <bold><playername>'s Enderman
-    Description: Don't look at it or it will hunt you!
+    entity-displayname: <bold><playername> Endermanje
+    Description: Nem szereti ha bámulják!
   Skeleton:
-    menu-name: <bold><white>Skeleton
-    entity-displayname: <bold><playername>'s Skeleton
-    Description: Watch out, it will try to shoot you!
+    menu-name: <bold><white>Csontváz
+    entity-displayname: <bold><playername> Csontváza
+    Description: "Vedd ki a csontvázad és \nmutogasd az embereknek!"
   Zombie:
-    menu-name: <bold><dark_green>Zombie
-    entity-displayname: <bold><playername>'s Zombie
-    Description: Quick! Hide your Villagers!
+    menu-name: <bold><dark_green>Zombi
+    entity-displayname: <bold><playername> Zombija
+    Description: Gyorsan! Rejtsd el a Falusijaid!
   Frog:
-    menu-name: <bold><dark_green>Frog
-    entity-displayname: <bold><playername>'s Frog
-    Description: Doesn't like fireflies!
+    menu-name: <bold><dark_green>Béka
+    entity-displayname: <bold><playername> Békája
+    Description: Nem szereti a szentjánosbogarakat!
   Warden:
     menu-name: <bold><dark_aqua>Warden
-    entity-displayname: <bold><playername>'s Warden
-    Description: The scariest Mob in Minecraft!
+    entity-displayname: <bold><playername> Wardene
+    Description: A játék legijesztőbb entitása!
   Allay:
     menu-name: <bold><green>Allay
-    entity-displayname: <bold><playername>'s Allay
-    Description: A new friend!
+    entity-displayname: <bold><playername> Allayje
+    Description: Egy új barát!
   Cod:
-    menu-name: <bold><gray>Cod
-    entity-displayname: <bold><playername>'s Cod
-    Description: Prefers water over land!
+    menu-name: <bold><gray>Tőkehal
+    entity-displayname: <bold><playername> Tőkehalja
+    Description: Jobban szereti a vizet mint a szárazföldet!
   Donkey:
-    menu-name: <bold><gray>Donkey
-    entity-displayname: <bold><playername>'s Donkey
-    Description: Can carry all your stuff!
+    menu-name: <bold><gray>Szamár
+    entity-displayname: <bold><playername> Szamara
+    Description: Tud cipelni dolgokat!
   GlowSquid:
-    menu-name: <bold><dark_aqua>Glow Squid
-    entity-displayname: <bold><playername>'s Glow Squid
-    Description: It glows!
+    menu-name: <bold><dark_aqua>Világító Tintahal
+    entity-displayname: <bold><playername> Világító Tintahala
+    Description: Világít!
   Mule:
-    menu-name: <bold><gray>Mule
-    entity-displayname: <bold><playername>'s Mule
-    Description: Basically a donkey!
+    menu-name: <bold><gray>Öszvér
+    entity-displayname: <bold><playername> Öszvérje
+    Description: Gyakorlatilag egy szamár!
   Pufferfish:
-    menu-name: <bold><yellow>Pufferfish
-    entity-displayname: <bold><playername>'s Pufferfish
-    Description: Doesn't like to be touched!
+    menu-name: <bold><yellow>Gömbhal
+    entity-displayname: <bold><playername> Gömbhala
+    Description: Nem szereti az érintkezés!
   Ocelot:
     menu-name: <bold><yellow>Ocelot
-    entity-displayname: <bold><playername>'s Ocelot
+    entity-displayname: <bold><playername> Párducmacskája
     Description: Vigyázz... félénkek!
   Salmon:
     menu-name: <bold><red>Lazac
@@ -783,8 +783,8 @@ Pets:
     entity-displayname: <bold><playername> Delfine
     Description: '&7Okosabbak, mint gondolnád! :D'
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
+    menu-name: <bold><dark_gray>Pók
+    entity-displayname: <bold><playername> Pókja
     Description: A barátságos pók<strikethrough>ember</strikethrough>!
   ZombifiedPiglin:
     menu-name: <bold><light_purple>Zombi piglin
@@ -813,61 +813,61 @@ Pets:
   Guardian:
     menu-name: <bold><dark_aqua>Őrszem
     entity-displayname: <bold><playername> Őrszeme
-    Description: Hates squids!
+    Description: Utálja a tintahalakat!
   Hoglin:
     menu-name: <bold><red>Hoglin
-    entity-displayname: <bold><playername>'s Hoglin
-    Description: A pig, but in angry.
+    entity-displayname: <bold><playername> Hoglinja
+    Description: Egy malac, csak mérges.
   Husk:
     menu-name: <bold><yellow>Husk
-    entity-displayname: <bold><playername>'s Husk
-    Description: A zombie, but sandy.
+    entity-displayname: <bold><playername> Huskja
+    Description: Egy zombi, csak sivatagos.
   MagmaCube:
-    menu-name: <bold><dark_red>Magma Cube
-    entity-displayname: <bold><playername>'s Magma Cube
-    Description: A very hot cube!
+    menu-name: <bold><dark_red>Magma Kocka
+    entity-displayname: <bold><playername> Magma Kockája
+    Description: Egy nagyon forró kocka!
   Phantom:
-    menu-name: <bold><dark_blue>Phantom
-    entity-displayname: <bold><playername>'s Phantom
-    Description: Hates players that don't sleep!
+    menu-name: <bold><dark_blue>Fantom
+    entity-displayname: <bold><playername> Fantomja
+    Description: Kinek az ötlete volt hozzáadni?
   PiglinBrute:
-    menu-name: <bold><gold>Piglin Brute
-    entity-displayname: <bold><playername>'s Piglin Brute
-    Description: A pretty buff Piglin!
+    menu-name: <bold><gold>Piglin Verőember
+    entity-displayname: <bold><playername> Piglin Verőembere
+    Description: Egy ideges Piglin baltával!
   Pillager:
-    menu-name: <bold><gray>Pillager
-    entity-displayname: <bold><playername>'s Pillager
-    Description: Likes to pillage villages!
+    menu-name: <bold><gray>Rabló
+    entity-displayname: <bold><playername> Rablója
+    Description: "Városokat rombol, gyújtogat...\nSzimpatikus természete van!"
   Ravager:
     menu-name: <bold><dark_gray>Ravager
-    entity-displayname: <bold><playername>'s Ravager
-    Description: A Pillager's favorite companion!
+    entity-displayname: <bold><playername> Ravagerje
+    Description: A Rablók kedvenc társa!
   Shulker:
     menu-name: <bold><dark_purple>Shulker
-    entity-displayname: <bold><playername>'s Shulker
-    Description: Likes to hide!
+    entity-displayname: <bold><playername> Shulkere
+    Description: Szeret bújócskázni!
   Stray:
-    menu-name: <bold><dark_gray>Stray
-    entity-displayname: <bold><playername>'s Stray
-    Description: A freezing cold skeleton!
+    menu-name: <bold><dark_gray>Bitang
+    entity-displayname: <bold><playername> Bitangja
+    Description: Egy csontváz, csak jeges!
   Vindicator:
     menu-name: <bold><gray>Vindicator
-    entity-displayname: <bold><playername>'s Vindicator
-    Description: Don't underestimate their strength!
+    entity-displayname: <bold><playername> Vindicatorje
+    Description: Ne becsüld alá az erejüket!
   Witch:
     menu-name: <bold><dark_purple>Boszorkány
-    entity-displayname: <bold><playername>'s Witch
-    Description: Loves black cats!
+    entity-displayname: <bold><playername> Boszorkánya
+    Description: Fekete cicák a mindene!
   WitherSkeleton:
     menu-name: <bold><dark_gray>Withercsontváz
-    entity-displayname: <bold><playername>'s Wither Skeleton
-    Description: The reason why Looting exists.
+    entity-displayname: <bold><playername> Sorvasztója
+    Description: Az ok amiért a zsákmányolás varázslat létezik.
   Zoglin:
     menu-name: <bold><red>Zoglin
-    entity-displayname: <bold><playername>'s Zoglin
-    Description: A zombified Hoglin!
+    entity-displayname: <bold><playername> Zoglinja
+    Description: Egy zombivá vált Hoglin!
   ZombieVillager:
-    menu-name: <bold><dark_green>Zombie Villager
+    menu-name: <bold><dark_green>Zombi Falusi
     entity-displayname: <bold><playername>'s Zombie Villager
     Description: A Villager Trader's dream!
   ZombieHorse:
@@ -894,7 +894,7 @@ Morphs:
     skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>tojjon tojást'
     Description: Légy csirke!
   Slime:
-    name: <bold><green>Slime
+    name: <bold><green>Nyálka
     skill: '<yellow>Lopakodj </yellow><gray> a </gray><green> pattogáshoz'
     Description: Placcs placcs!
   Pig:
@@ -990,15 +990,15 @@ Morphs:
   Cod:
     name: <bold><yellow>Tőkehal
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Prefers water over land!
+    Description: Jobban szereti a vizet mint a szárazföldet!
   Dolphin:
     name: <bold><yellow>Dolphin
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: '&7Okosabbak, mint gondolnád! :D'
   Donkey:
-    name: <bold><gray>Donkey
+    name: <bold><gray>Szamár
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Can carry all your stuff!
+    Description: Tud cipelni dolgokat!
   Drowned:
     name: <bold><dark_aqua>Vízbefúlt
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
@@ -1012,25 +1012,25 @@ Morphs:
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Megidézésekkel keresi kenyerét!
   Frog:
-    name: <bold><dark_green>Frog
+    name: <bold><dark_green>Béka
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Doesn't like fireflies!
+    Description: Nem szereti a szentjánosbogarakat!
   Fox:
     name: <bold><light_purple>Róka
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: "What does the fox say?\nding-ding-ding-ding-ding-ding-ding"
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
+    name: <bold><dark_aqua>Világító Tintahal
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: It glows!
+    Description: Világít!
   Goat:
-    name: <bold><white>Goat
+    name: <bold><white>Kecske
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: BAAAA!
   Guardian:
     name: <bold><dark_aqua>Őrszem
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Hates squids!
+    Description: Utálja a tintahalakat!
   Wolf:
     name: <bold><gray>Wolf
     Description: Vau vau!
@@ -1044,7 +1044,7 @@ Morphs:
     name: <bold><gray>Csontváz
     Description: Nem kancsal, csak néha!
   Zombie:
-    name: <bold><dark_green>Zombie
+    name: <bold><dark_green>Zombi
     Description: AGYAAAAAAT!!!
   Squid:
     name: <bold><light_purple>Polip
@@ -1056,8 +1056,8 @@ Morphs:
     name: <bold><white>Szellem
     Description: 'AAAAAAAAAAAAAAA, IIIIIIIIIIII'
   MagmaCube:
-    name: <bold><red>Magma Cube
-    Description: A very hot cube!
+    name: <bold><red>Magma Kocka
+    Description: Egy nagyon forró kocka!
   Horse:
     name: <bold><green>Ló
     Description: '*fhrrrrhh*'
@@ -1069,25 +1069,25 @@ Morphs:
     Description: Előbb utóbb béka lesz belőle!
   Piglin:
     name: <bold><gold>Piglin
-    Description: Deals with gold!
+    Description: Arannyal kereskedik!
   Strider:
     name: <bold><red>Strider
     Description: Víz = "rósz"
   Hoglin:
     name: <bold><red>Hoglin
-    Description: A pig, but in angry.
+    Description: Egy malac, csak mérges.
   PiglinBrute:
-    name: <bold><gold>Piglin Brute
-    Description: A pretty buff Piglin!
+    name: <bold><gold>Piglin Verőember
+    Description: Egy ideges Piglin baltával!
   Zoglin:
     name: <bold><red>Zoglin
-    Description: A zombified Hoglin!
+    Description: Egy zombivá vált Hoglin!
   ZombifiedPiglin:
     name: <bold><light_purple>Zombi piglin
     Description: Bandában utaznak, ne támadj rá!
   Panda:
     name: <bold><green>Panda
-    Description: Likes bamboo!
+    Description: Szereti a bambuszt!
   Ocelot:
     name: <bold><yellow>Ocelot
     Description: A Dzsungel Királya
@@ -1096,13 +1096,13 @@ Morphs:
     Description: Sebby, <strikethrough>főznünk kell</strikethrough> el kell adnunk cuccokat!
   Pillager:
     name: <bold><gray>Pillager
-    Description: Likes to pillage villages!
+    Description: "Városokat rombol, gyújtogat...\nSzimpatikus természete van!"
   Ravager:
     name: <bold><dark_gray>Ravager
-    Description: A Pillager's favorite companion!
+    Description: A Rablók kedvenc társa!
   Pufferfish:
-    name: <bold><yellow>Pufferfish
-    Description: Doesn't like to be touched!
+    name: <bold><yellow>Gömbhal
+    Description: Nem szereti az érintkezés!
   Salmon:
     name: <bold><red>Lazac
     Description: Elég lazac!
@@ -1113,8 +1113,8 @@ Morphs:
     name: <bold><green>Turtle
     Description: Take your time.
   Phantom:
-    name: <bold><dark_blue>Phantom
-    Description: Hates players that don't sleep!
+    name: <bold><dark_blue>Fantom
+    Description: Kinek az ötlete volt hozzáadni?
   Illusioner:
     name: <bold><dark_blue>Illusioner
     Description: Only spawnable with commands!
@@ -1123,7 +1123,7 @@ Morphs:
     Description: Falon át támadok. MUHAHAHA!
   Vindicator:
     name: <bold><gray>Vindicator
-    Description: Don't underestimate their strength!
+    Description: Ne becsüld alá az erejüket!
   Mule:
     name: <bold><dark_gray>Öszvér
     Description: Olyan mint a szamár csak nem az
@@ -1135,72 +1135,72 @@ Morphs:
     Description: The rarest horse in Minecraft!
   Shulker:
     name: <bold><dark_purple>Shulker
-    Description: Likes to hide!
+    Description: Szeret bújócskázni!
   Sniffer:
     name: <bold><green>Sniffer
     Description: '*sniff sniff*'
 Hats:
-  Equip: <prefix> <blue>You equipped <hatname> hat!
-  Unequip: <prefix> <blue>You unequipped <hatname> hat!
+  Equip: <prefix><blue>Felvetted a(z) <hatname> kalapot!
+  Unequip: <prefix><blue>Levetted a(z) <hatname> kalapot!
   Astronaut:
-    Name: <bold><gray>Astronaut
-    Description: Houston, we have got a problem.
+    Name: <bold><gray>Asztronauta
+    Description: Houston, baj van.
   Scared:
-    Name: <bold><dark_red>Scared
-    Description: Oh god, that scared me!
+    Name: <bold><dark_red>Megrémült
+    Description: Istenem, ez megijesztett!
   Angel:
-    Name: <bold><white>Angel
-    Description: Did it hurt when you fell from heaven?
+    Name: <bold><white>Angyal
+    Description: Fájt, amikor leestél az égből?
   Embarassed:
-    Name: <bold><gray>Embarassed
-    Description: I'm kinda embarassed by that.
+    Name: <bold><gray>Zavart
+    Description: Kicsit szégyellem magam emiatt.
   Kissy:
-    Name: <bold><red>Kissy
-    Description: Wanna kiss?
+    Name: <bold><red>Csókos
+    Description: Akarsz csókolózni?
   Sad:
-    Name: <bold><blue>Sad
-    Description: I'm so sad.
+    Name: <bold><blue>Szomorú
+    Description: Annyira szomorú vagyok.
   Cool:
-    Name: <bold><gold>Cool
-    Description: I'm such a cool guy.
+    Name: <bold><gold>Menő
+    Description: Olyan menő vagyok.
   Surprised:
-    Name: <bold><dark_red>Surprised
-    Description: Wow, did not expect that!
+    Name: <bold><dark_red>Meglepett
+    Description: Hát erre nem számítottam!
   Dead:
-    Name: <bold><dark_gray>Dead
-    Description: Got rekt
+    Name: <bold><dark_gray>Halott
+    Description: Rektelve
   Crying:
-    Name: <bold><blue>Crying
-    Description: I cri evrytiem
+    Name: <bold><blue>Síró
+    Description: Minden alkalommal sírok
   BigSmile:
-    Name: <bold><gold>Big Smile
-    Description: Because I'm really happy!
+    Name: <bold><gold>Nagy Mosoly
+    Description: Nagyon boldog embernek nagyon mosoly jár!
   Wink:
-    Name: <bold><yellow>Wink
-    Description: You know what I mean ;)
+    Name: <bold><yellow>Kacsintó
+    Description: Tudod hogy mire gondolok ;)
   Derp:
-    Name: <bold><dark_aqua>Derp
-    Description: Derp Derp Derping all around
+    Name: <bold><dark_aqua>Bolond
+    Description: Csak bolondozunk
   Smile:
-    Name: <bold><yellow>Smile
-    Description: Because I'm happy
+    Name: <bold><yellow>Mosoly
+    Description: Mert boldog vagyok
   Iron:
-    Name: <bold><gray>Iron
-    Description: As hard as iron!
+    Name: <bold><gray>Vas
+    Description: Kemény mint a vas!
   Gold:
-    Name: <bold><yellow>Gold
-    Description: My precious!
+    Name: <bold><yellow>Arany
+    Description: Drágaságom!
   Diamond:
-    Name: <bold><aqua>Diamond
-    Description: This is really strong!
+    Name: <bold><aqua>Gyémánt
+    Description: Ez tényleg nagyon erős!
   CommandBlock:
-    Name: <bold><gray>Command Block
-    Description: Control the world with it!
+    Name: <bold><gray>Parancs Block
+    Description: Irányítsd a világot vele!
   Music:
     Name: <bold><blue>Zene
-    Description: You are so musical.
+    Description: Annyira zenei vagy.
   Squid:
-    Name: <bold><dark_aqua>Squid
+    Name: <bold><dark_aqua>Tintahal
     Description: Bloop Bloop!
   GlowSquid:
     Name: <bold><aqua> Világító Tintahal
@@ -1248,7 +1248,7 @@ Hats:
     Name: <bold><light_purple>Bevégző király
     Description: A bevégzők királya
   Slime:
-    Name: <bold><green>Slime
+    Name: <bold><green>Nyálka
     Description: Nyálkás... Fúj
   Creeper:
     Name: <bold><dark_green>Creeper
@@ -1257,7 +1257,7 @@ Hats:
     Name: <bold><gray>Csontváz
     Description: Nem kancsal, csak néha!
   Zombie:
-    Name: <bold><dark_green>Zombie
+    Name: <bold><dark_green>Zombi
     Description: AGYAAAAAAT!!!
   Drowned:
     Name: <bold><dark_aqua>Vízbefúlt
@@ -1302,14 +1302,14 @@ Hats:
     Name: <bold><yellow>Ocelot
     Description: A Dzsungel Királya
   Frog:
-    Name: <bold><dark_green>Frog
+    Name: <bold><dark_green>Béka
     Description: Mindent megesz ami ZZZzzzzzavarja.
   AxolotlPink:
-    Name: <bold><light_purple>Pink Axolotl
-    Description: The cutest predator
+    Name: <bold><light_purple>Rózsaszín Axolotl
+    Description: A legaranyosabb ragadozó
   AxolotlBlue:
-    Name: <bold><blue>Blue Axolotl
-    Description: The cutest predator
+    Name: <bold><blue>Kék Axolotl
+    Description: A legaranyosabb ragadozó
   Turtle:
     Name: <bold><green>Turtle
     Description: Take your time.
@@ -1432,63 +1432,63 @@ Hats:
     Description: Purple sus!
   BlackCrewmate:
     Name: <bold><black>Black Crewmate
-    Description: Black sus!
+    Description: Fekete gyanús!
   WhiteCrewmate:
-    Name: <bold><white>White Crewmate
-    Description: White sus!
+    Name: <bold><white>Fehér Legénységtárs
+    Description: Fehér gyanús!
   PinkCrewmate:
-    Name: <bold><light_purple>Pink Crewmate
-    Description: Pink sus!
+    Name: <bold><light_purple>Rózsaszín Legénységtárs
+    Description: Rózsaszín gyanús!
   BrownCrewmate:
-    Name: <bold><dark_gray>Brown Crewmate
-    Description: Brown sus!
+    Name: <bold><dark_gray>Barna Legénységtárs
+    Description: Barna gyanús!
   FrogPrince:
-    Name: <bold><dark_green>Frog Prince
-    Description: Kiss me!
+    Name: <bold><dark_green>Béka Herceg
+    Description: Csókolj meg!
   Notch:
     Name: <bold><white>Notch
-    Description: Creator of Minecraft
+    Description: Minecraft megálmodója
   KitsuneMask:
-    Name: <bold><red>Kitsune Mask
-    Description: White fox mask
+    Name: <bold><red>Kitsune Maszk
+    Description: Fehér róka maszk
   Goblin:
     Name: <bold><blue>Goblin
-    Description: Sneaky!
+    Description: Alattomos!
   Unicorn:
-    Name: <bold><light_purple>Unicorn
-    Description: Be magical!
+    Name: <bold><light_purple>Egyszarvú
+    Description: Legyél varázslatos!
   Ogre:
     Name: <bold><dark_green>Ogre
-    Description: I'm hungry.
+    Description: Ki lakik a mocsár közepén ?
   GreenDragon:
-    Name: <bold><green>Green Dragon
-    Description: Be a dragon.
+    Name: <bold><green>Zöld Sárkány
+    Description: Légy egy sárkány.
   GigaChad:
-    Name: <bold><gray>GigaChad
+    Name: <bold><gray>GigaCsanád
     Description: Embrace masculinity!
   Anubis:
     Name: <bold><gold>Anubis
-    Description: Ancient Egyptian god
+    Description: Ősi egyiptomi isten
   Bread:
-    Name: <bold><white>Bread
-    Description: Freshly baked
+    Name: <bold><white>Kenyér
+    Description: Frissen sütve
   Cheese:
-    Name: <bold><yellow>Cheese
-    Description: Say cheese!
+    Name: <bold><yellow>Sajt
+    Description: A hold alkotó eleme!
   Pancakes:
-    Name: <bold><white>Pancakes
-    Description: Better with syrup!
+    Name: <bold><white>Palacsinta
+    Description: Jobb sziruppal!
   Cake:
-    Name: <bold><red>Cake
-    Description: Mmmm, cake.
+    Name: <bold><red>Torta
+    Description: Mmmm, torta.
   Cookie:
-    Name: <bold><gold>Cookie
-    Description: Chocolate chips included!
+    Name: <bold><gold>Süti
+    Description: Csoki darabkákkal!
   CandyCane:
-    Name: <bold><red>Candy </red><white>Cane
-    Description: A bit of tooth-breaking
+    Name: <bold><red>Cukorka </red><white>Pálca
+    Description: Picit fogtörő
   Chocolate:
-    Name: <bold><green>Chocolate
+    Name: <bold><green>Csoki
     Description: Don't feed your dog with this!
   WhiteChocolate:
     Name: <bold><white>White Chocolate
@@ -1768,7 +1768,7 @@ Projectile-Effects:
     name: <bold><white>Snow
     Description: Snowball particles
   Slime:
-    name: <bold><green>Slime
+    name: <bold><green>Nyálka
     Description: Slimeball particles
   Crit:
     name: <bold><gray>Crit
@@ -1801,7 +1801,7 @@ Projectile-Effects:
     name: <bold><white>Snowflake
     Description: Small, white clouds
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
+    name: <bold><dark_aqua>Világító Tintahal
     Description: Teal stars
   GlowSquidInk:
     name: <bold><dark_aqua>Glow Squid Ink
