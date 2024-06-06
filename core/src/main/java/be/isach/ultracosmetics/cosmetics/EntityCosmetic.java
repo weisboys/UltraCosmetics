@@ -4,10 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticEntType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
-
 import org.bukkit.entity.Entity;
 
-public abstract class EntityCosmetic<T extends CosmeticEntType<?>,E extends Entity> extends Cosmetic<T> {
+public abstract class EntityCosmetic<T extends CosmeticEntType<?>, E extends Entity> extends Cosmetic<T> {
     /**
      * The Entity, if it isn't a Custom Entity.
      */
@@ -24,10 +23,7 @@ public abstract class EntityCosmetic<T extends CosmeticEntType<?>,E extends Enti
     @SuppressWarnings("unchecked")
     protected E spawnEntity() {
         // Bypass WorldGuard protection.
-        EntitySpawningManager.setBypass(true);
-        E newEntity = (E) getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), getType().getEntityType());
-        EntitySpawningManager.setBypass(false);
-        return newEntity;
+        return EntitySpawningManager.withBypass(() -> (E) getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), getType().getEntityType()));
     }
 
     protected void removeEntity() {

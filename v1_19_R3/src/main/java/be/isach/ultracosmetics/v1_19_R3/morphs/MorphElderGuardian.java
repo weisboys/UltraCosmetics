@@ -106,14 +106,9 @@ public class MorphElderGuardian extends Morph implements Updatable {
     @Override
     protected void onEquip() {
         super.onEquip();
-
-        EntitySpawningManager.setBypass(true);
         customGuardian = new CustomGuardian(EntityType.ELDER_GUARDIAN, ((CraftWorld) getPlayer().getWorld()).getHandle());
-        CustomEntities.spawnEntity(customGuardian, getPlayer().getLocation());
-        EntitySpawningManager.setBypass(false);
-
+        EntitySpawningManager.withBypass(() -> CustomEntities.spawnEntity(customGuardian, getPlayer().getLocation()));
         getPlayer().addPassenger(customGuardian.getBukkitEntity());
-
         ((Entity) customGuardian).setInvisible(true);
     }
 

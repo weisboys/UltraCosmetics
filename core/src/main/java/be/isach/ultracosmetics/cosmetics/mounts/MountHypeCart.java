@@ -39,9 +39,7 @@ public class MountHypeCart extends Mount {
 
     @Override
     protected Entity spawnEntity() {
-        EntitySpawningManager.setBypass(true);
-        entity = UltraCosmeticsData.get().getVersionManager().getModule().spawnCustomMinecart(getPlayer().getLocation());
-        EntitySpawningManager.setBypass(false);
+        entity = EntitySpawningManager.withBypass(() -> UltraCosmeticsData.get().getVersionManager().getModule().spawnCustomMinecart(getPlayer().getLocation()));
         return entity;
     }
 
