@@ -70,6 +70,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         entity.setCustomNameVisible(true);
         entity.setCustomName(MessageManager.toLegacy(getType().getName(getPlayer())));
         entity.addPassenger(getPlayer());
+        entity.setPersistent(false);
         entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         setupEntity();
 

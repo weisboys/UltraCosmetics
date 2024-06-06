@@ -47,6 +47,7 @@ public class MountRudolph extends MountAbstractHorse {
             armorStand.setRightArmPose(new EulerAngle(Math.PI, -Math.PI / 4, Math.PI / 4));
         }
         armorStand.getEquipment().setItemInMainHand(DEAD_BUSH);
+        armorStand.setPersistent(false);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(getUltraCosmetics(), getPlayer().getUniqueId().toString()));
         getUltraCosmetics().getArmorStandManager().makeUcStand(armorStand);
         return armorStand;

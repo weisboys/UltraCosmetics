@@ -214,6 +214,7 @@ public class TreasureChest implements Listener {
         armorStand.setBasePlate(false);
         armorStand.setCustomName(s);
         armorStand.setCustomNameVisible(true);
+        armorStand.setPersistent(false);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "C_AD_ArmorStand"));
         holograms.add(armorStand);
         return armorStand;

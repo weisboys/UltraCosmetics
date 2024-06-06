@@ -105,6 +105,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
 
         entity.getEquipment().clear();
         entity.setRemoveWhenFarAway(false);
+        entity.setPersistent(false);
         if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent")) {
             entity.setSilent(true);
         }
@@ -208,6 +209,7 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         armorStand.setMarker(useMarkerArmorStand());
         armorStand.setCustomNameVisible(true);
         FixedMetadataValue metadataValue = new FixedMetadataValue(getUltraCosmetics(), "C_AD_ArmorStand");
+        armorStand.setPersistent(false);
         armorStand.setMetadata("C_AD_ArmorStand", metadataValue);
         entity.addPassenger(armorStand);
     }
