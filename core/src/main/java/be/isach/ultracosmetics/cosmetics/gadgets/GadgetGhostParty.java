@@ -6,8 +6,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,6 +36,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     private static final ItemStack GHOST_HEAD = ItemFactory.createSkull("68d2183640218ab330ac56d2aab7e29a9790a545f691619e38578ea4a69ae0b6", ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Ghost");
     private static final ItemStack GHOST_CHESTPLATE = ItemFactory.createColouredLeather(XMaterial.LEATHER_CHESTPLATE.parseMaterial(), 255, 255, 255);
     private static final ItemStack DIAMOND_HOE = XMaterial.DIAMOND_HOE.parseItem();
+    private static final ParticleDisplay CLOUD = ParticleDisplay.of(XParticle.CLOUD).offset(0.05);
     private EntitySpawner<Bat> bats = EntitySpawner.empty();
     private final Set<ArmorStand> ghosts = new HashSet<>();
 
@@ -77,7 +79,7 @@ public class GadgetGhostParty extends Gadget implements Updatable {
     @Override
     public void onUpdate() {
         for (Bat bat : bats.getEntities()) {
-            Particles.CLOUD.display(0.05f, 0.05f, 0.05f, bat.getLocation().add(0, 1.5, 0), 1);
+            CLOUD.spawn(bat.getLocation().add(0, 1.5, 0));
         }
     }
 

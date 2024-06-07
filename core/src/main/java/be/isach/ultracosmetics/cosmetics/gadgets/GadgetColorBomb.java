@@ -7,17 +7,19 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.XTag;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  * Represents an instance of a color bomb gadget summoned by a player.
@@ -28,9 +30,11 @@ import java.util.Iterator;
 public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
     private Item bomb;
-    private ArrayList<Item> items = new ArrayList<>();
+    private final Set<Item> items = new HashSet<>();
     private boolean running = false;
     private final XSound.SoundPlayer sound = XSound.ENTITY_CHICKEN_EGG.record().withVolume(0.2f).soundPlayer();
+    // Can't use withEntity directly because it requires that the entity not currently be null
+    private final ParticleDisplay particle = new ParticleDisplay().withLocationCaller(() -> bomb.getLocation()).withExtra(0.2);
 
     public GadgetColorBomb(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -52,20 +56,19 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
 
         if (!running) return;
 
-        Particles effect;
         switch (RANDOM.nextInt(5)) {
             default:
-                effect = Particles.FIREWORK;
+                particle.withParticle(XParticle.FIREWORK);
                 break;
             case 3:
-                effect = Particles.FLAME;
+                particle.withParticle(XParticle.FLAME);
                 break;
             case 4:
-                effect = Particles.WITCH;
+                particle.withParticle(XParticle.WITCH);
                 break;
         }
 
-        effect.display(bomb.getLocation(), 1, 0.2f);
+        particle.spawn();
 
         Iterator<Item> iter = items.iterator();
         while (iter.hasNext()) {
@@ -102,12 +105,10 @@ public class GadgetColorBomb extends Gadget implements PlayerAffectingCosmetic, 
             bomb = null;
         }
 
-        if (items != null) {
-            for (Item item : items) {
-                item.remove();
-            }
-            items.clear();
+        for (Item item : items) {
+            item.remove();
         }
+        items.clear();
 
         running = false;
     }

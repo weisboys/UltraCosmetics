@@ -6,13 +6,15 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.Particles;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
-import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.util.Vector;
+
+import java.awt.Color;
 
 /**
  * Represents an instance of a Christmas Tree gadget summoned by a player.
@@ -22,10 +24,15 @@ import org.bukkit.util.Vector;
  */
 public class GadgetChristmasTree extends Gadget implements Updatable {
 
+    private static final Color LOG_COLOR = new Color(101, 67, 33);
+    private static final Color STAR_COLOR = new Color(255, 255, 0);
+    private static final Color LEAF_COLOR = new Color(0, 100, 0);
     private boolean active = false;
     private Location lastLocation;
-
-    private static final Color LOG_COLOR = Color.fromRGB(101, 67, 33);
+    private static final ParticleDisplay LOG = ParticleDisplay.of(XParticle.DUST).withColor(LOG_COLOR);
+    private static final ParticleDisplay SNOW = ParticleDisplay.of(XParticle.FIREWORK).offset(4, 3, 4).withCount(10);
+    private static final ParticleDisplay STAR = ParticleDisplay.of(XParticle.DUST).withColor(STAR_COLOR);
+    private static final ParticleDisplay LEAF = ParticleDisplay.of(XParticle.DUST).withColor(LEAF_COLOR);
 
     public GadgetChristmasTree(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -49,9 +56,7 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
     }
 
     private void drawSnow() {
-        lastLocation.add(0, 3, 0);
-        Particles.FIREWORK.display(4d, 3d, 4d, lastLocation, 10);
-        lastLocation.subtract(0, 3, 0);
+        SNOW.spawn(lastLocation.clone().add(0, 3, 0));
     }
 
     @Override
@@ -64,53 +69,34 @@ public class GadgetChristmasTree extends Gadget implements Updatable {
     }
 
     private void drawLog() {
-        Location current = lastLocation.clone();
         Location to = lastLocation.clone().add(0, 2.5, 0);
-        Vector link = to.toVector().subtract(current.toVector());
-        float length = (float) link.length();
-        link.normalize();
-        float ratio = length / 10;
-        Vector vector = link.multiply(ratio);
-        for (int i = 0; i < 10; i++) {
-            Particles.DUST.display(LOG_COLOR.getRed(), LOG_COLOR.getGreen(), LOG_COLOR.getBlue(), current);
-            current.add(vector);
-        }
+        Particles.line(lastLocation, to, 0.25, LOG.clone());
     }
 
     private void drawLeavesAndBalls() {
         float radius = 0.7f;
-        for (float f = 0.8f; f <= 2.5f; f += 0.2f) {
-            if (radius >= 0) {
-                float d = 13f / f;
-                float g = MathUtils.random(d);
-                int e = RANDOM.nextInt(2);
-                if (e == 1) {
-                    double inc = (2 * Math.PI) / d;
-                    float angle = (float) (g * inc);
-                    float x = MathUtils.cos(angle) * (radius + 0.05f);
-                    float z = MathUtils.sin(angle) * (radius + 0.05f);
-                    lastLocation.add(x, f, z);
-                    Particles.DUST.display(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256), lastLocation);
-                    lastLocation.subtract(x, f, z);
-                }
-                for (int i = 0; i < d; i++) {
-                    double inc = (2 * Math.PI) / d;
-                    float angle = (float) (i * inc);
-                    float x = MathUtils.cos(angle) * radius;
-                    float z = MathUtils.sin(angle) * radius;
-                    lastLocation.add(x, f, z);
-                    Particles.DUST.display(0, 100, 0, lastLocation);
-                    lastLocation.subtract(x, f, z);
-                }
-                radius = radius - (0.7f / 8.5f);
+        for (float y = 0.8f; y <= 2.5f; y += 0.2f) {
+            float steps = 13f / y;
+            float inc = (float) ((2 * Math.PI) / steps);
+            if (RANDOM.nextInt(2) == 1) {
+                float angle = MathUtils.random(steps) * inc;
+                float x = MathUtils.cos(angle) * (radius + 0.05f);
+                float z = MathUtils.sin(angle) * (radius + 0.05f);
+                LEAF.clone().withColor(new Color(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256)))
+                        .spawn(lastLocation.clone().add(x, y, z));
             }
+            for (int i = 0; i < steps; i++) {
+                float angle = i * inc;
+                float x = MathUtils.cos(angle) * radius;
+                float z = MathUtils.sin(angle) * radius;
+                LEAF.spawn(lastLocation.clone().add(x, y, z));
+            }
+            radius -= 0.7f / 8.5f;
         }
     }
 
     private void drawStar() {
-        lastLocation.add(0, 2.6, 0);
-        Particles.DUST.display(255, 255, 0, lastLocation);
-        lastLocation.subtract(0, 2.6, 0);
+        STAR.spawn(lastLocation.clone().add(0, 2.6, 0));
     }
 
     @Override

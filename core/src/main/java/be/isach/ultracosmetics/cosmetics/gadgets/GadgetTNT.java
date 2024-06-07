@@ -5,8 +5,9 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
@@ -29,6 +30,7 @@ import java.util.Set;
  */
 public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
 
+    private static final ParticleDisplay EMITTER = ParticleDisplay.of(XParticle.EXPLOSION_EMITTER);
     private final Set<Entity> entities = new HashSet<>();
     private final XSound.SoundPlayer sound;
 
@@ -75,7 +77,7 @@ public class GadgetTNT extends Gadget implements PlayerAffectingCosmetic {
     public void onEntityExplode(EntityExplodeEvent event) {
         if (!entities.remove(event.getEntity())) return;
         event.setCancelled(true);
-        Particles.EXPLOSION_EMITTER.display(event.getEntity().getLocation());
+        EMITTER.spawn(event.getEntity().getLocation());
         sound.play();
 
         Player player = getPlayer();

@@ -8,9 +8,10 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PortalLoc;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.Particles;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -63,7 +64,8 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
         List<Block> sight = getPlayer().getLastTwoTargetBlocks(null, 20);
         Block target = sight.get(1);
         Location playerFaceLoc = getPlayer().getEyeLocation().add(getPlayer().getEyeLocation().getDirection().multiply(0.6));
-        Particles.DUST.drawParticleLine(playerFaceLoc, target.getLocation(), 100, portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue());
+
+        Particles.line(playerFaceLoc, target.getLocation(), 0.25, portalLoc.getParticle());
 
         BlockFace face = getBlockFace(sight.get(0), target);
         Location loc = target.getRelative(face).getLocation().add(0.5, 0.5, 0.5);
@@ -156,6 +158,7 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
         if (!portalLoc.isValid()) return;
         Location loc = portalLoc.getLocation().clone();
         BlockFace face = portalLoc.getFace();
+        ParticleDisplay particle = portalLoc.getParticle();
         for (int i = 0; i < 20; i++) {
             double angle = i * CIRCLE_STEP;
             Vector v = new Vector();
@@ -171,7 +174,7 @@ public class GadgetPortalGun extends Gadget implements PlayerAffectingCosmetic, 
                 v.setX(a1);
                 v.setZ(a2);
             }
-            Particles.DUST.display(portalLoc.getRed(), portalLoc.getGreen(), portalLoc.getBlue(), loc.clone().add(v));
+            particle.spawn(loc.clone().add(v));
         }
     }
 

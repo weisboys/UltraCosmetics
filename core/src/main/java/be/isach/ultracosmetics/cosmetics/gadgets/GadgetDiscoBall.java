@@ -10,9 +10,10 @@ import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -24,10 +25,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
+import java.awt.Color;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Represents an instance of a discoball gadget summoned by a player.
@@ -37,12 +37,13 @@ import java.util.Set;
  */
 public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
-    private static final Set<GadgetDiscoBall> DISCO_BALLS = new HashSet<>();
-
-    private int i = 0;
-    private double i2 = 0;
+    private double i = 0;
     private ArmorStand armorStand;
     private boolean running = false;
+    private final ParticleDisplay effect = ParticleDisplay.of(XParticle.EFFECT).withLocationCaller(() -> armorStand.getEyeLocation());
+    private final ParticleDisplay instantEffect = ParticleDisplay.of(XParticle.INSTANT_EFFECT).withLocationCaller(() -> armorStand.getEyeLocation());
+    private final ParticleDisplay note = ParticleDisplay.of(XParticle.NOTE).withCount(0);
+    private final ParticleDisplay dust = ParticleDisplay.of(XParticle.DUST);
 
     public GadgetDiscoBall(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -55,18 +56,14 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         armorStand.setVisible(false);
         armorStand.setGravity(false);
         armorStand.setSmall(false);
-        armorStand.getEquipment().setHelmet(ItemFactory.rename(XMaterial.LIGHT_BLUE_STAINED_GLASS.parseItem(), " "));
+        armorStand.setPersistent(false);
+        armorStand.getEquipment().setHelmet(ItemFactory.create(XMaterial.LIGHT_BLUE_STAINED_GLASS, " "));
         running = true;
-        DISCO_BALLS.add(this);
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), this::clean, 400);
     }
 
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
-        if (GadgetDiscoBall.DISCO_BALLS.size() > 0) {
-            MessageManager.send(getPlayer(), "Gadgets.DiscoBall.Already-Active");
-            return false;
-        }
         Area area = new Area(getPlayer().getLocation(), 0, 4);
         if (!area.isEmpty()) {
             MessageManager.send(getPlayer(), "Gadgets.DiscoBall.Not-Space-Above");
@@ -82,7 +79,6 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         }
         if (!armorStand.isValid() || !running) {
             i = 0;
-            i2 = 0;
             clean();
             return;
         }
@@ -90,23 +86,18 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
 
         armorStand.getEquipment().setHelmet(ItemFactory.getRandomStainedGlass());
 
-        Particles.EFFECT.display(armorStand.getEyeLocation(), 1, 1f);
-        Particles.INSTANT_EFFECT.display(armorStand.getEyeLocation(), 1, 1f);
+        effect.spawn();
+        instantEffect.spawn();
         Location loc = armorStand.getEyeLocation().add(MathUtils.randomDouble(-4, 4), MathUtils.randomDouble(-3, 3), MathUtils.randomDouble(-4, 4));
-        Particles.NOTE.display(new Particles.NoteColor(RANDOM.nextInt(25)), loc, 128);
-        double angle, angle2, x, x2, z, z2;
+        // This picks a random note color. Kinda weird but that's how you have to do it in XParticle I guess
+        note.withColor(new Color(RANDOM.nextInt(256), 0, 0)).spawn(loc);
+        double angle, x, z;
+
         angle = 2 * Math.PI * i / 100;
         x = Math.cos(angle) * 4;
         z = Math.sin(angle) * 4;
-
-        drawParticleLine(armorStand.getEyeLocation().add(-.5d, -.5d, -.5d).clone().add(0.5, 0.5, 0.5).clone().add(x, 0, z), armorStand.getEyeLocation().add(-.5d, -.5d, -.5d).clone().add(0.5, 0.5, 0.5), false, 20);
-
-        i += 6;
-        angle2 = 2 * Math.PI * i2 / 100;
-        x2 = Math.cos(angle2) * 4;
-        z2 = Math.sin(angle2) * 4;
-        drawParticleLine(armorStand.getEyeLocation().add(-.5d, -.5d, -.5d).clone().add(0.5, 0.5, 0.5), armorStand.getEyeLocation().add(-.5d, -.5d, -.5d).clone().add(0.5, 0.5, 0.5).add(x2, 0, z2), true, 50);
-        i2 += 0.4;
+        drawParticleLine(armorStand.getEyeLocation(), armorStand.getEyeLocation().add(x, 0, z), 50);
+        i += 0.4;
 
         XTag<XMaterial> tag = null;
         Map<Block, XMaterial> updates = new HashMap<>();
@@ -140,7 +131,6 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
             armorStand.remove();
             armorStand = null;
         }
-        DISCO_BALLS.remove(this);
     }
 
     @Override
@@ -148,7 +138,7 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
         clean();
     }
 
-    public void drawParticleLine(Location a, Location b, boolean dust, int particles) {
+    public void drawParticleLine(Location a, Location b, int particles) {
         Location location = a.clone();
         Location target = b.clone();
         Vector link = target.toVector().subtract(location.toVector());
@@ -157,21 +147,12 @@ public class GadgetDiscoBall extends Gadget implements PlayerAffectingCosmetic, 
 
         float ratio = length / particles;
         Vector v = link.multiply(ratio);
-        if (!dust) {
-            MathUtils.rotateAroundAxisX(v, i);
-        } else {
-            MathUtils.rotateAroundAxisZ(v, i2 / 5);
-            MathUtils.rotateAroundAxisX(v, i2 / 5);
-        }
+        MathUtils.rotateAroundAxisX(v, i / 5);
+        MathUtils.rotateAroundAxisZ(v, i / 5);
         Location loc = location.clone().subtract(v);
-        int step = 0;
         for (int i = 0; i < particles; i++) {
-            if (step >= (double) particles) step = 0;
-            step++;
             loc.add(v);
-            if (dust) {
-                Particles.DUST.display(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255), loc);
-            }
+            dust.withColor(new Color(MathUtils.random(255), MathUtils.random(255), MathUtils.random(255))).spawn(loc);
         }
     }
 }

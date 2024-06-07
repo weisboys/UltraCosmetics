@@ -8,10 +8,11 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -42,6 +43,9 @@ public class GadgetRocket extends Gadget implements Updatable {
     private static final BlockFace[] CARDINAL = new BlockFace[] {BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST};
     private static final Material FENCE = XMaterial.OAK_FENCE.parseMaterial();
     private static final Material QUARTZ_BLOCK = XMaterial.QUARTZ_BLOCK.parseMaterial();
+    private static final ParticleDisplay EMITTER = ParticleDisplay.of(XParticle.EXPLOSION_EMITTER);
+    private final ParticleDisplay flame = ParticleDisplay.of(XParticle.FLAME).withCount(10).offset(0.3, 0.2, 0.3).withLocationCaller(() -> getPlayer().getLocation().subtract(0, 3, 0));
+    private final ParticleDisplay lava = flame.clone().withParticle(XParticle.LAVA);
 
     private final StructureRollback rollback = new StructureRollback();
     private boolean stillEquipped = true;
@@ -155,7 +159,7 @@ public class GadgetRocket extends Gadget implements Updatable {
                             fallingBlocks.clear();
                             FallDamageManager.addNoFall(getPlayer());
                             liftoffSound.play();
-                            Particles.EXPLOSION_EMITTER.display(getPlayer().getLocation());
+                            EMITTER.spawn(getPlayer().getLocation());
                             disableFlight();
                             launching = false;
                             cancel();
@@ -204,8 +208,8 @@ public class GadgetRocket extends Gadget implements Updatable {
         }
 
         if (launching && !fallingBlocks.isEmpty()) {
-            Particles.FLAME.display(0.3f, 0.2f, 0.3f, getPlayer().getLocation().add(0, -3, 0), 10);
-            Particles.LAVA.display(0.3f, 0.2f, 0.3f, getPlayer().getLocation().add(0, -3, 0), 10);
+            flame.spawn();
+            lava.spawn();
             Location soundLoc = fallingBlocks.get(9).getLocation().clone().add(0, -1, 0);
             flightSound1.atLocation(soundLoc).play();
             flightSound2.atLocation(soundLoc).play();

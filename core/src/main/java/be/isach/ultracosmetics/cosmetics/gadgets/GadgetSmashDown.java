@@ -7,9 +7,10 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -37,13 +38,14 @@ import java.util.List;
  */
 public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, Updatable {
 
-    private boolean active = false;
-    private List<FallingBlock> fallingBlocks = new ArrayList<>();
-    private int i = 1;
-    private boolean playEffect;
     private final XSound.SoundPlayer useSound;
     private final XSound.SoundPlayer smashSound;
     private final XSound.SoundPlayer landSound;
+    private final ParticleDisplay cloud = ParticleDisplay.of(XParticle.CLOUD).withLocationCaller(() -> getPlayer().getLocation());
+    private final List<FallingBlock> fallingBlocks = new ArrayList<>();
+    private boolean active = false;
+    private int i = 1;
+    private boolean playEffect;
 
     public GadgetSmashDown(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -60,7 +62,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
             @Override
             public void run() {
                 if (getOwner() != null && getPlayer() != null && isEquipped()) {
-                    Particles.CLOUD.display(getPlayer().getLocation());
+                    cloud.spawn();
                 } else {
                     cancel();
                 }

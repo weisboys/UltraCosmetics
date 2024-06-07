@@ -1,17 +1,19 @@
 package be.isach.ultracosmetics.util;
 
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 
+import java.awt.Color;
+
 public class PortalLoc {
-    private final int red, green, blue;
+    private final ParticleDisplay particle;
     private Location location;
     private BlockFace face;
 
     public PortalLoc(int red, int green, int blue) {
-        this.red = red;
-        this.green = green;
-        this.blue = blue;
+        this.particle = ParticleDisplay.of(XParticle.DUST).withColor(new Color(red, green, blue));
     }
 
     public Location getLocation() {
@@ -39,15 +41,7 @@ public class PortalLoc {
         face = null;
     }
 
-    public int getRed() {
-        return red;
-    }
-
-    public int getGreen() {
-        return green;
-    }
-
-    public int getBlue() {
-        return blue;
+    public ParticleDisplay getParticle() {
+        return particle.clone();
     }
 }

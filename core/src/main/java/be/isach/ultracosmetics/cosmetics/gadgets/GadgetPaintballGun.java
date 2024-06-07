@@ -6,10 +6,11 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EnderPearl;
@@ -54,8 +55,7 @@ public class GadgetPaintballGun extends Gadget {
 
     private final Set<Projectile> projectiles = new HashSet<>();
     private final int radius;
-    private final Particles effect;
-    private final int particleCount;
+    private final ParticleDisplay particle;
     private final XSound.SoundPlayer sound;
 
     public GadgetPaintballGun(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -64,20 +64,19 @@ public class GadgetPaintballGun extends Gadget {
         radius = SettingsManager.getConfig().getInt(getOptionPath("Radius"), 2);
         displayCooldownMessage = false;
         if (!SettingsManager.getConfig().getBoolean(getOptionPath("Particle.Enabled"))) {
-            particleCount = 0;
-            effect = null;
+            particle = null;
             return;
         }
-        Particles effect;
+        XParticle effect;
         try {
-            effect = Particles.valueOf(SettingsManager.getConfig().getString(getOptionPath("Particle.Effect")));
+            effect = XParticle.valueOf(SettingsManager.getConfig().getString(getOptionPath("Particle.Effect")));
         } catch (IllegalArgumentException ignored) {
-            this.particleCount = 0;
-            this.effect = null;
+            this.particle = null;
             return;
         }
-        this.effect = effect;
-        particleCount = SettingsManager.getConfig().getInt(getOptionPath("Particle.Count"), 50);
+        int particleCount = SettingsManager.getConfig().getInt(getOptionPath("Particle.Count"), 50);
+        this.particle = ParticleDisplay.of(effect).offset(2.5, 0.2, 2.5).withCount(particleCount);
+
     }
 
     @Override
@@ -108,8 +107,8 @@ public class GadgetPaintballGun extends Gadget {
             updates.put(block, PAINT_BLOCKS.get(RANDOM.nextInt(PAINT_BLOCKS.size())));
         }
         BlockUtils.setToRestore(updates, 20 * 3);
-        if (particleCount > 0) {
-            effect.display(2.5, 0.2f, 2.5f, center.clone().add(0.5f, 1.2f, 0.5F), particleCount);
+        if (particle != null) {
+            particle.spawn(center.clone().add(0.5, 1.2, 0.5));
         }
         event.getEntity().remove();
         try {

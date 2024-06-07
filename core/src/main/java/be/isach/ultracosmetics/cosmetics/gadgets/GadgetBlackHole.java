@@ -7,8 +7,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -25,7 +26,7 @@ import org.bukkit.util.Vector;
  * @since 08-17-2015
  */
 public class GadgetBlackHole extends Gadget implements PlayerAffectingCosmetic, Updatable {
-
+    private static final ParticleDisplay PARTICLES = ParticleDisplay.of(XParticle.LARGE_SMOKE);
     private Item item;
 
     public GadgetBlackHole(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
@@ -65,7 +66,7 @@ public class GadgetBlackHole extends Gadget implements PlayerAffectingCosmetic, 
                 double x = Math.cos(angle) * ratio * radius;
                 double z = Math.sin(angle) * ratio * radius;
                 location.add(x, 0, z);
-                Particles.LARGE_SMOKE.display(location);
+                PARTICLES.spawn(location);
                 location.subtract(x, 0, z);
             }
         }

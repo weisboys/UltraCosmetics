@@ -7,8 +7,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Bat;
@@ -25,7 +26,7 @@ import java.util.Iterator;
  * @since 08-03-2015
  */
 public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic, Updatable {
-
+    private static final ParticleDisplay PARTICLES = ParticleDisplay.of(XParticle.SMOKE);
     private boolean active = false;
     private Location playerStartLoc;
     private EntitySpawner<Bat> bats;
@@ -102,7 +103,7 @@ public class GadgetBatBlaster extends Gadget implements PlayerAffectingCosmetic,
                 MathUtils.applyVelocity(other, bat.getLocation().getDirection().add(new Vector(0, 0.4f, 0)));
 
                 bounceSound.atLocation(bat.getLocation()).play();
-                Particles.SMOKE.display(bat.getLocation());
+                PARTICLES.spawn(bat.getLocation());
 
                 bat.remove();
                 iter.remove();

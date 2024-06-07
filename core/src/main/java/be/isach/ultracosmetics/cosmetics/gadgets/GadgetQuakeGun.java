@@ -6,8 +6,9 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
@@ -32,6 +33,7 @@ import java.util.List;
 public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
     private static final FireworkEffect FIREWORK_EFFECT = FireworkEffect.builder().flicker(false).trail(false)
             .with(FireworkEffect.Type.BALL_LARGE).withColor(Color.RED).withFade(Color.ORANGE).build();
+    private static final ParticleDisplay FLAME = ParticleDisplay.of(XParticle.FLAME).withCount(60).withExtra(0.4f);
 
     private final List<Firework> fireworkList = new ArrayList<>();
     private final XSound.SoundPlayer sound;
@@ -61,15 +63,16 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
                 if ((entity instanceof Player || entity instanceof Creature)
                         && entity != player && canAffect(entity, player)) {
                     MathUtils.applyVelocity(entity, new Vector(0, 1, 0));
-                    Particles.FLAME.display(entity.getLocation(), 60, 0.4f);
+                    FLAME.spawn(entity.getLocation());
                     UltraCosmeticsData.get().getVersionManager().getModule().spawnFirework(location, FIREWORK_EFFECT);
                 }
             }
         }
         Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> {
             for (Firework firework : fireworkList) {
-                UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendDestroyPacket(getPlayer(), firework);
+                firework.remove();
             }
+            fireworkList.clear();
         }, 6);
     }
 }

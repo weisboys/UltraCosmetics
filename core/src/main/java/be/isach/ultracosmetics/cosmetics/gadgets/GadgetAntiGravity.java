@@ -5,8 +5,9 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
@@ -26,6 +27,8 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
     private static final ItemStack SEA_LANTERN = XMaterial.SEA_LANTERN.parseItem();
     private ArmorStand as;
     private boolean running;
+    private ParticleDisplay portalParticles;
+    private ParticleDisplay witchParticles;
 
     public GadgetAntiGravity(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -40,6 +43,10 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         running = true;
         as.setVisible(false);
         as.getEquipment().setHelmet(SEA_LANTERN);
+
+        portalParticles = ParticleDisplay.of(XParticle.PORTAL).offset(3, 3, 3).withCount(150).withLocation(as.getLocation());
+        witchParticles = ParticleDisplay.of(XParticle.WITCH).offset(0.3, 0.3, 0.3).withCount(5).withLocation(as.getEyeLocation());
+
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> running = false, 240);
     }
 
@@ -53,8 +60,8 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         }
 
         as.setHeadPose(as.getHeadPose().add(0, 0.1, 0));
-        Particles.PORTAL.display(3f, 3f, 3f, as.getLocation(), 150);
-        Particles.WITCH.display(.3f, .3f, .3f, as.getEyeLocation(), 5);
+        portalParticles.spawn();
+        witchParticles.spawn();
         for (Entity ent : as.getNearbyEntities(3, 2, 3)) {
             if (canAffect(ent, getPlayer())) {
                 LivingEntity le = (LivingEntity) ent;

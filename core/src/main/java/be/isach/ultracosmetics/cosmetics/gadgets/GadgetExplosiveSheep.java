@@ -5,8 +5,9 @@ import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawner;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.PathfinderPanic;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
@@ -38,6 +39,8 @@ public class GadgetExplosiveSheep extends Gadget {
     private BukkitRunnable sheepRemovalRunnable = null;
     private final XSound.SoundPlayer tickSound = XSound.BLOCK_NOTE_BLOCK_HAT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
     private final XSound.SoundPlayer explodeSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer();
+    private final ParticleDisplay emitter = ParticleDisplay.of(XParticle.EXPLOSION_EMITTER);
+    private final ParticleDisplay lava = ParticleDisplay.of(XParticle.LAVA).withCount(5);
 
     public GadgetExplosiveSheep(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -114,7 +117,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 return;
             }
             explodeSound.atLocation(s.getLocation()).play();
-            Particles.EXPLOSION_EMITTER.display(s.getLocation());
+            emitter.spawn(s.getLocation());
             sheeps.remove(s);
             s.remove();
             DyeColor[] colors = DyeColor.values();
@@ -136,7 +139,7 @@ public class GadgetExplosiveSheep extends Gadget {
                 @Override
                 public void run() {
                     for (Sheep sheep : sheeps.getEntities()) {
-                        Particles.LAVA.display(sheep.getLocation(), 5);
+                        lava.spawn(sheep.getLocation());
                     }
                     sheeps.removeEntities();
                 }

@@ -3,8 +3,9 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.Snowball;
@@ -21,7 +22,8 @@ import java.util.List;
  * @since 10-12-2015
  */
 public class GadgetFunGun extends Gadget {
-
+    private static final ParticleDisplay LAVA = ParticleDisplay.of(XParticle.LAVA).withCount(16).offset(1.3, 1, 1.3);
+    private static final ParticleDisplay HEART = ParticleDisplay.of(XParticle.HEART).withCount(20).offset(0.8);
     private final List<Projectile> projectiles = new ArrayList<>();
     private final XSound.SoundPlayer sound;
 
@@ -49,8 +51,8 @@ public class GadgetFunGun extends Gadget {
             snowball.remove();
         }
 
-        Particles.LAVA.display(1.3f, 1f, 1.3f, location, 16);
-        Particles.HEART.display(0.8f, 0.8f, 0.8f, location, 20);
+        LAVA.spawn(location);
+        HEART.spawn(location);
         sound.play();
     }
 }
