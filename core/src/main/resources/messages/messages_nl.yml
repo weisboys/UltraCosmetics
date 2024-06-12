@@ -15,17 +15,17 @@ Purchase: <bold><green>AANKOOP
 Cancel: <bold><red>ANNULEREN
 Buy-Ammo-Description: <bold><yellow>Koop <amount> <gadgetname> munitie </yellow></bold><bold><yellow>voor $<price>
 Buy-Cosmetic-Description: <bold><yellow>Koop <gadgetname> voor $<price>
-Right-Click-Buy-Ammo: <gray>Right Click to Buy Ammo
-Click-To-Purchase: <yellow>Click to purchase for $<price>
-Not-Enough-Money: <prefix> <bold><red>You don't have enough money!
-Successful-Purchase: <prefix> <bold><green>Successful purchase!
-Buy-Treasure-Key: <bold>Buy a Treasure Key
-Treasure-Keys: <bold><gray>Treasure Keys
-Treasure-Chests: <bold><gold>Treasure Chests
-Dont-Have-Key: <bold><dark_red>You need a key!
-Click-Open-Chest: <green>Click to open a chest
-Click-Buy-Key: <green>Click to buy a key
-Left-Click-Open-Chest: <green>Left-click to open a chest
+Right-Click-Buy-Ammo: <gray>Klik met de rechtermuisknop om munitie te kopen
+Click-To-Purchase: <yellow>Klik om kopen voor €<price>
+Not-Enough-Money: <prefix> <bold><red>Je hebt niet genoeg geld!
+Successful-Purchase: <prefix> <bold><green>Succesvolle aankoop!
+Buy-Treasure-Key: <bold>Koop een schat sleutel
+Treasure-Keys: <bold><gray>Schat sleutels
+Treasure-Chests: <bold><gold>Schatkisten
+Dont-Have-Key: <bold><dark_red>Je hebt een sleutel nodig!
+Click-Open-Chest: <green>Klik om een kist te openen
+Click-Buy-Key: <green>Klik om een sleutel te kopen
+Left-Click-Open-Chest: <green>Linkermuisknop om een kist te openen
 Right-Click-Simple: <green>Right-click to just get cosmetics
 Your-Keys: '<italic><gray>Your keys: </gray></italic><bold><white><keys>'
 Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow><gray>Treasure Key </gray><yellow>for $<price>

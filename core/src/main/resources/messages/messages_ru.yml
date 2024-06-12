@@ -1141,7 +1141,7 @@ Morphs:
     Description: Любит прятаться!
   Sniffer:
     name: <bold><green>Нюхач
-    Description: '*sniff sniff*'
+    Description: '*нюх нюх*'
 Hats:
   Equip: <prefix> <blue>Вы экипированы <hatname> </blue><blue>шапку!
   Unequip: <prefix> <blue>Вы сняли <hatname> </blue><blue>шапку!

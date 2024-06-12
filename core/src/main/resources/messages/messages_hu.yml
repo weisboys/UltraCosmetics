@@ -3,7 +3,7 @@ No-Permission: <bold><red>Nincs engedélyed!
 Cosmetic-Disabled: <prefix> <bold><red>Ez a kozmetikum le van tiltva!
 Invalid-Gadget: <prefix> <bold><red>Érvénytelen Kütyü!
 Invalid-Pet: <prefix> <bold><red>Érvénytelen Kisállat!
-Invalid-Mount: <prefix> <bold><red>Érvénytelen Állat!
+Invalid-Mount: <prefix> <bold><red>Érvénytelen Hátas!
 Invalid-Effect: <prefix> <bold><red>Érvénytelen Effekt!
 Invalid-Morph: <prefix> <bold><red>Érvénytelen Morph!
 Invalid-Hat: <prefix> <bold><red>Érvénytelen Kalap!
@@ -38,7 +38,7 @@ Clear:
   Cosmetics: <bold><red>Kozmetikumok törlése
   Gadgets: <bold><red>Jelenlegi eszköz törlése
   Pets: <bold><red>Jelenlegi háziállat törlése
-  Mounts: <bold><red>Jelenlegi felszerelés törlése
+  Mounts: <bold><red>Jelenlegi hátas törlése
   Particle-Effects: <bold><red>Jelenlegi effekt törlése
   Morphs: <bold><red>Jelenlegi átváltozás törlése
   Hats: <bold><red>Jelenlegi sapka törlése
@@ -77,9 +77,9 @@ Menu:
       Tooltip-Equip: <bold><aqua>Aktiválás
       Tooltip-Unequip: <bold><red>Deaktiválás
   Mounts:
-    Title: <bold>Felszerelések
+    Title: <bold>Hátasok
     Button:
-      Name: <bold><gold>Felszerelések
+      Name: <bold><gold>Hátasok
       Lore: '<gray>Feloldva: </gray><white><unlocked>'
       Tooltip-Equip: <bold><aqua>Leidézés
       Tooltip-Unequip: <bold><red>Visszaidézés
@@ -161,7 +161,7 @@ Treasure-Chests-Loot:
     <green>Kisállat
     <cosmetic>
   Mounts: |-
-    <gold>Hegy
+    <gold>Hátas
     <cosmetic>
   Particle-Effects: |-
     <aqua>Részecske
@@ -347,91 +347,91 @@ Gadgets:
 Mounts:
   DruggedHorse:
     menu-name: <bold><dark_green>Drogos ló
-    entity-displayname: <bold><playername>'s Drugged Horse
-    Description: That is just too much!
+    entity-displayname: <bold><playername> Drogos Lova
+    Description: Az már túl sok!
   InfernalHorror:
-    menu-name: <bold><dark_red>Infernal Horror
-    entity-displayname: <bold><playername>'s Infernal Horror
-    Description: This mount comes directly from... hell!
+    menu-name: <bold><dark_red>Pokoli Horror
+    entity-displayname: <bold><playername> Pokoli Horrorja
+    Description: Ez a hátas egyenesen a... pokolból érkezett!
   GlacialSteed:
-    menu-name: <bold><aqua>Glacial Steed
-    entity-displayname: <bold><playername>'s Glacial Steed
-    Description: This mount comes from North Pole!
+    menu-name: <bold><aqua>Jeges Paripa
+    entity-displayname: <bold><playername> Jeges Paripája
+    Description: Ez a hátas egyenesen az Északi Sarktól érkezett!
   WalkingDead:
-    menu-name: <bold><dark_green>Walking Dead
-    entity-displayname: <bold><playername>'s Walking Dead
+    menu-name: <bold><dark_green>SétáLó Halott
+    entity-displayname: <bold><playername> SétáLó Halottja
     Description: Graaaaw...
   MountOfFire:
-    menu-name: <bold><red>Mount of Fire
-    entity-displayname: <bold><playername>'s Mount of Fire
-    Description: The mount of Hades!
+    menu-name: <bold><red>A Tűz Hátasa
+    entity-displayname: <bold><playername> Tűz Hátasa
+    Description: Hádész kedvenc hátasa!
   MountOfWater:
-    menu-name: <bold><blue>Mount of Water
-    entity-displayname: <bold><playername>'s Mount of Water
-    Description: The mount of Poseidon!
+    menu-name: <bold><blue>A Víz Hátasa
+    entity-displayname: <bold><playername> Víz Hátasa
+    Description: Poseidon kedvenc hátasa!
   EcologistHorse:
-    menu-name: <bold><green>Ecologist Horse
-    entity-displayname: <bold><playername>'s Ecologist Horse
-    Description: Become an ecologist!
+    menu-name: <bold><green> ÖkoLÓgus
+    entity-displayname: <bold><playername> ÖkoLÓgusa
+    Description: Legyél te is ökológus!
   NyanSheep:
-    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Sh</green><aqua>ee</aqua><light_purple>p
-    entity-displayname: <bold><playername>'s Nyan Sheep
+    menu-name: <bold><dark_red>Ny</dark_red><gold>a</gold><yellow>n </yellow><green>Bá</green><aqua>rá</aqua><light_purple>ny
+    entity-displayname: <bold><playername> Nyan Báránya
     Description: |-
       <bold><dark_red>Nyan </dark_red><gold>nyan </gold><yellow>nyan
       <bold><green>nyan </green><dark_aqua>nyan </dark_aqua><blue>nyan
   Snake:
-    menu-name: <bold><gold>Snake
-    entity-displayname: <bold><playername>'s Snake
-    Description: Watch out! It may bite...
+    menu-name: <bold><gold>Kígyó
+    entity-displayname: <bold><playername> Kígyója
+    Description: Vigyázz! Ez kígyózik...
   Dragon:
-    menu-name: <bold><dark_purple>Dragon
-    entity-displayname: <bold><playername>'s Dragon
-    Description: Become a dragon rider!
+    menu-name: <bold><dark_purple>Sárkány
+    entity-displayname: <bold><playername> Sárkánya
+    Description: Legyél te is sárkány lovas!
   HypeCart:
-    menu-name: <bold><gray>HypeCart
-    entity-displayname: <bold><playername>'s HypeCart
+    menu-name: <bold><gray>Hiper Kordé
+    entity-displayname: <bold><playername> Hiper Kordéja
     Description: |-
-      Ever wanted to drive a F1?
-      Now you can!
+      Szerettél volna valaha is F1-et vezetni?
+      Most megteheted!
   Slime:
-    menu-name: <bold><green>Slime
+    menu-name: <bold><green>Nyálka
     entity-displayname: <bold><playername> nyálkája
-    Description: Splat! Splat!
+    Description: Placcs placcs!
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
-    Description: YOU are the spider jockey!
+    menu-name: <bold><dark_gray>Pók
+    entity-displayname: <bold><playername> Pókja
+    Description: TE vagy a pók zsoké!
   Rudolph:
-    menu-name: <bold><white>Rudolp</white><dark_red>h
-    entity-displayname: <bold><playername>'s Rudolph
+    menu-name: <bold><white>Rudol</white><dark_red>f
+    entity-displayname: <bold><playername> Rudolfja
     Description: |-
-      What would Christmas be
-      without Rudolph the Reindeer?
+      Milyen lenne a Karácsony
+      Rudolf a Rénszarvas nélkül?
   MoltenSnake:
-    menu-name: <bold><red>Molten Snake
-    entity-displayname: <bold><playername>'s Molten Snake
+    menu-name: <bold><red>Olvadt Kígyó
+    entity-displayname: <bold><playername> Olvadt Kígyója
     Description: |-
-      Deep under the Earth's surface, there
-      exists a mythical species of Molten
-      Snakes. This one will serve you eternally.
+      Mélyen a Föld felszíne alatt, ott
+      létezik egy mitikus faj, az Olvadt
+      Kígyók. Ez örökké szolgálni fog téged.
   Strider:
     menu-name: <bold><red>Strider
     entity-displayname: <bold><playername> Stridere
     Description: |-
-      A mysterious cube-shaped mob
-      capable of walking straight over lava.
-    Held-Item-Lore: Strider food on a stick!
+      Titokzatos kocka alakú mob,
+      képes egyenesen a láva felett járni.
+    Held-Item-Lore: Strider étel egy boton!
   Horse:
-    menu-name: <bold><gray>Horse
-    entity-displayname: <bold><playername>'s Horse
-    Description: Your standard, everyday horse
+    menu-name: <bold><gray>Ló
+    entity-displayname: <bold><playername> Lova
+    Description: A te hétköznapi lovad
   Donkey:
-    menu-name: <bold><dark_gray>Donkey
-    entity-displayname: <bold><playername>'s Donkey
+    menu-name: <bold><dark_gray>Szamár
+    entity-displayname: <bold><playername> Szamara
     Description: Szamár mint a gazdája :3
   Mule:
     menu-name: <bold><dark_gray>Öszvér
-    entity-displayname: <bold><playername>'s Mule
+    entity-displayname: <bold><playername> Öszvérje
     Description: Olyan mint a szamár csak nem az
   Pig:
     menu-name: <bold><light_purple>Malac
@@ -515,8 +515,8 @@ Particle-Effects:
   EnderAura:
     name: <bold><light_purple>Ender Aura
     Description: |-
-      These mystic particles attach to
-      only the most legendary of players!
+      Ezek a misztikus részecskék csak a
+      leglegendásabb játékosokhoz tapadnak hozzá!
   FlameFairy:
     name: <bold><gold>Tűztündér
     Description: ÉGŐ!!
@@ -667,7 +667,7 @@ Pets:
     entity-displayname: <bold><playername> Arany Dílere
     Description: Aranyos!
   Slime:
-    menu-name: <bold><green>Slime
+    menu-name: <bold><green>Nyálka
     entity-displayname: <bold><playername> nyálkája
     Description: Placcs...
   Bee:
@@ -675,72 +675,72 @@ Pets:
     entity-displayname: <bold><playername> Méhecskéje
     Description: '*bzzzz* *bzzzz*'
   Goat:
-    menu-name: <bold><white>Goat
-    entity-displayname: <bold><playername>'s Goat
+    menu-name: <bold><white>Kecske
+    entity-displayname: <bold><playername> Kecskéje
     Description: BAAAA!
   Silverfish:
-    menu-name: <bold><gray>Silverfish
-    entity-displayname: <bold><playername>'s Silverfish
-    Description: Lurking in the walls...
+    menu-name: <bold><gray>Ezüsthal
+    entity-displayname: <bold><playername> Ezüsthala
+    Description: A falak között lapul...
   Horse:
-    menu-name: <bold><green>Horse
-    entity-displayname: <bold><playername>'s Horse
+    menu-name: <bold><green>Ló
+    entity-displayname: <bold><playername> Lova
     Description: '*fhrrrrhh*'
   Blaze:
-    menu-name: <bold><red>Blaze
-    entity-displayname: <bold><playername>'s Blaze
-    Description: Flying and hot!
+    menu-name: <bold><red>Őrláng
+    entity-displayname: <bold><playername> Őrlángja
+    Description: Repül és forró!
   Creeper:
     menu-name: <bold><green>Creeper
-    entity-displayname: <bold><playername>'s Creeper
-    Description: Likes blowing up your favorite stuff...
+    entity-displayname: <bold><playername> Creeperje
+    Description: Szereti felrobbantani a kedvenc dolgaid...
   Enderman:
     menu-name: <bold><dark_purple>Enderman
-    entity-displayname: <bold><playername>'s Enderman
-    Description: Don't look at it or it will hunt you!
+    entity-displayname: <bold><playername> Endermanje
+    Description: Nem szereti ha bámulják!
   Skeleton:
-    menu-name: <bold><white>Skeleton
-    entity-displayname: <bold><playername>'s Skeleton
-    Description: Watch out, it will try to shoot you!
+    menu-name: <bold><white>Csontváz
+    entity-displayname: <bold><playername> Csontváza
+    Description: "Vedd ki a csontvázad és \nmutogasd az embereknek!"
   Zombie:
-    menu-name: <bold><dark_green>Zombie
-    entity-displayname: <bold><playername>'s Zombie
-    Description: Quick! Hide your Villagers!
+    menu-name: <bold><dark_green>Zombi
+    entity-displayname: <bold><playername> Zombija
+    Description: Gyorsan! Rejtsd el a Falusijaid!
   Frog:
-    menu-name: <bold><dark_green>Frog
-    entity-displayname: <bold><playername>'s Frog
-    Description: Doesn't like fireflies!
+    menu-name: <bold><dark_green>Béka
+    entity-displayname: <bold><playername> Békája
+    Description: Nem szereti a szentjánosbogarakat!
   Warden:
     menu-name: <bold><dark_aqua>Warden
-    entity-displayname: <bold><playername>'s Warden
-    Description: The scariest Mob in Minecraft!
+    entity-displayname: <bold><playername> Wardene
+    Description: A játék legijesztőbb entitása!
   Allay:
     menu-name: <bold><green>Allay
-    entity-displayname: <bold><playername>'s Allay
-    Description: A new friend!
+    entity-displayname: <bold><playername> Allayje
+    Description: Egy új barát!
   Cod:
-    menu-name: <bold><gray>Cod
-    entity-displayname: <bold><playername>'s Cod
-    Description: Prefers water over land!
+    menu-name: <bold><gray>Tőkehal
+    entity-displayname: <bold><playername> Tőkehalja
+    Description: Jobban szereti a vizet mint a szárazföldet!
   Donkey:
-    menu-name: <bold><gray>Donkey
-    entity-displayname: <bold><playername>'s Donkey
-    Description: Can carry all your stuff!
+    menu-name: <bold><gray>Szamár
+    entity-displayname: <bold><playername> Szamara
+    Description: Tud cipelni dolgokat!
   GlowSquid:
-    menu-name: <bold><dark_aqua>Glow Squid
-    entity-displayname: <bold><playername>'s Glow Squid
-    Description: It glows!
+    menu-name: <bold><dark_aqua>Világító Tintahal
+    entity-displayname: <bold><playername> Világító Tintahala
+    Description: Világít!
   Mule:
-    menu-name: <bold><gray>Mule
-    entity-displayname: <bold><playername>'s Mule
-    Description: Basically a donkey!
+    menu-name: <bold><gray>Öszvér
+    entity-displayname: <bold><playername> Öszvérje
+    Description: Gyakorlatilag egy szamár!
   Pufferfish:
-    menu-name: <bold><yellow>Pufferfish
-    entity-displayname: <bold><playername>'s Pufferfish
-    Description: Doesn't like to be touched!
+    menu-name: <bold><yellow>Gömbhal
+    entity-displayname: <bold><playername> Gömbhala
+    Description: Nem szereti az érintkezés!
   Ocelot:
     menu-name: <bold><yellow>Ocelot
-    entity-displayname: <bold><playername>'s Ocelot
+    entity-displayname: <bold><playername> Párducmacskája
     Description: Vigyázz... félénkek!
   Salmon:
     menu-name: <bold><red>Lazac
@@ -783,8 +783,8 @@ Pets:
     entity-displayname: <bold><playername> Delfine
     Description: '&7Okosabbak, mint gondolnád! :D'
   Spider:
-    menu-name: <bold><dark_gray>Spider
-    entity-displayname: <bold><playername>'s Spider
+    menu-name: <bold><dark_gray>Pók
+    entity-displayname: <bold><playername> Pókja
     Description: A barátságos pók<strikethrough>ember</strikethrough>!
   ZombifiedPiglin:
     menu-name: <bold><light_purple>Zombi piglin
@@ -813,75 +813,75 @@ Pets:
   Guardian:
     menu-name: <bold><dark_aqua>Őrszem
     entity-displayname: <bold><playername> Őrszeme
-    Description: Hates squids!
+    Description: Utálja a tintahalakat!
   Hoglin:
     menu-name: <bold><red>Hoglin
-    entity-displayname: <bold><playername>'s Hoglin
-    Description: A pig, but in angry.
+    entity-displayname: <bold><playername> Hoglinja
+    Description: Egy malac, csak mérges.
   Husk:
     menu-name: <bold><yellow>Husk
-    entity-displayname: <bold><playername>'s Husk
-    Description: A zombie, but sandy.
+    entity-displayname: <bold><playername> Huskja
+    Description: Egy zombi, csak sivatagos.
   MagmaCube:
-    menu-name: <bold><dark_red>Magma Cube
-    entity-displayname: <bold><playername>'s Magma Cube
-    Description: A very hot cube!
+    menu-name: <bold><dark_red>Magma Kocka
+    entity-displayname: <bold><playername> Magma Kockája
+    Description: Egy nagyon forró kocka!
   Phantom:
-    menu-name: <bold><dark_blue>Phantom
-    entity-displayname: <bold><playername>'s Phantom
-    Description: Hates players that don't sleep!
+    menu-name: <bold><dark_blue>Fantom
+    entity-displayname: <bold><playername> Fantomja
+    Description: Kinek az ötlete volt hozzáadni?
   PiglinBrute:
-    menu-name: <bold><gold>Piglin Brute
-    entity-displayname: <bold><playername>'s Piglin Brute
-    Description: A pretty buff Piglin!
+    menu-name: <bold><gold>Piglin Verőember
+    entity-displayname: <bold><playername> Piglin Verőembere
+    Description: Egy ideges Piglin baltával!
   Pillager:
-    menu-name: <bold><gray>Pillager
-    entity-displayname: <bold><playername>'s Pillager
-    Description: Likes to pillage villages!
+    menu-name: <bold><gray>Rabló
+    entity-displayname: <bold><playername> Rablója
+    Description: "Városokat rombol, gyújtogat...\nSzimpatikus természete van!"
   Ravager:
     menu-name: <bold><dark_gray>Ravager
-    entity-displayname: <bold><playername>'s Ravager
-    Description: A Pillager's favorite companion!
+    entity-displayname: <bold><playername> Ravagerje
+    Description: A Rablók kedvenc társa!
   Shulker:
     menu-name: <bold><dark_purple>Shulker
-    entity-displayname: <bold><playername>'s Shulker
-    Description: Likes to hide!
+    entity-displayname: <bold><playername> Shulkere
+    Description: Szeret bújócskázni!
   Stray:
-    menu-name: <bold><dark_gray>Stray
-    entity-displayname: <bold><playername>'s Stray
-    Description: A freezing cold skeleton!
+    menu-name: <bold><dark_gray>Bitang
+    entity-displayname: <bold><playername> Bitangja
+    Description: Egy csontváz, csak jeges!
   Vindicator:
     menu-name: <bold><gray>Vindicator
-    entity-displayname: <bold><playername>'s Vindicator
-    Description: Don't underestimate their strength!
+    entity-displayname: <bold><playername> Vindicatorje
+    Description: Ne becsüld alá az erejüket!
   Witch:
     menu-name: <bold><dark_purple>Boszorkány
-    entity-displayname: <bold><playername>'s Witch
-    Description: Loves black cats!
+    entity-displayname: <bold><playername> Boszorkánya
+    Description: Fekete cicák a mindene!
   WitherSkeleton:
     menu-name: <bold><dark_gray>Withercsontváz
-    entity-displayname: <bold><playername>'s Wither Skeleton
-    Description: The reason why Looting exists.
+    entity-displayname: <bold><playername> Sorvasztója
+    Description: Az ok amiért a zsákmányolás varázslat létezik.
   Zoglin:
     menu-name: <bold><red>Zoglin
-    entity-displayname: <bold><playername>'s Zoglin
-    Description: A zombified Hoglin!
+    entity-displayname: <bold><playername> Zoglinja
+    Description: Egy zombivá vált Hoglin!
   ZombieVillager:
-    menu-name: <bold><dark_green>Zombie Villager
-    entity-displayname: <bold><playername>'s Zombie Villager
-    Description: A Villager Trader's dream!
+    menu-name: <bold><dark_green>Zombi Falusi
+    entity-displayname: <bold><playername> Zombi Falusia
+    Description: Minden falusi erről álmodik!
   ZombieHorse:
-    menu-name: <bold><dark_green>Zombie Horse
-    entity-displayname: <bold><playername>'s Zombie Horse
-    Description: The rarest horse in Minecraft!
+    menu-name: <bold><dark_green>Zombi Ló
+    entity-displayname: <bold><playername> Zombi Lova
+    Description: A legritkább ló a játékban!
   Illusioner:
-    menu-name: <bold><dark_blue>Illusioner
-    entity-displayname: <bold><playername>'s Illusioner
-    Description: Only spawnable with commands!
+    menu-name: <bold><dark_blue>Illúzionista
+    entity-displayname: <bold><playername> Illúzionistája
+    Description: Csak parancsokkal idézhető le!
   Sniffer:
-    menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
-    Description: Can smell pottery!
+    menu-name: <bold><green> Szagoló
+    entity-displayname: <bold><playername> Szagolója
+    Description: Jó a szaglása!
   Equip: '<prefix> <blue> Leidézted őt: <petname>'
   Unequip: '<prefix> <blue>Elküldted őt: <petname>'
 Morphs:
@@ -894,7 +894,7 @@ Morphs:
     skill: '<yellow>Lopakodj</yellow><gray> a </gray><green>tojjon tojást'
     Description: Légy csirke!
   Slime:
-    name: <bold><green>Slime
+    name: <bold><green>Nyálka
     skill: '<yellow>Lopakodj </yellow><gray> a </gray><green> pattogáshoz'
     Description: Placcs placcs!
   Pig:
@@ -990,15 +990,15 @@ Morphs:
   Cod:
     name: <bold><yellow>Tőkehal
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Prefers water over land!
+    Description: Jobban szereti a vizet mint a szárazföldet!
   Dolphin:
-    name: <bold><yellow>Dolphin
+    name: <bold><yellow>Delfin
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: '&7Okosabbak, mint gondolnád! :D'
   Donkey:
-    name: <bold><gray>Donkey
+    name: <bold><gray>Szamár
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Can carry all your stuff!
+    Description: Tud cipelni dolgokat!
   Drowned:
     name: <bold><dark_aqua>Vízbefúlt
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
@@ -1012,31 +1012,31 @@ Morphs:
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: Megidézésekkel keresi kenyerét!
   Frog:
-    name: <bold><dark_green>Frog
+    name: <bold><dark_green>Béka
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Doesn't like fireflies!
+    Description: Nem szereti a szentjánosbogarakat!
   Fox:
     name: <bold><light_purple>Róka
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: "What does the fox say?\nding-ding-ding-ding-ding-ding-ding"
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
+    name: <bold><dark_aqua>Világító Tintahal
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: It glows!
+    Description: Világít!
   Goat:
-    name: <bold><white>Goat
+    name: <bold><white>Kecske
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
     Description: BAAAA!
   Guardian:
     name: <bold><dark_aqua>Őrszem
     skill: '<yellow>Bal klikkelj</yellow><gray> a </gray><green>háló csináláshoz'
-    Description: Hates squids!
+    Description: Utálja a tintahalakat!
   Wolf:
-    name: <bold><gray>Wolf
+    name: <bold><gray>Farkas
     Description: Vau vau!
   IronGolem:
     name: <bold><gray>Vasgólem
-    Description: Hates zombies!
+    Description: Utálja a zombikat!
   Wither:
     name: <bold><dark_gray>Wither
     Description: Vigyázz velem...
@@ -1044,7 +1044,7 @@ Morphs:
     name: <bold><gray>Csontváz
     Description: Nem kancsal, csak néha!
   Zombie:
-    name: <bold><dark_green>Zombie
+    name: <bold><dark_green>Zombi
     Description: AGYAAAAAAT!!!
   Squid:
     name: <bold><light_purple>Polip
@@ -1056,8 +1056,8 @@ Morphs:
     name: <bold><white>Szellem
     Description: 'AAAAAAAAAAAAAAA, IIIIIIIIIIII'
   MagmaCube:
-    name: <bold><red>Magma Cube
-    Description: A very hot cube!
+    name: <bold><red>Magma Kocka
+    Description: Egy nagyon forró kocka!
   Horse:
     name: <bold><green>Ló
     Description: '*fhrrrrhh*'
@@ -1069,25 +1069,25 @@ Morphs:
     Description: Előbb utóbb béka lesz belőle!
   Piglin:
     name: <bold><gold>Piglin
-    Description: Deals with gold!
+    Description: Arannyal kereskedik!
   Strider:
     name: <bold><red>Strider
     Description: Víz = "rósz"
   Hoglin:
     name: <bold><red>Hoglin
-    Description: A pig, but in angry.
+    Description: Egy malac, csak mérges.
   PiglinBrute:
-    name: <bold><gold>Piglin Brute
-    Description: A pretty buff Piglin!
+    name: <bold><gold>Piglin Verőember
+    Description: Egy ideges Piglin baltával!
   Zoglin:
     name: <bold><red>Zoglin
-    Description: A zombified Hoglin!
+    Description: Egy zombivá vált Hoglin!
   ZombifiedPiglin:
     name: <bold><light_purple>Zombi piglin
     Description: Bandában utaznak, ne támadj rá!
   Panda:
     name: <bold><green>Panda
-    Description: Likes bamboo!
+    Description: Szereti a bambuszt!
   Ocelot:
     name: <bold><yellow>Ocelot
     Description: A Dzsungel Királya
@@ -1096,13 +1096,13 @@ Morphs:
     Description: Sebby, <strikethrough>főznünk kell</strikethrough> el kell adnunk cuccokat!
   Pillager:
     name: <bold><gray>Pillager
-    Description: Likes to pillage villages!
+    Description: "Városokat rombol, gyújtogat...\nSzimpatikus természete van!"
   Ravager:
     name: <bold><dark_gray>Ravager
-    Description: A Pillager's favorite companion!
+    Description: A Rablók kedvenc társa!
   Pufferfish:
-    name: <bold><yellow>Pufferfish
-    Description: Doesn't like to be touched!
+    name: <bold><yellow>Gömbhal
+    Description: Nem szereti az érintkezés!
   Salmon:
     name: <bold><red>Lazac
     Description: Elég lazac!
@@ -1110,20 +1110,20 @@ Morphs:
     name: <bold><yellow>Trópusi hal
     Description: Színes hal!
   Turtle:
-    name: <bold><green>Turtle
-    Description: Take your time.
+    name: <bold><green>Teknős
+    Description: Szánj rá egy kis időt.
   Phantom:
-    name: <bold><dark_blue>Phantom
-    Description: Hates players that don't sleep!
+    name: <bold><dark_blue>Fantom
+    Description: Kinek az ötlete volt hozzáadni?
   Illusioner:
-    name: <bold><dark_blue>Illusioner
-    Description: Only spawnable with commands!
+    name: <bold><dark_blue>Illúzionista
+    Description: Csak parancsokkal idézhető le!
   Vex:
     name: <bold><gray>Vex
     Description: Falon át támadok. MUHAHAHA!
   Vindicator:
     name: <bold><gray>Vindicator
-    Description: Don't underestimate their strength!
+    Description: Ne becsüld alá az erejüket!
   Mule:
     name: <bold><dark_gray>Öszvér
     Description: Olyan mint a szamár csak nem az
@@ -1131,76 +1131,76 @@ Morphs:
     name: <bold><white>Csontváz ló
     Description: "Olyan mint egy szuperhős!\nMegjelenik, pánikolsz, aztán minden rendben lesz."
   ZombieHorse:
-    name: <bold><dark_green>Zombie Horse
-    Description: The rarest horse in Minecraft!
+    name: <bold><dark_green>Zombi Ló
+    Description: A legritkább ló a játékban!
   Shulker:
     name: <bold><dark_purple>Shulker
-    Description: Likes to hide!
+    Description: Szeret bújócskázni!
   Sniffer:
-    name: <bold><green>Sniffer
+    name: <bold><green> Szagoló
     Description: '*sniff sniff*'
 Hats:
-  Equip: <prefix> <blue>You equipped <hatname> hat!
-  Unequip: <prefix> <blue>You unequipped <hatname> hat!
+  Equip: <prefix><blue>Felvetted a(z) <hatname> kalapot!
+  Unequip: <prefix><blue>Levetted a(z) <hatname> kalapot!
   Astronaut:
-    Name: <bold><gray>Astronaut
-    Description: Houston, we have got a problem.
+    Name: <bold><gray>Asztronauta
+    Description: Houston, baj van.
   Scared:
-    Name: <bold><dark_red>Scared
-    Description: Oh god, that scared me!
+    Name: <bold><dark_red>Megrémült
+    Description: Istenem, ez megijesztett!
   Angel:
-    Name: <bold><white>Angel
-    Description: Did it hurt when you fell from heaven?
+    Name: <bold><white>Angyal
+    Description: Fájt, amikor leestél az égből?
   Embarassed:
-    Name: <bold><gray>Embarassed
-    Description: I'm kinda embarassed by that.
+    Name: <bold><gray>Zavart
+    Description: Kicsit szégyellem magam emiatt.
   Kissy:
-    Name: <bold><red>Kissy
-    Description: Wanna kiss?
+    Name: <bold><red>Csókos
+    Description: Akarsz csókolózni?
   Sad:
-    Name: <bold><blue>Sad
-    Description: I'm so sad.
+    Name: <bold><blue>Szomorú
+    Description: Annyira szomorú vagyok.
   Cool:
-    Name: <bold><gold>Cool
-    Description: I'm such a cool guy.
+    Name: <bold><gold>Menő
+    Description: Olyan menő vagyok.
   Surprised:
-    Name: <bold><dark_red>Surprised
-    Description: Wow, did not expect that!
+    Name: <bold><dark_red>Meglepett
+    Description: Hát erre nem számítottam!
   Dead:
-    Name: <bold><dark_gray>Dead
-    Description: Got rekt
+    Name: <bold><dark_gray>Halott
+    Description: Rektelve
   Crying:
-    Name: <bold><blue>Crying
-    Description: I cri evrytiem
+    Name: <bold><blue>Síró
+    Description: Minden alkalommal sírok
   BigSmile:
-    Name: <bold><gold>Big Smile
-    Description: Because I'm really happy!
+    Name: <bold><gold>Nagy Mosoly
+    Description: Nagyon boldog embernek nagyon mosoly jár!
   Wink:
-    Name: <bold><yellow>Wink
-    Description: You know what I mean ;)
+    Name: <bold><yellow>Kacsintó
+    Description: Tudod hogy mire gondolok ;)
   Derp:
-    Name: <bold><dark_aqua>Derp
-    Description: Derp Derp Derping all around
+    Name: <bold><dark_aqua>Bolond
+    Description: Csak bolondozunk
   Smile:
-    Name: <bold><yellow>Smile
-    Description: Because I'm happy
+    Name: <bold><yellow>Mosoly
+    Description: Mert boldog vagyok
   Iron:
-    Name: <bold><gray>Iron
-    Description: As hard as iron!
+    Name: <bold><gray>Vas
+    Description: Kemény mint a vas!
   Gold:
-    Name: <bold><yellow>Gold
-    Description: My precious!
+    Name: <bold><yellow>Arany
+    Description: Drágaságom!
   Diamond:
-    Name: <bold><aqua>Diamond
-    Description: This is really strong!
+    Name: <bold><aqua>Gyémánt
+    Description: Ez tényleg nagyon erős!
   CommandBlock:
-    Name: <bold><gray>Command Block
-    Description: Control the world with it!
+    Name: <bold><gray>Parancs Block
+    Description: Irányítsd a világot vele!
   Music:
     Name: <bold><blue>Zene
-    Description: You are so musical.
+    Description: Annyira zenei vagy.
   Squid:
-    Name: <bold><dark_aqua>Squid
+    Name: <bold><dark_aqua>Tintahal
     Description: Bloop Bloop!
   GlowSquid:
     Name: <bold><aqua> Világító Tintahal
@@ -1248,7 +1248,7 @@ Hats:
     Name: <bold><light_purple>Bevégző király
     Description: A bevégzők királya
   Slime:
-    Name: <bold><green>Slime
+    Name: <bold><green>Nyálka
     Description: Nyálkás... Fúj
   Creeper:
     Name: <bold><dark_green>Creeper
@@ -1257,7 +1257,7 @@ Hats:
     Name: <bold><gray>Csontváz
     Description: Nem kancsal, csak néha!
   Zombie:
-    Name: <bold><dark_green>Zombie
+    Name: <bold><dark_green>Zombi
     Description: AGYAAAAAAT!!!
   Drowned:
     Name: <bold><dark_aqua>Vízbefúlt
@@ -1302,85 +1302,85 @@ Hats:
     Name: <bold><yellow>Ocelot
     Description: A Dzsungel Királya
   Frog:
-    Name: <bold><dark_green>Frog
+    Name: <bold><dark_green>Béka
     Description: Mindent megesz ami ZZZzzzzzavarja.
   AxolotlPink:
-    Name: <bold><light_purple>Pink Axolotl
-    Description: The cutest predator
+    Name: <bold><light_purple>Rózsaszín Axolotl
+    Description: A legaranyosabb ragadozó
   AxolotlBlue:
-    Name: <bold><blue>Blue Axolotl
-    Description: The cutest predator
+    Name: <bold><blue>Kék Axolotl
+    Description: A legaranyosabb ragadozó
   Turtle:
-    Name: <bold><green>Turtle
-    Description: Take your time.
+    Name: <bold><green>Teknős
+    Description: Szánj rá egy kis időt.
   Clownfish:
-    Name: <bold><gold>Clownfish
-    Description: You found him!
+    Name: <bold><gold>Bohóchal
+    Description: Megtaláltad!
   BlackCat:
-    Name: <bold><dark_green>Black Cat
-    Description: A witch's best friend.
+    Name: <bold><dark_green>Fekete Macska
+    Description: A boszorkány legjobb barátja.
   Allay:
     Name: <bold><aqua>Allay
-    Description: The little helper
+    Description: Kis segéd
   Bat:
-    Name: <bold><dark_purple>Bat
-    Description: Enjoy the nightlife.
+    Name: <bold><dark_purple>Denevér
+    Description: Szereti az éjszakát.
   Glare:
-    Name: <bold><dark_green>Glare
-    Description: It hates the darkness.
+    Name: <bold><dark_green>Ragyogás
+    Description: Utálja a sötétséget.
   Rana:
     Name: <bold><green>Rana
-    Description: Froggy hat!
+    Description: Békás kalap!
   MCD-Steve:
-    Name: <bold><blue>Steve
-    Description: The best skin
+    Name: <bold><blue>István
+    Description: A legjobb kinézet
   MCD-Alex:
-    Name: <bold><gold>Alex
-    Description: Steve's friend
+    Name: <bold><gold>Szandra
+    Description: István barátja
   MCD-QuestGiver:
-    Name: <bold><dark_purple>Quest Giver
-    Description: I have a quest for you.
+    Name: <bold><dark_purple>Küldetés adó
+    Description: Van egy küldetésem számodra.
   MCD-LuxuryMerchant:
-    Name: <bold><gold>Luxury Merchant
-    Description: I sell gems.
+    Name: <bold><gold>Luxus Kereskedő
+    Description: Drágakövekkel kereskedek.
   MCD-Necromancer:
-    Name: <bold><aqua>Necromancer
-    Description: Summon the undead!
+    Name: <bold><aqua>Nekromanta
+    Description: Az élőhalottak mestere!
   MCD-NamelessOne:
-    Name: <bold><dark_green>Nameless One
-    Description: Powerful necromancer
+    Name: <bold><dark_green>Névtelen
+    Description: Erős nekromanta
   MCD-StrayKnight:
-    Name: <bold><gray>Stray Knight
-    Description: A lonely knight...
+    Name: <bold><gray>Kóbor Lovag
+    Description: Egy magányos lovag...
   MCD-AncientGuardian:
-    Name: <bold><dark_purple>Ancient Guardian
-    Description: The oldest guardian
+    Name: <bold><dark_purple>Ősi Védelmező
+    Description: A legidősebb védelmező
   MCD-KeyGolem:
-    Name: <bold><gold>Key Golem
-    Description: Unlock every door!
+    Name: <bold><gold>Kulcs Gólem
+    Description: Minden ajtót kinyit!
   MCD-ArchIllager:
-    Name: <bold><dark_aqua>Arch Illager
-    Description: Leader of the Illagers
+    Name: <bold><dark_aqua>Fő Illager
+    Description: Az Illagerek vezetője
   MCD-SunkenSkeleton:
-    Name: <bold><dark_green>Sunken Skeleton
-    Description: Underwater skeleton
+    Name: <bold><dark_green>Elmerült Csontváz
+    Description: Vízalatti csontváz
   MCD-TheWildfire:
-    Name: <bold><dark_red>The Wildfire
-    Description: Hovering inferno
+    Name: <bold><dark_red>Futótűz
+    Description: Lebegő pokol
   Mario:
-    Name: <bold><dark_red>Mario
-    Description: It's-a me! Mario!
+    Name: <bold><dark_red>Márió
+    Description: Én vagyok az! Márió!
   Luigi:
     Name: <bold><dark_green>Luigi
-    Description: Luigi time!
+    Description: Luigi idő!
   Batman:
     Name: <bold><dark_gray>Batman
-    Description: I'm Batman!
+    Description: Én vagyok Batman!
   Chest:
-    Name: <bold><gold>Chest
-    Description: Open, and close
+    Name: <bold><gold>Láda
+    Description: Nyisd ki és zárd be
   Skull:
-    Name: <bold><white>Skull
+    Name: <bold><white>Koponya
     Description: Ki a fejetlen most?
   JackOLantern:
     Name: <bold><gold>Töklámpás
@@ -1428,430 +1428,428 @@ Hats:
     Name: <bold><gold>Ártatlan Narancs
     Description: Narancsus
   PurpleCrewmate:
-    Name: <bold><dark_purple>Purple Crewmate
-    Description: Purple sus!
+    Name: <bold><dark_purple>Lila Legénységtárs
+    Description: Lila gyanús!
   BlackCrewmate:
-    Name: <bold><black>Black Crewmate
-    Description: Black sus!
+    Name: <bold><black>Fekete legénységtárs
+    Description: Fekete gyanús!
   WhiteCrewmate:
-    Name: <bold><white>White Crewmate
-    Description: White sus!
+    Name: <bold><white>Fehér Legénységtárs
+    Description: Fehér gyanús!
   PinkCrewmate:
-    Name: <bold><light_purple>Pink Crewmate
-    Description: Pink sus!
+    Name: <bold><light_purple>Rózsaszín Legénységtárs
+    Description: Rózsaszín gyanús!
   BrownCrewmate:
-    Name: <bold><dark_gray>Brown Crewmate
-    Description: Brown sus!
+    Name: <bold><dark_gray>Barna Legénységtárs
+    Description: Barna gyanús!
   FrogPrince:
-    Name: <bold><dark_green>Frog Prince
-    Description: Kiss me!
+    Name: <bold><dark_green>Béka Herceg
+    Description: Csókolj meg!
   Notch:
     Name: <bold><white>Notch
-    Description: Creator of Minecraft
+    Description: Minecraft megálmodója
   KitsuneMask:
-    Name: <bold><red>Kitsune Mask
-    Description: White fox mask
+    Name: <bold><red>Kitsune Maszk
+    Description: Fehér róka maszk
   Goblin:
     Name: <bold><blue>Goblin
-    Description: Sneaky!
+    Description: Alattomos!
   Unicorn:
-    Name: <bold><light_purple>Unicorn
-    Description: Be magical!
+    Name: <bold><light_purple>Egyszarvú
+    Description: Legyél varázslatos!
   Ogre:
     Name: <bold><dark_green>Ogre
-    Description: I'm hungry.
+    Description: Ki lakik a mocsár közepén ?
   GreenDragon:
-    Name: <bold><green>Green Dragon
-    Description: Be a dragon.
+    Name: <bold><green>Zöld Sárkány
+    Description: Légy egy sárkány.
   GigaChad:
-    Name: <bold><gray>GigaChad
-    Description: Embrace masculinity!
+    Name: <bold><gray>GigaCsanád
+    Description: Fogadd el a férfiasságot!
   Anubis:
     Name: <bold><gold>Anubis
-    Description: Ancient Egyptian god
+    Description: Ősi egyiptomi isten
   Bread:
-    Name: <bold><white>Bread
-    Description: Freshly baked
+    Name: <bold><white>Kenyér
+    Description: Frissen sütve
   Cheese:
-    Name: <bold><yellow>Cheese
-    Description: Say cheese!
+    Name: <bold><yellow>Sajt
+    Description: A hold alkotó eleme!
   Pancakes:
-    Name: <bold><white>Pancakes
-    Description: Better with syrup!
+    Name: <bold><white>Palacsinta
+    Description: Jobb sziruppal!
   Cake:
-    Name: <bold><red>Cake
-    Description: Mmmm, cake.
+    Name: <bold><red>Torta
+    Description: Mmmm, torta.
   Cookie:
-    Name: <bold><gold>Cookie
-    Description: Chocolate chips included!
+    Name: <bold><gold>Süti
+    Description: Csoki darabkákkal!
   CandyCane:
-    Name: <bold><red>Candy </red><white>Cane
-    Description: A bit of tooth-breaking
+    Name: <bold><red>Cukorka </red><white>Pálca
+    Description: Picit fogtörő
   Chocolate:
-    Name: <bold><green>Chocolate
-    Description: Don't feed your dog with this!
+    Name: <bold><green>Csoki
+    Description: Ne etesd meg a kutyádat vele!
   WhiteChocolate:
-    Name: <bold><white>White Chocolate
-    Description: A bit more creamy
+    Name: <bold><white>Fehér Csokoládé
+    Description: Picit krémesebb
   Apple:
-    Name: <bold><dark_red>Apple
-    Description: Not the company
+    Name: <bold><dark_red>Alma
+    Description: Az orvost távol tartja
   Melon:
-    Name: <bold><green>Melon
-    Description: Don't smash it with your head
+    Name: <bold><green>Dinnye
+    Description: Ne zúzd össze a fejeddel
   CarvedPumpkin:
-    Name: <bold><gold>Carved Pumpkin
-    Description: Who turned this thing off?
+    Name: <bold><gold>Faragott Tök
+    Description: Ki kapcsolta ki?
   Strawberry:
-    Name: <bold><red>Strawberry
-    Description: Do these grow on trees?
+    Name: <bold><red>Eper
+    Description: Fán teremnek?
   Coconut:
-    Name: <bold><white>Coconut
-    Description: Paradise
+    Name: <bold><white>Kókuszdió
+    Description: Paradicsom
   Taco:
     Name: <bold><yellow>Taco
-    Description: Let's go for some tacos!
+    Description: "Mostantól te vagy a barátom!\nKésőbb eszünk egy kis tacot!"
   Bacon:
-    Name: <bold><white>Bacon
-    Description: Everything's better with bacon.
+    Name: <bold><white>Szalonna
+    Description: Minden jobb szalonnával.
   Fries:
-    Name: <bold><gold>Fries
-    Description: Hamburger's best friend
+    Name: <bold><gold>Hasábburgonya
+    Description: A hamburger legjobb barátja
   Hamburger:
     Name: <bold><gold>Hamburger
-    Description: The classic fastfood!
+    Description: A klasszikus gyors kaja!
   Popcorn:
-    Name: <bold><gold>Popcorn
-    Description: The classic movie snack!
+    Name: <bold><gold>Pattogatott Kukorica
+    Description: A klasszikus filmes nasi!
   WhiteDonut:
-    Name: <bold><white>White Donut
-    Description: Like a donut, but in white!
+    Name: <bold><white>Fehér Fánk
+    Description: Olyan mint egy fánk, csak fehérben!
   PinkDonut:
-    Name: <bold><light_purple>Pink Donut
-    Description: Homer's favorites
+    Name: <bold><light_purple>Rózsaszín Fánk
+    Description: Homer kedvence
   ChocolateDonut:
-    Name: <bold><green>Chocolate Donut
-    Description: A better donut!
+    Name: <bold><green>Csokis Fánk
+    Description: Egy jobb fánk!
   Pie:
-    Name: <bold><dark_red>Pie
-    Description: I like pie
+    Name: <bold><dark_red>Pite
+    Description: Szeretem a pitét
   A:
     Name: <bold><gold>A
-    Description: The first letter in the alphabet!
+    Description: Az első betű az Abc-ben!
   B:
     Name: <bold><dark_red>B
-    Description: The second letter in the alphabet!
+    Description: A második betű az Abc-ben!
   C:
     Name: <bold><dark_green>C
-    Description: The third letter in the alphabet!
+    Description: A harmadik betű az Abc-ben!
   D:
     Name: <bold><aqua>D
-    Description: The fourth letter in the alphabet!
+    Description: A negyedik betű az Abc-ben!
   E:
     Name: <bold><yellow>E
-    Description: The fifth letter in the alphabet!
+    Description: Az ötödik betű az Abc-ben!
   F:
     Name: <bold><dark_purple>F
-    Description: The sixth letter in the alphabet!
+    Description: A hatodik betű az Abc-ben!
   G:
     Name: <bold><light_purple>G
-    Description: The seventh letter in the alphabet!
+    Description: A hetedik betű az Abc-ben!
   H:
     Name: <bold><green>H
-    Description: The eighth letter in the alphabet!
+    Description: A nyolcadik betű az Abc-ben!
   I:
     Name: <bold><gold>I
-    Description: The ninth letter in the alphabet!
+    Description: A kilencedik betű az Abc-ben!
   J:
     Name: <bold><dark_red>J
-    Description: The tenth letter in the alphabet!
+    Description: A tizedik betű az Abc-ben!
   K:
     Name: <bold><dark_green>K
-    Description: The eleventh letter in the alphabet!
+    Description: A tizenegyedik betű az Abc-ben!
   L:
     Name: <bold><aqua>L
-    Description: The twelfth letter in the alphabet!
+    Description: A tizenkettedik betű az Abc-ben!
   M:
     Name: <bold><yellow>M
-    Description: The thirteenth letter in the alphabet!
+    Description: A tizenharmadik betű az Abc-ben!
   N:
     Name: <bold><dark_purple>N
-    Description: The fourteenth letter in the alphabet!
+    Description: A tizennegyedik betű az Abc-ben!
   O:
     Name: <bold><light_purple>O
-    Description: The fifteenth letter in the alphabet!
+    Description: A tizenötödik betű az Abc-ben!
   P:
     Name: <bold><green>P
-    Description: The sixteenth letter in the alphabet!
+    Description: A tizenhatodik betű az Abc-ben!
   Q:
     Name: <bold><gold>Q
-    Description: The seventeenth letter in the alphabet!
+    Description: A tizenhetedik betű az Abc-ben!
   R:
     Name: <bold><dark_red>R
-    Description: The eighteenth letter in the alphabet!
+    Description: A tizennyolcadik betű az Abc-ben!
   S:
     Name: <bold><dark_green>S
-    Description: The nineteenth letter in the alphabet!
+    Description: A tizenkilencedik betű az Abc-ben!
   T:
     Name: <bold><aqua>T
-    Description: The twentieth letter in the alphabet!
+    Description: A huszadik betű az Abc-ben!
   U:
     Name: <bold><yellow>U
-    Description: The twenty-first letter in the alphabet!
+    Description: A huszonegyedik betű az Abc-ben!
   V:
     Name: <bold><dark_purple>V
-    Description: The twenty-second letter in the alphabet!
+    Description: A huszonkettedik betű az Abc-ben!
   W:
     Name: <bold><light_purple>W
-    Description: The twenty-third letter in the alphabet!
+    Description: A huszonharmadik betű az Abc-ben!
   X:
     Name: <bold><green>X
-    Description: The twenty-fourth letter in the alphabet!
+    Description: A huszonnegyedik betű az Abc-ben!
   Y:
     Name: <bold><gold>Y
-    Description: The twenty-fifth letter in the alphabet!
+    Description: A huszonötödik betű az Abc-ben!
   Z:
     Name: <bold><dark_red>Z
-    Description: The twenty-sixth letter in the alphabet!
+    Description: A huszonhatodik betű az Abc-ben!
 Suits:
   Rave:
-    whole-equip: <bold><white>whole </white><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>suit
-    helmet-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Helmet
-    chestplate-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Chestplate
-    leggings-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Leggings
-    boots-name: <bold><aqua>R</aqua><green>a</green><yellow>v</yellow><gold>e </gold><white>Boots
-    Description: Such amazing colors!
+    whole-equip: <bold><white>teljes </white><aqua>B</aqua><green>u</green><yellow>l</yellow><gold>i </gold><white>öltöny
+    helmet-name: <bold><aqua>B</aqua><green>u</green><yellow>l</yellow><gold>i </gold><white>Sisak
+    chestplate-name: <bold><aqua>B</aqua><green>u</green><yellow>l</yellow><gold>i </gold><white>Mellvért
+    leggings-name: <bold><aqua>B</aqua><green>u</green><yellow>l</yellow><gold>i </gold><white>Lábszárvédő
+    boots-name: <bold><aqua>B</aqua><green>u</green><yellow>l</yellow><gold>i </gold><white>Bakancs
+    Description: Szinek mindenfelé!
   Astronaut:
-    whole-equip: <bold><white>whole Astronaut suit
-    helmet-name: <bold><white>Astronaut Helmet
-    chestplate-name: <bold><white>Astronaut Chestplate
-    leggings-name: <bold><white>Astronaut Leggings
-    boots-name: <bold><white>Astronaut Boots
+    whole-equip: <bold><white>teljes Űrhajós öltöny
+    helmet-name: <bold><white>Űrhajós Sisak
+    chestplate-name: <bold><white>Űrhajós Mellvért
+    leggings-name: <bold><white>Űrhajós Lábszárvédő
+    boots-name: <bold><white>Űrhajós Bakancs
     Description: Houston?
   Diamond:
-    whole-equip: <bold><white>whole </white><aqua>Diamond </aqua><white>suit
-    helmet-name: <bold><aqua>Diamond </aqua><white>Helmet
-    chestplate-name: <bold><aqua>Diamond </aqua><white>Chestplate
-    leggings-name: <bold><aqua>Diamond </aqua><white>Leggings
-    boots-name: <bold><aqua>Diamond </aqua><white>Boots
+    whole-equip: <bold><white>teljes </white><aqua>Gyémánt </aqua><white>öltöny
+    helmet-name: <bold><aqua>Gyémánt </aqua><white>Sisak
+    chestplate-name: <bold><aqua>Gyémánt </aqua><white>Mellvért
+    leggings-name: <bold><aqua>Gyémánt </aqua><white>Lábszárvédő
+    boots-name: <bold><aqua>Gyémánt </aqua><white>Bakancs
     Description: |-
-      Show your Mining skills
-      with this amazing outfit!
+      Mutasd be a bányász képességeid!
   Santa:
-    whole-equip: <bold><white>whole </white><dark_red>Santa </dark_red><white>suit
-    helmet-name: <bold><dark_red>Santa </dark_red><white>Helmet
-    chestplate-name: <bold><dark_red>Santa </dark_red><white>Chestplate
-    leggings-name: <bold><dark_red>Santa </dark_red><white>Leggings
-    boots-name: <bold><dark_red>Santa </dark_red><white>Boots
-    Description: Become Santa and deliver presents!
+    whole-equip: <bold><white>teljes </white><dark_red>Télapó </dark_red><white>öltöny
+    helmet-name: <bold><dark_red>Télapó </dark_red><white>Sisak
+    chestplate-name: <bold><dark_red>Télapó </dark_red><white>Mellvért
+    leggings-name: <bold><dark_red>Télapó </dark_red><white>Lábszárvédő
+    boots-name: <bold><dark_red>Télapó </dark_red><white>Bakancs
+    Description: Legyél te a télapó és hozz ajándékokat!
   Frozen:
-    whole-equip: <bold><white>whole </white><aqua>Frozen </aqua><white>suit
-    helmet-name: <bold><aqua>Frozen </aqua><white>Helmet
-    chestplate-name: <bold><aqua>Frozen </aqua><white>Chestplate
-    leggings-name: <bold><aqua>Frozen </aqua><white>Leggings
-    boots-name: <bold><aqua>Frozen </aqua><white>Boots
+    whole-equip: <bold><white>teljes </white><aqua>Fagyott </aqua><white>öltöny
+    helmet-name: <bold><aqua>Fagyott </aqua><white>Sisak
+    chestplate-name: <bold><aqua>Fagyott </aqua><white>Mellvért
+    leggings-name: <bold><aqua>Fagyott </aqua><white>Lábszárvédő
+    boots-name: <bold><aqua>Fagyott </aqua><white>Bakancs
     Description: |-
-      This suit belongs to the
-      Lord of the Frozen Lands!
+      Ez az öltöny a fagyos 
+      földek urának a tulajdona!
   Cursed:
-    whole-equip: <bold><white>whole </white><dark_purple>Cursed </dark_purple><white>suit
-    helmet-name: <bold><dark_purple>Cursed </dark_purple><white>Helmet
-    chestplate-name: <bold><dark_purple>Cursed </dark_purple><white>Chestplate
-    leggings-name: <bold><dark_purple>Cursed </dark_purple><white>Leggings
-    boots-name: <bold><dark_purple>Cursed </dark_purple><white>Boots
-    Description: Mysterious and spooky.
+    whole-equip: <bold><white>teljes </white><dark_purple>Átkozott </dark_purple><white>öltöny
+    helmet-name: <bold><dark_purple>Átkozott </dark_purple><white>Sisak
+    chestplate-name: <bold><dark_purple>Átkozott </dark_purple><white>Mellvért
+    leggings-name: <bold><dark_purple>Átkozott </dark_purple><white>Lábszárvédő
+    boots-name: <bold><dark_purple>Átkozott </dark_purple><white>Bakancs
+    Description: Misztikus és ijesztő.
   Slime:
-    whole-equip: <bold><white>whole </white><green>Slime </green><white>suit
-    helmet-name: <bold><green>Slime </green><white>Helmet
-    chestplate-name: <bold><green>Slime </green><white>Chestplate
-    leggings-name: <bold><green>Slime </green><white>Leggings
-    boots-name: <bold><green>Slime </green><white>Boots
+    whole-equip: <bold><white>teljes </white><green>Nyálka </green><white>öltöny
+    helmet-name: <bold><green>Nyálka </green><white>Sisak
+    chestplate-name: <bold><green>Nyálka </green><white>Mellvért
+    leggings-name: <bold><green>Nyálka </green><white>Lábszárvédő
+    boots-name: <bold><green>Nyálka </green><white>Bakancs
     Description: |-
-      Slimy green suit.
-      The slimes will love it!
-  Equip: <prefix> <blue>You equipped <suitname>!
-  Unequip: <prefix> <blue>You unequipped <suitname>!
-  Suit-Part-Lore: <blue>Suits Part
-  Whole-Equip-Lore: <italic><gray>Equip the whole suit!
+      A nyálkák szeretik!
+  Equip: '<prefix><blue>Felvetted ezt: <suitname>!'
+  Unequip: '<prefix><blue>Levetted ezt: <suitname>!'
+  Suit-Part-Lore: <blue>Öltöny Rész
+  Whole-Equip-Lore: <italic><gray>Vedd fel a teljes öltönyt!
   Must-Remove: [ ]
 Emotes:
-  Equip: <prefix> <blue>You equipped <emotename>
-  Unequip: <prefix> <blue>You unequipped <emotename>
+  Equip: '<prefix><blue>Felvetted ezt: <emotename>'
+  Unequip: '<prefix><blue>Levetted ezt: <emotename>'
   Cry:
-    Name: <bold><blue>Cry
-    Description: Are you really sad? :(
+    Name: <bold><blue>Sírás
+    Description: Tényleg szomorú vagy? :(
   Angry:
-    Name: <bold><red>Angry
-    Description: Show your rage to the other players!
+    Name: <bold><red>Mérges
+    Description: Mutasd a haragod a többi játékosnak!
   Happy:
-    Name: <bold><yellow>Happy
-    Description: Don't worry, be happy!
+    Name: <bold><yellow>Boldog
+    Description: Ne aggódj, legyél boldog!
   Cheeky:
-    Name: <bold><gold>Cheeky
-    Description: You like being cheeky? Well, this emote is for you!
+    Name: <bold><gold>Szemtelen
+    Description: Szemtelennek a szemtelen hangulatjel!
   Love:
-    Name: <bold><dark_red>Love
-    Description: You have beautiful eyes, do you know that?
+    Name: <bold><dark_red>Szerelem
+    Description: Szépek a szemeid, ugye tudod?
   DealWithIt:
-    Name: <bold><gray>Deal With it
-    Description: Do you feel like showing off? This emote is for you!
+    Name: <bold><gray>Dolgozd Fel
+    Description: Szeretsz felvágni?
   Cool:
-    Name: <bold><blue>Cool
-    Description: Keep cool man!
+    Name: <bold><blue>Menő
+    Description: Csak nyugodtan ember!
   Surprised:
-    Name: <bold><gold>Surprised
-    Description: OH LORD!!!
+    Name: <bold><gold>Meglepett
+    Description: OH URAM!!!
   Wink:
-    Name: <bold><green>Wink
-    Description: Having fun? Let someone know you are in on the joke!
+    Name: <bold><green>Kacsint
+    Description: Jól érzed magad? Tudasd a többiekkel hogy érted a viccet!
   RaiseEyebrows:
-    Name: <bold><dark_aqua>Raise Eyebrows
-    Description: Surprised?
+    Name: <bold><dark_aqua>Szemöldök Emelő
+    Description: Meglepődtél?
   ScaryCandle:
-    Name: <bold><dark_purple>Scary Candle
-    Description: Happy Halloween!
+    Name: <bold><dark_purple>Ijesztő Gyertya
+    Description: Boldog Halloweent!
   GlowingPumpkin:
-    Name: <bold><gold>Glowing Pumpkin
-    Description: Jack O'Slime
+    Name: <bold><gold>Világító tök
+    Description: Mosolyog mint egy tökfej
   LovestruckAllay:
-    Name: <bold><aqua>Lovestruck Allay
-    Description: Are we falling in love?
+    Name: <bold><aqua>Szerelmes Allay
+    Description: Szerelembe estünk?
 Projectile-Effects:
-  Equip: <prefix> <blue>You equipped <projectile-effectname>
-  Unequip: <prefix> <blue>You unequipped <projectile-effectname>
+  Equip: '<prefix><blue>Felvetted ezt: <projectile-effectname>'
+  Unequip: '<prefix><blue>Levetted ezt: <projectile-effectname>'
   Rainbow:
-    name: <bold><rainbow>Rainbow
-    Description: Rainbow-colored particles
+    name: <bold><rainbow>Szivárvány
+    Description: Szivárvány színű effektek
   Christmas:
-    name: <bold><dark_red>Christ</dark_red><white>mas
-    Description: Merry Christmas!
+    name: <bold><dark_red>Karác</dark_red><white>sony
+    Description: Boldog Karácsonyt!
   RedstoneHelix:
-    name: <bold><dark_red>Redstone Helix
-    Description: Rotating, red particles
+    name: <bold><dark_red>Vöröskőspirál
+    Description: Forgó, piros effektek
   FlameHelix:
-    name: <bold><red>Flame Helix
-    Description: Rotating flames
+    name: <bold><red>Lángspirál
+    Description: Forgó lángok
   CursedHelix:
-    name: <bold><dark_purple>Cursed Helix
-    Description: Rotating, purple particles
+    name: <bold><dark_purple>Átkozott spirál
+    Description: Forgó, lila effektek
   SoulFireHelix:
-    name: <bold><aqua>Soul Fire Helix
-    Description: Rotating, cyan flames
+    name: <bold><aqua>Lélek Tűzspirál
+    Description: Forgó, kék lángok
   Spark:
-    name: <bold><white>Spark
-    Description: Sparkling, white stars
+    name: <bold><white>Szikra
+    Description: Szikrázó, fehér csillagok
   Redstone:
-    name: <bold><dark_red>Redstone
-    Description: Small, red clouds
+    name: <bold><dark_red>Vöröskő
+    Description: Kicsi, piros felhők
   Flame:
-    name: <bold><red>Flame
-    Description: Small flames
+    name: <bold><red>Láng
+    Description: Kis lángok
   Water:
-    name: <bold><blue>Water
-    Description: Blue waterdrops
+    name: <bold><blue>Víz
+    Description: Kék vízcseppek
   Witch:
     name: <bold><dark_purple>Boszorkány
-    Description: Purple crosses
+    Description: Lila keresztek
   Emerald:
-    name: <bold><dark_green>Emerald
-    Description: Green stars
+    name: <bold><dark_green>Smaragd
+    Description: Zöld csillagok
   Note:
-    name: <bold><yellow>Note
-    Description: Colorful notes
+    name: <bold><yellow>Jegyzet
+    Description: Színes jegyzetek
   Love:
-    name: <bold><light_purple>Love
-    Description: Red hearts
+    name: <bold><light_purple>Szerelem
+    Description: Piros szívek
   Lava:
-    name: <bold><dark_red>Lava
-    Description: Lava bubbles
+    name: <bold><dark_red>Láva
+    Description: Láva buborékok
   Snow:
-    name: <bold><white>Snow
-    Description: Snowball particles
+    name: <bold><white>Hó
+    Description: Hógolyó effektek
   Slime:
-    name: <bold><green>Slime
-    Description: Slimeball particles
+    name: <bold><green>Nyálka
+    Description: Nyálkagolyó effektek
   Crit:
     name: <bold><gray>Crit
-    Description: Light brown crosses
+    Description: Világosbarna keresztek
   MagicCrit:
-    name: <bold><dark_aqua>Magic Crit
-    Description: Cyan stars
+    name: <bold><dark_aqua>Varázslatos Crit
+    Description: Kék csillagok
   Explosion:
-    name: <bold><dark_red>Explosion
-    Description: BOOM!
+    name: <bold><dark_red>Robbanás
+    Description: BUMM!
   Cloud:
-    name: <bold><white>Cloud
-    Description: White clouds
+    name: <bold><white>Felhő
+    Description: Fehér felhők
   Smoke:
-    name: <bold><gray>Smoke
-    Description: Small, gray clouds
+    name: <bold><gray>Füst
+    Description: Kicsi, szürke felhők
   Portal:
-    name: <bold><dark_purple>Portal
-    Description: Small, purple clouds
+    name: <bold><dark_purple>Portál
+    Description: Kicsi, lila felhők
   DragonBreath:
-    name: <bold><light_purple>Dragon Breath
-    Description: Small, purple clouds
+    name: <bold><light_purple>Sárkány Lehelet
+    Description: Kicsi, lila felhők
   SquidInk:
-    name: <bold><blue>Squid Ink
-    Description: Black clouds
+    name: <bold><blue>Tintahal Tinta
+    Description: Fekete felhők
   SoulFireFlame:
-    name: <bold><aqua>Soul Fire Flame
-    Description: Small, cyan flames
+    name: <bold><aqua>Lélek Tűz Láng
+    Description: Kicsi, kék lángok
   Snowflake:
-    name: <bold><white>Snowflake
-    Description: Small, white clouds
+    name: <bold><white>Hópehely
+    Description: Kicsi, fehér felhők
   GlowSquid:
-    name: <bold><dark_aqua>Glow Squid
-    Description: Teal stars
+    name: <bold><dark_aqua>Világító Tintahal
+    Description: Zöldeskék csillagok
   GlowSquidInk:
-    name: <bold><dark_aqua>Glow Squid Ink
-    Description: Aquamarine clouds
+    name: <bold><dark_aqua>Világító Tintahal Tinta
+    Description: Akvamarin felhők
   Scrape:
-    name: <bold><dark_green>Scrape
-    Description: Teal stars
+    name: <bold><dark_green>Kaparás
+    Description: Zöldeskék csillagok
   WaxOff:
-    name: <bold><white>Wax Off
-    Description: White stars
+    name: <bold><white>Gyantázzuk Le
+    Description: Fehér csillagok
   WaxOn:
-    name: <bold><gold>Wax On
-    Description: Orange stars
+    name: <bold><gold>Gyantázzuk Fel
+    Description: Narancs csillagok
   SculkSoul:
-    name: <bold><aqua>Sculk Soul
-    Description: Cyan souls
+    name: <bold><aqua>Sculk Lélek
+    Description: Kék lelkek
 Death-Effects:
-  Equip: <prefix> <blue>You equipped <death-effectname>
-  Unequip: <prefix> <blue>You unequipped <death-effectname>
+  Equip: '<prefix><blue>Felvetted ezt: <death-effectname>'
+  Unequip: '<prefix><blue>Levetted ezt: <death-effectname>'
   Explosion:
-    name: <bold><dark_red>Explosion
-    Description: BOOM!
+    name: <bold><dark_red>Robbanás
+    Description: BUMM!
   Firework:
-    name: <bold><gray>Firework Rocket
+    name: <bold><gray>Tűzijáték Rakéta
     Description: |-
-      Congratulations!
-      You... died?
+      Gratulálok!
+      Meghaltál...?
   Lightning:
-    name: <bold><white>Lightning
+    name: <bold><white>Villám
     Description: '⚡ ZAP!'
-Enabled-SelfMorphView: <prefix> <blue>You enabled self view for morphs!
-Disabled-SelfMorphView: <prefix> <blue>You disabled self view for morphs!
-Enabled-Gadgets: <prefix> <blue>You enabled gadgets!
-Disabled-Gadgets: <prefix> <blue>You disabled gadgets!
-Not-Allowed-From-Console: <bold><red>This can't be executed from console!
-World-Disabled: <prefix> <bold><red>Cosmetics are disabled in this world!
-Region-Disabled: <prefix> <bold><red>Cosmetics are disabled in this area!
-Region-Disabled-Category: <prefix> <bold><red><category> cosmetics are disabled in this area!
-Disabled-Command-Message: <prefix> <bold><red>You can't use this command while cosmetics are equipped!
-Not-Allowed-In-Vanish: <prefix> <bold><red>You can't use cosmetics while in vanish!
-Too-Long: Too long, try again
-Cannot-Disable-Gadgets: <prefix> <bold><red>You cannot disable gadgets.
+Enabled-SelfMorphView: <prefix><blue>Bekapcsoltad a saját nézet változásokat!
+Disabled-SelfMorphView: <prefix><blue>Kikapcsoltad a saját nézet álcákat!
+Enabled-Gadgets: <prefix><blue>Bekapcsoltad a kütyüket!
+Disabled-Gadgets: <prefix><blue>Kikapcsoltad a kütyüket!
+Not-Allowed-From-Console: <bold><red>Ez nem hajtható végre a konzolból!
+World-Disabled: <prefix><bold><red>A kozmetikumok ki vannak kapcsolva ebben világban!
+Region-Disabled: <prefix><bold><red>A kozmetikumok ki vannak kapcsolva ezen a területen!
+Region-Disabled-Category: <prefix><bold><red><category> kozmetikumok ki vannak kapcsolva ezen a területen!
+Disabled-Command-Message: <prefix><bold><red>Nem használhatod ezt a parancsot miközben kozmetikumokat használsz!
+Not-Allowed-In-Vanish: <prefix><bold><red>Nem használsz kozmetikumokat amíg láthatatlan vagy!
+Too-Long: Túl hosszú, próbáld újra
+Cannot-Disable-Gadgets: <prefix><bold><red>Nem kapcsolhatod ki a kütyüket.
 Must-Remove:
-  Hats: <prefix> <bold><red>You must remove your helmet to equip a hat!
+  Hats: <prefix><bold><red>El kell távolítanod a sisakodat hogy felvegyél egy kalapot!
   Suits:
-    HELMET: <prefix> <bold><red>You must remove your helmet to equip a suit helmet!
-    CHESTPLATE: <prefix> <bold><red>You must remove your chestplate to equip a suit chestplate!
-    LEGGINGS: <prefix> <bold><red>You must remove your leggings to equip suit leggings!
-    BOOTS: <prefix> <bold><red>You must remove your boots to equip suit boots!
-  Emotes: <prefix> <bold><red>You must remove your helmet to equip an emote!
-  Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
-  Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
-Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+    HELMET: <prefix><bold><red>El kell távolítanod a sisakodat hogy felvegyél egy öltöny sisakot!
+    CHESTPLATE: <prefix><bold><red>El kell távolítanod a mellvértedet hogy egy öltöny mellvértet felvegyél!
+    LEGGINGS: <prefix><bold><red>El kell távolítanod a lábszárvédődet hogy felvehesd az öltöny lábszárvédőt!
+    BOOTS: <prefix><bold><red>El kell távolítanod a bakancsodat hogy felvehesd az öltöny bakancsokat!
+  Emotes: <prefix><bold><red>El kell távolítanod a sisakodat hogy felvehess egy hangulatjelet!
+  Gadgets: <prefix><bold><red>Törölnöd kell a hotbarodban a(z) <slot> slotot hogy felvehesd a kütyüt!
+  Mounts: <prefix><bold><red>Törölnöd kell a hotbarodban a(z) <slot> slotot hogy felvehesd ezt a járgányt!
+Use-Rename-Pet-Command: <prefix><red>Használd az <yellow>/uc rename</yellow> parancsot az átnevezéshez
