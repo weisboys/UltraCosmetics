@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.cosmetics.PlayerAffectingCosmetic;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
+import com.cryptomorin.xseries.XEntityType;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.particles.ParticleDisplay;
 import com.cryptomorin.xseries.particles.XParticle;
@@ -33,6 +34,7 @@ import java.util.List;
 public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
     private static final FireworkEffect FIREWORK_EFFECT = FireworkEffect.builder().flicker(false).trail(false)
             .with(FireworkEffect.Type.BALL_LARGE).withColor(Color.RED).withFade(Color.ORANGE).build();
+    private static final EntityType FIREWORK_ENTITY = XEntityType.FIREWORK_ROCKET.get();
     private static final ParticleDisplay FLAME = ParticleDisplay.of(XParticle.FLAME).withCount(60).withExtra(0.4f);
 
     private final List<Firework> fireworkList = new ArrayList<>();
@@ -51,7 +53,7 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
         Vector vector = location.getDirection();
 
         for (int i = 0; i < 20; i++) {
-            Firework firework = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
+            Firework firework = (Firework) location.getWorld().spawnEntity(location, FIREWORK_ENTITY);
             firework.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true));
             location.add(vector);
             fireworkList.add(firework);
@@ -68,7 +70,7 @@ public class GadgetQuakeGun extends Gadget implements PlayerAffectingCosmetic {
                 }
             }
         }
-        Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> {
+        Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
             for (Firework firework : fireworkList) {
                 firework.remove();
             }

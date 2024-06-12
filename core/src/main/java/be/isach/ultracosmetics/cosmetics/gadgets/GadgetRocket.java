@@ -23,11 +23,9 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
-import org.spigotmc.event.entity.EntityDismountEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -238,22 +236,28 @@ public class GadgetRocket extends Gadget implements Updatable {
     }
 
     @Override
+    public void onEquip() {
+        super.onEquip();
+        getUltraCosmetics().getEntityDismountListener().addHandler(this, this::onDismount);
+    }
+
+    @Override
     public void onClear() {
         stillEquipped = false;
         cleanup();
         rollback.cleanup();
+        getUltraCosmetics().getEntityDismountListener().removeHandler(this);
     }
 
-    @EventHandler
-    public void onDismount(EntityDismountEvent event) {
-        if (event.getEntity() != getPlayer()) return;
-        if (event.getDismounted() != playerVehicle) return;
+    public boolean onDismount(Entity who, Entity dismounted) {
+        if (who != getPlayer() || dismounted != playerVehicle) return false;
         disableFlight();
         cancel();
         if (activeTask != null) {
             activeTask.stop();
             activeTask = null;
         }
+        return false;
     }
 
     private void enableFlight() {

@@ -37,7 +37,7 @@ import java.util.List;
  * @since 08-08-2015
  */
 public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, Updatable {
-
+    private static final Particle BLOCK_PARTICLE = XParticle.BLOCK.get();
     private final XSound.SoundPlayer useSound;
     private final XSound.SoundPlayer smashSound;
     private final XSound.SoundPlayer landSound;
@@ -142,7 +142,7 @@ public class GadgetSmashDown extends Gadget implements PlayerAffectingCosmetic, 
         event.setCancelled(true);
         FallingBlock fb = (FallingBlock) event.getEntity();
         BlockData data = fb.getBlockData();
-        fb.getWorld().spawnParticle(Particle.BLOCK_CRACK, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
+        fb.getWorld().spawnParticle(BLOCK_PARTICLE, fb.getLocation(), 50, 0, 0, 0, 0.4d, data);
         landSound.play();
         event.getEntity().remove();
     }

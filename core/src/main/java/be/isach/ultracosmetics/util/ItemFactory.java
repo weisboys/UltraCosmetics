@@ -199,7 +199,7 @@ public class ItemFactory {
 
     public static void addGlow(ItemStack item) {
         ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.addEnchant(Enchantment.ARROW_DAMAGE, 1, true);
+        itemMeta.addEnchant(Enchantment.MENDING, 1, true);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(itemMeta);
     }

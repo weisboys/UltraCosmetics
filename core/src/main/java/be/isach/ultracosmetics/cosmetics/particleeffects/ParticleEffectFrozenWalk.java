@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.util.Vector;
@@ -15,6 +16,7 @@ import org.bukkit.util.Vector;
  * @since 10-12-2015
  */
 public class ParticleEffectFrozenWalk extends ParticleEffect {
+    private static final Particle ITEM_PARTICLE = XParticle.ITEM.get();
 
     public ParticleEffectFrozenWalk(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -28,8 +30,8 @@ public class ParticleEffectFrozenWalk extends ParticleEffect {
         Location locationRight = getPlayer().getLocation().add(vectorRight);
         locationLeft.setY(getPlayer().getLocation().getY());
         locationRight.setY(getPlayer().getLocation().getY());
-        locationLeft.getWorld().spawnParticle(Particle.ITEM_CRACK, locationLeft, 0, 0, 0, 0, 0, XMaterial.SNOW.parseItem());
-        locationLeft.getWorld().spawnParticle(Particle.ITEM_CRACK, locationRight, 0, 0, 0, 0, 0, XMaterial.SNOW.parseItem());
+        locationLeft.getWorld().spawnParticle(ITEM_PARTICLE, locationLeft, 0, 0, 0, 0, 0, XMaterial.SNOW.parseItem());
+        locationLeft.getWorld().spawnParticle(ITEM_PARTICLE, locationRight, 0, 0, 0, 0, 0, XMaterial.SNOW.parseItem());
     }
 
     public static Vector getLeftVector(Location loc) {

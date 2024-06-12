@@ -8,10 +8,10 @@ import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.mounts.*;
 import be.isach.ultracosmetics.version.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
+import com.cryptomorin.xseries.XEntityType;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
@@ -33,7 +33,7 @@ public class MountType extends CosmeticEntType<Mount> {
     private final double defaultSpeed;
     private final double movementSpeed;
 
-    private MountType(String configName, XMaterial material, EntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass, List<XMaterial> defaultBlocks) {
+    private MountType(String configName, XMaterial material, XEntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass, List<XMaterial> defaultBlocks) {
         super(Category.MOUNTS, configName, material, entityType, mountClass);
         this.repeatDelay = repeatDelay;
         this.defaultBlocks = defaultBlocks;
@@ -46,7 +46,7 @@ public class MountType extends CosmeticEntType<Mount> {
         }
     }
 
-    private MountType(String configName, XMaterial material, EntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass) {
+    private MountType(String configName, XMaterial material, XEntityType entityType, int repeatDelay, double defaultSpeed, Class<? extends Mount> mountClass) {
         this(configName, material, entityType, repeatDelay, defaultSpeed, mountClass, null);
     }
 
@@ -93,25 +93,25 @@ public class MountType extends CosmeticEntType<Mount> {
 
     public static void register(ServerVersion version) {
         VersionManager vm = UltraCosmeticsData.get().getVersionManager();
-        new MountType("DruggedHorse", XMaterial.SUGAR, EntityType.HORSE, 2, 1.1, MountDruggedHorse.class);
-        new MountType("GlacialSteed", XMaterial.PACKED_ICE, EntityType.HORSE, 2, 0.4, MountGlacialSteed.class, Collections.singletonList(XMaterial.SNOW_BLOCK));
-        new MountType("MountOfFire", XMaterial.BLAZE_POWDER, EntityType.HORSE, 2, 0.4, MountOfFire.class, Arrays.asList(XMaterial.ORANGE_TERRACOTTA, XMaterial.YELLOW_TERRACOTTA, XMaterial.RED_TERRACOTTA));
-        new MountType("Snake", XMaterial.WHEAT_SEEDS, EntityType.SHEEP, 2, 0.3, MountSnake.class);
-        new MountType("MoltenSnake", XMaterial.MAGMA_CREAM, EntityType.MAGMA_CUBE, 1, 0.4, MountMoltenSnake.class);
-        new MountType("SlimeSnake", XMaterial.SLIME_BLOCK, EntityType.SLIME, 1, 0.4, MountSlimeSnake.class);
-        new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, EntityType.HORSE, 2, 0.4, MountOfWater.class, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA));
-        new MountType("EcologistHorse", XMaterial.GREEN_DYE, EntityType.HORSE, 2, 0.4, MountEcologistHorse.class, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA));
-        new MountType("Rudolph", XMaterial.DEAD_BUSH, EntityType.MULE, 1, 0.4, MountRudolph.class);
-        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, EntityType.ZOMBIE_HORSE, 2, 0.4, MountWalkingDead.class);
-        new MountType("InfernalHorror", XMaterial.BONE, EntityType.SKELETON_HORSE, 2, 0.4, MountInfernalHorror.class);
-        new MountType("Horse", XMaterial.SADDLE, EntityType.HORSE, 0, 0.3, MountHorse.class);
-        new MountType("Donkey", XMaterial.CHEST, EntityType.DONKEY, 0, 0.25, MountDonkey.class);
-        new MountType("Mule", XMaterial.ENDER_CHEST, EntityType.MULE, 0, 0.25, MountMule.class);
-        new MountType("Pig", XMaterial.PORKCHOP, EntityType.PIG, 0, 0.35, MountPig.class);
+        new MountType("DruggedHorse", XMaterial.SUGAR, XEntityType.HORSE, 2, 1.1, MountDruggedHorse.class);
+        new MountType("GlacialSteed", XMaterial.PACKED_ICE, XEntityType.HORSE, 2, 0.4, MountGlacialSteed.class, Collections.singletonList(XMaterial.SNOW_BLOCK));
+        new MountType("MountOfFire", XMaterial.BLAZE_POWDER, XEntityType.HORSE, 2, 0.4, MountOfFire.class, Arrays.asList(XMaterial.ORANGE_TERRACOTTA, XMaterial.YELLOW_TERRACOTTA, XMaterial.RED_TERRACOTTA));
+        new MountType("Snake", XMaterial.WHEAT_SEEDS, XEntityType.SHEEP, 2, 0.3, MountSnake.class);
+        new MountType("MoltenSnake", XMaterial.MAGMA_CREAM, XEntityType.MAGMA_CUBE, 1, 0.4, MountMoltenSnake.class);
+        new MountType("SlimeSnake", XMaterial.SLIME_BLOCK, XEntityType.SLIME, 1, 0.4, MountSlimeSnake.class);
+        new MountType("MountOfWater", XMaterial.LIGHT_BLUE_DYE, XEntityType.HORSE, 2, 0.4, MountOfWater.class, Arrays.asList(XMaterial.LIGHT_BLUE_TERRACOTTA, XMaterial.CYAN_TERRACOTTA, XMaterial.BLUE_TERRACOTTA));
+        new MountType("EcologistHorse", XMaterial.GREEN_DYE, XEntityType.HORSE, 2, 0.4, MountEcologistHorse.class, Arrays.asList(XMaterial.LIME_TERRACOTTA, XMaterial.GREEN_TERRACOTTA));
+        new MountType("Rudolph", XMaterial.DEAD_BUSH, XEntityType.MULE, 1, 0.4, MountRudolph.class);
+        new MountType("WalkingDead", XMaterial.ROTTEN_FLESH, XEntityType.ZOMBIE_HORSE, 2, 0.4, MountWalkingDead.class);
+        new MountType("InfernalHorror", XMaterial.BONE, XEntityType.SKELETON_HORSE, 2, 0.4, MountInfernalHorror.class);
+        new MountType("Horse", XMaterial.SADDLE, XEntityType.HORSE, 0, 0.3, MountHorse.class);
+        new MountType("Donkey", XMaterial.CHEST, XEntityType.DONKEY, 0, 0.25, MountDonkey.class);
+        new MountType("Mule", XMaterial.ENDER_CHEST, XEntityType.MULE, 0, 0.25, MountMule.class);
+        new MountType("Pig", XMaterial.PORKCHOP, XEntityType.PIG, 0, 0.35, MountPig.class);
 
         if (version.isMobChipAvailable()) {
-            new MountType("NyanSheep", XMaterial.CYAN_DYE, EntityType.SHEEP, 1, 0.4, MountNyanSheep.class);
-            new MountType("Dragon", XMaterial.DRAGON_EGG, EntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
+            new MountType("NyanSheep", XMaterial.CYAN_DYE, XEntityType.SHEEP, 1, 0.4, MountNyanSheep.class);
+            new MountType("Dragon", XMaterial.DRAGON_EGG, XEntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
                 @Override
                 public void setupConfig(CustomConfiguration config, String path) {
                     super.setupConfig(config, path);
@@ -120,16 +120,16 @@ public class MountType extends CosmeticEntType<Mount> {
             };
         }
 
-        new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, EntityType.STRIDER, 0, 0.35, MountStrider.class);
+        new MountType("Strider", XMaterial.WARPED_FUNGUS_ON_A_STICK, XEntityType.STRIDER, 0, 0.35, MountStrider.class);
 
         if (version.isAtLeast(ServerVersion.v1_20)) {
-            new MountType("Camel", XMaterial.CACTUS, EntityType.CAMEL, 0, 0.35, MountCamel.class);
+            new MountType("Camel", XMaterial.CACTUS, XEntityType.CAMEL, 0, 0.35, MountCamel.class);
         }
 
         if (vm.isUsingNMS()) {
-            new MountType("Slime", XMaterial.SLIME_BALL, EntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
-            new MountType("Spider", XMaterial.COBWEB, EntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
-            new MountType("HypeCart", XMaterial.MINECART, EntityType.MINECART, 1, 0, MountHypeCart.class);
+            new MountType("Slime", XMaterial.SLIME_BALL, XEntityType.SLIME, 2, 0.8, vm.getModule().getSlimeClass());
+            new MountType("Spider", XMaterial.COBWEB, XEntityType.SPIDER, 2, 0.4, vm.getModule().getSpiderClass());
+            new MountType("HypeCart", XMaterial.MINECART, XEntityType.MINECART, 1, 0, MountHypeCart.class);
         }
     }
 }

@@ -16,7 +16,6 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
-import org.spigotmc.event.entity.EntityDismountEvent;
 
 /**
  * Represents an instance of a ethereal pearl gadget summoned by a player.
@@ -37,10 +36,17 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
     }
 
     @Override
+    public void onEquip() {
+        super.onEquip();
+        getUltraCosmetics().getEntityDismountListener().addHandler(this, this::onEntityDismount);
+    }
+
+    @Override
     public void onClear() {
         if (pearl != null) {
             pearl.remove();
         }
+        getUltraCosmetics().getEntityDismountListener().removeHandler(this);
     }
 
     @Override
@@ -75,11 +81,11 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
         }
     }
 
-    @EventHandler
-    public void onEntityDismount(EntityDismountEvent event) {
-        if (pearl != null && event.getEntity() == getPlayer()) {
+    public boolean onEntityDismount(Entity who, Entity dismounted) {
+        if (pearl != null && who == getPlayer()) {
             endRide();
         }
+        return false;
     }
 
     @EventHandler

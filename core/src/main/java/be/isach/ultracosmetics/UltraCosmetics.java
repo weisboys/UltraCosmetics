@@ -15,6 +15,7 @@ import be.isach.ultracosmetics.hook.DiscordSRVHook;
 import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.hook.PlayerAuctionsHook;
 import be.isach.ultracosmetics.hook.TownyHook;
+import be.isach.ultracosmetics.listeners.EntityDismountListener;
 import be.isach.ultracosmetics.listeners.MainListener;
 import be.isach.ultracosmetics.listeners.PlayerListener;
 import be.isach.ultracosmetics.listeners.PriorityListener;
@@ -140,6 +141,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     private UnmovableItemListener unmovableItemListener;
     private TreasureChestManager treasureChestManager;
+    private EntityDismountListener entityDismountListener;
 
     /**
      * Manages WorldGuard flags.
@@ -507,6 +509,8 @@ public class UltraCosmetics extends JavaPlugin {
         pluginManager.registerEvents(new EntitySpawningManager(), this);
         unmovableItemListener = new UnmovableItemListener(this);
         pluginManager.registerEvents(unmovableItemListener, this);
+        // No need to register this one, it doesn't have any event handlers of its own
+        entityDismountListener = new EntityDismountListener(this);
     }
 
     /**
@@ -781,6 +785,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public UnmovableItemListener getUnmovableItemListener() {
         return unmovableItemListener;
+    }
+
+    public EntityDismountListener getEntityDismountListener() {
+        return entityDismountListener;
     }
 
     public TreasureChestManager getTreasureChestManager() {

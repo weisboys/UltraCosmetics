@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PetPathfinder;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.XParticle;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.Bukkit;
@@ -32,7 +33,7 @@ import java.util.List;
  * @since 08-27-2015
  */
 public class MorphChicken extends Morph implements Updatable {
-
+    private static final Particle BLOCK_PARTICLE = XParticle.BLOCK.get();
     private final List<Item> items = new ArrayList<>();
     private final List<Chicken> chickens = new ArrayList<>();
     private final XSound.SoundPlayer eggSound;
@@ -60,7 +61,7 @@ public class MorphChicken extends Morph implements Updatable {
             public void run() {
                 chickens.clear();
                 for (Item i : items) {
-                    i.getWorld().spawnParticle(Particle.BLOCK_CRACK, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.parseMaterial().createBlockData());
+                    i.getWorld().spawnParticle(BLOCK_PARTICLE, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.parseMaterial().createBlockData());
                     spawnSound.atLocation(i.getLocation()).play();
                     final Chicken chicken = (Chicken) i.getWorld().spawnEntity(i.getLocation(), EntityType.CHICKEN);
                     chicken.setAgeLock(true);

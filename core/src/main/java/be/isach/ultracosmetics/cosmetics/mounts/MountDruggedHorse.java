@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.Particles;
+import com.cryptomorin.xseries.XPotion;
 import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -12,7 +13,6 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -49,7 +49,7 @@ public class MountDruggedHorse extends MountAbstractHorse {
         horse.setJumpStrength(1.3);
 
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
-            getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 10000000, 1));
+            getPlayer().addPotionEffect(new PotionEffect(XPotion.NAUSEA.getPotionEffectType(), 10000000, 1));
             effectPlayer = getPlayer();
         }, 1);
     }
@@ -84,7 +84,7 @@ public class MountDruggedHorse extends MountAbstractHorse {
     @Override
     protected void onClear() {
         if (effectPlayer != null) {
-            effectPlayer.removePotionEffect(PotionEffectType.CONFUSION);
+            effectPlayer.removePotionEffect(XPotion.NAUSEA.getPotionEffectType());
         }
         super.onClear();
     }

@@ -3,6 +3,7 @@ package be.isach.ultracosmetics.cosmetics.gadgets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import com.cryptomorin.xseries.XEntityType;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.entity.EntityType;
@@ -17,6 +18,7 @@ import org.bukkit.metadata.FixedMetadataValue;
  * @since 11-11-2015
  */
 public class GadgetFirework extends Gadget {
+    private static final EntityType FIREWORK_ENTITY = XEntityType.FIREWORK_ROCKET.get();
 
     public GadgetFirework(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
@@ -24,7 +26,7 @@ public class GadgetFirework extends Gadget {
 
     @Override
     protected void onRightClick() {
-        Firework fw = (Firework) getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), EntityType.FIREWORK);
+        Firework fw = (Firework) getPlayer().getWorld().spawnEntity(getPlayer().getLocation(), FIREWORK_ENTITY);
         FireworkMeta fwm = fw.getFireworkMeta();
 
         int rt = RANDOM.nextInt(5);

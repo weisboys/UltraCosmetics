@@ -14,6 +14,7 @@ public class DeathEffectLightning extends DeathEffect {
         super(owner, type, ultraCosmetics);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void displayParticles(Player player) {
         player.getWorld().spigot().strikeLightningEffect(player.getLocation(), silent);
