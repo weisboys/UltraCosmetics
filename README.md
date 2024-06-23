@@ -1,5 +1,5 @@
 <!-- markdownlint-disable-next-line -->
-![Logo](.github/readme-assets/logo.png)
+![Logo](.github/ASSETS/logo.png)
 
 [![Version](https://img.shields.io/spiget/version/10905?label=version)][spigotmc-link]
 [![Discord](https://img.shields.io/discord/185055040036143104?color=404eed&label=Discord&logo=discord&logoColor=ffffff)][discord-invite]
