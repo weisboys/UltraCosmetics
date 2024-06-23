@@ -52,7 +52,7 @@ dependencies {
     compileOnly 'com.mojang:authlib:2.3.31'
     // used by the update checker
     compileOnly 'com.googlecode.json-simple:json-simple:1.1.1'
-    library 'com.github.cryptomorin:XSeries:11.0.0'
+    library 'com.github.cryptomorin:XSeries:11.1.0'
     //api fileTree(dir: '.', include: ['XSeries-*.jar'])
     implementation 'org.bstats:bstats-bukkit:3.0.2'
     compileOnly 'net.luckperms:api:5.4'
