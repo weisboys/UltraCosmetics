@@ -16,6 +16,7 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v4.1.7
 
+      # https://hub.spigotmc.org/jenkins/job/BuildTools
       - name: Download BuildTools
         run: wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 
