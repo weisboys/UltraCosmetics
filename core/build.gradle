@@ -7,7 +7,7 @@ bukkit {
     name = "UltraCosmetics"
     authors = ['datatags']
     main = 'be.isach.ultracosmetics.UltraCosmetics'
-    apiVersion = "1.17" // Earliest version to support Java 17
+    apiVersion = "1.17"
     softDepend = ['LibsDisguises', 'Vault', 'PlaceholderAPI', 'PlayerPoints', 'WorldGuard', 'Essentials', 'LuckPerms', 'DiscordSRV', 'ChestSort', 'Towny', 'PEconomy', 'PlayerAuctions', 'CoinsEngine', 'Treasury']
     commands {
         ultracosmetics {
@@ -36,8 +36,6 @@ bukkit {
 }
 
 dependencies {
-    // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
-    // ideally matches the dependency version of the latest NMS module
     compileOnly 'org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT'
     compileOnly('LibsDisguises:LibsDisguises:10.0.44') {
         exclude group: 'org.spigotmc'
@@ -50,7 +48,6 @@ dependencies {
     compileOnly 'org.black_ixx:playerpoints:3.2.7'
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.9'
     compileOnly 'com.mojang:authlib:2.3.31'
-    // used by the update checker
     compileOnly 'com.googlecode.json-simple:json-simple:1.1.1'
     library 'com.github.cryptomorin:XSeries:11.1.0'
     //api fileTree(dir: '.', include: ['XSeries-*.jar'])
@@ -72,15 +69,13 @@ dependencies {
     compileOnly "com.olziedev:playerauctions-api:1.28.1"
     compileOnly files('libs/CoinsEngine-2.1.1.jar')
     compileOnly files('libs/NexEngine.jar')
-    compileOnly(project(":legacy-events")) // Shaded by root project
+    compileOnly(project(":legacy-events"))
 }
 
 shadowJar {
     // Causes shadow jar to overwrite normal jar, which makes it work with Jitpack
     archiveClassifier = ''
-    // removes unused classes in 'implementation' path dependencies
     minimize {
-        // Loads classes reflectively
         exclude(dependency('com.github.datatags.MobChipLite:.*:.*'))
     }
     def path = 'be.isach.ultracosmetics.shaded'
