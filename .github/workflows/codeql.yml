@@ -31,7 +31,8 @@ jobs:
         with:
           languages: 'java'
 
-      - run: |
+      - name: Build
+        run: |
          echo "Run, Build Application using script"
          ./gradlew --no-daemon -S core:testClasses
 
