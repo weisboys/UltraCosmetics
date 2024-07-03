@@ -31,9 +31,10 @@ jobs:
         with:
           languages: 'java'
 
-      - run: |
-         echo "Run, Build Application using script"
-         ./gradlew --no-daemon -S core:testClasses
+      - name: Build
+        run: |
+          echo "Run, Build Application using script"
+          ./gradlew --no-daemon -S core:testClasses
 
       # https://github.com/github/codeql-action
       - name: Perform CodeQL Analysis

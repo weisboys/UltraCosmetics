@@ -5,38 +5,6 @@ plugins {
     id 'net.minecrell.plugin-yml.bukkit' version '0.6.0'
 }
 
-bukkit {
-    name = "UltraCosmetics"
-    authors = ['datatags']
-    main = 'be.isach.ultracosmetics.UltraCosmetics'
-    apiVersion = "1.17"
-    softDepend = ['LibsDisguises', 'Vault', 'PlaceholderAPI', 'PlayerPoints', 'WorldGuard', 'Essentials', 'LuckPerms', 'DiscordSRV', 'ChestSort', 'Towny', 'PEconomy', 'PlayerAuctions', 'CoinsEngine', 'Treasury']
-    commands {
-        ultracosmetics {
-            aliases = ['uc', 'cosmetics']
-            description = 'Main command of UltraCosmetics'
-            usage = '/<command>'
-        }
-    }
-    permissions {
-        'ultracosmetics.openmenu' {
-            setDefault('TRUE')
-        }
-        'ultracosmetics.receivechest' {
-            setDefault('TRUE')
-        }
-        'ultracosmetics.treasurechests.buykey' {
-            setDefault('TRUE')
-        }
-        'ultracosmetics.bypass.disabledcommands' {
-            setDefault('OP')
-        }
-        'ultracosmetics.bypass.cooldown' {
-            setDefault('FALSE')
-        }
-    }
-}
-
 dependencies {
     // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
     // Ideally matches the dependency version of the latest NMS module
@@ -109,6 +77,38 @@ shadowJar {
     relocate('org.bstats', path + '.metrics')
     relocate('net.wesjd', path + '.anvilgui')
     relocate('me.gamercoder215.mobchip', path + '.mobchip')
+}
+
+bukkit {
+    name = "UltraCosmetics"
+    authors = ['datatags']
+    main = 'be.isach.ultracosmetics.UltraCosmetics'
+    apiVersion = "1.17"
+    softDepend = ['LibsDisguises', 'Vault', 'PlaceholderAPI', 'PlayerPoints', 'WorldGuard', 'Essentials', 'LuckPerms', 'DiscordSRV', 'ChestSort', 'Towny', 'PEconomy', 'PlayerAuctions', 'CoinsEngine', 'Treasury']
+    commands {
+        ultracosmetics {
+            aliases = ['uc', 'cosmetics']
+            description = 'Main command of UltraCosmetics'
+            usage = '/<command>'
+        }
+    }
+    permissions {
+        'ultracosmetics.openmenu' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.receivechest' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.treasurechests.buykey' {
+            setDefault('TRUE')
+        }
+        'ultracosmetics.bypass.disabledcommands' {
+            setDefault('OP')
+        }
+        'ultracosmetics.bypass.cooldown' {
+            setDefault('FALSE')
+        }
+    }
 }
 
 publishing {
