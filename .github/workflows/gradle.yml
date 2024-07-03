@@ -9,16 +9,20 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       # https://github.com/actions/checkout
       - name: Check out Git repository
         uses: actions/checkout@v4.1.7
 
-      # https://hub.spigotmc.org/jenkins/job/BuildTools
-      - name: Download BuildTools
-        run: wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+      # https://github.com/gradle/gradle-build-action
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3.3.2
+
+      # https://github.com/gradle/wrapper-validation-action
+      - name: Wrapper validation
+        uses: gradle/actions/wrapper-validation@v3.3.2
 
       # https://github.com/actions/setup-java
       - name: Set up JDK 17
@@ -26,6 +30,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          java-package: jdk
+          architecture: x64
+          cache: gradle
 
       # https://github.com/actions/setup-java
       - name: Set up JDK 21
@@ -33,6 +40,13 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          java-package: jdk
+          architecture: x64
+          cache: gradle
+
+      # https://hub.spigotmc.org/jenkins/job/BuildTools
+      - name: Download BuildTools
+        run: wget -O BuildTools.jar https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
 
       - name: Build MC 1.20.6
         run: java -jar BuildTools.jar --rev 1.20.6 --remapped
@@ -40,7 +54,13 @@ jobs:
       - name: Build MC 1.21
         run: java -jar BuildTools.jar --rev 1.21 --remapped
 
-      - name: Build with Gradle
+      - name: Configure Git
+        run: git config --global user.name "Github Actions" && git config --global user.email "actions@github.com"
+
+      - name: Make Gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Build project
         run: ./gradlew obfuscate --no-daemon
 
       # https://github.com/actions/upload-artifact
