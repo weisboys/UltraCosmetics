@@ -60,6 +60,10 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
      */
     protected ItemStack dropItem;
 
+    // While this is positive, the pet will not be removed due to being invalid.
+    // This is required because the pet may become briefly invalid while teleporting.
+    private int invalidBypassTicks = 0;
+
     public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, ItemStack dropItem) {
         super(owner, petType, ultraCosmetics);
         this.dropItem = dropItem;
@@ -149,9 +153,14 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     @Override
     public void run() {
         if (entity != null && !entity.isValid()) {
+            if (invalidBypassTicks > 0) {
+                invalidBypassTicks--;
+                return;
+            }
             clear();
             return;
         }
+        invalidBypassTicks = 0;
 
         if (!getOwner().isOnline() || getOwner().getCurrentPet() != this) {
             clear();
@@ -266,7 +275,10 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
 
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
-        if (event.getPlayer() == getPlayer()) getEntity().teleport(getPlayer());
+        if (event.getPlayer() == getPlayer()) {
+            entity.teleport(event.getTo());
+            invalidBypassTicks = 20;
+        }
     }
 
     // Going through portals seems to break pathfinders

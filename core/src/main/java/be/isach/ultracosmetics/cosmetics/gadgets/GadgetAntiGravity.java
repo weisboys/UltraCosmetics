@@ -38,6 +38,7 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
     protected void onRightClick() {
         as = getPlayer().getWorld().spawn(getPlayer().getLocation(), ArmorStand.class);
         as.setMetadata("NO_INTER", new FixedMetadataValue(getUltraCosmetics(), ""));
+        as.setPersistent(false);
         as.setGravity(false);
         as.setSmall(true);
         running = true;

@@ -87,6 +87,7 @@ public class ItemFactory {
 
     public static Item setUnpickable(Item item) {
         item.setMetadata("UNPICKABLEUP", UNPICKABLE_META);
+        item.setPersistent(false);
         return item;
     }
 

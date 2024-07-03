@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.listeners;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.Cancellable;
@@ -11,7 +10,6 @@ import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.event.world.ChunkUnloadEvent;
 
 /**
  * Main listener
@@ -48,15 +46,6 @@ public class MainListener implements Listener {
     public void onMerge(ItemMergeEvent event) {
         if (event.getEntity().hasMetadata("UNPICKABLEUP") || event.getTarget().hasMetadata("UNPICKABLEUP")) {
             event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onChunkUnload(ChunkUnloadEvent event) {
-        for (Entity entity : event.getChunk().getEntities()) {
-            if (entity.hasMetadata("Pet") || entity.hasMetadata("UNPICKABLEUP") || entity.hasMetadata("NO_INTER") || entity.hasMetadata("C_AD_ArmorStand")) {
-                entity.remove();
-            }
         }
     }
 
