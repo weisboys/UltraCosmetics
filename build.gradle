@@ -16,7 +16,7 @@ allprojects {
 
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
-        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
     }
 
     java {
@@ -41,7 +41,7 @@ allprojects {
     }
 
     processResources {
-        inputs.property("version", project.version)
+        inputs.property('version', project.version)
 
         filter ReplaceTokens, tokens: [
                 'VERSION' : project.version,
@@ -64,13 +64,13 @@ allprojects {
 defaultTasks 'obfuscate'
 
 subprojects.each {
-    if (!it.hasProperty("remapMcVersion")) return
-    tasks.register("obf" + it.name, VersionedObfTask, it)
+    if (!it.hasProperty('remapMcVersion')) return
+    tasks.register('obf' + it.name, VersionedObfTask, it)
 }
 
 dependencies {
     subprojects.each { p ->
-        if (p.name == "core") {
+        if (p.name == 'core') {
             shaded(project(path: ':core', configuration: 'shadow'))
             return;
         }
@@ -115,8 +115,8 @@ subprojects { subproj ->
         maven { url = 'https://libraries.minecraft.net' }
     }
     def version = 17
-    if (subproj.hasProperty("javaVersion")) {
-        version = subproj.property("javaVersion")
+    if (subproj.hasProperty('javaVersion')) {
+        version = subproj.property('javaVersion')
     }
     subproj.tasks.withType(JavaCompile).configureEach {
         javaCompiler = javaToolchains.compilerFor {
@@ -134,14 +134,14 @@ abstract class VersionedObfTask extends DefaultTask {
         dependsOn 'jar'
         description 'Generates an obfuscated version of the jar for use with Spigot.'
         group = 'jar preparation'
-        ext.toolingDir = System.getProperty("user.dir")
+        ext.toolingDir = System.getProperty('user.dir')
         ext.homeDir = project.gradle.gradleUserHomeDir.parent
     }
 
     @TaskAction
     def go() {
         def nms = subproj.name
-        def mcVer = subproj.getProperty("remapMcVersion")
+        def mcVer = subproj.getProperty('remapMcVersion')
         def filename = project.tasks.jar.archiveFileName.get()
         project.exec {
             workingDir project.buildDir
@@ -163,7 +163,7 @@ abstract class VersionedObfTask extends DefaultTask {
     }
 }
 
-tasks.register("obfuscate") {
+tasks.register('obfuscate') {
     dependsOn tasks.withType(VersionedObfTask)
     group = 'jar preparation'
 }
