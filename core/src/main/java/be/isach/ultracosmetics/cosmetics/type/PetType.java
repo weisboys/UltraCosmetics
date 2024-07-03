@@ -208,7 +208,6 @@ public class PetType extends CosmeticEntType<Pet> {
         ConfigurationSection pets = getCustomConfig(Category.PETS);
         if (pets == null) return;
 
-        XEntityType type;
         Optional<XMaterial> mat;
         SmartLogger log = UltraCosmeticsData.get().getPlugin().getSmartLogger();
         for (String key : pets.getKeys(false)) {
@@ -217,11 +216,12 @@ public class PetType extends CosmeticEntType<Pet> {
                 log.write(LogLevel.WARNING, "Incomplete custom pet '" + key + "'");
                 continue;
             }
-            type = XEntityType.of(pet.getString("type").toUpperCase());
-            if (type == null) {
+            Optional<XEntityType> optionalType = XEntityType.of(pet.getString("type").toUpperCase());
+            if (optionalType.isEmpty()) {
                 log.write(LogLevel.WARNING, "Invalid entity type for custom pet '" + key + "'");
                 continue;
             }
+            XEntityType type = optionalType.get();
             if (!PET_MAP.containsKey(type)) {
                 log.write(LogLevel.WARNING, "Entity type '" + type + "' for pet '" + key + "' does not exist as a pet.");
                 continue;

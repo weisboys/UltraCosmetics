@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 
@@ -1462,7 +1462,7 @@ public enum Particles {
             if (effect == ENTITY_EFFECT_AMBIENT) {
                 particle = XParticle.ENTITY_EFFECT.get();
             } else {
-                particle = XParticle.of(effect.toString()).get();
+                particle = XParticle.of(effect.toString()).get().get();
             }
             if (particle == null) {
                 throw new IllegalArgumentException("This particle effect (" + effect + ") is not supported by your server version");
