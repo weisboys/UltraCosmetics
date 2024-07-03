@@ -35,8 +35,8 @@ public class EquippedTable extends Table {
         tableInfo.add(new Column<>("id", "INTEGER NOT NULL", Integer.class));
         tableInfo.add(new StringColumn("category", 32, true));
         tableInfo.add(new ForeignKeyConstraint("uuid", playerData.getWrappedName(), "uuid"));
-        tableInfo.add(new ForeignKeyConstraint("id", cosmeticTable.getWrappedName(), "id"));
-        tableInfo.add(new ForeignKeyConstraint("category", cosmeticTable.getWrappedName(), "category"));
+        // `category` is not a unique key in the cosmetics table, so we need to pair it with `id`
+        tableInfo.add(new ForeignKeyConstraint("id,category", cosmeticTable.getWrappedName(), "id,category"));
         tableInfo.add(new UniqueConstraint("uuid", "category"));
     }
 
@@ -68,7 +68,7 @@ public class EquippedTable extends Table {
      */
     public void setAllEquipped(UUID uuid, Map<Category, CosmeticType<?>> equipped) {
         clearAllEquipped(uuid);
-        if (equipped.size() == 0) return;
+        if (equipped.isEmpty()) return;
         InsertQuery query = insert("uuid", "id", "category");
         InsertValue uuidVal = insertUUID(uuid);
         for (Entry<Category, CosmeticType<?>> entry : equipped.entrySet()) {
