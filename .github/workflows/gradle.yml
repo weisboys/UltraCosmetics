@@ -37,6 +37,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          java-package: jdk
+          architecture: x64
+          cache: gradle
 
       # https://hub.spigotmc.org/jenkins/job/BuildTools
       - name: Download BuildTools
