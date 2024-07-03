@@ -57,7 +57,7 @@ jobs:
       - name: Make Gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
+      - name: Build project
         run: ./gradlew obfuscate --no-daemon
 
       # https://github.com/actions/upload-artifact
