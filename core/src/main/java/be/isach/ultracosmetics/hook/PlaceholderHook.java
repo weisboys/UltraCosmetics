@@ -79,4 +79,9 @@ public class PlaceholderHook extends PlaceholderExpansion {
     public String getVersion() {
         return ultraCosmetics.getDescription().getVersion();
     }
+
+    @Override
+    public boolean persist() {
+        return true;
+    }
 }
