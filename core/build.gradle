@@ -71,6 +71,7 @@ shadowJar {
     // removes unused classes in 'implementation' path dependencies
     minimize {
         // Loads classes reflectively
+        exclude(dependency('net.wesjd:anvilgui:.*'))
         exclude(dependency('com.github.datatags.MobChipLite:.*:.*'))
     }
     def path = 'be.isach.ultracosmetics.shaded'

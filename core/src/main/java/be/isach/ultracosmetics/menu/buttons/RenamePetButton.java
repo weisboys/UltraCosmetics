@@ -77,7 +77,7 @@ public class RenamePetButton implements Button {
                             return Collections.singletonList(AnvilGUI.ResponseAction.close());
                         }
                     }).open(ultraPlayer.getBukkitPlayer());
-        } catch (NoClassDefFoundError e) {
+        } catch (ExceptionInInitializerError | NoClassDefFoundError e) {
             ultraPlayer.sendMessage(MessageManager.getMessage("Use-Rename-Pet-Command"));
         }
     }
