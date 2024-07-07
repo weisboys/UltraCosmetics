@@ -16,7 +16,8 @@ public class DeathEffectLightning extends DeathEffect {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void displayParticles(Player player) {
+    public void displayParticles() {
+        Player player = getPlayer();
         player.getWorld().spigot().strikeLightningEffect(player.getLocation(), silent);
     }
 }

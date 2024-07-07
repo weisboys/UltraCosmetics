@@ -3,12 +3,10 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
-import be.isach.ultracosmetics.util.Particles.OrdinaryColor;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,13 +18,13 @@ import java.util.List;
  */
 public class ParticleEffectMagicalRods extends ParticleEffect {
 
-    private static final List<OrdinaryColor> COLORS = new ArrayList<>();
+    private static final List<Color> COLORS = new ArrayList<>();
 
     static {
-        COLORS.add(new OrdinaryColor(Color.GREEN));
-        COLORS.add(new OrdinaryColor(0, 128, 0));
-        COLORS.add(new OrdinaryColor(0, 74, 0));
-        COLORS.add(new OrdinaryColor(0, 36, 0));
+        COLORS.add(Color.GREEN);
+        COLORS.add(new Color(0, 128, 0));
+        COLORS.add(new Color(0, 74, 0));
+        COLORS.add(new Color(0, 36, 0));
     }
 
     private static final double RADIUS = 1.1; // radius between player and rods
@@ -48,7 +46,7 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     public ParticleEffectMagicalRods(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
     }
 
     @Override
@@ -89,8 +87,8 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
     public void showAlternativeEffect() {
         Vector left = getPlayer().getLocation().getDirection().setY(0).crossProduct(new Vector(0, 1, 0));
         double multiplier = 0.3;
-        for (OrdinaryColor color : COLORS) {
-            Particles.DUST.display(color, getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));
+        for (Color color : COLORS) {
+            display.withColor(color).spawn(getPlayer().getLocation().add(left.clone().multiply(multiplier)).add(0, 0.1, 0));
             multiplier -= 0.2;
         }
     }
@@ -102,10 +100,11 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
      * @param suppAngle Angle rotation step
      */
     private void drawColumns(Double height, double suppAngle) {
+        int amount = getModifiedAmount(((int) ROD_HEIGHT) * 5);
         int cycles = TOTAL_COLUMNS / COLORS.size();
         double workingSpace = 2 * Math.PI / cycles; // Each cycle has its angle span.
         double startAngle = 0; // Step angle for each cycle.
-        Vector v = new Vector(0, 0, 0);
+        Vector v = new Vector();
         Location loc;
 
         for (int i = 0; i < cycles; i++) {
@@ -116,12 +115,31 @@ public class ParticleEffectMagicalRods extends ParticleEffect {
                 v.setY(BASE_HEIGHT + Math.sin(angleStep * 3) * heightDiffFactor); // The height of the columns is a sine wave.
                 loc = getPlayer().getLocation().add(v);
 
-                Particles.DUST.drawParticleLine(loc, loc.clone().add(0, ROD_HEIGHT, 0), getModifiedAmount(((int) ROD_HEIGHT) * 5), COLORS.get(j));
+                drawParticleLine(loc, loc.clone().add(0, ROD_HEIGHT, 0), amount, COLORS.get(j));
 
                 angleStep += workingSpace / COLORS.size();
                 height += (i >= 3 && i <= 5) ? heightDiffFactor : -heightDiffFactor;
             }
             startAngle += workingSpace;
+        }
+    }
+
+    public void drawParticleLine(Location from, Location to, int particles, Color color) {
+        Location location = from.clone();
+        Location target = to.clone();
+        Vector link = target.toVector().subtract(location.toVector());
+        float length = (float) link.length();
+        link.normalize();
+
+        float ratio = length / particles;
+        Vector v = link.multiply(ratio);
+        Location loc = location.clone().subtract(v);
+        int step = 0;
+        for (int i = 0; i < particles; i++) {
+            if (step >= (double) particles) step = 0;
+            step++;
+            loc.add(v);
+            display.withColor(color).spawn(loc);
         }
     }
 }

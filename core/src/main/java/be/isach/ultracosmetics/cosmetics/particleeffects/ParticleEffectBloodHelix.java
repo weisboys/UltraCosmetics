@@ -3,10 +3,10 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
-
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
+
+import java.awt.Color;
 
 /**
  * Represents an instance of blood helix particles summoned by a player.
@@ -21,7 +21,9 @@ public class ParticleEffectBloodHelix extends ParticleEffect {
     public ParticleEffectBloodHelix(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
+        display.withColor(Color.RED);
+        alternativeEffect.withColor(Color.RED);
     }
 
     @Override
@@ -38,16 +40,11 @@ public class ParticleEffectBloodHelix extends ParticleEffect {
             v1.setZ(Math.sin(angle) * radius);
             v2.setX(Math.cos(angle + 3.5) * radius);
             v2.setZ(Math.sin(angle + 3.5) * radius);
-            Particles.DUST.display(location.clone().add(v1));
-            Particles.DUST.display(location.clone().add(v2));
+            display.spawn(location.clone().add(v1));
+            display.spawn(location.clone().add(v2));
             location.add(0, 0.12d, 0);
             radius -= 4.4f / steps;
         }
         i += 0.05;
-    }
-
-    @Override
-    public void showAlternativeEffect() {
-        showColoredAlternativeEffect(255, 0, 0);
     }
 }

@@ -26,7 +26,7 @@ public class ProjectileEffectHelix extends ProjectileEffect {
     }
 
     public void showHelix(Projectile projectile, Location a, Location b) {
-        getType().getEffect().display(a);
-        getType().getEffect().display(b);
+        display.spawn(a);
+        display.spawn(b);
     }
 }

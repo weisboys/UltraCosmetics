@@ -21,7 +21,7 @@ public class ParticleEffectCrushedCandyCane extends ParticleEffect {
     public ParticleEffectCrushedCandyCane(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
     }
 
     @Override

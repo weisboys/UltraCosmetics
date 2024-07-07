@@ -26,7 +26,8 @@ public class DeathEffectFirework extends DeathEffect {
     }
 
     @Override
-    public void displayParticles(Player player) {
+    public void displayParticles() {
+        Player player = getPlayer();
         Firework firework = player.getWorld().spawn(player.getLocation(), Firework.class);
         firework.setFireworkMeta(meta);
         firework.setMetadata("uc_firework", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), true));

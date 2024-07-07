@@ -3,10 +3,12 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
+
+import java.awt.Color;
 
 /**
  * Represents an instance of super hero particles summoned by a player.
@@ -16,13 +18,17 @@ import org.bukkit.util.Vector;
  */
 public class ParticleEffectSuperHero extends ParticleEffect {
 
-    boolean x = true;
+    private final boolean x = true;
+    private final ParticleDisplay secondary;
 
     public ParticleEffectSuperHero(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        display.withColor(Color.RED).withCount(getModifiedAmount(3));
+        secondary = ParticleDisplay.of(XParticle.CLOUD).offset(0.15, 0.1, 0.15)
+                .withEntity(getPlayer()).withCount(getModifiedAmount(4));
     }
 
-    private boolean[][] shape = {
+    private final boolean[][] shape = {
             {x, x, x, x, x,},
             {x, x, x, x, x,},
             {x, x, x, x, x,},
@@ -36,7 +42,7 @@ public class ParticleEffectSuperHero extends ParticleEffect {
     @Override
     public void onUpdate() {
         drawParticles(getPlayer().getLocation());
-        Particles.CLOUD.display(0.15F, 0.1f, 0.15f, getPlayer().getLocation(), getModifiedAmount(4));
+        secondary.spawn();
     }
 
 
@@ -69,9 +75,7 @@ public class ParticleEffectSuperHero extends ParticleEffect {
                         loc.setY(defY);
                     }
 
-                    for (int k = 0; k < getModifiedAmount(3); k++) {
-                        Particles.DUST.display(255, 0, 0, loc);
-                    }
+                    display.spawn(loc);
                     loc.subtract(v2);
                     loc.subtract(v);
                 }
@@ -109,9 +113,8 @@ public class ParticleEffectSuperHero extends ParticleEffect {
         return v.setX(x).setY(y);
     }
 
-    public static Vector getBackVector(Location loc) {
-        final float newZ = (float) (loc.getZ() + (1 * Math.sin(Math.toRadians(loc.getYaw() + 90))));
-        final float newX = (float) (loc.getX() + (1 * Math.cos(Math.toRadians(loc.getYaw() + 90))));
-        return new Vector(newX - loc.getX(), 0, newZ - loc.getZ());
+    private static Vector getBackVector(Location loc) {
+        final double rads = Math.toRadians(loc.getYaw() + 90);
+        return new Vector(Math.cos(rads), 0, Math.sin(rads));
     }
 }

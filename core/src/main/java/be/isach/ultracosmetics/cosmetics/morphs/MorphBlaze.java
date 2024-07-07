@@ -4,8 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerKickEvent;
 
@@ -17,17 +18,21 @@ import org.bukkit.event.player.PlayerKickEvent;
  */
 public class MorphBlaze extends MorphNoFall implements Updatable {
     private final XSound.SoundPlayer sound;
+    private final ParticleDisplay flameDisplay;
+    private final ParticleDisplay lavaDisplay;
 
     public MorphBlaze(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
         sound = XSound.BLOCK_FIRE_EXTINGUISH.record().withVolume(0.1f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        flameDisplay = ParticleDisplay.of(XParticle.FLAME).withEntity(getPlayer());
+        lavaDisplay = ParticleDisplay.of(XParticle.LAVA).withEntity(getPlayer());
     }
 
     @Override
     public void onUpdate() {
         if (canUseSkill && getPlayer().isSneaking()) {
-            Particles.FLAME.display(getPlayer().getLocation());
-            Particles.LAVA.display(getPlayer().getLocation());
+            flameDisplay.spawn();
+            lavaDisplay.spawn();
             sound.play();
             getPlayer().setVelocity(getPlayer().getEyeLocation().getDirection().multiply(1));
         }

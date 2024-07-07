@@ -6,12 +6,12 @@ import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffect;
 import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectExplosion;
 import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectFirework;
 import be.isach.ultracosmetics.cosmetics.deatheffects.DeathEffectLightning;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.XParticle;
 
 public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
 
-    public DeathEffectType(String configName, Particles effect, XMaterial material, Class<? extends DeathEffect> clazz, boolean supportsParticleMultiplier) {
+    public DeathEffectType(String configName, XParticle effect, XMaterial material, Class<? extends DeathEffect> clazz, boolean supportsParticleMultiplier) {
         super(Category.DEATH_EFFECTS, configName, 0, effect, material, clazz, supportsParticleMultiplier);
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.addMessage(getConfigPath() + ".name", configName);
@@ -19,8 +19,8 @@ public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
     }
 
     public static void register() {
-        new DeathEffectType("Explosion", Particles.EXPLOSION_EMITTER, XMaterial.TNT, DeathEffectExplosion.class, false);
-        new DeathEffectType("Firework", Particles.FIREWORK, XMaterial.FIREWORK_ROCKET, DeathEffectFirework.class, false);
-        new DeathEffectType("Lightning", Particles.CRIT, XMaterial.DAYLIGHT_DETECTOR, DeathEffectLightning.class, false);
+        new DeathEffectType("Explosion", XParticle.EXPLOSION_EMITTER, XMaterial.TNT, DeathEffectExplosion.class, false);
+        new DeathEffectType("Firework", XParticle.FIREWORK, XMaterial.FIREWORK_ROCKET, DeathEffectFirework.class, false);
+        new DeathEffectType("Lightning", XParticle.CRIT, XMaterial.DAYLIGHT_DETECTOR, DeathEffectLightning.class, false);
     }
 }

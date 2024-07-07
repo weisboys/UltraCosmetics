@@ -3,8 +3,9 @@ package be.isach.ultracosmetics.cosmetics.mounts;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Horse;
 import org.bukkit.inventory.ItemStack;
@@ -22,8 +23,12 @@ public class MountGlacialSteed extends MountAbstractHorse {
         BOOTS.addEnchantment(Enchantment.FROST_WALKER, 2);
     }
 
+    private final ParticleDisplay display;
+
     public MountGlacialSteed(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        display = ParticleDisplay.of(XParticle.ITEM_SNOWBALL).offset(0.4, 0.2, 0.4).withCount(5)
+                .withLocationCaller(() -> entity.getLocation().add(0, 1, 0));
     }
 
     @Override
@@ -37,6 +42,6 @@ public class MountGlacialSteed extends MountAbstractHorse {
 
     @Override
     public void onUpdate() {
-        Particles.SNOW_SHOVEL.display(0.4f, 0.2f, 0.4f, entity.getLocation().clone().add(0, 1, 0), 5);
+        display.spawn();
     }
 }

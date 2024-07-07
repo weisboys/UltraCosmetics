@@ -3,7 +3,7 @@ package be.isach.ultracosmetics.cosmetics.particleeffects;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
+import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
 /**
@@ -25,17 +25,23 @@ public class ParticleEffectFireWaves extends ParticleEffect {
     public ParticleEffectFireWaves(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
     }
 
     @Override
     public void onUpdate() {
         if (heightFactorDir) {
-            if (heightFactor < MAX_HEIGHT_DIFF) heightFactor += HEIGHT_DIFF_STEP;
-            else heightFactorDir = false;
+            if (heightFactor < MAX_HEIGHT_DIFF) {
+                heightFactor += HEIGHT_DIFF_STEP;
+            } else {
+                heightFactorDir = false;
+            }
         } else {
-            if (heightFactor > -MAX_HEIGHT_DIFF) heightFactor -= HEIGHT_DIFF_STEP;
-            else heightFactorDir = true;
+            if (heightFactor > -MAX_HEIGHT_DIFF) {
+                heightFactor -= HEIGHT_DIFF_STEP;
+            } else {
+                heightFactorDir = true;
+            }
         }
 
         drawWave();
@@ -52,8 +58,9 @@ public class ParticleEffectFireWaves extends ParticleEffect {
             v.setZ(Math.sin(angle) * RADIUS);
             v.setY(0.5 + Math.sin(angle * U_PER_WAVE) * heightFactor);
 
-            getType().getEffect().display(getPlayer().getLocation().add(v));
-            getType().getEffect().display(getPlayer().getLocation().add(v).add(0, 1, 0));
+            Location loc = getPlayer().getLocation().add(v);
+            display.spawn(loc);
+            display.spawn(loc.add(0, 1, 0));
         }
     }
 }

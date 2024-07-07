@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import com.cryptomorin.xseries.XSound;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
@@ -15,6 +16,7 @@ import org.bukkit.util.Vector;
  */
 public class ParticleEffectFrostLord extends ParticleEffect {
     private final XSound.SoundPlayer sound;
+    private final ParticleDisplay secondaryDisplay;
     private int step = 0;
     private float stepY = 0;
     private float radius = 1.5f;
@@ -22,8 +24,9 @@ public class ParticleEffectFrostLord extends ParticleEffect {
     public ParticleEffectFrostLord(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
         sound = XSound.BLOCK_SNOW_BREAK.record().withVolume(0.5f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        secondaryDisplay = ParticleDisplay.of(getType().getEffect()).withCount(getModifiedAmount(48)).withExtra(0.3);
     }
 
     @Override
@@ -35,8 +38,7 @@ public class ParticleEffectFrostLord extends ParticleEffect {
             Vector v = new Vector();
             v.setX(Math.cos(angle) * radius);
             v.setZ(Math.sin(angle) * radius);
-            getType().getEffect().display(location.add(v).add(0, stepY, 0));
-            location.subtract(v).subtract(0, stepY, 0);
+            display.spawn(location.clone().add(v).add(0, stepY, 0));
             if (stepY < 3) {
                 radius -= 0.022f;
                 stepY += 0.045f;
@@ -45,7 +47,7 @@ public class ParticleEffectFrostLord extends ParticleEffect {
                 step = 0;
                 radius = 1.5f;
                 sound.play();
-                getType().getEffect().display(location.clone().add(0, 3, 0), getModifiedAmount(48), 0.3f);
+                secondaryDisplay.spawn(location.clone().add(0, 3, 0));
             }
         }
     }

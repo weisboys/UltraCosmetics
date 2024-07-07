@@ -4,7 +4,6 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-
 import org.bukkit.Location;
 
 public class ParticleEffectHalo extends ParticleEffect {
@@ -12,7 +11,7 @@ public class ParticleEffectHalo extends ParticleEffect {
     public ParticleEffectHalo(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
     }
 
     @Override
@@ -27,7 +26,7 @@ public class ParticleEffectHalo extends ParticleEffect {
             float x = MathUtils.cos(angle) * radius;
             float z = MathUtils.sin(angle) * radius;
             location.add(x, 0, z);
-            getType().getEffect().display(location);
+            display.spawn(location);
             location.subtract(x, 0, z);
         }
     }

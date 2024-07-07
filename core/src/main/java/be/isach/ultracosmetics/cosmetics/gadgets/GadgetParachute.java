@@ -87,7 +87,7 @@ public class GadgetParachute extends Gadget implements Updatable {
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
         Location loc1 = getPlayer().getLocation().add(2, 28, 2);
-        Location loc2 = getPlayer().getLocation().clone().add(-2, 40, -2);
+        Location loc2 = getPlayer().getLocation().add(-2, 40, -2);
         Area checkArea = new Area(loc1, loc2);
 
         if (!checkArea.isEmpty()) {

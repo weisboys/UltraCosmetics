@@ -5,9 +5,7 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.particles.ParticleDisplay;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -30,14 +28,22 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
     /**
      * If true, display an alternative effect when the player is moving.
      */
-    protected boolean alternativeEffect = false;
+    protected boolean useAlternativeEffect = false;
 
     protected Location lastLocation = null;
     protected boolean moving = true;
     protected boolean update = true;
 
+    protected final ParticleDisplay display;
+    protected final ParticleDisplay alternativeEffect;
+
     public ParticleEffect(UltraPlayer ultraPlayer, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, type, ultraCosmetics);
+        display = ParticleDisplay.of(getType().getEffect());
+        alternativeEffect = display.clone()
+                .offset(0.2)
+                .withCount(getModifiedAmount(3))
+                .withLocationCaller(() -> getPlayer().getLocation().add(0, 0.2, 0));
     }
 
     @Override
@@ -85,7 +91,7 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
         // If the player is moving:
         if (!displayIfMoving) return;
 
-        if (alternativeEffect) {
+        if (useAlternativeEffect) {
             // Display the alternative effect.
             showAlternativeEffect();
         } else {
@@ -104,12 +110,6 @@ public abstract class ParticleEffect extends Cosmetic<ParticleEffectType> implem
     }
 
     public void showAlternativeEffect() {
-        getType().getEffect().display(0.2, 0.2, 0.2, getPlayer().getLocation().add(0, 0.2, 0), getModifiedAmount(3));
-    }
-
-    protected void showColoredAlternativeEffect(int r, int g, int b) {
-        for (int i = 0; i < getModifiedAmount(3); i++) {
-            Particles.DUST.display(r, g, b, getPlayer().getLocation().add(MathUtils.randomDouble(-0.2, 0.2), MathUtils.randomDouble(0, 0.4), MathUtils.randomDouble(-0.2, 0.2)));
-        }
+        alternativeEffect.spawn();
     }
 }

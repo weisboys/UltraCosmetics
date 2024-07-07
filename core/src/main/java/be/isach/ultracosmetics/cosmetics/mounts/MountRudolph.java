@@ -4,9 +4,10 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.LivingEntity;
@@ -16,11 +17,14 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.EulerAngle;
 import org.bukkit.util.Vector;
 
+import java.awt.Color;
+
 /**
  * Created by sacha on 1/03/17.
  */
 public class MountRudolph extends MountAbstractHorse {
     private static final ItemStack DEAD_BUSH = XMaterial.DEAD_BUSH.parseItem();
+    private final ParticleDisplay nose = ParticleDisplay.of(XParticle.DUST).withColor(Color.RED);
     private ArmorStand left, right;
 
     public MountRudolph(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
@@ -75,7 +79,7 @@ public class MountRudolph extends MountAbstractHorse {
         double y = noseLocation.getY();
         noseLocation.add(noseLocation.getDirection().multiply(1.15));
         noseLocation.setY(y + 0.127);
-        Particles.DUST.display(255, 0, 0, noseLocation);
+        nose.spawn(noseLocation);
         // Improves update time for antlers, but not a critical feature
         if (!UltraCosmeticsData.get().getVersionManager().isUsingNMS()) return;
         new Thread(() -> {

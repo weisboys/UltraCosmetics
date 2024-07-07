@@ -15,11 +15,13 @@ public class ParticleEffectInLove extends ParticleEffect {
     public ParticleEffectInLove(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
+        display.offset(0.5).withCount(getModifiedAmount(2))
+                .withLocationCaller(() -> getPlayer().getLocation().add(0, 1, 0));
     }
 
     @Override
     public void onUpdate() {
-        getType().getEffect().display(0.5f, 0.5f, 0.5f, getPlayer().getLocation().add(0, 1, 0), getModifiedAmount(2));
+        display.spawn();
     }
 }

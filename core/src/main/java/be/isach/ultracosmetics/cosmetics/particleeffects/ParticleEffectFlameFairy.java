@@ -4,8 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
-
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
@@ -16,7 +16,8 @@ import org.bukkit.util.Vector;
  * @since 12-23-2015
  */
 public class ParticleEffectFlameFairy extends ParticleEffect {
-
+    private final ParticleDisplay lavaDisplay = ParticleDisplay.of(XParticle.LAVA);
+    private final ParticleDisplay flameDisplay = ParticleDisplay.of(XParticle.FLAME);
     private Vector targetDirection = new Vector(1, 0, 0);
 
     private Location currentLocation, targetLocation;
@@ -29,6 +30,8 @@ public class ParticleEffectFlameFairy extends ParticleEffect {
 
         currentLocation = getPlayer().getLocation();
         targetLocation = generateNewTarget();
+        lavaDisplay.withLocationCaller(() -> currentLocation);
+        flameDisplay.withLocationCaller(() -> currentLocation);
     }
 
     @Override
@@ -71,8 +74,8 @@ public class ParticleEffectFlameFairy extends ParticleEffect {
             currentLocation.add(targetDirection.clone().multiply(movementSpeed));
         }
 
-        Particles.LAVA.display(currentLocation);
-        Particles.FLAME.display(currentLocation);
+        lavaDisplay.spawn();
+        flameDisplay.spawn();
     }
 
     private Location generateNewTarget() {

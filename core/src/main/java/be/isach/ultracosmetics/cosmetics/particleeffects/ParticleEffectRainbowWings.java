@@ -4,12 +4,8 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.ParticleEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ColorUtils;
-import be.isach.ultracosmetics.util.Particles;
-
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
-
-import java.awt.Color;
 
 public class ParticleEffectRainbowWings extends ParticleEffect {
 
@@ -30,7 +26,7 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
     public ParticleEffectRainbowWings(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
 
-        this.alternativeEffect = true;
+        this.useAlternativeEffect = true;
     }
 
     @Override
@@ -40,12 +36,11 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
 
     @Override
     public void showAlternativeEffect() {
-        Color color = ColorUtils.getRainbowColor();
-        showColoredAlternativeEffect(color.getRed(), color.getGreen(), color.getBlue());
+        alternativeEffect.withColor(ColorUtils.getRainbowColor()).spawn();
     }
 
     private void drawParticles(Location location) {
-        Particles.OrdinaryColor nextColor = new Particles.OrdinaryColor(ColorUtils.getRainbowColor());
+        display.withColor(ColorUtils.getRainbowColor());
         double space = 0.2;
         double defX = location.getX() - (space * shape[0].length / 2) + space;
         double x = defX;
@@ -53,24 +48,22 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
         double angle = -((location.getYaw() + 180) / 60);
         angle += (location.getYaw() < -180 ? 3.25 : 2.985);
 
-        for (boolean[] aShape : shape) {
-            for (boolean anAShape : aShape) {
-                if (anAShape) {
-
+        for (boolean[] row : shape) {
+            for (boolean pixel : row) {
+                if (pixel) {
                     Location target = location.clone();
                     target.setX(x);
                     target.setY(y);
 
                     Vector v = target.toVector().subtract(location.toVector());
-                    Vector v2 = getBackVector(location);
                     v = rotateAroundAxisY(v, angle);
+
+                    Vector v2 = getBackVector(location);
                     v2.setY(0).multiply(-0.2);
 
                     location.add(v);
                     location.add(v2);
-                    for (int k = 0; k < getModifiedAmount(3); k++) {
-                        Particles.DUST.display(nextColor.getRed(), nextColor.getGreen(), nextColor.getBlue(), location);
-                    }
+                    display.spawn(location);
                     location.subtract(v2);
                     location.subtract(v);
                 }
@@ -81,18 +74,16 @@ public class ParticleEffectRainbowWings extends ParticleEffect {
         }
     }
 
-    public static Vector rotateAroundAxisY(Vector v, double angle) {
-        double x, z, cos, sin;
-        cos = Math.cos(angle);
-        sin = Math.sin(angle);
-        x = v.getX() * cos + v.getZ() * sin;
-        z = v.getX() * -sin + v.getZ() * cos;
+    private static Vector rotateAroundAxisY(Vector v, double angle) {
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+        double x = v.getX() * cos + v.getZ() * sin;
+        double z = v.getX() * -sin + v.getZ() * cos;
         return v.setX(x).setZ(z);
     }
 
-    public static Vector getBackVector(Location loc) {
-        final float newZ = (float) (loc.getZ() + (1 * Math.sin(Math.toRadians(loc.getYaw() + 90))));
-        final float newX = (float) (loc.getX() + (1 * Math.cos(Math.toRadians(loc.getYaw() + 90))));
-        return new Vector(newX - loc.getX(), 0, newZ - loc.getZ());
+    private static Vector getBackVector(Location loc) {
+        final double rads = Math.toRadians(loc.getYaw() + 90);
+        return new Vector(Math.cos(rads), 0, Math.sin(rads));
     }
 }

@@ -6,7 +6,7 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.ProjectileEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
+import com.cryptomorin.xseries.particles.ParticleDisplay;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Projectile;
@@ -21,11 +21,13 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> implements Updatable {
-    private final Map<Projectile,Location> projectiles = new HashMap<>();
-    private Set<EntityType> types = new HashSet<>();
+    private final Map<Projectile, Location> projectiles = new HashMap<>();
+    private final Set<EntityType> types = new HashSet<>();
+    protected final ParticleDisplay display;
 
     public ProjectileEffect(UltraPlayer owner, ProjectileEffectType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
+        this.display = ParticleDisplay.of(getType().getEffect());
         for (String entity : SettingsManager.getConfig().getStringList("Projectile-Types")) {
             try {
                 types.add(EntityType.valueOf(entity.toUpperCase()));
@@ -53,9 +55,9 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
 
     @Override
     public void onUpdate() {
-        Iterator<Entry<Projectile,Location>> iter = projectiles.entrySet().iterator();
+        Iterator<Entry<Projectile, Location>> iter = projectiles.entrySet().iterator();
         while (iter.hasNext()) {
-            Entry<Projectile,Location> entry = iter.next();
+            Entry<Projectile, Location> entry = iter.next();
             Projectile proj = entry.getKey();
             // Check if projectile location is the same as the last observed location.
             // If so, the projectile is probably stuck in a block or something.
@@ -77,7 +79,7 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
     }
 
     public void showParticles(Projectile projectile) {
-        getType().getEffect().display(projectile.getLocation());
+        display.spawn(projectile.getLocation());
     }
 
     public void projectileLanded(Projectile projectile) {

@@ -54,7 +54,7 @@ public class GadgetTrampoline extends Gadget implements Updatable {
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
         Location loc1 = event.getPlayer().getLocation().add(2, 15, 2);
-        Location loc2 = event.getPlayer().getLocation().clone().add(-3, 0, -2);
+        Location loc2 = event.getPlayer().getLocation().add(-3, 0, -2);
         Block ladder1 = loc1.getBlock().getRelative(3, 0, 0);
         Block ladder2 = loc1.getBlock().getRelative(3, 1, 0);
         Area checkArea = new Area(loc1, loc2);

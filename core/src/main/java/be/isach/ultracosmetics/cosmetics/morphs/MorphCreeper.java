@@ -7,9 +7,10 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XSound;
 import com.cryptomorin.xseries.messages.ActionBar;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import me.libraryaddict.disguise.disguisetypes.watchers.CreeperWatcher;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.entity.Entity;
@@ -25,11 +26,13 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
     private int charge = 0;
     private final XSound.SoundPlayer chargeSound;
     private final XSound.SoundPlayer explodeSound;
+    private final ParticleDisplay display;
 
     public MorphCreeper(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
         chargeSound = XSound.ENTITY_CREEPER_PRIMED.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
         explodeSound = XSound.ENTITY_GENERIC_EXPLODE.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
+        display = ParticleDisplay.of(XParticle.EXPLOSION_EMITTER).withEntity(getPlayer());
     }
 
     @Override
@@ -46,7 +49,7 @@ public class MorphCreeper extends Morph implements PlayerAffectingCosmetic, Upda
                 onEquip();
             }
             if (charge == 100) {
-                Particles.EXPLOSION_EMITTER.display(getPlayer().getLocation());
+                display.spawn();
                 explodeSound.play();
 
                 Player player = getPlayer();
