@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.version;
 
-import be.isach.ultracosmetics.util.ReflectionUtils;
 import be.isach.ultracosmetics.version.dummy.DummyEntityUtil;
 import be.isach.ultracosmetics.version.dummy.DummyModule;
 import org.bukkit.World;
@@ -33,7 +32,7 @@ public class VersionManager {
 
     @SuppressWarnings("unchecked")
     private <T> T loadModule(String name) throws ReflectiveOperationException {
-        return (T) ReflectionUtils.instantiateObject(Class.forName(PACKAGE + "." + serverVersion.getNmsVersion() + "." + name));
+        return (T) Class.forName(PACKAGE + "." + serverVersion.getNmsVersion() + "." + name).getConstructor().newInstance();
     }
 
     public IEntityUtil getEntityUtil() {
