@@ -78,9 +78,7 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
         projectiles.clear();
     }
 
-    public void showParticles(Projectile projectile) {
-        display.spawn(projectile.getLocation());
-    }
+    public abstract void showParticles(Projectile projectile);
 
     public void projectileLanded(Projectile projectile) {
     }

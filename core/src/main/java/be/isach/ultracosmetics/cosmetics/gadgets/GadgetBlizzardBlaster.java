@@ -7,6 +7,8 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.util.Vector;
@@ -18,7 +20,7 @@ import org.bukkit.util.Vector;
  * @since 08-08-2015
  */
 public class GadgetBlizzardBlaster extends Gadget implements PlayerAffectingCosmetic, Updatable {
-
+    private final ParticleDisplay display = ParticleDisplay.of(XParticle.CLOUD).withCount(6).offset(0.3, 0.1, 0.3).withExtra(0.4);
     private boolean active;
     private Location location;
     private Vector vector;
@@ -55,6 +57,7 @@ public class GadgetBlizzardBlaster extends Gadget implements PlayerAffectingCosm
             for (int i = 0; i < 3; i++) {
                 UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendBlizzard(getPlayer(), location, entity -> canAffect(entity, getPlayer()), vector);
             }
+            display.spawn(location.clone().subtract(0, 0.5, 0));
 
             location.add(vector);
         } else {

@@ -6,6 +6,8 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.BlockUtils;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -18,7 +20,7 @@ import org.bukkit.util.Vector;
  * @since 07-03-2017
  */
 public class MorphPolarBear extends MorphLeftClickCooldown implements Updatable {
-    private long coolDown = 0;
+    private final ParticleDisplay display = ParticleDisplay.of(XParticle.CLOUD).withCount(6).offset(0.3, 0.1, 0.3).withExtra(0.4);
     private boolean active;
     private Location location;
     private Vector vector;
@@ -30,10 +32,8 @@ public class MorphPolarBear extends MorphLeftClickCooldown implements Updatable 
     @Override
     public void onLeftClick(PlayerInteractEvent event) {
         event.setCancelled(true);
-        coolDown = System.currentTimeMillis() + 15000;
-        vector = getPlayer().getLocation().getDirection().normalize().multiply(0.3);
-        vector.setY(0);
-        location = getPlayer().getLocation().subtract(0, 1, 0).add(vector);
+        vector = getPlayer().getLocation().getDirection().normalize().multiply(0.3).setY(-1);
+        location = getPlayer().getLocation().add(vector);
         active = true;
         Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> active = false, 40);
     }
@@ -57,6 +57,7 @@ public class MorphPolarBear extends MorphLeftClickCooldown implements Updatable 
         for (int i = 0; i < 3; i++) {
             UltraCosmeticsData.get().getVersionManager().getEntityUtil().sendBlizzard(getPlayer(), location, ent -> false, vector);
         }
+        display.spawn(location.clone().subtract(0, 0.5, 0));
 
         location.add(vector);
     }

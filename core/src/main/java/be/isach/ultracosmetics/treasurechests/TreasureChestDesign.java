@@ -2,8 +2,8 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.util.Particles;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.XParticle;
 
 /**
  * Created by Sacha on 11/11/15.
@@ -16,7 +16,8 @@ public class TreasureChestDesign {
     private final XMaterial belowChests;
     private final XMaterial barriers;
     private ChestType chestType;
-    private Particles effect;
+    private XParticle effect;
+
     public TreasureChestDesign(String path) {
         center = getXMaterial(path + ".center-block");
         blocks2 = getXMaterial(path + ".around-center");
@@ -31,11 +32,7 @@ public class TreasureChestDesign {
             this.chestType = ChestType.NORMAL;
         }
         if (effect != null) {
-            try {
-                this.effect = Particles.valueOf(effect);
-            } catch (IllegalArgumentException exc) {
-                this.effect = Particles.FLAME;
-            }
+            this.effect = XParticle.of(effect).orElse(XParticle.FLAME);
         }
     }
 
@@ -67,7 +64,7 @@ public class TreasureChestDesign {
         return belowChests;
     }
 
-    public Particles getEffect() {
+    public XParticle getEffect() {
         return effect;
     }
 }

@@ -9,10 +9,10 @@ import be.isach.ultracosmetics.treasurechests.loot.LootReward;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.StructureRollback;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.XParticle;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -52,7 +52,7 @@ public class TreasureChest implements Listener {
     private final TreasureRandomizer randomGenerator;
     private final Location center;
     private final Block centerBlock;
-    private final Particles particleEffect;
+    private final XParticle particleEffect;
     private int chestsLeft = SettingsManager.getConfig().getInt("TreasureChests.Count", 4);
     private final Player player;
     private final Set<Item> items = new HashSet<>();
@@ -296,7 +296,7 @@ public class TreasureChest implements Listener {
         return treasureLoc;
     }
 
-    public Particles getParticleEffect() {
+    public XParticle getParticleEffect() {
         return particleEffect;
     }
 

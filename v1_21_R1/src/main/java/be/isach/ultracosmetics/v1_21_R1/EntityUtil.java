@@ -2,7 +2,6 @@ package be.isach.ultracosmetics.v1_21_R1;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.util.MathUtils;
-import be.isach.ultracosmetics.util.Particles;
 import be.isach.ultracosmetics.version.IEntityUtil;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.Rotations;
@@ -79,8 +78,6 @@ public class EntityUtil implements IEntityUtil {
             sendPacket(loopPlayer, dataPacket);
             sendPacket(loopPlayer, equipmentPacket);
         }
-        Particles.CLOUD.display(loc.clone().add(MathUtils.randomDouble(-1.5, 1.5), MathUtils.randomDouble(0, 0.5) - 0.75,
-                MathUtils.randomDouble(-1.5, 1.5)), 2, 0.4f);
         Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
             for (Player pl : player.getWorld().getPlayers()) {
                 sendPacket(pl, new ClientboundRemoveEntitiesPacket(as.getId()));

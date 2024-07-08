@@ -2,12 +2,15 @@ package be.isach.ultracosmetics.treasurechests;
 
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.UltraCosmeticsData;
-import be.isach.ultracosmetics.util.Particles;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+
+import java.awt.Color;
 
 public class ChestParticleRunnable extends BukkitRunnable {
     private static final Vector Y_AXIS = new Vector(0, 1, 0);
@@ -42,11 +45,11 @@ public class ChestParticleRunnable extends BukkitRunnable {
             return;
         }
         int animationTime = 0;
-        Particles particleEffect = chest.getParticleEffect();
+        XParticle particleEffect = chest.getParticleEffect();
         Location chestLocation = getChestLocation();
         if (particleEffect != null) {
-            particleEffect.playHelix(chestLocation, 0.0F);
-            particleEffect.playHelix(chestLocation, 3.5F);
+            playHelix(particleEffect, chestLocation, 0.0F);
+            playHelix(particleEffect, chestLocation, 3.5F);
             animationTime = 30;
         }
         chestRunnable = new PlaceChestRunnable(chest, chestLocation.getBlock(), i--);
@@ -80,17 +83,12 @@ public class ChestParticleRunnable extends BukkitRunnable {
     }
 
     public static BlockFace getDirection(int direction) {
-        switch (direction % 4) {
-            case 3:
-            default:
-                return BlockFace.SOUTH;
-            case 2:
-                return BlockFace.NORTH;
-            case 1:
-                return BlockFace.EAST;
-            case 0:
-                return BlockFace.WEST;
-        }
+        return switch (direction % 4) {
+            case 0 -> BlockFace.WEST;
+            case 1 -> BlockFace.EAST;
+            case 2 -> BlockFace.NORTH;
+            default -> BlockFace.SOUTH;
+        };
     }
 
     public void propogateCancel() {
@@ -98,5 +96,33 @@ public class ChestParticleRunnable extends BukkitRunnable {
         if (chestRunnable != null) {
             chestRunnable.cancel();
         }
+    }
+
+    private void playHelix(final XParticle particle, final Location loc, final float offset) {
+        final ParticleDisplay display = ParticleDisplay.of(particle);
+        if (particle == XParticle.DUST) {
+            display.withColor(Color.RED);
+        }
+        BukkitRunnable runnable = new BukkitRunnable() {
+            double radius = 0;
+            double step = 0;
+            final double y = loc.getY();
+            final double inc = (2 * Math.PI) / 50;
+            final Location location = loc.clone().add(0, 3, 0);
+
+            @Override
+            public void run() {
+                double angle = step * inc + offset;
+                Vector v = new Vector(Math.cos(angle), 0, Math.sin(angle)).multiply(radius);
+                display.spawn(location);
+                location.subtract(v).subtract(0, 0.1d, 0);
+                if (location.getY() <= y) {
+                    cancel();
+                }
+                step += 4;
+                radius += 1 / 50f;
+            }
+        };
+        runnable.runTaskTimer(UltraCosmeticsData.get().getPlugin(), 0, 1);
     }
 }
