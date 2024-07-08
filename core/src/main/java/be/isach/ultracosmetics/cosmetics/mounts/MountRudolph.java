@@ -53,7 +53,6 @@ public class MountRudolph extends MountAbstractHorse {
         armorStand.getEquipment().setItemInMainHand(DEAD_BUSH);
         armorStand.setPersistent(false);
         armorStand.setMetadata("C_AD_ArmorStand", new FixedMetadataValue(getUltraCosmetics(), getPlayer().getUniqueId().toString()));
-        getUltraCosmetics().getArmorStandManager().makeUcStand(armorStand);
         return armorStand;
     }
 
