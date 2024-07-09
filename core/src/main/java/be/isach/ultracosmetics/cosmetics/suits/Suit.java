@@ -14,7 +14,7 @@ import be.isach.ultracosmetics.util.ItemFactory;
  * @author iSach
  * @since 12-20-2015
  */
-public abstract class Suit extends ArmorCosmetic<SuitType> {
+public class Suit extends ArmorCosmetic<SuitType> {
 
     public Suit(UltraPlayer ultraPlayer, SuitType suitType, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, suitType, ultraCosmetics);
@@ -44,7 +44,7 @@ public abstract class Suit extends ArmorCosmetic<SuitType> {
     }
 
     protected void setupItemStack() {
-        itemStack = ItemFactory.create(getType().getMaterial(), getTypeName(), "", MessageManager.getLegacyMessage("Suits.Suit-Part-Lore"));
+        itemStack = ItemFactory.rename(getType().getItemStack(), getTypeName(), "", MessageManager.getLegacyMessage("Suits.Suit-Part-Lore"));
     }
 
     @Override

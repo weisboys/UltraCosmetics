@@ -68,6 +68,31 @@ Emotes:
 
 Pets:
 
-# Not yet implemented
+# Format for suits:
+# Start with the internal name of the cosmetic. The same rules apply.
+# Then, add a section for Helmet, Chestplate, Leggings, and Boots (all are required.)
+# The sections should be filled out according to XItemStack format:
+# https://github.com/CryptoMorin/XSeries/wiki/XItemStack
+# For example, this is an example of an enchanted netherite suit but with a dark gray leather chestplate:
+#   Netherite: # Choose an internal name
+#       Helmet: # Should appear exactly like this
+#           # 'material' should be the material name of the helmet.
+#           material: NETHERITE_HELMET
+#           # 'enchants' should be a list of enchantments in the format "enchantment: level"
+#           enchants:
+#           - PROTECTION: 4
+#       Chestplate:
+#           material: LEATHER_CHESTPLATE
+#           # 'color' should be a list of RGB values, like '31, 31, 31' for dark gray
+#           color: 31, 31, 31
+#       Leggings:
+#           material: NETHERITE_LEGGINGS
+#           enchants:
+#           - PROTECTION: 4
+#       Boots:
+#           material: NETHERITE_BOOTS
+#           enchants:
+#           - PROTECTION: 4
+# Once the suit is loaded, you will be able to change the display name and description in the messages file.
 Suits:
 

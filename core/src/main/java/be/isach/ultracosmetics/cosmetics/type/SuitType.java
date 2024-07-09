@@ -7,9 +7,7 @@ import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.cosmetics.suits.Suit;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Color;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 /**
  * Suit types.
@@ -21,16 +19,13 @@ public class SuitType extends CosmeticType<Suit> {
 
     private final ArmorSlot slot;
     private final SuitCategory category;
+    private final ItemStack item;
 
-    /**
-     * @param material The suit part material
-     * @param slot     The slot this suit part should occupy
-     * @param category The Suit category this part belongs to
-     */
-    protected SuitType(XMaterial material, ArmorSlot slot, SuitCategory category) {
-        super(Category.suitsFromSlot(slot), category.getConfigName(), material, category.getSuitClass(), false);
+    protected SuitType(ItemStack stack, ArmorSlot slot, SuitCategory category) {
+        super(Category.suitsFromSlot(slot), category.getConfigName(), XMaterial.matchXMaterial(stack), category.getSuitClass(), false);
         this.slot = slot;
         this.category = category;
+        this.item = stack;
         // delay permission registration until we've loaded slot and category fields
         registerPermission();
         category.setupConfig(SettingsManager.getConfig(), getConfigPath());
@@ -43,7 +38,7 @@ public class SuitType extends CosmeticType<Suit> {
 
     @Override
     protected String getPermissionSuffix() {
-        return category.getPermissionSuffix() + "." + slot.toString().toLowerCase();
+        return category.getConfigName().toLowerCase() + "." + slot.toString().toLowerCase();
     }
 
     public ArmorSlot getSlot() {
@@ -56,13 +51,6 @@ public class SuitType extends CosmeticType<Suit> {
 
     @Override
     public ItemStack getItemStack() {
-        ItemStack is = super.getItemStack();
-        Color color = category.getColor(slot);
-        if (color != null) {
-            LeatherArmorMeta meta = (LeatherArmorMeta) is.getItemMeta();
-            meta.setColor(color);
-            is.setItemMeta(meta);
-        }
-        return is;
+        return item.clone();
     }
 }

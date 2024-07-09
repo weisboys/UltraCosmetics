@@ -64,6 +64,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     protected static ConfigurationSection getCustomConfig(Category cat) {
+        if (cat.isSuits()) return customConfig.getConfigurationSection("Suits");
         return customConfig.getConfigurationSection(cat.getConfigPath());
     }
 
@@ -88,6 +89,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     public static void removeAllTypes() {
         VALUES.clear();
         ENABLED.clear();
+        SuitCategory.values().clear();
     }
 
     public static void registerAll() {
@@ -97,6 +99,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         ParticleEffectType.register(version);
         PetType.register(version);
         HatType.register();
+        SuitCategory.register();
         for (SuitCategory sc : SuitCategory.values()) {
             sc.initializeSuitParts();
         }

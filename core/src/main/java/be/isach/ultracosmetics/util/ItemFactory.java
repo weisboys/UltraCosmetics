@@ -187,8 +187,7 @@ public class ItemFactory {
 
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
-        XSkull.of(head).profile(Profileable.detect(url)).apply();
-        return head;
+        return XSkull.of(head).profile(Profileable.detect(url)).apply();
     }
 
     public static ItemStack createColouredLeather(Material armourPart, int red, int green, int blue) {
