@@ -113,6 +113,9 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         if (SettingsManager.getConfig().getBoolean("Pets-Are-Silent")) {
             entity.setSilent(true);
         }
+        if (!SettingsManager.getConfig().getBoolean("Pets-Have-Collision", true)) {
+            entity.setCollidable(false);
+        }
 
         entity.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
         setupEntity();

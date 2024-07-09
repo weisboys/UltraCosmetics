@@ -361,6 +361,9 @@ Pets-Are-Silent: false
 # Show names over pets' heads?
 Show-Pets-Names: true
 
+# Do pets have collision?
+Pets-Have-Collision: true
+
 # Are gadgets prevented from making sounds?
 Gadgets-Are-Silent: false
 
