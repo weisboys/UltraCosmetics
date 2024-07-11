@@ -24,6 +24,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -42,6 +43,7 @@ import java.util.function.Function;
  * @since 03-08-2015
  */
 public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
+    private final boolean canRide = SettingsManager.getConfig().getBoolean("Pets-Can-Ride", false);
     protected final boolean showName = SettingsManager.getConfig().getBoolean("Show-Pets-Names", true);
 
     /**
@@ -288,6 +290,13 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
     @EventHandler
     public void onPortal(EntityPortalEvent event) {
         if (event.getEntity() == getEntity()) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onMount(VehicleEnterEvent event) {
+        if (!canRide && event.getEntered() == entity) {
             event.setCancelled(true);
         }
     }
