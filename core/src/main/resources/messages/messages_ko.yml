@@ -452,7 +452,7 @@ Mounts:
     Description: Your standard, everyday camel
   Equip: <prefix> <blue>You spawned <mountname>
   Unequip: <prefix> <blue>You despawned <mountname>
-  Cant-Spawn: <prefix> <bold><red>Monsters can't spawn here!
+  Cant-Spawn: <prefix> <bold><red>Monsters can't spawn in peaceful worlds!
   Not-Enough-Room: <prefix> <bold><red>Not enough room for a mount here!
 Particle-Effects:
   Equip: <prefix> <blue>You summoned <effectname>
