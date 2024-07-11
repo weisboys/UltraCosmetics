@@ -315,6 +315,9 @@ TreasureChests:
   #
   # [BETA] Set to '' to store unlocked cosmetics in data files or SQL
   Permission-Add-Command: ''
+  # If this is set to true, players won't be able to run any commands while opening chests,
+  # unless they have the permission ultracosmetics.disabledcommands.bypass
+  Prevent-Commands-While-Opening: false
 
 # This option will fill the blank slots of inventories
 # with a custom item!

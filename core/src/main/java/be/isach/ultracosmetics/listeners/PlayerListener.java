@@ -49,6 +49,7 @@ public class PlayerListener implements Listener {
     private final long joinItemDelay = SettingsManager.getConfig().getLong("Item-Delay.Join", 1);
     private final long respawnItemDelay = SettingsManager.getConfig().getLong("Item-Delay.World-Change-Or-Respawn", 0);
     private final boolean updateOnWorldChange = SettingsManager.getConfig().getBoolean("Always-Update-Cosmetics-On-World-Change", false);
+    private final boolean preventCommandsDuringChests = SettingsManager.getConfig().getBoolean("TreasureChests.Prevent-Commands-While-Opening", false);
 
     public PlayerListener(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -197,9 +198,14 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onCommand(PlayerCommandPreprocessEvent event) {
         if (event.getPlayer().hasPermission("ultracosmetics.bypass.disabledcommands")) return;
+        UltraPlayer player = pm.getUltraPlayer(event.getPlayer());
+        if (preventCommandsDuringChests && player.getCurrentTreasureChest() != null) {
+            event.setCancelled(true);
+            MessageManager.send(event.getPlayer(), "Commands-Disabled-During-Chest");
+            return;
+        }
         String strippedCommand = event.getMessage().split(" ")[0].replace("/", "").toLowerCase();
         if (!SettingsManager.getConfig().getList("Disabled-Commands").contains(strippedCommand)) return;
-        UltraPlayer player = pm.getUltraPlayer(event.getPlayer());
         if (player.hasCosmeticsEquipped()) {
             event.setCancelled(true);
             MessageManager.send(event.getPlayer(), "Disabled-Command-Message");
