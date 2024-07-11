@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
+import be.isach.ultracosmetics.util.InventoryViewHelper;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.UnmovableItemProvider;
 import org.bukkit.Bukkit;
@@ -66,7 +67,7 @@ public class MenuItemHandler implements UnmovableItemProvider {
         // apparently can happen if a player disconnected while on a pressure plate
         if (ultraPlayer == null) return;
         // Avoid triggering this when clicking in the inventory
-        InventoryType t = event.getPlayer().getOpenInventory().getType();
+        InventoryType t = InventoryViewHelper.getType(event.getPlayer());
         if (t != InventoryType.CRAFTING && t != InventoryType.CREATIVE) {
             return;
         }

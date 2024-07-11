@@ -47,7 +47,7 @@ public class VersionManager {
         return useNMS;
     }
 
-    public int getWorldMinHeight(World world) {
+    public static int getWorldMinHeight(World world) {
         return WORLD_MIN_HEIGHTS.computeIfAbsent(world.getUID(), w -> {
             try {
                 return world.getMinHeight();
@@ -57,7 +57,7 @@ public class VersionManager {
         });
     }
 
-    public int getWorldMaxHeight(World world) {
+    public static int getWorldMaxHeight(World world) {
         return WORLD_MAX_HEIGHTS.computeIfAbsent(world.getUID(), w -> {
             try {
                 return world.getMaxHeight();

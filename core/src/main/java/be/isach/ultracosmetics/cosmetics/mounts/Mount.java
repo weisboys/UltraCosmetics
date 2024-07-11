@@ -12,6 +12,7 @@ import be.isach.ultracosmetics.run.MountRegionChecker;
 import be.isach.ultracosmetics.util.Area;
 import be.isach.ultracosmetics.util.BlockUtils;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.version.VersionManager;
 import com.cryptomorin.xseries.XMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Difficulty;
@@ -117,7 +118,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         }
 
         // Prevents players on mounts from being able to fall in the void infinitely.
-        if (entity.getLocation().getY() <= UltraCosmeticsData.get().getVersionManager().getWorldMinHeight(entity.getWorld()) - 15) {
+        if (entity.getLocation().getY() <= VersionManager.getWorldMinHeight(entity.getWorld()) - 15) {
             clear();
             return;
         }

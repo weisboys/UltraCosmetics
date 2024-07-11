@@ -2,6 +2,7 @@ package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.version.VersionManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -34,7 +35,7 @@ public class Area {
 
     public static int findMaxY(Location center, int radius) {
         World world = center.getWorld();
-        int maxY = UltraCosmeticsData.get().getVersionManager().getWorldMaxHeight(world);
+        int maxY = VersionManager.getWorldMaxHeight(world);
         for (int y = center.getBlockY(); y <= maxY; y++) {
             for (int x = center.getBlockX() - radius; x <= center.getBlockX() + radius; x++) {
                 for (int z = center.getBlockZ() - radius; z <= center.getBlockZ() + radius; z++) {

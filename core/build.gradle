@@ -7,7 +7,6 @@ plugins {
 
 dependencies {
     // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
-    // Ideally matches the dependency version of the latest NMS module
     // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/browse
     compileOnly 'org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT'
     // https://github.com/libraryaddict/LibsDisguises/

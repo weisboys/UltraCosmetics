@@ -31,6 +31,7 @@ import be.isach.ultracosmetics.run.InvalidWorldChecker;
 import be.isach.ultracosmetics.run.VanishChecker;
 import be.isach.ultracosmetics.treasurechests.TreasureChestManager;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
+import be.isach.ultracosmetics.util.InventoryViewHelper;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.Problem;
@@ -423,7 +424,7 @@ public class UltraCosmetics extends JavaPlugin {
         if (!enableFinished) return;
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (player.getOpenInventory().getTopInventory().getHolder() instanceof CosmeticsInventoryHolder) {
+            if (InventoryViewHelper.getTopInventory(player).getHolder() instanceof CosmeticsInventoryHolder) {
                 player.closeInventory();
             }
         }

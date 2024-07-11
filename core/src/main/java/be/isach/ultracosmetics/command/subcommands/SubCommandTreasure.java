@@ -111,9 +111,8 @@ public class SubCommandTreasure extends SubCommand {
             world = opener.getWorld();
         }
 
-        VersionManager vm = UltraCosmeticsData.get().getVersionManager();
         // Don't accept equal to world boundaries because treasure chests have to place blocks on player Y-1 through Y+1
-        if (y >= vm.getWorldMaxHeight(world) || y <= vm.getWorldMinHeight(world)) {
+        if (y >= VersionManager.getWorldMaxHeight(world) || y <= VersionManager.getWorldMinHeight(world)) {
             MessageManager.send(sender, "Chest-Location.Invalid");
             return;
         }
@@ -122,7 +121,7 @@ public class SubCommandTreasure extends SubCommand {
         Block block = location.getBlock();
         if (!isAir(block)) {
             MessageManager.send(sender, "Chest-Location.In-Ground");
-            for (int i = y; i < vm.getWorldMaxHeight(world); i++) {
+            for (int i = y; i < VersionManager.getWorldMaxHeight(world); i++) {
                 if (isAir(block.getWorld().getBlockAt(x, i, z))) {
                     suggest(x, i, z, sender);
                     break;
@@ -133,7 +132,7 @@ public class SubCommandTreasure extends SubCommand {
 
         if (isAir(block.getRelative(BlockFace.DOWN))) {
             MessageManager.send(sender, "Chest-Location.In-Air");
-            for (int i = y; i > vm.getWorldMinHeight(world); i--) {
+            for (int i = y; i > VersionManager.getWorldMinHeight(world); i--) {
                 if (!isAir(block.getWorld().getBlockAt(x, i, z))) {
                     // we found the ground, back up 1
                     suggest(x, i + 1, z, sender);
