@@ -22,6 +22,7 @@ import be.isach.ultracosmetics.menu.buttons.togglecosmetic.TogglePetCosmeticButt
 import be.isach.ultracosmetics.permissions.PermissionManager;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.TextUtil;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -120,7 +121,7 @@ public abstract class CosmeticButton implements Button {
                 return true;
             }
             String itemName = MessageManager.getLegacyMessage("Buy-Cosmetic-Description",
-                    Placeholder.unparsed("price", String.valueOf(ultraCosmetics.getEconomyHandler().calculateDiscountPrice(ultraPlayer.getBukkitPlayer(), price))),
+                    Placeholder.unparsed("price", TextUtil.formatNumber(ultraCosmetics.getEconomyHandler().calculateDiscountPrice(ultraPlayer.getBukkitPlayer(), price))),
                     Placeholder.component("gadgetname", cosmeticType.getName())
             );
             ItemStack display = ItemFactory.rename(cosmeticType.getItemStack(), itemName);

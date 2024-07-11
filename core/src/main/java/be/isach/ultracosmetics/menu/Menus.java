@@ -9,6 +9,7 @@ import be.isach.ultracosmetics.events.UCKeyPurchaseEvent;
 import be.isach.ultracosmetics.menu.menus.*;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
+import be.isach.ultracosmetics.util.TextUtil;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
@@ -93,7 +94,7 @@ public class Menus {
         int price = ultraCosmetics.getEconomyHandler().calculateDiscountPrice(player.getBukkitPlayer(), type.getAmmoPrice());
         String itemName = MessageManager.getLegacyMessage("Buy-Ammo-Description",
                 Placeholder.unparsed("amount", String.valueOf(type.getResultAmmoAmount())),
-                Placeholder.unparsed("price", String.valueOf(price)),
+                Placeholder.unparsed("price", TextUtil.formatNumber(price)),
                 Placeholder.component("gadgetname", type.getName())
         );
         ItemStack display = ItemFactory.create(type.getMaterial(), itemName);
@@ -140,7 +141,7 @@ public class Menus {
             return;
         }
         int discountPrice = ultraCosmetics.getEconomyHandler().calculateDiscountPrice(player, price);
-        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", String.valueOf(discountPrice));
+        TagResolver.Single pricePlaceholder = Placeholder.unparsed("price", TextUtil.formatNumber(discountPrice));
         ItemStack itemStack = ItemFactory.rename(getTreasureKeyBaseItem(), MessageManager.getLegacyMessage("Buy-Treasure-Key-ItemName", pricePlaceholder));
 
         PurchaseData pd = new PurchaseData();

@@ -562,3 +562,7 @@ Item-Delay:
 # Whether UC should always unequip/reequip cosmetics when changing worlds.
 # Enable this if you use MV-Inventories or a similar plugin.
 Always-Update-Cosmetics-On-World-Change: false
+
+# The thousands separator to use when displaying money amounts.
+# Set to "" to disable.
+Thousands-Separator: ","

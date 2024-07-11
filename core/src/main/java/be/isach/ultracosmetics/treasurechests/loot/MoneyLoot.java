@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.events.loot.UCMoneyRewardEvent;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.treasurechests.TreasureChest;
+import be.isach.ultracosmetics.util.TextUtil;
 import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
@@ -28,7 +29,7 @@ public class MoneyLoot implements Loot {
         // Spawn a firework if the player got more than 3/4 of the money they could have.
         boolean firework = money > 3 * SettingsManager.getConfig().getInt("TreasureChests.Loots.Money.Max") / 4;
         boolean toOthers = SettingsManager.getConfig().getBoolean("TreasureChests.Loots.Money.Message.enabled");
-        TagResolver.Single moneyPlaceholder = Placeholder.unparsed("money", String.valueOf(money));
+        TagResolver.Single moneyPlaceholder = Placeholder.unparsed("money", TextUtil.formatNumber(money));
         String[] name = MessageManager.getLegacyMessage("Treasure-Chests-Loot.Money", moneyPlaceholder).split("\n");
         Component msg = MessageManager.getMessage("Treasure-Chests-Loot-Messages.Money", moneyPlaceholder,
                 Placeholder.unparsed("name", player.getBukkitPlayer().getName())
