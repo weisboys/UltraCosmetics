@@ -1855,3 +1855,4 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>You must clear hotbar slot <slot> to equip a gadget!
   Mounts: <prefix> <bold><red>You must clear hotbar slot <slot> to equip this mount!
 Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
