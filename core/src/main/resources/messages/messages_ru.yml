@@ -452,7 +452,7 @@ Mounts:
     Description: Ваш стандартный, повседневный верблюд
   Equip: <prefix> <blue>Вы заспавнили <mountname>
   Unequip: <prefix> <blue>Вы зареспавнили <mountname>
-  Cant-Spawn: <prefix> <bold><red>Монстры не могут спавниться здесь!
+  Cant-Spawn: <prefix> <bold><red>Монстры не могут появляться в мирных мирах!
   Not-Enough-Room: <prefix> <bold><red>Здесь недостаточно места!
 Particle-Effects:
   Equip: <prefix> <blue>Использовано <effectname>
@@ -1858,3 +1858,4 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы использовать гаджет!
   Mounts: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы экипировать этот транспорт!
 Use-Rename-Pet-Command: <prefix> <red>Используйте <yellow>/uc rename</yellow> для переименования
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
