@@ -71,6 +71,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     protected void writeAttributes(ItemStack stack) {
         if (attributes.isEmpty()) return;
         ItemMeta meta = stack.getItemMeta();

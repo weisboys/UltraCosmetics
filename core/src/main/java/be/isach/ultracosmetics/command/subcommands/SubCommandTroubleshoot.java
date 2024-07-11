@@ -6,7 +6,10 @@ import be.isach.ultracosmetics.command.SubCommand;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.util.Problem;
 import net.kyori.adventure.audience.Audience;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -23,7 +26,7 @@ public class SubCommandTroubleshoot extends SubCommand {
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
         Set<Problem> problems = ultraCosmetics.getProblems();
-        if (problems.size() == 0) {
+        if (problems.isEmpty()) {
             sender.sendMessage(ChatColor.GREEN + "UltraCosmetics is not currently aware of any problems :)");
         } else {
             sender.sendMessage(ChatColor.RED + "UltraCosmetics currently has " + problems.size() + " minor problems.");
@@ -37,10 +40,11 @@ public class SubCommandTroubleshoot extends SubCommand {
     }
 
     public static void sendSupportMessage(CommandSender sender) {
-        sender.sendMessage("");
         String version = UltraCosmeticsData.get().getPlugin().getUpdateChecker().getCurrentVersion().versionClassifierCommit();
         sender.sendMessage("You are running UC " + version + " on " + Bukkit.getName() + " " + Bukkit.getVersion());
-        sender.sendMessage(ChatColor.GREEN + "If you need help, join the Discord for support: https://discord.gg/mDSbzGPykk");
+        Component discordMessage = Component.text("If you need help, click here to join the support Discord", NamedTextColor.GREEN, TextDecoration.UNDERLINED)
+                .clickEvent(ClickEvent.openUrl("https://discord.gg/mDSbzGPykk"));
+        MessageManager.getAudiences().sender(sender).sendMessage(discordMessage);
         sender.sendMessage(ChatColor.GREEN + "When you join, share a screenshot of this message.");
     }
 }
