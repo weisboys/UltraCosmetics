@@ -1,13 +1,19 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.config.MessageManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 
 public enum Problem {
     // Fatal
     BAD_CONFIG(true, "config.yml is invalid, please run it through a YAML checker.", "invalid-config"),
-    BAD_MESSAGES(true, "Messages file is invalid, please run it through a YAML checker.", "invalid-messages-file"),
+    BAD_MESSAGES(true, " is invalid, please run it through a YAML checker.", "invalid-messages-file") {
+        @Override
+        public Component getSummary() {
+            return Component.text(MessageManager.getLangFilename()).append(super.getSummary());
+        }
+    },
 
     // Non-fatal
     BAD_MC_VERSION(false, "This version of Minecraft is not fully supported, please check for an update.", "unsupported-mc-version"),

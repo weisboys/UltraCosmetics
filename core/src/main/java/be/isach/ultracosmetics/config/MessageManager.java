@@ -40,11 +40,15 @@ public class MessageManager {
     // should be set to true by the time anybody else can read this
     private boolean success = false;
 
+    public static String getLangFilename() {
+        return "messages_" + UltraCosmeticsData.get().getLanguage();
+    }
+
     /*
       Load the messages config
      */
     private MessageManager() {
-        String langFile = "messages_" + UltraCosmeticsData.get().getLanguage();
+        String langFile = getLangFilename();
         messagesConfig = new SettingsManager(langFile);
         if (!messagesConfig.success()) {
             miniMessage = null;
