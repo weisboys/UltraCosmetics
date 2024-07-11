@@ -64,10 +64,10 @@ public class MountNyanSheep extends Mount {
     }
 
     private void move() {
-        Location playerLoc = getPlayer().getLocation();
-        Vector vel = playerLoc.getDirection().setY(0).normalize().multiply(4);
-        playerLoc.add(vel);
+        Location target = getPlayer().getLocation();
+        Vector vel = target.getDirection().setY(0).normalize().multiply(4);
+        target.add(vel);
 
-        brain.getController().moveTo(playerLoc, 2);
+        brain.getController().moveTo(target, 2);
     }
 }

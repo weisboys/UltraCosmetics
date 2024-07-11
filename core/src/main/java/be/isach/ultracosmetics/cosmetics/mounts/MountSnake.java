@@ -4,7 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.MountType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
-
+import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import org.bukkit.DyeColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Creature;
@@ -18,8 +18,6 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.gamercoder215.mobchip.bukkit.BukkitBrain;
-
 /**
  * Represents an instance of a snake mount.
  *
@@ -28,7 +26,7 @@ import me.gamercoder215.mobchip.bukkit.BukkitBrain;
  */
 public class MountSnake extends Mount {
 
-    private List<Creature> tail = new ArrayList<>();
+    private final List<Creature> tail = new ArrayList<>();
     private int color = 1;
 
     public MountSnake(UltraPlayer owner, MountType type, UltraCosmetics ultraCosmetics) {
@@ -57,23 +55,17 @@ public class MountSnake extends Mount {
     @Override
     public void onUpdate() {
         if (getPlayer() == null) return;
-        Vector vel = getPlayer().getLocation().getDirection().setY(0).normalize().multiply(4);
+        Vector vel = getPlayer().getLocation().getDirection().setY(0).normalize().multiply(16);
 
         Creature before = null;
         for (int i = 0; i < tail.size(); i++) {
             Creature tailEnt = tail.get(i);
-            Location loc = getPlayer().getLocation().add(vel);
-            if (i == 0) {
+            Location loc;
+            if (before == null) {
                 loc = tailEnt.getLocation().add(vel);
-            }
-            if (before != null) {
+            } else {
                 loc = before.getLocation();
-            }
-            if (loc.toVector().subtract(tailEnt.getLocation().toVector()).length() > 12.0D) {
-                loc = tailEnt.getLocation().add(traj(tailEnt.getLocation(), loc).multiply(12));
-            }
-            if (before != null) {
-                Location tp = before.getLocation().add(traj2D(before, tailEnt).multiply(1.4D));
+                Location tp = before.getLocation().add(traj(before, tailEnt).multiply(1.4D));
                 tp.setPitch(tailEnt.getLocation().getPitch());
                 tp.setYaw(tailEnt.getLocation().getYaw());
                 tailEnt.teleport(tp);
@@ -85,16 +77,12 @@ public class MountSnake extends Mount {
         }
     }
 
-    public Vector traj2D(Entity a, Entity b) {
-        return b.getLocation().toVector().subtract(a.getLocation().toVector()).setY(0).normalize();
-    }
-
     public Vector traj(Location a, Location b) {
         return b.toVector().subtract(a.toVector()).setY(0).normalize();
     }
 
     public Vector traj(Entity a, Entity b) {
-        return b.getLocation().toVector().subtract(a.getLocation().toVector()).setY(0).normalize();
+        return traj(a.getLocation(), b.getLocation());
     }
 
     public void addSheepToTail(int amount) {
@@ -109,12 +97,12 @@ public class MountSnake extends Mount {
             } else {
                 loc.subtract(player.getLocation().getDirection().setY(0));
             }
-            Sheep tailEnt = (loc.getWorld().spawn(loc, Sheep.class));
+            Sheep tailEnt = loc.getWorld().spawn(loc, Sheep.class);
             tailEnt.setNoDamageTicks(Integer.MAX_VALUE);
             tailEnt.setRemoveWhenFarAway(false);
-            tailEnt.teleport(loc);
             tail.add(tailEnt);
             tailEnt.setColor(DyeColor.values()[color]);
+            tailEnt.setPersistent(false);
         }
     }
 
