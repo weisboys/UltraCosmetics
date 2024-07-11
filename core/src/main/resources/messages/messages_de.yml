@@ -455,7 +455,7 @@ Mounts:
     Description: Dein normales, alltägliches Kamel
   Equip: <prefix> <blue>Du hast <mountname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <mountname> </blue><blue>entfernt
-  Cant-Spawn: <prefix> <bold><red>Monster können hier nicht spawnen!
+  Cant-Spawn: <prefix> <bold><red>In friedlichen Welten können keine Monster erscheinen!
   Not-Enough-Room: <prefix> <bold><red>Hier ist nicht genug Platz für ein Reittier!
 Particle-Effects:
   Equip: <prefix> <blue>Du hast <effectname> </blue><blue>ausgerüstet
@@ -1861,3 +1861,4 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um ein Gadget auszurüsten!
   Mounts: <prefix> <bold><red>Du musst Slot <slot> in der Schnellzugriffsleiste leeren, um dieses Reittier auszurüsten!
 Use-Rename-Pet-Command: <prefix> <red>Benutze <yellow>/uc rename</yellow> um den Namen zu ändern
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
