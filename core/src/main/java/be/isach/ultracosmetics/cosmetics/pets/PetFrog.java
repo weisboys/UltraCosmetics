@@ -3,7 +3,6 @@ package be.isach.ultracosmetics.cosmetics.pets;
 import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.entity.Frog;
 import org.bukkit.entity.Frog.Variant;
 
@@ -20,6 +19,6 @@ public class PetFrog extends Pet {
 
     @Override
     public boolean customize(String customization) {
-        return enumCustomize(Variant.class, customization, ((Frog) entity)::setVariant);
+        return oldEnumCustomize(Variant.class, customization, ((Frog) entity)::setVariant);
     }
 }

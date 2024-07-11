@@ -18,6 +18,7 @@ public class PetVillager extends Pet {
         super(owner, type, ultraCosmetics);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public boolean customize(String customization) {
         Type type;

@@ -338,6 +338,28 @@ public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updata
         return valueCustomize(s -> Enum.valueOf(types, s), arg, func);
     }
 
+    /**
+     * This function is similar to enumCustomize, but is used for classes that
+     * used to be enums, but are now just classes with static fields.
+     * This method uses reflection so that it works whether it's a enum or a class.
+     *
+     * @param <T>   the type of the enum
+     * @param types the class of the enum (i.e. Variant.class)
+     * @param arg   the key to search for in the enum
+     * @param func  the function to call upon success
+     * @return true if arg was able to be parsed
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> boolean oldEnumCustomize(Class<T> types, String arg, Consumer<T> func) {
+        return valueCustomize(s -> {
+            try {
+                return (T) types.getDeclaredField(s).get(null);
+            } catch (ReflectiveOperationException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }, arg, func);
+    }
+
     protected <T> boolean valueCustomize(Function<String, T> valueFunc, String arg, Consumer<T> func) {
         T value;
         try {

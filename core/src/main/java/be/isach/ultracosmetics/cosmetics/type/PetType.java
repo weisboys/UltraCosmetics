@@ -42,7 +42,7 @@ public class PetType extends CosmeticEntType<Pet> {
 
         if (GENERATE_MISSING_MESSAGES) {
             MessageManager.addMessage(getConfigPath() + ".menu-name", configName);
-            MessageManager.addMessage(getConfigPath() + ".entity-displayname", "&l%playername%'s " + configName);
+            MessageManager.addMessage(getConfigPath() + ".entity-displayname", "<bold><playername>'s " + configName);
         }
     }
 
