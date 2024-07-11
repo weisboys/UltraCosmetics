@@ -32,8 +32,8 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Ключ 
 You-Won-Treasure-Chests: '<prefix> <bold><white>Ви виграли: <name>!'
 Treasure-Chest-Occupied: <prefix> <bold><red>Всі скарбниці заповнені, будь ласка, зачекайте і спробуйте ще раз
 No-Ammo: <prefix> <bold><red>У вас немає балів до цього гаджета!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
-Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
+Cannot-Sell-Item: <prefix> <bold><red>Ви не можете продати цей товар!
+Structure-Chests-Disabled: <prefix> <bold><red>Конструкційні скрині вимкнено!
 Clear:
   Cosmetics: <bold><red>Очистити косметику
   Gadgets: <bold><red>Очистити поточний гаджет
@@ -138,7 +138,7 @@ Menu:
     Button:
       Previous-Page: <bold><red>Попередня сторінка
       Next-Page: <bold><green>Наступна сторінка
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>ВИМКНЕНО
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Тут недостатньо місця для скриньки!
   Region-Disabled: <prefix> <bold><red>Ви не можете відкрити тут скриньку!
@@ -448,12 +448,12 @@ Mounts:
       прихованих "Секретні доповнення до Слаймінсу".
       Цей підійде вам вічно.
   Camel:
-    menu-name: <bold><gold>Camel
-    entity-displayname: <bold><playername>'s Camel
+    menu-name: <bold><gold>Верблюд
+    entity-displayname: <bold><playername>Верблюд
     Description: Ваш стандартний повсякденний верблюд
   Equip: <prefix> <blue>Ви заспавнили <mountname>
   Unequip: <prefix> <blue>Ви задеспавнили <mountname>
-  Cant-Spawn: <prefix> <bold><red>Монстри не можуть тут спавнитись!
+  Cant-Spawn: <prefix> <bold><red>Монстри не можуть породжуватися в мирних світах!
   Not-Enough-Room: <prefix> <bold><red>Тут недостатньо місця для транспорту!
 Particle-Effects:
   Equip: <prefix> <blue>Ви активували <effectname>
@@ -885,8 +885,8 @@ Pets:
     entity-displayname: "<bold>Іллюзіоніст гравця \n<playername>"
     Description: Тільки доступний через команди!
   Sniffer:
-    menu-name: <bold><green>Sniffer
-    entity-displayname: <bold><playername>'s Sniffer
+    menu-name: <bold><green>Нюхач
+    entity-displayname: <bold><playername>Нюхач
     Description: Чути запах кераміки!
   Equip: <prefix> <blue>Ви заспавнили <petname>
   Unequip: <prefix> <blue>Ви задеспавнили <petname>
@@ -1141,8 +1141,8 @@ Morphs:
     name: <bold><dark_purple>Шулькер
     Description: Любить ховатися!
   Sniffer:
-    name: <bold><green>Sniffer
-    Description: '*sniff sniff*'
+    name: <bold><green>Нюхач
+    Description: '*нюхати нюхати*'
 Hats:
   Equip: <prefix> <blue>Ви одягнули <hatname> </blue><blue>капелюх!
   Unequip: <prefix> <blue>Ви зняли <hatname> </blue><blue>капелюх!
@@ -1858,4 +1858,5 @@ Must-Remove:
   Emotes: <prefix> <bold><red>Ви повинні зняти шолом, щоб активувати емоцію!
   Gadgets: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації гаджету!
   Mounts: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації транспорту!
-Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
+Use-Rename-Pet-Command: <prefix> <red>використовувати <yellow>/uc rename</yellow> для перейменувати
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!

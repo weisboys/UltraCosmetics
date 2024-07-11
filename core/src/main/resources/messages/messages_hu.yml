@@ -451,7 +451,7 @@ Mounts:
     Description: Majdnem szamár, csak van a hátán púp
   Equip: '<prefix><blue> Leidézted őt: <mountname>'
   Unequip: '<prefix><blue> Elküldted őt: <mountname>'
-  Cant-Spawn: <prefix> <bold><red>Szörnyek itt nem lehetnek!
+  Cant-Spawn: <prefix> <bold><red>A szörnyek nem születhetnek békés világokban!
   Not-Enough-Room: <prefix> <bold><red>Nincs elég hely egy tartónak!
 Particle-Effects:
   Equip: <prefix> <blue>Leidéztél <effectname>
@@ -1853,3 +1853,4 @@ Must-Remove:
   Gadgets: <prefix><bold><red>Törölnöd kell a hotbarodban a(z) <slot> slotot hogy felvehesd a kütyüt!
   Mounts: <prefix><bold><red>Törölnöd kell a hotbarodban a(z) <slot> slotot hogy felvehesd ezt a járgányt!
 Use-Rename-Pet-Command: <prefix><red>Használd az <yellow>/uc rename</yellow> parancsot az átnevezéshez
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
