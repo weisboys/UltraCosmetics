@@ -452,7 +452,7 @@ Mounts:
     Description: Votre chameau banal de tous les jours
   Equip: <prefix> <blue>Tu as fait apparaître <mountname>
   Unequip: <prefix> <blue>Tu as fait disparaître <mountname>
-  Cant-Spawn: <prefix> <bold><red>Les monstres ne peuvent pas apparaître ici !
+  Cant-Spawn: <prefix> <bold><red>Les monstres ne peuvent pas apparaître dans des mondes paisibles !
   Not-Enough-Room: <prefix> <bold><red>Pas assez de place pour une monture ici !
 Particle-Effects:
   Equip: <prefix> <blue>Tu as invoqué <effectname>
@@ -1858,3 +1858,4 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper un gadget !
   Mounts: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper cette monture !
 Use-Rename-Pet-Command: <prefix> <red>Utiliser <yellow>/uc rename</yellow> pour renommer
+Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
