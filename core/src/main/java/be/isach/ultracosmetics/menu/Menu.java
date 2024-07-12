@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.command.CommandManager;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
+import be.isach.ultracosmetics.hook.PlaceholderHook;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
 import net.kyori.adventure.text.Component;
@@ -124,6 +125,16 @@ public abstract class Menu implements Listener {
         if (itemStack.hasItemMeta()) {
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.addItemFlags(ItemFlag.values());
+            if (itemMeta.hasLore() && ultraCosmetics.getPlaceholderHook() != null) {
+                Player player = ultraPlayer.getBukkitPlayer();
+                List<String> loreList = itemMeta.getLore();
+                for (int i = 0; i < loreList.size(); i++) {
+                    if (loreList.get(i).contains("%")) {
+                        loreList.set(i, PlaceholderHook.parsePlaceholders(player, loreList.get(i)));
+                    }
+                }
+                itemMeta.setLore(loreList);
+            }
             itemStack.setItemMeta(itemMeta);
         }
 

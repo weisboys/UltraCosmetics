@@ -127,6 +127,7 @@ public class UltraCosmetics extends JavaPlugin {
     private EconomyHandler economyHandler;
 
     private PermissionManager permissionManager;
+    private PlaceholderHook placeholderHook;
 
     private DiscordSRVHook discordHook;
 
@@ -328,7 +329,8 @@ public class UltraCosmetics extends JavaPlugin {
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             getSmartLogger().write();
-            new PlaceholderHook(this).register();
+            placeholderHook = new PlaceholderHook(this);
+            placeholderHook.register();
             getSmartLogger().write("Hooked into PlaceholderAPI");
         }
 
@@ -763,6 +765,10 @@ public class UltraCosmetics extends JavaPlugin {
 
     public WorldGuardManager getWorldGuardManager() {
         return worldGuardManager;
+    }
+
+    public PlaceholderHook getPlaceholderHook() {
+        return placeholderHook;
     }
 
     public DiscordSRVHook getDiscordHook() {

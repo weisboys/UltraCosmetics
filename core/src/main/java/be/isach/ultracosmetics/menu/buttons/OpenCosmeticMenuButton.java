@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OpenCosmeticMenuButton implements Button {
+    private final UltraCosmetics ultraCosmetics;
     protected final Category category;
     protected final PermissionManager pm;
     protected final Menus menus;
@@ -29,6 +30,7 @@ public class OpenCosmeticMenuButton implements Button {
     protected final Permission openPermission;
 
     public OpenCosmeticMenuButton(UltraCosmetics ultraCosmetics, Category category) {
+        this.ultraCosmetics = ultraCosmetics;
         this.category = category;
         this.baseStack = category.getItemStack();
         this.pm = ultraCosmetics.getPermissionManager();
@@ -41,16 +43,18 @@ public class OpenCosmeticMenuButton implements Button {
         ItemStack stack = baseStack.clone();
         List<String> loreList = new ArrayList<>();
         loreList.add("");
+        Player player = ultraPlayer.getBukkitPlayer();
         if (!category.isEnabled()) {
             loreList.add(MessageManager.getLegacyMessage("Menu.Disabled-Button"));
-        } else if (!ultraPlayer.getBukkitPlayer().hasPermission(openPermission)) {
+        } else if (!player.hasPermission(openPermission)) {
             loreList.add(MessageManager.getLegacyMessage("No-Permission"));
         } else {
             String lore = MessageManager.getLegacyMessage("Menu." + category.getConfigPath() + ".Button.Lore",
-                    TagResolver.resolver("unlocked", new LazyTag(() -> Component.text(calculateUnlocked(ultraPlayer.getBukkitPlayer()))))
+                    TagResolver.resolver("unlocked", new LazyTag(() -> Component.text(calculateUnlocked(player))))
             );
             loreList.addAll(Arrays.asList(lore.split("\n")));
         }
+
         ItemMeta meta = stack.getItemMeta();
         meta.setLore(loreList);
         stack.setItemMeta(meta);

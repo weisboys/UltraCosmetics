@@ -7,6 +7,7 @@ import be.isach.ultracosmetics.cosmetics.Cosmetic;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticType;
 import be.isach.ultracosmetics.cosmetics.type.GadgetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
@@ -18,7 +19,7 @@ import org.bukkit.entity.Player;
  */
 public class PlaceholderHook extends PlaceholderExpansion {
 
-    private UltraCosmetics ultraCosmetics;
+    private final UltraCosmetics ultraCosmetics;
 
     public PlaceholderHook(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
@@ -83,5 +84,9 @@ public class PlaceholderHook extends PlaceholderExpansion {
     @Override
     public boolean persist() {
         return true;
+    }
+
+    public static String parsePlaceholders(Player player, String str) {
+        return PlaceholderAPI.setPlaceholders(player, str);
     }
 }
