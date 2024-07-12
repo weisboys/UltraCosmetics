@@ -74,17 +74,23 @@ public class PetType extends CosmeticEntType<Pet> {
     }
 
     public static void register(ServerVersion serverVersion) {
-        new PetType("Piggy", XMaterial.PORKCHOP, XEntityType.PIG, PetPiggy.class);
+        // Pets that don't work
+        /* new PetType("Squid", XMaterial.INK_SAC, XEntityType.SQUID, Pet.class); */
+        /* new PetType("Ghast", XMaterial.FIRE_CHARGE, XEntityType.GHAST, Pet.class); */
+        /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, XEntityType.GLOW_SQUID, Pet.class); */
+        /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, XEntityType.PHANTOM, Pet.class); */
+
+        new PetType("Piggy", XMaterial.PORKCHOP, XEntityType.PIG, Pet.class);
         new PetType("EasterBunny", XMaterial.CARROT, XEntityType.RABBIT, PetEasterBunny.class);
-        new PetType("Cow", XMaterial.MILK_BUCKET, XEntityType.COW, PetCow.class);
+        new PetType("Cow", XMaterial.MILK_BUCKET, XEntityType.COW, Pet.class);
         new PetType("Mooshroom", XMaterial.RED_MUSHROOM, XEntityType.MOOSHROOM, PetMooshroom.class);
         new PetType("Dog", XMaterial.BONE, XEntityType.WOLF, PetDog.class);
-        new PetType("Chick", XMaterial.EGG, XEntityType.CHICKEN, PetChick.class);
+        new PetType("Chick", XMaterial.EGG, XEntityType.CHICKEN, Pet.class);
         new PetType("ChristmasElf", XMaterial.BEACON, XEntityType.VILLAGER, PetChristmasElf.class);
         new PetType("IronGolem", XMaterial.IRON_INGOT, XEntityType.IRON_GOLEM, PetIronGolem.class);
         new PetType("Snowman", XMaterial.SNOWBALL, XEntityType.SNOW_GOLEM, PetSnowman.class);
         new PetType("Villager", XMaterial.EMERALD, XEntityType.VILLAGER, PetVillager.class);
-        new PetType("Bat", XMaterial.COAL, XEntityType.BAT, PetBat.class);
+        new PetType("Bat", XMaterial.COAL, XEntityType.BAT, Pet.class);
         new PetType("Sheep", XMaterial.WHITE_WOOL, XEntityType.SHEEP, PetSheep.class);
         new PetType("Wither", XMaterial.WITHER_SKELETON_SKULL, XEntityType.WITHER, PetWither.class) {
             @Override
@@ -98,22 +104,20 @@ public class PetType extends CosmeticEntType<Pet> {
             }
         };
         new PetType("Slime", XMaterial.SLIME_BALL, XEntityType.SLIME, PetSlime.class);
-        new PetType("Silverfish", XMaterial.GRAY_DYE, XEntityType.SILVERFISH, PetSilverfish.class);
-        new PetType("Blaze", XMaterial.BLAZE_ROD, XEntityType.BLAZE, PetBlaze.class);
+        new PetType("Silverfish", XMaterial.GRAY_DYE, XEntityType.SILVERFISH, Pet.class);
+        new PetType("Blaze", XMaterial.BLAZE_ROD, XEntityType.BLAZE, Pet.class);
         new PetType("Creeper", XMaterial.GUNPOWDER, XEntityType.CREEPER, PetCreeper.class);
         new PetType("Enderman", XMaterial.ENDER_PEARL, XEntityType.ENDERMAN, PetEnderman.class);
         new PetType("Skeleton", XMaterial.BOW, XEntityType.SKELETON, PetSkeleton.class);
         new PetType("Zombie", XMaterial.ROTTEN_FLESH, XEntityType.ZOMBIE, PetZombie.class);
-        /* Squid disabled because its not moving at all, its just turning around all the time */
-        /* new PetType("Squid", XMaterial.INK_SAC, XEntityType.SQUID, PetSquid.class); */
-        new PetType("CaveSpider", XMaterial.SPIDER_EYE, XEntityType.CAVE_SPIDER, PetCaveSpider.class);
-        new PetType("Spider", XMaterial.STRING, XEntityType.SPIDER, PetSpider.class);
-        new PetType("Endermite", XMaterial.ENDER_EYE, XEntityType.ENDERMITE, PetEndermite.class);
-        /* Ghast disabled because its not moving at all (besides teleport) */
-        /* new PetType("Ghast", XMaterial.FIRE_CHARGE, XEntityType.GHAST, PetGhast.class); */
-        new PetType("Guardian", XMaterial.PRISMARINE_SHARD, XEntityType.GUARDIAN, PetGuardian.class);
+
+        new PetType("CaveSpider", XMaterial.SPIDER_EYE, XEntityType.CAVE_SPIDER, Pet.class);
+        new PetType("Spider", XMaterial.STRING, XEntityType.SPIDER, Pet.class);
+        new PetType("Endermite", XMaterial.ENDER_EYE, XEntityType.ENDERMITE, Pet.class);
+
+        new PetType("Guardian", XMaterial.PRISMARINE_SHARD, XEntityType.GUARDIAN, Pet.class);
         new PetType("MagmaCube", XMaterial.MAGMA_CREAM, XEntityType.MAGMA_CUBE, PetMagmaCube.class);
-        new PetType("Witch", XMaterial.POTION, XEntityType.WITCH, PetWitch.class);
+        new PetType("Witch", XMaterial.POTION, XEntityType.WITCH, Pet.class);
         new PetType("Horse", XMaterial.LEATHER_HORSE_ARMOR.or(XMaterial.LEATHER), XEntityType.HORSE, PetHorse.class);
 
         // Cases fall through, so for example v1_19 gets all pets of 1.19 and below.
@@ -148,42 +152,38 @@ public class PetType extends CosmeticEntType<Pet> {
                 config.addDefault(path + ".Fast", false, "https://imgur.com/a/EKWwQ6w");
             }
         };
-        /* Glow Squid disabled because its not moving at all, its just turning around all the time */
-        /* new PetType("GlowSquid", XMaterial.GLOW_INK_SAC, XEntityType.GLOW_SQUID, PetGlowSquid.class); */
         new PetType("Piglin", XMaterial.GOLD_INGOT, XEntityType.PIGLIN, PetPiglin.class);
-        new PetType("Strider", XMaterial.WARPED_FUNGUS, XEntityType.STRIDER, PetStrider.class);
+        new PetType("Strider", XMaterial.WARPED_FUNGUS, XEntityType.STRIDER, Pet.class);
         new PetType("Hoglin", XMaterial.COOKED_PORKCHOP, XEntityType.HOGLIN, PetHoglin.class);
         new PetType("PiglinBrute", XMaterial.GOLDEN_AXE, XEntityType.PIGLIN_BRUTE, PetPiglinBrute.class);
-        new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, XEntityType.ZOGLIN, PetZoglin.class);
+        new PetType("Zoglin", XMaterial.ZOGLIN_SPAWN_EGG, XEntityType.ZOGLIN, Pet.class);
         new PetType("ZombifiedPiglin", XMaterial.GOLDEN_SWORD, XEntityType.ZOMBIFIED_PIGLIN, PetZombifiedPiglin.class);
-        new PetType("Bee", XMaterial.HONEYCOMB, XEntityType.BEE, PetBee.class);
+        new PetType("Bee", XMaterial.HONEYCOMB, XEntityType.BEE, Pet.class);
         new PetType("Panda", XMaterial.BAMBOO, XEntityType.PANDA, PetPanda.class);
         new PetType("Fox", XMaterial.SWEET_BERRIES, XEntityType.FOX, PetFox.class);
         new PetType("Kitty", XMaterial.TROPICAL_FISH, XEntityType.CAT, PetKitty.class);
-        new PetType("Ocelot", XMaterial.COD, XEntityType.OCELOT, PetOcelot.class);
+        new PetType("Ocelot", XMaterial.COD, XEntityType.OCELOT, Pet.class);
         new PetType("WanderingTrader", XMaterial.WANDERING_TRADER_SPAWN_EGG, XEntityType.WANDERING_TRADER, PetWanderingTrader.class);
-        new PetType("Pillager", XMaterial.CROSSBOW, XEntityType.PILLAGER, PetPillager.class);
-        new PetType("Ravager", XMaterial.RAVAGER_SPAWN_EGG, XEntityType.RAVAGER, PetRavager.class);
-        new PetType("Cod", XMaterial.COD_BUCKET, XEntityType.COD, PetCod.class);
+        new PetType("Pillager", XMaterial.CROSSBOW, XEntityType.PILLAGER, Pet.class);
+        new PetType("Ravager", XMaterial.RAVAGER_SPAWN_EGG, XEntityType.RAVAGER, Pet.class);
+        new PetType("Cod", XMaterial.COD_BUCKET, XEntityType.COD, Pet.class);
         new PetType("Pufferfish", XMaterial.PUFFERFISH, XEntityType.PUFFERFISH, PetPufferfish.class);
-        new PetType("Salmon", XMaterial.SALMON_BUCKET, XEntityType.SALMON, PetSalmon.class);
+        new PetType("Salmon", XMaterial.SALMON_BUCKET, XEntityType.SALMON, Pet.class);
         new PetType("TropicalFish", XMaterial.TROPICAL_FISH_BUCKET, XEntityType.TROPICAL_FISH, PetTropicalFish.class);
-        new PetType("Turtle", XMaterial.TURTLE_HELMET, XEntityType.TURTLE, PetTurtle.class);
-        new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, XEntityType.DOLPHIN, PetDolphin.class);
+        new PetType("Turtle", XMaterial.TURTLE_HELMET, XEntityType.TURTLE, Pet.class);
+        new PetType("Dolphin", XMaterial.DOLPHIN_SPAWN_EGG, XEntityType.DOLPHIN, Pet.class);
         new PetType("Drowned", XMaterial.TRIDENT, XEntityType.DROWNED, PetDrowned.class);
-        /* Phantom disabled because its just stuck flying down into the ground */
-        /* new PetType("Phantom", XMaterial.PHANTOM_MEMBRANE, XEntityType.PHANTOM, PetPhantom.class); */
         new PetType("Parrot", XMaterial.COOKIE, XEntityType.PARROT, PetParrot.class);
-        new PetType("Illusioner", XMaterial.COMMAND_BLOCK, XEntityType.ILLUSIONER, PetIllusioner.class);
+        new PetType("Illusioner", XMaterial.COMMAND_BLOCK, XEntityType.ILLUSIONER, Pet.class);
         new PetType("Llama", XMaterial.RED_WOOL, XEntityType.LLAMA, PetLlama.class);
         new PetType("Vex", XMaterial.IRON_SWORD, XEntityType.VEX, PetVex.class);
-        new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, XEntityType.EVOKER, PetEvoker.class);
+        new PetType("Evoker", XMaterial.TOTEM_OF_UNDYING, XEntityType.EVOKER, Pet.class);
         new PetType("Vindicator", XMaterial.IRON_AXE, XEntityType.VINDICATOR, PetVindicator.class);
         // Some entities are here because they were split into different XEntityTypes in 1.11
         new PetType("Donkey", XMaterial.CHEST, XEntityType.DONKEY, PetDonkey.class);
         new PetType("Mule", XMaterial.SADDLE, XEntityType.MULE, PetMule.class);
-        new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, XEntityType.SKELETON_HORSE, PetSkeletonHorse.class);
-        new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, XEntityType.ZOMBIE_HORSE, PetZombieHorse.class);
+        new PetType("SkeletonHorse", XMaterial.BONE_BLOCK, XEntityType.SKELETON_HORSE, Pet.class);
+        new PetType("ZombieHorse", XMaterial.ZOMBIE_HORSE_SPAWN_EGG, XEntityType.ZOMBIE_HORSE, Pet.class);
         new PetType("ElderGuardian", XMaterial.PRISMARINE_CRYSTALS, XEntityType.ELDER_GUARDIAN, PetElderGuardian.class) {
             @Override
             public void setupConfig(CustomConfiguration config, String path) {
@@ -196,9 +196,9 @@ public class PetType extends CosmeticEntType<Pet> {
         };
         new PetType("WitherSkeleton", XMaterial.STONE_SWORD, XEntityType.WITHER_SKELETON, PetWitherSkeleton.class);
         new PetType("ZombieVillager", XMaterial.GOLDEN_APPLE, XEntityType.ZOMBIE_VILLAGER, PetZombieVillager.class);
-        new PetType("Husk", XMaterial.SAND, XEntityType.HUSK, PetHusk.class);
+        new PetType("Husk", XMaterial.SAND, XEntityType.HUSK, Pet.class);
         new PetType("Stray", XMaterial.ARROW, XEntityType.STRAY, PetStray.class);
-        new PetType("PolarBear", XMaterial.SNOW_BLOCK, XEntityType.POLAR_BEAR, PetPolarBear.class);
+        new PetType("PolarBear", XMaterial.SNOW_BLOCK, XEntityType.POLAR_BEAR, Pet.class);
         new PetType("Shulker", XMaterial.SHULKER_BOX, XEntityType.SHULKER, PetShulker.class);
 
         if (UltraCosmeticsData.get().getVersionManager().isUsingNMS()) {

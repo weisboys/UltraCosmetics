@@ -42,7 +42,7 @@ import java.util.function.Function;
  * @author iSach
  * @since 03-08-2015
  */
-public abstract class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
+public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     private final boolean canRide = SettingsManager.getConfig().getBoolean("Pets-Can-Ride", false);
     protected final boolean showName = SettingsManager.getConfig().getBoolean("Show-Pets-Names", true);
 
