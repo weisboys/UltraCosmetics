@@ -14,7 +14,6 @@ import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -137,7 +136,7 @@ public class Menus {
         if (price < 1) return;
 
         if (!player.hasPermission("ultracosmetics.treasurechests.buykey")) {
-            player.sendMessage(ChatColor.RED + "" + ChatColor.BOLD + "You don't have permission to buy Treasure Keys.");
+            MessageManager.send(player, "No-Buy-Key-Permission");
             return;
         }
         int discountPrice = ultraCosmetics.getEconomyHandler().calculateDiscountPrice(player, price);
