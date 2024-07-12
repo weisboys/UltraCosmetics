@@ -1858,4 +1858,4 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper un gadget !
   Mounts: <prefix> <bold><red>Vous devez effacer l'emplacement de la barre d'action <slot> pour équiper cette monture !
 Use-Rename-Pet-Command: <prefix> <red>Utiliser <yellow>/uc rename</yellow> pour renommer
-Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
+Commands-Disabled-During-Chest: <prefix> <bold><red>Vous ne pouvez pas utiliser de commandes lorsque vous ouvrez un coffre !
