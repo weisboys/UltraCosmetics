@@ -1860,3 +1860,4 @@ Must-Remove:
   Mounts: <prefix> <bold><red>Ви повинні очистити слот хотбару <slot> для активації транспорту!
 Use-Rename-Pet-Command: <prefix> <red>використовувати <yellow>/uc rename</yellow> для перейменувати
 Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
+No-Buy-Key-Permission: <prefix> <red><bold>You don't have permission to buy treasure keys!

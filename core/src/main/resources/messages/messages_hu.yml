@@ -1854,3 +1854,4 @@ Must-Remove:
   Mounts: <prefix><bold><red>Törölnöd kell a hotbarodban a(z) <slot> slotot hogy felvehesd ezt a járgányt!
 Use-Rename-Pet-Command: <prefix><red>Használd az <yellow>/uc rename</yellow> parancsot az átnevezéshez
 Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
+No-Buy-Key-Permission: <prefix> <red><bold>You don't have permission to buy treasure keys!
