@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.cosmetics.morphs;
 
 import be.isach.ultracosmetics.UltraCosmetics;
+import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.MathUtils;
@@ -17,6 +18,8 @@ import org.bukkit.util.Vector;
  * @since 08-26-2015
  */
 public class MorphSlime extends MorphNoFall {
+    private final double jumpSpeed = SettingsManager.getConfig().getDouble(getOptionPath("Jump-Speed"), 2.3);
+
     public MorphSlime(UltraPlayer owner, MorphType type, UltraCosmetics ultraCosmetics) {
         super(owner, type, ultraCosmetics);
     }
@@ -33,7 +36,7 @@ public class MorphSlime extends MorphNoFall {
     public void onPlayerToggleSneak(PlayerToggleSneakEvent event) {
         if (canUseSkill && event.getPlayer() == getPlayer() && getOwner().getCurrentMorph() == this
                 && getOwner().getAndSetCooldown(cosmeticType, 4, 0)) {
-            MathUtils.applyVelocity(getPlayer(), new Vector(0, 2.3, 0));
+            MathUtils.applyVelocity(getPlayer(), new Vector(0, jumpSpeed, 0));
         }
     }
 

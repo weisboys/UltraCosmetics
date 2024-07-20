@@ -98,7 +98,13 @@ public class MorphType extends CosmeticEntType<Morph> {
                         "'Enderpearl' simply launches an ender pearl in the direction the player is looking.");
             }
         };
-        new MorphType("Slime", XMaterial.SLIME_BALL, XEntityType.SLIME, MorphSlime.class);
+        new MorphType("Slime", XMaterial.SLIME_BALL, XEntityType.SLIME, MorphSlime.class) {
+            @Override
+            public void setupConfig(CustomConfiguration config, String path) {
+                super.setupConfig(config, path);
+                config.addDefault(path + ".Jump-Speed", 2.3, "The jump speed of the slime morph ability");
+            }
+        };
         new MorphType("Creeper", XMaterial.GUNPOWDER, XEntityType.CREEPER, MorphCreeper.class);
         new MorphType("Snowman", XMaterial.SNOWBALL, XEntityType.SNOW_GOLEM, MorphSnowman.class);
         new MorphType("Cow", XMaterial.MILK_BUCKET, XEntityType.COW, MorphCow.class);
