@@ -1,11 +1,8 @@
 package be.isach.ultracosmetics.v1_21_R1;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.cosmetics.morphs.Morph;
 import be.isach.ultracosmetics.cosmetics.mounts.Mount;
 import be.isach.ultracosmetics.cosmetics.pets.Pet;
-import be.isach.ultracosmetics.util.SmartLogger;
-import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.v1_21_R1.customentities.CustomEntities;
 import be.isach.ultracosmetics.v1_21_R1.customentities.CustomEntityFirework;
 import be.isach.ultracosmetics.v1_21_R1.customentities.CustomMinecart;
@@ -16,7 +13,6 @@ import be.isach.ultracosmetics.v1_21_R1.pets.PetPumpling;
 import be.isach.ultracosmetics.version.IModule;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import org.bukkit.Bukkit;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_21_R1.CraftWorld;
@@ -31,17 +27,6 @@ import org.bukkit.inventory.meta.FireworkMeta;
 public class VersionModule implements IModule {
     @Override
     public boolean enable() {
-        try {
-            CustomEntities.registerEntities();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-            SmartLogger logger = UltraCosmeticsData.get().getPlugin().getSmartLogger();
-            logger.write(LogLevel.ERROR, "Failed to initialize NMS module.");
-            if (Bukkit.getPluginManager().getPlugin("Citizens") != null) {
-                logger.write(LogLevel.ERROR, "It looks like you have Citizens installed, please make sure you're running build 2817 or higher.");
-            }
-            return false;
-        }
         return true;
     }
 
