@@ -454,8 +454,8 @@ No-Permission:
 # If set to true, in messages the cosmetics' names
 # won't be colored.
 # Example:
-# With true: &a&lYou activated &9&lPaintball Gun!
-# With false: &a&lYou activated Paintball Gun!
+# With true: <green><bold>You activated <blue><bold>Paintball Gun!
+# With false: <green><bold>You activated Paintball Gun!
 Chat-Cosmetic-PlaceHolder-Color: true
 
 # What is the slot for gadgets?
