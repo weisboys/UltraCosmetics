@@ -14,7 +14,7 @@ Size: 54
 #   Type: Command
 #   Material: BEDROCK
 #   Amount: 1
-#   Name: '&bCool bedrock'
+#   Name: '<aqua>Cool bedrock'
 #   Lore:
 #   - "Lore line 1"
 #   - "Lore line 2 (and so on)"
@@ -31,10 +31,10 @@ Slots:
     Type: Command
     Material: BEDROCK
     Amount: 1
-    Name: '&bCool bedrock'
+    Name: '<aqua>Cool bedrock'
     Lore:
-      - "&a&lLore line 1"
-      - "&cLore line 2 (and so on)"
+      - "<green><bold>Lore line 1"
+      - "<red>Lore line 2 (and so on)"
     CustomModelData: 50
     CloseAfterClick: true
     Command: "sudo %player% c:Hello world!"
