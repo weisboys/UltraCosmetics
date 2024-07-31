@@ -34,11 +34,24 @@ public class StructureRollback implements Listener {
         return false;
     }
 
+    /**
+     * Returns true if any block in the area is being rolled back
+     * OR if any rollback overlaps with the area.
+     *
+     * @param area The area to check.
+     * @return true if any rollback overlaps with the area.
+     */
     public static boolean isBlockRollingBackInArea(Area area) {
         for (StructureRollback rollback : INSTANCES) {
-            for (Block block : rollback.states.keySet()) {
-                if (area.contains(block)) return true;
+            if (rollback.protectionArea != null) {
+                return rollback.protectionArea.overlapsWith(area);
             }
+            for (Block block : rollback.states.keySet()) {
+                if (area.contains(block)) {
+                    return true;
+                }
+            }
+            return false;
         }
         return false;
     }

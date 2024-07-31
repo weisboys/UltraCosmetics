@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 import com.cryptomorin.xseries.profiles.builder.XSkull;
+import com.cryptomorin.xseries.profiles.objects.ProfileInputType;
 import com.cryptomorin.xseries.profiles.objects.Profileable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -187,7 +188,7 @@ public class ItemFactory {
 
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
-        return XSkull.of(head).profile(Profileable.detect(url)).apply();
+        return XSkull.of(head).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, url)).apply();
     }
 
     public static ItemStack createColouredLeather(Material armourPart, int red, int green, int blue) {

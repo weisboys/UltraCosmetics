@@ -123,6 +123,7 @@ public class TreasureChestManager implements Listener {
         }
 
         Area placeArea = new Area(targetLoc.clone().subtract(0, 1, 0), large ? 3 : 2, 0);
+        // Also checks for treasure chests that may occupy the area in the future.
         if (StructureRollback.isBlockRollingBackInArea(placeArea)) {
             MessageManager.send(player, "Chest-Location.Not-Enough-Space");
             return false;
