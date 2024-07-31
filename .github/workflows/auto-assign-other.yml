@@ -3,7 +3,7 @@ name: Auto Assign - OTHER
 
 on:
   pull_request_target:
-    types: ["opened", "ready_for_review"]
+    types: [ "opened", "ready_for_review" ]
   workflow_dispatch:
 
 
@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
+      - name: debug
+        run: |
+          echo "github.actor: ${{ github.actor }}"
       # https://github.com/kentaro-m/auto-assign-action
       - name: Auto Assign
         uses: kentaro-m/auto-assign-action@v2.0.0
