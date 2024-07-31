@@ -97,7 +97,7 @@ public class WorldGuardManager {
         for (Category category : blockedCategories) {
             if (blockedCategories.contains(category) && uc.getPlayerManager().getUltraPlayer(player).removeCosmetic(category)) {
                 TagResolver.Single placeholder = Placeholder.component("category",
-                        TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
+                        TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getConfigPath() + ".Title")));
                 MessageManager.send(player, "Region-Disabled-Category", placeholder);
             }
         }
@@ -119,7 +119,7 @@ public class WorldGuardManager {
         for (Category cat : restrictions) {
             if (ultraPlayer.removeCosmetic(cat)) {
                 MessageManager.send(bukkitPlayer, "Region-Disabled-Category",
-                        Placeholder.unparsed("category", cat.getMessagesName())
+                        Placeholder.component("category", MessageManager.getMessage("Menu." + cat.getConfigPath() + ".Title"))
                 );
             }
         }

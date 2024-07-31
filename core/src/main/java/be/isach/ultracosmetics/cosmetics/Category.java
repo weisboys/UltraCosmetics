@@ -148,12 +148,6 @@ public enum Category {
         return configPath;
     }
 
-    public String getMessagesName() {
-        if (isSuits()) return "Suits";
-        // Like configPath but value is different for Category.EFFECTS
-        return name().charAt(0) + name().substring(1).toLowerCase().replace("_", "-");
-    }
-
     public Component getActivateTooltip() {
         return MessageManager.getMessage("Menu." + configPath + ".Button.Tooltip-Equip");
     }

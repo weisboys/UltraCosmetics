@@ -72,7 +72,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> extends BukkitRunnable
             MessageManager.send(player, "Region-Disabled");
             return;
         } else if (state == CosmeticRegionState.BLOCKED_CATEGORY) {
-            TagResolver.Single placeholder = Placeholder.component("category", TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getMessagesName() + ".Title")));
+            TagResolver.Single placeholder = Placeholder.component("category", TextUtil.stripColor(MessageManager.getMessage("Menu." + category.getConfigPath() + ".Title")));
             MessageManager.send(player, "Region-Disabled-Category", placeholder);
             return;
         }

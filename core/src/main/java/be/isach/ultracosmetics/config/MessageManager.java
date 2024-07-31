@@ -194,9 +194,15 @@ public class MessageManager {
 
         migrateClearMsg("Cosmetics", "Cosmetics");
         for (Category cat : Category.values()) {
-            String configName = cat.getMessagesName();
+            String configName = getMessagesName(cat);
             migrateClearMsg(cat.getConfigPath(), configName.substring(0, configName.length() - 1));
         }
+    }
+
+    public String getMessagesName(Category category) {
+        if (category.isSuits()) return "Suits";
+        // Like configPath but value is different for Category.EFFECTS
+        return category.name().charAt(0) + category.getConfigPath().substring(1).toLowerCase().replace("_", "-");
     }
 
     private void addButton(Map<Category, Map<String, String>> buttons, ConfigurationSection menuBlock, Category cat, String oldEquipKey, String oldUnequipKey) {
