@@ -8,6 +8,8 @@ updates:
       time: "01:00"
       timezone: Europe/Paris
     open-pull-requests-limit: 10
+    reviewers:
+      - "BySwiizen"
 
   - package-ecosystem: "gradle"
     directory: /
@@ -16,6 +18,8 @@ updates:
       time: "01:00"
       timezone: Europe/Paris
     open-pull-requests-limit: 10
+    reviewers:
+      - "BySwiizen"
     ignore:
       - dependency-name: "org.spigotmc:spigot-api" # SpigotAPI - Manual update
       - dependency-name: "com.sk89q.worldguard:worldguard-bukkit" # WG 7.0.9 - Latest version compatible with Java 17 (PR #264)
