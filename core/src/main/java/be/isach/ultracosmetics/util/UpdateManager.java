@@ -237,6 +237,10 @@ public class UpdateManager extends BukkitRunnable {
         String[] tmvParts = thisMinecraftVersion.split("\\.");
         String[] supportedParts = supportedVersions[supportedVersions.length - 1].split("\\.");
         for (int i = 0; i < tmvParts.length; i++) {
+            if (i >= supportedParts.length) {
+                // If the server's version has more parts than the highest supported version, it's not supported.
+                return false;
+            }
             int tmvPart = Integer.parseInt(tmvParts[i]);
             int supportedPart = Integer.parseInt(supportedParts[i]);
             // For the first non-equal parts, if the new version is greater than this version, new version wins
