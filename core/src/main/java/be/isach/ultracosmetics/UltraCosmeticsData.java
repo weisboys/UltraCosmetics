@@ -119,9 +119,18 @@ public class UltraCosmeticsData {
     protected boolean initModule() {
         SmartLogger logger = ultraCosmetics.getSmartLogger();
         logger.write("Initializing module " + serverVersion + " (expected version: " + serverVersion.getName() + ")");
+
+        // If NMS is force enabled and we don't know what version we're on, don't use strict version checking.
+        boolean isNmsDowngrade = false;
+        if (useNMS.equalsIgnoreCase("force") && serverVersion == ServerVersion.NEW) {
+            isNmsDowngrade = true;
+            // If we're forcing NMS and we don't know the version, assume we're on the latest version.
+            // (ServerVersion.NEW doesn't count because it doesn't have NMS capability)
+            serverVersion = ServerVersion.values()[ServerVersion.values().length - 2];
+        }
         if (useNMS.equalsIgnoreCase("no")) {
             logger.write("NMS support has been disabled in the config, will run without it.");
-        } else if (serverVersion.isNmsSupported() && ServerVersion.getMinecraftVersion().equals(serverVersion.getName())) {
+        } else if (isNmsDowngrade || (serverVersion.isNmsSupported() && ServerVersion.getMinecraftVersion().equals(serverVersion.getName()))) {
             if (startNMS()) return true;
         } else {
             logger.write("Loading NMS-less mode...");
@@ -303,9 +312,5 @@ public class UltraCosmeticsData {
 
     public void setFileStorage(boolean fileStorage) {
         this.fileStorage = fileStorage;
-    }
-
-    public String getNmsConfigOption() {
-        return useNMS;
     }
 }
