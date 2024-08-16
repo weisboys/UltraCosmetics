@@ -90,7 +90,7 @@ public class UltraCosmeticsData {
      */
     private VersionManager versionManager;
 
-    private UltraCosmetics ultraCosmetics;
+    private final UltraCosmetics ultraCosmetics;
 
     private boolean cosmeticsProfilesEnabled;
     private boolean cosmeticsAffectEntities;

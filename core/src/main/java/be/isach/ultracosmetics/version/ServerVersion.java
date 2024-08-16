@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.version;
 
+import me.gamercoder215.mobchip.abstraction.ChipUtil;
 import org.bukkit.Bukkit;
 
 /**
@@ -90,7 +91,15 @@ public enum ServerVersion {
     }
 
     public boolean isMobChipAvailable() {
-        return this != NEW && !isMobchipEdgeCase();
+        if (isMobchipEdgeCase()) {
+            return false;
+        }
+        try {
+            ChipUtil.getWrapper();
+        } catch (IllegalStateException e) {
+            return false;
+        }
+        return true;
     }
 
     public boolean isNmsSupported() {
