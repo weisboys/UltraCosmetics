@@ -4,6 +4,7 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.Discount;
 import be.isach.ultracosmetics.util.SmartLogger;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
@@ -29,41 +30,39 @@ public class EconomyHandler {
         economies.put("vault", (uc, currency) -> new VaultHook());
         economies.put("playerpoints", (uc, currency) -> new PlayerPointsHook());
         economies.put("peconomy", (uc, currency) -> new PEconomyHook(uc, currency));
-        // We can't directly reference CoinsEngine when compiling with Java 8, so we have to use reflection.
         economies.put("coinsengine", (uc, currency) -> new CoinsEngineHook(uc, currency));
     }
 
+    private final UltraCosmetics ultraCosmetics;
     private EconomyHook economyHook;
+    private String currency;
     private boolean usingEconomy = false;
+    private boolean waitingForCustomEconomy = false;
     private final List<Discount> discounts = new ArrayList<>();
 
     public EconomyHandler(UltraCosmetics ultraCosmetics) {
+        this.ultraCosmetics = ultraCosmetics;
         String economy = ultraCosmetics.getConfig().getString("Economy", "").toLowerCase();
         if (economy.isEmpty()) {
             ultraCosmetics.getSmartLogger().write("Economy not specified in the config, disabling economy features.");
             return;
         }
-        String currency = ultraCosmetics.getConfig().getString("Economy-Currency", "");
+        currency = ultraCosmetics.getConfig().getString("Economy-Currency", "");
         if (currency.isEmpty()) currency = null;
 
         ultraCosmetics.getSmartLogger().write("");
         EconomyHookLoader hookLoader = economies.get(economy);
-        if (hookLoader == null) {
+        if (hookLoader != null) {
+            loadHook(hookLoader);
+            return;
+        }
+        if (Bukkit.getPluginManager().getPlugin(economy) == null) {
             ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, "Unknown economy: '" + economy + "'. Valid economies: " + String.join(", ", economies.keySet()));
-            return;
-        }
-        try {
-            economyHook = hookLoader.load(ultraCosmetics, currency);
-            ultraCosmetics.getSmartLogger().write("Hooked into " + economyHook.getName() + " for economy.");
-            usingEconomy = true;
-        } catch (IllegalStateException | IllegalArgumentException | UnsupportedClassVersionError e) {
-            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, e.getMessage());
-        }
-        if (!usingEconomy) {
             ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Economy features will be disabled.");
-            return;
+        } else {
+            ultraCosmetics.getSmartLogger().write("Economy plugin " + economy + " is unknown, waiting for it to register itself.");
+            waitingForCustomEconomy = true;
         }
-        ultraCosmetics.getSmartLogger().write("");
 
         ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Discount-Groups");
         for (String key : section.getKeys(false)) {
@@ -73,8 +72,38 @@ public class EconomyHandler {
         Collections.sort(discounts);
     }
 
+    private void loadHook(EconomyHookLoader loader) {
+        try {
+            economyHook = loader.load(ultraCosmetics, currency);
+        } catch (IllegalStateException | IllegalArgumentException | UnsupportedClassVersionError e) {
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, e.getMessage());
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Economy features will be disabled.");
+            return;
+        } catch (Exception e) {
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.ERROR, "Failed to hook into " + loader.getClass().getName() + " for economy.");
+            e.printStackTrace();
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Economy features will be disabled.");
+            return;
+        }
+        ultraCosmetics.getSmartLogger().write("Hooked into " + economyHook.getName() + " for economy.");
+        usingEconomy = true;
+        ultraCosmetics.getSmartLogger().write("");
+    }
+
     public EconomyHook getHook() {
         return economyHook;
+    }
+
+    public void addHook(EconomyHookLoader loader) {
+        if (waitingForCustomEconomy) {
+            loadHook(loader);
+            // Indicates success
+            if (usingEconomy) {
+                waitingForCustomEconomy = false;
+            }
+        } else {
+            ultraCosmetics.getSmartLogger().write(SmartLogger.LogLevel.WARNING, "Economy already loaded, ignoring additional hook from " + loader.getClass().getName());
+        }
     }
 
     public void withdrawWithDiscount(Player player, int amount, Runnable onSuccess, Runnable onFailure) {

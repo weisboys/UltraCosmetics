@@ -125,8 +125,7 @@ public class UltraCosmeticsData {
         if (useNMS.equalsIgnoreCase("force") && serverVersion == ServerVersion.NEW) {
             isNmsDowngrade = true;
             // If we're forcing NMS and we don't know the version, assume we're on the latest version.
-            // (ServerVersion.NEW doesn't count because it doesn't have NMS capability)
-            serverVersion = ServerVersion.values()[ServerVersion.values().length - 2];
+            serverVersion = ServerVersion.latest();
         }
         if (useNMS.equalsIgnoreCase("no")) {
             logger.write("NMS support has been disabled in the config, will run without it.");
@@ -157,8 +156,6 @@ public class UltraCosmeticsData {
             if (useNMS.equalsIgnoreCase("force")) {
                 logger.write(LogLevel.WARNING, "Server internals seem to have changed since this build was created,");
                 logger.write(LogLevel.WARNING, "but you have chosen to override version checking!");
-                logger.write(LogLevel.WARNING, "Please check for a server update and an UltraCosmetics update.");
-                logger.write(LogLevel.WARNING, "UltraCosmetics will continue running but you will likely experience issues!");
             } else {
                 logger.write(LogLevel.WARNING, "Server internals have changed since this build was created, so");
                 logger.write(LogLevel.WARNING, "NMS support will be disabled. If you're sure you know what you're doing,");

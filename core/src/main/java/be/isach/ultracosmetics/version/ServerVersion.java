@@ -119,4 +119,11 @@ public enum ServerVersion {
         String rawVersion = Bukkit.getVersion();
         return rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
     }
+
+    /**
+     * Returns the latest supported version. NEW does not count
+     */
+    public static ServerVersion latest() {
+        return values()[values().length - 2];
+    }
 }
