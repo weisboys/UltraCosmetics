@@ -626,8 +626,8 @@ Pets:
     Description: Eu gosto de flores
   Snowman:
     menu-name: <bold><white>Boneco de Neve
-    entity-displayname: <bold><playername>'s Snowman
-    Description: Pew pew pew
+    entity-displayname: <bold><playername> Boneco de neve
+    Description: Pow pow pow
   Villager:
     menu-name: <bold><green>Aldeão
     entity-displayname: <bold>Aldeão de <playername>
