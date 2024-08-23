@@ -97,7 +97,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
         GadgetType.register(version);
         MountType.register(version);
         ParticleEffectType.register(version);
-        PetType.register(version);
+        PetType.register();
         HatType.register();
         SuitCategory.register();
         for (SuitCategory sc : SuitCategory.values()) {
