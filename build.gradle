@@ -104,7 +104,7 @@ subprojects { subproj ->
         // DiscordSRV
         maven { url = 'https://nexus.scarsz.me/content/groups/public/' }
         // ChestSort
-        maven { url = 'https://hub.jeff-media.com/nexus/repository/jeff-media-public/' }
+        maven { url = 'https://repo.jeff-media.com/public/' }
         // Towny
         maven { url = 'https://repo.glaremasters.me/repository/towny/' }
         // PlayerAuctions
