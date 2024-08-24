@@ -124,6 +124,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     }
 
     private void clearPathfinders() {
+        Bukkit.getLogger().info("Clearing pathfinders");
         EntityBrain brain = BukkitBrain.getBrain(entity);
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
@@ -280,7 +281,9 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
 
     @EventHandler
     public void onPlayerTeleport(PlayerTeleportEvent event) {
-        if (event.getPlayer() == getPlayer()) {
+        // If the player teleported to a different world, they will be respawned
+        // by the main Pet task.
+        if (event.getPlayer() == getPlayer() && event.getFrom().getWorld() == event.getTo().getWorld()) {
             entity.teleport(event.getTo());
             invalidBypassTicks = 20;
         }
