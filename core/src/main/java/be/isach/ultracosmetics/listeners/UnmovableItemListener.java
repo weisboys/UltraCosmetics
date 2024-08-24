@@ -12,6 +12,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -129,6 +130,12 @@ public class UnmovableItemListener implements Listener {
             slotCheck(p, event.getPlayer().getInventory().getHeldItemSlot(), event.getPlayer());
             event.setCancelled(true);
         });
+    }
+
+    @EventHandler
+    public void onPlayerInteractArmorStand(PlayerArmorStandManipulateEvent event) {
+        // Not really sure why a separate listener is required here
+        onPlayerInteractEntity(event);
     }
 
     @EventHandler
