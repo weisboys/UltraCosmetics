@@ -14,7 +14,7 @@ public enum ServerVersion {
     v1_18(18, 2),
     v1_19(19, 4),
     v1_20(20, 6, "ee13f98a43b9c5abffdcc0bb24154460", 4),
-    v1_21(21, 0, "7092ff1ff9352ad7e2260dc150e6a3ecdeletethatfootage", 1),
+    v1_21(21, 1, "7092ff1ff9352ad7e2260dc150e6a3ec", 1),
     NEW("???"),
     ;
 
