@@ -27,8 +27,10 @@ public class PetElderGuardian extends Pet {
 
     @EventHandler
     public void onFatigue(EntityPotionEffectEvent event) {
-        if (!blockEffect) return;
-        if (event.getEntityType() != EntityType.PLAYER || event.getEntity().getLocation().distanceSquared(entity.getLocation()) > 52 * 52) {
+        if (!blockEffect || event.getEntityType() != EntityType.PLAYER) {
+            return;
+        }
+        if (event.getEntity().getWorld() != entity || event.getEntity().getLocation().distanceSquared(entity.getLocation()) > 52 * 52) {
             return;
         }
         if (event.getCause() == Cause.ATTACK && event.getNewEffect().getType().equals(MINING_FATIGUE)) {
