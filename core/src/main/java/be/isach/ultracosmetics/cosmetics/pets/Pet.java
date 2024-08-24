@@ -124,7 +124,6 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     }
 
     private void clearPathfinders() {
-        Bukkit.getLogger().info("Clearing pathfinders");
         EntityBrain brain = BukkitBrain.getBrain(entity);
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
