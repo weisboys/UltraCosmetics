@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectChris
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectHelix;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectNote;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRainbow;
+import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRedstoneHelix;
 import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.particles.XParticle;
@@ -33,7 +34,7 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
         new ProjectileEffectType("Christmas", 1, XParticle.DUST, XMaterial.SNOW_BLOCK, ProjectileEffectChristmas.class);
 
         // Helix Trails
-        new ProjectileEffectType("RedstoneHelix", 1, XParticle.DUST, XMaterial.REDSTONE_BLOCK, ProjectileEffectHelix.class);
+        new ProjectileEffectType("RedstoneHelix", 1, XParticle.DUST, XMaterial.REDSTONE_BLOCK, ProjectileEffectRedstoneHelix.class);
         new ProjectileEffectType("FlameHelix", 1, XParticle.FLAME, XMaterial.FIRE_CHARGE, ProjectileEffectHelix.class);
         new ProjectileEffectType("CursedHelix", 1, XParticle.WITCH, XMaterial.PURPLE_WOOL, ProjectileEffectHelix.class);
         new ProjectileEffectType("SoulFireHelix", 1, XParticle.SOUL_FIRE_FLAME, XMaterial.SOUL_CAMPFIRE, ProjectileEffectHelix.class);
