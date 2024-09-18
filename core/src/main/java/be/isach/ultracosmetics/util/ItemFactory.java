@@ -5,6 +5,7 @@ import be.isach.ultracosmetics.config.CustomConfiguration;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
+import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 import com.cryptomorin.xseries.profiles.builder.XSkull;
@@ -12,6 +13,7 @@ import com.cryptomorin.xseries.profiles.objects.ProfileInputType;
 import com.cryptomorin.xseries.profiles.objects.Profileable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -24,13 +26,19 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.profile.PlayerProfile;
+import org.bukkit.profile.PlayerTextures;
 import org.bukkit.util.Vector;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -188,7 +196,23 @@ public class ItemFactory {
 
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
-        return XSkull.of(head).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, url)).apply();
+        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_18)) {
+            SkullMeta meta = (SkullMeta) head.getItemMeta();
+            PlayerProfile profile = Bukkit.createPlayerProfile(UUID.nameUUIDFromBytes(url.getBytes()));
+            PlayerTextures textures = profile.getTextures();
+            try {
+                textures.setSkin(new URL("https://textures.minecraft.net/texture/" + url));
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return head;
+            }
+            profile.setTextures(textures);
+            meta.setOwnerProfile(profile);
+            head.setItemMeta(meta);
+        } else {
+            XSkull.of(head).profile(Profileable.of(ProfileInputType.TEXTURE_HASH, url)).apply();
+        }
+        return head;
     }
 
     public static ItemStack createColouredLeather(Material armourPart, int red, int green, int blue) {
