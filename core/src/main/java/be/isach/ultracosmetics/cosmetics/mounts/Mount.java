@@ -28,6 +28,7 @@ import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
@@ -171,6 +172,15 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
         if (event.getEntity() == getEntity() || event.getDamager() == getEntity()) {
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onMountPortal(EntityPortalEvent event) {
+        if (event.getEntity() == getEntity()) {
+            entity.remove();
+            if (mountRegionTask != null) mountRegionTask.cancel();
+            Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), this::onEquip, 1);
         }
     }
 
