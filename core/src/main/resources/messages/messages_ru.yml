@@ -1858,5 +1858,5 @@ Must-Remove:
   Gadgets: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы использовать гаджет!
   Mounts: <prefix> <bold><red>Вы должны очистить слот панели быстрого доступа <slot>, чтобы экипировать этот транспорт!
 Use-Rename-Pet-Command: <prefix> <red>Используйте <yellow>/uc rename</yellow> для переименования
-Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
-No-Buy-Key-Permission: <prefix> <red><bold>You don't have permission to buy treasure keys!
+Commands-Disabled-During-Chest: <prefix> <bold><red>Вы не можете использовать команды во время открытия сундука!
+No-Buy-Key-Permission: <prefix> <red><bold>Вы не имеете разрешения на покупку ключей сокровища!
