@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -257,7 +258,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
      */
     @Override
     public String toString() {
-        return getConfigName().toUpperCase();
+        return getConfigName().toUpperCase(Locale.ROOT);
     }
 
     protected void registerPermission() {
@@ -273,7 +274,7 @@ public abstract class CosmeticType<T extends Cosmetic<?>> {
     }
 
     protected String getPermissionSuffix() {
-        return getConfigName().toLowerCase();
+        return getConfigName().toLowerCase(Locale.ROOT);
     }
 
     protected void setupConfig(CustomConfiguration config, String path) {

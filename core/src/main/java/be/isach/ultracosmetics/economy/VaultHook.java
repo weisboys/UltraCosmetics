@@ -8,6 +8,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import java.util.Locale;
+
 /**
  * Vault economy hook.
  *
@@ -28,7 +30,7 @@ public class VaultHook implements EconomyHook {
             throw new IllegalStateException("Found Vault but no economy, please check whether your economy plugin supports Vault.");
         }
         economy = economyProvider.getProvider();
-        String validation = SettingsManager.getConfig().getString("Vault-Balance-Validation", "delegate").toLowerCase();
+        String validation = SettingsManager.getConfig().getString("Vault-Balance-Validation", "delegate").toLowerCase(Locale.ROOT);
         nonnegative = validation.endsWith("nonnegative");
         ignoreResponse = validation.equals("force-nonnegative");
     }

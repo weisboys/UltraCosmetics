@@ -16,6 +16,7 @@ import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Locale;
 
 /**
  * Created by Sacha on 24/12/15.
@@ -89,7 +90,7 @@ public class PermissionPrinter {
         writer.println("### Suits:");
         writer.println("  - ultracosmetics.suits.*");
         for (SuitCategory cat : SuitCategory.values()) {
-            writer.println("  - ultracosmetics.suits." + cat.getConfigName().toLowerCase() + ".*");
+            writer.println("  - ultracosmetics.suits." + cat.getConfigName().toLowerCase(Locale.ROOT) + ".*");
             for (SuitType suitType : cat.getPieces()) {
                 writer.println("    - " + suitType.getPermission().getName());
             }

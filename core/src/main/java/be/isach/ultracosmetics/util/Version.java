@@ -1,5 +1,6 @@
 package be.isach.ultracosmetics.util;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,7 +80,7 @@ public class Version implements Comparable<Version> {
     }
 
     public boolean isDev() {
-        return classifier.toLowerCase().contains("dev");
+        return classifier.toLowerCase(Locale.ROOT).contains("dev");
     }
 
     public boolean isRelease() {

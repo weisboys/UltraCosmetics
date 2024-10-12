@@ -9,6 +9,8 @@ import com.cryptomorin.xseries.XMaterial;
 import net.kyori.adventure.text.Component;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Locale;
+
 /**
  * Suit types.
  *
@@ -33,12 +35,12 @@ public class SuitType extends CosmeticType<Suit> {
 
     @Override
     public Component getName() {
-        return MessageManager.getMessage("Suits." + getConfigName() + "." + slot.toString().toLowerCase() + "-name");
+        return MessageManager.getMessage("Suits." + getConfigName() + "." + slot.toString().toLowerCase(Locale.ROOT) + "-name");
     }
 
     @Override
     protected String getPermissionSuffix() {
-        return category.getConfigName().toLowerCase() + "." + slot.toString().toLowerCase();
+        return category.getConfigName().toLowerCase(Locale.ROOT) + "." + slot.toString().toLowerCase(Locale.ROOT);
     }
 
     public ArmorSlot getSlot() {

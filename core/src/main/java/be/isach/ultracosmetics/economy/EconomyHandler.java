@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -42,7 +43,7 @@ public class EconomyHandler {
 
     public EconomyHandler(UltraCosmetics ultraCosmetics) {
         this.ultraCosmetics = ultraCosmetics;
-        String economy = ultraCosmetics.getConfig().getString("Economy", "").toLowerCase();
+        String economy = ultraCosmetics.getConfig().getString("Economy", "").toLowerCase(Locale.ROOT);
         if (economy.isEmpty()) {
             ultraCosmetics.getSmartLogger().write("Economy not specified in the config, disabling economy features.");
             return;

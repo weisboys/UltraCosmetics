@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Give {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
@@ -28,12 +29,12 @@ public class SubCommandGive extends SubCommand {
 
     @Override
     protected void onExeAnyone(CommandSender sender, String[] args) {
-        if (args.length < 2 || (!args[1].toLowerCase().startsWith("k") && !args[1].toLowerCase().startsWith("a"))) {
+        if (args.length < 2 || (!args[1].toLowerCase(Locale.ROOT).startsWith("k") && !args[1].toLowerCase(Locale.ROOT).startsWith("a"))) {
             badUsage(sender);
             return;
         }
 
-        boolean givingKey = args[1].toLowerCase().startsWith("k");
+        boolean givingKey = args[1].toLowerCase(Locale.ROOT).startsWith("k");
         if (!givingKey && args.length < 4) {
             badUsage(sender);
             return;
@@ -80,7 +81,7 @@ public class SubCommandGive extends SubCommand {
             badUsage(sender, "/uc give ammo <gadget> <amount> [player]");
             return;
         }
-        GadgetType gadgetType = CosmeticType.valueOf(Category.GADGETS, args[2].toUpperCase());
+        GadgetType gadgetType = CosmeticType.valueOf(Category.GADGETS, args[2].toUpperCase(Locale.ROOT));
         if (gadgetType == null) {
             MessageManager.send(sender, "Invalid-Gadget");
             return;
@@ -102,7 +103,7 @@ public class SubCommandGive extends SubCommand {
         int ammo = Integer.parseInt(args[3]);
 
         addAmmo(gadgetType, target, ammo);
-        sender.sendMessage(ChatColor.GREEN.toString() + ammo + " " + gadgetType.toString().toLowerCase() + " ammo given to " + target.getName());
+        sender.sendMessage(ChatColor.GREEN.toString() + ammo + " " + gadgetType.toString().toLowerCase(Locale.ROOT) + " ammo given to " + target.getName());
     }
 
     private void addKeys(Player player, int amount) {

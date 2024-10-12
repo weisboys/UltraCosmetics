@@ -10,6 +10,7 @@ import be.isach.ultracosmetics.mysql.query.InsertValue;
 import be.isach.ultracosmetics.mysql.query.SelectSubquery;
 
 import javax.sql.DataSource;
+import java.util.Locale;
 
 public class CosmeticTable extends Table {
 
@@ -30,9 +31,9 @@ public class CosmeticTable extends Table {
     public void loadBaseData() {
         InsertQuery insert = insertIgnore("category", "type");
         for (Category cat : Category.values()) {
-            InsertValue catItem = new InsertValue(cat.toString().toLowerCase());
+            InsertValue catItem = new InsertValue(cat.toString().toLowerCase(Locale.ROOT));
             for (CosmeticType<?> type : cat.getValues()) {
-                insert.insert(catItem, new InsertValue(type.getConfigName().toLowerCase()));
+                insert.insert(catItem, new InsertValue(type.getConfigName().toLowerCase(Locale.ROOT)));
             }
         }
         insert.execute();

@@ -212,7 +212,7 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         }
 
         // Case sensitivity causes issues with hex color codes for some reason, even with MiniMessage
-        return stack.getItemMeta().getDisplayName().toLowerCase().equals(MessageManager.toLegacy(getItemDisplayName()).toLowerCase());
+        return stack.getItemMeta().getDisplayName().toLowerCase(Locale.ROOT).equals(MessageManager.toLegacy(getItemDisplayName()).toLowerCase(Locale.ROOT));
     }
 
     @Override

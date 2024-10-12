@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 /**
@@ -45,7 +46,7 @@ public class SubCommandToggle extends SubCommand {
             target = sender;
         }
 
-        toggle(sender, target, args[1].toLowerCase(), args[2].toLowerCase());
+        toggle(sender, target, args[1].toLowerCase(Locale.ROOT), args[2].toLowerCase(Locale.ROOT));
     }
 
     @Override
@@ -55,7 +56,7 @@ public class SubCommandToggle extends SubCommand {
             return;
         }
 
-        toggle(sender, Bukkit.getPlayer(args[3]), args[1].toLowerCase(), args[2].toLowerCase());
+        toggle(sender, Bukkit.getPlayer(args[3]), args[1].toLowerCase(Locale.ROOT), args[2].toLowerCase(Locale.ROOT));
     }
 
     private void toggle(CommandSender sender, Player targetPlayer, String type, String cosm) {
@@ -75,7 +76,7 @@ public class SubCommandToggle extends SubCommand {
             return;
         }
 
-        Optional<Category> categories = Arrays.stream(Category.values()).filter(category -> category.isEnabled() && category.toString().toLowerCase().startsWith(type)).findFirst();
+        Optional<Category> categories = Arrays.stream(Category.values()).filter(category -> category.isEnabled() && category.toString().toLowerCase(Locale.ROOT).startsWith(type)).findFirst();
         if (!categories.isPresent()) {
             error(sender, "Invalid category.");
             return;
@@ -100,7 +101,7 @@ public class SubCommandToggle extends SubCommand {
             }
         }
         for (CosmeticType<?> type : category.getEnabled()) {
-            if (type.toString().startsWith(partialName.toUpperCase())) {
+            if (type.toString().startsWith(partialName.toUpperCase(Locale.ROOT))) {
                 return type;
             }
         }

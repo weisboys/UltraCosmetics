@@ -7,6 +7,8 @@ import org.bukkit.entity.Villager;
 import org.bukkit.entity.Villager.Profession;
 import org.bukkit.entity.Villager.Type;
 
+import java.util.Locale;
+
 /**
  * Represents an instance of a villager pet summoned by a player.
  *
@@ -25,9 +27,9 @@ public class PetVillager extends Pet {
         Profession profession = Profession.NONE;
         String[] parts = customization.split(":", 2);
         try {
-            type = Type.valueOf(parts[0].toUpperCase());
+            type = Type.valueOf(parts[0].toUpperCase(Locale.ROOT));
             if (parts.length > 1) {
-                profession = Profession.valueOf(parts[1].toUpperCase());
+                profession = Profession.valueOf(parts[1].toUpperCase(Locale.ROOT));
             }
         } catch (IllegalArgumentException e) {
             return false;

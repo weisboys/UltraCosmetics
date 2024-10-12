@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -55,7 +56,7 @@ public enum Category {
     }
 
     public static Category fromString(String name) {
-        String lowerName = name.toLowerCase();
+        String lowerName = name.toLowerCase(Locale.ROOT);
         for (Category cat : values()) {
             if (lowerName.startsWith(cat.prefix)) {
                 return cat;
@@ -101,7 +102,7 @@ public enum Category {
     }
 
     private Category(ArmorSlot slot) {
-        this("Suits", "suitname", "suits", "suits_" + slot.toString().toLowerCase().charAt(0), true);
+        this("Suits", "suitname", "suits", "suits_" + slot.toString().toLowerCase(Locale.ROOT).charAt(0), true);
     }
 
     /**

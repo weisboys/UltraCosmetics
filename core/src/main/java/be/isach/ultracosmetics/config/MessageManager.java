@@ -22,6 +22,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
@@ -202,7 +203,7 @@ public class MessageManager {
     public String getMessagesName(Category category) {
         if (category.isSuits()) return "Suits";
         // Like configPath but value is different for Category.EFFECTS
-        return category.name().charAt(0) + category.getConfigPath().substring(1).toLowerCase().replace("_", "-");
+        return category.name().charAt(0) + category.getConfigPath().substring(1).toLowerCase(Locale.ROOT).replace("_", "-");
     }
 
     private void addButton(Map<Category, Map<String, String>> buttons, ConfigurationSection menuBlock, Category cat, String oldEquipKey, String oldUnequipKey) {

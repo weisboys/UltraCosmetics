@@ -18,6 +18,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
@@ -213,7 +214,7 @@ public class PetType extends CosmeticEntType<Pet> {
                 log.write(LogLevel.WARNING, "Incomplete custom pet '" + key + "'");
                 continue;
             }
-            Optional<XEntityType> optionalType = XEntityType.of(pet.getString("type").toUpperCase());
+            Optional<XEntityType> optionalType = XEntityType.of(pet.getString("type").toUpperCase(Locale.ROOT));
             if (optionalType.isEmpty()) {
                 log.write(LogLevel.WARNING, "Invalid entity type for custom pet '" + key + "'");
                 continue;

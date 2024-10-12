@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -41,7 +42,7 @@ public class GadgetPaintballGun extends Gadget {
     private static final List<XMaterial> PAINT_BLOCKS = new ArrayList<>();
 
     static {
-        String ending = SettingsManager.getConfig().getString("Gadgets.PaintballGun.Block-Type", "_TERRACOTTA").toUpperCase();
+        String ending = SettingsManager.getConfig().getString("Gadgets.PaintballGun.Block-Type", "_TERRACOTTA").toUpperCase(Locale.ROOT);
         for (XMaterial mat : XMaterial.VALUES) {
             if (mat.isSupported() && mat.name().endsWith(ending)) {
                 PAINT_BLOCKS.add(mat);

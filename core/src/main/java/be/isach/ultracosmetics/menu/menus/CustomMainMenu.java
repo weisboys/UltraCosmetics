@@ -23,6 +23,7 @@ import org.bukkit.inventory.Inventory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 public class CustomMainMenu extends Menu {
     private final File customMenuFile;
@@ -64,7 +65,7 @@ public class CustomMainMenu extends Menu {
             ConfigurationSection section = slots.getConfigurationSection(key);
             String typeName = section.getString("Type", "");
             // Item, ClearCosmetic, Keys, OpenChest, OpenCosmeticMenu, RenamePet, ToggleGadgets, ToggleMorphSelfView
-            switch (typeName.toLowerCase()) {
+            switch (typeName.toLowerCase(Locale.ROOT)) {
                 case "command":
                     try {
                         button = CommandButton.deserialize(section, ultraCosmetics);

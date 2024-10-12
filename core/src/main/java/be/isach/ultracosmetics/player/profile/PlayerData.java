@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -115,7 +116,7 @@ public class PlayerData {
         }
 
         for (CosmeticType<?> gadget : CosmeticType.enabledOf(Category.GADGETS)) {
-            ammo.put((GadgetType) gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase()));
+            ammo.put((GadgetType) gadget, sm.getInt(ProfileKey.AMMO.getFileKey() + "." + gadget.getConfigName().toLowerCase(Locale.ROOT)));
         }
 
         CosmeticType<?> type;
@@ -138,7 +139,7 @@ public class PlayerData {
         ConfigurationSection s = sm.fileConfiguration.getConfigurationSection("enabled");
         boolean changed = false;
         for (Category cat : Category.values()) {
-            String key = cat.toString().toLowerCase();
+            String key = cat.toString().toLowerCase(Locale.ROOT);
             String oldKey = key.substring(0, key.length() - 1);
             String value;
             if (s.isString(oldKey)) {
@@ -169,7 +170,7 @@ public class PlayerData {
 
         for (Category cat : Category.enabled()) {
             CosmeticType<?> type = enabledCosmetics.get(cat);
-            data.set("enabled." + cat.toString().toLowerCase(), type == null ? null : type.getConfigName().toLowerCase());
+            data.set("enabled." + cat.toString().toLowerCase(Locale.ROOT), type == null ? null : type.getConfigName().toLowerCase(Locale.ROOT));
         }
 
         for (Entry<PetType, String> entry : petNames.entrySet()) {
@@ -180,7 +181,7 @@ public class PlayerData {
             Integer amount = entry.getValue();
             // carefully handled because numeric comparisons auto-unbox but null checks do not
             if (amount != null && amount == 0) amount = null;
-            data.set(ProfileKey.AMMO.getFileKey() + "." + entry.getKey().getConfigName().toLowerCase(), amount);
+            data.set(ProfileKey.AMMO.getFileKey() + "." + entry.getKey().getConfigName().toLowerCase(Locale.ROOT), amount);
         }
 
         List<String> unlocked = new ArrayList<>();

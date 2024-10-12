@@ -32,6 +32,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * Player listeners.
@@ -204,7 +205,7 @@ public class PlayerListener implements Listener {
             MessageManager.send(event.getPlayer(), "Commands-Disabled-During-Chest");
             return;
         }
-        String strippedCommand = event.getMessage().split(" ")[0].replace("/", "").toLowerCase();
+        String strippedCommand = event.getMessage().split(" ")[0].replace("/", "").toLowerCase(Locale.ROOT);
         if (!SettingsManager.getConfig().getList("Disabled-Commands").contains(strippedCommand)) return;
         if (player.hasCosmeticsEquipped()) {
             event.setCancelled(true);

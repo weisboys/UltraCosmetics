@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.StringJoiner;
 import java.util.UUID;
 import java.util.function.BiConsumer;
@@ -88,12 +89,12 @@ public abstract class Table {
     }
 
     public static String cleanCosmeticName(CosmeticType<?> cosmetic) {
-        return cosmetic == null ? null : cosmetic.getConfigName().toLowerCase();
+        return cosmetic == null ? null : cosmetic.getConfigName().toLowerCase(Locale.ROOT);
     }
 
     public static String cleanCategoryName(Category cat) {
         if (cat == null) return null;
-        return cat.toString().toLowerCase();
+        return cat.toString().toLowerCase(Locale.ROOT);
     }
 
     public static String cleanCategoryName(CosmeticType<?> cosmetic) {
@@ -127,7 +128,7 @@ public abstract class Table {
     protected void ifParseable(String category, String type, BiConsumer<Category, CosmeticType<?>> storeFunc) {
         Category cat;
         try {
-            cat = Category.valueOf(category.toUpperCase());
+            cat = Category.valueOf(category.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
             UltraCosmeticsData.get().getPlugin().getSmartLogger().write(SmartLogger.LogLevel.WARNING,
                     "Ignoring cosmetic with unknown category: " + category);

@@ -5,6 +5,8 @@ import be.isach.ultracosmetics.util.ItemFactory;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.particles.XParticle;
 
+import java.util.Locale;
+
 /**
  * Created by Sacha on 11/11/15.
  */
@@ -27,7 +29,7 @@ public class TreasureChestDesign {
         String chestType = UltraCosmeticsData.get().getPlugin().getConfig().getString("TreasureChests.Designs." + path + ".chest-type");
         String effect = UltraCosmeticsData.get().getPlugin().getConfig().getString("TreasureChests.Designs." + path + ".effect");
         try {
-            this.chestType = ChestType.valueOf(chestType.toUpperCase());
+            this.chestType = ChestType.valueOf(chestType.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException exc) {
             this.chestType = ChestType.NORMAL;
         }

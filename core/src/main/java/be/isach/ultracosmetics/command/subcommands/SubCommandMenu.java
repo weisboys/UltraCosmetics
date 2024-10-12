@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Menu {@link be.isach.ultracosmetics.command.SubCommand SubCommand}.
@@ -63,7 +64,7 @@ public class SubCommandMenu extends SubCommand {
             page = Integer.parseInt(args[2]);
         }
 
-        String s = args[1].toLowerCase();
+        String s = args[1].toLowerCase(Locale.ROOT);
 
         if (s.startsWith("ma")) {
             menus.openMainMenu(ultraPlayer);
@@ -117,7 +118,7 @@ public class SubCommandMenu extends SubCommand {
                 menuList.add("suits");
                 continue;
             }
-            menuList.add(category.name().toLowerCase());
+            menuList.add(category.name().toLowerCase(Locale.ROOT));
         }
         return menuList;
     }

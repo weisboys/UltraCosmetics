@@ -32,6 +32,7 @@ import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -365,7 +366,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     protected <T> boolean valueCustomize(Function<String, T> valueFunc, String arg, Consumer<T> func) {
         T value;
         try {
-            value = valueFunc.apply(arg.toUpperCase());
+            value = valueFunc.apply(arg.toUpperCase(Locale.ROOT));
         } catch (IllegalArgumentException e) {
             return false;
         }

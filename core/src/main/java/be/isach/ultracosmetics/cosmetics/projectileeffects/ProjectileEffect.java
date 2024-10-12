@@ -16,6 +16,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -30,7 +31,7 @@ public abstract class ProjectileEffect extends Cosmetic<ProjectileEffectType> im
         this.display = ParticleDisplay.of(getType().getEffect());
         for (String entity : SettingsManager.getConfig().getStringList("Projectile-Types")) {
             try {
-                types.add(EntityType.valueOf(entity.toUpperCase()));
+                types.add(EntityType.valueOf(entity.toUpperCase(Locale.ROOT)));
             } catch (IllegalArgumentException ignored) {
             }
         }
