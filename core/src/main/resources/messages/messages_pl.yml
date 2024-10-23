@@ -32,8 +32,8 @@ Buy-Treasure-Key-ItemName: <bold><yellow>1 </yellow></bold><bold><gray>Klucz Ska
 You-Won-Treasure-Chests: '<prefix> <bold><white>Wygrałeś: <name>!'
 Treasure-Chest-Occupied: <prefix> <strikethrough><red>iejsca skarbów są pełne, proszę poczekaj i spróbuj ponownie
 No-Ammo: <prefix> <bold><red>Nie masz amunicji na ten gadżet!
-Cannot-Sell-Item: <prefix> <bold><red>You cannot sell this item!
-Structure-Chests-Disabled: <prefix> <bold><red>Structure chests are disabled!
+Cannot-Sell-Item: <prefix> <bold><red>Nie możesz sprzedać tego przedmiotu!
+Structure-Chests-Disabled: <prefix> <bold><red>Skrzynie struktur są wyłączone!
 Clear:
   Cosmetics: <bold><red>Clear kosmetyków
   Gadgets: <bold><red>Clear bieżący gadżet
@@ -138,76 +138,76 @@ Menu:
     Button:
       Previous-Page: <bold><red>Poprzednia strona
       Next-Page: <bold><green>Następna strona
-  Disabled-Button: <red>DISABLED
+  Disabled-Button: <red>WYŁĄCZONY
 Chest-Location:
   Not-Enough-Space: <prefix> <bold><red>Nie ma wystarczającej ilości miejsca na skrzynię skarbów!
   Region-Disabled: <prefix> <bold><red>Nie możesz otworzyć skrzyni tutaj!
   Invalid: <prefix> <bold><red>Twoja lokalizacja nie jest poprawna.
-  In-Air: <prefix> <bold><red>That location is not on the ground!
-  In-Ground: <prefix> <bold><red>That location is in the ground!
-  Suggestion: <prefix> <green>Maybe you meant <location>?
-  Dismount-First: <prefix> <bold><red>You must dismount your vehicle before opening a chest.
+  In-Air: <prefix> <bold><red>Musisz znajdować się na ziemi!
+  In-Ground: <prefix> <bold><red>Znajdujesz się na ziemi!
+  Suggestion: <prefix> <green>Masz na myśli <location>?
+  Dismount-First: <prefix> <bold><red>Zejdź z pojazdu, aby otworzyć skrzynię.
   Too-Close-To-Entity: <prefix> <bold><red>You are too close to another entity!
-Active-Pet-Needed: <bold><red>You need to spawn a pet to rename it
+Active-Pet-Needed: <bold><red>Musisz stworzyć zwierzaka, by zmienić jego nazwę
 Treasure-Chests-Loot:
   Ammo: |-
-    <blue>Ammo
-    <ammo> <cosmetic>
+    <blue>Amunicja
+    <ammo><cosmetic>
   Money: |-
-    <yellow>Money
+    <yellow>Pieniądze
     <bold><yellow>$<money>
-  Nothing: <bold><red>Nothing
+  Nothing: <bold><red>Nic
   Pets: |-
-    <green>Pet
+    <green>Zwierzak
     <cosmetic>
   Mounts: |-
-    <gold>Mount
+    <gold>Wsiądź
     <cosmetic>
   Particle-Effects: |-
-    <aqua>Particle Effect
+    <aqua>Efekt cząsteczek
     <cosmetic>
   Morphs: |-
-    <dark_green>Morph
+    <dark_green>Przemiany
     <cosmetic>
   Hats: |-
-    <light_purple>Hat
+    <light_purple>Czapki
     <cosmetic>
   Gadgets: |-
-    <blue>Gadget
+    <blue>Gadżety
     <cosmetic>
   Suits: |-
-    <dark_aqua>Suit
+    <dark_aqua>Przebranie
     <cosmetic>
   Emotes: |-
-    <yellow>Emote
+    <yellow>Emotka
     <cosmetic>
   Death-Effects: |-
-    <red>Death Effect
+    <red>Efekty Śmierci
     <cosmetic>
   Projectile-Effects: |-
-    <dark_purple>Projectile Effect
+    <dark_purple>Efekty pocisku
     <cosmetic>
 Treasure-Chests-Loot-Messages:
-  Ammo: <prefix> <bold><gold><name> found <ammo> <cosmetic> ammo
-  Money: <prefix> <bold><gold><name> found $<money>
-  Pets: <prefix> <bold><gold><name> found rare <cosmetic>
-  Mounts: <prefix> <bold><gold><name> found rare <cosmetic>
-  Particle-Effects: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Morphs: <prefix> <bold><gold><name> found legendary <cosmetic>
-  Hats: <prefix> <bold><gold><name> found rare <cosmetic>
-  Gadgets: <prefix> <bold><gold><name> found gadget <cosmetic>
-  Suits: <prefix> <bold><gold><name> found rare <cosmetic>
-  Emotes: <prefix> <bold><gold><name> found rare <cosmetic>
-  Death-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
-  Projectile-Effects: <prefix> <bold><gold><name> found rare <cosmetic>
+  Ammo: <prefix> <bold><gold><name> znalazł <ammo> amunicji do <cosmetic>
+  Money: <prefix> <bold><gold><name> znalazł $<money>
+  Pets: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Mounts: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Particle-Effects: <prefix> <bold><gold><name> znalazł legendarny <cosmetic>
+  Morphs: <prefix> <bold><gold><name> znalazł legendarny <cosmetic>
+  Hats: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Gadgets: <prefix> <bold><gold><name> znalazł gadżet <cosmetic>
+  Suits: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Emotes: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Death-Effects: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
+  Projectile-Effects: <prefix> <bold><gold><name> znalazł rzadki <cosmetic>
 Permission-Lore:
-  Showroom: '<gray>Permission: </gray><gold>Usable in showroom'
-  Permission-No: '<gray>Permission: </gray><bold><dark_red>No!'
-  Permission-Yes: '<gray>Permission: </gray><bold><green>Yes!'
-Disable-Gadgets: <bold><red>Disable Gadgets
-Disable-Gadgets-Lore: <red>Disables use of gadgets and effects of them on you
-Enable-Gadgets: <bold><green>Enable Gadgets
-Enable-Gadgets-Lore: <green>Enables use of gadgets and effects of them on you
+  Showroom: '<gray>Uprawnienie: </gray><gold>Dostępne w pokoju wystawowym'
+  Permission-No: '<gray>Uprawnienie: </gray><bold><dark_red>Nie!'
+  Permission-Yes: '<gray>Uprawnienie: </gray><bold><green>Tak!'
+Disable-Gadgets: <bold><red>Wyłącz Gadżety
+Disable-Gadgets-Lore: <red>Wyłącza użycie gadżetów oraz ich efektów
+Enable-Gadgets: <bold><green>Aktywuj Gadżety
+Enable-Gadgets-Lore: <green>Zezwala na użycie gadżetów i ich efektów na tobie
 Disable-Third-Person-View: <bold><red>Disable Morphs Third Person View
 Enable-Third-Person-View: <bold><green>Enable Morphs Third Person View
 Disable-Filter-By-Owned: <bold><red>Change to Show All
@@ -890,6 +890,10 @@ Pets:
     Description: Can smell pottery!
   Equip: <prefix> <blue>You spawned <petname>
   Unequip: <prefix> <blue>You despawned <petname>
+  Armadillo:
+    menu-name: <bold><gold>Armadillo
+    entity-displayname: <bold><playername>'s Armadillo
+    Description: "Don't scare me,\nor I'll roll up into a ball!"
 Morphs:
   Blaze:
     name: <bold><gold>Blaze
