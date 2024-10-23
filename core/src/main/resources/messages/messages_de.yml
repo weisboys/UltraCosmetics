@@ -892,6 +892,10 @@ Pets:
     Description: Kann Keramik riechen!
   Equip: <prefix> <blue>Du hast <petname> </blue><blue>ausgerüstet
   Unequip: <prefix> <blue>Du hast <petname> </blue><blue>entfernt
+  Armadillo:
+    menu-name: <bold><gold>Armadillo
+    entity-displayname: <bold><playername>'s Armadillo
+    Description: "Don't scare me,\nor I'll roll up into a ball!"
 Morphs:
   Blaze:
     name: <bold><gold>Lohe
