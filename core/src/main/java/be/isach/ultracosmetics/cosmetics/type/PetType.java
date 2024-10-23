@@ -85,6 +85,7 @@ public class PetType extends CosmeticEntType<Pet> {
         /* registerPet("GlowSquid", XMaterial.GLOW_INK_SAC, XEntityType.GLOW_SQUID, Pet.class); */
         /* registerPet("Phantom", XMaterial.PHANTOM_MEMBRANE, XEntityType.PHANTOM, Pet.class); */
 
+        registerPet("Armadillo", XMaterial.ARMADILLO_SCUTE, XEntityType.ARMADILLO, Pet.class);
         registerPet("Piggy", XMaterial.PORKCHOP, XEntityType.PIG, Pet.class);
         registerPet("EasterBunny", XMaterial.CARROT, XEntityType.RABBIT, PetEasterBunny.class);
         registerPet("Cow", XMaterial.MILK_BUCKET, XEntityType.COW, Pet.class);
