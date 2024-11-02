@@ -52,8 +52,8 @@ jobs:
       - name: Build MC 1.20.6
         run: java -jar BuildTools.jar --rev 1.20.6 --remapped
 
-      - name: Build MC 1.21.2
-        run: java -jar BuildTools.jar --rev 1.21.2 --remapped
+      - name: Build MC 1.21.3
+        run: java -jar BuildTools.jar --rev 1.21.3 --remapped
 
       - name: Configure Git
         run: git config --global user.name "Github Actions" && git config --global user.email "actions@github.com"
