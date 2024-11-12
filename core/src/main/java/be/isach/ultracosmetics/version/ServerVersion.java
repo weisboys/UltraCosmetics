@@ -112,6 +112,7 @@ public enum ServerVersion {
     }
 
     public static boolean isMobchipEdgeCase() {
+        // MobChip thinks it works on this version but it really has some critical issues due to mapping changes.
         return getMinecraftVersion().equals("1.19");
     }
 

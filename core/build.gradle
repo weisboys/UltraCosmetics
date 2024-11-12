@@ -39,13 +39,13 @@ dependencies {
     // https://github.com/JEFF-Media-GbR/Spigot-ChestSortAPI
     compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     // https://github.com/TownyAdvanced/Towny
-    compileOnly 'com.palmergames.bukkit.towny:towny:0.100.4.11'
+    compileOnly 'com.palmergames.bukkit.towny:towny:0.100.4.7'
     // https://github.com/brettwooldridge/HikariCP
     library 'com.zaxxer:HikariCP:6.1.0'
     // https://github.com/WesJD/AnvilGUI
     implementation 'net.wesjd:anvilgui:1.10.2-SNAPSHOT'
     // https://github.com/datatags/MobChipLite
-    implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:1.10.5'
+    implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:master-SNAPSHOT'
     //implementation fileTree(dir: '.', include: ['mobchip-*.jar'])
     // https://github.com/DiscordSRV/DiscordSRV
     compileOnly 'com.discordsrv:discordsrv:1.28.1'

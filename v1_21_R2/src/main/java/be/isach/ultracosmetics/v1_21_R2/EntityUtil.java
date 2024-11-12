@@ -120,7 +120,7 @@ public class EntityUtil implements IEntityUtil {
 
     @Override
     public void setStepHeight(org.bukkit.entity.Entity entity) {
-        ((LivingEntity) entity).getAttribute(Attribute.GENERIC_STEP_HEIGHT).setBaseValue(1.0);
+        ((LivingEntity) entity).getAttribute(Attribute.STEP_HEIGHT).setBaseValue(1.0);
     }
 
     @Override
