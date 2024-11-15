@@ -14,15 +14,17 @@
   "rebaseWhen": "conflicted",
   "packageRules": [
     {
-      "matchPackageNames": ["org.spigotmc:spigot-api"],
+      "matchPackageNames": [
+        "org.spigotmc:spigot-api"
+      ],
       "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?-(?<compatibility>.*)$",
       "enabled": false
     },
     {
-      "matchPackageNames": ["com.palmergames.bukkit.towny:towny"],
-      "matchManagers": ["docker-compose"],
+      "matchPackageNames": [
+        "com.palmergames.bukkit.towny:towny"
+      ],
       "enabled": false
     }
-  ]
   ]
 }
