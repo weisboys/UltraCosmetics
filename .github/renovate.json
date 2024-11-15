@@ -15,7 +15,14 @@
   "packageRules": [
     {
       "matchPackageNames": ["org.spigotmc:spigot-api"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?-(?<compatibility>.*)$"
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?-(?<compatibility>.*)$",
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["com.palmergames.bukkit.towny:towny"],
+      "matchManagers": ["docker-compose"],
+      "enabled": false
     }
+  ]
   ]
 }
