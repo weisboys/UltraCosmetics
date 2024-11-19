@@ -22,6 +22,14 @@
     },
     {
       "matchPackageNames": [
+        "net.wesjd:anvilgui"
+      ],
+      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?-(?<compatibility>.*)$",
+      "enabled": true
+    },
+
+    {
+      "matchPackageNames": [
         "com.palmergames.bukkit.towny:towny"
       ],
       "enabled": false
