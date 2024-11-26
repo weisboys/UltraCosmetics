@@ -8,7 +8,7 @@ plugins {
 dependencies {
     // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
     // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/browse
-    compileOnly 'org.spigotmc:spigot-api:1.21.3-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.21.1-R0.1-SNAPSHOT'
     // https://github.com/libraryaddict/LibsDisguises/
     compileOnly('LibsDisguises:LibsDisguises:10.0.44') {
         exclude group: 'org.spigotmc'
@@ -45,7 +45,7 @@ dependencies {
     // https://github.com/WesJD/AnvilGUI
     implementation 'net.wesjd:anvilgui:1.10.3-SNAPSHOT'
     // https://github.com/datatags/MobChipLite
-    implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:master-SNAPSHOT'
+    implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:1.10.7'
     //implementation fileTree(dir: '.', include: ['mobchip-*.jar'])
     // https://github.com/DiscordSRV/DiscordSRV
     compileOnly 'com.discordsrv:discordsrv:1.29.0'
