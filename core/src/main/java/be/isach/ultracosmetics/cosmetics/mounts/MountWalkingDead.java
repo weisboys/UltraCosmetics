@@ -6,6 +6,8 @@ import be.isach.ultracosmetics.player.UltraPlayer;
 import com.cryptomorin.xseries.particles.ParticleDisplay;
 import com.cryptomorin.xseries.particles.XParticle;
 
+import java.awt.Color;
+
 /**
  * Created by sacha on 1/03/17.
  */
@@ -23,6 +25,6 @@ public class MountWalkingDead extends MountAbstractHorse {
     @Override
     public void onUpdate() {
         enchantedDisplay.spawn();
-        entityEffectDisplay.spawn();
+        entityEffectDisplay.withColor(new Color(RANDOM.nextInt(256), RANDOM.nextInt(256), RANDOM.nextInt(256))).spawn();
     }
 }
