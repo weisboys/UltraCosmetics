@@ -46,7 +46,7 @@ public abstract class CosmeticMenu<T extends CosmeticType<?>> extends Menu {
     protected final Category category;
     protected final PermissionManager pm = ultraCosmetics.getPermissionManager();
     private final Map<UUID, Integer> lastUsedPages = new HashMap<>();
-    private final boolean hideNoPermissionItems = SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item");
+    protected final boolean hideNoPermissionItems = SettingsManager.getConfig().getBoolean("No-Permission.Dont-Show-Item");
 
     public CosmeticMenu(UltraCosmetics ultraCosmetics, Category category) {
         super(category.getConfigPath(), ultraCosmetics);

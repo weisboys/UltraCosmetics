@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class SuitCategory {
 
@@ -215,6 +216,6 @@ public class SuitCategory {
     }
 
     public static List<SuitCategory> enabled() {
-        return values();
+        return values().stream().filter(SuitCategory::isEnabled).collect(Collectors.toList());
     }
 }

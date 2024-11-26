@@ -39,7 +39,9 @@ public final class MenuSuits extends CosmeticMenu<SuitType> {
         List<SuitCategory> enabled = SuitCategory.enabled();
         for (int i = from; i < to && i < enabled.size(); i++) {
             SuitCategory cat = enabled.get(i);
-            putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, new EquipWholeSuitButton(cat, ultraCosmetics), player);
+            if (!hideNoPermissionItems || cat.getPieces().stream().anyMatch(player::canEquip)) {
+                putItem(inventory, SLOTS[i % getItemsPerPage()] - 9, new EquipWholeSuitButton(cat, ultraCosmetics), player);
+            }
         }
     }
 
