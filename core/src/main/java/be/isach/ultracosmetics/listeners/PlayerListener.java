@@ -110,11 +110,16 @@ public class PlayerListener implements Listener {
     }
 
     private void clearCosmeticsForWorldChange(Player player) {
+        boolean goingToBadWorld = !SettingsManager.isAllowedWorld(player.getWorld());
+        if (!goingToBadWorld && !updateOnWorldChange) {
+            return;
+        }
         UltraPlayer ultraPlayer = pm.getUltraPlayer(player);
         // Disable cosmetics when joining a bad world.
         ultraPlayer.removeMenuItem();
         ultraPlayer.withPreserveEquipped(() -> {
-            if (ultraPlayer.clear()) {
+            // Clear cosmetics either way, but only display the message if player is going to a bad world.
+            if (ultraPlayer.clear() && goingToBadWorld) {
                 MessageManager.send(ultraPlayer.getBukkitPlayer(), "World-Disabled");
             }
         });
@@ -123,9 +128,7 @@ public class PlayerListener implements Listener {
     // run this as early as possible for compatibility with MV-inventories
     @EventHandler(priority = EventPriority.LOWEST)
     public void onWorldChangeEarly(final PlayerChangedWorldEvent event) {
-        if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld()) || updateOnWorldChange) {
-            clearCosmeticsForWorldChange(event.getPlayer());
-        }
+        clearCosmeticsForWorldChange(event.getPlayer());
     }
 
     // MyWorlds uses the PlayerTeleportEvent to handle world changes instead for some reason.
@@ -133,9 +136,7 @@ public class PlayerListener implements Listener {
     @EventHandler
     public void onTeleport(PlayerTeleportEvent event) {
         if (event.getTo() != null && event.getFrom().getWorld() != event.getTo().getWorld()) {
-            if (!SettingsManager.isAllowedWorld(event.getTo().getWorld()) || updateOnWorldChange) {
-                clearCosmeticsForWorldChange(event.getPlayer());
-            }
+            clearCosmeticsForWorldChange(event.getPlayer());
         }
     }
 
