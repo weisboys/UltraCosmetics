@@ -16,6 +16,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Firework;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -29,6 +30,7 @@ import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
@@ -107,18 +109,33 @@ public class PlayerListener implements Listener {
         }
     }
 
+    private void clearCosmeticsForWorldChange(Player player) {
+        UltraPlayer ultraPlayer = pm.getUltraPlayer(player);
+        // Disable cosmetics when joining a bad world.
+        ultraPlayer.removeMenuItem();
+        ultraPlayer.withPreserveEquipped(() -> {
+            if (ultraPlayer.clear()) {
+                MessageManager.send(ultraPlayer.getBukkitPlayer(), "World-Disabled");
+            }
+        });
+    }
+
     // run this as early as possible for compatibility with MV-inventories
     @EventHandler(priority = EventPriority.LOWEST)
     public void onWorldChangeEarly(final PlayerChangedWorldEvent event) {
-        UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld()) || updateOnWorldChange) {
-            // Disable cosmetics when joining a bad world.
-            ultraPlayer.removeMenuItem();
-            ultraPlayer.withPreserveEquipped(() -> {
-                if (ultraPlayer.clear()) {
-                    MessageManager.send(ultraPlayer.getBukkitPlayer(), "World-Disabled");
-                }
-            });
+            clearCosmeticsForWorldChange(event.getPlayer());
+        }
+    }
+
+    // MyWorlds uses the PlayerTeleportEvent to handle world changes instead for some reason.
+    // Not sure if both this and onWorldChangeEarly are needed, but just in case...
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent event) {
+        if (event.getTo() != null && event.getFrom().getWorld() != event.getTo().getWorld()) {
+            if (!SettingsManager.isAllowedWorld(event.getTo().getWorld()) || updateOnWorldChange) {
+                clearCosmeticsForWorldChange(event.getPlayer());
+            }
         }
     }
 
