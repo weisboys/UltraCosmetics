@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProjectileEffectNote extends ProjectileEffectBasicTrail {
-    private static final Sound SOUND = XSound.BLOCK_NOTE_BLOCK_HARP.get();
+    private static final Sound SOUND = XSound.BLOCK_NOTE_BLOCK_HARP.parseSound();
     private final Map<Projectile, Integer> colors = new HashMap<>();
 
     public ProjectileEffectNote(UltraPlayer owner, ProjectileEffectType type, UltraCosmetics ultraCosmetics) {

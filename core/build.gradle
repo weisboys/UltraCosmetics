@@ -28,8 +28,7 @@ dependencies {
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
     compileOnly 'com.googlecode.json-simple:json-simple:1.1.1'
     // https://github.com/CryptoMorin/XSeries
-    //library 'com.github.cryptomorin:XSeries:11.3.0'
-    api fileTree(dir: '.', include: ['XSeries-*.jar'])
+    library 'com.github.cryptomorin:XSeries:11.3.0'
     // https://github.com/Bastian/bstats-metrics
     implementation 'org.bstats:bstats-bukkit:3.1.0'
     // https://github.com/LuckPerms/LuckPerms
@@ -46,7 +45,6 @@ dependencies {
     implementation 'net.wesjd:anvilgui:1.10.3-SNAPSHOT'
     // https://github.com/datatags/MobChipLite
     implementation 'com.github.datatags.MobChipLite:mobchip-bukkit:1.10.7'
-    //implementation fileTree(dir: '.', include: ['mobchip-*.jar'])
     // https://github.com/DiscordSRV/DiscordSRV
     compileOnly 'com.discordsrv:discordsrv:1.29.0'
     // https://github.com/SoKnight/PEconomy
