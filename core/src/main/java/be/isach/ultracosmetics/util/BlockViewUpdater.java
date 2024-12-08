@@ -1,18 +1,20 @@
 package be.isach.ultracosmetics.util;
 
+import be.isach.ultracosmetics.task.UltraTask;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class BlockViewUpdater extends BukkitRunnable {
+public class BlockViewUpdater extends UltraTask {
     private static final Set<Block> blocksUpdating = ConcurrentHashMap.newKeySet();
     private final Set<Block> blocks;
+    private final int delay;
 
-    public BlockViewUpdater(Set<Block> blocks) {
+    public BlockViewUpdater(Set<Block> blocks, int delay) {
         this.blocks = blocks;
+        this.delay = delay;
         addForProcessing(blocks);
     }
 
@@ -24,6 +26,12 @@ public class BlockViewUpdater extends BukkitRunnable {
                 player.sendBlockChange(block.getLocation(), block.getBlockData());
             }
         }
+    }
+
+
+    @Override
+    public void schedule() {
+        task = getScheduler().runLaterAsync(this::run, delay);
     }
 
     public static boolean isUpdating(Block block) {
