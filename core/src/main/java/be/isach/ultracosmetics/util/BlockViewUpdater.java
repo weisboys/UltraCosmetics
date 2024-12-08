@@ -1,6 +1,7 @@
 package be.isach.ultracosmetics.util;
 
 import be.isach.ultracosmetics.task.UltraTask;
+import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -31,7 +32,9 @@ public class BlockViewUpdater extends UltraTask {
 
     @Override
     public void schedule() {
-        task = getScheduler().runLaterAsync(this::run, delay);
+        if (blocks.isEmpty()) return;
+        Location location = blocks.iterator().next().getLocation();
+        task = getScheduler().runAtLocationLater(location, this::run, delay);
     }
 
     public static boolean isUpdating(Block block) {
