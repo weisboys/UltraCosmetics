@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.version;
 
-import me.gamercoder215.mobchip.abstraction.ChipUtil;
 import org.bukkit.Bukkit;
 
 /**
@@ -90,18 +89,6 @@ public enum ServerVersion {
         return this.compareTo(version) >= 0;
     }
 
-    public boolean isMobChipAvailable() {
-        if (isMobchipEdgeCase()) {
-            return false;
-        }
-        try {
-            ChipUtil.getWrapper();
-        } catch (IllegalStateException e) {
-            return false;
-        }
-        return true;
-    }
-
     public boolean isNmsSupported() {
         return nmsRevision > 0;
     }
@@ -111,14 +98,14 @@ public enum ServerVersion {
         return toString() + "_R" + nmsRevision;
     }
 
-    public static boolean isMobchipEdgeCase() {
-        // MobChip thinks it works on this version but it really has some critical issues due to mapping changes.
-        return getMinecraftVersion().equals("1.19");
-    }
-
     public static String getMinecraftVersion() {
         String rawVersion = Bukkit.getVersion();
         return rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
+    }
+
+    public static boolean isMobchipEdgeCase() {
+        // MobChip thinks it works on this version but it really has some critical issues due to mapping changes.
+        return getMinecraftVersion().equals("1.19");
     }
 
     /**
