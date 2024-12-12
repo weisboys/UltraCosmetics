@@ -109,7 +109,7 @@ public class MountType extends CosmeticEntType<Mount> {
         new MountType("Mule", XMaterial.ENDER_CHEST, XEntityType.MULE, 0, 0.25, MountMule.class);
         new MountType("Pig", XMaterial.PORKCHOP, XEntityType.PIG, 0, 0.35, MountPig.class);
 
-        if (version.isMobChipAvailable()) {
+        if (UltraCosmeticsData.get().isMobChipAvailable()) {
             new MountType("NyanSheep", XMaterial.CYAN_DYE, XEntityType.SHEEP, 1, 0.4, MountNyanSheep.class);
             new MountType("Dragon", XMaterial.DRAGON_EGG, XEntityType.ENDER_DRAGON, 1, 0.7, MountDragon.class) {
                 @Override

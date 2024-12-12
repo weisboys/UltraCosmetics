@@ -6,9 +6,12 @@ import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.ServerVersion;
 import be.isach.ultracosmetics.version.VersionManager;
+import me.gamercoder215.mobchip.abstraction.ChipUtil;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.Method;
+
+import static be.isach.ultracosmetics.version.ServerVersion.isMobchipEdgeCase;
 
 /**
  * This class is only for cleaning main class a bit.
@@ -89,6 +92,8 @@ public class UltraCosmeticsData {
      * NMS Version Manager.
      */
     private VersionManager versionManager;
+
+    private final boolean mobchipAvailable = checkMobChipAvailable();
 
     private final UltraCosmetics ultraCosmetics;
 
@@ -221,6 +226,23 @@ public class UltraCosmeticsData {
         } catch (ReflectiveOperationException ignored) {
         }
         return currentMappingsVersion.equals(version.getMappingsVersion());
+    }
+
+    public boolean isMobChipAvailable() {
+        return mobchipAvailable;
+    }
+
+    private boolean checkMobChipAvailable() {
+        if (isMobchipEdgeCase()) {
+            return false;
+        }
+
+        try {
+            ChipUtil.getWrapper();
+        } catch (IllegalStateException e) {
+            return false;
+        }
+        return true;
     }
 
     public void initConfigFields() {
