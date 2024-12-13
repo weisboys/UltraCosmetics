@@ -40,7 +40,7 @@ public class GadgetBlackHole extends Gadget implements PlayerAffectingCosmetic, 
 
         item = ItemFactory.spawnUnpickableItem(XMaterial.BLACK_TERRACOTTA.parseItem(), getPlayer().getEyeLocation(), getPlayer().getEyeLocation().getDirection().multiply(1.3d));
 
-        getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> {
+        getUltraCosmetics().getScheduler().runAtLocationLater(getPlayer().getLocation(), () -> {
             if (item != null) {
                 item.remove();
                 item = null;

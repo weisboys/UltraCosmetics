@@ -47,7 +47,7 @@ public class GadgetAntiGravity extends Gadget implements PlayerAffectingCosmetic
         portalParticles = ParticleDisplay.of(XParticle.PORTAL).offset(3, 3, 3).withCount(150).withLocation(as.getLocation());
         witchParticles = ParticleDisplay.of(XParticle.WITCH).offset(0.3, 0.3, 0.3).withCount(5).withLocation(as.getEyeLocation());
 
-        getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> running = false, 240);
+        getUltraCosmetics().getScheduler().runLaterAsync(() -> running = false, 240);
     }
 
     @Override

@@ -136,7 +136,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
 
     @Override
     protected void scheduleTask() {
-        task = getUltraCosmetics().getScheduler().runAtEntityTimer(getPlayer(), this::run, 0, 3);
+        task = getUltraCosmetics().getScheduler().runAtEntityTimer(getPlayer(), this::run, 1, 3);
     }
 
     @Override

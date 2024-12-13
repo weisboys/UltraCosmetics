@@ -8,6 +8,8 @@ import me.libraryaddict.disguise.disguisetypes.watchers.SheepWatcher;
 import org.bukkit.DyeColor;
 import org.bukkit.event.player.PlayerInteractEvent;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Represents an instance of a sheep morph summoned by a player.
  *
@@ -28,15 +30,15 @@ public class MorphSheep extends MorphLeftClickCooldown {
         sound.play();
         SheepWatcher sheepWatcher = (SheepWatcher) getDisguise().getWatcher();
 
-        final int[] count = {0};
+        AtomicInteger count = new AtomicInteger(0);
 
         getUltraCosmetics().getScheduler().runAtEntityTimer(getPlayer(), (task) -> {
-            if (count[0] > 9) {
+            if (count.get() > 9) {
                 task.cancel();
                 return;
             }
             sheepWatcher.setColor(DyeColor.values()[RANDOM.nextInt(DyeColor.values().length)]);
-            count[0]++;
+            count.getAndIncrement();
         }, 0, 2);
     }
 }
