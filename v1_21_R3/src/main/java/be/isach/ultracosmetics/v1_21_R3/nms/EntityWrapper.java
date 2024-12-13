@@ -1,6 +1,6 @@
-package be.isach.ultracosmetics.v1_20_R4.nms;
+package be.isach.ultracosmetics.v1_21_R3.nms;
 
-import be.isach.ultracosmetics.v1_20_R4.ObfuscatedFields;
+import be.isach.ultracosmetics.v1_21_R3.ObfuscatedFields;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.bukkit.attribute.Attribute;
@@ -44,7 +44,7 @@ public class EntityWrapper {
     }
 
     public void setStepHeight(float stepHeight) {
-        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(stepHeight);
+        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(stepHeight);
     }
 
     public float getRotationYawHead() {

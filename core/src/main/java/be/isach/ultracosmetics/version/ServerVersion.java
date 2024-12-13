@@ -1,6 +1,5 @@
 package be.isach.ultracosmetics.version;
 
-import me.gamercoder215.mobchip.abstraction.ChipUtil;
 import org.bukkit.Bukkit;
 
 /**
@@ -14,7 +13,7 @@ public enum ServerVersion {
     v1_18(18, 2),
     v1_19(19, 4),
     v1_20(20, 6, "ee13f98a43b9c5abffdcc0bb24154460", 4),
-    v1_21(21, 3, "61a218cda78417b6039da56e08194083", 2),
+    v1_21(21, 4, "60ac387ca8007aa018e6aeb394a6988c", 3),
     NEW("???"),
     ;
 
@@ -25,7 +24,7 @@ public enum ServerVersion {
     // which is more often than actual NMS revisions happen. You can find this
     // value by checking the source code of this method:
     // org.bukkit.craftbukkit.util.CraftMagicNumbers#getMappingsVersion
-    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#229
+    // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/craftbukkit/browse/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java#236
     // getMappingsVersion was added in 1.13.2, earlier versions don't have it.
     private final String mappingsVersion;
     // The NMS revision the corresponding module is built for, or 0 for no module.
@@ -90,18 +89,6 @@ public enum ServerVersion {
         return this.compareTo(version) >= 0;
     }
 
-    public boolean isMobChipAvailable() {
-        if (isMobchipEdgeCase()) {
-            return false;
-        }
-        try {
-            ChipUtil.getWrapper();
-        } catch (IllegalStateException e) {
-            return false;
-        }
-        return true;
-    }
-
     public boolean isNmsSupported() {
         return nmsRevision > 0;
     }
@@ -111,14 +98,14 @@ public enum ServerVersion {
         return toString() + "_R" + nmsRevision;
     }
 
-    public static boolean isMobchipEdgeCase() {
-        // MobChip thinks it works on this version but it really has some critical issues due to mapping changes.
-        return getMinecraftVersion().equals("1.19");
-    }
-
     public static String getMinecraftVersion() {
         String rawVersion = Bukkit.getVersion();
         return rawVersion.substring(rawVersion.lastIndexOf(" ") + 1, rawVersion.length() - 1);
+    }
+
+    public static boolean isMobchipEdgeCase() {
+        // MobChip thinks it works on this version but it really has some critical issues due to mapping changes.
+        return getMinecraftVersion().equals("1.19");
     }
 
     /**

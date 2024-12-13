@@ -130,7 +130,7 @@ public class GadgetType extends CosmeticType<Gadget> {
         new GadgetType(XMaterial.BLUE_WOOL, 75, 12, "Trampoline", GadgetTrampoline.class);
         new GadgetType(XMaterial.BLACK_TERRACOTTA, 35, 8, "BlackHole", GadgetBlackHole.class);
 
-        if (version.isMobChipAvailable()) {
+        if (UltraCosmeticsData.get().isMobChipAvailable()) {
             new GadgetType(XMaterial.SHEARS, 25, 11, "ExplosiveSheep", GadgetExplosiveSheep.class);
         }
 
