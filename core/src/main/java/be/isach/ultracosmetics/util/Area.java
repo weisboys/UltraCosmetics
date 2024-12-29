@@ -98,7 +98,7 @@ public class Area {
     // but that doesn't really matter for our purposes.
     @SuppressWarnings("deprecation")
     public boolean isTransparent() {
-        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Material::isTransparent);
+        return isEmptyExcept(Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, m -> m.isTransparent() || BlockUtils.isAir(m));
     }
 
     public boolean contains(Block block) {
