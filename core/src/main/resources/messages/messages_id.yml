@@ -893,7 +893,9 @@ Pets:
   Armadillo:
     menu-name: <bold><gold>Armadillo
     entity-displayname: <bold><playername>'s Armadillo
-    Description: "Don't scare me,\nor I'll roll up into a ball!"
+    Description: |-
+      Don't scare me,
+      or I'll roll up into a ball!
 Morphs:
   Blaze:
     name: <bold><gold>Blaze
@@ -1865,3 +1867,4 @@ Must-Remove:
 Use-Rename-Pet-Command: <prefix> <red>Use <yellow>/uc rename</yellow> to rename
 Commands-Disabled-During-Chest: <prefix> <bold><red>You can't use commands while opening a chest!
 No-Buy-Key-Permission: <prefix> <red><bold>You don't have permission to buy treasure keys!
+Particles-Minimal-In-Client: <yellow>You have particles set to "minimal" in your client settings and so you won't be able to see particles.

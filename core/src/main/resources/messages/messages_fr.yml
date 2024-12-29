@@ -891,8 +891,10 @@ Pets:
   Unequip: <prefix> <blue>Tu as fait disparaître <petname>
   Armadillo:
     menu-name: <bold><gold>Armadillo
-    entity-displayname: <bold><playername>'s Armadillo
-    Description: "Don't scare me,\nor I'll roll up into a ball!"
+    entity-displayname: <bold>Armadillo de <playername>
+    Description: |-
+      Ne m'effrayez pas,
+      ou je vais rouler dans une balle !
 Morphs:
   Blaze:
     name: <bold><gold>Blaze
@@ -1864,3 +1866,4 @@ Must-Remove:
 Use-Rename-Pet-Command: <prefix> <red>Utiliser <yellow>/uc rename</yellow> pour renommer
 Commands-Disabled-During-Chest: <prefix> <bold><red>Vous ne pouvez pas utiliser de commandes lorsque vous ouvrez un coffre !
 No-Buy-Key-Permission: <prefix><red><bold>Tu n'as pas la permission d'acheter des clés !
+Particles-Minimal-In-Client: <yellow>You have particles set to "minimal" in your client settings and so you won't be able to see particles.
