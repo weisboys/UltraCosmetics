@@ -166,7 +166,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
         if (event.getPlayer() != getPlayer() || !event.hasItem()) return;
         if (event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Material itemType = event.getItem().getType();
-        if (itemType.name().endsWith("_" + getArmorSlot()) || (itemType == XMaterial.ELYTRA.parseMaterial() && getArmorSlot() == ArmorSlot.CHESTPLATE)) {
+        if (itemType.name().endsWith("_" + getArmorSlot()) || (itemType == XMaterial.ELYTRA.get() && getArmorSlot() == ArmorSlot.CHESTPLATE)) {
             event.setUseItemInHand(Event.Result.DENY);
         }
         if (isItemThis(event.getItem())) {

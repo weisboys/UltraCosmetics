@@ -16,7 +16,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public class DeathEffectFirework extends DeathEffect {
-    private static final Material FIREWORK_ROCKET = XMaterial.FIREWORK_ROCKET.parseMaterial();
+    private static final Material FIREWORK_ROCKET = XMaterial.FIREWORK_ROCKET.get();
     private final FireworkMeta meta;
 
     public DeathEffectFirework(UltraPlayer owner, DeathEffectType type, UltraCosmetics ultraCosmetics) {

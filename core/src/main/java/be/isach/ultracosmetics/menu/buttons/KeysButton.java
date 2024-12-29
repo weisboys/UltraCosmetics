@@ -28,7 +28,7 @@ public class KeysButton extends TreasureButton {
                 Placeholder.unparsed("keys", String.valueOf(ultraPlayer.getKeys()))
         );
         XMaterial keyItem = XMaterial.TRIPWIRE_HOOK;
-        if (XMaterial.TRIAL_KEY.isSupported() && XMaterial.TRIAL_KEY.parseMaterial().isEnabledByFeature(ultraPlayer.getBukkitPlayer().getWorld())) {
+        if (XMaterial.TRIAL_KEY.isSupported() && XMaterial.TRIAL_KEY.get().isEnabledByFeature(ultraPlayer.getBukkitPlayer().getWorld())) {
             keyItem = XMaterial.TRIAL_KEY;
         }
         return ItemFactory.create(keyItem, itemName, "", MessageManager.toLegacy(yourKeysMessage), buyKeyMessage);

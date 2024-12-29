@@ -69,8 +69,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
      */
     private final boolean asynchronous;
 
-    // Cache the actual material value so we don't have to keep calling parseMaterial
-
     protected final int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
 
     private final boolean removeWithDrop = SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop");

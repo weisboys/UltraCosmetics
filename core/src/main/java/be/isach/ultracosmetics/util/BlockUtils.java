@@ -16,8 +16,13 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.Set;
 
 /**
  * Created by sacha on 03/08/15.
@@ -38,7 +43,7 @@ public class BlockUtils {
                 UltraCosmeticsData.get().getPlugin().getSmartLogger().write(LogLevel.WARNING, "Failed to parse 'Air-Materials' item: " + name);
                 continue;
             }
-            Material parsed = mat.get().parseMaterial();
+            Material parsed = mat.get().get();
             // silently ignore materials that are valid
             // but not present in this MC version
             if (parsed != null) {
@@ -84,7 +89,7 @@ public class BlockUtils {
         badXMaterials.addAll(XTag.SAPLINGS.getValues());
 
         for (XMaterial mat : badXMaterials) {
-            badMaterials.add(mat.parseMaterial());
+            badMaterials.add(mat.get());
         }
         badMaterials.addAll(AIRS);
     }
@@ -143,7 +148,7 @@ public class BlockUtils {
             if (blocks.isEmpty()) return;
             World world = blocks.keySet().iterator().next().getWorld();
             for (Entry<Block, XMaterial> entry : blocks.entrySet()) {
-                BlockData data = Bukkit.createBlockData(entry.getValue().parseMaterial());
+                BlockData data = Bukkit.createBlockData(entry.getValue().get());
                 for (Player player : world.getPlayers()) {
                     player.sendBlockChange(entry.getKey().getLocation(), data);
                 }
@@ -181,7 +186,7 @@ public class BlockUtils {
      */
     public static boolean isPortalBlock(Block b) {
         for (BlockFace face : BlockFace.values()) {
-            if (b.getRelative(face).getType() == XMaterial.NETHER_PORTAL.parseMaterial()) {
+            if (b.getRelative(face).getType() == XMaterial.NETHER_PORTAL.get()) {
                 return true;
             }
         }

@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.pets;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
@@ -377,7 +376,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     protected boolean customizeHeldItem(String customization) {
         String[] parts = customization.split(":", 2);
         Optional<XMaterial> mat = XMaterial.matchXMaterial(parts[0]);
-        if (!mat.isPresent() || !mat.get().parseMaterial().isItem()) return false;
+        if (!mat.isPresent() || !mat.get().get().isItem()) return false;
         ItemStack stack = mat.get().parseItem();
         if (parts.length > 1) {
             int model;

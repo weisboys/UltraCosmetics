@@ -6,7 +6,11 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.task.UltraTask;
 import com.cryptomorin.xseries.XEntityType;
 import com.cryptomorin.xseries.XMaterial;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
@@ -18,7 +22,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 
 public class EntitySpawner<T extends Entity> extends UltraTask {
-    private static final Material FIREWORK = XMaterial.FIREWORK_ROCKET.parseMaterial();
+    private static final Material FIREWORK = XMaterial.FIREWORK_ROCKET.get();
     private static final EntityType FIREWORK_ENTITY = XEntityType.FIREWORK_ROCKET.get();
     private final int limit = SettingsManager.getConfig().getInt("Max-Entity-Spawns-Per-Tick");
     private final EntityType type;

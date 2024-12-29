@@ -226,7 +226,7 @@ public class PetType extends CosmeticEntType<Pet> {
                 continue;
             }
             mat = XMaterial.matchXMaterial(pet.getString("item"));
-            if (mat.isEmpty() || !mat.get().parseMaterial().isItem()) {
+            if (mat.isEmpty() || !mat.get().get().isItem()) {
                 log.write(LogLevel.WARNING, "Invalid item for custom pet '" + key + "'");
                 continue;
             }

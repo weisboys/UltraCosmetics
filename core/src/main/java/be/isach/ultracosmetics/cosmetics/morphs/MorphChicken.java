@@ -58,7 +58,7 @@ public class MorphChicken extends Morph implements Updatable {
         getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> {
             chickens.clear();
             for (Item i : items) {
-                i.getWorld().spawnParticle(BLOCK_PARTICLE, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.parseMaterial().createBlockData());
+                i.getWorld().spawnParticle(BLOCK_PARTICLE, i.getLocation(), 0, 0, 0, 0, 0, XMaterial.WHITE_TERRACOTTA.get().createBlockData());
                 spawnSound.atLocation(i.getLocation()).play();
                 final Chicken chicken = (Chicken) i.getWorld().spawnEntity(i.getLocation(), EntityType.CHICKEN);
                 chicken.setAgeLock(true);

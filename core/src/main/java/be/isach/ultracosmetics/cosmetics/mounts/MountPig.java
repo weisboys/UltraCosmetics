@@ -8,7 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Pig;
 
 public class MountPig extends MountHeldItem {
-    private static final Material CARROT_ON_A_STICK = XMaterial.CARROT_ON_A_STICK.parseMaterial();
+    private static final Material CARROT_ON_A_STICK = XMaterial.CARROT_ON_A_STICK.get();
 
     public MountPig(UltraPlayer ultraPlayer, MountType type, UltraCosmetics ultraCosmetics) {
         super(ultraPlayer, type, ultraCosmetics);
