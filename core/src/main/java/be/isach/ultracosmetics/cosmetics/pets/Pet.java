@@ -19,6 +19,7 @@ import org.bukkit.Difficulty;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityCombustEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -276,6 +277,12 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     @EventHandler
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntity() == getEntity()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        // Prevents (elder-)guardians from dealing damage to attacking players.
+        if (event.getDamager() == getEntity()) event.setCancelled(true);
     }
 
     @EventHandler
