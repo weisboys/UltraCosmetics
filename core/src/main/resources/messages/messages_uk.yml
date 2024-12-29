@@ -1867,3 +1867,4 @@ Must-Remove:
 Use-Rename-Pet-Command: <prefix> <red>використовувати <yellow>/uc rename</yellow> для перейменувати
 Commands-Disabled-During-Chest: <prefix> <bold><red>Ви не можете використовувати команди з відкритою скринею!
 No-Buy-Key-Permission: <prefix> <red><bold>Ви не маєте дозволу на придбання ключів скарбів!
+Particles-Minimal-In-Client: <yellow>You have particles set to "minimal" in your client settings and so you won't be able to see particles.
