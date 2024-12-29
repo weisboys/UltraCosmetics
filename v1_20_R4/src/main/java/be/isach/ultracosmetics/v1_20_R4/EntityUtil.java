@@ -1,6 +1,6 @@
 package be.isach.ultracosmetics.v1_20_R4;
 
-import be.isach.ultracosmetics.UltraCosmeticsData;
+import be.isach.ultracosmetics.task.UltraTask;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.version.IEntityUtil;
 import com.mojang.datafixers.util.Pair;
@@ -15,7 +15,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.item.ItemStack;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_20_R4.CraftWorld;
@@ -77,7 +76,7 @@ public class EntityUtil implements IEntityUtil {
             sendPacket(loopPlayer, dataPacket);
             sendPacket(loopPlayer, equipmentPacket);
         }
-        Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(), () -> {
+        UltraTask.runLater(() -> {
             for (Player pl : player.getWorld().getPlayers()) {
                 sendPacket(pl, new ClientboundRemoveEntitiesPacket(as.getId()));
             }
@@ -88,7 +87,7 @@ public class EntityUtil implements IEntityUtil {
                 .forEachOrdered(ent -> {
                     MathUtils.applyVelocity(ent, new Vector(0, 1, 0).add(v));
                     cooldownJump.add(ent);
-                    Bukkit.getScheduler().runTaskLater(UltraCosmeticsData.get().getPlugin(),
+                    UltraTask.runAtEntityLater(player,
                             () -> cooldownJump.remove(ent), 20);
                 });
     }

@@ -6,6 +6,7 @@ import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.morphs.Morph;
 import be.isach.ultracosmetics.cosmetics.type.MorphType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.task.UltraTask;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.MathUtils;
 import be.isach.ultracosmetics.v1_20_R4.VersionModule;
@@ -13,7 +14,6 @@ import be.isach.ultracosmetics.v1_20_R4.customentities.CustomEntities;
 import be.isach.ultracosmetics.v1_20_R4.customentities.CustomGuardian;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
@@ -46,7 +46,7 @@ public class MorphElderGuardian extends Morph implements Updatable {
                 && event.getPlayer() == getPlayer()) {
             shootLaser();
             cooldown = true;
-            Bukkit.getScheduler().runTaskLaterAsynchronously(getUltraCosmetics(), () -> cooldown = false, 80);
+            UltraTask.runLater(() -> cooldown = false, 80);
         }
     }
 
@@ -72,7 +72,7 @@ public class MorphElderGuardian extends Morph implements Updatable {
 
         customGuardian.target(armorStand);
 
-        Bukkit.getScheduler().runTaskLater(getUltraCosmetics(), () -> {
+        UltraTask.runAtLocationLater(FROM, () -> {
             FireworkEffect.Builder builder = FireworkEffect.builder();
             FireworkEffect effect = builder.flicker(false).trail(false).with(FireworkEffect.Type.BALL_LARGE)
                     .withColor(Color.TEAL).withFade(Color.TEAL).build();
@@ -115,12 +115,12 @@ public class MorphElderGuardian extends Morph implements Updatable {
     @Override
     public void onUpdate() {
         if (getOwner() == null || getPlayer() == null) {
-            cancel();
+            cancelTask();
             return;
         }
         if (customGuardian == null || !customGuardian.isAlive()) {
             getOwner().removeCosmetic(Category.MORPHS);
-            cancel();
+            cancelTask();
         }
     }
 }
