@@ -140,7 +140,7 @@ public abstract class Cosmetic<T extends CosmeticType<?>> implements Listener {
     }
 
     protected void scheduleTask() {
-        task = ultraCosmetics.getScheduler().runAtEntityTimer(getPlayer(), this::run, 0, 1);
+        task = ultraCosmetics.getScheduler().runAtEntityTimer(getPlayer(), this::run, 1, 1);
     }
 
     protected void unsetCosmetic() {
