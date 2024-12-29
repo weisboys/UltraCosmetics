@@ -64,11 +64,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
      */
     protected Block lastClickedBlock;
 
-    /**
-     * If Gadget interaction should tick asynchronously.
-     */
-    private final boolean asynchronous;
-
     protected final int slot = SettingsManager.getConfig().getInt("Gadget-Slot");
 
     private final boolean removeWithDrop = SettingsManager.getConfig().getBoolean("Remove-Gadget-With-Drop");
@@ -87,7 +82,6 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
 
     public Gadget(UltraPlayer owner, GadgetType type, UltraCosmetics ultraCosmetics, boolean asynchronous) {
         super(owner, type, ultraCosmetics);
-        this.asynchronous = asynchronous;
         readySound = XSound.BLOCK_NOTE_BLOCK_HAT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
@@ -265,12 +259,10 @@ public abstract class Gadget extends Cosmetic<GadgetType> implements UnmovableIt
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_BLOCK) {
             lastClickedBlock = event.getClickedBlock();
         }
-        boolean isLeft = event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK;
-        Runnable callClick = isLeft ? this::onLeftClick : this::onRightClick;
-        if (asynchronous) {
-            getUltraCosmetics().getScheduler().runAsync((task) -> callClick.run());
+        if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
+            onLeftClick();
         } else {
-            callClick.run();
+            onRightClick();
         }
     }
 
