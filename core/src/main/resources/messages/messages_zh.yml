@@ -1854,3 +1854,4 @@ Must-Remove:
 Use-Rename-Pet-Command: <prefix> <red>请输入命令 <yellow>/uc rename</yellow> 重命名实体
 Commands-Disabled-During-Chest: <prefix> <bold><red>打开箱子时你不能使用命令!
 No-Buy-Key-Permission: <prefix> <red><bold>你没有权限购买宝藏钥匙!
+Particles-Minimal-In-Client: <yellow>You have particles set to "minimal" in your client settings and so you won't be able to see particles.
