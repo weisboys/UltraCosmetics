@@ -5,10 +5,10 @@ import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
-
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Wither;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 
 /**
@@ -42,6 +42,13 @@ public class PetWither extends Pet {
     @EventHandler
     public void onShoot(ProjectileLaunchEvent event) {
         if (event.getEntity().getShooter() == entity) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onBlockBreak(EntityChangeBlockEvent event) {
+        if (event.getEntity() == entity) {
             event.setCancelled(true);
         }
     }
