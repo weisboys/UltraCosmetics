@@ -1869,3 +1869,4 @@ Must-Remove:
 Use-Rename-Pet-Command: <prefix> <red>Benutze <yellow>/uc rename</yellow> um den Namen zu ändern
 Commands-Disabled-During-Chest: <prefix> <bold><red>Du kannst beim Öffnen einer Truhe keine Befehle verwenden!
 No-Buy-Key-Permission: <prefix> <red><bold>Du hast keine Berechtigung Schatzschlüssel zu kaufen!
+Particles-Minimal-In-Client: <yellow>You have particles set to "minimal" in your client settings and so you won't be able to see particles.
