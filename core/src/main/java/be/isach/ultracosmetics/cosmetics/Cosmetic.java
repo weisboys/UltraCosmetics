@@ -132,6 +132,13 @@ public abstract class Cosmetic<T extends CosmeticType<?>> implements Listener {
         unsetCosmetic();
     }
 
+    // Allows NMS modules to cancel the task without transitive dependencies.
+    protected void cancelTask() {
+        if (task != null) {
+            task.cancel();
+        }
+    }
+
     protected void scheduleTask() {
         task = ultraCosmetics.getScheduler().runAtEntityTimer(getPlayer(), this::run, 0, 1);
     }
