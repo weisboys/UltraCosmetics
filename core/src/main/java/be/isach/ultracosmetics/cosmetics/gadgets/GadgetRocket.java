@@ -89,7 +89,7 @@ public class GadgetRocket extends Gadget implements Updatable {
             armorStand.setGravity(false);
         }, 10);
 
-        getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), (task) -> {
+        getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> {
             if (getOwner() == null || getOwner().getCurrentGadget() != this) return;
             // prevent kicking
             enableFlight();
