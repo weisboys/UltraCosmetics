@@ -681,7 +681,7 @@ public class UltraCosmetics extends JavaPlugin {
         }
         if (!raw.contains("&")) return;
         MiniMessage mm = MessageManager.getMiniMessage();
-        LegacyComponentSerializer deserializer = LegacyComponentSerializer.legacyAmpersand();
+        LegacyComponentSerializer deserializer = MessageManager.legacySerializer();
         String[] parts = raw.split("\n");
         StringBuilder builder = new StringBuilder(mm.serialize(deserializer.deserialize(parts[0])));
         for (int i = 1; i < parts.length; i++) {
