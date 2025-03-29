@@ -8,6 +8,7 @@ import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectChris
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectHelix;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectNote;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRainbow;
+import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRedstone;
 import be.isach.ultracosmetics.cosmetics.projectileeffects.ProjectileEffectRedstoneHelix;
 import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XMaterial;
@@ -41,7 +42,7 @@ public class ProjectileEffectType extends CosmeticParticleType<ProjectileEffect>
 
         // Basic Trails
         new ProjectileEffectType("Spark", 1, XParticle.FIREWORK, XMaterial.FIREWORK_ROCKET, ProjectileEffectBasicTrail.class);
-        new ProjectileEffectType("Redstone", 1, XParticle.DUST, XMaterial.REDSTONE, ProjectileEffectBasicTrail.class);
+        new ProjectileEffectType("Redstone", 1, XParticle.DUST, XMaterial.REDSTONE, ProjectileEffectRedstone.class);
         new ProjectileEffectType("Flame", 1, XParticle.FLAME, XMaterial.TORCH, ProjectileEffectBasicTrail.class);
         new ProjectileEffectType("Water", 1, XParticle.SPLASH, XMaterial.WATER_BUCKET, ProjectileEffectBasicTrail.class);
         new ProjectileEffectType("Witch", 1, XParticle.WITCH, XMaterial.BREWING_STAND, ProjectileEffectBasicTrail.class);
