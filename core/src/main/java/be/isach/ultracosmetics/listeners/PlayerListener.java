@@ -11,6 +11,7 @@ import be.isach.ultracosmetics.player.UltraPlayerManager;
 import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
+import com.tcoded.folialib.wrapper.task.WrappedTask;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -70,19 +71,14 @@ public class PlayerListener implements Listener {
     public void onJoin(final PlayerJoinEvent event) {
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            // Delay two ticks because event.getPlayer().isValid() == false for some reason.
-            // Experimentally determined; one tick isn't enough sometimes.
-            ultraCosmetics.getScheduler().runLater(() -> {
-                // Delay in case other plugins clear inventory on join
-                ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), () -> {
-                    if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
-                        ultraPlayer.giveMenuItem();
-                    }
-                    if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) {
-                        ultraPlayer.getProfile().onLoad(CosmeticsProfile::equip);
-                    }
-                }, Math.max(joinItemDelay - 2, 1));
-            }, 2);
+            runWhenValid(event.getPlayer(), joinItemDelay, () -> {
+                if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
+                    ultraPlayer.giveMenuItem();
+                }
+                if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) {
+                    ultraPlayer.getProfile().onLoad(CosmeticsProfile::equip);
+                }
+            });
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
@@ -148,14 +144,14 @@ public class PlayerListener implements Listener {
     public void onRespawn(PlayerRespawnEvent event) {
         // When PlayerRespawnEvent is being called, the player may or may not be at
         // the final respawn location, so wait one tick before re-equipping.
-        ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), () -> {
+        runWhenValid(event.getPlayer(), Math.max(1, respawnItemDelay), () -> {
             if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) return;
             UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
             if (menuItemEnabled) {
                 ultraPlayer.giveMenuItem();
             }
             ultraPlayer.getProfile().equip();
-        }, Math.max(1, respawnItemDelay));
+        });
     }
 
     @EventHandler
@@ -250,6 +246,28 @@ public class PlayerListener implements Listener {
                 }
             }
         }
+    }
+
+    private void runWhenValid(Player player, long minDelay, Runnable runnable) {
+        if (player.isValid()) {
+            ultraCosmetics.getScheduler().runAtEntityLater(player, runnable, minDelay);
+            runnable.run();
+            return;
+        }
+        // Allow a mutable value to be referenced inside a lambda
+        final long[] counter = {0};
+        final WrappedTask[] task = {null};
+        task[0] = ultraCosmetics.getScheduler().runTimer(() -> {
+            if (player.isValid()) {
+                ultraCosmetics.getScheduler().runAtEntity(player, t -> runnable.run());
+                task[0].cancel();
+                return;
+            }
+            if (counter[0]++ > 10) {
+                // They probably disconnected, give up
+                task[0].cancel();
+            }
+        }, minDelay, 1);
     }
 
     private boolean isMenuItem(ItemStack item) {
