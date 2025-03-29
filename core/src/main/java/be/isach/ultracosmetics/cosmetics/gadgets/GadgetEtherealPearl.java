@@ -15,6 +15,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
+import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 
@@ -134,6 +135,15 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
             endRide();
         } else {
             lastLoc = getPlayer().getLocation();
+        }
+    }
+
+    @EventHandler
+    public void onPortal(EntityPortalEvent event) {
+        if (event.getEntity() == pearl) {
+            event.setCancelled(true);
+            pearl.remove();
+            pearl = null;
         }
     }
 }
