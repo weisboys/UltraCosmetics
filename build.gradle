@@ -116,6 +116,7 @@ subprojects { subproj ->
         // Mojang Authlib
         maven { url = 'https://libraries.minecraft.net' }
     }
+
     def version = 17
     if (subproj.hasProperty('javaVersion')) {
         version = subproj.property('javaVersion')
