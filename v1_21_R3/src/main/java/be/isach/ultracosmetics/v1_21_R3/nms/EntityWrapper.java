@@ -1,8 +1,10 @@
 package be.isach.ultracosmetics.v1_21_R3.nms;
 
 import be.isach.ultracosmetics.v1_21_R3.ObfuscatedFields;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.phys.Vec3;
 import org.bukkit.attribute.Attribute;
 
 import java.lang.reflect.Field;
@@ -77,6 +79,10 @@ public class EntityWrapper {
 
     public void setMoveForward(float moveForward) {
         handle.zza = moveForward;
+    }
+
+    public Vec3 getInputIntent() {
+        return ((ServerPlayer) handle).getLastClientMoveIntent();
     }
 
     public boolean isJumping() {

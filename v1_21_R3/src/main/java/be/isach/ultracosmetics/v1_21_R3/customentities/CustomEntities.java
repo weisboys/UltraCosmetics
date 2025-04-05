@@ -55,8 +55,9 @@ public class CustomEntities {
         wEntity.setRenderYawOffset(entity.getYRot());
         wEntity.setRotationYawHead(entity.getYRot());
 
-        sideMot = wPassenger.getMoveStrafing() * 0.25f;
-        forMot = wPassenger.getMoveForward() * 0.5f;
+        Vec3 intent = wPassenger.getInputIntent();
+        sideMot = (float) intent.x * 0.25f;
+        forMot = (float) intent.z * 0.5f;
 
         if (forMot <= 0.0F) {
             forMot *= 0.25F;
