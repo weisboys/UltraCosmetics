@@ -18,10 +18,13 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -228,6 +231,30 @@ public class ItemFactory {
         itemMeta.addEnchant(Enchantment.MENDING, 1, true);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(itemMeta);
+    }
+
+    @SuppressWarnings("UnstableApiUsage")
+    public static void setFlags(ItemStack item) {
+        ItemMeta meta = item.getItemMeta();
+        meta.addItemFlags(ItemFlag.values());
+        try {
+            meta.removeItemFlags(ItemFlag.valueOf("HIDE_LORE"));
+        } catch (IllegalArgumentException e) {
+            // ignored
+        }
+        AttributeModifier modifier = createAttributeModifier("itemflags", 0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
+        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier);
+        item.setItemMeta(meta);
+    }
+
+    @SuppressWarnings({"UnstableApiUsage", "removal"})
+    public static AttributeModifier createAttributeModifier(String modName, double amount, AttributeModifier.Operation operation, EquipmentSlotGroup slots) {
+        NamespacedKey key = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), modName);
+        try {
+            return new AttributeModifier(key, amount, operation, slots);
+        } catch (NoSuchMethodError error) {
+            return new AttributeModifier(UUID.randomUUID(), key.toString(), amount, operation, slots);
+        }
     }
 
     public static boolean haveSameName(ItemStack a, ItemStack b) {
