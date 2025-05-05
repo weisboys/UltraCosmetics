@@ -57,6 +57,8 @@ public class GadgetEtherealPearl extends Gadget implements Updatable {
 
         Entity vehicle = getPlayer().getVehicle();
         if (vehicle instanceof EnderPearl) {
+            // Setting pearl to null indicates to event handlers that they don't need to do anything
+            pearl = null;
             getPlayer().eject();
             vehicle.remove();
         }
