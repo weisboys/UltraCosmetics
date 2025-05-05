@@ -1,10 +1,9 @@
 package be.isach.ultracosmetics.v1_21_R4.nms;
 
-import be.isach.ultracosmetics.v1_21_R4.ObfuscatedFields;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.entity.player.Input;
 import org.bukkit.attribute.Attribute;
 
 import java.lang.reflect.Field;
@@ -46,7 +45,7 @@ public class EntityWrapper {
     }
 
     public void setStepHeight(float stepHeight) {
-        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(stepHeight);
+        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.STEP_HEIGHT).setBaseValue(stepHeight);
     }
 
     public float getRotationYawHead() {
@@ -81,12 +80,8 @@ public class EntityWrapper {
         handle.zza = moveForward;
     }
 
-    public Vec3 getInputIntent() {
-        return ((ServerPlayer) handle).getLastClientMoveIntent();
-    }
-
-    public boolean isJumping() {
-        return getField(ObfuscatedFields.JUMPING, LivingEntity.class, Boolean.class);
+    public Input getInputIntent() {
+        return ((ServerPlayer) handle).getLastClientInput();
     }
 
     public void setJumping(boolean jumping) {

@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Input;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import org.bukkit.Location;
@@ -55,17 +56,27 @@ public class CustomEntities {
         wEntity.setRenderYawOffset(entity.getYRot());
         wEntity.setRotationYawHead(entity.getYRot());
 
-        Vec3 intent = wPassenger.getInputIntent();
-        sideMot = (float) intent.x * 0.25f;
-        forMot = (float) intent.z * 0.5f;
-
-        if (forMot <= 0.0F) {
-            forMot *= 0.25F;
+        Input intent = wPassenger.getInputIntent();
+        sideMot = 0;
+        forMot = 0;
+        if (intent.left()) {
+            sideMot = 0.25f;
+        } else if (intent.right()) {
+            sideMot = -0.25f;
+        }
+        if (intent.forward()) {
+            forMot = 0.5f;
+        } else if (intent.backward()) {
+            forMot = -0.5f;
         }
 
-        wEntity.setJumping(wPassenger.isJumping());
+        if (forMot < 0.0f) {
+            forMot *= 0.25f;
+        }
 
-        if (wPassenger.isJumping() && entity.onGround()) {
+        wEntity.setJumping(intent.jump());
+
+        if (intent.jump() && entity.onGround()) {
             Vec3 v = entity.getDeltaMovement();
             Vec3 v2 = new Vec3(v.x(), 0.4D, v.z());
             entity.setDeltaMovement(v2);

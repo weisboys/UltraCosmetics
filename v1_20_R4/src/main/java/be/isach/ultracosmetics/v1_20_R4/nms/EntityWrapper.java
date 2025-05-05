@@ -44,7 +44,7 @@ public class EntityWrapper {
     }
 
     public void setStepHeight(float stepHeight) {
-        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(stepHeight);
+        ((org.bukkit.entity.LivingEntity) handle.getBukkitEntity()).getAttribute(Attribute.GENERIC_STEP_HEIGHT).setBaseValue(stepHeight);
     }
 
     public float getRotationYawHead() {
