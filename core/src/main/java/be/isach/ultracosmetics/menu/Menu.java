@@ -125,6 +125,11 @@ public abstract class Menu implements Listener {
         if (itemStack.hasItemMeta()) {
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.addItemFlags(ItemFlag.values());
+            try {
+                itemMeta.removeItemFlags(ItemFlag.valueOf("HIDE_LORE"));
+            } catch (IllegalArgumentException e) {
+                // ignored
+            }
             if (itemMeta.hasLore() && ultraCosmetics.getPlaceholderHook() != null) {
                 Player player = ultraPlayer.getBukkitPlayer();
                 List<String> loreList = itemMeta.getLore();
