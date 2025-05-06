@@ -15,7 +15,6 @@ import com.tcoded.folialib.wrapper.task.WrappedTask;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -36,6 +35,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.UUID;
 
 /**
  * Player listeners.
@@ -61,14 +61,20 @@ public class PlayerListener implements Listener {
         this.menuItem = ItemFactory.getMenuItem();
     }
 
+    private boolean isNPC(Player player) {
+        return player.hasMetadata("NPC") || player.hasMetadata("fake-player");
+    }
+
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPreJoin(final PlayerJoinEvent event) {
+        if (isNPC(event.getPlayer())) return;
         // Ready UltraPlayer as early as possible so it can be ready for other plugins that might also run code on join
         pm.createUltraPlayer(event.getPlayer().getUniqueId());
     }
 
     @EventHandler
     public void onJoin(final PlayerJoinEvent event) {
+        if (isNPC(event.getPlayer())) return;
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
             runWhenValid(event.getPlayer(), joinItemDelay, () -> {
@@ -96,20 +102,21 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onWorldChange(final PlayerChangedWorldEvent event) {
-        if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
-            if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
-                ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), up::giveMenuItem, respawnItemDelay);
-            }
-            // If the player joined an allowed world from a non-allowed world
-            // or we need to update their cosmetics for another reason, re-equip their cosmetics.
-            if (!SettingsManager.isAllowedWorld(event.getFrom()) || updateOnWorldChange) {
-                ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), () -> up.getProfile().equip(), respawnItemDelay);
-            }
+        if (isNPC(event.getPlayer())) return;
+        if (!SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) return;
+        UltraPlayer up = pm.getUltraPlayer(event.getPlayer());
+        if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
+            ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), up::giveMenuItem, respawnItemDelay);
+        }
+        // If the player joined an allowed world from a non-allowed world
+        // or we need to update their cosmetics for another reason, re-equip their cosmetics.
+        if (!SettingsManager.isAllowedWorld(event.getFrom()) || updateOnWorldChange) {
+            ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), () -> up.getProfile().equip(), respawnItemDelay);
         }
     }
 
     private void clearCosmeticsForWorldChange(Player player) {
+        if (isNPC(player)) return;
         boolean goingToBadWorld = !SettingsManager.isAllowedWorld(player.getWorld());
         if (!goingToBadWorld && !updateOnWorldChange) {
             return;
@@ -142,6 +149,7 @@ public class PlayerListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onRespawn(PlayerRespawnEvent event) {
+        if (isNPC(event.getPlayer())) return;
         // When PlayerRespawnEvent is being called, the player may or may not be at
         // the final respawn location, so wait one tick before re-equipping.
         runWhenValid(event.getPlayer(), Math.max(1, respawnItemDelay), () -> {
@@ -156,15 +164,18 @@ public class PlayerListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
+        // Dispose even for NPCs, if we did accidentally allocate an UltraPlayer for an NPC, we don't want to be leaking
+        // memory
         pm.getUltraPlayer(event.getPlayer()).dispose();
+        UUID uuid = event.getPlayer().getUniqueId();
         // workaround plugins calling events after player quit
-        ultraCosmetics.getScheduler().runAtEntityLater(event.getPlayer(), () -> pm.remove(event.getPlayer()), 1);
+        ultraCosmetics.getScheduler().runLater(() -> pm.remove(uuid), 1);
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void onDeath(PlayerDeathEvent event) {
         // Ignore NPC deaths as per iSach#467
-        if (Bukkit.getPlayer(event.getEntity().getUniqueId()) == null) return;
+        if (isNPC(event.getEntity())) return;
         if (isMenuItem(event.getEntity().getInventory().getItem(menuItemSlot))) {
             event.getDrops().remove(event.getEntity().getInventory().getItem(menuItemSlot));
             event.getEntity().getInventory().setItem(menuItemSlot, null);
