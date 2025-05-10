@@ -79,7 +79,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
         }
         int count = 0;
         for (Map.Entry<Attribute, Double> entry : attributes.entrySet()) {
-            AttributeModifier mod = ItemFactory.createAttributeModifier("ultracosmetics attribute modifier" + count++,
+            AttributeModifier mod = ItemFactory.createAttributeModifier("custom_mod_" + count++,
                     entry.getValue(), AttributeModifier.Operation.ADD_NUMBER, getArmorSlot().toBukkit().getGroup());
             meta.addAttributeModifier(entry.getKey(), mod);
         }

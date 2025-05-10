@@ -242,8 +242,10 @@ public class ItemFactory {
         } catch (IllegalArgumentException e) {
             // ignored
         }
-        AttributeModifier modifier = createAttributeModifier("itemflags", 0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
-        meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier);
+        if (!meta.hasAttributeModifiers()) {
+            AttributeModifier modifier = createAttributeModifier("itemflags", 0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
+            meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier);
+        }
         item.setItemMeta(meta);
     }
 
