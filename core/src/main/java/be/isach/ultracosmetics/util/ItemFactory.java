@@ -24,7 +24,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.EquipmentSlotGroup;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -243,19 +243,19 @@ public class ItemFactory {
             // ignored
         }
         if (!meta.hasAttributeModifiers()) {
-            AttributeModifier modifier = createAttributeModifier("itemflags", 0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlotGroup.MAINHAND);
+            AttributeModifier modifier = createAttributeModifier("itemflags", 0, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
             meta.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, modifier);
         }
         item.setItemMeta(meta);
     }
 
     @SuppressWarnings({"UnstableApiUsage", "removal"})
-    public static AttributeModifier createAttributeModifier(String modName, double amount, AttributeModifier.Operation operation, EquipmentSlotGroup slots) {
+    public static AttributeModifier createAttributeModifier(String modName, double amount, AttributeModifier.Operation operation, EquipmentSlot slot) {
         NamespacedKey key = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), modName);
         try {
-            return new AttributeModifier(key, amount, operation, slots);
+            return new AttributeModifier(key, amount, operation, slot.getGroup());
         } catch (NoSuchMethodError error) {
-            return new AttributeModifier(UUID.randomUUID(), key.toString(), amount, operation, slots);
+            return new AttributeModifier(UUID.randomUUID(), key.toString(), amount, operation, slot);
         }
     }
 
