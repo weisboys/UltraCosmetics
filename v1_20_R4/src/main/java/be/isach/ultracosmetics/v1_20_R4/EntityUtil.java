@@ -20,11 +20,9 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.craftbukkit.v1_20_R4.CraftWorld;
 import org.bukkit.craftbukkit.v1_20_R4.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_20_R4.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_20_R4.entity.CraftWither;
 import org.bukkit.craftbukkit.v1_20_R4.inventory.CraftItemStack;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Wither;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -45,11 +43,6 @@ public class EntityUtil implements IEntityUtil {
     private final Random r = new Random();
     private Map<Player, Set<ArmorStand>> fakeArmorStandsMap = new HashMap<>();
     private Map<Player, Set<org.bukkit.entity.Entity>> cooldownJumpMap = new HashMap<>();
-
-    @Override
-    public void resetWitherSize(Wither wither) {
-        ((CraftWither) wither).getHandle().setInvulnerableTicks(600);
-    }
 
     @Override
     public void sendBlizzard(final Player player, Location loc, Predicate<org.bukkit.entity.Entity> canAffectFunc, Vector v) {
