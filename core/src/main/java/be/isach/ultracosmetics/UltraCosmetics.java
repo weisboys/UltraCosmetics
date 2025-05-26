@@ -318,9 +318,8 @@ public class UltraCosmetics extends JavaPlugin {
         // Register Listeners.
         registerListeners();
 
-        if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_20)) {
-            // Commodore didn't have a new enough version of ASM to load Java 21 classes until 1.20
-            loadPaperSupport();
+        if (!loadPaperSupport()) {
+            paperSupport = new DummyPaperSupport();
         }
 
         // Set up Cosmetics config.
@@ -428,16 +427,21 @@ public class UltraCosmetics extends JavaPlugin {
         enableFinished = true;
     }
 
-    private void loadPaperSupport() {
+    private boolean loadPaperSupport() {
+        if (!UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_20)) {
+            // Commodore didn't have a new enough version of ASM to load Java 21 classes until 1.20
+            return false;
+        }
         try {
             paperSupport = Class.forName("be.isach.ultracosmetics.paper.PaperSupportImpl").asSubclass(PaperSupport.class).getDeclaredConstructor().newInstance();
             getSmartLogger().write("Paper-specific features enabled");
+            return true;
         } catch (ReflectiveOperationException | UnsupportedClassVersionError | IllegalArgumentException e) {
             // ReflectiveOperationException shouldn't happen
             // UnsupportedClassVersionError is thrown when server is running on a version below Java 21
             // IllegalArgumentException is also thrown when the server is running on a version below Java 21
             // and CraftBukkit tries to process it.
-            paperSupport = new DummyPaperSupport();
+            return false;
         }
     }
 
