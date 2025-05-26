@@ -516,10 +516,8 @@ public class UltraPlayer {
         int slot = section.getInt("Slot");
         ItemStack slotItem = getBukkitPlayer().getInventory().getItem(slot);
         ItemStack menuItem = ItemFactory.getMenuItem();
-        if (slotItem != null) {
-            if (!slotItem.isSimilar(menuItem)) {
-                getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
-            }
+        if (slotItem != null && !slotItem.isSimilar(menuItem)) {
+            getBukkitPlayer().getWorld().dropItemNaturally(getBukkitPlayer().getLocation(), slotItem);
         }
         getBukkitPlayer().getInventory().setItem(slot, menuItem);
     }

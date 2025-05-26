@@ -58,7 +58,7 @@ public abstract class ArmorCosmetic<T extends CosmeticType<?>> extends Cosmetic<
 
         // If the user's armor slot is still occupied after we've removed all related cosmetics,
         // give up and ask the user to free up the slot.
-        if (getArmorItem() != null) {
+        if (getArmorItem() != null && getArmorItem().getType() != Material.AIR) {
             getOwner().sendMessage(MessageManager.getMessage(getOccupiedSlotKey()));
             return false;
         }
