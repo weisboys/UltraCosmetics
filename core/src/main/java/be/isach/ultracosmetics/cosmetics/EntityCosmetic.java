@@ -4,7 +4,9 @@ import be.isach.ultracosmetics.UltraCosmetics;
 import be.isach.ultracosmetics.cosmetics.type.CosmeticEntType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.EntitySpawningManager;
+import com.cryptomorin.xseries.XAttribute;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 
 public abstract class EntityCosmetic<T extends CosmeticEntType<?>, E extends Entity> extends Cosmetic<T> {
     /**
@@ -33,5 +35,10 @@ public abstract class EntityCosmetic<T extends CosmeticEntType<?>, E extends Ent
     }
 
     protected void setupEntity() {
+    }
+
+    @SuppressWarnings("DataFlowIssue")
+    protected void setMovementSpeed(double speed) {
+        ((LivingEntity) entity).getAttribute(XAttribute.MOVEMENT_SPEED.get()).setBaseValue(speed);
     }
 }
