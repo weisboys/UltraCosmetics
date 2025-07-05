@@ -37,6 +37,7 @@ import be.isach.ultracosmetics.util.InventoryViewHelper;
 import be.isach.ultracosmetics.util.PermissionPrinter;
 import be.isach.ultracosmetics.util.PlayerUtils;
 import be.isach.ultracosmetics.util.Problem;
+import be.isach.ultracosmetics.util.ProblemSeverity;
 import be.isach.ultracosmetics.util.SmartLogger;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.util.UpdateManager;
@@ -184,7 +185,7 @@ public class UltraCosmetics extends JavaPlugin {
 
         Problem problem = UltraCosmeticsData.get().checkServerVersion();
         if (problem != null) {
-            if (problem.isSevere()) {
+            if (problem.getSeverity() == ProblemSeverity.FATAL) {
                 loadTimeProblems.add(problem);
                 return;
             }
@@ -343,6 +344,12 @@ public class UltraCosmetics extends JavaPlugin {
                 } catch (NoSuchMethodError | NoClassDefFoundError ignored) {
                 }
             }
+        }
+
+        if (!UltraCosmeticsData.get().isMobChipAvailable()) {
+            getSmartLogger().write();
+            getSmartLogger().write("MobChip does not support this version of Minecraft, pets will be disabled.");
+            activeProblems.add(Problem.MOBCHIP_ERROR);
         }
 
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
@@ -928,7 +935,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     public Set<Problem> getSevereProblems() {
         Set<Problem> severe = new HashSet<>(activeProblems);
-        severe.removeIf(p -> !p.isSevere());
+        severe.removeIf(p -> p.getSeverity() != ProblemSeverity.FATAL);
         return severe;
     }
 
