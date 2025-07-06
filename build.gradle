@@ -83,7 +83,10 @@ dependencies {
 subprojects { subproj ->
     repositories {
         mavenLocal()
-        mavenCentral()
+        // mavenCentral()
+        // Instead of real maven central we use the maven mirror Paper uses, to ensure all the dependencies we want will
+        // also be available to the library loader.
+        maven { url = 'https://maven-central.storage-download.googleapis.com/maven2/' }
 
         // AnvilGUI, Treasury
         maven { url = 'https://repo.codemc.io/repository/maven-snapshots/' }
