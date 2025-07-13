@@ -79,7 +79,7 @@ public abstract class MountHeldItem extends Mount implements UnmovableItemProvid
 
     @Override
     public boolean itemMatches(ItemStack stack) {
-        return stack != null && stack.isSimilar(heldItem);
+        return ItemFactory.isSimilar(stack, heldItem);
     }
 
     @Override

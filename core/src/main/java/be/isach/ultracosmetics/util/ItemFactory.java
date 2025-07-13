@@ -28,6 +28,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -293,5 +294,18 @@ public class ItemFactory {
     public static XMaterial randomFromTag(XTag<XMaterial> tag) {
         // copy tag values into temporary ArrayList because getting random values from a Set is hard
         return randomXMaterial(new ArrayList<>(tag.getValues()));
+    }
+
+    public static boolean isSimilar(ItemStack a, ItemStack b) {
+        if (a == b) return true;
+        if (a == null || b == null) return false;
+        if (a.getType() != b.getType()) return false;
+        if (a.getItemMeta() instanceof BlockStateMeta aMeta && b.getItemMeta() instanceof BlockStateMeta bMeta) {
+            // Block state meta spontaneously creates "internal" data that causes it to not be equal.
+            // So, we set them to have the same state part and then compare them.
+            aMeta.setBlockState(bMeta.getBlockState());
+            return aMeta.equals(bMeta);
+        }
+        return a.isSimilar(b);
     }
 }

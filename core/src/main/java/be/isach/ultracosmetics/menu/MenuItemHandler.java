@@ -35,7 +35,7 @@ public class MenuItemHandler implements UnmovableItemProvider {
 
     @Override
     public boolean itemMatches(ItemStack stack) {
-        return menuItem.isSimilar(stack);
+        return ItemFactory.isSimilar(menuItem, stack);
     }
 
     @Override
