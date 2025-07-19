@@ -171,7 +171,6 @@ public class UltraCosmetics extends JavaPlugin {
 
     public UltraCosmetics() {
         foliaLib = new FoliaLib(this);
-        foliaLib.enableInvalidTickValueDebug();
     }
 
     /**
