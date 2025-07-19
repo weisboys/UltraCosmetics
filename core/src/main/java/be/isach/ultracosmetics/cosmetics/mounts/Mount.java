@@ -26,9 +26,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Slime;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityPortalEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
@@ -85,7 +83,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
     @Override
     protected void scheduleTask() {
         if (getType().getRepeatDelay() == 0) return;
-        task = getUltraCosmetics().getScheduler().runAtEntityTimer(getPlayer(), this::run, 0, getType().getRepeatDelay());
+        task = getUltraCosmetics().getScheduler().runAtEntityTimer(getPlayer(), this::run, 1, getType().getRepeatDelay());
     }
 
     @Override
@@ -163,20 +161,11 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
         }
     }
 
-    @EventHandler
-    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
-        if (event.getEntity() == getEntity() || event.getDamager() == getEntity()) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onMountPortal(EntityPortalEvent event) {
-        if (event.getEntity() == getEntity()) {
-            entity.remove();
-            if (mountRegionTask != null) mountRegionTask.cancel();
-            getUltraCosmetics().getScheduler().runAtEntityLater(getEntity(), this::onEquip, 1);
-        }
+    @Override
+    protected void onPortal() {
+        entity.remove();
+        if (mountRegionTask != null) mountRegionTask.cancel();
+        getUltraCosmetics().getScheduler().runAtEntityLater(getEntity(), this::onEquip, 1);
     }
 
     @EventHandler

@@ -10,13 +10,8 @@ import be.isach.ultracosmetics.util.EntitySpawningManager;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.controller.NaturalMoveType;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
-import org.bukkit.entity.EnderDragonPart;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Mob;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
@@ -73,7 +68,6 @@ public class MountDragon extends Mount {
         Vector v = entity.getLocation().getDirection();
 
         brain.getController().naturalMoveTo(x, v.getY(), z, NaturalMoveType.SELF);
-
     }
 
     @Override
@@ -90,26 +84,6 @@ public class MountDragon extends Mount {
         super.onClear();
         if (!getPlayer().isOnGround()) {
             FallDamageManager.addNoFall(getPlayer());
-        }
-    }
-
-    @EventHandler
-    public void stopDragonDamage(EntityExplodeEvent event) {
-        Entity e = event.getEntity();
-        if (e instanceof EnderDragonPart) e = ((EnderDragonPart) e).getParent();
-        if (e == entity) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onEntityDamage(EntityDamageByEntityEvent event) {
-        Entity e = event.getDamager();
-        if (e instanceof EnderDragonPart) {
-            e = ((EnderDragonPart) e).getParent();
-        }
-        if (e == entity) {
-            event.setCancelled(true);
         }
     }
 }

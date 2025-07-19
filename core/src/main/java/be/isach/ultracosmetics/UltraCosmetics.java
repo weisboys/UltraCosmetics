@@ -171,6 +171,7 @@ public class UltraCosmetics extends JavaPlugin {
 
     public UltraCosmetics() {
         foliaLib = new FoliaLib(this);
+        foliaLib.enableInvalidTickValueDebug();
     }
 
     /**
@@ -722,6 +723,15 @@ public class UltraCosmetics extends JavaPlugin {
         if (customMenu.isEnabled()) {
             menus.setMainMenu(customMenu);
         }
+    }
+
+    /**
+     * Get the instance of FoliaLib used by the plugin
+     *
+     * @return the instance of FoliaLib
+     */
+    public FoliaLib getFoliaLib() {
+        return foliaLib;
     }
 
     /**
