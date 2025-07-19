@@ -3,7 +3,7 @@ name: Crowdin
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 
@@ -21,7 +21,7 @@ jobs:
       - name: Crowdin action
         uses: crowdin/github-action@v2.9.0
         with:
-          upload_sources: true
+          upload_sources: false
           upload_translations: false
           download_translations: true
           create_pull_request: true
