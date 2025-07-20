@@ -46,6 +46,7 @@ public class MountDragon extends Mount {
             entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         }
         brain = BukkitBrain.getBrain((Mob) entity);
+        brain.getBody().setHurtTime(20);
     }
 
     @Override
