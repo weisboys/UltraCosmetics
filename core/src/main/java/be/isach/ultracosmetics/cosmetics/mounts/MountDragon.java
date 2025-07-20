@@ -46,6 +46,8 @@ public class MountDragon extends Mount {
             entity.setMetadata("Mount", new FixedMetadataValue(UltraCosmeticsData.get().getPlugin(), "UltraCosmetics"));
         }
         brain = BukkitBrain.getBrain((Mob) entity);
+        // Setting hurt time prevents dragon from pushing or damaging other entities.
+        // As of 1.21.8 this works around a Folia bug so it needs to occur immediately after spawning the entity.
         brain.getBody().setHurtTime(20);
     }
 
