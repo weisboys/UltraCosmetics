@@ -197,7 +197,7 @@ gradle.projectsEvaluated {
         description = "Download BuildTools for building dependencies"
         onlyIf { !buildtoolsJar.exists() }
         doLast {
-            buildtoolsJar.mkdirs()
+            buildtoolsJar.parent.mkdirs()
             new URL('https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar')
                     .withInputStream { i -> buildtoolsJar.withOutputStream { it << i } }
         }
