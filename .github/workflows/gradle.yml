@@ -38,7 +38,8 @@ jobs:
       # https://github.com/gradle/gradle-build-action
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4.4.1
-        cache-overwrite-existing: true
+        with:
+          cache-overwrite-existing: true
 
       # https://github.com/actions/setup-java
       - name: Set up JDK 17
