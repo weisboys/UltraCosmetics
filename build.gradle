@@ -102,8 +102,6 @@ subprojects { subproj ->
         maven { url = 'https://repo.rosewooddev.io/repository/public/' }
         // SpigotMC
         maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
-        // WorldGuard
-        maven { url = 'https://maven.enginehub.org/repo/' }
         // DiscordSRV
         maven { url = 'https://nexus.scarsz.me/content/groups/public/' }
         // ChestSort
@@ -112,6 +110,8 @@ subprojects { subproj ->
         maven { url = 'https://repo.glaremasters.me/repository/towny/' }
         // PlayerAuctions
         maven { url = 'https://repo.olziedev.com/' }
+        // WorldGuard
+        maven { url = 'https://maven.enginehub.org/repo/' }
         // Vault, PEconomy, MobChipLite, FoliaLib
         maven { url = 'https://jitpack.io' }
         // Paper API

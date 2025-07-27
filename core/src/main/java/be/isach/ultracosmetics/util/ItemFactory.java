@@ -21,6 +21,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Tag;
 import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.block.BlockState;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
@@ -321,7 +322,11 @@ public class ItemFactory {
         if (a.getItemMeta() instanceof BlockStateMeta aMeta && b.getItemMeta() instanceof BlockStateMeta bMeta) {
             // Block state meta spontaneously creates "internal" data that causes it to not be equal.
             // So, we set them to have the same state part and then compare them.
-            aMeta.setBlockState(bMeta.getBlockState());
+            // There seems to be some sort of conversion that happens when getting the state,
+            // so just `aMeta.setBlockState(bMeta.getBlockState())` isn't enough, we have to set both.
+            BlockState common = aMeta.getBlockState();
+            aMeta.setBlockState(common);
+            bMeta.setBlockState(common);
             return aMeta.equals(bMeta);
         }
         return a.isSimilar(b);
