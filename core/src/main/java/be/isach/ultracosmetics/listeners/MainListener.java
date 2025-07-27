@@ -1,8 +1,10 @@
 package be.isach.ultracosmetics.listeners;
 
+import be.isach.ultracosmetics.UltraCosmeticsData;
 import org.bukkit.entity.EnderDragonPart;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Zombie;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
@@ -12,6 +14,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.entity.EntityTransformEvent;
+import org.bukkit.event.entity.EntityUnleashEvent;
 import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
@@ -42,6 +45,16 @@ public class MainListener implements Listener {
     public void onDamageByEntity(EntityDamageByEntityEvent event) {
         if (isPet(event.getDamager()) || isMount(event.getDamager())) {
             event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onLeashBreak(EntityUnleashEvent event) {
+        if (isPet(event.getEntity())) {
+            LivingEntity entity = (LivingEntity) event.getEntity();
+            Entity holder = entity.getLeashHolder();
+            UltraCosmeticsData.get().getPlugin().getScheduler().teleportAsync(entity, holder.getLocation());
+            entity.setLeashHolder(null);
         }
     }
 

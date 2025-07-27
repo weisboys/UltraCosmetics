@@ -74,7 +74,7 @@ public class CommandButton implements Button {
             meta.setLore(lore);
         }
         if (section.isInt("CustomModelData")) {
-            meta.setCustomModelData(section.getInt("CustomModelData"));
+            ItemFactory.setCustomModelData(meta, section.getInt("CustomModelData"));
         }
         stack.setItemMeta(meta);
         boolean closeAfterClick = section.getBoolean("CloseAfterClick");

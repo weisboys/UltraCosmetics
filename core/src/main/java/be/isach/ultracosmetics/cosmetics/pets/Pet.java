@@ -7,15 +7,22 @@ import be.isach.ultracosmetics.cosmetics.EntityCosmetic;
 import be.isach.ultracosmetics.cosmetics.Updatable;
 import be.isach.ultracosmetics.cosmetics.type.PetType;
 import be.isach.ultracosmetics.player.UltraPlayer;
+import be.isach.ultracosmetics.util.EntitySpawningManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import be.isach.ultracosmetics.util.PetPathfinder;
+import com.cryptomorin.xseries.XAttribute;
+import com.cryptomorin.xseries.XEntityType;
 import com.cryptomorin.xseries.XMaterial;
+import com.cryptomorin.xseries.particles.ParticleDisplay;
+import com.cryptomorin.xseries.particles.XParticle;
 import me.gamercoder215.mobchip.EntityBrain;
 import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Difficulty;
+import org.bukkit.Material;
+import org.bukkit.Tag;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityCombustEvent;
@@ -23,8 +30,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleEnterEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
@@ -42,6 +49,7 @@ import java.util.function.Function;
  * @since 03-08-2015
  */
 public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
+    private final ParticleDisplay AIRLIFT_POOF = ParticleDisplay.of(XParticle.POOF).withCount(10).offset(0.5, 0.5, 0.5);
     private final boolean canRide = SettingsManager.getConfig().getBoolean("Pets-Can-Ride", false);
     protected final boolean showName = SettingsManager.getConfig().getBoolean("Show-Pets-Names", true);
 
@@ -64,6 +72,10 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     // While this is positive, the pet will not be removed due to being invalid.
     // This is required because the pet may become briefly invalid while teleporting.
     private int invalidBypassTicks = 0;
+
+    private Mob airlift;
+
+    private int leashReattachTicks = 0;
 
     public Pet(UltraPlayer owner, PetType petType, UltraCosmetics ultraCosmetics, ItemStack dropItem) {
         super(owner, petType, ultraCosmetics);
@@ -104,7 +116,9 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
         setupNameTag();
 
         // Must run AFTER setting the entity to a baby
-        clearPathfinders();
+        EntityBrain brain = clearPathfinders(entity);
+        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
+        brain.getGoalAI().put(new PathfinderLookAtEntity<>(entity, Player.class), 1);
 
         updateName();
 
@@ -122,14 +136,12 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
         setupEntity();
     }
 
-    private void clearPathfinders() {
+    private EntityBrain clearPathfinders(Mob entity) {
         EntityBrain brain = BukkitBrain.getBrain(entity);
         brain.getGoalAI().clear();
         brain.getTargetAI().clear();
         brain.getScheduleManager().clear();
-
-        brain.getGoalAI().put(new PetPathfinder(entity, getPlayer()), 0);
-        brain.getGoalAI().put(new PathfinderLookAtEntity<>(entity, Player.class), 1);
+        return brain;
     }
 
     @Override
@@ -178,11 +190,55 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
             initializeEntity();
         }
 
+        if (XEntityType.HAPPY_GHAST.isSupported()) {
+            doAirlift();
+        }
+
         onUpdate();
+    }
+
+    protected void doAirlift() {
+        if (airlift != null) {
+            if (!getPlayer().isFlying()) {
+                entity.setLeashHolder(null);
+                AIRLIFT_POOF.spawn(airlift.getLocation());
+                removeEntitySafe(airlift);
+                airlift = null;
+            } else if (!entity.isLeashed()) {
+                if (leashReattachTicks == 0) {
+                    leashReattachTicks = 2;
+                } else if (--leashReattachTicks == 0) {
+                    entity.setLeashHolder(airlift);
+                }
+            }
+            return;
+        }
+
+        if (!getPlayer().isFlying()) return;
+
+        airlift = EntitySpawningManager.withBypass(() ->
+                (Mob) entity.getWorld().spawnEntity(entity.getLocation(), XEntityType.HAPPY_GHAST.get())
+        );
+        entity.setLeashHolder(airlift);
+        AIRLIFT_POOF.spawn(airlift.getLocation());
+        airlift.getAttribute(XAttribute.FLYING_SPEED.get()).setBaseValue(0.2);
+        airlift.getAttribute(XAttribute.SCALE.get()).setBaseValue(0.2);
+        airlift.setRemoveWhenFarAway(false);
+        airlift.setPersistent(false);
+        Material harness = ItemFactory.randomFromTag(Tag.ITEMS_HARNESSES);
+        airlift.getEquipment().setItem(EquipmentSlot.BODY, new ItemStack(harness));
+        airlift.setMetadata("Pet", new FixedMetadataValue(getUltraCosmetics(), "UltraCosmetics"));
+        EntityBrain brain = clearPathfinders(airlift);
+        brain.getGoalAI().put(new PetPathfinder(airlift, getPlayer(), 5, 20, -5), 0);
     }
 
     @Override
     protected void onClear() {
+        if (airlift != null) {
+            entity.setLeashHolder(null);
+            removeEntitySafe(airlift);
+        }
+
         // Remove Armor Stand.
         removeEntitySafe(armorStand);
 
@@ -375,9 +431,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
             } catch (NumberFormatException e) {
                 return false;
             }
-            ItemMeta meta = stack.getItemMeta();
-            meta.setCustomModelData(model);
-            stack.setItemMeta(meta);
+            ItemFactory.setCustomModelData(stack, model);
         }
         entity.getEquipment().setItemInMainHand(stack);
         return true;

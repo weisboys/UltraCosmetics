@@ -144,7 +144,7 @@ public abstract class Mount extends EntityCosmetic<MountType, Entity> implements
 
     @EventHandler
     public void onPlayerToggleSneakEvent(VehicleExitEvent event) {
-        if (event.getVehicle().getType() == EntityType.BOAT || event.getVehicle().getType() == EntityType.MINECART) {
+        if (event.getVehicle().getType() == EntityType.MINECART) {
             return;
         }
 

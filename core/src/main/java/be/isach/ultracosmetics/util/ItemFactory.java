@@ -19,6 +19,7 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.Tag;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.enchantments.Enchantment;
@@ -183,7 +184,7 @@ public class ItemFactory {
             meta.setLore(lore);
         }
         if (model != 0) {
-            meta.setCustomModelData(model);
+            ItemFactory.setCustomModelData(meta, model);
         }
 
         stack.setItemMeta(meta);
@@ -252,6 +253,18 @@ public class ItemFactory {
         item.setItemMeta(meta);
     }
 
+    public static void setCustomModelData(ItemStack item, int customModelData) {
+        ItemMeta meta = item.getItemMeta();
+        if (meta == null) return;
+        setCustomModelData(meta, customModelData);
+        item.setItemMeta(meta);
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void setCustomModelData(ItemMeta meta, int customModelData) {
+        meta.setCustomModelData(customModelData);
+    }
+
     @SuppressWarnings({"UnstableApiUsage", "removal"})
     public static AttributeModifier createAttributeModifier(String modName, double amount, AttributeModifier.Operation operation, EquipmentSlot slot) {
         NamespacedKey key = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), modName);
@@ -271,12 +284,12 @@ public class ItemFactory {
         return false;
     }
 
-    private static XMaterial randomXMaterial(List<XMaterial> mats) {
+    private static <T> T randomFromList(List<T> mats) {
         return mats.get(ThreadLocalRandom.current().nextInt(mats.size()));
     }
 
     private static ItemStack randomStack(List<XMaterial> mats) {
-        return randomXMaterial(mats).parseItem();
+        return randomFromList(mats).parseItem();
     }
 
     public static ItemStack getRandomDye() {
@@ -293,7 +306,12 @@ public class ItemFactory {
 
     public static XMaterial randomFromTag(XTag<XMaterial> tag) {
         // copy tag values into temporary ArrayList because getting random values from a Set is hard
-        return randomXMaterial(new ArrayList<>(tag.getValues()));
+        return randomFromList(new ArrayList<>(tag.getValues()));
+    }
+
+    public static Material randomFromTag(Tag<Material> tag) {
+        // copy tag values into temporary ArrayList because getting random values from a Set is hard
+        return randomFromList(new ArrayList<>(tag.getValues()));
     }
 
     public static boolean isSimilar(ItemStack a, ItemStack b) {
