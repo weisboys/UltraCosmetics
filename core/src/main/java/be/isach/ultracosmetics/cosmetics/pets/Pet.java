@@ -23,11 +23,11 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Difficulty;
 import org.bukkit.Material;
 import org.bukkit.Tag;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityCombustEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleEnterEvent;
 import org.bukkit.inventory.EquipmentSlot;
@@ -49,6 +49,7 @@ import java.util.function.Function;
  * @since 03-08-2015
  */
 public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
+    private static final Attribute FLYING_SPEED = XAttribute.FLYING_SPEED.get();
     private final ParticleDisplay AIRLIFT_POOF = ParticleDisplay.of(XParticle.POOF).withCount(10).offset(0.5, 0.5, 0.5);
     private final boolean canRide = SettingsManager.getConfig().getBoolean("Pets-Can-Ride", false);
     protected final boolean showName = SettingsManager.getConfig().getBoolean("Show-Pets-Names", true);
@@ -190,7 +191,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
             initializeEntity();
         }
 
-        if (SettingsManager.getConfig().getBoolean("Airlift-Pets") && XEntityType.HAPPY_GHAST.isSupported()) {
+        if (SettingsManager.getConfig().getBoolean("Airlift-Pets")) {
             doAirlift();
         }
 
@@ -198,6 +199,8 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
     }
 
     protected void doAirlift() {
+        // If a mob can already fly, they don't need an airlift
+        if (!XEntityType.HAPPY_GHAST.isSupported() || entity.getAttribute(FLYING_SPEED) != null) return;
         if (airlift != null) {
             if (!getPlayer().isFlying()) {
                 entity.setLeashHolder(null);
@@ -221,7 +224,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
         );
         entity.setLeashHolder(airlift);
         AIRLIFT_POOF.spawn(airlift.getLocation());
-        airlift.getAttribute(XAttribute.FLYING_SPEED.get()).setBaseValue(0.2);
+        airlift.getAttribute(FLYING_SPEED).setBaseValue(0.2);
         airlift.getAttribute(XAttribute.SCALE.get()).setBaseValue(0.2);
         airlift.setRemoveWhenFarAway(false);
         airlift.setPersistent(false);
@@ -319,11 +322,6 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
             drop.remove();
             items.remove(drop);
         }, 5);
-    }
-
-    @EventHandler
-    public void onInteract(PlayerInteractEntityEvent event) {
-        if (event.getRightClicked() == getEntity()) event.setCancelled(true);
     }
 
     @EventHandler
