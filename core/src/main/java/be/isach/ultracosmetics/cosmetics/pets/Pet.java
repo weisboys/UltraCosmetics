@@ -190,7 +190,7 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
             initializeEntity();
         }
 
-        if (XEntityType.HAPPY_GHAST.isSupported()) {
+        if (SettingsManager.getConfig().getBoolean("Airlift-Pets") && XEntityType.HAPPY_GHAST.isSupported()) {
             doAirlift();
         }
 
