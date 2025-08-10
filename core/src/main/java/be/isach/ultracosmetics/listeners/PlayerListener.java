@@ -1,14 +1,12 @@
 package be.isach.ultracosmetics.listeners;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.UltraCosmeticsData;
 import be.isach.ultracosmetics.config.MessageManager;
 import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.Category;
 import be.isach.ultracosmetics.cosmetics.suits.ArmorSlot;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.player.UltraPlayerManager;
-import be.isach.ultracosmetics.player.profile.CosmeticsProfile;
 import be.isach.ultracosmetics.run.FallDamageManager;
 import be.isach.ultracosmetics.util.ItemFactory;
 import com.tcoded.folialib.wrapper.task.WrappedTask;
@@ -77,14 +75,7 @@ public class PlayerListener implements Listener {
         if (isNPC(event.getPlayer())) return;
         UltraPlayer ultraPlayer = pm.getUltraPlayer(event.getPlayer());
         if (SettingsManager.isAllowedWorld(event.getPlayer().getWorld())) {
-            runWhenValid(event.getPlayer(), joinItemDelay, () -> {
-                if (menuItemEnabled && event.getPlayer().hasPermission("ultracosmetics.receivechest")) {
-                    ultraPlayer.giveMenuItem();
-                }
-                if (UltraCosmeticsData.get().areCosmeticsProfilesEnabled()) {
-                    ultraPlayer.getProfile().onLoad(CosmeticsProfile::equip);
-                }
-            });
+            runWhenValid(event.getPlayer(), joinItemDelay, ultraPlayer::load);
         }
 
         if (ultraCosmetics.getUpdateChecker() != null && ultraCosmetics.getUpdateChecker().isOutdated()) {
