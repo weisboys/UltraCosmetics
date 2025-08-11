@@ -3,11 +3,9 @@ name: Build Gradle
 
 on:
   push:
-    paths-ignore:
-      - 'core/src/main/resources/**'
+    paths-ignore: [ "core/src/main/resources/**" ]
   pull_request:
-    branches-ignore:
-      - 'renovate/**'
+    branches-ignore: [ "renovate/**" ]
   workflow_dispatch:
 
 
