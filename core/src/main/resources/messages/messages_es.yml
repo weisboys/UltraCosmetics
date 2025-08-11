@@ -1841,6 +1841,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>Relampago
     Description: '⚡ ZAP!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix> <blue>Activaste vista propia de las transformaciones!
 Disabled-SelfMorphView: <prefix> <blue>Desactivaste vista propia de las transformaciones!
 Enabled-Gadgets: <prefix> <blue>Activaste los gadgets!
