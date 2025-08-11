@@ -1829,6 +1829,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>闪电
     Description: '⚡ 轰隆!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix> <blue>你启用了第一人称伪装视角
 Disabled-SelfMorphView: <prefix> <blue>你禁用了第一人称伪装视角
 Enabled-Gadgets: <prefix> <blue>您启用了小工具！

@@ -1841,6 +1841,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>Foudre
     Description: '⚡ ZAP!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix> <blue>Vous avez activé l'auto-affichage pour les morphes !
 Disabled-SelfMorphView: <prefix> <blue>Vous avez désactivé l'auto-affichage pour les morphes !
 Enabled-Gadgets: <prefix> <blue>Vous avez activé les gadgets !

@@ -1836,6 +1836,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>Villám
     Description: '⚡ ZAP!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix><blue>Bekapcsoltad a saját nézet változásokat!
 Disabled-SelfMorphView: <prefix><blue>Kikapcsoltad a saját nézet álcákat!
 Enabled-Gadgets: <prefix><blue>Bekapcsoltad a kütyüket!

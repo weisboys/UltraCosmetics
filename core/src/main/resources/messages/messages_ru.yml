@@ -1841,6 +1841,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>Молния
     Description: '⚡ БАЦ!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix> <blue>Вы включили просмотр себя для превращений!
 Disabled-SelfMorphView: <prefix> <blue>Вы отключили просмотр себя для превращений!
 Enabled-Gadgets: <prefix> <blue>Вы включили гаджеты!

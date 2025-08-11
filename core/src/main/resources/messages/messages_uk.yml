@@ -1842,6 +1842,9 @@ Death-Effects:
   Lightning:
     name: <bold><white>Блискавка
     Description: '⚡ ЗАП!'
+  PuffOfSmoke:
+    Description: Disappear in a puff of smoke!
+    name: <bold><gray>Puff of Smoke
 Enabled-SelfMorphView: <prefix> <blue>Ви увімкнули самоперегляд для морфів!
 Disabled-SelfMorphView: <prefix> <blue>Ви вимкнули самоперегляд для морфів!
 Enabled-Gadgets: <prefix> <blue>Ви увімкнули гаджети!
