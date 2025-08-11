@@ -20,6 +20,7 @@ import me.gamercoder215.mobchip.ai.goal.PathfinderLookAtEntity;
 import me.gamercoder215.mobchip.bukkit.BukkitBrain;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Difficulty;
 import org.bukkit.Material;
 import org.bukkit.Tag;
@@ -295,14 +296,24 @@ public class Pet extends EntityCosmetic<PetType, Mob> implements Updatable {
         Component newName;
         if (getOwner().getPetName(getType()) != null) {
             newName = getOwner().getPetName(getType());
+            int maxLength = SettingsManager.getConfig().getInt("Max-Pet-Name-Length", -1);
+            String plainName = PlainTextComponentSerializer.plainText().serialize(newName);
+            if (maxLength > 0 && plainName.length() > maxLength) {
+                // This lets `Max-Pet-Name-Length` apply to existing pet names.
+                // It does strip colors as a side effect but I don't know of any better way of doing it.
+                newName = Component.text(plainName.substring(0, maxLength));
+            }
         } else {
             newName = getType().getEntityName(getPlayer());
         }
 
         // Hide name if name is empty
-        String nameString = MessageManager.toLegacy(newName);
-        getEntity().setCustomNameVisible(!nameString.isEmpty());
-        rename.setCustomName(nameString);
+        boolean hasName = !PlainTextComponentSerializer.plainText().serialize(newName).isEmpty();
+        getEntity().setCustomNameVisible(hasName);
+
+        if (hasName) {
+            getUltraCosmetics().getPaperSupport().setCustomName(rename, newName);
+        }
     }
 
     @Override
