@@ -3,7 +3,7 @@ name: Crowdin
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 
