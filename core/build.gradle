@@ -35,8 +35,6 @@ dependencies {
     compileOnly 'net.luckperms:api:5.5'
     // https://github.com/ArcanePlugins/Treasury
     compileOnly 'me.lokka30:treasury-api:2.0.2-SNAPSHOT'
-    // https://github.com/JEFF-Media-GbR/Spigot-ChestSortAPI
-    compileOnly 'de.jeff_media:ChestSortAPI:13.0.0-SNAPSHOT'
     // https://github.com/TownyAdvanced/Towny
     compileOnly 'com.palmergames.bukkit.towny:towny:0.100.4.7'
     // https://github.com/brettwooldridge/HikariCP
@@ -63,6 +61,7 @@ dependencies {
 
     compileOnly files('libs/CoinsEngine-2.1.1.jar')
     compileOnly files('libs/NexEngine.jar')
+    compileOnly files('libs/ChestSortAPI-13.0.0-SNAPSHOT.jar')
     // Shaded by root project
     compileOnly(project(':legacy-events'))
 }
