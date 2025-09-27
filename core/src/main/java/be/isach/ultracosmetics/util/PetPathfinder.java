@@ -71,7 +71,7 @@ public class PetPathfinder extends CustomPathfinder {
 
         // Slime or magma cube
         if (entity instanceof Slime) {
-            Location deltaLoc = ourLoc.subtract(targetLoc);
+            Location deltaLoc = ourLoc.clone().subtract(targetLoc);
             double direction = -Math.atan2(deltaLoc.getX(), deltaLoc.getZ());
             float degrees = (float) (Math.toDegrees(direction) + 180);
             brain.getBody().setRotation(degrees, 0);
