@@ -89,7 +89,7 @@ If you're looking to compile the project yourself, please check out the [compili
 
 ```text
 UltraCosmetics - Lightweight, Fun and Easy-to-Use Spigot Cosmetics plugin.
-Copyright (C) 2024 Sacha "iSach" Lewin
+Copyright (C) 2025 Sacha "iSach" Lewin
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published
