@@ -5,6 +5,13 @@ plugins {
     id 'net.minecrell.plugin-yml.bukkit' version '0.6.0'
 }
 
+configurations {
+    libraryApi.dependencies.configureEach { dep ->
+        dependencies.add("library", dep)
+        dependencies.add("compileOnlyApi", dep)
+    }
+}
+
 dependencies {
     // Depend on a jar in the 'core' folder: fileTree(dir: '.', include: ['*.jar'])
     // https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot

@@ -28,7 +28,7 @@ public class SubCommandToggle extends SubCommand {
     private static final String ERROR_PREFIX = " " + ChatColor.RED + ChatColor.BOLD;
 
     public SubCommandToggle(UltraCosmetics ultraCosmetics) {
-        super("toggle", "Toggles a cosmetic.", "<type> <cosmetic> [player]", ultraCosmetics, true);
+        super("toggle", "Toggles a cosmetic.", "[<type> <cosmetic>] [player]", ultraCosmetics, true);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class SubCommandToggle extends SubCommand {
         }
 
         Optional<Category> categories = Arrays.stream(Category.values()).filter(category -> category.isEnabled() && category.toString().toLowerCase(Locale.ROOT).startsWith(type)).findFirst();
-        if (!categories.isPresent()) {
+        if (categories.isEmpty()) {
             error(sender, "Invalid category.");
             return;
         }
