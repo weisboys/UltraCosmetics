@@ -91,11 +91,15 @@ public class GadgetRocket extends Gadget implements Updatable {
 
         getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> {
             if (getOwner() == null || getOwner().getCurrentGadget() != this) return;
+            playerVehicle = null;
+            boolean success = armorStand.addPassenger(getPlayer());
+            if (!success) {
+                cleanup();
+                return;
+            }
+            playerVehicle = armorStand;
             // prevent kicking
             enableFlight();
-            playerVehicle = null;
-            armorStand.addPassenger(getPlayer());
-            playerVehicle = armorStand;
             activeTask = new RocketTask() {
                 private int countdown = 3;
 
@@ -133,10 +137,10 @@ public class GadgetRocket extends Gadget implements Updatable {
 
                     fallingBlocks.add(top);
                     fallingBlocks.add(base);
-                    if (fallingBlocks.get(8).getPassengers().isEmpty()) {
-                        fallingBlocks.get(8).addPassenger(getPlayer());
+                    boolean success = top.addPassenger(getPlayer());
+                    if (!success) {
+                        cleanup();
                     }
-                    top.addPassenger(getPlayer());
                     playerVehicle = top;
                     launching = true;
                     activeTask = new RocketTask() {
