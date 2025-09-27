@@ -189,8 +189,9 @@ public class GadgetRocket extends Gadget implements Updatable {
     @Override
     protected boolean checkRequirements(PlayerInteractEvent event) {
         if (activeTask != null) return false;
-        height = Area.findMaxY(getPlayer().getLocation(), 1);
-        if (height < 25) {
+        Location loc = getPlayer().getLocation();
+        height = Area.findMaxY(loc, 1);
+        if (height - loc.getBlockY() < 25) {
             MessageManager.send(getPlayer(), "Gadgets.Rocket.Not-Enough-Space");
             return false;
         }
