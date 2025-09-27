@@ -16,6 +16,7 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -158,6 +159,13 @@ public class MainListener implements Listener {
             e = ((EnderDragonPart) e).getParent();
         }
         if (isPet(e) || isMount(e)) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onChangeBlock(EntityChangeBlockEvent event) {
+        if (isPet(event.getEntity()) || isMount(event.getEntity())) {
             event.setCancelled(true);
         }
     }
