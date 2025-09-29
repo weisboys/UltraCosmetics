@@ -31,8 +31,7 @@ jobs:
             ~/.gradle/wrapper
             ~/.m2
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-        
+          restore-keys: ${{ runner.os }}-gradle-
 
       # https://github.com/gradle/gradle-build-action
       - name: Setup Gradle
@@ -41,7 +40,7 @@ jobs:
           cache-overwrite-existing: true
 
       # https://github.com/actions/setup-java
-      - name: Set up JDK 17
+      - name: Setup JDK 17
         uses: actions/setup-java@v5.0.0
         with:
           distribution: 'temurin'
@@ -51,7 +50,7 @@ jobs:
           cache: gradle
 
       # https://github.com/actions/setup-java
-      - name: Set up JDK 21
+      - name: Setup JDK 21
         uses: actions/setup-java@v5.0.0
         with:
           distribution: 'temurin'
