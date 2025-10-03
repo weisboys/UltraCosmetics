@@ -7,13 +7,13 @@ import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.util.SmartLogger.LogLevel;
 import be.isach.ultracosmetics.version.ServerVersion;
 import com.cryptomorin.xseries.XAttribute;
+import com.cryptomorin.xseries.XItemStack;
 import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XTag;
 import com.cryptomorin.xseries.profiles.builder.XSkull;
 import com.cryptomorin.xseries.profiles.objects.ProfileInputType;
 import com.cryptomorin.xseries.profiles.objects.Profileable;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -47,6 +47,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 /**
  * Created by sacha on 03/08/15.
@@ -122,12 +124,19 @@ public class ItemFactory {
         return spawnUnpickableItem(material.parseItem(), loc, new Vector(random.nextDouble() - 0.5, random.nextDouble() / 2.0, random.nextDouble() - 0.5).multiply(variance));
     }
 
-    public static void applyCosmeticMarker(ItemStack item) {
+    /**
+     * Apply a marker to an item to indicate it's managed by UC.
+     *
+     * @param item The item to modify. It will be modified in-place.
+     * @return {@code item}, for convenience
+     */
+    public static ItemStack applyCosmeticMarker(ItemStack item) {
         ItemMeta meta = item.getItemMeta();
         // Do not cache this in a field, it doesn't exist on versions below 1.12
         NamespacedKey marker = new NamespacedKey(UltraCosmeticsData.get().getPlugin(), "marker");
         meta.getPersistentDataContainer().set(marker, PersistentDataType.BYTE, (byte) 1);
         item.setItemMeta(meta);
+        return item;
     }
 
     public static ItemStack getItemStackFromConfig(String path) {
@@ -169,28 +178,28 @@ public class ItemFactory {
         return XMaterial.matchXMaterial(fromConfig).orElse(null);
     }
 
+    private static void migrateMenuItem(ConfigurationSection section) {
+        // Migrate item format to XItemStack
+        ConfigurationSection item = section.createSection("item");
+        BiConsumer<String, String> migrate = (before, after) -> {
+            item.set(after, section.get(before));
+            section.set(before, null);
+        };
+        migrate.accept("Type", "material");
+        migrate.accept("Displayname", "name");
+        migrate.accept("Lore", "lore");
+        migrate.accept("CustomModelData", "custom-model-data");
+    }
+
     private static ItemStack createMenuItem() {
         ConfigurationSection section = SettingsManager.getConfig().getConfigurationSection("Menu-Item");
-        MiniMessage mm = MessageManager.getMiniMessage();
-        String name = MessageManager.toLegacy(mm.deserialize(section.getString("Displayname")));
-        int model = section.getInt("Custom-Model-Data");
-        ItemStack stack = ItemFactory.rename(ItemFactory.getItemStackFromConfig("Menu-Item.Type"), name);
-        ItemMeta meta = stack.getItemMeta();
-        String rawLore = section.getString("Lore", "");
-        if (!rawLore.equals("")) {
-            List<String> lore = new ArrayList<>();
-            for (String line : rawLore.split("\n")) {
-                lore.add(MessageManager.toLegacy(mm.deserialize(line)));
-            }
-            meta.setLore(lore);
+        if (section.isString("Type")) {
+            migrateMenuItem(section);
         }
-        if (model != 0) {
-            ItemFactory.setCustomModelData(meta, model);
+        if (!section.isConfigurationSection("item")) {
+            section.createSection("item").set("material", "ENDER_CHEST");
         }
-
-        stack.setItemMeta(meta);
-        applyCosmeticMarker(stack);
-        return stack;
+        return parseXItemStack(section.getConfigurationSection("item"));
     }
 
     public static ItemStack getMenuItem() {
@@ -200,6 +209,10 @@ public class ItemFactory {
         return createMenuItem();
     }
 
+    public static ItemStack parseXItemStack(ConfigurationSection section) {
+        Function<String, String> translator = s -> MessageManager.toLegacy(MessageManager.getMiniMessage().deserialize(s));
+        return applyCosmeticMarker(XItemStack.deserialize(section, translator));
+    }
 
     public static ItemStack createSkull(String url, String name) {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
