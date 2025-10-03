@@ -9,9 +9,27 @@ import com.cryptomorin.xseries.XMaterial;
 import com.cryptomorin.xseries.XSound;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
+import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
 public class KeysButton extends TreasureButton {
+    private static final XMaterial KEY_ITEM;
+
+    static {
+        XMaterial chosen = XMaterial.TRIPWIRE_HOOK;
+        if (XMaterial.TRIAL_KEY.isSupported()) {
+            try {
+                if (XMaterial.TRIAL_KEY.get().isEnabledByFeature(Bukkit.getWorlds().get(0))) {
+                    chosen = XMaterial.TRIAL_KEY;
+                }
+            } catch (NoSuchMethodError error) {
+                // Must be after paper removed isEnabledByFeature so it's fine
+                chosen = XMaterial.TRIAL_KEY;
+            }
+        }
+        KEY_ITEM = chosen;
+    }
+
     private final String itemName = MessageManager.getLegacyMessage("Treasure-Keys");
     private final UltraCosmetics ultraCosmetics;
     private final XSound.SoundPlayer noKeysSound;

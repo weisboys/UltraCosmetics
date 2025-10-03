@@ -218,7 +218,8 @@ public class ItemFactory {
         ItemStack head = create(XMaterial.PLAYER_HEAD, name);
         if (UltraCosmeticsData.get().getServerVersion().isAtLeast(ServerVersion.v1_18)) {
             SkullMeta meta = (SkullMeta) head.getItemMeta();
-            PlayerProfile profile = Bukkit.createPlayerProfile(UUID.nameUUIDFromBytes(url.getBytes()));
+            UUID uuid = UUID.nameUUIDFromBytes(url.getBytes());
+            PlayerProfile profile = Bukkit.createPlayerProfile(uuid, uuid.toString().substring(0, 16));
             PlayerTextures textures = profile.getTextures();
             try {
                 textures.setSkin(new URL("https://textures.minecraft.net/texture/" + url));
