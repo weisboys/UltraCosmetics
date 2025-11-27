@@ -22,5 +22,6 @@ public class DeathEffectType extends CosmeticParticleType<DeathEffect> {
         new DeathEffectType("PuffOfSmoke", XParticle.LARGE_SMOKE, XMaterial.SMOKER, DeathEffectPuffOfSmoke.class, true);
         new DeathEffectType("DragonBreath", XParticle.DRAGON_BREATH, XMaterial.DRAGON_BREATH, DeathEffectDragonBreath.class, false);
         new DeathEffectType("Flames", XParticle.FLAME, XMaterial.BLAZE_POWDER, DeathEffectFlames.class,false);
+        new DeathEffectType("ItemExplode", XParticle.CRIT, XMaterial.COOKED_CHICKEN, DeathEffectItemExplode.class,false);
     }
 }
