@@ -1860,8 +1860,8 @@ Death-Effects:
     name: <bold><gold>Flames
     Description: Explode into bursts of fire and sparks!
   ItemExplode:
-    name: <bold><gold>Item Explode
-    Description: ALL OUR FOOD KEEPS BLOWING UP
+    name: <bold><light_purple>Candy Explode
+    Description: ALL OUR (SWEET) FOOD KEEPS BLOWING UP
 Enabled-SelfMorphView: <prefix> <blue>You enabled self view for morphs!
 Disabled-SelfMorphView: <prefix> <blue>You disabled self view for morphs!
 Enabled-Gadgets: <prefix> <blue>You enabled gadgets!

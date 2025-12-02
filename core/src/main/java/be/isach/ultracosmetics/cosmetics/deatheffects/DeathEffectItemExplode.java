@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class DeathEffectItemExplode extends DeathEffect {
 
@@ -33,8 +34,30 @@ public class DeathEffectItemExplode extends DeathEffect {
         explode.play();
         hurt.play();
 
+        List<XMaterial> materials = List.of(
+                XMaterial.GLOW_SQUID_SPAWN_EGG,
+                XMaterial.TROPICAL_FISH_SPAWN_EGG,
+                XMaterial.GLOW_BERRIES,
+                XMaterial.CHORUS_FRUIT,
+                XMaterial.PINK_DYE,
+                XMaterial.RED_DYE,
+                XMaterial.ORANGE_DYE,
+                XMaterial.LIME_DYE,
+                XMaterial.LIGHT_BLUE_DYE,
+                XMaterial.PURPLE_DYE,
+                XMaterial.RESIN_BRICK,
+                XMaterial.NETHER_WART,
+                XMaterial.FERMENTED_SPIDER_EYE,
+                XMaterial.MAGMA_CREAM,
+                XMaterial.CAKE,
+                XMaterial.GOLDEN_APPLE,
+                XMaterial.BLUE_EGG,
+                XMaterial.HONEYCOMB
+        );
+
         for (int i = 0; i < 30; i++) {
-            items.add(ItemFactory.createUnpickableItemVariance(XMaterial.COOKED_CHICKEN, player.getLocation(), RANDOM, 1));
+            XMaterial randMaterial = materials.get(new Random().nextInt(materials.size()));
+            items.add(ItemFactory.createUnpickableItemVariance(randMaterial, player.getLocation(), RANDOM, 1));
         }
 
         getUltraCosmetics().getScheduler().runAtEntityLater(getPlayer(), () -> items.forEach(Item::remove), 50);
