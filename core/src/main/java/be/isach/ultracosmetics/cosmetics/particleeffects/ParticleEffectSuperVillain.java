@@ -18,7 +18,6 @@ import java.awt.*;
  */
 public class ParticleEffectSuperVillain extends ParticleEffect {
 
-    private final boolean x = true;
     private final ParticleDisplay secondary;
 
     public ParticleEffectSuperVillain(UltraPlayer owner, ParticleEffectType type, UltraCosmetics ultraCosmetics) {
@@ -29,14 +28,14 @@ public class ParticleEffectSuperVillain extends ParticleEffect {
     }
 
     private final boolean[][] shape = {
-            {false, x, x, x, false,},
-            {false, x, x, x, false,},
-            {x, x, x, x, x,},
-            {x, x, x, x, x,},
-            {x, x, x, x, x,},
-            {x, x, x, x, x,},
-            {x, x, false, x, x,},
-            {x, false, false, false, x,},
+            {false, true,  true,  true,  false,},
+            {false, true,  true,  true,  false,},
+            {true,  true,  true,  true,  true,},
+            {true,  true,  true,  true,  true,},
+            {true,  true,  true,  true,  true,},
+            {true,  true,  true,  true,  true,},
+            {true,  true,  false, true,  true,},
+            {true,  false, false, false, true,},
     };
 
     @Override

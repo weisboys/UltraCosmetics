@@ -1,7 +1,6 @@
 package be.isach.ultracosmetics.cosmetics.deatheffects;
 
 import be.isach.ultracosmetics.UltraCosmetics;
-import be.isach.ultracosmetics.config.SettingsManager;
 import be.isach.ultracosmetics.cosmetics.type.DeathEffectType;
 import be.isach.ultracosmetics.player.UltraPlayer;
 import be.isach.ultracosmetics.util.ItemFactory;
@@ -27,7 +26,6 @@ public class DeathEffectItemExplode extends DeathEffect {
         this.hurt = XSound.ENTITY_CHICKEN_HURT.record().withVolume(1.4f).withPitch(1.5f).soundPlayer().forPlayers(getPlayer());
     }
 
-    @SuppressWarnings("deprecation")
     @Override
     public void displayParticles() {
         Player player = getPlayer();

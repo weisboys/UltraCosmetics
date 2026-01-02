@@ -14,9 +14,8 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.metadata.FixedMetadataValue;
-
 import java.util.List;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class DeathEffectFirework extends DeathEffect {
     private static final Material FIREWORK_ROCKET = XMaterial.FIREWORK_ROCKET.get();
@@ -30,7 +29,7 @@ public class DeathEffectFirework extends DeathEffect {
                 Color.RED, Color.ORANGE, Color.YELLOW, Color.LIME, Color.BLUE, Color.PURPLE, Color.FUCHSIA, Color.TEAL
         );
 
-        Color randColor = colors.get(new Random().nextInt(colors.size()));
+        Color randColor = colors.get(ThreadLocalRandom.current().nextInt(colors.size()));
 
         meta.addEffect(FireworkEffect.builder().with(Type.BALL_LARGE).withColor(randColor).build());
     }
